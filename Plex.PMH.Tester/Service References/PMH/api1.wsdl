@@ -1,0 +1,2164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://pmh.plexxis.com/api" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://pmh.plexxis.com/api" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://pmh.plexxis.com/api">
+      <s:element name="AppGetTableDefinition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppGetTableDefinitionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppGetTableDefinitionResult" type="tns:ArrayOfTableDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTableDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TableDefinition" nillable="true" type="tns:TableDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TableDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowInsert" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowUpdate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowQuery" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Columns" type="tns:ArrayOfColumn" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfColumn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Column">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ColumnSequence" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataLength" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataPrecision" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataScale" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowDbNull" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLong" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsKey" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUnique" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AppGetQueries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppAuthKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppGetQueriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppGetQueriesResult" type="tns:ArrayOfQueryDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfQueryDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryDefinition" nillable="true" type="tns:QueryDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackDelta" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="WhereClauses" type="tns:ArrayOfCondition" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCondition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Condition" nillable="true" type="tns:Condition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Condition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNVL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ClientGetDatabaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nClientId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientGetDatabaseListResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectionConnect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Database" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionConnectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectionConnectResult" type="tns:MethodResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MethodResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConnectionRelease">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionReleaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectionStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionStatusResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="tns:QueryDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryCreateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sQueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryExecute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Time" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryExecuteXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryExecuteXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryExecuteXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppQueryResult" type="tns:AppQueries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AppQueries">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="QueryId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TableId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsDelta" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SeqLimitTimeSpan" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SeqLimit" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PlexxisDataTransferObjects" abstract="true" />
+      <s:element name="IUD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="DBModData" type="tns:IUDData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IUDData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Row">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Action" type="tns:RowAction" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RowAction">
+        <s:restriction base="s:string">
+          <s:enumeration value="Read" />
+          <s:enumeration value="Create" />
+          <s:enumeration value="Modify" />
+          <s:enumeration value="Delete" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IUDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IUDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDatabaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreateOffTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Auth" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TableId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreateOffTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryCreateOffTableResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync">
+        <s:complexType />
+      </s:element>
+      <s:element name="SyncResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCommandRepo">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="Command">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCommand">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Command" nillable="true" type="tns:Command" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCommandRepoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommandRepoResult" type="tns:ArrayOfCommand" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConnectionRepository">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ConnectionData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InitTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastCheck" type="tns:Stopwatch" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Stopwatch" />
+      <s:complexType name="ArrayOfConnectionData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConnectionData" nillable="true" type="tns:ConnectionData" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetConnectionRepositoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConnectionRepositoryResult" type="tns:ArrayOfConnectionData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConsumerRepository">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="Consumer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConsumerId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatabaseId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Consumer" nillable="true" type="tns:Consumer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetConsumerRepositoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConsumerRepositoryResult" type="tns:ArrayOfConsumer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogRepository">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="Log">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="tns:LogPriority" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Record" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LogPriority">
+        <s:restriction base="s:string">
+          <s:enumeration value="Low" />
+          <s:enumeration value="BelowAverage" />
+          <s:enumeration value="Normal" />
+          <s:enumeration value="AboveAverage" />
+          <s:enumeration value="High" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfLog">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLogRepositoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogRepositoryResult" type="tns:ArrayOfLog" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResponseRepository">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Resp" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Response" nillable="true" type="tns:Response" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetResponseRepositoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResponseRepositoryResult" type="tns:ArrayOfResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogsGetAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogsGetAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogsGetAllResult" type="tns:ArrayOfLog" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableColumns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TableId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableColumnsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppTableColumnsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCount">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Log">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IssueCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IssueCommandResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResponseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfTableDefinition" nillable="true" type="tns:ArrayOfTableDefinition" />
+      <s:element name="ArrayOfQueryDefinition" nillable="true" type="tns:ArrayOfQueryDefinition" />
+      <s:element name="MethodResult" nillable="true" type="tns:MethodResult" />
+      <s:element name="int" type="s:int" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="AppQueries" nillable="true" type="tns:AppQueries" />
+      <s:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
+      <s:element name="ArrayOfConnectionData" nillable="true" type="tns:ArrayOfConnectionData" />
+      <s:element name="ArrayOfConsumer" nillable="true" type="tns:ArrayOfConsumer" />
+      <s:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
+      <s:element name="ArrayOfResponse" nillable="true" type="tns:ArrayOfResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AppGetTableDefinitionSoapIn">
+    <wsdl:part name="parameters" element="tns:AppGetTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionSoapOut">
+    <wsdl:part name="parameters" element="tns:AppGetTableDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesSoapIn">
+    <wsdl:part name="parameters" element="tns:AppGetQueries" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesSoapOut">
+    <wsdl:part name="parameters" element="tns:AppGetQueriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientGetDatabaseList" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientGetDatabaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionConnectSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionConnect" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionConnectSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionRelease" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionReleaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionStatus" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateSoapIn">
+    <wsdl:part name="parameters" element="tns:QryCreate" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateSoapOut">
+    <wsdl:part name="parameters" element="tns:QryCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:QryDelete" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:QryDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:QryExecute" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:QryExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryExecuteXml" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryExecuteXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppQuery" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUDSoapIn">
+    <wsdl:part name="parameters" element="tns:IUD" />
+  </wsdl:message>
+  <wsdl:message name="IUDSoapOut">
+    <wsdl:part name="parameters" element="tns:IUDResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDatabase" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableSoapIn">
+    <wsdl:part name="parameters" element="tns:QryCreateOffTable" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableSoapOut">
+    <wsdl:part name="parameters" element="tns:QryCreateOffTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncSoapIn">
+    <wsdl:part name="parameters" element="tns:Sync" />
+  </wsdl:message>
+  <wsdl:message name="SyncSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandRepoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommandRepo" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandRepoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommandRepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetConnectionRepository" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetConnectionRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetConsumerRepository" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetConsumerRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogRepository" />
+  </wsdl:message>
+  <wsdl:message name="GetLogRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetResponseRepository" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetResponseRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogsGetAllSoapIn">
+    <wsdl:part name="parameters" element="tns:LogsGetAll" />
+  </wsdl:message>
+  <wsdl:message name="LogsGetAllSoapOut">
+    <wsdl:part name="parameters" element="tns:LogsGetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsSoapIn">
+    <wsdl:part name="parameters" element="tns:AppTableColumns" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsSoapOut">
+    <wsdl:part name="parameters" element="tns:AppTableColumnsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCount" />
+  </wsdl:message>
+  <wsdl:message name="GetCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogSoapIn">
+    <wsdl:part name="parameters" element="tns:Log" />
+  </wsdl:message>
+  <wsdl:message name="LogSoapOut">
+    <wsdl:part name="parameters" element="tns:LogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IssueCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:IssueCommand" />
+  </wsdl:message>
+  <wsdl:message name="IssueCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:IssueCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpGetIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpGetIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQueryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpGetIn">
+    <wsdl:part name="nClientId" type="s:string" />
+    <wsdl:part name="nAppId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpGetOut" />
+  <wsdl:message name="ConnectionConnectHttpGetIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Database" type="s:string" />
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionConnectHttpGetOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseHttpGetOut" />
+  <wsdl:message name="ConnectionStatusHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpGetIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+    <wsdl:part name="sQueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQueryHttpGetIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQueryHttpGetOut">
+    <wsdl:part name="Body" element="tns:AppQueries" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpGetIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Auth" type="s:string" />
+    <wsdl:part name="TableId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SyncHttpGetIn" />
+  <wsdl:message name="SyncHttpGetOut" />
+  <wsdl:message name="GetCommandRepoHttpGetIn" />
+  <wsdl:message name="GetCommandRepoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCommand" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionRepositoryHttpGetIn" />
+  <wsdl:message name="GetConnectionRepositoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConnectionData" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerRepositoryHttpGetIn" />
+  <wsdl:message name="GetConsumerRepositoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsumer" />
+  </wsdl:message>
+  <wsdl:message name="GetLogRepositoryHttpGetIn" />
+  <wsdl:message name="GetLogRepositoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLog" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseRepositoryHttpGetIn" />
+  <wsdl:message name="GetResponseRepositoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogsGetAllHttpGetIn" />
+  <wsdl:message name="LogsGetAllHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLog" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsHttpGetIn">
+    <wsdl:part name="TableId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCountHttpGetIn" />
+  <wsdl:message name="GetCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="LogHttpGetIn">
+    <wsdl:part name="s" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogHttpGetOut" />
+  <wsdl:message name="IssueCommandHttpGetIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IssueCommandHttpGetOut" />
+  <wsdl:message name="GetResponseHttpGetIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpPostIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpPostIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQueryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpPostIn">
+    <wsdl:part name="nClientId" type="s:string" />
+    <wsdl:part name="nAppId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpPostOut" />
+  <wsdl:message name="ConnectionConnectHttpPostIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Database" type="s:string" />
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionConnectHttpPostOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionReleaseHttpPostOut" />
+  <wsdl:message name="ConnectionStatusHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpPostIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+    <wsdl:part name="sQueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryExecuteXmlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQueryHttpPostIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppQueryHttpPostOut">
+    <wsdl:part name="Body" element="tns:AppQueries" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpPostIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Auth" type="s:string" />
+    <wsdl:part name="TableId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SyncHttpPostIn" />
+  <wsdl:message name="SyncHttpPostOut" />
+  <wsdl:message name="GetCommandRepoHttpPostIn" />
+  <wsdl:message name="GetCommandRepoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCommand" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionRepositoryHttpPostIn" />
+  <wsdl:message name="GetConnectionRepositoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConnectionData" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerRepositoryHttpPostIn" />
+  <wsdl:message name="GetConsumerRepositoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsumer" />
+  </wsdl:message>
+  <wsdl:message name="GetLogRepositoryHttpPostIn" />
+  <wsdl:message name="GetLogRepositoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLog" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseRepositoryHttpPostIn" />
+  <wsdl:message name="GetResponseRepositoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogsGetAllHttpPostIn" />
+  <wsdl:message name="LogsGetAllHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLog" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsHttpPostIn">
+    <wsdl:part name="TableId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnsHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCountHttpPostIn" />
+  <wsdl:message name="GetCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="LogHttpPostIn">
+    <wsdl:part name="s" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogHttpPostOut" />
+  <wsdl:message name="IssueCommandHttpPostIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IssueCommandHttpPostOut" />
+  <wsdl:message name="GetResponseHttpPostIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetResponseHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="APISoap">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionSoapIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesSoapIn" />
+      <wsdl:output message="tns:AppGetQueriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListSoapIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <wsdl:input message="tns:ConnectionConnectSoapIn" />
+      <wsdl:output message="tns:ConnectionConnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <wsdl:input message="tns:ConnectionReleaseSoapIn" />
+      <wsdl:output message="tns:ConnectionReleaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <wsdl:input message="tns:ConnectionStatusSoapIn" />
+      <wsdl:output message="tns:ConnectionStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <wsdl:input message="tns:QryCreateSoapIn" />
+      <wsdl:output message="tns:QryCreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteSoapIn" />
+      <wsdl:output message="tns:QryDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryExecute">
+      <wsdl:input message="tns:QryExecuteSoapIn" />
+      <wsdl:output message="tns:QryExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <wsdl:input message="tns:QueryExecuteXmlSoapIn" />
+      <wsdl:output message="tns:QueryExecuteXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <wsdl:input message="tns:GetAppQuerySoapIn" />
+      <wsdl:output message="tns:GetAppQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IUD">
+      <wsdl:input message="tns:IUDSoapIn" />
+      <wsdl:output message="tns:IUDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseSoapIn" />
+      <wsdl:output message="tns:QueryDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableSoapIn" />
+      <wsdl:output message="tns:QryCreateOffTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <wsdl:input message="tns:SyncSoapIn" />
+      <wsdl:output message="tns:SyncSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <wsdl:input message="tns:GetCommandRepoSoapIn" />
+      <wsdl:output message="tns:GetCommandRepoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <wsdl:input message="tns:GetConnectionRepositorySoapIn" />
+      <wsdl:output message="tns:GetConnectionRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <wsdl:input message="tns:GetConsumerRepositorySoapIn" />
+      <wsdl:output message="tns:GetConsumerRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <wsdl:input message="tns:GetLogRepositorySoapIn" />
+      <wsdl:output message="tns:GetLogRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <wsdl:input message="tns:GetResponseRepositorySoapIn" />
+      <wsdl:output message="tns:GetResponseRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <wsdl:input message="tns:LogsGetAllSoapIn" />
+      <wsdl:output message="tns:LogsGetAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <wsdl:input message="tns:AppTableColumnsSoapIn" />
+      <wsdl:output message="tns:AppTableColumnsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <wsdl:input message="tns:GetCountSoapIn" />
+      <wsdl:output message="tns:GetCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input message="tns:LogSoapIn" />
+      <wsdl:output message="tns:LogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <wsdl:input message="tns:IssueCommandSoapIn" />
+      <wsdl:output message="tns:IssueCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <wsdl:input message="tns:GetResponseSoapIn" />
+      <wsdl:output message="tns:GetResponseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="APIHttpGet">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionHttpGetIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesHttpGetIn" />
+      <wsdl:output message="tns:AppGetQueriesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListHttpGetIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <wsdl:input message="tns:ConnectionConnectHttpGetIn" />
+      <wsdl:output message="tns:ConnectionConnectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <wsdl:input message="tns:ConnectionReleaseHttpGetIn" />
+      <wsdl:output message="tns:ConnectionReleaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <wsdl:input message="tns:ConnectionStatusHttpGetIn" />
+      <wsdl:output message="tns:ConnectionStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteHttpGetIn" />
+      <wsdl:output message="tns:QryDeleteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <wsdl:input message="tns:QueryExecuteXmlHttpGetIn" />
+      <wsdl:output message="tns:QueryExecuteXmlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <wsdl:input message="tns:GetAppQueryHttpGetIn" />
+      <wsdl:output message="tns:GetAppQueryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseHttpGetIn" />
+      <wsdl:output message="tns:QueryDatabaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableHttpGetIn" />
+      <wsdl:output message="tns:QryCreateOffTableHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <wsdl:input message="tns:SyncHttpGetIn" />
+      <wsdl:output message="tns:SyncHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <wsdl:input message="tns:GetCommandRepoHttpGetIn" />
+      <wsdl:output message="tns:GetCommandRepoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <wsdl:input message="tns:GetConnectionRepositoryHttpGetIn" />
+      <wsdl:output message="tns:GetConnectionRepositoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <wsdl:input message="tns:GetConsumerRepositoryHttpGetIn" />
+      <wsdl:output message="tns:GetConsumerRepositoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <wsdl:input message="tns:GetLogRepositoryHttpGetIn" />
+      <wsdl:output message="tns:GetLogRepositoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <wsdl:input message="tns:GetResponseRepositoryHttpGetIn" />
+      <wsdl:output message="tns:GetResponseRepositoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <wsdl:input message="tns:LogsGetAllHttpGetIn" />
+      <wsdl:output message="tns:LogsGetAllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <wsdl:input message="tns:AppTableColumnsHttpGetIn" />
+      <wsdl:output message="tns:AppTableColumnsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <wsdl:input message="tns:GetCountHttpGetIn" />
+      <wsdl:output message="tns:GetCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input message="tns:LogHttpGetIn" />
+      <wsdl:output message="tns:LogHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <wsdl:input message="tns:IssueCommandHttpGetIn" />
+      <wsdl:output message="tns:IssueCommandHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <wsdl:input message="tns:GetResponseHttpGetIn" />
+      <wsdl:output message="tns:GetResponseHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="APIHttpPost">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionHttpPostIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesHttpPostIn" />
+      <wsdl:output message="tns:AppGetQueriesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListHttpPostIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <wsdl:input message="tns:ConnectionConnectHttpPostIn" />
+      <wsdl:output message="tns:ConnectionConnectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <wsdl:input message="tns:ConnectionReleaseHttpPostIn" />
+      <wsdl:output message="tns:ConnectionReleaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <wsdl:input message="tns:ConnectionStatusHttpPostIn" />
+      <wsdl:output message="tns:ConnectionStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteHttpPostIn" />
+      <wsdl:output message="tns:QryDeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <wsdl:input message="tns:QueryExecuteXmlHttpPostIn" />
+      <wsdl:output message="tns:QueryExecuteXmlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <wsdl:input message="tns:GetAppQueryHttpPostIn" />
+      <wsdl:output message="tns:GetAppQueryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseHttpPostIn" />
+      <wsdl:output message="tns:QueryDatabaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableHttpPostIn" />
+      <wsdl:output message="tns:QryCreateOffTableHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <wsdl:input message="tns:SyncHttpPostIn" />
+      <wsdl:output message="tns:SyncHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <wsdl:input message="tns:GetCommandRepoHttpPostIn" />
+      <wsdl:output message="tns:GetCommandRepoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <wsdl:input message="tns:GetConnectionRepositoryHttpPostIn" />
+      <wsdl:output message="tns:GetConnectionRepositoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <wsdl:input message="tns:GetConsumerRepositoryHttpPostIn" />
+      <wsdl:output message="tns:GetConsumerRepositoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <wsdl:input message="tns:GetLogRepositoryHttpPostIn" />
+      <wsdl:output message="tns:GetLogRepositoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <wsdl:input message="tns:GetResponseRepositoryHttpPostIn" />
+      <wsdl:output message="tns:GetResponseRepositoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <wsdl:input message="tns:LogsGetAllHttpPostIn" />
+      <wsdl:output message="tns:LogsGetAllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <wsdl:input message="tns:AppTableColumnsHttpPostIn" />
+      <wsdl:output message="tns:AppTableColumnsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <wsdl:input message="tns:GetCountHttpPostIn" />
+      <wsdl:output message="tns:GetCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input message="tns:LogHttpPostIn" />
+      <wsdl:output message="tns:LogHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <wsdl:input message="tns:IssueCommandHttpPostIn" />
+      <wsdl:output message="tns:IssueCommandHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <wsdl:input message="tns:GetResponseHttpPostIn" />
+      <wsdl:output message="tns:GetResponseHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="APISoap" type="tns:APISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/AppGetTableDefinition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/AppGetQueries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/ClientGetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/ConnectionConnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/ConnectionRelease" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/ConnectionStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QryCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QryDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryExecute">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QryExecute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QueryExecuteXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetAppQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUD">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/IUD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QueryDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/QryCreateOffTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/Sync" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetCommandRepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetConnectionRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetConsumerRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetLogRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetResponseRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/LogsGetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/AppTableColumns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/Log" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/IssueCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <soap:operation soapAction="http://pmh.plexxis.com/api/GetResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="APISoap12" type="tns:APISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/AppGetTableDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/AppGetQueries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/ClientGetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/ConnectionConnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/ConnectionRelease" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/ConnectionStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QryCreate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QryDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryExecute">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QryExecute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QueryExecuteXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetAppQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUD">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/IUD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QueryDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/QryCreateOffTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/Sync" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetCommandRepo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetConnectionRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetConsumerRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetLogRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetResponseRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/LogsGetAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/AppTableColumns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/Log" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/IssueCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <soap12:operation soapAction="http://pmh.plexxis.com/api/GetResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="APIHttpGet" type="tns:APIHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <http:operation location="/AppGetTableDefinition" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <http:operation location="/AppGetQueries" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <http:operation location="/ClientGetDatabaseList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <http:operation location="/ConnectionConnect" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <http:operation location="/ConnectionRelease" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <http:operation location="/ConnectionStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <http:operation location="/QryDelete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <http:operation location="/QueryExecuteXml" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <http:operation location="/GetAppQuery" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <http:operation location="/QueryDatabase" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <http:operation location="/QryCreateOffTable" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <http:operation location="/Sync" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <http:operation location="/GetCommandRepo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <http:operation location="/GetConnectionRepository" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <http:operation location="/GetConsumerRepository" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <http:operation location="/GetLogRepository" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <http:operation location="/GetResponseRepository" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <http:operation location="/LogsGetAll" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <http:operation location="/AppTableColumns" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <http:operation location="/GetCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <http:operation location="/Log" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <http:operation location="/IssueCommand" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <http:operation location="/GetResponse" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="APIHttpPost" type="tns:APIHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <http:operation location="/AppGetTableDefinition" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <http:operation location="/AppGetQueries" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <http:operation location="/ClientGetDatabaseList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionConnect">
+      <http:operation location="/ConnectionConnect" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionRelease">
+      <http:operation location="/ConnectionRelease" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionStatus">
+      <http:operation location="/ConnectionStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <http:operation location="/QryDelete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryExecuteXml">
+      <http:operation location="/QueryExecuteXml" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppQuery">
+      <http:operation location="/GetAppQuery" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabase">
+      <http:operation location="/QueryDatabase" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <http:operation location="/QryCreateOffTable" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <http:operation location="/Sync" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandRepo">
+      <http:operation location="/GetCommandRepo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionRepository">
+      <http:operation location="/GetConnectionRepository" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerRepository">
+      <http:operation location="/GetConsumerRepository" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogRepository">
+      <http:operation location="/GetLogRepository" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResponseRepository">
+      <http:operation location="/GetResponseRepository" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogsGetAll">
+      <http:operation location="/LogsGetAll" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumns">
+      <http:operation location="/AppTableColumns" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCount">
+      <http:operation location="/GetCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <http:operation location="/Log" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="IssueCommand">
+      <http:operation location="/IssueCommand" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponse">
+      <http:operation location="/GetResponse" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="API">
+    <wsdl:port name="APISoap" binding="tns:APISoap">
+      <soap:address location="http://pmht.plexxis.com/api.asmx" />
+    </wsdl:port>
+    <wsdl:port name="APISoap12" binding="tns:APISoap12">
+      <soap12:address location="http://pmht.plexxis.com/api.asmx" />
+    </wsdl:port>
+    <wsdl:port name="APIHttpGet" binding="tns:APIHttpGet">
+      <http:address location="http://pmht.plexxis.com/api.asmx" />
+    </wsdl:port>
+    <wsdl:port name="APIHttpPost" binding="tns:APIHttpPost">
+      <http:address location="http://pmht.plexxis.com/api.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

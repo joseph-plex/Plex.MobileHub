@@ -1,0 +1,2 @@
+- ChangedDb Action to an enumoration
+- In Query Definition changed column name to all column information
