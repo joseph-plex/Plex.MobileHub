@@ -38,8 +38,7 @@ namespace Plex.PMH.Data.Tables
         {
             return (reader["DEVICE_ID"] != DBNull.Value) ? Convert.ToInt32(reader["DEVICE_ID"]) : new int();
         }
-
-
+        
         public override bool Insert(OracleConnection Conn)
         {
             string sql = string.Empty;
@@ -61,7 +60,15 @@ namespace Plex.PMH.Data.Tables
 
         public override bool Delete(OracleConnection Conn)
         {
-            throw new NotImplementedException();
+            string sql = string.Empty;
+            sql += "DELETE FROM DEVICES WHERE DEVICE_ID = :a";
+            using (var Command = new OracleCommand(sql, Conn))
+            {
+                Command.Parameters.Add(":a", ResolveType(DEVICE_ID)).Value = DEVICE_ID;
+                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
+                if (OnDelete != null) OnDelete(this, EventArgs.Empty);
+                return r;
+            }
         }
     }
 }

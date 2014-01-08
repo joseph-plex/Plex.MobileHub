@@ -14,7 +14,7 @@ namespace Plex.PMH.Functionality.API
         {
             DEVICES device = new DEVICES(){ DEVICE_ID = Utilities.SequenceNextValue(Sequences.DEVICE_ID)};
             device.Insert();
-            return device.DEVICE_ID();
+            return device.DEVICE_ID;
         }
     }
 }

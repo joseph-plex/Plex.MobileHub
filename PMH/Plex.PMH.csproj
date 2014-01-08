@@ -131,6 +131,7 @@
     <Compile Include="Data\Tables\CLIENT_USERS.cs" />
     <Compile Include="Data\IPlexxisDatabaseRow.cs" />
     <Compile Include="Data\Tables\DEVICES.cs" />
+    <Compile Include="Functionality\API\DeviceSynchronization.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />
     <Compile Include="Data\Tables\LOGS.cs" />
     <Compile Include="Data\PlexxisDataTransferObjects.cs" />

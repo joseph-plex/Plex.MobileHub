@@ -47,7 +47,6 @@ namespace Plex.PMH.Data.Tables
             return collection;
         }
 
-
         public int DB_COMPANY_ID;//	NUMBER(10)	N			
         public string DATABASE_SID;//	VARCHAR2(25)	Y			
         public int COMPANY_ID;//	NUMBER(10)	Y			
@@ -109,7 +108,6 @@ namespace Plex.PMH.Data.Tables
                 return r;
             }
         }
-
         public override bool Update(OracleConnection Conn)
         {
             string sql = string.Empty;
@@ -129,7 +127,6 @@ namespace Plex.PMH.Data.Tables
                 return r;
             }
         }
-
         public override bool Delete(OracleConnection Conn)
         {
             string sql = string.Empty;
