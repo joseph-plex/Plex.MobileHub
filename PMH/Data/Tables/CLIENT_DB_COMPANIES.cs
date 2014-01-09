@@ -49,7 +49,7 @@ namespace Plex.PMH.Data.Tables
 
         public int DB_COMPANY_ID;//	NUMBER(10)	N			
         public string DATABASE_SID;//	VARCHAR2(25)	Y			
-        public int COMPANY_ID;//	NUMBER(10)	Y			
+        public int? COMPANY_ID;//	NUMBER(10)	Y			
         public string COMPANY_CODE;//	VARCHAR2(12)	Y			
         public int CLIENT_ID;//	NUMBER(10)	N			
 
@@ -97,11 +97,11 @@ namespace Plex.PMH.Data.Tables
             using (var Command = new OracleCommand(sql, Conn))
             {
                 DB_COMPANY_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = DB_COMPANY_ID;
-                Command.Parameters.Add(":b", OracleDbType.Varchar2).Value = DATABASE_SID;
-                Command.Parameters.Add(":c", OracleDbType.Int32).Value = COMPANY_ID;
-                Command.Parameters.Add(":d", OracleDbType.Varchar2).Value = COMPANY_CODE;
-                Command.Parameters.Add(":e", OracleDbType.Int32).Value = CLIENT_ID;
+                Command.Parameters.Add(":a", ResolveType(DB_COMPANY_ID)).Value = DB_COMPANY_ID;
+                Command.Parameters.Add(":b", ResolveType(DATABASE_SID)).Value = DATABASE_SID;
+                Command.Parameters.Add(":c", ResolveType(COMPANY_ID)).Value = COMPANY_ID ?? null;
+                Command.Parameters.Add(":d", ResolveType(COMPANY_CODE)).Value = COMPANY_CODE;
+                Command.Parameters.Add(":e", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnInsert != null) OnInsert(this, EventArgs.Empty);
@@ -117,11 +117,12 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add(":b", OracleDbType.Varchar2).Value = DATABASE_SID;
-                Command.Parameters.Add(":c", OracleDbType.Varchar2).Value = COMPANY_ID;
-                Command.Parameters.Add(":d", OracleDbType.Varchar2).Value = COMPANY_CODE;
-                Command.Parameters.Add(":e", OracleDbType.Varchar2).Value = CLIENT_ID;
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = DB_COMPANY_ID;
+                Command.Parameters.Add(":b", ResolveType(DATABASE_SID)).Value = DATABASE_SID;
+                Command.Parameters.Add(":c", ResolveType(COMPANY_ID)).Value = COMPANY_ID ?? null;
+                Command.Parameters.Add(":d", ResolveType(COMPANY_CODE)).Value = COMPANY_CODE;
+                Command.Parameters.Add(":e", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
+                Command.Parameters.Add(":a", ResolveType(DB_COMPANY_ID)).Value = DB_COMPANY_ID;
+
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnUpdate != null) OnUpdate(this, EventArgs.Empty);
                 return r;
@@ -134,7 +135,7 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add("a", OracleDbType.Int32).Value = DB_COMPANY_ID;
+                Command.Parameters.Add(":a", ResolveType(DB_COMPANY_ID)).Value = DB_COMPANY_ID;
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnDelete != null) OnDelete(this, EventArgs.Empty);
                 return r;

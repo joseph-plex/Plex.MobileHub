@@ -123,9 +123,9 @@ namespace Plex.PMH.Data.Tables
             using (var Command = new OracleCommand(sql, Conn))
             {
                 CLIENT_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = CLIENT_ID;
-                Command.Parameters.Add(":b", OracleDbType.Varchar2).Value = DESCRIPTION;
-                Command.Parameters.Add(":c", OracleDbType.Varchar2).Value = CLIENT_KEY;
+                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
+                Command.Parameters.Add(":b", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
+                Command.Parameters.Add(":c", ResolveType(CLIENT_KEY)).Value = CLIENT_KEY;
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnInsert != null) OnInsert(this, EventArgs.Empty);
                 return r;
@@ -140,9 +140,9 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add(":b", OracleDbType.Varchar2).Value = DESCRIPTION;
-                Command.Parameters.Add(":c", OracleDbType.Varchar2).Value = CLIENT_KEY;
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = CLIENT_ID;
+                Command.Parameters.Add(":b", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
+                Command.Parameters.Add(":c", ResolveType(CLIENT_KEY)).Value = CLIENT_KEY;
+                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnUpdate != null) OnUpdate(this, EventArgs.Empty);
@@ -157,8 +157,7 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = CLIENT_ID;
-
+                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnDelete != null) OnDelete(this, EventArgs.Empty);
                 return r;

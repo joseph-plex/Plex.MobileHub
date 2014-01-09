@@ -32,7 +32,7 @@ namespace Plex.PMH.Data.Tables
         public int LOG_ID;//NUMBER(10)	N			
         public DateTime LOG_DATE;//DATE	N			
         public string DESCRIPTION;//	VARCHAR2(2048)	N			
-        public int CLIENT_ID;//	NUMBER(10)	Y			
+        public int? CLIENT_ID;//	NUMBER(10)	Y			
 
         public LOGS()
         { 
@@ -57,9 +57,9 @@ namespace Plex.PMH.Data.Tables
         {
             return (reader["DESCRIPTION"] != DBNull.Value) ? Convert.ToString(reader["DESCRIPTION"]) : string.Empty;
         }
-        int pCLIENT_ID(OracleDataReader reader)
+        int? pCLIENT_ID(OracleDataReader reader)
         {
-            return (reader["CLIENT_ID"] != DBNull.Value) ? Convert.ToInt32(reader["CLIENT_ID"]) : new int();
+            return (reader["CLIENT_ID"] != DBNull.Value) ? Convert.ToInt32(reader["CLIENT_ID"]) : (int?)null;
         }
 
         public override bool Insert(OracleConnection Conn)

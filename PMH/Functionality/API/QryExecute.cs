@@ -15,7 +15,7 @@ namespace Plex.PMH.Functionality.API
         {
             try
             {
-            if (!Consumers.Instance.Exists(ConnectionId))
+                if (!Consumers.Instance.Exists(ConnectionId))
                     throw new InvalidConsumerException();
                 var cust = Consumers.Instance.Retrieve(ConnectionId);
 

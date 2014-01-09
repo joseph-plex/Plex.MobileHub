@@ -32,7 +32,7 @@ namespace Plex.PMH.Data.Tables
         public int DB_COMPANY_USER_APP_ID;//	NUMBER(10)	N			
         public int DB_COMPANY_USER_ID;//	NUMBER(10)	N			
         public int APP_ID;//	NUMBER(10)	N			
-        public int APP_USER_TYPE_ID;//	NUMBER(10)	Y			
+        public int? APP_USER_TYPE_ID;//	NUMBER(10)	Y			
 
         public CLIENT_DB_COMPANY_USER_APPS()
         {
@@ -73,10 +73,10 @@ namespace Plex.PMH.Data.Tables
             using (var Command = new OracleCommand(sql, Conn))
             {
                 DB_COMPANY_USER_APP_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = DB_COMPANY_USER_APP_ID;
-                Command.Parameters.Add(":b", OracleDbType.Int32).Value = DB_COMPANY_USER_ID;
-                Command.Parameters.Add(":c", OracleDbType.Int32).Value = APP_ID;
-                Command.Parameters.Add(":d", OracleDbType.Int32).Value = APP_USER_TYPE_ID;
+                Command.Parameters.Add(":a", ResolveType(DB_COMPANY_USER_APP_ID)).Value = DB_COMPANY_USER_APP_ID;
+                Command.Parameters.Add(":b", ResolveType(DB_COMPANY_USER_ID)).Value = DB_COMPANY_USER_ID;
+                Command.Parameters.Add(":c", ResolveType(APP_ID)).Value = APP_ID;
+                Command.Parameters.Add(":d", ResolveType(APP_USER_TYPE_ID)).Value = APP_USER_TYPE_ID ?? null;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnInsert != null) OnInsert(this, EventArgs.Empty);
@@ -95,7 +95,7 @@ namespace Plex.PMH.Data.Tables
             {
                 Command.Parameters.Add(":b", OracleDbType.Int32).Value = DB_COMPANY_USER_APP_ID;
                 Command.Parameters.Add(":c", OracleDbType.Int32).Value = APP_ID;
-                Command.Parameters.Add(":d", OracleDbType.Int32).Value = APP_USER_TYPE_ID;
+                Command.Parameters.Add(":d", OracleDbType.Int32).Value = APP_USER_TYPE_ID ?? null;
                 Command.Parameters.Add(":a", OracleDbType.Int32).Value = DB_COMPANY_USER_ID;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());

@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using Plex.PMH.Repositories;
+using Plex.PMH.Objects;
+using Plex.PMH.Exceptions;
+using Plex.PMH.Data.Tables;
+
 namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static void DeviceSynchronization(int ConnectionId, int DeviceId, int DeviceUserId)
+        public static void DeviceSynchronization(int ConnectionId, int DeviceId, int? DeviceUserId)
         {
             //todo Check to make sure connectionId is Valid
+            if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
+            var cons = Consumers.Instance.Retrieve(ConnectionId);
             //todo Check to make sure DeviceId exists
+            var Devices = DEVICES.GetAll().ToList();
+            
             //todo make sure device user id exists
             //todo Get all queries for application
+            var App = ApplicationGet(cons.AppId);
+            var AppQueries = App.GetAPP_QUERIES();
             //todo Get date associated with device user Id
             //todo get all query execution times
             //todo create query with date commands and insert dates from device user data queries.
@@ -22,6 +33,14 @@ namespace Plex.PMH.Functionality.API
             //todo create new device user data queries for each query
             //todo open new connection and open transactions, insert new device_user data and deviceuserdatauqeries
             //todo return aggregate of results
+        }
+
+        public static DEVICES DeviceGet(int DeviceId)
+        {
+            var Devices = DEVICES.GetAll().ToList();
+            var DeviceIndex = Devices.FindIndex((p) => p.DEVICE_ID == DeviceId);
+            if (DeviceIndex == -1) throw new Exception("Invalid Device Id");
+            return Devices[DeviceIndex];
         }
     }
 }

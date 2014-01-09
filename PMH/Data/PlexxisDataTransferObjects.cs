@@ -38,26 +38,24 @@ namespace Plex.PMH.Data
         {
             if (o is string)
                 return OracleDbType.Varchar2;
-            if (o is DateTime)
+            if (o is DateTime || o is DateTime?)
                 return OracleDbType.Date;
-            if (o is Int64)
+            if (o is Int64 || o is Int64?)
                 return OracleDbType.Int64;
-            if (o is Int32)
+            if (o is Int32 || o is Int32? || o is bool || o is bool?)
                 return OracleDbType.Int32;
-            if (o is Int16)
+            if (o is Int16 || o is Int16?)
                 return OracleDbType.Int16;
-            if (o is byte)
+            if (o is byte || o is byte?)
                 return OracleDbType.Byte;
-            if (o is decimal)
+            if (o is decimal || o is decimal?)
                 return OracleDbType.Decimal;
-            if (o is float)
+            if (o is float || o is float?)
                 return OracleDbType.Single;
-            if (o is double)
+            if (o is double || o is double?)
                 return OracleDbType.Double;
             if (o is byte[])
                 return OracleDbType.Blob;
-            if (o is bool)
-                return OracleDbType.Int32;
             return OracleDbType.Varchar2;
         }
 

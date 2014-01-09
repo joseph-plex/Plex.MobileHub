@@ -33,15 +33,15 @@ namespace Plex.PMH.Data.Tables
         public string  COLUMN_NAME;//VARCHAR2(50)	N			
         public int COLUMN_SEQUENCE;//NUMBER(3)	N			
         public string DATA_TYPE;//VARCHAR2(50)	Y			
-        public int DATA_LENGTH;//NUMBER(10)	Y			
-        public int DATA_PRECISION;//NUMBER(2)	Y			
-        public int DATA_SCALE;//NUMBER(2)	Y			
-        public int ALLOW_DB_NULL;//NUMBER(1)	Y			
-        public int IS_READ_ONLY;//NUMBER(1)	Y			
-        public int IS_LONG;//NUMBER(1)	Y			
-        public int IS_KEY;//NUMBER(1)	Y			
+        public int? DATA_LENGTH;//NUMBER(10)	Y			
+        public int? DATA_PRECISION;//NUMBER(2)	Y			
+        public int? DATA_SCALE;//NUMBER(2)	Y			
+        public int? ALLOW_DB_NULL;//NUMBER(1)	Y			
+        public int? IS_READ_ONLY;//NUMBER(1)	Y			
+        public int? IS_LONG;//NUMBER(1)	Y			
+        public int? IS_KEY;//NUMBER(1)	Y			
         public string KEY_TYPE;//VARCHAR2(20)	Y			
-        public int IS_UNIQUE;//	NUMBER(1)	Y			
+        public int? IS_UNIQUE;//	NUMBER(1)	Y			
         public string DESCRIPTION;//VARCHAR2(4000)	Y		
 
         public APP_TABLE_COLUMNS()
@@ -138,21 +138,21 @@ namespace Plex.PMH.Data.Tables
             using (var Command = new OracleCommand(sql, Conn))
             {
                 TABLE_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = TABLE_ID;
-                Command.Parameters.Add(":b", OracleDbType.Int32).Value = TABLE_COLUMN_ID;
-                Command.Parameters.Add(":c", OracleDbType.Varchar2).Value = COLUMN_NAME;
-                Command.Parameters.Add(":d", OracleDbType.Int32).Value = COLUMN_SEQUENCE;
-                Command.Parameters.Add(":e", OracleDbType.Varchar2).Value = DATA_TYPE;
-                Command.Parameters.Add(":f", OracleDbType.Int32).Value = DATA_LENGTH;
-                Command.Parameters.Add(":g", OracleDbType.Int32).Value = DATA_PRECISION;
-                Command.Parameters.Add(":h", OracleDbType.Int32).Value = DATA_SCALE;
-                Command.Parameters.Add(":i", OracleDbType.Int32).Value = ALLOW_DB_NULL;
-                Command.Parameters.Add(":j", OracleDbType.Int32).Value = IS_READ_ONLY;
-                Command.Parameters.Add(":k", OracleDbType.Int32).Value = IS_LONG;
-                Command.Parameters.Add(":l", OracleDbType.Int32).Value = IS_KEY;
-                Command.Parameters.Add(":m", OracleDbType.Varchar2).Value = KEY_TYPE;
-                Command.Parameters.Add(":n", OracleDbType.Int32).Value = IS_UNIQUE;
-                Command.Parameters.Add(":o", OracleDbType.Varchar2).Value = DESCRIPTION;
+                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
+                Command.Parameters.Add(":b", ResolveType(TABLE_COLUMN_ID)).Value = TABLE_COLUMN_ID;
+                Command.Parameters.Add(":c", ResolveType(COLUMN_NAME)).Value = COLUMN_NAME;
+                Command.Parameters.Add(":d", ResolveType(COLUMN_SEQUENCE)).Value = COLUMN_SEQUENCE;
+                Command.Parameters.Add(":e", ResolveType(DATA_TYPE)).Value = DATA_TYPE;
+                Command.Parameters.Add(":f", ResolveType(DATA_LENGTH)).Value = DATA_LENGTH ?? null;
+                Command.Parameters.Add(":g", ResolveType(DATA_PRECISION)).Value = DATA_PRECISION ?? null;
+                Command.Parameters.Add(":h", ResolveType(DATA_SCALE)).Value = DATA_SCALE ?? null;
+                Command.Parameters.Add(":i", ResolveType(ALLOW_DB_NULL)).Value = ALLOW_DB_NULL ?? null;
+                Command.Parameters.Add(":j", ResolveType(IS_READ_ONLY)).Value = IS_READ_ONLY ?? null;
+                Command.Parameters.Add(":k", ResolveType(IS_LONG)).Value = IS_LONG ?? null;
+                Command.Parameters.Add(":l", ResolveType(IS_KEY)).Value = IS_KEY ?? null;
+                Command.Parameters.Add(":m", ResolveType(KEY_TYPE)).Value = KEY_TYPE;
+                Command.Parameters.Add(":n", ResolveType(IS_UNIQUE)).Value = IS_UNIQUE ?? null;
+                Command.Parameters.Add(":o", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnInsert != null) OnInsert(this, EventArgs.Empty);
@@ -171,21 +171,21 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add(":b", OracleDbType.Int32).Value = TABLE_COLUMN_ID;
-                Command.Parameters.Add(":c", OracleDbType.Varchar2).Value = COLUMN_NAME;
-                Command.Parameters.Add(":d", OracleDbType.Int32).Value = COLUMN_SEQUENCE;
-                Command.Parameters.Add(":e", OracleDbType.Varchar2).Value = DATA_TYPE;
-                Command.Parameters.Add(":f", OracleDbType.Int32).Value = DATA_LENGTH;
-                Command.Parameters.Add(":g", OracleDbType.Int32).Value = DATA_PRECISION;
-                Command.Parameters.Add(":h", OracleDbType.Int32).Value = DATA_SCALE;
-                Command.Parameters.Add(":i", OracleDbType.Int32).Value = ALLOW_DB_NULL;
-                Command.Parameters.Add(":j", OracleDbType.Int32).Value = IS_READ_ONLY;
-                Command.Parameters.Add(":k", OracleDbType.Int32).Value = IS_LONG;
-                Command.Parameters.Add(":l", OracleDbType.Int32).Value = IS_KEY;
-                Command.Parameters.Add(":m", OracleDbType.Varchar2).Value = KEY_TYPE;
-                Command.Parameters.Add(":n", OracleDbType.Int32).Value = IS_UNIQUE;
-                Command.Parameters.Add(":o", OracleDbType.Varchar2).Value = DESCRIPTION;
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = TABLE_ID;
+                Command.Parameters.Add(":b", ResolveType(TABLE_COLUMN_ID)).Value = TABLE_COLUMN_ID;
+                Command.Parameters.Add(":c", ResolveType(COLUMN_NAME)).Value = COLUMN_NAME;
+                Command.Parameters.Add(":d", ResolveType(COLUMN_SEQUENCE)).Value = COLUMN_SEQUENCE;
+                Command.Parameters.Add(":e", ResolveType(DATA_TYPE)).Value = DATA_TYPE;
+                Command.Parameters.Add(":f", ResolveType(DATA_LENGTH)).Value = DATA_LENGTH ?? null;
+                Command.Parameters.Add(":g", ResolveType(DATA_PRECISION)).Value = DATA_PRECISION ?? null;
+                Command.Parameters.Add(":h", ResolveType(DATA_SCALE)).Value = DATA_SCALE ?? null;
+                Command.Parameters.Add(":i", ResolveType(ALLOW_DB_NULL)).Value = ALLOW_DB_NULL ?? null;
+                Command.Parameters.Add(":j", ResolveType(IS_READ_ONLY)).Value = IS_READ_ONLY ?? null;
+                Command.Parameters.Add(":k", ResolveType(IS_LONG)).Value = IS_LONG ?? null;
+                Command.Parameters.Add(":l", ResolveType(IS_KEY)).Value = IS_KEY ?? null;
+                Command.Parameters.Add(":m", ResolveType(KEY_TYPE)).Value = KEY_TYPE;
+                Command.Parameters.Add(":n", ResolveType(IS_UNIQUE)).Value = IS_UNIQUE ?? null;
+                Command.Parameters.Add(":o", ResolveType(DESCRIPTION)).Value = DESCRIPTION; 
+                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
 
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnUpdate != null) OnUpdate(this, EventArgs.Empty);
@@ -199,7 +199,7 @@ namespace Plex.PMH.Data.Tables
 
             using (var Command = new OracleCommand(sql, Conn))
             {
-                Command.Parameters.Add(":a", OracleDbType.Int32).Value = TABLE_ID;
+                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
                 var r = Convert.ToBoolean(Command.ExecuteNonQuery());
                 if (OnDelete != null) OnDelete(this, EventArgs.Empty);
                 return r;

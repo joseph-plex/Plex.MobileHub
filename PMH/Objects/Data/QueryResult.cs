@@ -18,7 +18,6 @@ namespace Plex.PMH.Objects
             {
                 int ColumnIndex = Columns.FindIndex((p) => p.ColumnName.Equals(ColumnName, StringComparison.OrdinalIgnoreCase));
                 return Rows[RowIndex].Values[ColumnIndex];
-
             }
         }
 

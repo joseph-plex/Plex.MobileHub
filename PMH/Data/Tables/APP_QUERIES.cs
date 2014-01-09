@@ -73,8 +73,8 @@ namespace Plex.PMH.Data.Tables
         public int TABLE_ID;//NUMBER(10)	N			
         public int IS_DELTA;//NUMBER(1)	N			
         public string SQL;//VARCHAR2(4000)	N			
-        public int SEQ_LIMIT_TIMESPAN;//NUMBER(10)	Y			
-        public int SEQ_LIMIT;//NUMBER(10)	Y		
+        public int? SEQ_LIMIT_TIMESPAN;//NUMBER(10)	Y			
+        public int? SEQ_LIMIT;//NUMBER(10)	Y		
 
         public APP_QUERIES()
         {

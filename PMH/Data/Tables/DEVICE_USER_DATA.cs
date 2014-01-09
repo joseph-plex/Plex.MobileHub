@@ -33,6 +33,8 @@ namespace Plex.PMH.Data.Tables
         public int USER_DATA_ID;
         public int DEVICE_ID;
         public int USER_PERMISSION;
+        public DateTime? EXECUTION_INITIATION;
+        public DateTime? EXECUTION_COMPLETION;
 
         public DEVICE_USER_DATA()
         { 
@@ -43,22 +45,31 @@ namespace Plex.PMH.Data.Tables
             USER_DATA_ID = pUSER_DATA_ID(reader);
             DEVICE_ID = pDEVICE_ID(reader);
             USER_PERMISSION = pUSER_PERMISSION(reader);
+            EXECUTION_INITIATION = pEXECUTION_INITIATION(reader);
+            EXECUTION_COMPLETION = pEXECUTION_COMPLETION(reader);
         }
 
         int pUSER_DATA_ID(OracleDataReader reader)
         {
             return (reader["USER_DATA_ID"] != DBNull.Value) ? Convert.ToInt32(reader["USER_DATA_ID"]) : new int();
         }
-
         int pDEVICE_ID(OracleDataReader reader)
         {
             return (reader["DEVICE_ID"] != DBNull.Value) ? Convert.ToInt32(reader["DEVICE_ID"]) : new int();
         }
-
         int pUSER_PERMISSION(OracleDataReader reader)
         {
             return (reader["USER_PERMISSION"] != DBNull.Value) ? Convert.ToInt32(reader["USER_PERMISSION"]) : new int();
         }
+        DateTime? pEXECUTION_INITIATION(OracleDataReader reader)
+        {
+            return (reader["EXECUTION_INITIATION"] != DBNull.Value) ? Convert.ToDateTime(reader["EXECUTION_INITIATION"]) : (DateTime?)null;
+        }
+        DateTime? pEXECUTION_COMPLETION(OracleDataReader reader)
+        {
+            return (reader["EXECUTION_COMPLETION"] != DBNull.Value) ? Convert.ToDateTime(reader["EXECUTION_COMPLETION"]) : (DateTime?)null;
+        }
+
 
         public override bool Insert(OracleConnection Conn)
         {
