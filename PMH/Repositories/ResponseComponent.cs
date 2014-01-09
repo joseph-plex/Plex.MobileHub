@@ -20,8 +20,6 @@ namespace Plex.PMH.Repositories
 
         public ResponseComponent()
         {
-            IsLastComponent = false;
-            ComponentId = new int();
         }
     }
 }

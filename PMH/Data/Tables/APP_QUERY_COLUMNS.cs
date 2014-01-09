@@ -44,7 +44,7 @@ namespace Plex.PMH.Data.Tables
             COLUMN_ID = pCOLUMN_ID(reader);
             QUERY_ID = pQUERY_ID(reader);
             COLUMN_NAME = pCOLUMN_NAME(reader);
-            pCOLUMN_SEQUENCE(reader);
+            COLUMN_SEQUENCE = pCOLUMN_SEQUENCE(reader);
         }
         
         int pCOLUMN_ID(OracleDataReader reader)

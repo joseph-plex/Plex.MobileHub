@@ -6,7 +6,7 @@ using Oracle.DataAccess.Client;
 using System.Data;
 namespace Plex.PMH.Data
 {
-    public delegate void Subscriber(Object sender, EventArgs args);
+    public delegate void Subscriber(Object sender, EventArgs e);
 
     public static class Utilities
     {
