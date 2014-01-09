@@ -9,6 +9,8 @@ using System.Xml;
 using System.IO;
 using Plex.PMH.Repositories;
 using Plex.PMH.Objects;
+using Plex.PMH.Objects.Synchronization;
+using Plex.PMH.Functionality.Clients;
 namespace Plex.PMH
 {
     /// <summary>
@@ -120,6 +122,12 @@ namespace Plex.PMH
         {
             return (Manager)Application["Manager"];
         }
+        
+        [WebMethod]
+        public ClientSynchroData SyncDataGet()
+        {
+            return Functions.SyncInfoGet();
+        }
 
 
         //public void ClientUserCreate(Access.ClientUsers Client) 
@@ -150,62 +158,39 @@ namespace Plex.PMH
         public void AuthenticUserAppPermissionDelete() { }
         public void AuthenticUserAppPermissionRetrieve() { }
 
-        //public class AppSyncData
-        //{
-        //    public static IEnumerable<AppSyncData> RetrieveCompleteSyncData()
-        //    {
-        //        var Apps = Access.Apps.GetAll();
-        //        var AppQueries = Access.AppQueries.GetAll();
-        //        var AppQueryColumns = Access.AppQueryColumns.GetAll();
-        //        var AppQueryConditions = Access.AppQueryConditions.GetAll();
-        //        foreach (var app in Apps)
-        //        {
-        //            AppSyncData current = new AppSyncData()
-        //            {
-        //                App = app,
-        //            };
-        //            foreach (var Query in AppQueries.FindAll((p) => p.AppId == app.AppId))
-        //                current.AppQueries.Add(new QuerySyncData()
-        //                {
-        //                    Query = Query,
-        //                    AppQueryConditions = AppQueryConditions.FindAll((p) => p.QueryId == Query.QueryId),
-        //                    AppQueryColumns = AppQueryColumns.FindAll((p) => p.QueryId == Query.QueryId)
-        //                });
-        //            yield return current;
-        //        }
-        //    }
-        //    public Access.Apps App = new Access.Apps();
-        //    public List<QuerySyncData> AppQueries = new List<QuerySyncData>();
-        //}
-        //public class QuerySyncData
-        //{
-        //public Access.AppQueries Query = new Access.AppQueries();
-        //public List<Access.AppQueryColumns> AppQueryColumns = new List<Access.AppQueryColumns>();
-        //public List<Access.AppQueryConditions> AppQueryConditions = new List<Access.AppQueryConditions>();
-        //}
-
-        //[WebMethod]
-        //public bool QryCreateOffTable(int AppId, string Auth, int TableId, string QueryName)
-        //{
-        //    var tables = Access.AppTables.GetAll();
-        //    List<string> ColNames = new List<string>();
-        //    var TableIndex = tables.FindIndex((p) => p.TableId == TableId && AppId == p.AppId);
-        //    if (tables.Count == 0) throw new Exception("No table with the specified TableId/AppId was found");
-
-        //    var Cols = Access.AppTableColumns.GetAll();
-        //    Cols = Cols.FindAll((p) => p.TableId == tables[TableIndex].TableId);
-
-        //    foreach (var col in Cols) ColNames.Add(col.ColumnName);
-        //    QueryDefinition def = new QueryDefinition();
-        //    def.TableName = tables[TableIndex].Name;
-        //    def.Sql = "test";
-        //    def.TrackDelta = true;
-        //    def.WhereClauses = null;
-        //    def.ColumnNames = ColNames;
-        //    def.QueryName = QueryName;
-
-        //    return QryCreate(AppId, Auth, def);
-        //}
+    //    public class AppSyncData
+    //    {
+    //        public static IEnumerable<AppSyncData> RetrieveCompleteSyncData()
+    //        {
+    //            var Apps = Access.Apps.GetAll();
+    //            var AppQueries = Access.AppQueries.GetAll();
+    //            var AppQueryColumns = Access.AppQueryColumns.GetAll();
+    //            var AppQueryConditions = Access.AppQueryConditions.GetAll();
+    //            foreach (var app in Apps)
+    //            {
+    //                AppSyncData current = new AppSyncData()
+    //                {
+    //                    App = app,
+    //                };
+    //                foreach (var Query in AppQueries.FindAll((p) => p.AppId == app.AppId))
+    //                    current.AppQueries.Add(new QuerySyncData()
+    //                    {
+    //                        Query = Query,
+    //                        AppQueryConditions = AppQueryConditions.FindAll((p) => p.QueryId == Query.QueryId),
+    //                        AppQueryColumns = AppQueryColumns.FindAll((p) => p.QueryId == Query.QueryId)
+    //                    });
+    //                yield return current;
+    //            }
+    //        }
+    //        public Access.Apps App = new Access.Apps();
+    //        public List<QuerySyncData> AppQueries = new List<QuerySyncData>();
+    //    }
+    //    public class QuerySyncData
+    //    {
+    //        public Access.AppQueries Query = new Access.AppQueries();
+    //        public List<Access.AppQueryColumns> AppQueryColumns = new List<Access.AppQueryColumns>();
+    //        public List<Access.AppQueryConditions> AppQueryConditions = new List<Access.AppQueryConditions>();
+    //    }
     }
 
 }

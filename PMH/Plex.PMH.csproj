@@ -190,6 +190,8 @@
       <DependentUpon>management.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Objects\Synchronization\ApplicationSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\ClientSynchroData.cs" />
     <Compile Include="Objects\Data\Column.cs" />
     <Compile Include="Objects\Data\RowAction.cs" />
     <Compile Include="Objects\Data\RQ\Condition.cs" />
@@ -201,6 +203,9 @@
     <Compile Include="Objects\Data\QueryResult.cs" />
     <Compile Include="Objects\Data\Row.cs" />
     <Compile Include="Objects\Data\TableDefinition.cs" />
+    <Compile Include="Objects\Synchronization\QueryColumnSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\QueryConditionSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\QuerySynchroData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

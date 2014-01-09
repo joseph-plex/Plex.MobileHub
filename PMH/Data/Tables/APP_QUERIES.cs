@@ -37,7 +37,7 @@ namespace Plex.PMH.Data.Tables
         public IEnumerable<APP_QUERY_COLUMNS> GetAPP_QUERY_COLUMNS(OracleConnection Conn)
         {
             List<APP_QUERY_COLUMNS> collection = new List<APP_QUERY_COLUMNS>();
-            using (var Command = new OracleCommand("SELECT * FROM APP_QUERIES WHERE QUERY_ID = :a", Conn))
+            using (var Command = new OracleCommand("SELECT * FROM APP_QUERY_COLUMNS WHERE QUERY_ID = :a", Conn))
             {
                 Command.Parameters.Add(":a", ResolveType(QUERY_ID)).Value = QUERY_ID;
                 using (var reader = Command.ExecuteReader())

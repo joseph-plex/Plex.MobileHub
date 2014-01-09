@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Plex.PMH.Repositories;
 using Plex.PMH.Objects;
@@ -12,21 +14,26 @@ namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static void DeviceSynchronization(int ConnectionId, int DeviceId, int? DeviceUserId)
+        private static void DeviceSynchronization(int ConnectionId, int DeviceId, int? DeviceUserId)
         {
             //todo Check to make sure connectionId is Valid
             if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
             var cons = Consumers.Instance.Retrieve(ConnectionId);
             //todo Check to make sure DeviceId exists
-            var Devices = DEVICES.GetAll().ToList();
-            
+            var Device = DeviceGet(DeviceId);
             //todo make sure device user id exists
             //todo Get all queries for application
             var App = ApplicationGet(cons.AppId);
-            var AppQueries = App.GetAPP_QUERIES();
+
+
+            Parallel.ForEach(App.GetAPP_QUERIES(),(queries)=>
+            {
+                QryExecute(ConnectionId, queries.NAME);
+            });
             //todo Get date associated with device user Id
             //todo get all query execution times
             //todo create query with date commands and insert dates from device user data queries.
+            
             //todo queue commands in parallel
             //todo assert responses into specialized method result
             //todo create a new device user record
