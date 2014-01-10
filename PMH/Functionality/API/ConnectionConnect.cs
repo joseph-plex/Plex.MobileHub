@@ -27,7 +27,7 @@ namespace Plex.PMH.Functionality.API
             if (!IsValidClientApp(Cons.ClientId, Cons.AppId))
                 throw new UnauthorizedClientException();
 
-            if(!IsValidUserCompanyPermission(ClientDBCompanyUsers(Cons.DatabaseId, Cons.AppId).DB_COMPANY_USER_ID, AppId))
+            if(!IsValidUserCompanyPermission(ClientDBCompanyUsers(Cons.DatabaseId, Cons.UserId).DB_COMPANY_USER_ID, AppId))
                 throw new Exception("User does not have access to the database");
 
             return Consumers.Instance.Add(Cons);
@@ -77,7 +77,7 @@ namespace Plex.PMH.Functionality.API
             var collection = new List<CLIENT_DB_COMPANY_USERS>(CLIENT_DB_COMPANY_USERS.GetAll());
             var DBIndex = collection.FindIndex((p) => p.DB_COMPANY_ID == DbCompanyId && UserId == p.USER_ID);
             if (DBIndex == -1) throw new Exception("User does not have access to the database");
-            return  collection[DBIndex];
+            return collection[DBIndex];
         }
         
         static bool IsValidUserCompanyPermission(int DbCompanyUserId, int AppId)

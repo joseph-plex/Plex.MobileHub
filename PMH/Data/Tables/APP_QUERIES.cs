@@ -83,6 +83,7 @@ namespace Plex.PMH.Data.Tables
         public APP_QUERIES(OracleDataReader reader)
         {
             QUERY_ID = pQUERY_ID(reader);
+            NAME = pNAME(reader);
             APP_ID = pAPP_ID(reader);
             DESCRIPTION = pDESCRIPTION(reader);
             TABLE_ID = pTABLE_ID(reader);

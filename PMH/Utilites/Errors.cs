@@ -8,7 +8,7 @@ namespace Plex.PMH
 
     internal class Errors
     {
-        public const int UnhandledException = -99999;
+        public const int UnhandledException = -9999;
 
         public string this[int ErrorCode]
         {

@@ -15,15 +15,14 @@ namespace Plex.PMH.Functionality.API
         {
             try
             {
-                if (!Consumers.Instance.Exists(ConnectionId))
-                    throw new InvalidConsumerException();
+                if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
                 var cust = Consumers.Instance.Retrieve(ConnectionId);
 
 
                 var dbList = new List<CLIENT_DB_COMPANIES>(CLIENT_DB_COMPANIES.GetAll());
                 //var dbList = db.CLIENT_DB_COMPANIES.ToList();// Access.ClientDBCompanies.GetAll();
                 
-                var index = dbList.FindIndex((p) => p.COMPANY_ID == cust.DatabaseId);
+                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
                 //todo cannot find appropriate error for this
                 if (index == -1) throw new Exception("Cannot find specified database");
 
