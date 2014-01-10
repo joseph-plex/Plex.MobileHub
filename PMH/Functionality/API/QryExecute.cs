@@ -7,6 +7,8 @@ using System.Xml;
 using Plex.PMH.Repositories;
 using Plex.PMH.Exceptions;
 using Plex.PMH.Data.Tables;
+using Plex.PMH.Objects;
+
 namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
@@ -18,9 +20,7 @@ namespace Plex.PMH.Functionality.API
                 if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
                 var cust = Consumers.Instance.Retrieve(ConnectionId);
 
-
                 var dbList = new List<CLIENT_DB_COMPANIES>(CLIENT_DB_COMPANIES.GetAll());
-                //var dbList = db.CLIENT_DB_COMPANIES.ToList();// Access.ClientDBCompanies.GetAll();
                 
                 var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
                 //todo cannot find appropriate error for this

@@ -79,9 +79,9 @@ namespace Plex.PMH
         }
 
         [WebMethod]
-        public string QueryExecuteXml(int nConnectionId, string QueryName)
+        public XmlDocument QueryExecuteXml(int nConnectionId, string QueryName)
         {
-            return Functions.QryExecute(nConnectionId, QueryName, null).OuterXml;
+            return Functions.QryExecute(nConnectionId, QueryName, null);
         }
 
         [WebMethod]
