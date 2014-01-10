@@ -11,6 +11,7 @@ using Plex.PMH.Repositories;
 using Plex.PMH.Objects;
 using Plex.PMH.Objects.Synchronization;
 using Plex.PMH.Functionality.Clients;
+using System.Diagnostics;
 namespace Plex.PMH
 {
     /// <summary>
@@ -30,7 +31,12 @@ namespace Plex.PMH
         public MethodResult Login(int ClientId, string Key)
         {
             MethodResult mr = new MethodResult();
-            return mr.Success();
+            return mr.Success(Connections.Instance.Add(new ConnectionData(){
+                ClientId = ClientId,
+                Key = Key,
+                InitTime = DateTime.Now,
+                LastCheck = Stopwatch.StartNew()
+            })); 
         }
 
         [WebMethod]
