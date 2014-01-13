@@ -9,11 +9,29 @@ using System.Web.Script.Serialization;
 using System.Text;
 using System.IO;
 using System.Xml;
-
+using Plex.PMH.Objects;
 namespace Plex.PMH.Repositories
 {
     public class Responses
     {
+        private static readonly Type[] BuiltInTypes = {
+                                   typeof(bool),
+                                   typeof(byte),
+                                   typeof(sbyte),
+                                   typeof(char),
+                                   typeof(decimal),
+                                   typeof(double),
+                                   typeof(float),
+                                   typeof(int),
+                                   typeof(uint),
+                                   typeof(long),
+                                   typeof(ulong),
+                                   typeof(object),
+                                   typeof(short),
+                                   typeof(ushort),
+                                   typeof(string),
+                                   typeof(QueryResult)
+                               };
         private static Responses responses = new Responses();
         public static Responses Instance
         {
@@ -58,47 +76,95 @@ namespace Plex.PMH.Repositories
             Repo.Remove(ResponseId);
         }
 
+        //public T GetResponse<T>(int Id)
+        //{
+        //    try
+        //    {
+        //        while (!Repo.ContainsKey(Id))
+        //            Thread.Yield();
+        //        if (Repo[Id] is ResponseCompound)
+        //            while (!((ResponseCompound)Repo[Id]).IsComplete) Thread.Yield();
+
+        //        T ret = ToObj<T>(Repo[Id].Resp);
+        //        Repo.Remove(Id);
+        //        return ret;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Logs.GetInstance().Add(e.ToString());
+        //        throw;
+        //    }
+        //}
+
+        public T GetResponse<T>(int Id)
+        {
+            return ToObj<T>(GetResponse(Id));
+        }
+
+
         public XmlDocument GetResponse(int Id)
         {
-            XmlDocument x = clean(new XmlDocument());
             try
             {
+                XmlDocument doc = new XmlDocument();
                 while (!Repo.ContainsKey(Id))
                     Thread.Yield();
                 if (Repo[Id] is ResponseCompound)
                     while (!((ResponseCompound)Repo[Id]).IsComplete) Thread.Yield();
-                x.LoadXml(Repo[Id].Resp);
+                doc.LoadXml(Repo[Id].Resp);
+
                 Repo.Remove(Id);
+                return doc;
             }
             catch (Exception e)
             {
                 Logs.GetInstance().Add(e.ToString());
                 throw;
             }
-            return x;
         }
 
-        XmlDocument clean(XmlDocument Document)
-        {
-            foreach (XmlNode n in Document.ChildNodes)
-                if (n.NodeType == XmlNodeType.XmlDeclaration)
-                    Document.RemoveChild(n);
-            return Document;
-        }
-        public T GetResponse<T>(int Id)
-        {
-            using (var stream = new MemoryStream())
-            {
-                StreamWriter sw = new StreamWriter(stream);
-                sw.Write(GetResponse(Id).DocumentElement.OuterXml);
-                stream.Position = 0;
-                return (T)new XmlSerializer(typeof(T)).Deserialize(stream);
-            }
-        }
+
+        //public T GetResponse<T>(int Id)
+        //{
+        //    using (var stream = new MemoryStream())
+        //    {
+        //        StreamWriter sw = new StreamWriter(stream);
+        //        sw.Write(GetResponse(Id).DocumentElement.OuterXml);
+        //        stream.Position = 0;
+        //        return (T)new XmlSerializer(typeof(T)).Deserialize(stream);
+        //    }
+        //}
 
         public Dictionary<int, Response> GetRepo()
         {
             return Repo;
+        }
+
+        static XmlDocument ToXmlDoc(Object o)
+        {
+            using (var stream = new MemoryStream())
+            {
+                new XmlSerializer(o.GetType()).Serialize(XmlWriter.Create(stream), o);
+                stream.Position = 0;
+
+                var output = new XmlDocument();
+                output.Load(XmlReader.Create(stream));
+
+                return output;
+            }
+        }
+
+        public static T ToObj<T>(XmlDocument x)
+        {
+            using (var reader = new XmlNodeReader(x))
+                return (T)new XmlSerializer(typeof(T),BuiltInTypes).Deserialize(reader);
+        }
+
+        static T ToObj<T>(string xml)
+        {
+            var x = new XmlDocument();
+            x.LoadXml(xml);
+            return ToObj<T>(x);
         }
     }
 }

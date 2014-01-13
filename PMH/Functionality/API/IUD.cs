@@ -12,11 +12,10 @@ namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static XmlDocument IUD(int ConnectionId, IUDData ChangeRequest)
+        public static MethodResult IUD(int ConnectionId, IUDData ChangeRequest)
         {
 
-            if (!Consumers.Instance.Exists(ConnectionId))
-                throw new InvalidConsumerException();
+            if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
 
             IUDVerification(ChangeRequest);
             IUDValidation(ChangeRequest);
@@ -54,7 +53,7 @@ namespace Plex.PMH.Functionality.API
             //Create Command, Register it and wait for response
             var Comm = CommandFactory.CreateIUDCommand(Consumer.ClientId, DBCode, ChangeRequest);
             Comm.RequestId = Commands.GetKey();
-            return Responses.Instance.GetResponse(Commands.Instance.Add(Comm));
+            return Responses.Instance.GetResponse<MethodResult>(Commands.Instance.Add(Comm));
 
             //todo check to ensure primary key is including in all columns. Type verification might be decent too.
         }

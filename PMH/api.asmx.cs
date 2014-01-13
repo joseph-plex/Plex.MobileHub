@@ -22,7 +22,7 @@ namespace Plex.PMH
     /// <summary>
     /// Summary description for api
     /// </summary>
-    [WebService(Namespace = "http://pmh.plexxis.com/api")]
+    [WebService(Namespace = "http://pmh.plexxis.com")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
@@ -85,26 +85,22 @@ namespace Plex.PMH
         }
 
         [WebMethod]
-        public XmlDocument IUD(int nConnectionId, IUDData DBModData)
+        public QueryResult QueryExecuteObj(int nConnectionId, string QueryName)
+        {
+            return Responses.ToObj<QueryResult>(Functions.QryExecute(nConnectionId, QueryName, null));
+        }
+
+        [WebMethod]
+        public MethodResult IUD(int nConnectionId, IUDData DBModData)
         {
             return Functions.IUD(nConnectionId, DBModData);
         }
-        ///****************************************************************************************************
-        //********************************* Unoffical Plexxis Methods *****************************************
-        //****************************************************************************************************/
 
-
-        public XmlDocument fQuery(int ClientId, string Code, string Qry)
+        [WebMethod]
+        public List<XmlDocument> DeviceSynchronization(int ConnectionId)
         {
-            List<object> args = new List<object>();
-            args.Add(Code);
-            args.Add(Qry);
-            int i = Commands.Instance.Add(ClientId, "Query", args);
-            Logs.GetInstance().Add(i);
-            return Responses.Instance.GetResponse(i);
+            return Functions.DeviceSynchronization(ConnectionId, 0, null);
         }
-
-
         ///****************************************************************************************************
         // ********************************* Internal Plexxis Methods *****************************************
         // ****************************************************************************************************/
