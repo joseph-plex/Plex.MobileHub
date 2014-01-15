@@ -16,6 +16,7 @@ using Plex.PMH.Functionality.API;
 using Plex.PMH.Repositories;
 using Plex.PMH.Exceptions;
 using Plex.PMH.Objects;
+using Plex.PMH.Data.Tables;
 
 namespace Plex.PMH
 {
@@ -118,23 +119,63 @@ namespace Plex.PMH
         //    return atc.Count; 
         //}
 
-        //[WebMethod]
-        //public XmlDocument QueryDatabase(int nConnectionId, String Query)
-        //{
-        //    try
-        //    {
-        //        if (!Consumers.Instance.Exists(nConnectionId))
-        //            throw new Exception("The connection you are specifying does not exist");
-        //        var cust = Consumers.Instance.Retrieve(nConnectionId);
-        //        var dbList = Access.ClientDBCompanies.GetAll();
-        //        var index = dbList.FindIndex((p) => p.DbCompanyId == cust.DatabaseId);
-        //        return fQuery(cust.ClientId, dbList[index].CompanyCode, Query);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Logs.GetInstance().Add(e);
-        //    }
-        //    return null;
-        //}
+        [WebMethod]
+        public XmlDocument QueryDatabaseXml(int nConnectionId, String Query)
+        {
+            try
+            {
+                if (!Consumers.Instance.Exists(nConnectionId))
+                    throw new Exception("The connection you are specifying does not exist");
+                var cust = Consumers.Instance.Retrieve(nConnectionId);
+                var dbList = CLIENT_DB_COMPANIES.GetAll().ToList();
+                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
+                return fQueryx(cust.ClientId, dbList[index].COMPANY_CODE, Query);
+            }
+            catch (Exception e)
+            {
+                Logs.GetInstance().Add(e);
+            }
+            return null;
+        }
+
+        public XmlDocument fQueryx(int ClientId, string Code, string Qry)
+        {
+            List<object> args = new List<object>();
+            args.Add(Code);
+            args.Add(Qry);
+            int i = Commands.Instance.Add(ClientId, "Query", args);
+            Logs.GetInstance().Add(i);
+            return Responses.Instance.GetResponse(i);
+        }
+
+
+        [WebMethod]
+        public QueryResult QueryDatabaseObj(int nConnectionId, String Query)
+        {
+            try
+            {
+                if (!Consumers.Instance.Exists(nConnectionId))
+                    throw new Exception("The connection you are specifying does not exist");
+                var cust = Consumers.Instance.Retrieve(nConnectionId);
+                var dbList = CLIENT_DB_COMPANIES.GetAll().ToList();
+                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
+                return fQueryo(cust.ClientId, dbList[index].COMPANY_CODE, Query);
+            }
+            catch (Exception e)
+            {
+                Logs.GetInstance().Add(e);
+            }
+            return null;
+        }
+
+        public QueryResult fQueryo(int ClientId, string Code, string Qry)
+        {
+            List<object> args = new List<object>();
+            args.Add(Code);
+            args.Add(Qry);
+            int i = Commands.Instance.Add(ClientId, "Query", args);
+            Logs.GetInstance().Add(i);
+            return Responses.Instance.GetResponse<QueryResult>(i);
+        }
     }
 }

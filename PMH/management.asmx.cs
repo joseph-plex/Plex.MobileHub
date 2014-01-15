@@ -9,13 +9,14 @@ using System.Xml.Serialization;
 using Plex.PMH.Repositories;
 using Plex.PMH.Data;
 using Plex.PMH.Data.Tables;
+using Plex.PMH.Objects;
 
 namespace Plex.PMH
 {
     /// <summary>
     /// Summary description for ManagerSDK
     /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
+    [WebService(Namespace = "http://pmh.plexxis.com")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
@@ -194,5 +195,11 @@ namespace Plex.PMH
             return Logs.GetInstance().GetLogs();
         }
 
+
+        [WebMethod]
+        public QueryResult QueryPMH(string sql )
+        {
+            return Utilities.Query(sql);
+        }
     }
 }

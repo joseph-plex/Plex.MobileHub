@@ -7,8 +7,8 @@ namespace Plex.PMH.Objects.Synchronization
 {
     public class QueryColumnSynchroData
     {
-        public int ColId;
         public string ColName;
         public int ColSeq;
+        public int ColId;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 
-using Plex.PMH.Tester.PMH;
+using Plex.PMH.Tester.pmh;
 
 namespace Plex.PMH.Tester
 {
@@ -19,20 +19,12 @@ namespace Plex.PMH.Tester
             {
                 try
                 {
-                    int ConId = service.ConnectionConnect(9999, 1001, "KERR", "supercool", "David").Response;
-                    IUDData data = new IUDData()
-                    {
-                        TableName = "EMPLOYEE_TIME_TRACKING",
-                        ColumnName = new string[] { "TRACKING_ID" },
-                        Rows = new Row[] 
-                        {
-                            new Row(){
-                                Action = RowAction.Create,
-                                Values = new object[]{2}
-                            }
-                        }
-                    };
-                    Console.WriteLine(service.IUD(ConId, data));
+                    var mr = service.ConnectionConnect(9999, 1001, "KERR", "supercool", "David");
+                    if (mr.Response < 0) throw new Exception(mr.Msg);
+                    var ConnectionId = mr.Response;
+
+                    var resp =  service.QryExecute(ConnectionId, "QRY_JOBS", null);
+                    return;
                 }
                 catch (Exception e)
                 {

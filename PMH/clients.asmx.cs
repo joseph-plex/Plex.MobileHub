@@ -24,8 +24,9 @@ namespace Plex.PMH
     // [System.Web.Script.Services.ScriptService]
     public class ClientSDK : WebService
     {
-        [XmlInclude(typeof(QueryResult))]
         [XmlInclude(typeof(IUDData))]
+        [XmlInclude(typeof(QueryResult))]
+        [XmlInclude(typeof(DeviceSynchroData))]
 
         [WebMethod]
         public MethodResult Login(int ClientId, string Key)

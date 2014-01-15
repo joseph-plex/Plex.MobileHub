@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\PMH\Reference.cs">
+    <Compile Include="Service References\pmh\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -77,55 +77,22 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
-    <None Include="Service References\PMH\api1.wsdl" />
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.AppQueries.datasource">
+    <None Include="Service References\pmh\api.wsdl" />
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.DeviceSynchronizationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.Command.datasource">
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.MethodResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.ConnectionData.datasource">
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.QryExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.Consumer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.Log.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.MethodResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.QryExecuteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.QueryDefinition.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.Response.datasource">
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.QueryResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\PMH\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PMH\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PMH\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PMH\Plex.PMH.Tester.PMH.TableDefinition.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PMH\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -145,7 +112,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PMH\api1.disco" />
+    <WCFMetadataStorage Include="Service References\pmh\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\pmh\api.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\pmh\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\pmh\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\pmh\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

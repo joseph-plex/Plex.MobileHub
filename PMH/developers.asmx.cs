@@ -8,6 +8,7 @@ using Plex.PMH.Functionality.API;
 using Plex.PMH.Repositories;
 using Plex.PMH.Exceptions;
 using Plex.PMH.Objects;
+using Plex.PMH.Data.Tables;
 
 namespace Plex.PMH
 {
@@ -37,6 +38,29 @@ namespace Plex.PMH
         public void ClientGetDatabaseList(int nClientId, int nAppId)
         {
             throw new NotImplementedException();
+        }
+
+        [WebMethod]
+        public bool QryCreateOffTable(int AppId, string Auth, int TableId, string QueryName)
+        {
+            var tables = APP_TABLES.GetAll().ToList();
+            List<string> ColNames = new List<string>();
+            var TableIndex = tables.FindIndex((p) => p.TABLE_ID == TableId && AppId == p.APP_ID);
+            if (tables.Count == 0) throw new Exception("No table with the specified TableId/AppId was found");
+
+            var Cols = APP_TABLE_COLUMNS.GetAll().ToList();//
+            Cols = Cols.FindAll((p) => p.TABLE_ID == tables[TableIndex].TABLE_ID);
+
+            foreach (var col in Cols) ColNames.Add(col.COLUMN_NAME);
+            QueryDefinition def = new QueryDefinition();
+            def.TableName = tables[TableIndex].NAME;
+            def.Sql = "test";
+            def.TrackDelta = true;
+            def.WhereClauses = null;
+            def.ColumnNames = ColNames;
+            def.QueryName = QueryName;
+
+            return Functions.QryCreate(AppId, Auth, def);
         }
     }
 }
