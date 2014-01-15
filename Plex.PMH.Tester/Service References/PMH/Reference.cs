@@ -104,6 +104,30 @@ namespace Plex.PMH.Tester.pmh {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Sync", ReplyAction="*")]
         System.Threading.Tasks.Task SyncAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabaseXml", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        System.Xml.XmlNode QueryDatabaseXml(int nConnectionId, string Query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabaseXml", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Xml.XmlNode> QueryDatabaseXmlAsync(int nConnectionId, string Query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabaseObj", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        Plex.PMH.Tester.pmh.QueryResult QueryDatabaseObj(int nConnectionId, string Query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabaseObj", ReplyAction="*")]
+        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QueryDatabaseObjAsync(int nConnectionId, string Query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetSerialData", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        Plex.PMH.Tester.pmh.QueryResult GetSerialData(string Input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetSerialData", ReplyAction="*")]
+        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> GetSerialDataAsync(string Input);
     }
     
     /// <remarks/>
@@ -938,6 +962,30 @@ namespace Plex.PMH.Tester.pmh {
         
         public System.Threading.Tasks.Task SyncAsync() {
             return base.Channel.SyncAsync();
+        }
+        
+        public System.Xml.XmlNode QueryDatabaseXml(int nConnectionId, string Query) {
+            return base.Channel.QueryDatabaseXml(nConnectionId, Query);
+        }
+        
+        public System.Threading.Tasks.Task<System.Xml.XmlNode> QueryDatabaseXmlAsync(int nConnectionId, string Query) {
+            return base.Channel.QueryDatabaseXmlAsync(nConnectionId, Query);
+        }
+        
+        public Plex.PMH.Tester.pmh.QueryResult QueryDatabaseObj(int nConnectionId, string Query) {
+            return base.Channel.QueryDatabaseObj(nConnectionId, Query);
+        }
+        
+        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QueryDatabaseObjAsync(int nConnectionId, string Query) {
+            return base.Channel.QueryDatabaseObjAsync(nConnectionId, Query);
+        }
+        
+        public Plex.PMH.Tester.pmh.QueryResult GetSerialData(string Input) {
+            return base.Channel.GetSerialData(Input);
+        }
+        
+        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> GetSerialDataAsync(string Input) {
+            return base.Channel.GetSerialDataAsync(Input);
         }
     }
 }

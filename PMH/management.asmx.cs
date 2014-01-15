@@ -84,6 +84,14 @@ namespace Plex.PMH
         public List<object> Get16() { return new List<Object>(QUERY_SEQUENCE_REQUESTS.GetAll()); }
 
 
+        [WebMethod]
+        public List<object> Get17() { return new List<object>(CLIENTS.GetAll().ToList().Find((p) => p.CLIENT_ID == 9999).GetCLIENT_USERS()); }
+
+        [WebMethod]
+        public List<object> Get18() { return new List<object>(CLIENTS.GetAll().ToList().Find((p)=> p.CLIENT_ID == 9999).GetCLIENT_APPS()); }
+
+        [WebMethod]
+        public List<object> Get19() { return new List<object>(CLIENTS.GetAll().ToList().Find((p) => p.CLIENT_ID == 9999).GetCLIENT_DB_COMPANIES()); }
         //public AppUI.Column[] GetAllClients()
         //{
         //    //AppUI.Column a = new AppUI.Column();
@@ -195,9 +203,8 @@ namespace Plex.PMH
             return Logs.GetInstance().GetLogs();
         }
 
-
         [WebMethod]
-        public QueryResult QueryPMH(string sql )
+        public QueryResult QueryPMH(string sql)
         {
             return Utilities.Query(sql);
         }

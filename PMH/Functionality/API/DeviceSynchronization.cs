@@ -14,7 +14,7 @@ namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static List<XmlDocument> DeviceSynchronization(int ConnectionId, int DeviceId, int? DeviceUserId)
+        public static List<QueryResult> DeviceSynchronization(int ConnectionId, int DeviceId, int? DeviceUserId)
         {
             //todo Check to make sure connectionId is Valid
             if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
@@ -24,7 +24,7 @@ namespace Plex.PMH.Functionality.API
             //todo make sure device user id exists
             //todo Get all queries for application
             var App = ApplicationGet(cons.AppId);
-            List<XmlDocument> Results = new List<XmlDocument>();
+            List<QueryResult> Results = new List<QueryResult>();
             Parallel.ForEach(App.GetAPP_QUERIES(),(queries)=>
             {
                 Results.Add(QryExecute(ConnectionId, queries.NAME));

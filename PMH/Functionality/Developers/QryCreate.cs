@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
+using Plex.PMH.Exceptions;
 using Plex.PMH.Objects;
 using Plex.PMH.Data;
 using Plex.PMH.Data.Tables;
 
-namespace Plex.PMH.Functionality.API
+namespace Plex.PMH.Functionality.Developers
 {
     public static partial class Functions
     {
@@ -20,13 +22,11 @@ namespace Plex.PMH.Functionality.API
             var Applications = new List<APPS>(APPS.GetAll());
             var ApplicationIndex = Applications.FindIndex((p) => p.APP_ID == ApplicationId);
 
-            //todo create an error for this.
             if (ApplicationIndex == -1)
-                throw new Exception("This application does not exist");
+                throw new InvalidApplicationException();
 
-            //todo create an error for this
             if (Applications[ApplicationIndex].AUTH_KEY != ApplicationAuthenticationKey)
-                throw new Exception("Invalid Application Key");
+                throw new InvalidApplicationKeyException();
 
 
            // var QueryIndex = Access.AppQueries.GetAll().FindIndex((p) => Applications[ApplicationIndex].AppId == p.AppId && p.Name == QryDef.QueryName);

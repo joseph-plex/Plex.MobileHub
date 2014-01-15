@@ -75,7 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <None Include="Service References\pmh\api.wsdl" />
     <None Include="Service References\pmh\Plex.PMH.Tester.pmh.DeviceSynchronizationResponse.datasource">

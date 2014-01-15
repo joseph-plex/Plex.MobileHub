@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-using Plex.PMH.Functionality.API;
+using Plex.PMH.Functionality.Developers;
 using Plex.PMH.Repositories;
 using Plex.PMH.Exceptions;
 using Plex.PMH.Objects;
@@ -62,5 +62,19 @@ namespace Plex.PMH
 
             return Functions.QryCreate(AppId, Auth, def);
         }
+
+
+        [WebMethod]
+        public bool QryCreate(int nAppId, string sAppAuthKey, QueryDefinition Query)
+        {
+            return Functions.QryCreate(nAppId, sAppAuthKey, Query);
+        }
+
+        [WebMethod]
+        public bool QryDelete(int nAppId, string sAppAuthKey, string sQueryName)
+        {
+            return Functions.QryDelete(nAppId, sAppAuthKey, sQueryName);
+        }
+
     }
 }

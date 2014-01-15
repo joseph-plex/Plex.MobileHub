@@ -274,6 +274,56 @@
       <s:element name="SyncResponse">
         <s:complexType />
       </s:element>
+      <s:element name="QueryDatabaseXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDatabaseXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseXmlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDatabaseObj">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDatabaseObjResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseObjResult" type="tns:QueryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerialData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerialDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSerialDataResult" type="tns:QueryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="MethodResult" nillable="true" type="tns:MethodResult" />
       <s:element name="int" type="s:int" />
       <s:element name="boolean" type="s:boolean" />
@@ -347,6 +397,24 @@
   <wsdl:message name="SyncSoapOut">
     <wsdl:part name="parameters" element="tns:SyncResponse" />
   </wsdl:message>
+  <wsdl:message name="QueryDatabaseXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseXml" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseObj" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseObjResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerialData" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerialDataResponse" />
+  </wsdl:message>
   <wsdl:message name="ConnectionConnectHttpGetIn">
     <wsdl:part name="ClientId" type="s:string" />
     <wsdl:part name="AppId" type="s:string" />
@@ -397,6 +465,26 @@
   </wsdl:message>
   <wsdl:message name="SyncHttpGetIn" />
   <wsdl:message name="SyncHttpGetOut" />
+  <wsdl:message name="QueryDatabaseXmlHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseXmlHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjHttpGetOut">
+    <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataHttpGetIn">
+    <wsdl:part name="Input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
   <wsdl:message name="ConnectionConnectHttpPostIn">
     <wsdl:part name="ClientId" type="s:string" />
     <wsdl:part name="AppId" type="s:string" />
@@ -447,6 +535,26 @@
   </wsdl:message>
   <wsdl:message name="SyncHttpPostIn" />
   <wsdl:message name="SyncHttpPostOut" />
+  <wsdl:message name="QueryDatabaseXmlHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseXmlHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="Query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryDatabaseObjHttpPostOut">
+    <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataHttpPostIn">
+    <wsdl:part name="Input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
   <wsdl:portType name="APISoap">
     <wsdl:operation name="ConnectionConnect">
       <wsdl:input message="tns:ConnectionConnectSoapIn" />
@@ -492,6 +600,18 @@
       <wsdl:input message="tns:SyncSoapIn" />
       <wsdl:output message="tns:SyncSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <wsdl:input message="tns:QueryDatabaseXmlSoapIn" />
+      <wsdl:output message="tns:QueryDatabaseXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <wsdl:input message="tns:QueryDatabaseObjSoapIn" />
+      <wsdl:output message="tns:QueryDatabaseObjSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <wsdl:input message="tns:GetSerialDataSoapIn" />
+      <wsdl:output message="tns:GetSerialDataSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="APIHttpGet">
     <wsdl:operation name="ConnectionConnect">
@@ -526,6 +646,18 @@
       <wsdl:input message="tns:SyncHttpGetIn" />
       <wsdl:output message="tns:SyncHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <wsdl:input message="tns:QueryDatabaseXmlHttpGetIn" />
+      <wsdl:output message="tns:QueryDatabaseXmlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <wsdl:input message="tns:QueryDatabaseObjHttpGetIn" />
+      <wsdl:output message="tns:QueryDatabaseObjHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <wsdl:input message="tns:GetSerialDataHttpGetIn" />
+      <wsdl:output message="tns:GetSerialDataHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="APIHttpPost">
     <wsdl:operation name="ConnectionConnect">
@@ -559,6 +691,18 @@
     <wsdl:operation name="Sync">
       <wsdl:input message="tns:SyncHttpPostIn" />
       <wsdl:output message="tns:SyncHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <wsdl:input message="tns:QueryDatabaseXmlHttpPostIn" />
+      <wsdl:output message="tns:QueryDatabaseXmlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <wsdl:input message="tns:QueryDatabaseObjHttpPostIn" />
+      <wsdl:output message="tns:QueryDatabaseObjHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <wsdl:input message="tns:GetSerialDataHttpPostIn" />
+      <wsdl:output message="tns:GetSerialDataHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="APISoap" type="tns:APISoap">
@@ -655,6 +799,33 @@
     </wsdl:operation>
     <wsdl:operation name="Sync">
       <soap:operation soapAction="http://pmh.plexxis.com/Sync" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <soap:operation soapAction="http://pmh.plexxis.com/QueryDatabaseXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <soap:operation soapAction="http://pmh.plexxis.com/QueryDatabaseObj" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <soap:operation soapAction="http://pmh.plexxis.com/GetSerialData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -764,6 +935,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <soap12:operation soapAction="http://pmh.plexxis.com/QueryDatabaseXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <soap12:operation soapAction="http://pmh.plexxis.com/QueryDatabaseObj" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <soap12:operation soapAction="http://pmh.plexxis.com/GetSerialData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="APIHttpGet" type="tns:APIHttpGet">
     <http:binding verb="GET" />
@@ -835,6 +1033,33 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <http:operation location="/QueryDatabaseXml" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <http:operation location="/QueryDatabaseObj" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <http:operation location="/GetSerialData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="APIHttpPost" type="tns:APIHttpPost">
     <http:binding verb="POST" />
@@ -905,6 +1130,33 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseXml">
+      <http:operation location="/QueryDatabaseXml" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDatabaseObj">
+      <http:operation location="/QueryDatabaseObj" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialData">
+      <http:operation location="/GetSerialData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="API">

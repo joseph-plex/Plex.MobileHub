@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Xml.Linq;
 using Plex.PMH.Objects;
 namespace Plex.PMH.Repositories
 {
@@ -29,8 +30,20 @@ namespace Plex.PMH.Repositories
                                    typeof(object),
                                    typeof(short),
                                    typeof(ushort),
-                                   typeof(string),
-                                   typeof(QueryResult)
+                                   typeof(string), 
+                                   typeof(bool?),
+                                   typeof(byte?),
+                                   typeof(sbyte?),
+                                   typeof(char?),
+                                   typeof(decimal?),
+                                   typeof(double?),
+                                   typeof(float?),
+                                   typeof(int?),
+                                   typeof(uint?),
+                                   typeof(long?),
+                                   typeof(ulong?),
+                                   typeof(short?),
+                                   typeof(ushort?),
                                };
         private static Responses responses = new Responses();
         public static Responses Instance
@@ -76,31 +89,10 @@ namespace Plex.PMH.Repositories
             Repo.Remove(ResponseId);
         }
 
-        //public T GetResponse<T>(int Id)
-        //{
-        //    try
-        //    {
-        //        while (!Repo.ContainsKey(Id))
-        //            Thread.Yield();
-        //        if (Repo[Id] is ResponseCompound)
-        //            while (!((ResponseCompound)Repo[Id]).IsComplete) Thread.Yield();
-
-        //        T ret = ToObj<T>(Repo[Id].Resp);
-        //        Repo.Remove(Id);
-        //        return ret;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Logs.GetInstance().Add(e.ToString());
-        //        throw;
-        //    }
-        //}
-
         public T GetResponse<T>(int Id)
         {
             return ToObj<T>(GetResponse(Id));
         }
-
 
         public XmlDocument GetResponse(int Id)
         {
@@ -112,7 +104,7 @@ namespace Plex.PMH.Repositories
                 if (Repo[Id] is ResponseCompound)
                     while (!((ResponseCompound)Repo[Id]).IsComplete) Thread.Yield();
                 doc.LoadXml(Repo[Id].Resp);
-
+                doc = RemoveXmlns(doc);
                 Repo.Remove(Id);
                 return doc;
             }
@@ -123,35 +115,9 @@ namespace Plex.PMH.Repositories
             }
         }
 
-
-        //public T GetResponse<T>(int Id)
-        //{
-        //    using (var stream = new MemoryStream())
-        //    {
-        //        StreamWriter sw = new StreamWriter(stream);
-        //        sw.Write(GetResponse(Id).DocumentElement.OuterXml);
-        //        stream.Position = 0;
-        //        return (T)new XmlSerializer(typeof(T)).Deserialize(stream);
-        //    }
-        //}
-
         public Dictionary<int, Response> GetRepo()
         {
             return Repo;
-        }
-
-        static XmlDocument ToXmlDoc(Object o)
-        {
-            using (var stream = new MemoryStream())
-            {
-                new XmlSerializer(o.GetType()).Serialize(XmlWriter.Create(stream), o);
-                stream.Position = 0;
-
-                var output = new XmlDocument();
-                output.Load(XmlReader.Create(stream));
-
-                return output;
-            }
         }
 
         public static T ToObj<T>(XmlDocument x)
@@ -165,6 +131,24 @@ namespace Plex.PMH.Repositories
             var x = new XmlDocument();
             x.LoadXml(xml);
             return ToObj<T>(x);
+        }
+
+        public static XmlDocument RemoveXmlns(XmlDocument doc)
+        {
+            XDocument d;
+            using (var nodeReader = new XmlNodeReader(doc))
+            {
+                nodeReader.MoveToContent();
+                d = XDocument.Load(nodeReader);
+            }
+            d.Root.Descendants().Attributes().Where(x => x.IsNamespaceDeclaration).Remove();
+            foreach (var elem in d.Descendants())
+                elem.Name = elem.Name.LocalName;
+
+            var xmlDocument = new XmlDocument();
+            using (var xmlReader = d.CreateReader())
+                xmlDocument.Load(xmlReader);
+            return xmlDocument;
         }
     }
 }

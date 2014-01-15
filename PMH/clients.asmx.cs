@@ -26,7 +26,6 @@ namespace Plex.PMH
     {
         [XmlInclude(typeof(IUDData))]
         [XmlInclude(typeof(QueryResult))]
-        [XmlInclude(typeof(DeviceSynchroData))]
 
         [WebMethod]
         public MethodResult Login(int ClientId, string Key)

@@ -7,7 +7,7 @@ using Plex.PMH.Exceptions;
 using Plex.PMH.Objects;
 using Plex.PMH.Data.Tables;
 
-namespace Plex.PMH.Functionality.API
+namespace Plex.PMH.Functionality.Developers
 {
     public static partial class Functions
     {

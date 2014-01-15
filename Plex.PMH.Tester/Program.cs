@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.IO;
 
 using Plex.PMH.Tester.pmh;
@@ -19,11 +21,10 @@ namespace Plex.PMH.Tester
             {
                 try
                 {
-                    var mr = service.ConnectionConnect(9999, 1001, "KERR", "supercool", "David");
-                    if (mr.Response < 0) throw new Exception(mr.Msg);
-                    var ConnectionId = mr.Response;
-
-                    var resp =  service.QryExecute(ConnectionId, "QRY_JOBS", null);
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(File.ReadAllText("input.txt"));
+                    RemoveXmlns(doc).Save(Console.Out);
+                    var s = service.GetSerialData(doc.OuterXml);
                     return;
                 }
                 catch (Exception e)
@@ -32,6 +33,32 @@ namespace Plex.PMH.Tester
                 }
             }
             Console.Read();
+        }
+
+        public static XmlDocument RemoveXmlns(XmlDocument doc)
+        {
+            XDocument d;
+            using (var nodeReader = new XmlNodeReader(doc))
+            {
+                nodeReader.MoveToContent();
+                d = XDocument.Load(nodeReader);
+            }
+
+            d.Root.Descendants().Attributes().Where(x => x.IsNamespaceDeclaration).Remove();
+            foreach (var elem in d.Descendants())
+                elem.Name = elem.Name.LocalName;
+
+            //foreach (var attr in d.Descendants().Attributes())
+            //{
+            //    var elem = attr.Parent;
+            //    attr.Remove();
+            //    elem.Add(new XAttribute(attr.Name.LocalName, attr.Value));
+            //}
+
+            var xmlDocument = new XmlDocument();
+            using(var xmlReader = d.CreateReader())
+                xmlDocument.Load(xmlReader);
+            return xmlDocument;
         }
 
         static APISoapClient GetService()

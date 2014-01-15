@@ -37,7 +37,6 @@ namespace Plex.PMH.Data.Tables
 
         public IEnumerable<CLIENT_USERS> GetCLIENT_USERS(OracleConnection Conn)
         {
-            //todo test this function
             var collection = new List<CLIENT_USERS>();
             using (var Command = new OracleCommand("SELECT * FROM CLIENT_USERS WHERE CLIENT_ID  = :a", Conn))
             {
@@ -57,7 +56,6 @@ namespace Plex.PMH.Data.Tables
 
         public IEnumerable<CLIENT_APPS> GetCLIENT_APPS(OracleConnection Conn)
         {
-            //todo test this function
             var collection = new List<CLIENT_APPS>();
             using (var Command = new OracleCommand("SELECT * FROM CLIENT_APPS  WHERE CLIENT_ID  = :a", Conn))
             {
@@ -77,7 +75,6 @@ namespace Plex.PMH.Data.Tables
 
         public IEnumerable<CLIENT_DB_COMPANIES> GetCLIENT_DB_COMPANIES(OracleConnection Conn)
         {  
-            //todo test this function
             var collection = new List<CLIENT_DB_COMPANIES>();
             using (var Command = new OracleCommand("SELECT * FROM CLIENT_DB_COMPANIES  WHERE CLIENT_ID  = :a", Conn))
             {

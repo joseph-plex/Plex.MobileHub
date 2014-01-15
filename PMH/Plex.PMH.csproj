@@ -132,6 +132,7 @@
     <Compile Include="Data\IPlexxisDatabaseRow.cs" />
     <Compile Include="Data\Tables\DEVICES.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA_QUERIES.cs" />
+    <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
     <Compile Include="Functionality\API\DeviceSynchronization.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />
     <Compile Include="Data\Tables\LOGS.cs" />
@@ -152,18 +153,19 @@
     <Compile Include="Exceptions\MultipleClientLoginException.cs" />
     <Compile Include="Exceptions\PlexError.cs" />
     <Compile Include="Exceptions\UnauthorizedClientException.cs" />
-    <Compile Include="Functionality\API\AppGetQueries.cs" />
-    <Compile Include="Functionality\API\AppGetTableDefinitions.cs" />
-    <Compile Include="Functionality\API\ClientGetDatabaseList.cs" />
+    <Compile Include="Functionality\Developers\AppGetQueries.cs" />
+    <Compile Include="Functionality\Developers\AppGetTableDefinitions.cs" />
+    <Compile Include="Functionality\Developers\ClientGetDatabaseList.cs" />
     <Compile Include="Functionality\API\ConnectionConnect.cs" />
     <Compile Include="Functionality\API\ConnectionInformation.cs" />
     <Compile Include="Functionality\API\ConnectionRelease.cs" />
     <Compile Include="Functionality\API\ConnectionStatus.cs" />
     <Compile Include="Functionality\API\DeviceRegister.cs" />
     <Compile Include="Functionality\API\IUD.cs" />
-    <Compile Include="Functionality\API\QryCreate.cs" />
-    <Compile Include="Functionality\API\QryDelete.cs" />
+    <Compile Include="Functionality\Developers\QryCreate.cs" />
+    <Compile Include="Functionality\Developers\QryDelete.cs" />
     <Compile Include="Functionality\API\QryExecute.cs" />
+    <Compile Include="Functionality\API\QueryDatabase.cs" />
     <Compile Include="Functionality\API\Utilities.cs" />
     <Compile Include="Functionality\Clients\ClientLogin.cs" />
     <Compile Include="Functionality\Clients\ClientLogout.cs" />
@@ -225,7 +227,6 @@
     <Compile Include="Repositories\ResponseComponent.cs" />
     <Compile Include="Repositories\ResponseCompound.cs" />
     <Compile Include="Repositories\ResponseRepository.cs" />
-    <Compile Include="Utilites\Errors.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

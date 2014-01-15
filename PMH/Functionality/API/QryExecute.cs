@@ -13,7 +13,7 @@ namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static XmlDocument QryExecute(int ConnectionId, string QueryName, DateTime? Time = null)
+        public static QueryResult QryExecute(int ConnectionId, string QueryName, DateTime? Time = null)
         {
             try
             {
@@ -28,7 +28,6 @@ namespace Plex.PMH.Functionality.API
 
                 var Queries = new List<APP_QUERIES>(APP_QUERIES.GetAll());
                 var QueryIndex = Queries.FindIndex((p) => p.NAME == QueryName && p.APP_ID == Consumers.Instance.Retrieve(ConnectionId).AppId);
-                //todo create an appropriate error for this.
                 if (QueryIndex == -1) throw new InvalidQueryException();
 
                 Logs.GetInstance().Add(Queries[QueryIndex].QUERY_ID);
@@ -43,7 +42,7 @@ namespace Plex.PMH.Functionality.API
             return null;
         }
 
-        static XmlDocument fQuery(int ClientId, string Code, int Qry, DateTime? Time = null)
+        static QueryResult fQuery(int ClientId, string Code, int Qry, DateTime? Time = null)
         {
             List<object> args = new List<object>();
             args.Add(Code);
@@ -58,7 +57,7 @@ namespace Plex.PMH.Functionality.API
                 i = Commands.Instance.Add(ClientId, "ExecuteRegisteredQueryWithoutDate", args);
 
             Logs.GetInstance().Add(i);
-            return Responses.Instance.GetResponse(i);
+            return Responses.Instance.GetResponse<QueryResult>(i);
         }
     }
 }
