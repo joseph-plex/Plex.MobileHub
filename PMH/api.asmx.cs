@@ -60,11 +60,16 @@ namespace Plex.PMH
         }
 
         [WebMethod]
-        public QueryResult QryExecute(int nConnectionId, string QueryName, DateTime? Time)
+        public QueryResult QryExecute(int nConnectionId, string QueryName)
         {
-            return Functions.QryExecute(nConnectionId, QueryName, Time);
+            return Responses.ToObj<QueryResult>(Functions.QryExecute(nConnectionId, QueryName, null));
         }
 
+        [WebMethod]
+        public XmlDocument QryExecuteXml(int nConnectionId, string QueryName)
+        {
+            return Functions.QryExecute(nConnectionId, QueryName, null);
+        }
         [WebMethod]
         public MethodResult IUD(int nConnectionId, IUDData DBModData)
         {

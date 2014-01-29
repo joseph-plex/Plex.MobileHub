@@ -13,7 +13,7 @@ namespace Plex.PMH.Functionality.API
 {
     public static partial class Functions
     {
-        public static QueryResult QryExecute(int ConnectionId, string QueryName, DateTime? Time = null)
+        public static XmlDocument QryExecute(int ConnectionId, string QueryName, DateTime? Time = null)
         {
             try
             {
@@ -42,22 +42,16 @@ namespace Plex.PMH.Functionality.API
             return null;
         }
 
-        static QueryResult fQuery(int ClientId, string Code, int Qry, DateTime? Time = null)
+        static XmlDocument fQuery(int ClientId, string Code, int Qry, DateTime? Time = null)
         {
             List<object> args = new List<object>();
             args.Add(Code);
             args.Add(Qry);
+            args.Add(Time);
             int i = new int();
-            if (Time != null)
-            {
-                args.Add(Time);
-                i = Commands.Instance.Add(ClientId, "ExecuteRegisteredQueryWithDate", args);
-            }
-            else
-                i = Commands.Instance.Add(ClientId, "ExecuteRegisteredQueryWithoutDate", args);
-
+            i = Commands.Instance.Add(ClientId, "ExecuteRegisteredQuery", args);
             Logs.GetInstance().Add(i);
-            return Responses.Instance.GetResponse<QueryResult>(i);
+            return Responses.Instance.GetResponse(i);
         }
     }
 }

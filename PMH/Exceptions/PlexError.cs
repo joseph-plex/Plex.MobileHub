@@ -10,7 +10,6 @@ namespace Plex.PMH.Exceptions
     {
         public int ErrorCode;
 
-
         public PlexError()
             : base() { }
         public PlexError(string message)

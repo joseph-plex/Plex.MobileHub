@@ -229,9 +229,6 @@
     <Compile Include="Repositories\ResponseRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\PublishProfiles\Plex Test.pubxml" />
     <None Include="Properties\PublishProfiles\Plex.pubxml">
       <SubType>Designer</SubType>

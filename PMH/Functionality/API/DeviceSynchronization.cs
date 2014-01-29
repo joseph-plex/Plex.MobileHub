@@ -27,7 +27,7 @@ namespace Plex.PMH.Functionality.API
             List<QueryResult> Results = new List<QueryResult>();
             Parallel.ForEach(App.GetAPP_QUERIES(),(queries)=>
             {
-                Results.Add(QryExecute(ConnectionId, queries.NAME));
+                //Results.Add(QryExecute(ConnectionId, queries.NAME));
             });
 
             return Results;

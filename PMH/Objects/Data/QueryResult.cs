@@ -5,6 +5,15 @@ namespace Plex.PMH.Objects
 {
     public class QueryResult
     {
+        public DateTime StartTimeStamp;
+        public DateTime CompletionTimeStamp;
+
+        public int Result;
+        public string Message;
+
+        public int DBErrorCode;
+        public string DBErrorMessage;
+
         public object this[int ColumnIndex, int RowIndex]
         {
             get

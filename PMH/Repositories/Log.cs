@@ -23,6 +23,7 @@ namespace Plex.PMH.Repositories
             set;
         }
 
+
         public Log() : this(string.Empty) { }
         public Log(String Log, DateTime Date, LogPriority Priority = LogPriority.Normal)
         {

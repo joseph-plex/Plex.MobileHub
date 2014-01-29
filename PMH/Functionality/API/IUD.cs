@@ -36,16 +36,16 @@ namespace Plex.PMH.Functionality.API
 
 
             if (ApplicationTables[TableIndex].DELETE_ALLOWED == 0)
-                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.Action == RowAction.Delete)) != -1)
+                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.DBAction == 1)) != -1)
                     throw new ArgumentException("Invalid permissions to delete from record index : " + ErrIndex);
             if (ApplicationTables[TableIndex].INSERT_ALLOWED == 0)
-                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.Action == RowAction.Create)) != -1)
+                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.DBAction == 1)) != -1)
                     throw new ArgumentException("Invalid permissions to Insert from record index : " + ErrIndex);
             if (ApplicationTables[TableIndex].UPDATE_ALLOWED == 0)
-                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.Action == RowAction.Modify)) != -1)
+                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.DBAction == 2)) != -1)
                     throw new ArgumentException("Invalid permissions to index from record index : " + ErrIndex);
             if (ApplicationTables[TableIndex].QUERY_ALLOWED == 0)
-                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.Action == RowAction.Read)) != -1)
+                if ((ErrIndex = ChangeRequest.Rows.FindIndex((p) => p.DBAction == 0)) != -1)
                     throw new ArgumentException("Invalid permissions to Read from record index : " + ErrIndex);
 
 
@@ -81,7 +81,7 @@ namespace Plex.PMH.Functionality.API
             foreach (var row in ChangeRequest.Rows)
                 if (row.Values.Count != ChangeRequest.ColumnNames.Count)
                     throw new ArgumentException("All Row Values should have the same as values as there are column Names");
-                else if (row.Action != RowAction.Read)
+                else if (row.DBAction != 0)
                     HasIUD = true;
             if (!HasIUD)
                 throw new ArgumentException("At least one operation must be Insert, Update or Delete");

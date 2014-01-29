@@ -10,41 +10,46 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
+using System.Diagnostics;
+
 using Plex.PMH.Objects;
+
 namespace Plex.PMH.Repositories
 {
     public class Responses
     {
-        private static readonly Type[] BuiltInTypes = {
-                                   typeof(bool),
-                                   typeof(byte),
-                                   typeof(sbyte),
-                                   typeof(char),
-                                   typeof(decimal),
-                                   typeof(double),
-                                   typeof(float),
-                                   typeof(int),
-                                   typeof(uint),
-                                   typeof(long),
-                                   typeof(ulong),
-                                   typeof(object),
-                                   typeof(short),
-                                   typeof(ushort),
-                                   typeof(string), 
-                                   typeof(bool?),
-                                   typeof(byte?),
-                                   typeof(sbyte?),
-                                   typeof(char?),
-                                   typeof(decimal?),
-                                   typeof(double?),
-                                   typeof(float?),
-                                   typeof(int?),
-                                   typeof(uint?),
-                                   typeof(long?),
-                                   typeof(ulong?),
-                                   typeof(short?),
-                                   typeof(ushort?),
-                               };
+        private static readonly Type[] BuiltInTypes = 
+        {
+            typeof(bool),
+            typeof(byte),
+            typeof(sbyte),
+            typeof(char),
+            typeof(decimal),
+            typeof(double),
+            typeof(float),
+            typeof(int),
+            typeof(uint),
+            typeof(long),
+            typeof(ulong),
+            typeof(object),
+            typeof(short),
+            typeof(ushort),
+            typeof(string), 
+            typeof(bool?),
+            typeof(byte?),
+            typeof(sbyte?),
+            typeof(char?),
+            typeof(decimal?),
+            typeof(double?),
+            typeof(float?),
+            typeof(int?),
+            typeof(uint?),
+            typeof(long?),
+            typeof(ulong?),
+            typeof(short?),
+            typeof(ushort?),
+        };
+
         private static Responses responses = new Responses();
         public static Responses Instance
         {
@@ -98,15 +103,19 @@ namespace Plex.PMH.Repositories
         {
             try
             {
-                XmlDocument doc = new XmlDocument();
-                while (!Repo.ContainsKey(Id))
+                var s = Stopwatch.StartNew();
+                var xmlDocument = new XmlDocument();
+                while (!Repo.ContainsKey(Id)) 
                     Thread.Yield();
                 if (Repo[Id] is ResponseCompound)
-                    while (!((ResponseCompound)Repo[Id]).IsComplete) Thread.Yield();
-                doc.LoadXml(Repo[Id].Resp);
-                doc = RemoveXmlns(doc);
+                    while (!((ResponseCompound)Repo[Id]).IsComplete) 
+                        Thread.Yield();
+
+                xmlDocument.LoadXml(Repo[Id].Resp);
                 Repo.Remove(Id);
-                return doc;
+
+                Logs.GetInstance().Add("Elapsed Time : " + s.ElapsedMilliseconds);
+                return xmlDocument;
             }
             catch (Exception e)
             {
@@ -137,17 +146,31 @@ namespace Plex.PMH.Repositories
         {
             XDocument d;
             using (var nodeReader = new XmlNodeReader(doc))
-            {
-                nodeReader.MoveToContent();
                 d = XDocument.Load(nodeReader);
-            }
+
             d.Root.Descendants().Attributes().Where(x => x.IsNamespaceDeclaration).Remove();
+
             foreach (var elem in d.Descendants())
                 elem.Name = elem.Name.LocalName;
 
             var xmlDocument = new XmlDocument();
             using (var xmlReader = d.CreateReader())
                 xmlDocument.Load(xmlReader);
+
+            return xmlDocument;
+        }
+
+        public static XmlDocument RemoveXmlns(String xml)
+        {
+            XDocument d = XDocument.Parse(xml);
+            d.Root.Descendants().Attributes().Where(x => x.IsNamespaceDeclaration).Remove();
+
+            foreach (var elem in d.Descendants())
+                elem.Name = elem.Name.LocalName;
+
+            var xmlDocument = new XmlDocument();
+            xmlDocument.Load(d.CreateReader());
+
             return xmlDocument;
         }
     }

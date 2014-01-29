@@ -94,7 +94,8 @@ namespace Plex.PMH.Repositories
 
         public void Remove(int i)
         {
-            ConnectionRepo.Remove(i);
+            if(ConnectionRepo.ContainsKey(i))
+                ConnectionRepo.Remove(i);
         }
 
         public void CheckIn(int ConnectionId) 
