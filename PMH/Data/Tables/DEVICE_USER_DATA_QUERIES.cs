@@ -6,6 +6,9 @@ namespace Plex.PMH.Data.Tables
 {
     public class DEVICE_USER_DATA_QUERIES 
     {
-        //todo finish this
+        public int DEVICE_USER_DATA_QUERIES_ID;
+        public DateTime QUERY_EXECUTION_TIME;		
+        public int DEVICE_USER_DATA_ID;				
+        public int QUERY_ID;			
     }
 }

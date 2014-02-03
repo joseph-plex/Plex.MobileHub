@@ -93,7 +93,6 @@ namespace Plex.PMH.Data.Tables
                 OnUpdate(this, EventArgs.Empty);
             return r;
         }
-
         public override bool Delete(IDbConnection Conn)
         {
             var r = base.Delete(Conn);

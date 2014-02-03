@@ -24,17 +24,15 @@ namespace Plex.PMH.Data
         {
             Result r = new Result();
             using (var Comm = conn.CreateCommand(CommandText, Arguments))
+            using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
             {
-                using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
+                r.Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
+                while (reader.Read())
                 {
-                    r.Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
-                    while (reader.Read())
-                    {
-                        var CurrentRow = new Row();
-                        foreach (var Col in r.Columns)
-                            CurrentRow.Values.Add((reader[Col.ColumnName] != DBNull.Value) ? reader[Col.ColumnName] : null);
-                        r.Rows.Add(CurrentRow);
-                    }
+                    var CurrentRow = new Row();
+                    foreach (var Col in r.Columns)
+                        CurrentRow.Values.Add((reader[Col.ColumnName] != DBNull.Value) ? reader[Col.ColumnName] : null);
+                    r.Rows.Add(CurrentRow);
                 }
             }
             return r;
@@ -62,7 +60,6 @@ namespace Plex.PMH.Data
                 IsLong = (Collection[19] != DBNull.Value) ? Convert.ToBoolean(Collection[19]) : (bool?)null,
             };
         }
-
     }
 
 }

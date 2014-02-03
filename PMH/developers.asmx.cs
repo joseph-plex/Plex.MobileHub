@@ -48,7 +48,7 @@ namespace Plex.PMH
             var TableIndex = tables.FindIndex((p) => p.TABLE_ID == TableId && AppId == p.APP_ID);
             if (tables.Count == 0) throw new Exception("No table with the specified TableId/AppId was found");
 
-            var Cols = APP_TABLE_COLUMNS.GetAll().ToList();//
+            var Cols = APP_TABLE_COLUMNS.GetAll().ToList();
             Cols = Cols.FindAll((p) => p.TABLE_ID == tables[TableIndex].TABLE_ID);
 
             foreach (var col in Cols) ColNames.Add(col.COLUMN_NAME);

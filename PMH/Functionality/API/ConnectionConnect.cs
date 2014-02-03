@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Linq;
+using System.Collections.Generic;
 
 using System.Threading;
 using System.Threading.Tasks;
-using Plex.PMH.Repositories;
-using Plex.PMH.Exceptions;
 
+using Plex.PMH.Repositories;
 using Plex.PMH.Data.Tables;
+using Plex.PMH.Exceptions;
 
 namespace Plex.PMH.Functionality.API
 {
@@ -16,8 +16,7 @@ namespace Plex.PMH.Functionality.API
     {
         public static int ConnectionConnect(int ClientId, int AppId, String Database, String User, String Password)
         {
-            Consumer Cons = new Consumer()
-            {
+            Consumer Cons = new Consumer(){
                 ClientId = ClientGet(ClientId).CLIENT_ID,
                 AppId = ApplicationGet(AppId).APP_ID,
                 DatabaseId = CompanyGet(ClientId, Database).DB_COMPANY_ID,

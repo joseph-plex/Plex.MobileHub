@@ -71,36 +71,6 @@ namespace Plex.PMH
             }
             return mr;
         }
-
-        //[WebMethod]
-        //public List<Access.Apps> ClientGetApps()
-        //{
-        //    return Access.Apps.GetAll();
-        //}
-
-        //[WebMethod]
-        //public List<Access.AppQueries> ClientGetAppQueries()
-        //{
-        //    return Access.AppQueries.GetAll();
-        //}
-
-        //[WebMethod]
-        //public List<Access.AppQueryColumns> ClientGetAppQueryColumns()
-        //{
-        //    return Access.AppQueryColumns.GetAll();
-        //}
-
-        //[WebMethod]
-        //public List<Access.AppQueryConditions> ClientGetAppCondition()
-        //{
-        //    return Access.AppQueryConditions.GetAll();
-        //}
-
-        //[WebMethod]
-        //public List<Access.AppTables> ClientGetAppTables()
-        //{
-        //    return Access.AppTables.GetAll();
-        //}
         
         [WebMethod]
         public MethodResult Respond(Response Resp)
@@ -118,12 +88,6 @@ namespace Plex.PMH
             return mr.Success();
         }
 
-        //[WebMethod]
-        //public List<AppSyncData> ClientGetSyncInformation()
-        //{
-        //    return new List<AppSyncData>(AppSyncData.RetrieveCompleteSyncData());
-        //}
-
         public Manager GetManager()
         {
             return (Manager)Application["Manager"];
@@ -135,27 +99,6 @@ namespace Plex.PMH
             return Functions.SyncInfoGet();
         }
 
-
-        //public void ClientUserCreate(Access.ClientUsers Client) 
-        //{
-        //   Client.Insert();
-        //}
-        //public void ClientUserModifiy(Access.ClientUsers Client) 
-        //{
-        //    Client.Update();
-        //}
-        //public Access.ClientUsers ClientUserRetrieve() 
-        //{
-        //    return null;
-        //}
-        //public void ClientUserDelete() 
-        //{
-        //}
-        //public List<Access.ClientUsers> ClientUserGetAll() 
-        //{
-        //    return Access.ClientUsers.GetAll();
-        //}
-
         public void ClientUserPermissionCreate() { }
         public void ClientUserPermissionDelete() { }
         public void ClientUserPermissionRetrieve() { }
@@ -164,39 +107,6 @@ namespace Plex.PMH
         public void AuthenticUserAppPermissionDelete() { }
         public void AuthenticUserAppPermissionRetrieve() { }
 
-    //    public class AppSyncData
-    //    {
-    //        public static IEnumerable<AppSyncData> RetrieveCompleteSyncData()
-    //        {
-    //            var Apps = Access.Apps.GetAll();
-    //            var AppQueries = Access.AppQueries.GetAll();
-    //            var AppQueryColumns = Access.AppQueryColumns.GetAll();
-    //            var AppQueryConditions = Access.AppQueryConditions.GetAll();
-    //            foreach (var app in Apps)
-    //            {
-    //                AppSyncData current = new AppSyncData()
-    //                {
-    //                    App = app,
-    //                };
-    //                foreach (var Query in AppQueries.FindAll((p) => p.AppId == app.AppId))
-    //                    current.AppQueries.Add(new QuerySyncData()
-    //                    {
-    //                        Query = Query,
-    //                        AppQueryConditions = AppQueryConditions.FindAll((p) => p.QueryId == Query.QueryId),
-    //                        AppQueryColumns = AppQueryColumns.FindAll((p) => p.QueryId == Query.QueryId)
-    //                    });
-    //                yield return current;
-    //            }
-    //        }
-    //        public Access.Apps App = new Access.Apps();
-    //        public List<QuerySyncData> AppQueries = new List<QuerySyncData>();
-    //    }
-    //    public class QuerySyncData
-    //    {
-    //        public Access.AppQueries Query = new Access.AppQueries();
-    //        public List<Access.AppQueryColumns> AppQueryColumns = new List<Access.AppQueryColumns>();
-    //        public List<Access.AppQueryConditions> AppQueryConditions = new List<Access.AppQueryConditions>();
-    //    }
     }
 
 }

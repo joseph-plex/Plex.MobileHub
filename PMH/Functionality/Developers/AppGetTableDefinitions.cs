@@ -12,7 +12,7 @@ namespace Plex.PMH.Functionality.Developers
     {
         public static List<TableDefinition> AppGetTableDefinition(int ApplicationId, string ApplicationAuthenticationKey)
         {
-            var Applications = new List<APPS>(APPS.GetAll());//.APPS.ToList();
+            var Applications = new List<APPS>(APPS.GetAll());
             var CurrentAppIndex = Applications.FindIndex((p) => p.APP_ID == ApplicationId);
 
             if (CurrentAppIndex == -1) throw new InvalidApplicationException();

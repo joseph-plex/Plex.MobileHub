@@ -7,6 +7,13 @@ namespace Plex.PMH.Data
 {
     public class Row
     {
+        public object this[int i]
+        {
+            get
+            {
+                return Values[i];
+            }
+        }
         public List<object> Values = new List<object>();
     }
 }

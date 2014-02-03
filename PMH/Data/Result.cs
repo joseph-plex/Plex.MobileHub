@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Plex.PMH.Data
 {
@@ -18,9 +16,28 @@ namespace Plex.PMH.Data
         {
             get
             {
-                int ColumnIndex = Columns.FindIndex((p) => p.ColumnName.Equals(ColumnName, StringComparison.OrdinalIgnoreCase));
-                return Rows[RowIndex].Values[ColumnIndex];
+                return this[Columns.FindIndex((p) => p.ColumnName.Equals(ColumnName, StringComparison.OrdinalIgnoreCase)), RowIndex];
             }
+        }
+        public IEnumerable<object> this[int ColumnIndex]
+        {
+            get 
+            {
+                foreach (var row in Rows)
+                    yield return row.Values[ColumnIndex];
+            }
+        }
+        public IEnumerable<object> this[string ColumnName]
+        {
+            get
+            {
+                return this[Columns.FindIndex((p) => p.ColumnName.Equals(ColumnName, StringComparison.OrdinalIgnoreCase))];
+            }
+        }
+
+        public int GetColumnIndex(String ColumnName)
+        {
+            return Columns.FindIndex((p) => p.ColumnName.Equals(ColumnName, StringComparison.OrdinalIgnoreCase));
         }
 
         public List<Col> Columns = new List<Col>();

@@ -173,8 +173,7 @@ namespace Plex.PMH.Data
             using (var Conn = Utilities.GetConnection(true))
                 return Delete(Conn);
         }
-
-
+        
         protected void AutoFill(IDataReader reader, Object obj)
         {
             foreach (var f in  obj.GetType().GetFields())

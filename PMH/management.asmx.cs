@@ -55,6 +55,23 @@ namespace Plex.PMH
         }
 
         [WebMethod]
+        public List<String> GetTableNames()
+        {
+            return null;
+        }
+
+        [WebMethod]
+        public bool AreTablesCorrect()
+        {
+            return Utilities.AreTablesCorrect();
+        }
+
+        [WebMethod]
+        public bool ValidateVariablesAgainstTables()
+        {
+            return Utilities.AreTablesCorrect();
+        }
+        [WebMethod]
         public List<String> GetDbTypeVariables(String VariableName)
         {
             var Fields = new List<string>();
@@ -124,10 +141,15 @@ namespace Plex.PMH
         }
 
         [WebMethod]
-        public QueryResult QueryPMH(string sql)
+        public Result QueryPMH(string sql)
         {
-            return null;
-            //return Utilities.Query(sql);
+            return Utilities.GetConnection(true).Query(sql);
+        }
+
+        [WebMethod]
+        public int GetSequence(SequenceType Seq)
+        {
+            return Utilities.GetNextSequenceValue(Seq);
         }
     }
 }
