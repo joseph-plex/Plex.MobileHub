@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace Plex.PMH.Data.Tables
 {
@@ -19,10 +19,10 @@ namespace Plex.PMH.Data.Tables
                 return GetAll(Conn);
         }
 
-        public static IEnumerable<CLIENTS> GetAll(OracleConnection Conn)
+        public static IEnumerable<CLIENTS> GetAll(IDbConnection Conn)
         {
             var collection = new List<CLIENTS>();
-            using (var Command = new OracleCommand("SELECT * FROM CLIENTS", Conn))
+            using (var Command = Conn.CreateCommand("SELECT * FROM CLIENTS"))
             using (var reader = Command.ExecuteReader())
                 while (reader.Read())
                     collection.Add(new CLIENTS(reader));
@@ -35,16 +35,14 @@ namespace Plex.PMH.Data.Tables
                 return GetCLIENT_USERS(Conn);
         }
 
-        public IEnumerable<CLIENT_USERS> GetCLIENT_USERS(OracleConnection Conn)
+        public IEnumerable<CLIENT_USERS> GetCLIENT_USERS(IDbConnection Conn)
         {
             var collection = new List<CLIENT_USERS>();
-            using (var Command = new OracleCommand("SELECT * FROM CLIENT_USERS WHERE CLIENT_ID  = :a", Conn))
-            {
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-                using (var reader = Command.ExecuteReader())
-                    while (reader.Read())
-                        collection.Add(new CLIENT_USERS(reader));
-            }
+            //using (var Command = new OracleCommand(, Conn))
+            using (var Command = Conn.CreateCommand("SELECT * FROM CLIENT_USERS WHERE CLIENT_ID  = :a", CLIENT_ID))
+            using (var reader = Command.ExecuteReader())
+                while (reader.Read())
+                    collection.Add(new CLIENT_USERS(reader));
             return collection;
         }
 
@@ -54,16 +52,14 @@ namespace Plex.PMH.Data.Tables
                 return GetCLIENT_APPS(Conn);
         }
 
-        public IEnumerable<CLIENT_APPS> GetCLIENT_APPS(OracleConnection Conn)
+        public IEnumerable<CLIENT_APPS> GetCLIENT_APPS(IDbConnection Conn)
         {
             var collection = new List<CLIENT_APPS>();
-            using (var Command = new OracleCommand("SELECT * FROM CLIENT_APPS  WHERE CLIENT_ID  = :a", Conn))
-            {
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-                using (var reader = Command.ExecuteReader())
-                    while (reader.Read())
-                        collection.Add(new CLIENT_APPS(reader));
-            }
+            using (var Command = Conn.CreateCommand("SELECT * FROM CLIENT_APPS  WHERE CLIENT_ID  = :a", CLIENT_ID))
+            using (var reader = Command.ExecuteReader())
+                while (reader.Read())
+                    collection.Add(new CLIENT_APPS(reader));
+            
             return collection;
         }
 
@@ -73,16 +69,14 @@ namespace Plex.PMH.Data.Tables
                 return GetCLIENT_DB_COMPANIES(Conn);
         }
 
-        public IEnumerable<CLIENT_DB_COMPANIES> GetCLIENT_DB_COMPANIES(OracleConnection Conn)
+        public IEnumerable<CLIENT_DB_COMPANIES> GetCLIENT_DB_COMPANIES(IDbConnection Conn)
         {  
             var collection = new List<CLIENT_DB_COMPANIES>();
-            using (var Command = new OracleCommand("SELECT * FROM CLIENT_DB_COMPANIES  WHERE CLIENT_ID  = :a", Conn))
-            {
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-                using (var reader = Command.ExecuteReader())
-                    while (reader.Read())
-                        collection.Add(new CLIENT_DB_COMPANIES(reader));
-            }
+            using (var Command = Conn.CreateCommand("SELECT * FROM CLIENT_DB_COMPANIES  WHERE CLIENT_ID  = :a", CLIENT_ID))
+            using (var reader = Command.ExecuteReader())
+                while (reader.Read())
+                    collection.Add(new CLIENT_DB_COMPANIES(reader));
+            
             return collection;
         }
 
@@ -90,75 +84,13 @@ namespace Plex.PMH.Data.Tables
         public string CLIENT_KEY;		
         public string DESCRIPTION;
 
-        public CLIENTS() { }
-        public CLIENTS(OracleDataReader reader)
+        public CLIENTS() : base()
         {
-            CLIENT_ID = pCLIENT_ID(reader);
-            DESCRIPTION = pDDESCRIPTION(reader);
-            CLIENT_KEY = pCLIENT_KEY(reader);
+            PrimaryKey.Add("CLIENT_ID");
         }
-
-        int pCLIENT_ID(OracleDataReader reader)
+        public CLIENTS(IDataReader reader)
         {
-            return (reader["CLIENT_ID"] != DBNull.Value)?Convert.ToInt32(reader["CLIENT_ID"]): new int();
-        }
-        string pCLIENT_KEY(OracleDataReader reader)
-        {
-            return (reader["CLIENT_KEY"] != DBNull.Value) ? Convert.ToString(reader["CLIENT_KEY"]) : string.Empty;
-        }
-        string pDDESCRIPTION(OracleDataReader reader)
-        {
-            return (reader["DESCRIPTION"] != DBNull.Value) ? Convert.ToString(reader["DESCRIPTION"]) : string.Empty;
-        }
-
-        //Methods
-        public override bool Insert(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "INSERT INTO CLIENTS (CLIENT_ID, DESCRIPTION, CLIENT_KEY) VALUES (:a, :b, :c) ";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                CLIENT_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-                Command.Parameters.Add(":b", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
-                Command.Parameters.Add(":c", ResolveType(CLIENT_KEY)).Value = CLIENT_KEY;
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnInsert != null) OnInsert(this, EventArgs.Empty);
-                return r;
-            }
-        }
-        public override bool Update(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "UPDATE CLIENTS SET ";
-            sql += "DESCRIPTION = :b, CLIENT_KEY = :c ";
-            sql += "WHERE CLIENT_ID = :a";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                Command.Parameters.Add(":b", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
-                Command.Parameters.Add(":c", ResolveType(CLIENT_KEY)).Value = CLIENT_KEY;
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnUpdate != null) OnUpdate(this, EventArgs.Empty);
-                return r;
-            }
-        }
-        public override bool Delete(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "DELETE FROM CLIENTS ";
-            sql += "WHERE CLIENT_ID = :a";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                Command.Parameters.Add(":a", ResolveType(CLIENT_ID)).Value = CLIENT_ID;
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnDelete != null) OnDelete(this, EventArgs.Empty);
-                return r;
-            }
+            AutoFill(reader, this);
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace Plex.PMH.Data
 {
@@ -15,8 +12,8 @@ namespace Plex.PMH.Data
         bool Delete();
 
         //Makes it possible to do transactions
-        bool Insert(OracleConnection Conn);
-        bool Update(OracleConnection Conn);
-        bool Delete(OracleConnection Conn);
+        bool Insert(IDbConnection Conn);
+        bool Update(IDbConnection Conn);
+        bool Delete(IDbConnection Conn);
     }
 }

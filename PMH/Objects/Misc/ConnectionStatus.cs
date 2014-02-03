@@ -1,5 +1,4 @@
-﻿
-public enum ConnectionStatus
+﻿public enum ConnectionStatus
 {
     Connected,
     Disconnected

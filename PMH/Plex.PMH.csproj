@@ -32,6 +32,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <PlatformTarget>x64</PlatformTarget>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,9 +46,11 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <IncludeIisSettings>false</IncludeIisSettings>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess">
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\OracleComponents(12)x64\ODAC121010Xcopy_x64\odp.net4\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System">
@@ -132,6 +135,7 @@
     <Compile Include="Data\IPlexxisDatabaseRow.cs" />
     <Compile Include="Data\Tables\DEVICES.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA_QUERIES.cs" />
+    <Compile Include="Data\IDbConnectionExtensions.cs" />
     <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
     <Compile Include="Functionality\API\DeviceSynchronization.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />

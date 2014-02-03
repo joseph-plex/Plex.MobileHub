@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace Plex.PMH.Data.Tables
 {
@@ -18,10 +18,10 @@ namespace Plex.PMH.Data.Tables
                 return GetAll(Conn);
         }
 
-        public static IEnumerable<APP_TABLE_COLUMNS> GetAll(OracleConnection Conn)
+        public static IEnumerable<APP_TABLE_COLUMNS> GetAll(IDbConnection Conn)
         {
             var collection = new List<APP_TABLE_COLUMNS>();
-            using (var Command = new OracleCommand("SELECT * FROM APP_TABLE_COLUMNS", Conn))
+            using (var Command = Conn.CreateCommand("SELECT * FROM APP_TABLE_COLUMNS"))
             using (var reader = Command.ExecuteReader())
                 while (reader.Read())
                     collection.Add(new APP_TABLE_COLUMNS(reader));
@@ -44,166 +44,13 @@ namespace Plex.PMH.Data.Tables
         public int? IS_UNIQUE;//	NUMBER(1)	Y			
         public string DESCRIPTION;//VARCHAR2(4000)	Y		
 
-        public APP_TABLE_COLUMNS()
+        public APP_TABLE_COLUMNS() : base()
         {
+            PrimaryKey.Add("TABLE_COLUMN_ID");
         }
-        public APP_TABLE_COLUMNS(OracleDataReader reader)
+        public APP_TABLE_COLUMNS(IDataReader reader)
         {
-            TABLE_ID = pTABLE_ID(reader);
-            TABLE_COLUMN_ID = pTABLE_COLUMN_ID(reader);
-            COLUMN_NAME = pCOLUMN_NAME(reader);
-            DATA_TYPE = pDATA_TYPE(reader);
-            DATA_LENGTH = pDATA_LENGTH(reader);
-            DATA_PRECISION = pDATA_PRECISION(reader);
-            DATA_SCALE = pDATA_SCALE(reader);
-            ALLOW_DB_NULL = pALLOW_DB_NULL(reader);
-            IS_READ_ONLY = pALLOW_DB_NULL(reader);
-            IS_LONG = pIS_LONG(reader);
-            IS_KEY = pIS_KEY(reader);
-            KEY_TYPE = pKEY_TYPE(reader);
-            DESCRIPTION = pDESCRIPTION(reader);
-            IS_UNIQUE = pIS_UNIQUE(reader);
-        }
-
-        int pTABLE_ID(OracleDataReader reader)
-        {
-            return (reader["TABLE_ID"] != DBNull.Value) ? Convert.ToInt32(reader["TABLE_ID"]) : new int();
-        }
-        int pTABLE_COLUMN_ID(OracleDataReader reader)
-        {
-            return (reader["TABLE_COLUMN_ID"] != DBNull.Value) ? Convert.ToInt32(reader["TABLE_COLUMN_ID"]) : new int();
-        }
-        string pCOLUMN_NAME(OracleDataReader reader)
-        {
-            return (reader["COLUMN_NAME"] != DBNull.Value) ? Convert.ToString(reader["COLUMN_NAME"]) : string.Empty;
-        }
-        int pCOLUMN_SEQUENCE(OracleDataReader reader)
-        {
-            return (reader["COLUMN_SEQUENCE"] != DBNull.Value) ? Convert.ToInt32(reader["COLUMN_SEQUENCE"]) : new int();
-        }
-        string pDATA_TYPE(OracleDataReader reader)
-        {
-            return (reader["DATA_TYPE"] != DBNull.Value) ? Convert.ToString(reader["DATA_TYPE"]) : string.Empty;
-        }
-        int pDATA_LENGTH(OracleDataReader reader)
-        {
-            return (reader["DATA_LENGTH"] != DBNull.Value) ? Convert.ToInt32(reader["DATA_LENGTH"]) : new int();
-        }
-        int pDATA_PRECISION(OracleDataReader reader)
-        {
-            return (reader["DATA_PRECISION"] != DBNull.Value) ? Convert.ToInt32(reader["DATA_PRECISION"]) : new int();
-        }
-        int pDATA_SCALE(OracleDataReader reader)
-        {
-            return (reader["DATA_SCALE"] != DBNull.Value) ? Convert.ToInt32(reader["DATA_SCALE"]) : new int();
-        }
-        int pALLOW_DB_NULL(OracleDataReader reader)
-        {
-            return (reader["ALLOW_DB_NULL"] != DBNull.Value) ? Convert.ToInt32(reader["ALLOW_DB_NULL"]) : new int();
-        }
-        int pIS_READ_ONLY(OracleDataReader reader)
-        {
-            return (reader["IS_READ_ONLY"] != DBNull.Value) ? Convert.ToInt32(reader["IS_READ_ONLY"]) : new int();
-        }
-        int pIS_LONG(OracleDataReader reader)
-        {
-            return (reader["IS_LONG"] != DBNull.Value) ? Convert.ToInt32(reader["IS_LONG"]) : new int();
-        }
-        int pIS_KEY(OracleDataReader reader)
-        {
-            return (reader["IS_KEY"] != DBNull.Value) ? Convert.ToInt32(reader["IS_KEY"]) : new int();
-        }
-        string pKEY_TYPE(OracleDataReader reader)
-        {
-            return (reader["KEY_TYPE"] != DBNull.Value) ? Convert.ToString(reader["KEY_TYPE"]) : string.Empty;
-        }
-        int pIS_UNIQUE(OracleDataReader reader)
-        {
-            return (reader["IS_UNIQUE"] != DBNull.Value) ? Convert.ToInt32(reader["IS_UNIQUE"]) : new int();
-        }
-        string pDESCRIPTION(OracleDataReader reader)
-        {
-            return (reader["DESCRIPTION"] != DBNull.Value) ? Convert.ToString(reader["DESCRIPTION"]) : string.Empty;
-        }
-
-        public override bool Insert(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "insert into app_table_columns ";
-            sql += "(TABLE_ID, TABLE_COLUMN_ID, COLUMN_NAME, COLUMN_SEQUENCE, ";
-            sql += "DATA_TYPE, DATA_LENGTH, DATA_PRECISION, DATA_SCALE, ALLOW_DB_NULL,";
-            sql += "IS_READ_ONLY, IS_LONG, IS_KEY, KEY_TYPE, IS_UNIQUE, DESCRIPTION)";
-            sql += "values(:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o)";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                TABLE_ID = Utilities.SequenceNextValue(Sequences.ID_GEN);
-                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
-                Command.Parameters.Add(":b", ResolveType(TABLE_COLUMN_ID)).Value = TABLE_COLUMN_ID;
-                Command.Parameters.Add(":c", ResolveType(COLUMN_NAME)).Value = COLUMN_NAME;
-                Command.Parameters.Add(":d", ResolveType(COLUMN_SEQUENCE)).Value = COLUMN_SEQUENCE;
-                Command.Parameters.Add(":e", ResolveType(DATA_TYPE)).Value = DATA_TYPE;
-                Command.Parameters.Add(":f", ResolveType(DATA_LENGTH)).Value = DATA_LENGTH ?? null;
-                Command.Parameters.Add(":g", ResolveType(DATA_PRECISION)).Value = DATA_PRECISION ?? null;
-                Command.Parameters.Add(":h", ResolveType(DATA_SCALE)).Value = DATA_SCALE ?? null;
-                Command.Parameters.Add(":i", ResolveType(ALLOW_DB_NULL)).Value = ALLOW_DB_NULL ?? null;
-                Command.Parameters.Add(":j", ResolveType(IS_READ_ONLY)).Value = IS_READ_ONLY ?? null;
-                Command.Parameters.Add(":k", ResolveType(IS_LONG)).Value = IS_LONG ?? null;
-                Command.Parameters.Add(":l", ResolveType(IS_KEY)).Value = IS_KEY ?? null;
-                Command.Parameters.Add(":m", ResolveType(KEY_TYPE)).Value = KEY_TYPE;
-                Command.Parameters.Add(":n", ResolveType(IS_UNIQUE)).Value = IS_UNIQUE ?? null;
-                Command.Parameters.Add(":o", ResolveType(DESCRIPTION)).Value = DESCRIPTION;
-
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnInsert != null) OnInsert(this, EventArgs.Empty);
-                return r;
-            }
-        }
-        public override bool Update(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "UPDATE APP_TABLE_COLUMNS SET ";
-            sql += "TABLE_COLUMN_ID = :b, COLUMN_NAME = :c, COLUMN_SEQUENCE = :d, ";
-            sql += "DATA_TYPE = :e, DATA_LENGTH = :f, DATA_PRECISION = :g , DATA_SCALE = :h, ";
-            sql += "ALLOW_DB_NULL = :i, IS_READ_ONLY =:j, IS_LONG = :k, IS_KEY = :l, KEY_TYPE = :m, ";
-            sql += "IS_UNIQUE = :n, DESCRIPTION = :o ";
-            sql += "WHERE TABLE_ID = :a";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                Command.Parameters.Add(":b", ResolveType(TABLE_COLUMN_ID)).Value = TABLE_COLUMN_ID;
-                Command.Parameters.Add(":c", ResolveType(COLUMN_NAME)).Value = COLUMN_NAME;
-                Command.Parameters.Add(":d", ResolveType(COLUMN_SEQUENCE)).Value = COLUMN_SEQUENCE;
-                Command.Parameters.Add(":e", ResolveType(DATA_TYPE)).Value = DATA_TYPE;
-                Command.Parameters.Add(":f", ResolveType(DATA_LENGTH)).Value = DATA_LENGTH ?? null;
-                Command.Parameters.Add(":g", ResolveType(DATA_PRECISION)).Value = DATA_PRECISION ?? null;
-                Command.Parameters.Add(":h", ResolveType(DATA_SCALE)).Value = DATA_SCALE ?? null;
-                Command.Parameters.Add(":i", ResolveType(ALLOW_DB_NULL)).Value = ALLOW_DB_NULL ?? null;
-                Command.Parameters.Add(":j", ResolveType(IS_READ_ONLY)).Value = IS_READ_ONLY ?? null;
-                Command.Parameters.Add(":k", ResolveType(IS_LONG)).Value = IS_LONG ?? null;
-                Command.Parameters.Add(":l", ResolveType(IS_KEY)).Value = IS_KEY ?? null;
-                Command.Parameters.Add(":m", ResolveType(KEY_TYPE)).Value = KEY_TYPE;
-                Command.Parameters.Add(":n", ResolveType(IS_UNIQUE)).Value = IS_UNIQUE ?? null;
-                Command.Parameters.Add(":o", ResolveType(DESCRIPTION)).Value = DESCRIPTION; 
-                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
-
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnUpdate != null) OnUpdate(this, EventArgs.Empty);
-                return r;
-            }
-        }
-        public override bool Delete(OracleConnection Conn)
-        {
-            string sql = string.Empty;
-            sql += "DELETE FROM APP_TABLE_COLUMNS WHERE TABLE_ID = :a";
-
-            using (var Command = new OracleCommand(sql, Conn))
-            {
-                Command.Parameters.Add(":a", ResolveType(TABLE_ID)).Value = TABLE_ID;
-                var r = Convert.ToBoolean(Command.ExecuteNonQuery());
-                if (OnDelete != null) OnDelete(this, EventArgs.Empty);
-                return r;
-            }
+            AutoFill(reader, this);
         }
     }
 }
