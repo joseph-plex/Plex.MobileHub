@@ -118,7 +118,8 @@
       <DependentUpon>clients.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Data\Sequences.cs" />
+    <Compile Include="Data\Col.cs" />
+    <Compile Include="Data\Row.cs" />
     <Compile Include="Data\Tables\APP_QUERIES.cs" />
     <Compile Include="Data\Tables\APP_QUERY_COLUMNS.cs" />
     <Compile Include="Data\Tables\APP_QUERY_CONDITIONS.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Data\Tables\DEVICES.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA_QUERIES.cs" />
     <Compile Include="Data\IDbConnectionExtensions.cs" />
+    <Compile Include="Data\Result.cs" />
     <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
     <Compile Include="Functionality\API\DeviceSynchronization.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />

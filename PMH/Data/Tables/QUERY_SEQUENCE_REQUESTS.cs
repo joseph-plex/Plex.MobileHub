@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
+using System.Collections.Generic;
 
 namespace Plex.PMH.Data.Tables
 {
@@ -42,6 +40,29 @@ namespace Plex.PMH.Data.Tables
         public QUERY_SEQUENCE_REQUESTS(IDataReader reader)
         {
             AutoFill(reader, this);
+        }
+        public override bool Insert(IDbConnection Conn)
+        {
+            var r = base.Insert();
+            if (OnInsert != null)
+                OnInsert(this, EventArgs.Empty);
+            return r;
+        }
+
+        public override bool Update(IDbConnection Conn)
+        {
+            var r = base.Update(Conn);
+            if (OnUpdate != null)
+                OnUpdate(this, EventArgs.Empty);
+            return r;
+        }
+
+        public override bool Delete(IDbConnection Conn)
+        {
+            var r = base.Delete(Conn);
+            if (OnDelete != null)
+                OnDelete(this, EventArgs.Empty);
+            return r;
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
+using System.Collections.Generic;
 
 namespace Plex.PMH.Data.Tables
 {
@@ -38,7 +36,6 @@ namespace Plex.PMH.Data.Tables
         public IEnumerable<CLIENT_USERS> GetCLIENT_USERS(IDbConnection Conn)
         {
             var collection = new List<CLIENT_USERS>();
-            //using (var Command = new OracleCommand(, Conn))
             using (var Command = Conn.CreateCommand("SELECT * FROM CLIENT_USERS WHERE CLIENT_ID  = :a", CLIENT_ID))
             using (var reader = Command.ExecuteReader())
                 while (reader.Read())
@@ -91,6 +88,30 @@ namespace Plex.PMH.Data.Tables
         public CLIENTS(IDataReader reader)
         {
             AutoFill(reader, this);
+        }
+
+        public override bool Insert(IDbConnection Conn)
+        {
+            var r = base.Insert();
+            if (OnInsert != null)
+                OnInsert(this, EventArgs.Empty);
+            return r;
+        }
+
+        public override bool Update(IDbConnection Conn)
+        {
+            var r = base.Update(Conn);
+            if (OnUpdate != null)
+                OnUpdate(this, EventArgs.Empty);
+            return r;
+        }
+
+        public override bool Delete(IDbConnection Conn)
+        {
+            var r = base.Delete(Conn);
+            if (OnDelete != null)
+                OnDelete(this, EventArgs.Empty);
+            return r;
         }
     }
 }
