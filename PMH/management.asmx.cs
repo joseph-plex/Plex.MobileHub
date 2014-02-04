@@ -55,22 +55,12 @@ namespace Plex.PMH
         }
 
         [WebMethod]
-        public List<String> GetTableNames()
+        public void ValidateDataStructures()
         {
-            return null;
+            Utilities.AreTablesCorrect();
+            Utilities.AreObjectsCorrect();
         }
 
-        [WebMethod]
-        public bool AreTablesCorrect()
-        {
-            return Utilities.AreTablesCorrect();
-        }
-
-        [WebMethod]
-        public bool ValidateVariablesAgainstTables()
-        {
-            return Utilities.AreTablesCorrect();
-        }
         [WebMethod]
         public List<String> GetDbTypeVariables(String VariableName)
         {

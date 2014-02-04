@@ -2,6 +2,9 @@
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
+
+using Plex.PMH.Data.Types;
+
 namespace Plex.PMH.Data
 {
     public static class IDbConnectionExtensions
