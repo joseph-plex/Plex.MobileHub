@@ -29,7 +29,6 @@ namespace Plex.PMH.Repositories
 
         private Dictionary<int, ConnectionData> ConnectionRepo;
 
-
         private Connections()
         {
             ConnectionRepo = new Dictionary<int, ConnectionData>();
@@ -40,19 +39,9 @@ namespace Plex.PMH.Repositories
             return new Dictionary<int, ConnectionData>(ConnectionRepo);
         }
 
-        public int Add(int ClientId, string Key)
-        {
-            return Add(new ConnectionData()
-            {
-                ClientId = ClientId,
-                Key = Key
-            });
-        }
-        public int Add(ConnectionData Data)
+        public void Add(ConnectionData Data)
         {
             //todo make a custom exception for this (or find one)
-            Random r = new Random();
-            int Key;
 
             var clients = CLIENTS.GetAll().ToList();
             var index = clients.FindIndex((p) => p.CLIENT_ID == Data.ClientId);
@@ -62,26 +51,13 @@ namespace Plex.PMH.Repositories
             if (clients[index].CLIENT_KEY != Data.Key) throw new Exception("Invalid Client Key");
             if (ConnectionRepo.Values.ToList().Exists((p) => p.ClientId == Data.ClientId)) throw new MultipleClientLoginException();
 
-            do Key = r.Next(); while (ConnectionRepo.ContainsKey(Data.ClientId));
-
             Data.InitTime = DateTime.Now;
             Data.LastCheck = Stopwatch.StartNew();
 
-            ConnectionRepo.Add(Key, Data);
-            return Key;
+            ConnectionRepo.Add(Data.ClientId, Data);
         }
 
-        public void Modify(int ConnectionId, int ClientId, string Key)
-        {
-            Modify(ConnectionId, new ConnectionData()
-            {
-                ClientId = ClientId,
-                Key = Key,
-                InitTime = DateTime.Now,
-                LastCheck = Stopwatch.StartNew()
-            });
-        }
-        public void Modify(int ConnectionId, ConnectionData Data)
+        public void Modify(ConnectionData Data)
         {
             if (!CLIENTS.GetAll().ToList().Exists((p) => p.CLIENT_ID == Data.ClientId && p.CLIENT_KEY == Data.Key))
                 throw new Exception("Invalid Client Credentials");
@@ -98,15 +74,8 @@ namespace Plex.PMH.Repositories
                 ConnectionRepo.Remove(i);
         }
 
-        public void CheckIn(int ConnectionId) 
-        {
-            ConnectionRepo[ConnectionId].LastCheck = Stopwatch.StartNew();
-        }
-
         public ConnectionData Retrieve(int i)
         {
-            if (ConnectionRepo[i].LastCheck.ElapsedMilliseconds > OfflineTimer)
-                throw new Exception("This client is not logged in");
             return ConnectionRepo[i];
         }
 

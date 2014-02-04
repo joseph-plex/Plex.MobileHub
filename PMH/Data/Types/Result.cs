@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Plex.PMH.Data
+namespace Plex.PMH.Data.Types
 {
     public class Result
     {

@@ -8,10 +8,14 @@ namespace Plex.PMH.Repositories
 {
     public class ConnectionData
     {
-        public int ClientId;
-        public string Key;
+        public Int32 ClientId;
+        public String Key;
         
         public DateTime InitTime;
         public Stopwatch LastCheck;
+
+        public String IPv4;
+        public String IPv6;
+        public Int32 Port;
     }
 }

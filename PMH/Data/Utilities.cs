@@ -7,7 +7,7 @@ using System.Data;
 
 using System.Reflection;
 using Plex.PMH.Objects;
-
+using Plex.PMH.Data.Types;
 namespace Plex.PMH.Data
 {
     public delegate void Subscriber(Object sender, EventArgs e);
@@ -62,26 +62,25 @@ namespace Plex.PMH.Data
 
         public static bool AreObjectsCorrect()
         {
-            var Types = GetTypesInNamespace("Plex.PMH.Data.Tables").ToList();
+           
             using (var Conn = GetConnection(true))
             {
                 Result r = GetColumnData(Conn);
                 var TIndex = r.GetColumnIndex("TABLE_NAME");
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
+                var Types = GetTypesInNamespace("Plex.PMH.Data.Tables").ToList();
 
                 foreach(var TableName in GetTableNames(Conn))
                 {
-                    var TableColumns = r.Rows.FindAll((p)=> Convert.ToString(p[TIndex]) == TableName);
-
                     var Index = Types.FindIndex((p)=>p.Name == TableName);
                     if(Index == -1) throw new Exception("The Table " + TableName + " Does not have a variable representation");
                   
-                    foreach (var row in TableColumns)
+                    foreach (var row in r.Rows.FindAll((p)=> Convert.ToString(p[TIndex]) == TableName))
                         if(! Types[Index].GetFields().Any((p)=>p.Name == Convert.ToString(row[CIndex])))
                             throw new Exception("The Column " + row[CIndex] + " In Table " + TableName +  " Does not have a variable representation");
                 }
+                return true;
             }
-            return true;
         }
 
         public static bool AreTablesCorrect()
@@ -93,15 +92,13 @@ namespace Plex.PMH.Data
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
                 foreach (var t in GetTypesInNamespace("Plex.PMH.Data.Tables"))
                 {
-                    var Fields = t.GetFields();
                     var TableColumns = r.Rows.FindAll((p) => Convert.ToString(p[TIndex]) == t.Name);
-
-                    foreach (var f in Fields)
+                    foreach (var f in t.GetFields())
                         if (!TableColumns.Any((p) => Convert.ToString(p[CIndex]) == f.Name))
                             throw new Exception("The Field " + f.Name  + " in the type " + t.Name + " does not have a database representation");
                 }
+                return true;
             }
-            return true;
         }
 
         public static IEnumerable<string> GetTableNames(IDbConnection Conn)

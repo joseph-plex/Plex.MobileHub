@@ -118,8 +118,8 @@
       <DependentUpon>clients.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Data\Col.cs" />
-    <Compile Include="Data\Row.cs" />
+    <Compile Include="Data\Types\Col.cs" />
+    <Compile Include="Data\Types\Row.cs" />
     <Compile Include="Data\Tables\APP_QUERIES.cs" />
     <Compile Include="Data\Tables\APP_QUERY_COLUMNS.cs" />
     <Compile Include="Data\Tables\APP_QUERY_CONDITIONS.cs" />
@@ -137,7 +137,7 @@
     <Compile Include="Data\Tables\DEVICES.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA_QUERIES.cs" />
     <Compile Include="Data\IDbConnectionExtensions.cs" />
-    <Compile Include="Data\Result.cs" />
+    <Compile Include="Data\Types\Result.cs" />
     <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
     <Compile Include="Functionality\API\DeviceSynchronization.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />
@@ -193,11 +193,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Manager\Core.cs" />
     <Compile Include="management.asmx.cs">
       <DependentUpon>management.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Misc.cs" />
     <Compile Include="Objects\Synchronization\ApplicationSynchroData.cs" />
     <Compile Include="Objects\Synchronization\ClientSynchroData.cs" />
     <Compile Include="Objects\Data\Column.cs" />

@@ -6,12 +6,14 @@ using System.Web.Services;
 using System.Xml;
 using System.Xml.Serialization;
 
+using System.Reflection;
+
+
 using Plex.PMH.Repositories;
 using Plex.PMH.Data;
 using Plex.PMH.Data.Tables;
 using Plex.PMH.Objects;
-using System.IO;
-using System.Reflection;
+using Plex.PMH.Data.Types;
 namespace Plex.PMH
 {
     /// <summary>
@@ -46,48 +48,12 @@ namespace Plex.PMH
 
 
         [WebMethod]
-        public List<String> GetDbTypes()
-        {
-            var output = new List<String>();
-            foreach (var v in Utilities.GetTypesInNamespace("Plex.PMH.Data.Tables"))
-                output.Add(v.Name);
-            return output;
-        }
-
-        [WebMethod]
         public void ValidateDataStructures()
         {
             Utilities.AreTablesCorrect();
             Utilities.AreObjectsCorrect();
         }
-
-        [WebMethod]
-        public List<String> GetDbTypeVariables(String VariableName)
-        {
-            var Fields = new List<string>();
-            foreach (var t in Utilities.GetTypesInNamespace("Plex.PMH.Data.Tables").ToList().Find((p) => p.Name == VariableName).GetFields())
-                Fields.Add(t.Name);
-            return Fields;
-        }
-
-        [WebMethod]
-        public XmlDocument TestTables(string ObjectName, string CommName)
-        {
-            var type = Utilities.GetTypesInNamespace("Plex.PMH.Data.Tables").ToList().Find((p) => p.Name == ObjectName);
-            var obj = type.InvokeMember(CommName, BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod, Type.DefaultBinder, null, null);
-            using(var sw = new StringWriter()){
-                XmlDocument xml = new XmlDocument();
-                new XmlSerializer(obj.GetType()).Serialize(sw,obj);
-                xml.LoadXml(sw.ToString());
-                return xml ;
-            }
-        }
-        
-        public Manager GetManager()
-        {
-            return (Manager)Application["Manager"];
-        }
-
+     
         public class ClientDpInfo
         {
             public String Name;
@@ -134,12 +100,6 @@ namespace Plex.PMH
         public Result QueryPMH(string sql)
         {
             return Utilities.GetConnection(true).Query(sql);
-        }
-
-        [WebMethod]
-        public int GetSequence(SequenceType Seq)
-        {
-            return Utilities.GetNextSequenceValue(Seq);
         }
     }
 }

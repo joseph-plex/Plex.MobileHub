@@ -31,12 +31,22 @@ namespace Plex.PMH
         public MethodResult Login(int ClientId, string Key)
         {
             MethodResult mr = new MethodResult();
-            return mr.Success(Connections.Instance.Add(new ConnectionData(){
-                ClientId = ClientId,
-                Key = Key,
-                InitTime = DateTime.Now,
-                LastCheck = Stopwatch.StartNew()
-            })); 
+            try
+            {
+                Connections.Instance.Add(new ConnectionData()
+                {
+                    ClientId = ClientId,
+                    Key = Key,
+                    InitTime = DateTime.Now,
+                    LastCheck = Stopwatch.StartNew()
+                });
+                mr.Success();
+            }
+            catch (Exception e)
+            {
+                mr.Failure(e);
+            }
+            return mr;
         }
 
         [WebMethod]
@@ -88,10 +98,6 @@ namespace Plex.PMH
             return mr.Success();
         }
 
-        public Manager GetManager()
-        {
-            return (Manager)Application["Manager"];
-        }
         
         [WebMethod]
         public ClientSynchroData SyncDataGet()

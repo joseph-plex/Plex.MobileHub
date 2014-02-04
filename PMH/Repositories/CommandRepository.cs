@@ -27,14 +27,6 @@ namespace Plex.PMH.Repositories
 
         }
 
-        //private Commands()
-        //{
-        //    Access.Apps.OnInsert += OnDBAccessInsert;
-        //    Access.AppQueries.OnInsert += OnDBAccessInsert;
-        //    Access.AppQueryColumns.OnInsert += OnDBAccessInsert;
-        //    Access.AppQueryConditions.OnInsert += OnDBAccessInsert;
-        //}
-
         public Dictionary<int, Command> CommandRepo = new Dictionary<int, Command>();
 
         public event Subscriber OnAdd;
