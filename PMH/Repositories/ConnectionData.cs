@@ -10,12 +10,8 @@ namespace Plex.PMH.Repositories
     {
         public Int32 ClientId;
         public String Key;
-        
-        public DateTime InitTime;
-        public Stopwatch LastCheck;
 
         public String IPv4;
-        public String IPv6;
         public Int32 Port;
     }
 }

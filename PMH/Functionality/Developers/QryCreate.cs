@@ -68,9 +68,9 @@ namespace Plex.PMH.Functionality.Developers
                 //Set the query object
                 try
                 {
-                    var Query = new  APP_QUERIES();
+                    var Query = new APP_QUERIES();
 
-                    Query.QUERY_ID = new int();// doesn't matter this will be overwritten;
+                    Query.QUERY_ID = Convert.ToInt32(Conn.Query("select ID_GEN.NEXTVAL from dual")[0, 0]);
                     Query.APP_ID = ApplicationId;
                     Query.NAME = QryDef.QueryName;
 
@@ -88,11 +88,13 @@ namespace Plex.PMH.Functionality.Developers
                     Query.Insert(Conn);
                     foreach (var c in Conditions)
                     {
+                        c.CONDITION_ID = Convert.ToInt32(Conn.Query("select ID_GEN.NEXTVAL from dual")[0, 0]);
                         c.QUERY_ID = Query.QUERY_ID;
                         c.Insert(Conn);
                     }
                     foreach (var c in Columns)
                     {
+                        c.COLUMN_ID = Convert.ToInt32(Conn.Query("select ID_GEN.NEXTVAL from dual")[0, 0]);
                         c.QUERY_ID = Query.QUERY_ID;
                         c.Insert(Conn);
                     }

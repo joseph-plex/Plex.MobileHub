@@ -12,6 +12,7 @@ using Plex.PMH.Objects;
 using Plex.PMH.Objects.Synchronization;
 using Plex.PMH.Functionality.Clients;
 using System.Diagnostics;
+
 namespace Plex.PMH
 {
     /// <summary>
@@ -28,33 +29,15 @@ namespace Plex.PMH
         [XmlInclude(typeof(QueryResult))]
 
         [WebMethod]
-        public MethodResult Login(int ClientId, string Key)
+        public MethodResult Login(int ClientId, string Key, string IPv4, int Port)
         {
-            MethodResult mr = new MethodResult();
-            try
-            {
-                Connections.Instance.Add(new ConnectionData()
-                {
-                    ClientId = ClientId,
-                    Key = Key,
-                    InitTime = DateTime.Now,
-                    LastCheck = Stopwatch.StartNew()
-                });
-                mr.Success();
-            }
-            catch (Exception e)
-            {
-                mr.Failure(e);
-            }
-            return mr;
+            return Functions.ClientLogin(ClientId, Key, IPv4, Port);
         }
 
         [WebMethod]
         public MethodResult Logout(int ConnectionId)
         {
-            MethodResult mr = new MethodResult();
-            Connections.Instance.Remove(ConnectionId);
-            return mr.Success();
+            return Functions.ClientLogout(ConnectionId);
         }
 
         [WebMethod]
@@ -65,8 +48,6 @@ namespace Plex.PMH
             {
                 if (!Connections.Instance.ConnectionExists(ConnectionId))
                     throw new Exception("Invalid Connection Id");
-
-                Connections.Instance.CheckIn(ConnectionId);
 
                 var ConnectionDetails = Connections.Instance.Retrieve(ConnectionId);
                 var output = Commands.Instance.CommandRepo.Values.ToList().FindAll((p) => p.ClientId == ConnectionDetails.ClientId);
@@ -85,10 +66,8 @@ namespace Plex.PMH
         [WebMethod]
         public MethodResult Respond(Response Resp)
         {
-            MethodResult mr = new MethodResult();
-            Logs.GetInstance().Add(Resp.Resp);
-            Responses.Instance.Add(Resp.Id,Resp);
-            return mr.Success();
+
+            return Functions.ClientRespond(Resp);
         }
         [WebMethod]
         public MethodResult ResponsePartial(ResponseComponent Component)

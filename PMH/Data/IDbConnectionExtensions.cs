@@ -30,13 +30,9 @@ namespace Plex.PMH.Data
             using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
             {
                 r.Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
-                while (reader.Read())
-                {
-                    var CurrentRow = new Row();
-                    foreach (var Col in r.Columns)
-                        CurrentRow.Values.Add((reader[Col.ColumnName] != DBNull.Value) ? reader[Col.ColumnName] : null);
-                    r.Rows.Add(CurrentRow);
-                }
+                for (var Curr = new Row(); reader.Read(); r.Rows.Add(Curr), Curr = new Row())
+                    for (int i = 0; i < r.Columns.Count; i++)
+                        Curr.Values.Add((reader[r.Columns[i].ColumnName] != DBNull.Value) ? reader[r.Columns[i].ColumnName] : null);
             }
             return r;
         }

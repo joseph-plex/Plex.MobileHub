@@ -42,7 +42,7 @@ namespace Plex.PMH
             catch (Exception e)
             {
                 mr.Failure(e.Message);
-                Logs.GetInstance().Add(e);
+                Logs.Instance.Add(e);
             }
             return mr;
         }
@@ -62,7 +62,7 @@ namespace Plex.PMH
         [WebMethod]
         public QueryResult QryExecute(int nConnectionId, string QueryName)
         {
-            return Responses.ToObj<QueryResult>(Functions.QryExecute(nConnectionId, QueryName, null));
+            return Functions.QryExecute(nConnectionId, QueryName, null);
         }
 
         [WebMethod]

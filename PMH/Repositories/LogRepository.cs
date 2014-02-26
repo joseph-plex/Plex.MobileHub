@@ -10,12 +10,13 @@ namespace Plex.PMH.Repositories
     public class Logs
     {
         public static int count = 0;
-        private static Logs LogRepo;
-        public static Logs GetInstance()
+        private static Logs LogRepo = new Logs();
+        public static Logs Instance
         {
-            if (LogRepo == null)
-                LogRepo = new Logs();
-            return LogRepo;
+            get
+            {
+                return LogRepo;
+            }
         }
 
         private const string FileName = "LogData.bin";

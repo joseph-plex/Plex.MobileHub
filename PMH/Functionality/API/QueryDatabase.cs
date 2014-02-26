@@ -24,7 +24,7 @@ namespace Plex.PMH.Functionality.API
             }
             catch (Exception e)
             {
-                Logs.GetInstance().Add(e);
+                Logs.Instance.Add(e);
             }
             return null;
         }
@@ -35,7 +35,7 @@ namespace Plex.PMH.Functionality.API
             args.Add(Code);
             args.Add(Qry);
             int i = Commands.Instance.Add(ClientId, "Query", args);
-            Logs.GetInstance().Add(i);
+            Logs.Instance.Add(i);
             return Responses.Instance.GetResponse<QueryResult>(i);
         }
     }

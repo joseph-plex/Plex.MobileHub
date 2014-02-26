@@ -15,7 +15,7 @@ namespace Plex.PMH
             var con = Connections.Instance;
             var comm = Commands.Instance;
             var resp = Responses.Instance;
-            var logs = Logs.GetInstance();
+            var logs = Logs.Instance;
             var cons = Consumers.Instance;
         }
 

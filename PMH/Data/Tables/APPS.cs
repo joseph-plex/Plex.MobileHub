@@ -117,7 +117,7 @@ namespace Plex.PMH.Data.Tables
         }
         public override bool Insert(IDbConnection Conn)
         {
-            var r = base.Insert();
+            var r = base.Insert(Conn);
             if (OnInsert != null)
                 OnInsert(this, EventArgs.Empty);
             return r;

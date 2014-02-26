@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Plex.PMH.Objects
 {
@@ -15,74 +14,85 @@ namespace Plex.PMH.Objects
         public string Msg;
         public int Response;
 
-        public MethodResult Success()
+        public virtual MethodResult Success()
         {
             Msg = SuccessfulMessage;
             Response = SuccessfulCode;
             return this;
         }
 
-        public MethodResult Success(int SuccessCode)
+        public virtual MethodResult Success(int SuccessCode)
         {
             Msg = SuccessfulMessage;
             Response = SuccessCode;
             return this;
         }
 
-        public MethodResult Success(string SuccessMessage)
+        public virtual MethodResult Success(string SuccessMessage)
         {
             Msg = SuccessMessage;
             Response = SuccessfulCode;
             return this;
         }
 
-        public MethodResult Success(int SuccessCode, string SuccessMessage)
+        public virtual MethodResult Success(int SuccessCode, string SuccessMessage)
         {
             Msg = SuccessMessage;
             Response = SuccessCode;
             return this;
         }
-        
-        public MethodResult Failure()
+
+        public virtual MethodResult Failure()
         {
             Msg = UnhandledErrorMessage;
             Response = UnhandledErrorCode;
             return this;
         }
 
-        public MethodResult Failure(Exception e)
+        public virtual MethodResult Failure(Exception e)
         {
             Msg = e.Message;
             Response = UnhandledErrorCode;
             return this;
         }
 
-        public MethodResult Failure(int ErrorCode)
+        public virtual MethodResult Failure(int ErrorCode)
         {
             Msg = UnhandledErrorMessage;
             Response = ErrorCode;
             return this;
         }
 
-        public MethodResult Failure(string ErrorMessage)
+        public virtual MethodResult Failure(string ErrorMessage)
         {
             Msg = ErrorMessage;
             Response = UnhandledErrorCode;
             return this;
         }
 
-        public MethodResult Failure(int ErrorCode, Exception e)
+        public virtual MethodResult Failure(int ErrorCode, Exception e)
         {
             Msg = e.Message;
             Response = ErrorCode;
             return this;
         }
 
-        public MethodResult Failure(int ErrorCode, string ErrorMessage)
+        public virtual MethodResult Failure(int ErrorCode, string ErrorMessage)
         {
             Msg = ErrorMessage;
             Response = ErrorCode;
             return this;
+        }
+
+        public static implicit operator XmlDocument(MethodResult m)
+        {
+            XmlDocument d = new XmlDocument();
+            using (var sw = new System.IO.StringWriter())
+            {
+                new XmlSerializer(m.GetType()).Serialize(sw, m);
+                d.LoadXml(sw.ToString());
+                return d;
+            }
         }
     }
 }

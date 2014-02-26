@@ -3,13 +3,10 @@ using System.Collections.Generic;
 
 namespace Plex.PMH.Objects
 {
-    public class QueryResult
+    public class QueryResult : MethodResult
     {
         public DateTime StartTimeStamp;
         public DateTime CompletionTimeStamp;
-
-        public int Result;
-        public string Message;
 
         public int DBErrorCode;
         public string DBErrorMessage;

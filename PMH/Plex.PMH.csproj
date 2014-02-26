@@ -159,6 +159,7 @@
     <Compile Include="Exceptions\MultipleClientLoginException.cs" />
     <Compile Include="Exceptions\PlexError.cs" />
     <Compile Include="Exceptions\UnauthorizedClientException.cs" />
+    <Compile Include="Functionality\API\QryExecuteXml.cs" />
     <Compile Include="Functionality\Developers\AppGetQueries.cs" />
     <Compile Include="Functionality\Developers\AppGetTableDefinitions.cs" />
     <Compile Include="Functionality\Developers\ClientGetDatabaseList.cs" />
@@ -176,7 +177,7 @@
     <Compile Include="Functionality\Clients\ClientLogin.cs" />
     <Compile Include="Functionality\Clients\ClientLogout.cs" />
     <Compile Include="Functionality\Clients\ClientRespond.cs" />
-    <Compile Include="Functionality\Clients\ClientComGet.cs" />
+    <Compile Include="Functionality\Clients\ClientCommandRetrieveAll.cs" />
     <Compile Include="Functionality\Clients\ClientRespondSub.cs" />
     <Compile Include="Functionality\Clients\SyncInfoGet.cs" />
     <Compile Include="Functionality\Clients\Utilities.cs" />
@@ -201,7 +202,6 @@
     <Compile Include="Objects\Synchronization\ApplicationSynchroData.cs" />
     <Compile Include="Objects\Synchronization\ClientSynchroData.cs" />
     <Compile Include="Objects\Data\Column.cs" />
-    <Compile Include="Objects\Data\RowAction.cs" />
     <Compile Include="Objects\Data\RQ\Condition.cs" />
     <Compile Include="Objects\Data\IUDData.cs" />
     <Compile Include="Objects\MethodResults\GetCommandsMethodResult.cs" />

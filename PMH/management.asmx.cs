@@ -53,6 +53,13 @@ namespace Plex.PMH
             Utilities.AreTablesCorrect();
             Utilities.AreObjectsCorrect();
         }
+
+        [WebMethod]
+        public string GetExternalIP()
+        {
+            using (var sr = new System.IO.StreamReader(System.Net.WebRequest.Create("http://checkip.dyndns.org").GetResponse().GetResponseStream()))
+                return sr.ReadToEnd().Trim().Split(':')[1].Substring(1).Split('<')[0];
+        }
      
         public class ClientDpInfo
         {
@@ -82,7 +89,7 @@ namespace Plex.PMH
         [WebMethod]
         public List<Log> GetLogRepository()
         {
-            return Logs.GetInstance().GetLogs();
+            return Logs.Instance.GetLogs();
         }
         [WebMethod]
         public List<Response> GetResponseRepository()
@@ -93,7 +100,7 @@ namespace Plex.PMH
         [WebMethod]
         public List<Log> LogsGetAll()
         {
-            return Logs.GetInstance().GetLogs();
+            return Logs.Instance.GetLogs();
         }
 
         [WebMethod]
