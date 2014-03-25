@@ -3,7 +3,8 @@ using System.Linq;
 using System.Data;
 using System.Reflection;
 using System.Collections.Generic;
-namespace Plex.PMH.Data
+using MobileHub.Repositories;
+namespace MobileHub.Data
 {
     public abstract class PlexxisDataTransferObjects : IPlexxisDatabaseRow
     {
@@ -79,6 +80,8 @@ namespace Plex.PMH.Data
                 return Convert.ToBoolean(Command.ExecuteNonQuery());
             }
         }
+
+
         public virtual bool Update(IDbConnection Conn)
         {
             string sql1 = "UPDATE ^T^ ";
@@ -107,25 +110,18 @@ namespace Plex.PMH.Data
                 ColumnValuePairings += ((i != PrimaryKey.Count) ? "," : "") + FieldNames[i - PrimaryKey.Count] + " = " + BindingStart + i;
 
             sql = sql1.Replace("^T^", TableName) + sql2.Replace("^CVP^", ColumnValuePairings) + sql3.Replace("^C^", condition);
-            using (var Command = Conn.CreateCommand())
+            using (var Command = Conn.CreateCommand(sql))
             {
-                Command.CommandText = sql;
                 for (int i = 0; i < FieldNames.Count; i++)
-                {
-                    var param = Command.CreateParameter();
-                    param.Value = fields.Find((p) => FieldNames[i] == p.Name).GetValue(this);
-                    Command.Parameters.Add(param);
-                }
+                    Command.Parameters.Add(Command.CreateParameter(fields.Find((p) => FieldNames[i] == p.Name).GetValue(this)));
 
-                for (int i = 0; i < PrimaryKey.Count; i++)
-                {
-                    var param = Command.CreateParameter();
-                    param.Value = fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this);
-                    Command.Parameters.Add(param);
-                }
+                for (int i = 0; i < (fields.Count - FieldNames.Count); i++)
+                    Command.Parameters.Add(Command.CreateParameter(fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this)));
+
                 return Convert.ToBoolean(Command.ExecuteNonQuery());
             }
         }
+
         public virtual bool Delete(IDbConnection Conn)
         {
             string sql1 = "DELETE FROM ^T^ ";
@@ -143,15 +139,10 @@ namespace Plex.PMH.Data
                 condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
 
             sql = sql1.Replace("^T^", TableName) + sql2.Replace("^C^", condition);
-            using (var Command = Conn.CreateCommand())
+            using (var Command = Conn.CreateCommand(sql))
             {
-                Command.CommandText = sql;
                 for (int i = 0; i < PrimaryKey.Count; i++)
-                {
-                    var param = Command.CreateParameter();
-                    param.Value = fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this);
-                    Command.Parameters.Add(param);
-                }
+                    Command.CreateParameter(fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this));
                 return Convert.ToBoolean(Command.ExecuteNonQuery());
             }
         }

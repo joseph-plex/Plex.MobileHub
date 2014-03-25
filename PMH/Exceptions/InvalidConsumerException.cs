@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.PMH.Exceptions
+namespace MobileHub.Exceptions
 {
     public class InvalidConsumerException : PlexError
     {

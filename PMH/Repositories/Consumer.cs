@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public class Consumer
     {

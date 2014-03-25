@@ -7,13 +7,13 @@ using System.Threading;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
-using Plex.PMH.Repositories;
-using Plex.PMH.Objects;
-using Plex.PMH.Objects.Synchronization;
-using Plex.PMH.Functionality.Clients;
+using MobileHub.Repositories;
+using MobileHub.Objects;
+using MobileHub.Objects.Synchronization;
+using MobileHub.Functionality.Clients;
 using System.Diagnostics;
 
-namespace Plex.PMH
+namespace MobileHub
 {
     /// <summary>
     /// Summary description for Service1
@@ -66,7 +66,7 @@ namespace Plex.PMH
         [WebMethod]
         public MethodResult Respond(Response Resp)
         {
-
+            Logs.Instance.Add(Resp.Resp);
             return Functions.ClientRespond(Resp);
         }
         [WebMethod]
@@ -74,6 +74,7 @@ namespace Plex.PMH
         {
             MethodResult mr = new MethodResult();
             Responses.Instance.Add(Component.Id, Component);
+            Logs.Instance.Add(Component.Resp);
             return mr.Success();
         }
 

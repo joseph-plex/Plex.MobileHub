@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public class Log
     {
@@ -23,7 +23,6 @@ namespace Plex.PMH.Repositories
             set;
         }
 
-
         public Log() : this(string.Empty) { }
         public Log(String Log, DateTime Date, LogPriority Priority = LogPriority.Normal)
         {
@@ -33,5 +32,4 @@ namespace Plex.PMH.Repositories
         }
         public Log(String Log, LogPriority Priority = LogPriority.Normal) : this(Log, DateTime.Now, Priority) { }
     }
-
 }

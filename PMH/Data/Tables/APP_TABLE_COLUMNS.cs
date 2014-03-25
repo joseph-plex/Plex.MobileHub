@@ -2,7 +2,7 @@
 using System.Data;
 using System.Collections.Generic;
 
-namespace Plex.PMH.Data.Tables
+namespace MobileHub.Data.Tables
 {
     public class APP_TABLE_COLUMNS : PlexxisDataTransferObjects
     {

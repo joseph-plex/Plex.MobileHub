@@ -3,9 +3,9 @@ using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
 
-using Plex.PMH.Data.Types;
+using MobileHub.Data.Types;
 
-namespace Plex.PMH.Data
+namespace MobileHub.Data
 {
     public static class IDbConnectionExtensions
     {

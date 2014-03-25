@@ -5,7 +5,7 @@ using System.Web;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public class Logs
     {

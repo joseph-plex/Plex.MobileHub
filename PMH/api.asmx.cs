@@ -13,13 +13,13 @@ using System.Xml.Serialization;
 using System.IO;
 
 
-using Plex.PMH.Functionality.API;
-using Plex.PMH.Repositories;
-using Plex.PMH.Exceptions;
-using Plex.PMH.Objects;
-using Plex.PMH.Data.Tables;
+using MobileHub.Functionality.API;
+using MobileHub.Repositories;
+using MobileHub.Exceptions;
+using MobileHub.Objects;
+using MobileHub.Data.Tables;
 
-namespace Plex.PMH
+namespace MobileHub
 {
     /// <summary>
     /// Summary description for api

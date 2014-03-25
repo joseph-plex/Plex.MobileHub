@@ -48,13 +48,6 @@ namespace Plex.PMH.Tester
             foreach (var elem in d.Descendants())
                 elem.Name = elem.Name.LocalName;
 
-            //foreach (var attr in d.Descendants().Attributes())
-            //{
-            //    var elem = attr.Parent;
-            //    attr.Remove();
-            //    elem.Add(new XAttribute(attr.Name.LocalName, attr.Value));
-            //}
-
             var xmlDocument = new XmlDocument();
             using(var xmlReader = d.CreateReader())
                 xmlDocument.Load(xmlReader);

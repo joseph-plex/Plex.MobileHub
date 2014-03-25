@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="clients.asmx.cs" Class="Plex.PMH.ClientSDK" %>
+﻿<%@ WebService Language="C#" CodeBehind="clients.asmx.cs" Class="MobileHub.ClientSDK" %>

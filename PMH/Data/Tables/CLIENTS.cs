@@ -2,7 +2,7 @@
 using System.Data;
 using System.Collections.Generic;
 
-namespace Plex.PMH.Data.Tables
+namespace MobileHub.Data.Tables
 {
     public class CLIENTS : PlexxisDataTransferObjects
     {
@@ -80,12 +80,16 @@ namespace Plex.PMH.Data.Tables
         public int CLIENT_ID;			
         public string CLIENT_KEY;		
         public string DESCRIPTION;
+        public int? CLIENT_INSTANCE_ID;			
+        public string CLIENT_IP_ADDRESS;		
+        public int? CLIENT_PORT;
 
         public CLIENTS() : base()
         {
             PrimaryKey.Add("CLIENT_ID");
         }
-        public CLIENTS(IDataReader reader)
+
+        public CLIENTS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

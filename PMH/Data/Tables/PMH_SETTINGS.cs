@@ -1,8 +1,8 @@
-﻿    using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 
-    namespace Plex.PMH.Data.Tables
+namespace MobileHub.Data.Tables
     {
         public class PMH_SETTINGS : PlexxisDataTransferObjects
         {

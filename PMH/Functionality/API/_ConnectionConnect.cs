@@ -1,46 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Linq;
+using System.Collections.Generic;
 
-using MobileHub.Objects;
+using System.Threading;
+using System.Threading.Tasks;
+
 using MobileHub.Repositories;
 using MobileHub.Data.Tables;
 using MobileHub.Exceptions;
-using System.Reflection;
-
 
 namespace MobileHub.Functionality.API
 {
-    public class ConnectionConnect : FunctionStrategyBase<MethodResult>
+    public static partial class Functions
     {
-        public MethodResult Strategy(int clientId, int appId, string database, string user, string password)
+        public static int ConnectionConnect(int ClientId, int AppId, String Database, String User, String Password)
         {
-            var mr = new MethodResult();
-            try
-            {
-                Consumer Cons = new Consumer()
-                {
-                    ClientId = ClientGet(clientId).CLIENT_ID,
-                    AppId = ApplicationGet(appId).APP_ID,
-                    DatabaseId = CompanyGet(clientId, database).DB_COMPANY_ID,
-                    UserId = UserGet(clientId, user, password).USER_ID
-                };
+            Consumer Cons = new Consumer(){
+                ClientId = ClientGet(ClientId).CLIENT_ID,
+                AppId = ApplicationGet(AppId).APP_ID,
+                DatabaseId = CompanyGet(ClientId, Database).DB_COMPANY_ID,
+                UserId = UserGet(ClientId, User, Password).USER_ID
+            };
 
-                if (!IsValidClientApp(Cons.ClientId, Cons.AppId))
-                    throw new UnauthorizedClientException();
+            if (!IsValidClientApp(Cons.ClientId, Cons.AppId))
+                throw new UnauthorizedClientException();
 
-                if (!IsValidUserCompanyPermission(ClientDBCompanyUsers(Cons.DatabaseId, Cons.UserId).DB_COMPANY_USER_ID, appId))
-                    throw new Exception("User does not have access to the database");
+            if(!IsValidUserCompanyPermission(ClientDBCompanyUsers(Cons.DatabaseId, Cons.UserId).DB_COMPANY_USER_ID, AppId))
+                throw new Exception("User does not have access to the database");
 
-                mr.Success(Consumers.Instance.Add(Cons));
-
-            }
-            catch(Exception e)
-            {
-                mr.Failure(e);
-            }
-            return mr;
+            return Consumers.Instance.Add(Cons);
         }
 
         static APPS ApplicationGet(int ApplicationId)
@@ -54,7 +43,7 @@ namespace MobileHub.Functionality.API
         static CLIENTS ClientGet(int ClientId)
         {
             var Clients = new List<CLIENTS>(CLIENTS.GetAll());
-            var ClientIndex = Clients.FindIndex((p) => p.CLIENT_ID == ClientId);
+            var ClientIndex = Clients.FindIndex((p)=> p.CLIENT_ID == ClientId);
             if (ClientIndex == -1) throw new InvalidClientException();
             return Clients[ClientIndex];
         }
@@ -88,7 +77,7 @@ namespace MobileHub.Functionality.API
             if (DBIndex == -1) throw new Exception("User does not have access to the database");
             return collection[DBIndex];
         }
-
+        
         static bool IsValidUserCompanyPermission(int DbCompanyUserId, int AppId)
         {
             var AppAccess = new List<CLIENT_DB_COMPANY_USER_APPS>(CLIENT_DB_COMPANY_USER_APPS.GetAll());

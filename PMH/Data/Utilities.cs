@@ -6,9 +6,9 @@ using Oracle.DataAccess.Client;
 using System.Data;
 
 using System.Reflection;
-using Plex.PMH.Objects;
-using Plex.PMH.Data.Types;
-namespace Plex.PMH.Data
+using MobileHub.Objects;
+using MobileHub.Data.Types;
+namespace MobileHub.Data
 {
     public delegate void Subscriber(Object sender, EventArgs e);
 
@@ -68,7 +68,7 @@ namespace Plex.PMH.Data
                 Result r = GetColumnData(Conn);
                 var TIndex = r.GetColumnIndex("TABLE_NAME");
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
-                var Types = GetTypesInNamespace("Plex.PMH.Data.Tables").ToList();
+                var Types = GetTypesInNamespace("MobileHub.Data.Tables").ToList();
 
                 foreach(var TableName in GetTableNames(Conn))
                 {
@@ -90,7 +90,7 @@ namespace Plex.PMH.Data
                 Result r = GetColumnData(Conn);
                 var TIndex = r.GetColumnIndex("TABLE_NAME");
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
-                foreach (var t in GetTypesInNamespace("Plex.PMH.Data.Tables"))
+                foreach (var t in GetTypesInNamespace("MobileHub.Data.Tables"))
                 {
                     var TableColumns = r.Rows.FindAll((p) => Convert.ToString(p[TIndex]) == t.Name);
                     foreach (var f in t.GetFields())

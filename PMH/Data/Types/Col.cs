@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.PMH.Data.Types
+namespace MobileHub.Data.Types
 {
     public class Col
     {

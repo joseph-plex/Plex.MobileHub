@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public sealed class ResponseCompound : Response
     {
