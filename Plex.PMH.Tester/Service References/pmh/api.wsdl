@@ -50,130 +50,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="QryCreate">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Query" type="tns:QueryDefinition" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="QueryDefinition">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="TrackDelta" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
-          <s:element minOccurs="0" maxOccurs="1" name="WhereClauses" type="tns:ArrayOfCondition" />
-          <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCondition">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Condition" nillable="true" type="tns:Condition" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Condition">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnNVL" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnValue" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="QryCreateResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="QryCreateResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QryDelete">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="sQueryName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QryDeleteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="QryDeleteResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="QryExecute">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="Time" nillable="true" type="s:dateTime" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="QryExecuteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteResult">
-              <s:complexType mixed="true">
-                <s:sequence>
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryExecuteXml">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryExecuteXmlResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryExecuteXmlResult">
-              <s:complexType mixed="true">
-                <s:sequence>
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryExecuteObj">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryExecuteObjResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryExecuteObjResult" type="tns:QueryResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteResult" type="tns:QueryResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:complexType name="QueryResult">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Columns" type="tns:ArrayOfColumn" />
-          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
-        </s:sequence>
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MethodResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StartTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompletionTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="DBErrorCode" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DBErrorMessage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Columns" type="tns:ArrayOfColumn" />
+              <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
       <s:complexType name="ArrayOfColumn">
         <s:sequence>
@@ -204,23 +108,37 @@
       </s:complexType>
       <s:complexType name="Row">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Action" type="tns:RowAction" />
+          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
         </s:sequence>
       </s:complexType>
-      <s:simpleType name="RowAction">
-        <s:restriction base="s:string">
-          <s:enumeration value="Read" />
-          <s:enumeration value="Create" />
-          <s:enumeration value="Modify" />
-          <s:enumeration value="Delete" />
-        </s:restriction>
-      </s:simpleType>
       <s:complexType name="ArrayOfAnyType">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
         </s:sequence>
       </s:complexType>
+      <s:element name="QryExecuteXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryExecuteXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteXmlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="IUD">
         <s:complexType>
           <s:sequence>
@@ -234,6 +152,11 @@
           <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
           <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="IUDResponse">
@@ -250,21 +173,15 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfXmlDocument">
+      <s:complexType name="ArrayOfQueryResult">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="XmlDocument" nillable="true">
-            <s:complexType mixed="true">
-              <s:sequence>
-                <s:any />
-              </s:sequence>
-            </s:complexType>
-          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryResult" nillable="true" type="tns:QueryResult" />
         </s:sequence>
       </s:complexType>
       <s:element name="DeviceSynchronizationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeviceSynchronizationResult" type="tns:ArrayOfXmlDocument" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeviceSynchronizationResult" type="tns:ArrayOfQueryResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -274,61 +191,66 @@
       <s:element name="SyncResponse">
         <s:complexType />
       </s:element>
-      <s:element name="QueryDatabaseXml">
+      <s:element name="QueryDatabase">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="QueryDatabaseXmlResponse">
+      <s:element name="QueryDatabaseResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseXmlResult">
-              <s:complexType mixed="true">
-                <s:sequence>
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseResult" type="tns:QueryResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="QueryDatabaseObj">
+      <s:element name="DeviceSynchronize">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="connectionId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userDataId" nillable="true" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="QueryDatabaseObjResponse">
+      <s:element name="DeviceSynchronizeResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseObjResult" type="tns:QueryResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeviceSynchronizeResult" type="tns:DeviceSynchronizeMethodResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetSerialData">
+      <s:complexType name="DeviceSynchronizeMethodResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MethodResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StartTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompletionTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfQueryResult" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeviceRequestId">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="connectionId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetSerialDataResponse">
+      <s:element name="DeviceRequestIdResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSerialDataResult" type="tns:QueryResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeviceRequestIdResult" type="tns:MethodResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="MethodResult" nillable="true" type="tns:MethodResult" />
       <s:element name="int" type="s:int" />
-      <s:element name="boolean" type="s:boolean" />
       <s:element name="QueryResult" nillable="true" type="tns:QueryResult" />
-      <s:element name="ArrayOfXmlDocument" nillable="true" type="tns:ArrayOfXmlDocument" />
+      <s:element name="ArrayOfQueryResult" nillable="true" type="tns:ArrayOfQueryResult" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ConnectionConnectSoapIn">
@@ -349,35 +271,17 @@
   <wsdl:message name="ConnectionStatusSoapOut">
     <wsdl:part name="parameters" element="tns:ConnectionStatusResponse" />
   </wsdl:message>
-  <wsdl:message name="QryCreateSoapIn">
-    <wsdl:part name="parameters" element="tns:QryCreate" />
-  </wsdl:message>
-  <wsdl:message name="QryCreateSoapOut">
-    <wsdl:part name="parameters" element="tns:QryCreateResponse" />
-  </wsdl:message>
-  <wsdl:message name="QryDeleteSoapIn">
-    <wsdl:part name="parameters" element="tns:QryDelete" />
-  </wsdl:message>
-  <wsdl:message name="QryDeleteSoapOut">
-    <wsdl:part name="parameters" element="tns:QryDeleteResponse" />
-  </wsdl:message>
   <wsdl:message name="QryExecuteSoapIn">
     <wsdl:part name="parameters" element="tns:QryExecute" />
   </wsdl:message>
   <wsdl:message name="QryExecuteSoapOut">
     <wsdl:part name="parameters" element="tns:QryExecuteResponse" />
   </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlSoapIn">
-    <wsdl:part name="parameters" element="tns:QueryExecuteXml" />
+  <wsdl:message name="QryExecuteXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:QryExecuteXml" />
   </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlSoapOut">
-    <wsdl:part name="parameters" element="tns:QueryExecuteXmlResponse" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjSoapIn">
-    <wsdl:part name="parameters" element="tns:QueryExecuteObj" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjSoapOut">
-    <wsdl:part name="parameters" element="tns:QueryExecuteObjResponse" />
+  <wsdl:message name="QryExecuteXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:QryExecuteXmlResponse" />
   </wsdl:message>
   <wsdl:message name="IUDSoapIn">
     <wsdl:part name="parameters" element="tns:IUD" />
@@ -397,23 +301,23 @@
   <wsdl:message name="SyncSoapOut">
     <wsdl:part name="parameters" element="tns:SyncResponse" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseXmlSoapIn">
-    <wsdl:part name="parameters" element="tns:QueryDatabaseXml" />
+  <wsdl:message name="QueryDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDatabase" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseXmlSoapOut">
-    <wsdl:part name="parameters" element="tns:QueryDatabaseXmlResponse" />
+  <wsdl:message name="QueryDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDatabaseResponse" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjSoapIn">
-    <wsdl:part name="parameters" element="tns:QueryDatabaseObj" />
+  <wsdl:message name="DeviceSynchronizeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeviceSynchronize" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjSoapOut">
-    <wsdl:part name="parameters" element="tns:QueryDatabaseObjResponse" />
+  <wsdl:message name="DeviceSynchronizeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeviceSynchronizeResponse" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSerialData" />
+  <wsdl:message name="DeviceRequestIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeviceRequestId" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSerialDataResponse" />
+  <wsdl:message name="DeviceRequestIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeviceRequestIdResponse" />
   </wsdl:message>
   <wsdl:message name="ConnectionConnectHttpGetIn">
     <wsdl:part name="ClientId" type="s:string" />
@@ -435,55 +339,40 @@
   <wsdl:message name="ConnectionStatusHttpGetOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
-  <wsdl:message name="QryDeleteHttpGetIn">
-    <wsdl:part name="nAppId" type="s:string" />
-    <wsdl:part name="sAppAuthKey" type="s:string" />
-    <wsdl:part name="sQueryName" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QryDeleteHttpGetOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlHttpGetIn">
+  <wsdl:message name="QryExecuteHttpGetIn">
     <wsdl:part name="nConnectionId" type="s:string" />
     <wsdl:part name="QueryName" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlHttpGetOut">
-    <wsdl:part name="Body" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjHttpGetIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
-    <wsdl:part name="QueryName" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjHttpGetOut">
+  <wsdl:message name="QryExecuteHttpGetOut">
     <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteXmlHttpGetIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteXmlHttpGetOut">
+    <wsdl:part name="Body" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizationHttpGetIn">
     <wsdl:part name="ConnectionId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizationHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfXmlDocument" />
+    <wsdl:part name="Body" element="tns:ArrayOfQueryResult" />
   </wsdl:message>
   <wsdl:message name="SyncHttpGetIn" />
   <wsdl:message name="SyncHttpGetOut" />
-  <wsdl:message name="QueryDatabaseXmlHttpGetIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
+  <wsdl:message name="QueryDatabaseHttpGetIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
     <wsdl:part name="Query" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseXmlHttpGetOut">
-    <wsdl:part name="Body" />
-  </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjHttpGetIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
-    <wsdl:part name="Query" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjHttpGetOut">
+  <wsdl:message name="QueryDatabaseHttpGetOut">
     <wsdl:part name="Body" element="tns:QueryResult" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataHttpGetIn">
-    <wsdl:part name="Input" type="s:string" />
+  <wsdl:message name="DeviceRequestIdHttpGetIn">
+    <wsdl:part name="connectionId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataHttpGetOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+  <wsdl:message name="DeviceRequestIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
   </wsdl:message>
   <wsdl:message name="ConnectionConnectHttpPostIn">
     <wsdl:part name="ClientId" type="s:string" />
@@ -505,55 +394,40 @@
   <wsdl:message name="ConnectionStatusHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
-  <wsdl:message name="QryDeleteHttpPostIn">
-    <wsdl:part name="nAppId" type="s:string" />
-    <wsdl:part name="sAppAuthKey" type="s:string" />
-    <wsdl:part name="sQueryName" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QryDeleteHttpPostOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlHttpPostIn">
+  <wsdl:message name="QryExecuteHttpPostIn">
     <wsdl:part name="nConnectionId" type="s:string" />
     <wsdl:part name="QueryName" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="QueryExecuteXmlHttpPostOut">
-    <wsdl:part name="Body" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjHttpPostIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
-    <wsdl:part name="QueryName" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QueryExecuteObjHttpPostOut">
+  <wsdl:message name="QryExecuteHttpPostOut">
     <wsdl:part name="Body" element="tns:QueryResult" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteXmlHttpPostIn">
+    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryExecuteXmlHttpPostOut">
+    <wsdl:part name="Body" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizationHttpPostIn">
     <wsdl:part name="ConnectionId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizationHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfXmlDocument" />
+    <wsdl:part name="Body" element="tns:ArrayOfQueryResult" />
   </wsdl:message>
   <wsdl:message name="SyncHttpPostIn" />
   <wsdl:message name="SyncHttpPostOut" />
-  <wsdl:message name="QueryDatabaseXmlHttpPostIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
+  <wsdl:message name="QueryDatabaseHttpPostIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
     <wsdl:part name="Query" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="QueryDatabaseXmlHttpPostOut">
-    <wsdl:part name="Body" />
-  </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjHttpPostIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
-    <wsdl:part name="Query" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="QueryDatabaseObjHttpPostOut">
+  <wsdl:message name="QueryDatabaseHttpPostOut">
     <wsdl:part name="Body" element="tns:QueryResult" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataHttpPostIn">
-    <wsdl:part name="Input" type="s:string" />
+  <wsdl:message name="DeviceRequestIdHttpPostIn">
+    <wsdl:part name="connectionId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetSerialDataHttpPostOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+  <wsdl:message name="DeviceRequestIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
   </wsdl:message>
   <wsdl:portType name="APISoap">
     <wsdl:operation name="ConnectionConnect">
@@ -568,25 +442,13 @@
       <wsdl:input message="tns:ConnectionStatusSoapIn" />
       <wsdl:output message="tns:ConnectionStatusSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="QryCreate">
-      <wsdl:input message="tns:QryCreateSoapIn" />
-      <wsdl:output message="tns:QryCreateSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <wsdl:input message="tns:QryDeleteSoapIn" />
-      <wsdl:output message="tns:QryDeleteSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="QryExecute">
       <wsdl:input message="tns:QryExecuteSoapIn" />
       <wsdl:output message="tns:QryExecuteSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <wsdl:input message="tns:QueryExecuteXmlSoapIn" />
-      <wsdl:output message="tns:QueryExecuteXmlSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <wsdl:input message="tns:QueryExecuteObjSoapIn" />
-      <wsdl:output message="tns:QueryExecuteObjSoapOut" />
+    <wsdl:operation name="QryExecuteXml">
+      <wsdl:input message="tns:QryExecuteXmlSoapIn" />
+      <wsdl:output message="tns:QryExecuteXmlSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="IUD">
       <wsdl:input message="tns:IUDSoapIn" />
@@ -600,17 +462,17 @@
       <wsdl:input message="tns:SyncSoapIn" />
       <wsdl:output message="tns:SyncSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <wsdl:input message="tns:QueryDatabaseXmlSoapIn" />
-      <wsdl:output message="tns:QueryDatabaseXmlSoapOut" />
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseSoapIn" />
+      <wsdl:output message="tns:QueryDatabaseSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <wsdl:input message="tns:QueryDatabaseObjSoapIn" />
-      <wsdl:output message="tns:QueryDatabaseObjSoapOut" />
+    <wsdl:operation name="DeviceSynchronize">
+      <wsdl:input message="tns:DeviceSynchronizeSoapIn" />
+      <wsdl:output message="tns:DeviceSynchronizeSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <wsdl:input message="tns:GetSerialDataSoapIn" />
-      <wsdl:output message="tns:GetSerialDataSoapOut" />
+    <wsdl:operation name="DeviceRequestId">
+      <wsdl:input message="tns:DeviceRequestIdSoapIn" />
+      <wsdl:output message="tns:DeviceRequestIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="APIHttpGet">
@@ -626,17 +488,13 @@
       <wsdl:input message="tns:ConnectionStatusHttpGetIn" />
       <wsdl:output message="tns:ConnectionStatusHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <wsdl:input message="tns:QryDeleteHttpGetIn" />
-      <wsdl:output message="tns:QryDeleteHttpGetOut" />
+    <wsdl:operation name="QryExecute">
+      <wsdl:input message="tns:QryExecuteHttpGetIn" />
+      <wsdl:output message="tns:QryExecuteHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <wsdl:input message="tns:QueryExecuteXmlHttpGetIn" />
-      <wsdl:output message="tns:QueryExecuteXmlHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <wsdl:input message="tns:QueryExecuteObjHttpGetIn" />
-      <wsdl:output message="tns:QueryExecuteObjHttpGetOut" />
+    <wsdl:operation name="QryExecuteXml">
+      <wsdl:input message="tns:QryExecuteXmlHttpGetIn" />
+      <wsdl:output message="tns:QryExecuteXmlHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="DeviceSynchronization">
       <wsdl:input message="tns:DeviceSynchronizationHttpGetIn" />
@@ -646,17 +504,13 @@
       <wsdl:input message="tns:SyncHttpGetIn" />
       <wsdl:output message="tns:SyncHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <wsdl:input message="tns:QueryDatabaseXmlHttpGetIn" />
-      <wsdl:output message="tns:QueryDatabaseXmlHttpGetOut" />
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseHttpGetIn" />
+      <wsdl:output message="tns:QueryDatabaseHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <wsdl:input message="tns:QueryDatabaseObjHttpGetIn" />
-      <wsdl:output message="tns:QueryDatabaseObjHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <wsdl:input message="tns:GetSerialDataHttpGetIn" />
-      <wsdl:output message="tns:GetSerialDataHttpGetOut" />
+    <wsdl:operation name="DeviceRequestId">
+      <wsdl:input message="tns:DeviceRequestIdHttpGetIn" />
+      <wsdl:output message="tns:DeviceRequestIdHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="APIHttpPost">
@@ -672,17 +526,13 @@
       <wsdl:input message="tns:ConnectionStatusHttpPostIn" />
       <wsdl:output message="tns:ConnectionStatusHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <wsdl:input message="tns:QryDeleteHttpPostIn" />
-      <wsdl:output message="tns:QryDeleteHttpPostOut" />
+    <wsdl:operation name="QryExecute">
+      <wsdl:input message="tns:QryExecuteHttpPostIn" />
+      <wsdl:output message="tns:QryExecuteHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <wsdl:input message="tns:QueryExecuteXmlHttpPostIn" />
-      <wsdl:output message="tns:QueryExecuteXmlHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <wsdl:input message="tns:QueryExecuteObjHttpPostIn" />
-      <wsdl:output message="tns:QueryExecuteObjHttpPostOut" />
+    <wsdl:operation name="QryExecuteXml">
+      <wsdl:input message="tns:QryExecuteXmlHttpPostIn" />
+      <wsdl:output message="tns:QryExecuteXmlHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="DeviceSynchronization">
       <wsdl:input message="tns:DeviceSynchronizationHttpPostIn" />
@@ -692,17 +542,13 @@
       <wsdl:input message="tns:SyncHttpPostIn" />
       <wsdl:output message="tns:SyncHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <wsdl:input message="tns:QueryDatabaseXmlHttpPostIn" />
-      <wsdl:output message="tns:QueryDatabaseXmlHttpPostOut" />
+    <wsdl:operation name="QueryDatabase">
+      <wsdl:input message="tns:QueryDatabaseHttpPostIn" />
+      <wsdl:output message="tns:QueryDatabaseHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <wsdl:input message="tns:QueryDatabaseObjHttpPostIn" />
-      <wsdl:output message="tns:QueryDatabaseObjHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <wsdl:input message="tns:GetSerialDataHttpPostIn" />
-      <wsdl:output message="tns:GetSerialDataHttpPostOut" />
+    <wsdl:operation name="DeviceRequestId">
+      <wsdl:input message="tns:DeviceRequestIdHttpPostIn" />
+      <wsdl:output message="tns:DeviceRequestIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="APISoap" type="tns:APISoap">
@@ -734,24 +580,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QryCreate">
-      <soap:operation soapAction="http://pmh.plexxis.com/QryCreate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <soap:operation soapAction="http://pmh.plexxis.com/QryDelete" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="QryExecute">
       <soap:operation soapAction="http://pmh.plexxis.com/QryExecute" style="document" />
       <wsdl:input>
@@ -761,17 +589,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <soap:operation soapAction="http://pmh.plexxis.com/QueryExecuteXml" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <soap:operation soapAction="http://pmh.plexxis.com/QueryExecuteObj" style="document" />
+    <wsdl:operation name="QryExecuteXml">
+      <soap:operation soapAction="http://pmh.plexxis.com/QryExecuteXml" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -806,8 +625,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <soap:operation soapAction="http://pmh.plexxis.com/QueryDatabaseXml" style="document" />
+    <wsdl:operation name="QueryDatabase">
+      <soap:operation soapAction="http://pmh.plexxis.com/QueryDatabase" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -815,8 +634,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <soap:operation soapAction="http://pmh.plexxis.com/QueryDatabaseObj" style="document" />
+    <wsdl:operation name="DeviceSynchronize">
+      <soap:operation soapAction="http://pmh.plexxis.com/DeviceSynchronize" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -824,8 +643,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <soap:operation soapAction="http://pmh.plexxis.com/GetSerialData" style="document" />
+    <wsdl:operation name="DeviceRequestId">
+      <soap:operation soapAction="http://pmh.plexxis.com/DeviceRequestId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -863,24 +682,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QryCreate">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QryCreate" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QryDelete" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="QryExecute">
       <soap12:operation soapAction="http://pmh.plexxis.com/QryExecute" style="document" />
       <wsdl:input>
@@ -890,17 +691,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QueryExecuteXml" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QueryExecuteObj" style="document" />
+    <wsdl:operation name="QryExecuteXml">
+      <soap12:operation soapAction="http://pmh.plexxis.com/QryExecuteXml" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -935,8 +727,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QueryDatabaseXml" style="document" />
+    <wsdl:operation name="QueryDatabase">
+      <soap12:operation soapAction="http://pmh.plexxis.com/QueryDatabase" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -944,8 +736,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QueryDatabaseObj" style="document" />
+    <wsdl:operation name="DeviceSynchronize">
+      <soap12:operation soapAction="http://pmh.plexxis.com/DeviceSynchronize" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -953,8 +745,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <soap12:operation soapAction="http://pmh.plexxis.com/GetSerialData" style="document" />
+    <wsdl:operation name="DeviceRequestId">
+      <soap12:operation soapAction="http://pmh.plexxis.com/DeviceRequestId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -990,8 +782,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <http:operation location="/QryDelete" />
+    <wsdl:operation name="QryExecute">
+      <http:operation location="/QryExecute" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -999,22 +791,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <http:operation location="/QueryExecuteXml" />
+    <wsdl:operation name="QryExecuteXml">
+      <http:operation location="/QryExecuteXml" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
       <wsdl:output>
         <mime:content part="Body" type="text/xml" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <http:operation location="/QueryExecuteObj" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeviceSynchronization">
@@ -1033,17 +816,8 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <http:operation location="/QueryDatabaseXml" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:content part="Body" type="text/xml" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <http:operation location="/QueryDatabaseObj" />
+    <wsdl:operation name="QueryDatabase">
+      <http:operation location="/QueryDatabase" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1051,8 +825,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <http:operation location="/GetSerialData" />
+    <wsdl:operation name="DeviceRequestId">
+      <http:operation location="/DeviceRequestId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1088,8 +862,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QryDelete">
-      <http:operation location="/QryDelete" />
+    <wsdl:operation name="QryExecute">
+      <http:operation location="/QryExecute" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1097,22 +871,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryExecuteXml">
-      <http:operation location="/QueryExecuteXml" />
+    <wsdl:operation name="QryExecuteXml">
+      <http:operation location="/QryExecuteXml" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output>
         <mime:content part="Body" type="text/xml" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryExecuteObj">
-      <http:operation location="/QueryExecuteObj" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeviceSynchronization">
@@ -1131,17 +896,8 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseXml">
-      <http:operation location="/QueryDatabaseXml" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:content part="Body" type="text/xml" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryDatabaseObj">
-      <http:operation location="/QueryDatabaseObj" />
+    <wsdl:operation name="QueryDatabase">
+      <http:operation location="/QueryDatabase" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1149,8 +905,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSerialData">
-      <http:operation location="/GetSerialData" />
+    <wsdl:operation name="DeviceRequestId">
+      <http:operation location="/DeviceRequestId" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

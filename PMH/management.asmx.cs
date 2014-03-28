@@ -9,12 +9,13 @@ using System.Xml.Serialization;
 using System.Reflection;
 
 
-using Plex.PMH.Repositories;
-using Plex.PMH.Data;
-using Plex.PMH.Data.Tables;
-using Plex.PMH.Objects;
-using Plex.PMH.Data.Types;
-namespace Plex.PMH
+using MobileHub.Repositories;
+using MobileHub.Data;
+using MobileHub.Data.Tables;
+using MobileHub.Objects.Clients;
+using MobileHub.Objects;
+using MobileHub.Data.Types;
+namespace MobileHub
 {
     /// <summary>
     /// Summary description for ManagerSDK
@@ -77,7 +78,7 @@ namespace Plex.PMH
             return Commands.Instance.CommandRepo.Values.ToList();
         }
         [WebMethod]
-        public List<ConnectionData> GetConnectionRepository()
+        public List<Client> GetConnectionRepository()
         {
             return Connections.Instance.GetAll().Values.ToList();
         }
@@ -107,6 +108,17 @@ namespace Plex.PMH
         public Result QueryPMH(string sql)
         {
             return Utilities.GetConnection(true).Query(sql);
+        }
+        [WebMethod]
+        public void RetrieveCommand(int Id) 
+        {
+            Connections.Instance.Retrieve(Id).RequestPull();
+        }
+
+        [WebMethod]
+        public void ResetLogs()
+        {
+            Logs.Instance.logs.Clear();
         }
     }
 }

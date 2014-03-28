@@ -38,7 +38,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("CONDITION_ID");
         }
 
-        public APP_QUERY_CONDITIONS(IDataReader reader)
+        public APP_QUERY_CONDITIONS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

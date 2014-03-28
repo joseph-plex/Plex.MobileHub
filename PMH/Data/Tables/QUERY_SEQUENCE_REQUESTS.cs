@@ -37,7 +37,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("TQR_ID");
         }
 
-        public QUERY_SEQUENCE_REQUESTS(IDataReader reader)
+        public QUERY_SEQUENCE_REQUESTS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

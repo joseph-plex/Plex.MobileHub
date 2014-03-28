@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.PMH.Functionality.Developers
+namespace MobileHub.Functionality.Developers
 {
     public static partial class Functions
     {

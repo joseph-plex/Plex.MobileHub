@@ -51,7 +51,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("USER_TYPE_ID");
         }
 
-        public APP_USER_TYPES(IDataReader reader)
+        public APP_USER_TYPES(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

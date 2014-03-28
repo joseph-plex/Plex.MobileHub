@@ -1,24 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.Xml;
-using System.Threading;
-using Oracle.DataAccess.Client;
-using System.Data;
-using System.Web.Configuration;
-using System.Xml.Serialization;
-using System.IO;
-
-
-using MobileHub.Functionality.API;
-using MobileHub.Repositories;
-using MobileHub.Exceptions;
+﻿using MobileHub.Functionality.API;
 using MobileHub.Objects;
-using MobileHub.Data.Tables;
-
+using MobileHub.Objects.ResultTypes;
+using MobileHub.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Web.Services;
+using System.Xml;
 namespace MobileHub
 {
     /// <summary>
@@ -34,17 +21,7 @@ namespace MobileHub
         [WebMethod]
         public MethodResult ConnectionConnect(int ClientId, int AppId, String Database, String User, String Password)
         {
-            MethodResult mr = new MethodResult();
-            try
-            {
-                mr.Success(Functions.ConnectionConnect(ClientId, AppId, Database, User, Password));
-            }
-            catch (Exception e)
-            {
-                mr.Failure(e.Message);
-                Logs.Instance.Add(e);
-            }
-            return mr;
+            return new ConnectionConnect().Strategy(ClientId, AppId, Database, User, Password);
         }
 
         [WebMethod]
@@ -75,15 +52,9 @@ namespace MobileHub
         {
             return Functions.IUD(nConnectionId, DBModData);
         }
-
-        [WebMethod]
-        public List<QueryResult> DeviceSynchronization(int ConnectionId)
-        {
-            return Functions.DeviceSynchronization(ConnectionId, 0, null);
-        }
-        ///****************************************************************************************************
-        // ********************************* Internal Plexxis Methods *****************************************
-        // ****************************************************************************************************/
+        
+        /*********************************** Internal Plexxis Methods *****************************************/
+        
         [WebMethod]
         public void Sync()
         {
@@ -94,6 +65,18 @@ namespace MobileHub
         public QueryResult QueryDatabase(int ConnectionId, String Query)
         {
             return Functions.QueryDatabase(ConnectionId, Query);
+        }
+
+        [WebMethod]
+        public DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int deviceId, int userDataId )
+        {
+            return new DeviceSynchronize().Strategy(connectionId, deviceId, userDataId);
+        }
+
+        [WebMethod]
+        public MethodResult DeviceRequestId(int connectionId)
+        {
+            return new DeviceRequestId().Strategy(connectionId);
         }
     }
 }

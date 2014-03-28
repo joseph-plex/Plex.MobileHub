@@ -80,13 +80,13 @@
     </None>
     <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <None Include="Service References\pmh\api.wsdl" />
-    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.DeviceSynchronizationResponse.datasource">
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.DeviceSynchronizeMethodResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.DeviceSynchronizeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\pmh\Plex.PMH.Tester.pmh.MethodResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\pmh\Plex.PMH.Tester.pmh.QryExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\pmh\Plex.PMH.Tester.pmh.QueryResult.datasource">

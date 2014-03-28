@@ -17,12 +17,14 @@ namespace MobileHub.Data
                 Command.Parameters.Add(Command.CreateParameter(p));
             return Command;
         }
+
         public static IDbDataParameter CreateParameter(this IDbCommand Command, object  Value)
         {
             var Param = Command.CreateParameter();
             Param.Value = Value;
             return Param;
         }
+
         public static Result Query(this IDbConnection conn, String CommandText, params object[] Arguments)
         {
             Result r = new Result();
@@ -36,6 +38,8 @@ namespace MobileHub.Data
             }
             return r;
         }
+       
+
         public static int NonQuery(this IDbConnection conn, String CommandText, params object[] Arguments)
         {
             using (var Comm = conn.CreateCommand(CommandText,Arguments))
@@ -60,5 +64,4 @@ namespace MobileHub.Data
             };
         }
     }
-
 }

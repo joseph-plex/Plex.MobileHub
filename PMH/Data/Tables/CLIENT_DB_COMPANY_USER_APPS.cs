@@ -37,7 +37,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("DB_COMPANY_USER_APP_ID");
         }
 
-        public CLIENT_DB_COMPANY_USER_APPS(IDataReader reader)
+        public CLIENT_DB_COMPANY_USER_APPS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

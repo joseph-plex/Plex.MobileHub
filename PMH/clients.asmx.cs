@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Threading;
-using System.Xml.Serialization;
-using System.Xml;
-using System.IO;
-using MobileHub.Repositories;
+﻿using MobileHub.Functionality.Clients;
 using MobileHub.Objects;
+using MobileHub.Objects.ResultTypes;
 using MobileHub.Objects.Synchronization;
-using MobileHub.Functionality.Clients;
-using System.Diagnostics;
+using MobileHub.Repositories;
+using System;
+using System.Linq;
+using System.Web.Services;
+using System.Xml.Serialization;
 
 namespace MobileHub
 {

@@ -54,7 +54,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("TABLE_ID");
         }
 
-        public APP_TABLES(IDataReader reader)
+        public APP_TABLES(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

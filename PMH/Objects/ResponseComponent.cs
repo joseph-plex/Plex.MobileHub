@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MobileHub.Repositories
+namespace MobileHub.Objects
 {
-    public class Response
+    public class ResponseComponent : Response
     {
-        public virtual int Id
+        public virtual int ComponentId
         {
             get;
             set;
+        }
+        public virtual bool IsLastComponent
+        {
+            get;
+            set;
+        }
 
-        }
-        public virtual string Resp
+        public ResponseComponent()
         {
-            get;
-            set;
-        }
-        public virtual bool IsError
-        {
-            get;
-            set;
         }
     }
 }

@@ -18,9 +18,9 @@ namespace MobileHub.Functionality.API
                 if (!Consumers.Instance.Exists(nConnectionId))
                     throw new Exception("The connection you are specifying does not exist");
                 var cust = Consumers.Instance.Retrieve(nConnectionId);
-                var dbList = CLIENT_DB_COMPANIES.GetAll().ToList();
-                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
-                return fQuery(cust.ClientId, dbList[index].COMPANY_CODE, Query);
+                var dbCode = cust.ClientDbCompaniesGet().COMPANY_CODE;
+
+                return fQuery(cust.ClientId, dbCode, Query);
             }
             catch (Exception e)
             {

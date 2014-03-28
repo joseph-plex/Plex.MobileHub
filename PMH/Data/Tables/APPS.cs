@@ -111,7 +111,7 @@ namespace MobileHub.Data.Tables
         {
             PrimaryKey.Add("APP_ID");
         }
-        public APPS(IDataReader reader)
+        public APPS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

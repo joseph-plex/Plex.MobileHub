@@ -37,7 +37,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("LOG_ID");
         }
 
-        public LOGS(IDataReader reader)
+        public LOGS(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

@@ -22,5 +22,14 @@ namespace MobileHub.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ValidateClientOnLogin {
+            get {
+                return ((bool)(this["ValidateClientOnLogin"]));
+            }
+        }
     }
 }

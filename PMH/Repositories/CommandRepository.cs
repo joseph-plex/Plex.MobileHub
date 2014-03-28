@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MobileHub.Objects;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public class Commands
     {
@@ -15,6 +16,16 @@ namespace Plex.PMH.Repositories
                 return commands;
             }
         }
+        private Commands()
+        {
+        }
+
+        //void Commands_OnAdd(object sender, EventArgs e)
+        //{
+        //    var Comm = (Command)sender;
+        //    var Client = Connections.Instance.Retrieve(Comm.ClientId);
+        //    Client.RequestPull();
+        //}
 
         public static int GetKey()
         {

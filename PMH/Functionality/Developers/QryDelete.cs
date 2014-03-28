@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Plex.PMH.Repositories;
-using Plex.PMH.Data.Tables;
-using Plex.PMH.Exceptions;
-namespace Plex.PMH.Functionality.Developers
+using MobileHub.Repositories;
+using MobileHub.Data.Tables;
+using MobileHub.Exceptions;
+namespace MobileHub.Functionality.Developers
 {
     public static partial class Functions
     {

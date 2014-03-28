@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Plex.PMH.Exceptions;
-using Plex.PMH.Data.Tables;
+using MobileHub.Exceptions;
+using MobileHub.Data.Tables;
 
 using System.Net;
 using System.Net.Sockets;
 
 using System.Diagnostics;
 using System.Threading;
+using MobileHub.Objects;
+using MobileHub.Objects.Clients;
 
-namespace Plex.PMH.Repositories
+namespace MobileHub.Repositories
 {
     public class Connections
     {
@@ -24,22 +26,20 @@ namespace Plex.PMH.Repositories
             }
         }
 
-        private Dictionary<int, ConnectionData> ConnectionRepo;
+        private Dictionary<int, Client> ConnectionRepo;
 
         private Connections()
         {
-            ConnectionRepo = new Dictionary<int, ConnectionData>();
+            ConnectionRepo = new Dictionary<int, Client>();
         }
 
-        public Dictionary<int, ConnectionData> GetAll() 
+        public Dictionary<int, Client> GetAll() 
         {
-            return new Dictionary<int, ConnectionData>(ConnectionRepo);
+            return new Dictionary<int, Client>(ConnectionRepo);
         }
 
-        public int Add(ConnectionData Data)
+        public int Add(Client Data)
         {
-            //todo make a custom exception for this (or find one)
-
             var clients = CLIENTS.GetAll().ToList();
             var index = clients.FindIndex((p) => p.CLIENT_ID == Data.ClientId);
 
@@ -48,13 +48,12 @@ namespace Plex.PMH.Repositories
             if (clients[index].CLIENT_KEY != Data.Key) throw new Exception("Invalid Client Key");
             if (ConnectionRepo.Values.ToList().Exists((p) => p.ClientId == Data.ClientId)) throw new MultipleClientLoginException();
 
- 
             ConnectionRepo.Add(Data.ClientId, Data);
 
             return Data.ClientId;
         }
 
-        public void Modify(ConnectionData Data)
+        public void Modify(Client Data)
         {
             if (!CLIENTS.GetAll().ToList().Exists((p) => p.CLIENT_ID == Data.ClientId && p.CLIENT_KEY == Data.Key))
                 throw new Exception("Invalid Client Credentials");
@@ -68,23 +67,18 @@ namespace Plex.PMH.Repositories
                 ConnectionRepo.Remove(i);
         }
 
-        public ConnectionData Retrieve(int i)
+        public Client Retrieve(int i)
         {
+            if (!ConnectionExists(i))
+                throw new Exception("No Client With Specified Id does not Exists");
             return ConnectionRepo[i];
         }
 
         public bool ConnectionExists(int Id) 
         {
-            try
-            {
-                Retrieve(Id);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return ConnectionRepo.ContainsKey(Id);
         }
+
     }
 }
 

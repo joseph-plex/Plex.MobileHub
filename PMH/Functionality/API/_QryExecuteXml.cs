@@ -18,22 +18,18 @@ namespace MobileHub.Functionality.API
             QueryResult r = new QueryResult();
             try
             {
-                if (!Consumers.Instance.Exists(ConnectionId))
-                    throw new InvalidConsumerException();
+                if (!Consumers.Instance.Exists(ConnectionId)) throw new InvalidConsumerException();
                 var cust = Consumers.Instance.Retrieve(ConnectionId);
 
-                var dbList = new List<CLIENT_DB_COMPANIES>(CLIENT_DB_COMPANIES.GetAll());
-                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
-                if (index == -1) throw new Exception("Cannot find specified database");
+                var query = cust.GetAccessibleQueries().First(p => p.APP_ID == cust.AppId);
+                if (query == null) throw new InvalidQueryException();
 
-                var Queries = new List<APP_QUERIES>(APP_QUERIES.GetAll());
-                var QueryIndex = Queries.FindIndex((p) => p.NAME == QueryName && p.APP_ID == Consumers.Instance.Retrieve(ConnectionId).AppId);
-                if (QueryIndex == -1) throw new InvalidQueryException();
+                Logs.Instance.Add(query.NAME + " : " + query.QUERY_ID);
 
-                Logs.Instance.Add(Queries[QueryIndex].QUERY_ID);
-                Logs.Instance.Add(Queries[QueryIndex].NAME);
+                var dbCode = cust.ClientDbCompaniesGet().COMPANY_CODE;
+                var client = Connections.Instance.Retrieve(cust.ClientId);
 
-                r = fQuery(cust.ClientId, dbList[index].COMPANY_CODE, Queries[QueryIndex].QUERY_ID, Time);
+                r = client.ExecuteRequest<QueryResult>("ExecuteRegisteredQuery", dbCode, query.QUERY_ID, Time);
                 r.Success();
             }
             catch (Exception e)

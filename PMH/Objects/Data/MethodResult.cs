@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Plex.PMH.Objects
+namespace MobileHub.Objects
 {
     public class MethodResult
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using MobileHub.Objects;
 namespace MobileHub.Repositories
 {
     public class Consumers

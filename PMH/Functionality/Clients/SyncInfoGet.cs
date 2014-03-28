@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 
 
-using Plex.PMH.Objects.Synchronization;
-using Plex.PMH.Data.Tables;
+using MobileHub.Objects.Synchronization;
+using MobileHub.Data.Tables;
 
-namespace Plex.PMH.Functionality.Clients
+namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {

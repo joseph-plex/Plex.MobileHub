@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Plex.PMH.Repositories;
-using Plex.PMH.Objects;
-using Plex.PMH.Objects.Synchronization;
-using Plex.PMH.Functionality.Clients;
-namespace Plex.PMH.Functionality.Clients
+using MobileHub.Repositories;
+using MobileHub.Objects;
+using MobileHub.Objects.Synchronization;
+using MobileHub.Functionality.Clients;
+namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {
@@ -14,11 +14,8 @@ namespace Plex.PMH.Functionality.Clients
         {
             MethodResult mr = new MethodResult();
             try  {
-
-                var Comm =  Commands.Instance.Retrieve(Resp.Id);
-                Logs.Instance.Add(new Log("Command #" + Resp.Id + ": " + Comm + " Completed"));
+                Logs.Instance.Add(new Log("Command #" + Resp.Id +" Completed"));
                 Responses.Instance.Add(Resp.Id, Resp);
-                Commands.Instance.Remove(Resp.Id);
             }
             catch (Exception e) { mr.Failure(e); }
             return mr;

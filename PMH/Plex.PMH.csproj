@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plex.PMH</RootNamespace>
+    <RootNamespace>MobileHub</RootNamespace>
     <AssemblyName>Plex.PMH</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -68,6 +68,7 @@
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.ApplicationServices">
       <Private>True</Private>
     </Reference>
@@ -139,7 +140,17 @@
     <Compile Include="Data\IDbConnectionExtensions.cs" />
     <Compile Include="Data\Types\Result.cs" />
     <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
-    <Compile Include="Functionality\API\DeviceSynchronization.cs" />
+    <Compile Include="Functionality\API\ConnectionConnect.cs" />
+    <Compile Include="Functionality\API\ConnectionInformation.cs" />
+    <Compile Include="Functionality\API\ConnectionRelease.cs" />
+    <Compile Include="Functionality\API\ConnectionStatusGet.cs" />
+    <Compile Include="Functionality\API\DeviceRegister.cs" />
+    <Compile Include="Functionality\API\DeviceRequestId.cs" />
+    <Compile Include="Functionality\API\DeviceSynchronize.cs" />
+    <Compile Include="Functionality\API\IUD.cs" />
+    <Compile Include="Functionality\API\QryExecute.cs" />
+    <Compile Include="Functionality\API\QryExecuteXml.cs" />
+    <Compile Include="Functionality\API\QueryDatabase.cs" />
     <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />
     <Compile Include="Data\Tables\LOGS.cs" />
     <Compile Include="Data\PlexxisDataTransferObjects.cs" />
@@ -159,21 +170,19 @@
     <Compile Include="Exceptions\MultipleClientLoginException.cs" />
     <Compile Include="Exceptions\PlexError.cs" />
     <Compile Include="Exceptions\UnauthorizedClientException.cs" />
-    <Compile Include="Functionality\API\QryExecuteXml.cs" />
+    <Compile Include="Functionality\API\_QryExecuteXml.cs" />
     <Compile Include="Functionality\Developers\AppGetQueries.cs" />
     <Compile Include="Functionality\Developers\AppGetTableDefinitions.cs" />
     <Compile Include="Functionality\Developers\ClientGetDatabaseList.cs" />
-    <Compile Include="Functionality\API\ConnectionConnect.cs" />
-    <Compile Include="Functionality\API\ConnectionInformation.cs" />
-    <Compile Include="Functionality\API\ConnectionRelease.cs" />
-    <Compile Include="Functionality\API\ConnectionStatus.cs" />
-    <Compile Include="Functionality\API\DeviceRegister.cs" />
-    <Compile Include="Functionality\API\IUD.cs" />
+    <Compile Include="Functionality\API\_ConnectionInformation.cs" />
+    <Compile Include="Functionality\API\_ConnectionRelease.cs" />
+    <Compile Include="Functionality\API\_ConnectionStatus.cs" />
+    <Compile Include="Functionality\API\_DeviceRegister.cs" />
+    <Compile Include="Functionality\API\_IUD.cs" />
     <Compile Include="Functionality\Developers\QryCreate.cs" />
     <Compile Include="Functionality\Developers\QryDelete.cs" />
-    <Compile Include="Functionality\API\QryExecute.cs" />
-    <Compile Include="Functionality\API\QueryDatabase.cs" />
-    <Compile Include="Functionality\API\Utilities.cs" />
+    <Compile Include="Functionality\API\_QryExecute.cs" />
+    <Compile Include="Functionality\API\_QueryDatabase.cs" />
     <Compile Include="Functionality\Clients\ClientLogin.cs" />
     <Compile Include="Functionality\Clients\ClientLogout.cs" />
     <Compile Include="Functionality\Clients\ClientRespond.cs" />
@@ -185,12 +194,14 @@
     <Compile Include="Functionality\Developers\AppUserTypeDelete.cs" />
     <Compile Include="Functionality\Developers\AppUserTypeRetrieve.cs" />
     <Compile Include="Functionality\Developers\Utilities.cs" />
+    <Compile Include="Functionality\FunctionStrategyBase.cs" />
     <Compile Include="Functionality\Management\CommandsRetrieve.cs" />
     <Compile Include="Functionality\Management\ConnectionsRetrieve.cs" />
     <Compile Include="Functionality\Management\ConsumersRetrieve.cs" />
     <Compile Include="Functionality\Management\LogsRetrieve.cs" />
     <Compile Include="Functionality\Management\ResponsesRetrieve.cs" />
     <Compile Include="Functionality\Management\Utilities.cs" />
+    <Compile Include="Functionality\IFunctionStrategy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,15 +209,20 @@
       <DependentUpon>management.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Misc.cs" />
+    <Compile Include="Objects\Clients\ClientConnected.cs" />
+    <Compile Include="Objects\Clients\ClientDisconnected.cs" />
+    <Compile Include="Objects\Clients\ClientState.cs" />
+    <Compile Include="Objects\Clients\IClientStateBehaviour.cs" />
+    <Compile Include="Objects\ResultTypes\DeviceSynchronizeMethodResult.cs" />
+    <Compile Include="Objects\Misc\ExternalService.cs" />
     <Compile Include="Objects\Synchronization\ApplicationSynchroData.cs" />
     <Compile Include="Objects\Synchronization\ClientSynchroData.cs" />
     <Compile Include="Objects\Data\Column.cs" />
     <Compile Include="Objects\Data\RQ\Condition.cs" />
     <Compile Include="Objects\Data\IUDData.cs" />
-    <Compile Include="Objects\MethodResults\GetCommandsMethodResult.cs" />
+    <Compile Include="Objects\ResultTypes\GetCommandsMethodResult.cs" />
     <Compile Include="Objects\Misc\ConnectionStatus.cs" />
-    <Compile Include="Objects\MethodResults\MethodResult.cs" />
+    <Compile Include="Objects\Data\MethodResult.cs" />
     <Compile Include="Objects\Data\RQ\QueryDefinition.cs" />
     <Compile Include="Objects\Data\QueryResult.cs" />
     <Compile Include="Objects\Data\Row.cs" />
@@ -220,18 +236,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\Command.cs" />
+    <Compile Include="Objects\Command.cs" />
     <Compile Include="Repositories\CommandRepository.cs" />
-    <Compile Include="Repositories\ConnectionData.cs" />
-    <Compile Include="Repositories\ConnectionRepository.cs" />
-    <Compile Include="Repositories\Consumer.cs" />
+    <Compile Include="Objects\Client.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Objects\Consumer.cs" />
     <Compile Include="Repositories\ConsumerRepository.cs" />
-    <Compile Include="Repositories\Log.cs" />
-    <Compile Include="Repositories\LogPriority.cs" />
+    <Compile Include="Objects\Log.cs" />
+    <Compile Include="Objects\LogPriority.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
-    <Compile Include="Repositories\Response.cs" />
-    <Compile Include="Repositories\ResponseComponent.cs" />
-    <Compile Include="Repositories\ResponseCompound.cs" />
+    <Compile Include="Objects\Response.cs" />
+    <Compile Include="Objects\ResponseComponent.cs" />
+    <Compile Include="Objects\ResponseCompound.cs" />
     <Compile Include="Repositories\ResponseRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 
-namespace Plex.PMH.Functionality.Management
+namespace MobileHub.Functionality.Management
 {
     public static partial class Functions
     {

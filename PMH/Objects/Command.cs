@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Plex.PMH.Objects;
-namespace Plex.PMH.Repositories
+using MobileHub.Objects;
+namespace MobileHub.Objects
 {
     public static class CommandFactory
     {

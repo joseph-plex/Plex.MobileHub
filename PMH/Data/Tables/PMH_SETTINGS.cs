@@ -33,7 +33,7 @@ namespace MobileHub.Data.Tables
                 PrimaryKey.Add("PMH_ID");
             }
 
-            public PMH_SETTINGS(IDataReader reader)
+            public PMH_SETTINGS(IDataReader reader):this()
             {
                 AutoFill(reader, this);
             }

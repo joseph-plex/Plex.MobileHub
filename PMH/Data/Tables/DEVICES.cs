@@ -13,22 +13,29 @@ namespace MobileHub.Data.Tables
 
         public static IEnumerable<DEVICES> GetAll()
         {
-            throw new NotImplementedException();
+            using (var Conn = Utilities.GetConnection(true))
+                return GetAll(Conn);
         }
 
         public static IEnumerable<DEVICES> GetAll(IDbConnection Conn)
         {
-            throw new NotImplementedException();
+            var collection = new List<DEVICES>();
+            using (var Command = Conn.CreateCommand("SELECT * FROM DEVICES"))
+            using (var reader = Command.ExecuteReader())
+                while (reader.Read())
+                    collection.Add(new DEVICES(reader));
+            return collection;
         }
 
         public int DEVICE_ID;
+        public int APP_ID;
 
         public DEVICES() : base()
         {
             PrimaryKey.Add("DEVICE_ID");
         }
 
-        public DEVICES(IDataReader reader)
+        public DEVICES(IDataReader reader) : this()
         {
             AutoFill(reader, this);
         }

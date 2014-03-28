@@ -37,7 +37,7 @@ namespace MobileHub.Data.Tables
             PrimaryKey.Add("COLUMN_ID");
         }
 
-        public APP_QUERY_COLUMNS(IDataReader reader)
+        public APP_QUERY_COLUMNS(IDataReader reader): this()
         {
             AutoFill(reader, this);
         }

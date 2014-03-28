@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Plex.PMH.Repositories;
-using Plex.PMH.Objects;
-using Plex.PMH.Objects.Synchronization;
-using Plex.PMH.Functionality.Clients;
+using MobileHub.Repositories;
+using MobileHub.Objects;
+using MobileHub.Objects.Synchronization;
+using MobileHub.Functionality.Clients;
 
-namespace Plex.PMH.Functionality.Clients
+namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {

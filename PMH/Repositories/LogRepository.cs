@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Xml.Serialization;
+using MobileHub.Objects;
 
 namespace MobileHub.Repositories
 {
