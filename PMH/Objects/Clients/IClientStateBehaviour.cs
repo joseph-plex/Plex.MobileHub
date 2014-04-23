@@ -19,10 +19,11 @@ namespace MobileHub.Objects.Clients
             get;
         }
 
-        T ExecuteRequest<T>(string commandName ,params object[] arguments);
+        T ExecuteRequest<T>(string commandName, params object[] arguments);
         void AdjustState();
         void RequestPull();
         void Connect(string address, int port);
+        void CheckIn();
         void Disconnect();
     }
 }

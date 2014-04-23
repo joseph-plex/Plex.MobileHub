@@ -41,7 +41,8 @@ namespace MobileHub.Objects
             {
                 string response = string.Empty;
                 for (int i = 0; i < components.Values.Count; i++)
-                    if (!components.ContainsKey(i)) throw new FormatException("Response is missing a component");
+                    if (!components.ContainsKey(i)) 
+                        throw new FormatException("Response is missing a component");
                     else response += components[i].Resp;
                 Resp = response;
                 IsComplete = true;

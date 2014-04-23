@@ -12,6 +12,5 @@ namespace MobileHub.Objects.Synchronization
         public string ApplicationDescription;
 
         public List<QuerySynchroData> ApplicationQueries = new List<QuerySynchroData>();
-
     }
 }

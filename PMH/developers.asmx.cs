@@ -9,6 +9,7 @@ using MobileHub.Repositories;
 using MobileHub.Exceptions;
 using MobileHub.Objects;
 using MobileHub.Data.Tables;
+using MobileHub.Objects.Synchronization;
 
 namespace MobileHub
 {
@@ -76,5 +77,10 @@ namespace MobileHub
             return Functions.QryDelete(nAppId, sAppAuthKey, sQueryName);
         }
 
+        [WebMethod]
+        public DevelSyncData GetAppSyncData(int AppId, string AppKey)
+        {
+            return DevelSyncData.GetDataForApp(AppId, AppKey);
+        }
     }
 }

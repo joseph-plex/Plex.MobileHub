@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using System.Xml.Serialization;
+using MobileHub.Properties;
 
 namespace MobileHub.Objects
 {
@@ -51,7 +52,7 @@ namespace MobileHub.Objects
 
         public virtual MethodResult Failure(Exception e)
         {
-            Msg = e.Message;
+            Msg = (Settings.Default.ShowFullErrors)?e.ToString():e.Message;
             Response = UnhandledErrorCode;
             return this;
         }
@@ -72,7 +73,7 @@ namespace MobileHub.Objects
 
         public virtual MethodResult Failure(int ErrorCode, Exception e)
         {
-            Msg = e.Message;
+            Failure(e);
             Response = ErrorCode;
             return this;
         }

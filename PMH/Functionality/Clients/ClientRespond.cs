@@ -10,15 +10,10 @@ namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {
-        public static MethodResult ClientRespond(Response Resp)
-        {
-            MethodResult mr = new MethodResult();
-            try  {
-                Logs.Instance.Add(new Log("Command #" + Resp.Id +" Completed"));
-                Responses.Instance.Add(Resp.Id, Resp);
-            }
-            catch (Exception e) { mr.Failure(e); }
-            return mr;
+        public static void ClientRespond(Response Resp)
+    {
+            Logs.Instance.Add(new Log("Command #" + Resp.Id +" Completed"));
+            Responses.Instance.Add(Resp.Id, Resp);
         }
     }
 }

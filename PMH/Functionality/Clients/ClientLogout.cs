@@ -13,17 +13,9 @@ namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {
-        public static MethodResult ClientLogout(int ConnectionId)
+        public static void  ClientLogout(int ConnectionId)
         {
-            MethodResult mr = new MethodResult();
-            try 
-            {
-                var connection = Connections.Instance.Retrieve(ConnectionId);
-                connection.Disconnect();
-                mr.Success();
-            }
-            catch (Exception e) { mr.Failure(e); }
-            return mr;
+            Connections.Instance.Retrieve(ConnectionId).Disconnect();
         }
     }
 }

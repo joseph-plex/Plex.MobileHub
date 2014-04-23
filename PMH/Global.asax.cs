@@ -21,6 +21,8 @@ namespace MobileHub
             var logs = Logs.Instance;
             var cons = Consumers.Instance;
 
+            resp.OnAdd += (s, args) => comm.CommandRepo.Remove(((Response)s).Id);
+
             foreach (var client in CLIENTS.GetAll())
             {
                 Client data = new Client();
@@ -29,6 +31,11 @@ namespace MobileHub
                 data.AdjustState();
                 con.Add(data);
             }
+        }
+
+        void resp_OnAdd(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
       
         protected void Session_Start(object sender, EventArgs e)

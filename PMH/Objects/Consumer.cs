@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MobileHub.Data.Tables;
+using MobileHub.Repositories;
 
 namespace MobileHub.Objects
 {
@@ -24,6 +25,11 @@ namespace MobileHub.Objects
         public IEnumerable<APP_QUERIES> GetAccessibleQueries()
         {
             return APP_QUERIES.GetAll().Where(p => p.APP_ID == AppId);
+        }
+
+        public Client ClientGet()
+        {
+            return Connections.Instance.Retrieve(ClientId);
         }
 
     }

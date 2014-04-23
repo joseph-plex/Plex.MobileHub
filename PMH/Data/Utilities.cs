@@ -10,6 +10,7 @@ using MobileHub.Objects;
 using MobileHub.Data.Types;
 namespace MobileHub.Data
 {
+
     public delegate void Subscriber(Object sender, EventArgs e);
 
     public static class Utilities
@@ -62,7 +63,6 @@ namespace MobileHub.Data
 
         public static bool AreObjectsCorrect()
         {
-           
             using (var Conn = GetConnection(true))
             {
                 Result r = GetColumnData(Conn);
@@ -111,8 +111,6 @@ namespace MobileHub.Data
         {
             return Conn.Query("select TABLE_NAME,COLUMN_NAME from user_tab_columns");
         }
-
-
     }
 
     public enum SequenceType

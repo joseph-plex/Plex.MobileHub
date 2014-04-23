@@ -16,6 +16,7 @@ using MobileHub.Objects;
 
 namespace MobileHub.Repositories
 {
+    //public delegate Subscriber e(object sender, EventArgs e);
     public class Responses
     {
         private static readonly Type[] BuiltInTypes;
@@ -63,14 +64,18 @@ namespace MobileHub.Repositories
             };
         }
 
+        public event Subscriber OnAdd;
         Dictionary<int, Response> Repo = new Dictionary<int, Response>();
 
         public void Add(int ResponseId, Response response)
         {
             if (response is ResponseComponent) 
                 AddComponent(response.Id, (ResponseComponent)response);
-            else
+            else { 
                 Repo.Add(ResponseId, response);
+                if(OnAdd != null)
+                    OnAdd(response, EventArgs.Empty);
+            }
         }
 
         public void AddComponent(int ResponseId, ResponseComponent RespComponent)
@@ -81,6 +86,8 @@ namespace MobileHub.Repositories
                 var rc = new ResponseCompound();
                 rc.Add(RespComponent);
                 Repo.Add(ResponseId, rc);
+                if (OnAdd != null)
+                    OnAdd(RespComponent, EventArgs.Empty);
             }
         }
 

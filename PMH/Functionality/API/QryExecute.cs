@@ -10,48 +10,42 @@ using MobileHub.Objects;
 
 namespace MobileHub.Functionality.API
 {
-    public class QryExecute : FunctionStrategyBase<QueryResult>
+    public class QryExecute : FunctionStrategyBase<RQryResult>
     {
-        public QueryResult Strategy(int connectionId, string queryName, DateTime? time = null)
+        public RQryResult Strategy(int connectionId, string queryName, DateTime? time = null)
         {
-            QueryResult r = new QueryResult();
+            RQryResult r = new RQryResult();
             try
             {
-                if (!Consumers.Instance.Exists(connectionId))
+                if (!Consumers.Instance.Exists(connectionId)) 
                     throw new InvalidConsumerException();
                 var cust = Consumers.Instance.Retrieve(connectionId);
 
-                var dbList = new List<CLIENT_DB_COMPANIES>(CLIENT_DB_COMPANIES.GetAll());
-                var index = dbList.FindIndex((p) => p.DB_COMPANY_ID == cust.DatabaseId);
-                if (index == -1) throw new Exception("Cannot find specified database");
+                var query = cust.GetAccessibleQueries().FirstOrDefault(p => p.APP_ID == cust.AppId && p.NAME == queryName);
+                if (query == null)
+                    throw new InvalidQueryException();
 
-                var Queries = new List<APP_QUERIES>(APP_QUERIES.GetAll());
-                var QueryIndex = Queries.FindIndex((p) => p.NAME == queryName && p.APP_ID == Consumers.Instance.Retrieve(connectionId).AppId);
-                if (QueryIndex == -1) throw new InvalidQueryException();
+                Logs.Instance.Add(query.NAME + " : " + query.QUERY_ID);
 
-                Logs.Instance.Add(Queries[QueryIndex].QUERY_ID);
-                Logs.Instance.Add(Queries[QueryIndex].NAME);
+                var dbCode = cust.ClientDbCompaniesGet().COMPANY_CODE;
+                var client = Connections.Instance.Retrieve(cust.ClientId);
 
-                r = fQuery(cust.ClientId, dbList[index].COMPANY_CODE, Queries[QueryIndex].QUERY_ID, time);
-                r.Success(r.Response);
+                r = client.ExecuteRequest<RQryResult>("ExecuteRegisteredQuery", dbCode, query.QUERY_ID, time);
+                if(r.Response > 0)
+                    r.Success(r.Response);
+
+                if (query.TABLE_NAME == null || query.TABLE_NAME == string.Empty)
+                    r.TableName = APP_TABLES.GetAll().First(p => p.TABLE_ID == query.TABLE_ID).NAME;
+                else
+                    r.TableName = query.TABLE_NAME;
+
+                r.QueryName = query.NAME;
             }
             catch (Exception e)
             {
                 r.Failure(e);
             }
             return r;
-        }
-
-        static QueryResult fQuery(int ClientId, string Code, int Qry, DateTime? Time = null)
-        {
-            List<object> args = new List<object>();
-            args.Add(Code);
-            args.Add(Qry);
-            args.Add(Time);
-            int i = new int();
-            i = Commands.Instance.Add(ClientId, "ExecuteRegisteredQuery", args);
-            Logs.Instance.Add(i);
-            return Responses.Instance.GetResponse<QueryResult>(i);
         }
     }
 }

@@ -75,7 +75,7 @@ namespace MobileHub.Functionality.API
             return (PreviousQueryData != null)? PreviousQueryData.QUERY_EXECUTION_TIME: (DateTime?)null;
         }
 
-        static DEVICE_USER_DATA_QUERIES DeviceUserQueryDataCreate(QueryResult result, int QueryId) 
+        static DEVICE_USER_DATA_QUERIES DeviceUserQueryDataCreate(RQryResult result, int QueryId) 
         {
             using (var Conn = Utilities.GetConnection(true))
                 return new DEVICE_USER_DATA_QUERIES()

@@ -11,7 +11,7 @@ namespace MobileHub.Objects.ResultTypes
         public DateTime StartTimeStamp;
         public DateTime CompletionTimeStamp;
 
-        public List<QueryResult> Results = new List<QueryResult>();
+        public List<RQryResult> Results = new List<RQryResult>();
 
     }
 }

@@ -13,19 +13,18 @@ namespace MobileHub.Functionality.Clients
 {
     public static partial class Functions
     {
-        public static MethodResult ClientLogin(int ClientId, string Key, string IPv4, int Port)
+        public static int ClientLogin(int ClientId, string Key, string IPv4, int Port)
         {
-            MethodResult mr = new MethodResult();
-            try{
-                var client = Connections.Instance.Retrieve(ClientId);
-                if (Key != client.Key) throw new Exception("Invalid Authentication");
-                client.Connect(IPv4, Port);
+        
+            var client = Connections.Instance.Retrieve(ClientId);
+            if (Key != client.Key) 
+                throw new Exception("Invalid Authentication");
+            client.Connect(IPv4, Port);
 
-                //todo Implement a way to valid on connection
-                mr.Success(ClientId); 
-            }
-            catch (Exception e) { mr.Failure(e); }
-            return mr;
+            //todo Implement a way to valid on connection
+            return ClientId;
+
+             
         }
     }
 }

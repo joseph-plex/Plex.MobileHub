@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.PMH", "PMH\Plex.PMH.csproj", "{D107CC7F-D119-47E1-95CC-448267A0D3DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{946EBB06-621E-45D1-A4AD-5C587323F88B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.PMH.Manager", "Plex.Pmh.Manager\Plex.PMH.Manager.csproj", "{69CDBA4A-31B1-460E-968B-FB452878F48D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.PMH.Tester", "Plex.PMH.Tester\Plex.PMH.Tester.csproj", "{EBC63808-0993-42ED-B5AD-64CF9C51E36D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Manager", "Plex.MobileHub.Manager\Plex.MobileHub.Manager.csproj", "{C042C1A6-558E-494D-BE20-0077FCE12E5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Devel", "Plex.MobileHub.Devel\Plex.MobileHub.Devel.csproj", "{6505678A-5FEB-4A8F-B527-5FEA7805C1EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{A128A3F9-E9B0-48DF-8819-04B1F7A861E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +25,22 @@ Global
 		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69CDBA4A-31B1-460E-968B-FB452878F48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69CDBA4A-31B1-460E-968B-FB452878F48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69CDBA4A-31B1-460E-968B-FB452878F48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69CDBA4A-31B1-460E-968B-FB452878F48D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBC63808-0993-42ED-B5AD-64CF9C51E36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBC63808-0993-42ED-B5AD-64CF9C51E36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC63808-0993-42ED-B5AD-64CF9C51E36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC63808-0993-42ED-B5AD-64CF9C51E36D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C042C1A6-558E-494D-BE20-0077FCE12E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C042C1A6-558E-494D-BE20-0077FCE12E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C042C1A6-558E-494D-BE20-0077FCE12E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C042C1A6-558E-494D-BE20-0077FCE12E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6505678A-5FEB-4A8F-B527-5FEA7805C1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6505678A-5FEB-4A8F-B527-5FEA7805C1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6505678A-5FEB-4A8F-B527-5FEA7805C1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6505678A-5FEB-4A8F-B527-5FEA7805C1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A128A3F9-E9B0-48DF-8819-04B1F7A861E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A128A3F9-E9B0-48DF-8819-04B1F7A861E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A128A3F9-E9B0-48DF-8819-04B1F7A861E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A128A3F9-E9B0-48DF-8819-04B1F7A861E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

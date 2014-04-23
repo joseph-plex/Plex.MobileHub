@@ -5,55 +5,6 @@ using System.Web;
 using MobileHub.Objects;
 namespace MobileHub.Objects
 {
-    public static class CommandFactory
-    {
-        const string SyncComm = "Sync";
-        const string IUDComm = "IUD";
-        public static Command CreateCommand(ClientCommandType CommandType)
-        {
-            switch(CommandType)
-            {
-                case ClientCommandType.Query:
-                    return new Command();
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
-        public static Command CreateSyncCommand()
-        {
-            Command command = new Command();
-            command.Name = SyncComm;
-            return command;
-        }
-        public static Command CreateSyncCommand(int ClientId)
-        {
-            var command = CreateSyncCommand();
-            command.ClientId = ClientId;
-            return command;
-        }
-     
-        public static Command CreateIUDCommand(int ClientId, string DBCode, IUDData ChangeRequest)
-        {
-            var command = CreateIUDCommand(ClientId);
-            command.Params.Add(DBCode);
-            command.Params.Add(ChangeRequest);
-            return command;
-        }
-        public static Command CreateIUDCommand(int ClientId)
-        {
-            var command = CreateIUDCommand();
-            command.ClientId = ClientId;
-            return command;
-        }
-        public static Command CreateIUDCommand()
-        {
-            Command command = new Command();
-            command.Name = IUDComm;
-            return command;
-        }
-    }
-
     public class Command
     {
         public const string Query = "Query";

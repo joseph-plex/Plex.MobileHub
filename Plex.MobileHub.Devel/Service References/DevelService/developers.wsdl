@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AppGetTableDefinition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppGetTableDefinitionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppGetTableDefinitionResult" type="tns:ArrayOfTableDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTableDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TableDefinition" nillable="true" type="tns:TableDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TableDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowInsert" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowUpdate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowQuery" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Columns" type="tns:ArrayOfColumn" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfColumn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Column">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ColumnSequence" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataLength" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataPrecision" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataScale" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowDbNull" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLong" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsKey" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUnique" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AppGetQueries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppAuthKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppGetQueriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppGetQueriesResult" type="tns:ArrayOfQueryDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfQueryDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryDefinition" nillable="true" type="tns:QueryDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackDelta" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="WhereClauses" type="tns:ArrayOfCondition" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCondition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Condition" nillable="true" type="tns:Condition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Condition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNVL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ClientGetDatabaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nClientId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientGetDatabaseListResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QryCreateOffTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Auth" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TableId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreateOffTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryCreateOffTableResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="tns:QueryDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryCreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryCreateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nAppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAppAuthKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sQueryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppSyncData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppSyncDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppSyncDataResult" type="tns:DevelSyncData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DevelSyncData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="App" type="tns:APPS" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppQueries" type="tns:ArrayOfAPP_QUERIES" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppTables" type="tns:ArrayOfAPP_TABLES" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppUserTypes" type="tns:ArrayOfAPP_USER_TYPES" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppTabColumns" type="tns:ArrayOfAPP_TABLE_COLUMNS" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppQryColumns" type="tns:ArrayOfAPP_QUERY_COLUMNS" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppQryConditions" type="tns:ArrayOfAPP_QUERY_CONDITIONS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APPS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AUTH_KEY" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TITLE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_CLIENT_CUSTOM_APP" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PlexxisDataTransferObjects" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryKey" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APP_QUERY_CONDITIONS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CONDITION_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NVL" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_VALUE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OPERATOR" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="APP_QUERY_COLUMNS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_SEQUENCE" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="APP_TABLE_COLUMNS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TABLE_COLUMN_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_SEQUENCE" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DATA_TYPE" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DATA_LENGTH" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DATA_PRECISION" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DATA_SCALE" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ALLOW_DB_NULL" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_READ_ONLY" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_LONG" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_KEY" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="KEY_TYPE" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_UNIQUE" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="APP_USER_TYPES">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="USER_TYPE_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CODE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="APP_TABLES">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="INSERT_ALLOWED" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="UPDATE_ALLOWED" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DELETE_ALLOWED" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ALLOWED" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="APP_QUERIES">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TABLE_NAME" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IS_DELTA" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="SQL" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SEQ_LIMIT_TIMESPAN" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SEQ_LIMIT" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_QUERIES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_QUERIES" nillable="true" type="tns:APP_QUERIES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_TABLES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_TABLES" nillable="true" type="tns:APP_TABLES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_USER_TYPES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_USER_TYPES" nillable="true" type="tns:APP_USER_TYPES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_TABLE_COLUMNS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_TABLE_COLUMNS" nillable="true" type="tns:APP_TABLE_COLUMNS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_QUERY_COLUMNS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_QUERY_COLUMNS" nillable="true" type="tns:APP_QUERY_COLUMNS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAPP_QUERY_CONDITIONS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="APP_QUERY_CONDITIONS" nillable="true" type="tns:APP_QUERY_CONDITIONS" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfTableDefinition" nillable="true" type="tns:ArrayOfTableDefinition" />
+      <s:element name="ArrayOfQueryDefinition" nillable="true" type="tns:ArrayOfQueryDefinition" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="DevelSyncData" nillable="true" type="tns:DevelSyncData" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AppGetTableDefinitionSoapIn">
+    <wsdl:part name="parameters" element="tns:AppGetTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionSoapOut">
+    <wsdl:part name="parameters" element="tns:AppGetTableDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesSoapIn">
+    <wsdl:part name="parameters" element="tns:AppGetQueries" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesSoapOut">
+    <wsdl:part name="parameters" element="tns:AppGetQueriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientGetDatabaseList" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientGetDatabaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableSoapIn">
+    <wsdl:part name="parameters" element="tns:QryCreateOffTable" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableSoapOut">
+    <wsdl:part name="parameters" element="tns:QryCreateOffTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateSoapIn">
+    <wsdl:part name="parameters" element="tns:QryCreate" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateSoapOut">
+    <wsdl:part name="parameters" element="tns:QryCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:QryDelete" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:QryDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppSyncData" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppSyncDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpGetIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpGetIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQueryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpGetIn">
+    <wsdl:part name="nClientId" type="s:string" />
+    <wsdl:part name="nAppId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpGetOut" />
+  <wsdl:message name="QryCreateOffTableHttpGetIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Auth" type="s:string" />
+    <wsdl:part name="TableId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpGetIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+    <wsdl:part name="sQueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataHttpGetIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:DevelSyncData" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpPostIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetTableDefinitionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTableDefinition" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpPostIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppAuthKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppGetQueriesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQueryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpPostIn">
+    <wsdl:part name="nClientId" type="s:string" />
+    <wsdl:part name="nAppId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientGetDatabaseListHttpPostOut" />
+  <wsdl:message name="QryCreateOffTableHttpPostIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="Auth" type="s:string" />
+    <wsdl:part name="TableId" type="s:string" />
+    <wsdl:part name="QueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryCreateOffTableHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpPostIn">
+    <wsdl:part name="nAppId" type="s:string" />
+    <wsdl:part name="sAppAuthKey" type="s:string" />
+    <wsdl:part name="sQueryName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryDeleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataHttpPostIn">
+    <wsdl:part name="AppId" type="s:string" />
+    <wsdl:part name="AppKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSyncDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:DevelSyncData" />
+  </wsdl:message>
+  <wsdl:portType name="DevelopersSoap">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionSoapIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesSoapIn" />
+      <wsdl:output message="tns:AppGetQueriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListSoapIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableSoapIn" />
+      <wsdl:output message="tns:QryCreateOffTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <wsdl:input message="tns:QryCreateSoapIn" />
+      <wsdl:output message="tns:QryCreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteSoapIn" />
+      <wsdl:output message="tns:QryDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <wsdl:input message="tns:GetAppSyncDataSoapIn" />
+      <wsdl:output message="tns:GetAppSyncDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DevelopersHttpGet">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionHttpGetIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesHttpGetIn" />
+      <wsdl:output message="tns:AppGetQueriesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListHttpGetIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableHttpGetIn" />
+      <wsdl:output message="tns:QryCreateOffTableHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteHttpGetIn" />
+      <wsdl:output message="tns:QryDeleteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <wsdl:input message="tns:GetAppSyncDataHttpGetIn" />
+      <wsdl:output message="tns:GetAppSyncDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DevelopersHttpPost">
+    <wsdl:operation name="AppGetTableDefinition">
+      <wsdl:input message="tns:AppGetTableDefinitionHttpPostIn" />
+      <wsdl:output message="tns:AppGetTableDefinitionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <wsdl:input message="tns:AppGetQueriesHttpPostIn" />
+      <wsdl:output message="tns:AppGetQueriesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <wsdl:input message="tns:ClientGetDatabaseListHttpPostIn" />
+      <wsdl:output message="tns:ClientGetDatabaseListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <wsdl:input message="tns:QryCreateOffTableHttpPostIn" />
+      <wsdl:output message="tns:QryCreateOffTableHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <wsdl:input message="tns:QryDeleteHttpPostIn" />
+      <wsdl:output message="tns:QryDeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <wsdl:input message="tns:GetAppSyncDataHttpPostIn" />
+      <wsdl:output message="tns:GetAppSyncDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DevelopersSoap" type="tns:DevelopersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <soap:operation soapAction="http://tempuri.org/AppGetTableDefinition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <soap:operation soapAction="http://tempuri.org/AppGetQueries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <soap:operation soapAction="http://tempuri.org/ClientGetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <soap:operation soapAction="http://tempuri.org/QryCreateOffTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <soap:operation soapAction="http://tempuri.org/QryCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <soap:operation soapAction="http://tempuri.org/QryDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <soap:operation soapAction="http://tempuri.org/GetAppSyncData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DevelopersSoap12" type="tns:DevelopersSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <soap12:operation soapAction="http://tempuri.org/AppGetTableDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <soap12:operation soapAction="http://tempuri.org/AppGetQueries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <soap12:operation soapAction="http://tempuri.org/ClientGetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <soap12:operation soapAction="http://tempuri.org/QryCreateOffTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryCreate">
+      <soap12:operation soapAction="http://tempuri.org/QryCreate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <soap12:operation soapAction="http://tempuri.org/QryDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <soap12:operation soapAction="http://tempuri.org/GetAppSyncData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DevelopersHttpGet" type="tns:DevelopersHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <http:operation location="/AppGetTableDefinition" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <http:operation location="/AppGetQueries" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <http:operation location="/ClientGetDatabaseList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <http:operation location="/QryCreateOffTable" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <http:operation location="/QryDelete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <http:operation location="/GetAppSyncData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DevelopersHttpPost" type="tns:DevelopersHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AppGetTableDefinition">
+      <http:operation location="/AppGetTableDefinition" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppGetQueries">
+      <http:operation location="/AppGetQueries" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientGetDatabaseList">
+      <http:operation location="/ClientGetDatabaseList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="QryCreateOffTable">
+      <http:operation location="/QryCreateOffTable" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryDelete">
+      <http:operation location="/QryDelete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSyncData">
+      <http:operation location="/GetAppSyncData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Developers">
+    <wsdl:port name="DevelopersSoap" binding="tns:DevelopersSoap">
+      <soap:address location="http://pmht.plexxis.com/developers.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DevelopersSoap12" binding="tns:DevelopersSoap12">
+      <soap12:address location="http://pmht.plexxis.com/developers.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DevelopersHttpGet" binding="tns:DevelopersHttpGet">
+      <http:address location="http://pmht.plexxis.com/developers.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DevelopersHttpPost" binding="tns:DevelopersHttpPost">
+      <http:address location="http://pmht.plexxis.com/developers.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

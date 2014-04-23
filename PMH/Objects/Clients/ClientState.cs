@@ -8,6 +8,7 @@ namespace MobileHub.Objects.Clients
     public enum ClientState
     {
         Connected,
-        Disconnected
+        Suspended,
+        Disconnected,
     }
 }

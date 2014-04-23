@@ -15,6 +15,7 @@ namespace MobileHub.Repositories
                 return consumers;
             }
         }
+
         Dictionary<int, Consumer> ConsumerRepo = new Dictionary<int, Consumer>();
 
         public Dictionary<int, Consumer> GetAll()

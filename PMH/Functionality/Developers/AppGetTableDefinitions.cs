@@ -37,7 +37,7 @@ namespace MobileHub.Functionality.Developers
 
                 d.TableName = t.NAME ;
 
-                foreach (var c in ApplicationCols)
+                foreach (var c in ApplicationCols.Where(p=> p.TABLE_ID == t.TABLE_ID))
                     d.Columns.Add(new Column()
                     {
                         ColumnName = c.COLUMN_NAME,

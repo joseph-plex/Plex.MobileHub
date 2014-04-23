@@ -7,6 +7,6 @@ namespace MobileHub.Exceptions
 {
     public class InvalidQueryException : PlexError
     {
-        public InvalidQueryException() : base("The query you have specified is invalid") { }
+        public InvalidQueryException() : base("The query you have specified does not exist") { }
     }
 }

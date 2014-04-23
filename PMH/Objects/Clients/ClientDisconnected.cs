@@ -92,12 +92,24 @@ namespace MobileHub.Objects.Clients
             ClientTuple.CLIENT_INSTANCE_ID = ClientTuple.CLIENT_ID;
             ClientTuple.CLIENT_IP_ADDRESS = Context.IPv4 = address;
             ClientTuple.CLIENT_PORT = Context.Port = port;
+
+
             ClientTuple.Update();
+
+            Logs.Instance.Add("Client " + ClientTuple.CLIENT_ID + " has logged in");
+
+            //Context.connectionTimeout.Enabled = true;
+
         }
 
+        public void CheckIn()
+        {
+            Context.connectionTimeout.Stop();
+            Context.connectionTimeout.Start();
+        }
         public void Disconnect()
         {
-
+            Context.connectionTimeout.Enabled = false;
         }
     }
 

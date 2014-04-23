@@ -5,6 +5,7 @@ using System.Web;
 using MobileHub.Data.Tables;
 using System.ServiceModel;
 using MobileHub.Repositories;
+using MobileHub.Exceptions;
 namespace MobileHub.Objects.Clients
 {
     sealed class ClientConnected : IClientStateBehaviour
@@ -71,13 +72,7 @@ namespace MobileHub.Objects.Clients
 
         public T ExecuteRequest<T>(string commandName, params object[] arguments)
         {
-            Command command = new Command()  {
-                ClientId = Context.ClientId,
-                Name = commandName,
-                Params = arguments.ToList()
-            };
-
-            int commandId = Commands.Instance.Add(command);
+            int commandId = Commands.Instance.Add(ClientId, commandName, arguments.ToList());
             RequestPull();
             return Responses.Instance.GetResponse<T>(commandId);
         }
@@ -90,14 +85,35 @@ namespace MobileHub.Objects.Clients
             }
             catch (EndpointNotFoundException)
             {
-                throw new Exception("Client cannot be contacted at the specified address");
+                Context.Disconnect();
+                throw new Exception("Client cannot be contacted at the specified address. Please contact Client Administrator");
             }
+            catch(TimeoutException)
+            {
+                Context.Disconnect();
+                throw new Exception("The Client is taking too long to respond to the the request. Please contact Client Administrator");
+            }    
         }
 
 
         public void Connect(string address, int port)
         {
-            throw new InvalidOperationException("Client is already connected");
+            CLIENTS ClientTuple = CLIENTS.GetAll().First(p => p.CLIENT_ID == Context.clientId);
+
+            
+            if (ClientTuple.CLIENT_IP_ADDRESS != address)
+                throw new MultipleClientLoginException();
+            if (ClientTuple.CLIENT_PORT != port)         
+                throw new MultipleClientLoginException();
+
+            Logs.Instance.Add("Client " + ClientTuple.CLIENT_ID + " has checked in");
+            CheckIn();
+        }
+
+        public void CheckIn()
+        {
+            Context.connectionTimeout.Stop();
+            Context.connectionTimeout.Start();
         }
 
         public void Disconnect()
@@ -111,6 +127,7 @@ namespace MobileHub.Objects.Clients
             ClientTuple.CLIENT_PORT = null;
 
             ClientTuple.Update();
+            Context.connectionTimeout.Enabled = false;
         }
 
         EndpointAddress CreateEndpointAddress()
@@ -131,7 +148,6 @@ namespace MobileHub.Objects.Clients
         }
         ExternalService CreateChannel()
         {
-
             var endpoint = CreateEndpointAddress();
             var binding = CreateWSHttpBinding();
             var myChannelFactory = new ChannelFactory<ExternalService>(binding, endpoint);

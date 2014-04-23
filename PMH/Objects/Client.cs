@@ -5,17 +5,26 @@ using System.ServiceModel;
 using MobileHub.Repositories;
 using System.Timers;
 using MobileHub.Objects.Clients;
-
+using MobileHub.Properties;
+using System.Xml.Serialization;
 namespace MobileHub.Objects
 {
-    public class Client
+    public class Client 
     {
         public delegate void Subscriber(object sender, EventArgs e);
 
         public event Subscriber OnConnect;
         public event Subscriber OnDisconnect;
-        
-        public virtual Int32 ClientId{
+
+        [XmlIgnore]
+        public ClientState currentState
+        {
+            get;
+            private set;
+        }
+
+        public virtual Int32 ClientId
+        {
             get
             {
                 return stateBehaviour[currentState].ClientId;
@@ -72,8 +81,8 @@ namespace MobileHub.Objects
         protected internal string key;
         protected internal int clientId;
         protected internal string address;
-
-        protected internal ClientState currentState;
+        protected internal Timer connectionTimeout;
+      
         protected internal Dictionary<ClientState, IClientStateBehaviour> stateBehaviour;
 
         protected internal List<Command> queuedRequests;
@@ -82,8 +91,14 @@ namespace MobileHub.Objects
         {
             queuedRequests = new List<Command>();
 
+            connectionTimeout = new Timer();
+            connectionTimeout.Enabled = false;
+            connectionTimeout.Interval = Settings.Default.ClientConnectionTimeout;
+
+            Settings.Default.PropertyChanged += (s, e) => connectionTimeout.Interval = Settings.Default.ClientConnectionTimeout;  
+
             currentState = ClientState.Disconnected;
-            
+
             OnConnect += (object sender, EventArgs e) => currentState = ClientState.Connected;
             OnDisconnect += (object sender, EventArgs e) => currentState = ClientState.Disconnected;
 

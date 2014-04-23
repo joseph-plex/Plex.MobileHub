@@ -26,7 +26,6 @@ namespace Plex.PMH.Tester
 
                     var DeviceId = service.DeviceRequestId(connectionId).Response;
                     var result = service.DeviceSynchronize(connectionId, 155, 167);
-
                 }
                 catch (Exception e)
                 {

@@ -60,7 +60,8 @@ namespace MobileHub.Data.Tables
 
         public int QUERY_ID;//NUMBER(10)	N			
         public int APP_ID;//NUMBER(10)	N			
-        public string NAME;//VARCHAR2(50)	N			
+        public string NAME;//VARCHAR2(50)	N	
+        public string TABLE_NAME; //VARCHAR2(50) Y
         public string DESCRIPTION;//VARCHAR2(4000)	Y			
         public int TABLE_ID;//NUMBER(10)	N			
         public int IS_DELTA;//NUMBER(1)	N			

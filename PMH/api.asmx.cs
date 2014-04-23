@@ -25,32 +25,32 @@ namespace MobileHub
         }
 
         [WebMethod]
-        public void ConnectionRelease(int nConnectionId)
+        public MethodResult ConnectionRelease(int ConnectionId)
         {
-            Functions.ConnectionRelease(nConnectionId);
+            return new ConnectionRelease().Strategy(ConnectionId);
         }
 
         [WebMethod]
         public int ConnectionStatus(int nConnectionId)
         {
-            return (int)Functions.ConnectionGetStatus(nConnectionId);
+            throw new NotImplementedException();
         }
 
         [WebMethod]
-        public QueryResult QryExecute(int nConnectionId, string QueryName)
+        public RQryResult QryExecute(int nConnectionId, string QueryName)
         {
-            return Functions.QryExecute(nConnectionId, QueryName, null);
+            return new QryExecute().Strategy(nConnectionId, QueryName);
         }
 
         [WebMethod]
         public XmlDocument QryExecuteXml(int nConnectionId, string QueryName)
         {
-            return Functions.QryExecute(nConnectionId, QueryName, null);
+            return new QryExecuteXml().Strategy(nConnectionId, QueryName);
         }
         [WebMethod]
         public MethodResult IUD(int nConnectionId, IUDData DBModData)
         {
-            return Functions.IUD(nConnectionId, DBModData);
+            throw new NotImplementedException();
         }
         
         /*********************************** Internal Plexxis Methods *****************************************/
@@ -62,9 +62,9 @@ namespace MobileHub
         }
 
         [WebMethod]
-        public QueryResult QueryDatabase(int ConnectionId, String Query)
+        public QryResult QueryDatabase(int ConnectionId, String Query)
         {
-            return Functions.QueryDatabase(ConnectionId, Query);
+            return new QueryDatabase().Strategy(ConnectionId, Query);
         }
 
         [WebMethod]

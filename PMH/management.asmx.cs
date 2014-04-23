@@ -15,6 +15,9 @@ using MobileHub.Data.Tables;
 using MobileHub.Objects.Clients;
 using MobileHub.Objects;
 using MobileHub.Data.Types;
+
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 namespace MobileHub
 {
     /// <summary>
@@ -119,6 +122,42 @@ namespace MobileHub
         public void ResetLogs()
         {
             Logs.Instance.logs.Clear();
+        }
+
+        [WebMethod]
+        public Result Test()
+        {
+            using (var conn = Utilities.GetConnection(true))
+            {
+                using (var command = (OracleCommand)conn.CreateCommand("select * from all_cons_columns where constraint_name in (:a)"))
+                {
+                    var values = new string[] { "PA_COMPANY_ID", "COMPANYID_FK" };
+                    OracleParameter param = new OracleParameter();
+                    param.OracleDbType = OracleDbType.Varchar2;
+                    param.Value = values;
+                    command.ArrayBindCount = values.Length;
+
+                    //command.Parameters.Add(command.CreateParameter("COMPANYID_FK"));
+                    //IEnumerable<string> t = new string[] { "COMPANYID_FK", "PA_COMPANY_ID" };
+                    command.Parameters.Add(param);
+
+                    return new Result(command.ExecuteReader());
+                }
+            }
+        }
+
+        [WebMethod]
+        public object GetReferenceTree()
+        {
+            XmlDocument Tree = new XmlDocument();
+
+            using (var Conn = Utilities.GetConnection(true))
+            {
+                var user_constraints = Conn.Query("select c.* from user_tables t,user_constraints c where c.TABLE_NAME = t.TABLE_NAME and c.CONSTRAINT_TYPE = 'R'");
+
+            }
+
+            return Tree;
         }
     }
 }
