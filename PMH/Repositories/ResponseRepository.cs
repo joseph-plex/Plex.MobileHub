@@ -12,9 +12,9 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Diagnostics;
 
-using MobileHub.Objects;
+using Plex.MobileHub.Objects;
 
-namespace MobileHub.Repositories
+namespace Plex.MobileHub.Repositories
 {
     //public delegate Subscriber e(object sender, EventArgs e);
     public class Responses

@@ -3,8 +3,8 @@ using System.Linq;
 using System.Data;
 using System.Reflection;
 using System.Collections.Generic;
-using MobileHub.Repositories;
-namespace MobileHub.Data
+using Plex.MobileHub.Repositories;
+namespace Plex.MobileHub.Data
 {
     public abstract class PlexxisDataTransferObjects : IPlexxisDatabaseRow
     {

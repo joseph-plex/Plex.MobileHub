@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Plex.PMH.Tester.pmh {
+namespace Plex.MobileHub.Tester.pmh {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -18,18 +18,18 @@ namespace Plex.PMH.Tester.pmh {
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ConnectionConnect", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.MethodResult ConnectionConnect(int ClientId, int AppId, string Database, string User, string Password);
+        Plex.MobileHub.Tester.pmh.MethodResult ConnectionConnect(int ClientId, int AppId, string Database, string User, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ConnectionConnect", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> ConnectionConnectAsync(int ClientId, int AppId, string Database, string User, string Password);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> ConnectionConnectAsync(int ClientId, int AppId, string Database, string User, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ConnectionRelease", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        void ConnectionRelease(int nConnectionId);
+        Plex.MobileHub.Tester.pmh.MethodResult ConnectionRelease(int ConnectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ConnectionRelease", ReplyAction="*")]
-        System.Threading.Tasks.Task ConnectionReleaseAsync(int nConnectionId);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> ConnectionReleaseAsync(int ConnectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ConnectionStatus", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -42,10 +42,10 @@ namespace Plex.PMH.Tester.pmh {
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QryExecute", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.QueryResult QryExecute(int nConnectionId, string QueryName);
+        Plex.MobileHub.Tester.pmh.RQryResult QryExecute(int nConnectionId, string QueryName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QryExecute", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QryExecuteAsync(int nConnectionId, string QueryName);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.RQryResult> QryExecuteAsync(int nConnectionId, string QueryName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QryExecuteXml", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -58,18 +58,10 @@ namespace Plex.PMH.Tester.pmh {
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/IUD", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.MethodResult IUD(int nConnectionId, Plex.PMH.Tester.pmh.IUDData DBModData);
+        Plex.MobileHub.Tester.pmh.MethodResult IUD(int nConnectionId, Plex.MobileHub.Tester.pmh.IUDData DBModData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/IUD", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> IUDAsync(int nConnectionId, Plex.PMH.Tester.pmh.IUDData DBModData);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronization", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.QueryResult[] DeviceSynchronization(int ConnectionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronization", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult[]> DeviceSynchronizationAsync(int ConnectionId);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> IUDAsync(int nConnectionId, Plex.MobileHub.Tester.pmh.IUDData DBModData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Sync", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -82,32 +74,32 @@ namespace Plex.PMH.Tester.pmh {
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabase", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.QueryResult QueryDatabase(int ConnectionId, string Query);
+        Plex.MobileHub.Tester.pmh.QryResult QueryDatabase(int ConnectionId, string Query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryDatabase", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QueryDatabaseAsync(int ConnectionId, string Query);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.QryResult> QueryDatabaseAsync(int ConnectionId, string Query);
         
-        // CODEGEN: Parameter 'userDataId' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronize", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.DeviceSynchronizeResponse DeviceSynchronize(Plex.PMH.Tester.pmh.DeviceSynchronizeRequest request);
+        Plex.MobileHub.Tester.pmh.DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int deviceId, int userDataId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronize", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.DeviceSynchronizeResponse> DeviceSynchronizeAsync(Plex.PMH.Tester.pmh.DeviceSynchronizeRequest request);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.DeviceSynchronizeMethodResult> DeviceSynchronizeAsync(int connectionId, int deviceId, int userDataId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceRequestId", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.PMH.Tester.pmh.MethodResult DeviceRequestId(int connectionId);
+        Plex.MobileHub.Tester.pmh.MethodResult DeviceRequestId(int connectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceRequestId", ReplyAction="*")]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> DeviceRequestIdAsync(int connectionId);
+        System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> DeviceRequestIdAsync(int connectionId);
     }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeviceSynchronizeMethodResult))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(QueryResult))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(QryResult))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RQryResult))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -485,7 +477,7 @@ namespace Plex.PMH.Tester.pmh {
         
         private System.DateTime completionTimeStampField;
         
-        private QueryResult[] resultsField;
+        private RQryResult[] resultsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -513,7 +505,7 @@ namespace Plex.PMH.Tester.pmh {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public QueryResult[] Results {
+        public RQryResult[] Results {
             get {
                 return this.resultsField;
             }
@@ -530,7 +522,45 @@ namespace Plex.PMH.Tester.pmh {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class QueryResult : MethodResult {
+    public partial class RQryResult : QryResult {
+        
+        private string tableNameField;
+        
+        private string queryNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string TableName {
+            get {
+                return this.tableNameField;
+            }
+            set {
+                this.tableNameField = value;
+                this.RaisePropertyChanged("TableName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string QueryName {
+            get {
+                return this.queryNameField;
+            }
+            set {
+                this.queryNameField = value;
+                this.RaisePropertyChanged("QueryName");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RQryResult))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class QryResult : MethodResult {
         
         private System.DateTime startTimeStampField;
         
@@ -617,56 +647,13 @@ namespace Plex.PMH.Tester.pmh {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeviceSynchronize", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
-    public partial class DeviceSynchronizeRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
-        public int connectionId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=1)]
-        public int deviceId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> userDataId;
-        
-        public DeviceSynchronizeRequest() {
-        }
-        
-        public DeviceSynchronizeRequest(int connectionId, int deviceId, System.Nullable<int> userDataId) {
-            this.connectionId = connectionId;
-            this.deviceId = deviceId;
-            this.userDataId = userDataId;
-        }
+    public interface APISoapChannel : Plex.MobileHub.Tester.pmh.APISoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeviceSynchronizeResponse", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
-    public partial class DeviceSynchronizeResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
-        public Plex.PMH.Tester.pmh.DeviceSynchronizeMethodResult DeviceSynchronizeResult;
-        
-        public DeviceSynchronizeResponse() {
-        }
-        
-        public DeviceSynchronizeResponse(Plex.PMH.Tester.pmh.DeviceSynchronizeMethodResult DeviceSynchronizeResult) {
-            this.DeviceSynchronizeResult = DeviceSynchronizeResult;
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface APISoapChannel : Plex.PMH.Tester.pmh.APISoap, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class APISoapClient : System.ServiceModel.ClientBase<Plex.PMH.Tester.pmh.APISoap>, Plex.PMH.Tester.pmh.APISoap {
+    public partial class APISoapClient : System.ServiceModel.ClientBase<Plex.MobileHub.Tester.pmh.APISoap>, Plex.MobileHub.Tester.pmh.APISoap {
         
         public APISoapClient() {
         }
@@ -687,20 +674,20 @@ namespace Plex.PMH.Tester.pmh {
                 base(binding, remoteAddress) {
         }
         
-        public Plex.PMH.Tester.pmh.MethodResult ConnectionConnect(int ClientId, int AppId, string Database, string User, string Password) {
+        public Plex.MobileHub.Tester.pmh.MethodResult ConnectionConnect(int ClientId, int AppId, string Database, string User, string Password) {
             return base.Channel.ConnectionConnect(ClientId, AppId, Database, User, Password);
         }
         
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> ConnectionConnectAsync(int ClientId, int AppId, string Database, string User, string Password) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> ConnectionConnectAsync(int ClientId, int AppId, string Database, string User, string Password) {
             return base.Channel.ConnectionConnectAsync(ClientId, AppId, Database, User, Password);
         }
         
-        public void ConnectionRelease(int nConnectionId) {
-            base.Channel.ConnectionRelease(nConnectionId);
+        public Plex.MobileHub.Tester.pmh.MethodResult ConnectionRelease(int ConnectionId) {
+            return base.Channel.ConnectionRelease(ConnectionId);
         }
         
-        public System.Threading.Tasks.Task ConnectionReleaseAsync(int nConnectionId) {
-            return base.Channel.ConnectionReleaseAsync(nConnectionId);
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> ConnectionReleaseAsync(int ConnectionId) {
+            return base.Channel.ConnectionReleaseAsync(ConnectionId);
         }
         
         public int ConnectionStatus(int nConnectionId) {
@@ -711,11 +698,11 @@ namespace Plex.PMH.Tester.pmh {
             return base.Channel.ConnectionStatusAsync(nConnectionId);
         }
         
-        public Plex.PMH.Tester.pmh.QueryResult QryExecute(int nConnectionId, string QueryName) {
+        public Plex.MobileHub.Tester.pmh.RQryResult QryExecute(int nConnectionId, string QueryName) {
             return base.Channel.QryExecute(nConnectionId, QueryName);
         }
         
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QryExecuteAsync(int nConnectionId, string QueryName) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.RQryResult> QryExecuteAsync(int nConnectionId, string QueryName) {
             return base.Channel.QryExecuteAsync(nConnectionId, QueryName);
         }
         
@@ -727,20 +714,12 @@ namespace Plex.PMH.Tester.pmh {
             return base.Channel.QryExecuteXmlAsync(nConnectionId, QueryName);
         }
         
-        public Plex.PMH.Tester.pmh.MethodResult IUD(int nConnectionId, Plex.PMH.Tester.pmh.IUDData DBModData) {
+        public Plex.MobileHub.Tester.pmh.MethodResult IUD(int nConnectionId, Plex.MobileHub.Tester.pmh.IUDData DBModData) {
             return base.Channel.IUD(nConnectionId, DBModData);
         }
         
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> IUDAsync(int nConnectionId, Plex.PMH.Tester.pmh.IUDData DBModData) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> IUDAsync(int nConnectionId, Plex.MobileHub.Tester.pmh.IUDData DBModData) {
             return base.Channel.IUDAsync(nConnectionId, DBModData);
-        }
-        
-        public Plex.PMH.Tester.pmh.QueryResult[] DeviceSynchronization(int ConnectionId) {
-            return base.Channel.DeviceSynchronization(ConnectionId);
-        }
-        
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult[]> DeviceSynchronizationAsync(int ConnectionId) {
-            return base.Channel.DeviceSynchronizationAsync(ConnectionId);
         }
         
         public void Sync() {
@@ -751,46 +730,27 @@ namespace Plex.PMH.Tester.pmh {
             return base.Channel.SyncAsync();
         }
         
-        public Plex.PMH.Tester.pmh.QueryResult QueryDatabase(int ConnectionId, string Query) {
+        public Plex.MobileHub.Tester.pmh.QryResult QueryDatabase(int ConnectionId, string Query) {
             return base.Channel.QueryDatabase(ConnectionId, Query);
         }
         
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.QueryResult> QueryDatabaseAsync(int ConnectionId, string Query) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.QryResult> QueryDatabaseAsync(int ConnectionId, string Query) {
             return base.Channel.QueryDatabaseAsync(ConnectionId, Query);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Plex.PMH.Tester.pmh.DeviceSynchronizeResponse Plex.PMH.Tester.pmh.APISoap.DeviceSynchronize(Plex.PMH.Tester.pmh.DeviceSynchronizeRequest request) {
-            return base.Channel.DeviceSynchronize(request);
+        public Plex.MobileHub.Tester.pmh.DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int deviceId, int userDataId) {
+            return base.Channel.DeviceSynchronize(connectionId, deviceId, userDataId);
         }
         
-        public Plex.PMH.Tester.pmh.DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int deviceId, System.Nullable<int> userDataId) {
-            Plex.PMH.Tester.pmh.DeviceSynchronizeRequest inValue = new Plex.PMH.Tester.pmh.DeviceSynchronizeRequest();
-            inValue.connectionId = connectionId;
-            inValue.deviceId = deviceId;
-            inValue.userDataId = userDataId;
-            Plex.PMH.Tester.pmh.DeviceSynchronizeResponse retVal = ((Plex.PMH.Tester.pmh.APISoap)(this)).DeviceSynchronize(inValue);
-            return retVal.DeviceSynchronizeResult;
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.DeviceSynchronizeMethodResult> DeviceSynchronizeAsync(int connectionId, int deviceId, int userDataId) {
+            return base.Channel.DeviceSynchronizeAsync(connectionId, deviceId, userDataId);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.DeviceSynchronizeResponse> Plex.PMH.Tester.pmh.APISoap.DeviceSynchronizeAsync(Plex.PMH.Tester.pmh.DeviceSynchronizeRequest request) {
-            return base.Channel.DeviceSynchronizeAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.DeviceSynchronizeResponse> DeviceSynchronizeAsync(int connectionId, int deviceId, System.Nullable<int> userDataId) {
-            Plex.PMH.Tester.pmh.DeviceSynchronizeRequest inValue = new Plex.PMH.Tester.pmh.DeviceSynchronizeRequest();
-            inValue.connectionId = connectionId;
-            inValue.deviceId = deviceId;
-            inValue.userDataId = userDataId;
-            return ((Plex.PMH.Tester.pmh.APISoap)(this)).DeviceSynchronizeAsync(inValue);
-        }
-        
-        public Plex.PMH.Tester.pmh.MethodResult DeviceRequestId(int connectionId) {
+        public Plex.MobileHub.Tester.pmh.MethodResult DeviceRequestId(int connectionId) {
             return base.Channel.DeviceRequestId(connectionId);
         }
         
-        public System.Threading.Tasks.Task<Plex.PMH.Tester.pmh.MethodResult> DeviceRequestIdAsync(int connectionId) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Tester.pmh.MethodResult> DeviceRequestIdAsync(int connectionId) {
             return base.Channel.DeviceRequestIdAsync(connectionId);
         }
     }

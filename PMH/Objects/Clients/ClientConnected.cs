@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Data.Tables;
+using Plex.MobileHub.Data.Tables;
 using System.ServiceModel;
-using MobileHub.Repositories;
-using MobileHub.Exceptions;
-namespace MobileHub.Objects.Clients
+using Plex.MobileHub.Repositories;
+using Plex.MobileHub.Exceptions;
+namespace Plex.MobileHub.Objects.Clients
 {
     sealed class ClientConnected : IClientStateBehaviour
     {

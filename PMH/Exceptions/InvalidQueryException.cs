@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MobileHub.Exceptions
+namespace Plex.MobileHub.Exceptions
 {
     public class InvalidQueryException : PlexError
     {

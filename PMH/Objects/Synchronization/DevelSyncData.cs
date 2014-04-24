@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Data.Tables;
-using MobileHub.Data;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Data;
 
-namespace MobileHub.Objects.Synchronization
+namespace Plex.MobileHub.Objects.Synchronization
 {
     public sealed class DevelSyncData
     {

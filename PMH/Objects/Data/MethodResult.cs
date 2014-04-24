@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
 using System.Xml.Serialization;
-using MobileHub.Properties;
+using Plex.MobileHub.Properties;
 
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     public class MethodResult
     {

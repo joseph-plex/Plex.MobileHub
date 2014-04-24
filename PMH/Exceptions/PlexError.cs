@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace MobileHub.Exceptions
+namespace Plex.MobileHub.Exceptions
 {
     public class PlexError : Exception
     {

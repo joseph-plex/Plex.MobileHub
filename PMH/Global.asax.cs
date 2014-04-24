@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-using MobileHub.Repositories;
+using Plex.MobileHub.Repositories;
 
-using MobileHub.Data.Tables;
-using MobileHub.Objects;
-namespace MobileHub
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Objects;
+namespace Plex.MobileHub
 {
     public delegate void Subscriber(object sender, EventArgs e);
     public class Global : HttpApplication

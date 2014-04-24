@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.ServiceModel;
-using MobileHub.Repositories;
+using Plex.MobileHub.Repositories;
 using System.Timers;
-using MobileHub.Objects.Clients;
-using MobileHub.Properties;
+using Plex.MobileHub.Objects.Clients;
+using Plex.MobileHub.Properties;
 using System.Xml.Serialization;
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     public class Client 
     {

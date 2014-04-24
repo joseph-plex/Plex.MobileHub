@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Objects;
-using MobileHub.Repositories;
-namespace MobileHub.Functionality.Clients
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
+namespace Plex.MobileHub.Functionality.Clients
 {
     public class GetCommands  : FunctionStrategyBase<List<Command>>
     {

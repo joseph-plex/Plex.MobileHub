@@ -9,16 +9,16 @@ using System.Xml.Serialization;
 using System.Reflection;
 
 
-using MobileHub.Repositories;
-using MobileHub.Data;
-using MobileHub.Data.Tables;
-using MobileHub.Objects.Clients;
-using MobileHub.Objects;
-using MobileHub.Data.Types;
+using Plex.MobileHub.Repositories;
+using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Objects.Clients;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Data.Types;
 
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
-namespace MobileHub
+namespace Plex.MobileHub
 {
     /// <summary>
     /// Summary description for ManagerSDK

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="MobileHub.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Plex.MobileHub.Global" Language="C#" %>

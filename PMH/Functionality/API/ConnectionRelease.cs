@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Objects;
-using MobileHub.Repositories;
-namespace MobileHub.Functionality.API
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
+namespace Plex.MobileHub.Functionality.API
 {
     public class ConnectionRelease : FunctionStrategyBase<object>
     {

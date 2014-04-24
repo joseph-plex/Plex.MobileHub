@@ -1,15 +1,15 @@
-﻿using MobileHub.Functionality.Clients;
-using MobileHub.Objects;
-using MobileHub.Objects.ResultTypes;
-using MobileHub.Objects.Synchronization;
-using MobileHub.Repositories;
+﻿using Plex.MobileHub.Functionality.Clients;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Objects.ResultTypes;
+using Plex.MobileHub.Objects.Synchronization;
+using Plex.MobileHub.Repositories;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Web.Services;
 using System.Xml.Serialization;
 
-namespace MobileHub
+namespace Plex.MobileHub
 {
     /// <summary>
     /// Summary description for Service1

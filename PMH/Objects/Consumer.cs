@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Data.Tables;
-using MobileHub.Repositories;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Repositories;
 
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     public class Consumer
     {

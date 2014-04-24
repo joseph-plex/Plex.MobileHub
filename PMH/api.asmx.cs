@@ -1,12 +1,12 @@
-﻿using MobileHub.Functionality.API;
-using MobileHub.Objects;
-using MobileHub.Objects.ResultTypes;
-using MobileHub.Repositories;
+﻿using Plex.MobileHub.Functionality.API;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Objects.ResultTypes;
+using Plex.MobileHub.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Web.Services;
 using System.Xml;
-namespace MobileHub
+namespace Plex.MobileHub
 {
     /// <summary>
     /// Summary description for api

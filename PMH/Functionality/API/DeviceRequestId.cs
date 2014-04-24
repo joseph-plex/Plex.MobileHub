@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Objects;
-using MobileHub.Data;
-using MobileHub.Data.Tables;
-using MobileHub.Repositories;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Repositories;
 
-namespace MobileHub.Functionality.API
+namespace Plex.MobileHub.Functionality.API
 {
     public class DeviceRequestId : FunctionStrategyBase<MethodResult>
     {

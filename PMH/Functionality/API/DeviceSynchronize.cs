@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Objects;
-using MobileHub.Repositories;
-using MobileHub.Objects.ResultTypes;
-using MobileHub.Data.Tables;
-using MobileHub.Data;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
+using Plex.MobileHub.Objects.ResultTypes;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Data;
 
-namespace MobileHub.Functionality.API
+namespace Plex.MobileHub.Functionality.API
 {
     public class DeviceSynchronize : FunctionStrategyBase<DeviceSynchronizeMethodResult>
     {

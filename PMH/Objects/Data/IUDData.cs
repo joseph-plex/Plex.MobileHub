@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     public class IUDData
     {

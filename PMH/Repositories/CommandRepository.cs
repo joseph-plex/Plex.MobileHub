@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Objects;
+using Plex.MobileHub.Objects;
 
-namespace MobileHub.Repositories
+namespace Plex.MobileHub.Repositories
 {
     public class Commands
     {

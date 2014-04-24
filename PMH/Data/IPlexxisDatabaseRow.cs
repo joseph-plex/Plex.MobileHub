@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace MobileHub.Data
+namespace Plex.MobileHub.Data
 {
     public interface IPlexxisDatabaseRow
     {

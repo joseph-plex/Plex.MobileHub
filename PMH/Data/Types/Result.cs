@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-namespace MobileHub.Data.Types
+namespace Plex.MobileHub.Data.Types
 {
     public class Result
     {

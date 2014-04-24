@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MobileHub.Objects;
-namespace MobileHub.Repositories
+using Plex.MobileHub.Objects;
+namespace Plex.MobileHub.Repositories
 {
     public class Consumers
     {

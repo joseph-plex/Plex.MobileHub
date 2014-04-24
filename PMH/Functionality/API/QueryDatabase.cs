@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Objects;
-using MobileHub.Repositories;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
 
-namespace MobileHub.Functionality.API
+namespace Plex.MobileHub.Functionality.API
 {
     public class QueryDatabase : FunctionStrategyBase<QryResult>
     {

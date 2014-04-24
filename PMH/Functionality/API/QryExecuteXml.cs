@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 
-using MobileHub.Repositories;
-using MobileHub.Exceptions;
-using MobileHub.Data.Tables;
-using MobileHub.Objects;
-namespace MobileHub.Functionality.API
+using Plex.MobileHub.Repositories;
+using Plex.MobileHub.Exceptions;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Objects;
+namespace Plex.MobileHub.Functionality.API
 {
     public class QryExecuteXml : FunctionStrategyBase<XmlDocument>
     {

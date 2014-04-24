@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-using MobileHub.Functionality.Developers;
-using MobileHub.Repositories;
-using MobileHub.Exceptions;
-using MobileHub.Objects;
-using MobileHub.Data.Tables;
-using MobileHub.Objects.Synchronization;
+using Plex.MobileHub.Functionality.Developers;
+using Plex.MobileHub.Repositories;
+using Plex.MobileHub.Exceptions;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Objects.Synchronization;
 
-namespace MobileHub
+namespace Plex.MobileHub
 {
     /// <summary>
     /// Summary description for Developers

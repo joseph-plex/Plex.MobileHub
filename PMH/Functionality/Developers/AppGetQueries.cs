@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Exceptions;
-using MobileHub.Objects;
-using MobileHub.Data.Tables;
+using Plex.MobileHub.Exceptions;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Data.Tables;
 
-namespace MobileHub.Functionality.Developers
+namespace Plex.MobileHub.Functionality.Developers
 {
     public static partial class Functions
     {

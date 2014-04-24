@@ -3,7 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 
 
-namespace MobileHub.Data.Tables
+namespace Plex.MobileHub.Data.Tables
 {
     public class DEVICES : PlexxisDataTransferObjects
     {

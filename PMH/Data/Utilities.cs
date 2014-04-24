@@ -6,9 +6,9 @@ using Oracle.DataAccess.Client;
 using System.Data;
 
 using System.Reflection;
-using MobileHub.Objects;
-using MobileHub.Data.Types;
-namespace MobileHub.Data
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Data.Types;
+namespace Plex.MobileHub.Data
 {
 
     public delegate void Subscriber(Object sender, EventArgs e);

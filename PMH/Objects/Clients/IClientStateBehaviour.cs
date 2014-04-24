@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobileHub.Repositories;
+using Plex.MobileHub.Repositories;
 
-namespace MobileHub.Objects.Clients
+namespace Plex.MobileHub.Objects.Clients
 {
     public interface IClientStateBehaviour
     {

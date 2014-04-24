@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MobileHub.Repositories;
+using Plex.MobileHub.Repositories;
 
-namespace MobileHub.Objects.ResultTypes
+namespace Plex.MobileHub.Objects.ResultTypes
 {
     public class GetCommandsMethodResult : MethodResult
     {

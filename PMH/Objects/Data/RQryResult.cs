@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     /// <summary>
     /// Registered Query Result, this contains queries from the database.

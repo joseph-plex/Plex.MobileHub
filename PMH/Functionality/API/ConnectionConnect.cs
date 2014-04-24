@@ -1,12 +1,12 @@
-﻿using MobileHub.Data.Tables;
-using MobileHub.Exceptions;
-using MobileHub.Objects;
-using MobileHub.Repositories;
+﻿using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Exceptions;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
 using System;
 using System.Collections.Generic;
 
 
-namespace MobileHub.Functionality.API
+namespace Plex.MobileHub.Functionality.API
 {
     public class ConnectionConnect : FunctionStrategyBase<MethodResult>
     {

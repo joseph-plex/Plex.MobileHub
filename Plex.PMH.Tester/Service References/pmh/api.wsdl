@@ -29,12 +29,16 @@
       <s:element name="ConnectionRelease">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="nConnectionId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="ConnectionReleaseResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectionReleaseResult" type="tns:MethodResult" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="ConnectionStatus">
         <s:complexType>
@@ -61,11 +65,21 @@
       <s:element name="QryExecuteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteResult" type="tns:QueryResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="QryExecuteResult" type="tns:RQryResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="QueryResult">
+      <s:complexType name="RQryResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:QryResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="QryResult">
         <s:complexContent mixed="false">
           <s:extension base="tns:MethodResult">
             <s:sequence>
@@ -166,25 +180,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeviceSynchronization">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfQueryResult">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryResult" nillable="true" type="tns:QueryResult" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="DeviceSynchronizationResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeviceSynchronizationResult" type="tns:ArrayOfQueryResult" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="Sync">
         <s:complexType />
       </s:element>
@@ -202,7 +197,7 @@
       <s:element name="QueryDatabaseResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseResult" type="tns:QueryResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDatabaseResult" type="tns:QryResult" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -211,10 +206,15 @@
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="connectionId" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="userDataId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userDataId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfRQryResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RQryResult" nillable="true" type="tns:RQryResult" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="DeviceSynchronizeResponse">
         <s:complexType>
           <s:sequence>
@@ -228,7 +228,7 @@
             <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="StartTimeStamp" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="CompletionTimeStamp" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfQueryResult" />
+              <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfRQryResult" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -249,8 +249,9 @@
       </s:element>
       <s:element name="MethodResult" nillable="true" type="tns:MethodResult" />
       <s:element name="int" type="s:int" />
-      <s:element name="QueryResult" nillable="true" type="tns:QueryResult" />
-      <s:element name="ArrayOfQueryResult" nillable="true" type="tns:ArrayOfQueryResult" />
+      <s:element name="RQryResult" nillable="true" type="tns:RQryResult" />
+      <s:element name="QryResult" nillable="true" type="tns:QryResult" />
+      <s:element name="DeviceSynchronizeMethodResult" nillable="true" type="tns:DeviceSynchronizeMethodResult" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ConnectionConnectSoapIn">
@@ -289,12 +290,6 @@
   <wsdl:message name="IUDSoapOut">
     <wsdl:part name="parameters" element="tns:IUDResponse" />
   </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationSoapIn">
-    <wsdl:part name="parameters" element="tns:DeviceSynchronization" />
-  </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationSoapOut">
-    <wsdl:part name="parameters" element="tns:DeviceSynchronizationResponse" />
-  </wsdl:message>
   <wsdl:message name="SyncSoapIn">
     <wsdl:part name="parameters" element="tns:Sync" />
   </wsdl:message>
@@ -330,9 +325,11 @@
     <wsdl:part name="Body" element="tns:MethodResult" />
   </wsdl:message>
   <wsdl:message name="ConnectionReleaseHttpGetIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="ConnectionId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="ConnectionReleaseHttpGetOut" />
+  <wsdl:message name="ConnectionReleaseHttpGetOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
+  </wsdl:message>
   <wsdl:message name="ConnectionStatusHttpGetIn">
     <wsdl:part name="nConnectionId" type="s:string" />
   </wsdl:message>
@@ -344,7 +341,7 @@
     <wsdl:part name="QueryName" type="s:string" />
   </wsdl:message>
   <wsdl:message name="QryExecuteHttpGetOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+    <wsdl:part name="Body" element="tns:RQryResult" />
   </wsdl:message>
   <wsdl:message name="QryExecuteXmlHttpGetIn">
     <wsdl:part name="nConnectionId" type="s:string" />
@@ -353,12 +350,6 @@
   <wsdl:message name="QryExecuteXmlHttpGetOut">
     <wsdl:part name="Body" />
   </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationHttpGetIn">
-    <wsdl:part name="ConnectionId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfQueryResult" />
-  </wsdl:message>
   <wsdl:message name="SyncHttpGetIn" />
   <wsdl:message name="SyncHttpGetOut" />
   <wsdl:message name="QueryDatabaseHttpGetIn">
@@ -366,7 +357,15 @@
     <wsdl:part name="Query" type="s:string" />
   </wsdl:message>
   <wsdl:message name="QueryDatabaseHttpGetOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+    <wsdl:part name="Body" element="tns:QryResult" />
+  </wsdl:message>
+  <wsdl:message name="DeviceSynchronizeHttpGetIn">
+    <wsdl:part name="connectionId" type="s:string" />
+    <wsdl:part name="deviceId" type="s:string" />
+    <wsdl:part name="userDataId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeviceSynchronizeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DeviceSynchronizeMethodResult" />
   </wsdl:message>
   <wsdl:message name="DeviceRequestIdHttpGetIn">
     <wsdl:part name="connectionId" type="s:string" />
@@ -385,9 +384,11 @@
     <wsdl:part name="Body" element="tns:MethodResult" />
   </wsdl:message>
   <wsdl:message name="ConnectionReleaseHttpPostIn">
-    <wsdl:part name="nConnectionId" type="s:string" />
+    <wsdl:part name="ConnectionId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="ConnectionReleaseHttpPostOut" />
+  <wsdl:message name="ConnectionReleaseHttpPostOut">
+    <wsdl:part name="Body" element="tns:MethodResult" />
+  </wsdl:message>
   <wsdl:message name="ConnectionStatusHttpPostIn">
     <wsdl:part name="nConnectionId" type="s:string" />
   </wsdl:message>
@@ -399,7 +400,7 @@
     <wsdl:part name="QueryName" type="s:string" />
   </wsdl:message>
   <wsdl:message name="QryExecuteHttpPostOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+    <wsdl:part name="Body" element="tns:RQryResult" />
   </wsdl:message>
   <wsdl:message name="QryExecuteXmlHttpPostIn">
     <wsdl:part name="nConnectionId" type="s:string" />
@@ -408,12 +409,6 @@
   <wsdl:message name="QryExecuteXmlHttpPostOut">
     <wsdl:part name="Body" />
   </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationHttpPostIn">
-    <wsdl:part name="ConnectionId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="DeviceSynchronizationHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfQueryResult" />
-  </wsdl:message>
   <wsdl:message name="SyncHttpPostIn" />
   <wsdl:message name="SyncHttpPostOut" />
   <wsdl:message name="QueryDatabaseHttpPostIn">
@@ -421,7 +416,15 @@
     <wsdl:part name="Query" type="s:string" />
   </wsdl:message>
   <wsdl:message name="QueryDatabaseHttpPostOut">
-    <wsdl:part name="Body" element="tns:QueryResult" />
+    <wsdl:part name="Body" element="tns:QryResult" />
+  </wsdl:message>
+  <wsdl:message name="DeviceSynchronizeHttpPostIn">
+    <wsdl:part name="connectionId" type="s:string" />
+    <wsdl:part name="deviceId" type="s:string" />
+    <wsdl:part name="userDataId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeviceSynchronizeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DeviceSynchronizeMethodResult" />
   </wsdl:message>
   <wsdl:message name="DeviceRequestIdHttpPostIn">
     <wsdl:part name="connectionId" type="s:string" />
@@ -453,10 +456,6 @@
     <wsdl:operation name="IUD">
       <wsdl:input message="tns:IUDSoapIn" />
       <wsdl:output message="tns:IUDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <wsdl:input message="tns:DeviceSynchronizationSoapIn" />
-      <wsdl:output message="tns:DeviceSynchronizationSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Sync">
       <wsdl:input message="tns:SyncSoapIn" />
@@ -496,10 +495,6 @@
       <wsdl:input message="tns:QryExecuteXmlHttpGetIn" />
       <wsdl:output message="tns:QryExecuteXmlHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <wsdl:input message="tns:DeviceSynchronizationHttpGetIn" />
-      <wsdl:output message="tns:DeviceSynchronizationHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="Sync">
       <wsdl:input message="tns:SyncHttpGetIn" />
       <wsdl:output message="tns:SyncHttpGetOut" />
@@ -507,6 +502,10 @@
     <wsdl:operation name="QueryDatabase">
       <wsdl:input message="tns:QueryDatabaseHttpGetIn" />
       <wsdl:output message="tns:QueryDatabaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeviceSynchronize">
+      <wsdl:input message="tns:DeviceSynchronizeHttpGetIn" />
+      <wsdl:output message="tns:DeviceSynchronizeHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="DeviceRequestId">
       <wsdl:input message="tns:DeviceRequestIdHttpGetIn" />
@@ -534,10 +533,6 @@
       <wsdl:input message="tns:QryExecuteXmlHttpPostIn" />
       <wsdl:output message="tns:QryExecuteXmlHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <wsdl:input message="tns:DeviceSynchronizationHttpPostIn" />
-      <wsdl:output message="tns:DeviceSynchronizationHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="Sync">
       <wsdl:input message="tns:SyncHttpPostIn" />
       <wsdl:output message="tns:SyncHttpPostOut" />
@@ -545,6 +540,10 @@
     <wsdl:operation name="QueryDatabase">
       <wsdl:input message="tns:QueryDatabaseHttpPostIn" />
       <wsdl:output message="tns:QueryDatabaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeviceSynchronize">
+      <wsdl:input message="tns:DeviceSynchronizeHttpPostIn" />
+      <wsdl:output message="tns:DeviceSynchronizeHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="DeviceRequestId">
       <wsdl:input message="tns:DeviceRequestIdHttpPostIn" />
@@ -600,15 +599,6 @@
     </wsdl:operation>
     <wsdl:operation name="IUD">
       <soap:operation soapAction="http://pmh.plexxis.com/IUD" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <soap:operation soapAction="http://pmh.plexxis.com/DeviceSynchronization" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -709,15 +699,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <soap12:operation soapAction="http://pmh.plexxis.com/DeviceSynchronization" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Sync">
       <soap12:operation soapAction="http://pmh.plexxis.com/Sync" style="document" />
       <wsdl:input>
@@ -771,7 +752,9 @@
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ConnectionStatus">
       <http:operation location="/ConnectionStatus" />
@@ -800,15 +783,6 @@
         <mime:content part="Body" type="text/xml" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <http:operation location="/DeviceSynchronization" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Sync">
       <http:operation location="/Sync" />
       <wsdl:input>
@@ -818,6 +792,15 @@
     </wsdl:operation>
     <wsdl:operation name="QueryDatabase">
       <http:operation location="/QueryDatabase" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeviceSynchronize">
+      <http:operation location="/DeviceSynchronize" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -851,7 +834,9 @@
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ConnectionStatus">
       <http:operation location="/ConnectionStatus" />
@@ -880,15 +865,6 @@
         <mime:content part="Body" type="text/xml" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronization">
-      <http:operation location="/DeviceSynchronization" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Sync">
       <http:operation location="/Sync" />
       <wsdl:input>
@@ -898,6 +874,15 @@
     </wsdl:operation>
     <wsdl:operation name="QueryDatabase">
       <http:operation location="/QueryDatabase" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeviceSynchronize">
+      <http:operation location="/DeviceSynchronize" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

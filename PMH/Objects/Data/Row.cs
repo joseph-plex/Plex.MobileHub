@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MobileHub.Objects
+namespace Plex.MobileHub.Objects
 {
     public class Row
     {

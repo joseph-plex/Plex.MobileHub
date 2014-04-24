@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Xml.Serialization;
-using MobileHub.Objects;
+using Plex.MobileHub.Objects;
 
-namespace MobileHub.Repositories
+namespace Plex.MobileHub.Repositories
 {
     public class Logs
     {
