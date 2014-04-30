@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Plex.MobileHub.Client.Installer" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Plex.MobileHub.Client.Installer" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+    <CustomAction Id="OracleDepInstall" Execute="immediate" BinaryKey="OracleDepsExe" ExeCommand="&quot;[MobileHubFolder]" Return="ignore"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="OracleDepInstall" After="InstallInitialize" />
+    </InstallExecuteSequence>
+
+  </Product>
+
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Plexxis">
+          <Directory Id="MobileHubFolder" Name="Mobile Hub" />
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
+      <Component Id="ProductComponent" Guid="*">
+        <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
+        <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
+        <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Stop="uninstall" Remove="uninstall" Wait="no"/>
+      </Component>
+      <Component>
+        <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" KeyPath="yes"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)" />
+  </Fragment>
+</Wix>

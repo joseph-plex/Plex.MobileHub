@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://pmh.plexxis.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://pmh.plexxis.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://pmh.plexxis.com">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPv4" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCommands">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommandsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommandsResult" type="tns:ArrayOfCommand" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCommand">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Command" nillable="true" type="tns:Command" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Command">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Column">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ColumnSequence" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataLength" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataPrecision" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataScale" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowDbNull" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLong" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsKey" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUnique" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MethodResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QryResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MethodResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StartTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompletionTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="DBErrorCode" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DBErrorMessage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Columns" type="tns:ArrayOfColumn" />
+              <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfColumn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Row">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RQryResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:QryResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueryName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IUDData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Respond">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Resp" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Resp" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RespondResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ResponsePartial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Component" type="tns:ResponseComponent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseComponent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Response">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ComponentId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsLastComponent" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ResponsePartialResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SyncDataGet">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ClientSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Apps" type="tns:ArrayOfApplicationSynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApplicationSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationSynchroData" nillable="true" type="tns:ApplicationSynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationSynchroData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationQueries" type="tns:ArrayOfQuerySynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfQuerySynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QuerySynchroData" nillable="true" type="tns:QuerySynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QuerySynchroData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="QueryId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cols" type="tns:ArrayOfQueryColumnSynchroData" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conds" type="tns:ArrayOfQueryConditionSynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfQueryColumnSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryColumnSynchroData" nillable="true" type="tns:QueryColumnSynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryColumnSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ColSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ColId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfQueryConditionSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryConditionSynchroData" nillable="true" type="tns:QueryConditionSynchroData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryConditionSynchroData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNVL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SyncDataGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SyncDataGetResult" type="tns:ClientSynchroData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
+      <s:element name="ClientSynchroData" nillable="true" type="tns:ClientSynchroData" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommands" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RespondSoapIn">
+    <wsdl:part name="parameters" element="tns:Respond" />
+  </wsdl:message>
+  <wsdl:message name="RespondSoapOut">
+    <wsdl:part name="parameters" element="tns:RespondResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResponsePartialSoapIn">
+    <wsdl:part name="parameters" element="tns:ResponsePartial" />
+  </wsdl:message>
+  <wsdl:message name="ResponsePartialSoapOut">
+    <wsdl:part name="parameters" element="tns:ResponsePartialResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncDataGetSoapIn">
+    <wsdl:part name="parameters" element="tns:SyncDataGet" />
+  </wsdl:message>
+  <wsdl:message name="SyncDataGetSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncDataGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="IPv4" type="s:string" />
+    <wsdl:part name="Port" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpGetIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpGetOut" />
+  <wsdl:message name="GetCommandsHttpGetIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCommand" />
+  </wsdl:message>
+  <wsdl:message name="SyncDataGetHttpGetIn" />
+  <wsdl:message name="SyncDataGetHttpGetOut">
+    <wsdl:part name="Body" element="tns:ClientSynchroData" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="ClientId" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="IPv4" type="s:string" />
+    <wsdl:part name="Port" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpPostIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpPostOut" />
+  <wsdl:message name="GetCommandsHttpPostIn">
+    <wsdl:part name="ConnectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCommandsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCommand" />
+  </wsdl:message>
+  <wsdl:message name="SyncDataGetHttpPostIn" />
+  <wsdl:message name="SyncDataGetHttpPostOut">
+    <wsdl:part name="Body" element="tns:ClientSynchroData" />
+  </wsdl:message>
+  <wsdl:portType name="ClientSDKSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <wsdl:input message="tns:GetCommandsSoapIn" />
+      <wsdl:output message="tns:GetCommandsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Respond">
+      <wsdl:input message="tns:RespondSoapIn" />
+      <wsdl:output message="tns:RespondSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponsePartial">
+      <wsdl:input message="tns:ResponsePartialSoapIn" />
+      <wsdl:output message="tns:ResponsePartialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <wsdl:input message="tns:SyncDataGetSoapIn" />
+      <wsdl:output message="tns:SyncDataGetSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ClientSDKHttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn" />
+      <wsdl:output message="tns:LoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutHttpGetIn" />
+      <wsdl:output message="tns:LogoutHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <wsdl:input message="tns:GetCommandsHttpGetIn" />
+      <wsdl:output message="tns:GetCommandsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <wsdl:input message="tns:SyncDataGetHttpGetIn" />
+      <wsdl:output message="tns:SyncDataGetHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ClientSDKHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutHttpPostIn" />
+      <wsdl:output message="tns:LogoutHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <wsdl:input message="tns:GetCommandsHttpPostIn" />
+      <wsdl:output message="tns:GetCommandsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <wsdl:input message="tns:SyncDataGetHttpPostIn" />
+      <wsdl:output message="tns:SyncDataGetHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientSDKSoap" type="tns:ClientSDKSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://pmh.plexxis.com/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://pmh.plexxis.com/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <soap:operation soapAction="http://pmh.plexxis.com/GetCommands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Respond">
+      <soap:operation soapAction="http://pmh.plexxis.com/Respond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponsePartial">
+      <soap:operation soapAction="http://pmh.plexxis.com/ResponsePartial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <soap:operation soapAction="http://pmh.plexxis.com/SyncDataGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientSDKSoap12" type="tns:ClientSDKSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://pmh.plexxis.com/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="http://pmh.plexxis.com/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <soap12:operation soapAction="http://pmh.plexxis.com/GetCommands" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Respond">
+      <soap12:operation soapAction="http://pmh.plexxis.com/Respond" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponsePartial">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ResponsePartial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <soap12:operation soapAction="http://pmh.plexxis.com/SyncDataGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientSDKHttpGet" type="tns:ClientSDKHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <http:operation location="/Logout" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <http:operation location="/GetCommands" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <http:operation location="/SyncDataGet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientSDKHttpPost" type="tns:ClientSDKHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <http:operation location="/Logout" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommands">
+      <http:operation location="/GetCommands" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncDataGet">
+      <http:operation location="/SyncDataGet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientSDK">
+    <wsdl:port name="ClientSDKSoap" binding="tns:ClientSDKSoap">
+      <soap:address location="http://pmht.plexxis.com/clients.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientSDKSoap12" binding="tns:ClientSDKSoap12">
+      <soap12:address location="http://pmht.plexxis.com/clients.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientSDKHttpGet" binding="tns:ClientSDKHttpGet">
+      <http:address location="http://pmht.plexxis.com/clients.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientSDKHttpPost" binding="tns:ClientSDKHttpPost">
+      <http:address location="http://pmht.plexxis.com/clients.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

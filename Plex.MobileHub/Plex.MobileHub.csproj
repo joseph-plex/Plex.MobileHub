@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D107CC7F-D119-47E1-95CC-448267A0D3DA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Plex.MobileHub</RootNamespace>
+    <AssemblyName>Plex.MobileHub</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\OracleComponents(12)x64\ODAC121010Xcopy_x64\odp.net4\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Plex.Diagnostics">
+      <HintPath>..\..\..\..\Visual Studio 2012\Projects\Plex.Diagnostics\Plex.Diagnostics\bin\Release\Plex.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="api.asmx" />
+    <Content Include="clients.asmx" />
+    <Content Include="developers.asmx" />
+    <Content Include="Global.asax" />
+    <Content Include="management.asmx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="api.asmx.cs">
+      <DependentUpon>api.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="clients.asmx.cs">
+      <DependentUpon>clients.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\Types\Col.cs" />
+    <Compile Include="Data\Types\Row.cs" />
+    <Compile Include="Data\Tables\APP_QUERIES.cs" />
+    <Compile Include="Data\Tables\APP_QUERY_COLUMNS.cs" />
+    <Compile Include="Data\Tables\APP_QUERY_CONDITIONS.cs" />
+    <Compile Include="Data\Tables\APPS.cs" />
+    <Compile Include="Data\Tables\APP_TABLE_COLUMNS.cs" />
+    <Compile Include="Data\Tables\APP_TABLES.cs" />
+    <Compile Include="Data\Tables\APP_USER_TYPES.cs" />
+    <Compile Include="Data\Tables\CLIENT_APPS.cs" />
+    <Compile Include="Data\Tables\CLIENT_DB_COMPANIES.cs" />
+    <Compile Include="Data\Tables\CLIENT_DB_COMPANY_USER_APPS.cs" />
+    <Compile Include="Data\Tables\CLIENT_DB_COMPANY_USERS.cs" />
+    <Compile Include="Data\Tables\CLIENTS.cs" />
+    <Compile Include="Data\Tables\CLIENT_USERS.cs" />
+    <Compile Include="Data\IPlexxisDatabaseRow.cs" />
+    <Compile Include="Data\Tables\DEVICES.cs" />
+    <Compile Include="Data\Tables\DEVICE_USER_DATA_QUERIES.cs" />
+    <Compile Include="Data\IDbConnectionExtensions.cs" />
+    <Compile Include="Data\Types\Result.cs" />
+    <Compile Include="Exceptions\InvalidApplicationKeyException.cs" />
+    <Compile Include="Functionality\API\ConnectionConnect.cs" />
+    <Compile Include="Functionality\API\ConnectionInformation.cs" />
+    <Compile Include="Functionality\API\ConnectionRelease.cs" />
+    <Compile Include="Functionality\API\ConnectionStatusGet.cs" />
+    <Compile Include="Functionality\API\DeviceRegister.cs" />
+    <Compile Include="Functionality\API\DeviceRequestId.cs" />
+    <Compile Include="Functionality\API\DeviceSynchronize.cs" />
+    <Compile Include="Functionality\API\IUD.cs" />
+    <Compile Include="Functionality\API\QryExecute.cs" />
+    <Compile Include="Functionality\API\QryExecuteXml.cs" />
+    <Compile Include="Functionality\API\QueryDatabase.cs" />
+    <Compile Include="Data\Tables\DEVICE_USER_DATA.cs" />
+    <Compile Include="Data\Tables\LOGS.cs" />
+    <Compile Include="Data\PlexxisDataTransferObjects.cs" />
+    <Compile Include="Data\Tables\PMH_SETTINGS.cs" />
+    <Compile Include="Data\Tables\QUERY_SEQUENCE_REQUESTS.cs" />
+    <Compile Include="Data\Utilities.cs" />
+    <Compile Include="developers.asmx.cs">
+      <DependentUpon>developers.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Exceptions\InvalidApplicationException.cs" />
+    <Compile Include="Exceptions\InvalidClientException.cs" />
+    <Compile Include="Exceptions\InvalidCompanyException.cs" />
+    <Compile Include="Exceptions\InvalidConsumerException.cs" />
+    <Compile Include="Exceptions\InvalidQueryException.cs" />
+    <Compile Include="Exceptions\InvalidUserPasswordException.cs" />
+    <Compile Include="Exceptions\MultipleClientLoginException.cs" />
+    <Compile Include="Exceptions\PlexError.cs" />
+    <Compile Include="Exceptions\UnauthorizedClientException.cs" />
+    <Compile Include="Functionality\Clients\ClientStatus.cs" />
+    <Compile Include="Functionality\Clients\GetCommands.cs" />
+    <Compile Include="Functionality\Developers\AppGetQueries.cs" />
+    <Compile Include="Functionality\Developers\AppGetTableDefinitions.cs" />
+    <Compile Include="Functionality\Developers\ClientGetDatabaseList.cs" />
+    <Compile Include="Functionality\Developers\QryCreate.cs" />
+    <Compile Include="Functionality\Developers\QryDelete.cs" />
+    <Compile Include="Functionality\Clients\ClientLogin.cs" />
+    <Compile Include="Functionality\Clients\ClientLogout.cs" />
+    <Compile Include="Functionality\Clients\ClientRespond.cs" />
+    <Compile Include="Functionality\Clients\ClientCommandRetrieveAll.cs" />
+    <Compile Include="Functionality\Clients\ClientRespondSub.cs" />
+    <Compile Include="Functionality\Clients\SyncInfoGet.cs" />
+    <Compile Include="Functionality\Developers\AppUserTypeCreate.cs" />
+    <Compile Include="Functionality\Developers\AppUserTypeDelete.cs" />
+    <Compile Include="Functionality\Developers\AppUserTypeRetrieve.cs" />
+    <Compile Include="Functionality\FunctionStrategyBase.cs" />
+    <Compile Include="Functionality\Management\CommandsRetrieve.cs" />
+    <Compile Include="Functionality\Management\ConnectionsRetrieve.cs" />
+    <Compile Include="Functionality\Management\ConsumersRetrieve.cs" />
+    <Compile Include="Functionality\Management\LogsRetrieve.cs" />
+    <Compile Include="Functionality\Management\ResponsesRetrieve.cs" />
+    <Compile Include="Functionality\IFunctionStrategy.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="management.asmx.cs">
+      <DependentUpon>management.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Objects\Clients\ClientConnected.cs" />
+    <Compile Include="Objects\Clients\ClientDisconnected.cs" />
+    <Compile Include="Objects\Clients\ClientState.cs" />
+    <Compile Include="Objects\Clients\IClientStateBehaviour.cs" />
+    <Compile Include="Objects\Synchronization\DevelSyncData.cs" />
+    <Compile Include="Objects\Data\QryResult.cs" />
+    <Compile Include="Objects\ResultTypes\DeviceSynchronizeMethodResult.cs" />
+    <Compile Include="Objects\Misc\ExternalService.cs" />
+    <Compile Include="Objects\Synchronization\ApplicationSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\ClientSynchroData.cs" />
+    <Compile Include="Objects\Data\Column.cs" />
+    <Compile Include="Objects\Data\RQ\Condition.cs" />
+    <Compile Include="Objects\Data\IUDData.cs" />
+    <Compile Include="Objects\ResultTypes\GetCommandsMethodResult.cs" />
+    <Compile Include="Objects\Misc\ConnectionStatus.cs" />
+    <Compile Include="Objects\Data\MethodResult.cs" />
+    <Compile Include="Objects\Data\RQ\QueryDefinition.cs" />
+    <Compile Include="Objects\Data\RQryResult.cs" />
+    <Compile Include="Objects\Data\Row.cs" />
+    <Compile Include="Objects\Data\TableDefinition.cs" />
+    <Compile Include="Objects\Synchronization\QueryColumnSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\QueryConditionSynchroData.cs" />
+    <Compile Include="Objects\Synchronization\QuerySynchroData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Command.cs" />
+    <Compile Include="Repositories\CommandRepository.cs" />
+    <Compile Include="Objects\Client.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Objects\Consumer.cs" />
+    <Compile Include="Repositories\ConsumerRepository.cs" />
+    <Compile Include="Objects\Log.cs" />
+    <Compile Include="Objects\LogPriority.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
+    <Compile Include="Objects\Response.cs" />
+    <Compile Include="Objects\ResponseComponent.cs" />
+    <Compile Include="Objects\ResponseCompound.cs" />
+    <Compile Include="Repositories\ResponseRepository.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Plex Test.pubxml" />
+    <None Include="Properties\PublishProfiles\Plex.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7571</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15289/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
