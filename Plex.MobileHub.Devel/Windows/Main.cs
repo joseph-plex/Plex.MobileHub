@@ -18,10 +18,12 @@ namespace Plex.MobileHub.Devel.Windows
             InitializeComponent();
             tabControl1.Dock = DockStyle.Fill;
 
+            FormFactory f = new FormFactory();
+            f.CreateApplicationSelection().ShowDialog(this); 
 
-            //tabPage1.Controls.Add(new CreateQueryControl());
-            tabPage1.Controls.Add(new QueryPageControl());
-            tabPage2.Controls.Add(new TablePageControl());
+            //tabPage1.Controls.Add(new AppListSelect());
+            //tabPage1.Controls.Add(new QueryPageControl());
+            //tabPage2.Controls.Add(new TablePageControl());
 
         }
 

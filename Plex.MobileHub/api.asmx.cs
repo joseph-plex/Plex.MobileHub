@@ -104,6 +104,12 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
+        public DeviceSynchronizeMethodResult DeviceSynchronizeAlt(int ConnectionId, int? UserDataId)
+        {
+            return new DeviceSynchronize().AlternateStrategy(ConnectionId, UserDataId);
+        }
+
+        [WebMethod]
         public MethodResult DeviceRequestId(int connectionId)
         {
             return new DeviceRequestId().Strategy(connectionId);

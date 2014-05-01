@@ -15,9 +15,7 @@
     <InstallExecuteSequence>
       <Custom Action="OracleDepInstall" After="InstallInitialize" />
     </InstallExecuteSequence>
-
   </Product>
-
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
@@ -43,6 +41,6 @@
 	</Fragment>
 
   <Fragment>
-    <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)" />
+    <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)"/>
   </Fragment>
 </Wix>

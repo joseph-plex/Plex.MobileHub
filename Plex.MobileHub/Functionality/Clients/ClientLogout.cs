@@ -18,4 +18,12 @@ namespace Plex.MobileHub.Functionality.Clients
             Connections.Instance.Retrieve(ConnectionId).Disconnect();
         }
     }
+    public class ClientLogout : FunctionStrategyBase<int>
+    {
+        public int Strategy(int ConnectionId)
+        {
+            Connections.Instance.Retrieve(ConnectionId).Disconnect();
+            return 0;
+        }
+    }
 }

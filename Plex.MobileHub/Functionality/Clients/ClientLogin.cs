@@ -23,8 +23,20 @@ namespace Plex.MobileHub.Functionality.Clients
 
             //todo Implement a way to valid on connection
             return ClientId;
+        }
+    }
+    public class ClientLogin : FunctionStrategyBase<int>
+    {
+        public int Strategy(int ClientId, string Key, string IPv4, int Port)
+        {
 
-             
+            var client = Connections.Instance.Retrieve(ClientId);
+            if (Key != client.Key)
+                throw new Exception("Invalid Authentication");
+            client.Connect(IPv4, Port);
+
+            //todo Implement a way to valid on connection
+            return ClientId;
         }
     }
 }

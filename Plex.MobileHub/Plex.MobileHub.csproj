@@ -132,6 +132,9 @@
       <DependentUpon>clients.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Data\Tables\DEV_DATA.cs" />
+    <Compile Include="Data\Tables\DEV_DATA_VER.cs" />
+    <Compile Include="Data\Tables\DEV_DATA_VER_QUERIES.cs" />
     <Compile Include="Data\Types\Col.cs" />
     <Compile Include="Data\Types\Row.cs" />
     <Compile Include="Data\Tables\APP_QUERIES.cs" />

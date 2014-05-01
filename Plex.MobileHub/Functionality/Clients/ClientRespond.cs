@@ -11,9 +11,18 @@ namespace Plex.MobileHub.Functionality.Clients
     public static partial class Functions
     {
         public static void ClientRespond(Response Resp)
-    {
+        {
             Logs.Instance.Add(new Log("Command #" + Resp.Id +" Completed"));
             Responses.Instance.Add(Resp.Id, Resp);
+        }
+    }
+    public class ClientRespond : FunctionStrategyBase<int>
+    {
+        public int Strategy(Response Resp)
+        {
+            Logs.Instance.Add(new Log("Command #" + Resp.Id + " Completed"));
+            Responses.Instance.Add(Resp.Id, Resp);
+            return 0;
         }
     }
 }

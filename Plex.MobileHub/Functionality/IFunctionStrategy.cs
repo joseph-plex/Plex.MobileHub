@@ -9,9 +9,7 @@ namespace Plex.MobileHub.Functionality
     {
         public virtual T Strategy(params object[] parameters)
         {
-            MethodBase current = MethodBase.GetCurrentMethod();
-            return (T)GetType().InvokeMember(current.Name, BindingFlags.InvokeMethod | BindingFlags.Public, Type.DefaultBinder, this, parameters);
+            return (T)GetType().InvokeMember(MethodBase.GetCurrentMethod().Name, BindingFlags.InvokeMethod | BindingFlags.Public, Type.DefaultBinder, this, parameters);
         }
-
     }
 }

@@ -44,18 +44,23 @@ namespace Plex.MobileHub.Data
 
         public static IEnumerable<FieldInfo> GetVariables(string FullAssemblyName)
         {
-            Type t = Assembly.GetExecutingAssembly().GetType(FullAssemblyName);
-            return t.GetFields();
+            return Assembly.GetExecutingAssembly().GetType(FullAssemblyName).GetFields();
         }
 
         public static int GetNextSequenceValue(SequenceType Seq)
         {
             switch (Seq)
             {
-                case SequenceType.DEVICE_ID:
-                    return Convert.ToInt32(Utilities.GetConnection(true).Query("select DEVICE_ID.nextval from dual").Rows.First()[0]);
                 case SequenceType.ID_GEN:
-                    return Convert.ToInt32(Utilities.GetConnection(true).Query("select ID_GEN.nextval from dual").Rows.First()[0]);
+                    return Convert.ToInt32(GetConnection(true).Query("select ID_GEN.nextval from dual").Rows.First()[0]);
+                case SequenceType.DEVICE_ID:
+                    return Convert.ToInt32(GetConnection(true).Query("select DEVICE_ID.nextval from dual").Rows.First()[0]);
+                case SequenceType.DEV_DATA_SEQ:
+                    return Convert.ToInt32(GetConnection(true).Query("select DEV_DATA_SEQ.nextval from dual").Rows.First()[0]);
+                case SequenceType.DEV_DATA_VER_SEQ:
+                    return Convert.ToInt32(GetConnection(true).Query("select DEV_DATA_VER_SEQ.nextval from dual").Rows.First()[0]);
+                case SequenceType.DEV_DATA_VER_Q_SEQ:
+                    return Convert.ToInt32(GetConnection(true).Query("select DEV_DATA_VER_Q_SEQ.nextval from dual").Rows.First()[0]);
                 default:
                     throw new NotImplementedException();
             }
@@ -68,7 +73,7 @@ namespace Plex.MobileHub.Data
                 Result r = GetColumnData(Conn);
                 var TIndex = r.GetColumnIndex("TABLE_NAME");
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
-                var Types = GetTypesInNamespace("MobileHub.Data.Tables").ToList();
+                var Types = GetTypesInNamespace("Plex.MobileHub.Data.Tables").ToList();
 
                 foreach(var TableName in GetTableNames(Conn))
                 {
@@ -90,7 +95,7 @@ namespace Plex.MobileHub.Data
                 Result r = GetColumnData(Conn);
                 var TIndex = r.GetColumnIndex("TABLE_NAME");
                 var CIndex = r.GetColumnIndex("COLUMN_NAME");
-                foreach (var t in GetTypesInNamespace("MobileHub.Data.Tables"))
+                foreach (var t in GetTypesInNamespace("Plex.MobileHub.Data.Tables"))
                 {
                     var TableColumns = r.Rows.FindAll((p) => Convert.ToString(p[TIndex]) == t.Name);
                     foreach (var f in t.GetFields())
@@ -116,6 +121,9 @@ namespace Plex.MobileHub.Data
     public enum SequenceType
     {
         DEVICE_ID,
-        ID_GEN
+        ID_GEN,
+        DEV_DATA_SEQ,
+        DEV_DATA_VER_SEQ,
+        DEV_DATA_VER_Q_SEQ
     }
 }

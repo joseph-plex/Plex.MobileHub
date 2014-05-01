@@ -33,7 +33,7 @@ namespace Plex.MobileHub
         [WebMethod]
         public void Logout(int ConnectionId)
         {
-                Functions.ClientLogout(ConnectionId);
+            Functions.ClientLogout(ConnectionId);
         }
 
         [WebMethod]

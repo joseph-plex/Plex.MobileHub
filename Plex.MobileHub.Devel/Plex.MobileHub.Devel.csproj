@@ -72,6 +72,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Types\DeveloperRepository.cs" />
+    <Compile Include="Views\AppListSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AppListSelect.Designer.cs">
+      <DependentUpon>AppListSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AppTableColumnDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +139,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppListSelect.resx">
+      <DependentUpon>AppListSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AppTableColumnDetails.resx">
       <DependentUpon>AppTableColumnDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,7 +174,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\DevelService\developers.wsdl" />
     <None Include="Service References\DevelService\Plex.MobileHub.Devel.DevelService.DevelSyncData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

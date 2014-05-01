@@ -31,10 +31,14 @@ namespace Plex.MobileHub.Devel.Windows
                             loadingView.InvokeIfRequired(() => loadingView.Close());
                         }
                     }).Start();
-
             };
             return loadingView;
         }
 
+        public Form CreateApplicationSelection()
+        {
+            var form = new ActionForm(new AppListSelect());
+            return form;
+        }
     }
 }
