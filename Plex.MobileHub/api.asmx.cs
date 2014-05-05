@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web;
 using System.ServiceModel;
 using System.Xml;
+using System.Xml.Serialization;
 namespace Plex.MobileHub
 {
     /// <summary>
@@ -20,6 +21,8 @@ namespace Plex.MobileHub
     // [System.Web.Script.Services.ScriptService]
     public class API : WebService
     {
+        [XmlInclude(typeof(object))]
+
         [WebMethod]
         public MethodResult ConnectionConnect(int ClientId, int AppId, String Database, String User, String Password)
         {
@@ -97,22 +100,27 @@ namespace Plex.MobileHub
             return new QueryDatabase().Strategy(ConnectionId, Query);
         }
 
-        [WebMethod]
-        public DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int UserDataId )
-        {
-            return new DeviceSynchronize().Strategy(ConnectionId, UserDataId);
-        }
+        //[WebMethod]
+        //public DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int UserDataId )
+        //{
+        //    return new DeviceSynchronize().Strategy(ConnectionId, UserDataId);
+        //}
 
         [WebMethod]
-        public DeviceSynchronizeMethodResult DeviceSynchronizeAlt(int ConnectionId, int? UserDataId)
+        public DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int VersionId)
         {
-            return new DeviceSynchronize().AlternateStrategy(ConnectionId, UserDataId);
+            return new DeviceSynchronize().AlternateStrategy(ConnectionId, VersionId);
         }
 
         [WebMethod]
         public MethodResult DeviceRequestId(int connectionId)
         {
             return new DeviceRequestId().Strategy(connectionId);
+        }
+        [WebMethod]
+        public object test()
+        {
+            return new object();
         }
     }
 }

@@ -107,7 +107,7 @@ namespace MobileHubClient
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            this.ServiceName = "Plexxis PMH Client";
+            this.ServiceName = "Plexxis Mobile Hub Client";
         }
     }
 }

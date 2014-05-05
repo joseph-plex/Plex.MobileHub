@@ -18,16 +18,13 @@ namespace Plex.MobileHub.Devel.Windows
             {
                 new Thread(() =>
                     {
-                        try
-                        {
+                        try{
                             action();
                         }
-                        catch (Exception x)
-                        {
+                        catch (Exception x){
                             MessageBox.Show(x.ToString());
                         }
-                        finally
-                        {
+                        finally{
                             loadingView.InvokeIfRequired(() => loadingView.Close());
                         }
                     }).Start();

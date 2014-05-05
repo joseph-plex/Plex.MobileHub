@@ -111,14 +111,14 @@ namespace Plex.MobileHub.Functionality.API
             return true;
         }
 
-        public DeviceSynchronizeMethodResult AlternateStrategy(int connectionId, int? DataVersion)
+        public DeviceSynchronizeMethodResult AlternateStrategy(int connectionId, int DataVersion)
         {
             DeviceSynchronizeMethodResult result = new DeviceSynchronizeMethodResult();
             try
             {
                 DEV_DATA_VER Previous = null;
                 IEnumerable<DEV_DATA_VER_QUERIES> pQueries = null;
-                if (DataVersion != null) { 
+                if (DataVersion != 0) { 
                     Previous = DEV_DATA_VER.GetAll().FirstOrDefault(p => p.DEV_DATA_VER_ID == DataVersion);
                 
                     if (Previous == null) throw new Exception("Device Database Version does not exist");
@@ -126,7 +126,7 @@ namespace Plex.MobileHub.Functionality.API
                 }
                 DEV_DATA_VER current = new DEV_DATA_VER()
                 {
-                    DEV_DATA_ID = (DataVersion != null) ? (Previous ?? new DEV_DATA_VER()).DEV_DATA_ID : InitDeviceDatabase(connectionId),
+                    DEV_DATA_ID = (DataVersion != 0) ? (Previous ?? new DEV_DATA_VER()).DEV_DATA_ID : InitDeviceDatabase(connectionId),
                     DEV_DATA_VER_ID = Utilities.GetNextSequenceValue(SequenceType.DEV_DATA_VER_SEQ)
                 };
                 current.Insert();
@@ -181,7 +181,6 @@ namespace Plex.MobileHub.Functionality.API
             tuple.Insert();
 
             return tuple.DEVICE_DATABASE_ID;
-
         }
 
         IEnumerable<APP_QUERIES> GetDeviceDataVersionQueries(int DataVersion)

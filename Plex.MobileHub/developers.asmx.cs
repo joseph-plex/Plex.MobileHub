@@ -24,9 +24,9 @@ namespace Plex.MobileHub
     public class Developers : WebService
     {
         [WebMethod]
-        public List<TableDefinition> AppGetTableDefinition(int nAppId, string sAppAuthKey)
+        public List<TableDefinition> AppGetTableDefinition(int AppId, string AppAuthKey)
         {
-            return Functions.AppGetTableDefinition(nAppId, sAppAuthKey);
+            return Functions.AppGetTableDefinition(AppId, AppAuthKey);
         }
 
         [WebMethod]
@@ -36,7 +36,7 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public void ClientGetDatabaseList(int nClientId, int nAppId)
+        public void ClientGetDatabaseList(int ClientId, int nAppId)
         {
             throw new NotImplementedException();
         }
@@ -66,15 +66,15 @@ namespace Plex.MobileHub
 
 
         [WebMethod]
-        public bool QryCreate(int nAppId, string sAppAuthKey, QueryDefinition Query)
+        public bool QryCreate(int AppId, string AppAuthKey, QueryDefinition Query)
         {
-            return Functions.QryCreate(nAppId, sAppAuthKey, Query);
+            return Functions.QryCreate(AppId, AppAuthKey, Query);
         }
 
         [WebMethod]
-        public bool QryDelete(int nAppId, string sAppAuthKey, string sQueryName)
+        public bool QryDelete(int AppId, string AppAuthKey, string QueryName)
         {
-            return Functions.QryDelete(nAppId, sAppAuthKey, sQueryName);
+            return Functions.QryDelete(AppId, AppAuthKey, QueryName);
         }
 
         [WebMethod]

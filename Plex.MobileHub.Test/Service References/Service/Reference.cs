@@ -58,13 +58,7 @@ namespace Plex.MobileHub.Test.Service {
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronize", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int UserDataId);
-        
-        // CODEGEN: Parameter 'UserDataId' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceSynchronizeAlt", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.MobileHub.Test.Service.DeviceSynchronizeAltResponse DeviceSynchronizeAlt(Plex.MobileHub.Test.Service.DeviceSynchronizeAltRequest request);
+        Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int VersionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/DeviceRequestId", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -623,45 +617,6 @@ namespace Plex.MobileHub.Test.Service {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeviceSynchronizeAlt", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
-    public partial class DeviceSynchronizeAltRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
-        public int ConnectionId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> UserDataId;
-        
-        public DeviceSynchronizeAltRequest() {
-        }
-        
-        public DeviceSynchronizeAltRequest(int ConnectionId, System.Nullable<int> UserDataId) {
-            this.ConnectionId = ConnectionId;
-            this.UserDataId = UserDataId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeviceSynchronizeAltResponse", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
-    public partial class DeviceSynchronizeAltResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
-        public Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronizeAltResult;
-        
-        public DeviceSynchronizeAltResponse() {
-        }
-        
-        public DeviceSynchronizeAltResponse(Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronizeAltResult) {
-            this.DeviceSynchronizeAltResult = DeviceSynchronizeAltResult;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface APISoapChannel : Plex.MobileHub.Test.Service.APISoap, System.ServiceModel.IClientChannel {
     }
@@ -721,21 +676,8 @@ namespace Plex.MobileHub.Test.Service {
             return base.Channel.QueryDatabase(ConnectionId, Query);
         }
         
-        public Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int UserDataId) {
-            return base.Channel.DeviceSynchronize(ConnectionId, UserDataId);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Plex.MobileHub.Test.Service.DeviceSynchronizeAltResponse Plex.MobileHub.Test.Service.APISoap.DeviceSynchronizeAlt(Plex.MobileHub.Test.Service.DeviceSynchronizeAltRequest request) {
-            return base.Channel.DeviceSynchronizeAlt(request);
-        }
-        
-        public Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronizeAlt(int ConnectionId, System.Nullable<int> UserDataId) {
-            Plex.MobileHub.Test.Service.DeviceSynchronizeAltRequest inValue = new Plex.MobileHub.Test.Service.DeviceSynchronizeAltRequest();
-            inValue.ConnectionId = ConnectionId;
-            inValue.UserDataId = UserDataId;
-            Plex.MobileHub.Test.Service.DeviceSynchronizeAltResponse retVal = ((Plex.MobileHub.Test.Service.APISoap)(this)).DeviceSynchronizeAlt(inValue);
-            return retVal.DeviceSynchronizeAltResult;
+        public Plex.MobileHub.Test.Service.DeviceSynchronizeMethodResult DeviceSynchronize(int ConnectionId, int VersionId) {
+            return base.Channel.DeviceSynchronize(ConnectionId, VersionId);
         }
         
         public Plex.MobileHub.Test.Service.MethodResult DeviceRequestId(int connectionId) {

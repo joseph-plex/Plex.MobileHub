@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" Name="Plex.MobileHub.Client.Installer" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    
+  
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate />
 
-		<Feature Id="ProductFeature" Title="Plex.MobileHub.Client.Installer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
+    <Feature Id="ProductFeature" Title="Plex.MobileHub.Client.Installer" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+    <Feature Id="FolderPermissions">
+      <ComponentRef Id="Permissions"/>
+    </Feature>
 
-    <CustomAction Id="OracleDepInstall" Execute="immediate" BinaryKey="OracleDepsExe" ExeCommand="&quot;[MobileHubFolder]" Return="ignore"/>
+    <CustomAction Id="OracleDepInstall"  Execute="deferred"  BinaryKey="OracleDepsExe" ExeCommand="&quot;[MobileHubFolder]" Return="ignore"   />
+    <CustomAction Id="OracleDepUninstall" Execute="immediate" BinaryKey="OracleDepsRemove" ExeCommand="" Return="ignore" />
 
     <InstallExecuteSequence>
-      <Custom Action="OracleDepInstall" After="InstallInitialize" />
+      <Custom Action="OracleDepInstall" After="InstallFiles" Overridable="no" >NOT Installed</Custom>
+      <Custom Action="OracleDepUninstall" Before="RemoveFolders">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
     </InstallExecuteSequence>
   </Product>
-
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="Plexxis">
-          <Directory Id="MobileHubFolder" Name="Mobile Hub" />
+          <Directory Id="MobileHubFolder" Name="Mobile Hub">
+            <Component Id="Permissions" KeyPath="no" Guid="0BED574F-A55D-45D4-A40A-F6A497C822BF">
+              <CreateFolder Directory="MobileHubFolder">
+                <Permission User="Users" GenericAll="yes"/>
+              </CreateFolder>
+            </Component>
+          </Directory>
         </Directory>
 			</Directory>
 		</Directory>
 	</Fragment>
+  
+  <Fragment>
+  </Fragment>
 
-	<Fragment>
+  <Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
-      <Component Id="ProductComponent" Guid="*">
+      <Component Id="ProductComponent" Guid="*"> 
         <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
+        <File Id="Plex.MobileHub.Client.Config" Name="Client.Config" Source="$(var.Plex.MobileHub.Client.TargetPath).Config" />
         <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
-        <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Stop="uninstall" Remove="uninstall" Wait="no"/>
+        <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Start="install" Stop="both" Remove="uninstall" Wait="yes"/>
       </Component>
       <Component>
         <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" KeyPath="yes"/>
+        <!--<File Id="Plex.MobileHub.Client.Interface.Config" Name="Interface.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>-->
+
       </Component>
 		</ComponentGroup>
 	</Fragment>
-
   <Fragment>
     <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)"/>
+    <Binary Id="OracleDepsRemove" SourceFile="$(var.Plex.MobileHub.Client.Oracle.U.TargetPath)" />
   </Fragment>
+  
 </Wix>

@@ -9,12 +9,16 @@ namespace Plex.MobileHub.Test
     {
         static void Main(string[] args)
         {
-            using (var Service = GetService()) { 
-                var Id = Service.ConnectionConnect(9999, 1001, "PDRYWALL", "supercool", "David").Response;
-                var ret = Service.DeviceSynchronizeAlt(Id,null);
-                Console.WriteLine("Complete");
-                Console.ReadLine();
-            }
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            Console.WriteLine(path);
+            Console.ReadLine();
+
+            //using (var Service = GetService()) { \
+            //    var Id = Service.ConnectionConnect(9999, 1001, "PDRYWALL", "supercool", "David").Response;
+            //    var ret = Service.DeviceSynchronize(Id, 0);
+            //    Console.WriteLine("Complete");
+            //    Console.ReadLine();
+            //}
         }
 
         static APISoapClient GetService()

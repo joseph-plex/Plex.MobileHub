@@ -205,7 +205,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserDataId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VersionId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -232,21 +232,6 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="DeviceSynchronizeAlt">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ConnectionId" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserDataId" nillable="true" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeviceSynchronizeAltResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeviceSynchronizeAltResult" type="tns:DeviceSynchronizeMethodResult" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="DeviceRequestId">
         <s:complexType>
           <s:sequence>
@@ -321,12 +306,6 @@
   <wsdl:message name="DeviceSynchronizeSoapOut">
     <wsdl:part name="parameters" element="tns:DeviceSynchronizeResponse" />
   </wsdl:message>
-  <wsdl:message name="DeviceSynchronizeAltSoapIn">
-    <wsdl:part name="parameters" element="tns:DeviceSynchronizeAlt" />
-  </wsdl:message>
-  <wsdl:message name="DeviceSynchronizeAltSoapOut">
-    <wsdl:part name="parameters" element="tns:DeviceSynchronizeAltResponse" />
-  </wsdl:message>
   <wsdl:message name="DeviceRequestIdSoapIn">
     <wsdl:part name="parameters" element="tns:DeviceRequestId" />
   </wsdl:message>
@@ -380,7 +359,7 @@
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizeHttpGetIn">
     <wsdl:part name="ConnectionId" type="s:string" />
-    <wsdl:part name="UserDataId" type="s:string" />
+    <wsdl:part name="VersionId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizeHttpGetOut">
     <wsdl:part name="Body" element="tns:DeviceSynchronizeMethodResult" />
@@ -438,7 +417,7 @@
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizeHttpPostIn">
     <wsdl:part name="ConnectionId" type="s:string" />
-    <wsdl:part name="UserDataId" type="s:string" />
+    <wsdl:part name="VersionId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeviceSynchronizeHttpPostOut">
     <wsdl:part name="Body" element="tns:DeviceSynchronizeMethodResult" />
@@ -485,10 +464,6 @@
     <wsdl:operation name="DeviceSynchronize">
       <wsdl:input message="tns:DeviceSynchronizeSoapIn" />
       <wsdl:output message="tns:DeviceSynchronizeSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronizeAlt">
-      <wsdl:input message="tns:DeviceSynchronizeAltSoapIn" />
-      <wsdl:output message="tns:DeviceSynchronizeAltSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeviceRequestId">
       <wsdl:input message="tns:DeviceRequestIdSoapIn" />
@@ -654,15 +629,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronizeAlt">
-      <soap:operation soapAction="http://pmh.plexxis.com/DeviceSynchronizeAlt" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="DeviceRequestId">
       <soap:operation soapAction="http://pmh.plexxis.com/DeviceRequestId" style="document" />
       <wsdl:input>
@@ -749,15 +715,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeviceSynchronize">
       <soap12:operation soapAction="http://pmh.plexxis.com/DeviceSynchronize" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeviceSynchronizeAlt">
-      <soap12:operation soapAction="http://pmh.plexxis.com/DeviceSynchronizeAlt" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
