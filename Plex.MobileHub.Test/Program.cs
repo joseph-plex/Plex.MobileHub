@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Plex.MobileHub.Test.Service;
 namespace Plex.MobileHub.Test
 {
@@ -9,16 +10,9 @@ namespace Plex.MobileHub.Test
     {
         static void Main(string[] args)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            Console.WriteLine(path);
+            foreach (var v in Directory.EnumerateFiles(Environment.CurrentDirectory))
+                Console.WriteLine(v);
             Console.ReadLine();
-
-            //using (var Service = GetService()) { \
-            //    var Id = Service.ConnectionConnect(9999, 1001, "PDRYWALL", "supercool", "David").Response;
-            //    var ret = Service.DeviceSynchronize(Id, 0);
-            //    Console.WriteLine("Complete");
-            //    Console.ReadLine();
-            //}
         }
 
         static APISoapClient GetService()

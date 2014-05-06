@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Plex.MobileHub.Client.Installer" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
+	<Product Id="*" Name="Plex Mobile Hub Client" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
 
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     
@@ -8,15 +8,15 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate />
 
-    <Feature Id="ProductFeature" Title="Plex.MobileHub.Client.Installer" Level="1">
+    <Feature Id="ProductFeature" Title="Plex Mobile Hub Client" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
     <Feature Id="FolderPermissions">
       <ComponentRef Id="Permissions"/>
     </Feature>
 
-    <CustomAction Id="OracleDepInstall"  Execute="deferred"  BinaryKey="OracleDepsExe" ExeCommand="&quot;[MobileHubFolder]" Return="ignore"   />
-    <CustomAction Id="OracleDepUninstall" Execute="immediate" BinaryKey="OracleDepsRemove" ExeCommand="" Return="ignore" />
+    <CustomAction Id="OracleDepInstall"  Execute="deferred"  BinaryKey="OracleDepsExe" ExeCommand="&quot; [MobileHubFolder] &quot;" Return="ignore"/>
+    <CustomAction Id="OracleDepUninstall" Execute="deferred" BinaryKey="OracleDepsRemove" ExeCommand=" &quot; [MobileHubFolder] &quot; " Return="ignore" />
 
     <InstallExecuteSequence>
       <Custom Action="OracleDepInstall" After="InstallFiles" Overridable="no" >NOT Installed</Custom>

@@ -40,6 +40,24 @@ namespace Plex.MobileHub.Functionality.API
                     r.TableName = APP_TABLES.GetAll().First(p => p.TABLE_ID == query.TABLE_ID).NAME;
                 else
                     r.TableName = query.TABLE_NAME;
+                
+                var AppTable =  APP_TABLES.GetAll().First(p => p.TABLE_ID == query.TABLE_ID);
+                var AppTableColumns = AppTable.GetAPP_TABLE_COLUMNS();
+
+                foreach(var col in r.Columns)
+                {
+                    var AppTableCol = AppTableColumns.FirstOrDefault(p => p.COLUMN_NAME == col.ColumnName);
+                    
+                    if (AppTableCol == null) 
+                        continue;
+
+                    col.AllowDbNull = Convert.ToBoolean(AppTableCol.ALLOW_DB_NULL);
+                    col.ColumnSequence = AppTableCol.COLUMN_SEQUENCE;
+                    col.DataPrecision = AppTableCol.DATA_PRECISION;
+                    col.DataLength = AppTableCol.DATA_LENGTH;
+                    col.DataScale = AppTableCol.DATA_SCALE;
+                    col.DataType = AppTableCol.DATA_TYPE;
+                }
 
                 r.QueryName = query.NAME;
             }
