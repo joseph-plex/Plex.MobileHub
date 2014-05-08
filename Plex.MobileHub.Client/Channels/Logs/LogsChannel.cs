@@ -2,6 +2,7 @@
 using System.Net;
 using System.ServiceModel;
 using System.Collections.Generic;
+using MobileHubClient.Core;
 
 namespace MobileHubClient.Channels.Logs
 {

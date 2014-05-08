@@ -7,83 +7,83 @@ using MobileHubClient.Logs;
 using System.Text.RegularExpressions;
 using MobileHubClient.Properties;
 using MobileHubClient.Misc;
+using MobileHubClient.Core;
 namespace MobileHubClient.Channels.General
 {
     [ServiceContract(Namespace = "PMHC")]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class GeneralService : PlexServiceBase
     {
-
         [OperationContract]
         public void SetClientKey(string ClientKey)
         {
-            ClientSettings.Default.ClientKey = ClientKey;
+            ClientSettings.Instance.ClientKey = ClientKey;
         }
 
         [OperationContract]
         public void SetClientId(int ClientId)
         {
-            ClientSettings.Default.ClientId = ClientId;
+            ClientSettings.Instance.ClientId = ClientId;
         }
 
         [OperationContract]
         public void SetAddress(string Address)
         {
-            Regex regex = new Regex(@ClientSettings.Default.AddressRegex);
+            Regex regex = new Regex(@ServiceSettings.Default.AddressRegex);
             if (!regex.IsMatch(Address)) 
                 throw new ArgumentException("Invalid IPv4 Address");
-            ClientSettings.Default.Address = Address;
+            ClientSettings.Instance.Address = Address;
         }
 
         [OperationContract]
         public void SetPort(int Port)
         {
-            ClientSettings.Default.Port = Port;
+            ClientSettings.Instance.Port = Port;
         }
 
         [OperationContract]
         public void SetAutoLogOn(bool AutoLogOn)
         {
-            ClientSettings.Default.AutoLogOn = AutoLogOn;
+            ClientSettings.Instance.AutoLogOn = AutoLogOn;
         }
         [OperationContract]
         public string GetClientKey()
         {
-            return ClientSettings.Default.ClientKey;
+            return ClientSettings.Instance.ClientKey;
         }
         [OperationContract]
         public int GetClientId()
         {
-            return ClientSettings.Default.ClientId;
+            return ClientSettings.Instance.ClientId;
         }
         [OperationContract]
         public string GetAddress()
         {
-            return ClientSettings.Default.Address;
+            return ClientSettings.Instance.Address;
         }
 
         [OperationContract]
         public int GetPort()
         {
-            return ClientSettings.Default.Port;
+            return ClientSettings.Instance.Port;
         }
 
         [OperationContract]
         public bool GetAutoLogOn()
         {
-            return Convert.ToBoolean(ClientSettings.Default.AutoLogOn);
+            return Convert.ToBoolean(ClientSettings.Instance.AutoLogOn);
         }
 
         [OperationContract]
         public int GetOutMessageLimt()
         {
-            return ClientSettings.Default.OutMessageLimit;
+            return ServiceSettings.Default.OutMessageLimit;
         }
 
         [OperationContract]
         public void RestoreDefaultSettings()
         {
-            ClientSettings.Default.Reset();
+            ClientSettings.Reset();
         }
 
         [OperationContract]

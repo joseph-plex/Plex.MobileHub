@@ -5,17 +5,12 @@ using MobileHubClient.Channels.General;
 using MobileHubClient.Channels.Logs;
 using MobileHubClient.Data;
 using MobileHubClient.Logs;
+using MobileHubClient.Misc;
+using System;
+using System.Collections.Generic;
 using System.ServiceProcess;
 using System.Timers;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using MobileHubClient.Properties;
-using MobileHubClient.Misc;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
-namespace MobileHubClient
+namespace MobileHubClient.Core
 {
     public class ClientService : ServiceBase
     {
@@ -27,23 +22,24 @@ namespace MobileHubClient
         internal int clientInstanceId = 0;
         internal Timer checkInTimer;
 
+        ClientSettings Settings;
+
         event Subscriber OnLogOff;
         event Subscriber OnLogOn;
         
         public ClientService()
         {
             InitializeComponent();
+            Settings = ClientSettings.Instance;
         }
 
         protected override void OnStart(string[] args)
         {
-            //init
 
-            ClientSettings.Default.Upgrade();
             //Set Instance Variables
             checkInTimer = new Timer();
             checkInTimer.Elapsed += (s,e)=> LogOn();
-            checkInTimer.Interval = ClientSettings.Default.CheckInTimer;
+            checkInTimer.Interval = ClientSettings.Instance.CheckInTimer;
 
             PlexServiceBase.Context = this;
             clientChannels = new List<IClientChannel>();
@@ -60,11 +56,6 @@ namespace MobileHubClient
             OnLogOff += (s, e) => CurrentState = ClientServiceState.Disconnected;
             OnLogOff += (s, e) => clientInstanceId = 0;
 
-            ClientSettings.Default.SettingChanging += (s, e) => ClientSettings.Default.Save();
-
-            //Discover Database
-            ClientDbConnectionFactory.Instance.Discover();
-
             clientChannels.Add(new LogsChannel() { Context = this });
             clientChannels.Add(new GeneralChannel() { Context = this });
             clientChannels.Add(new ExternalChannel() { Context = this });
@@ -72,8 +63,7 @@ namespace MobileHubClient
 
             clientChannels.ForEach(a => a.Open());
 
-            LogManager.Instance.Add(ClientSettings.Default.AutoLogOn.ToString());
-            if (ClientSettings.Default.AutoLogOn)
+            if (ClientSettings.Instance.AutoLogOn)
                 LogOn();
         }
 

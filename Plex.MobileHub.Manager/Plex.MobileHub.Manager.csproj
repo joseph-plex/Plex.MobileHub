@@ -62,6 +62,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ClientStatus.resx">
       <DependentUpon>ClientStatus.cs</DependentUpon>
     </EmbeddedResource>

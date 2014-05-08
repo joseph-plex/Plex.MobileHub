@@ -7,7 +7,7 @@ using MobileHubClient.Misc;
 using MobileHubClient.Properties;
 using MobileHubClient.Logs;
 
-namespace MobileHubClient
+namespace MobileHubClient.Core
 {
     class ClientStateDisconnected : IClientStateBehaviour
     {
@@ -21,10 +21,10 @@ namespace MobileHubClient
         {
             try
             {
-                var port = ClientSettings.Default.Port;
-                var address = ClientSettings.Default.Address;
-                var clientId = ClientSettings.Default.ClientId;
-                var clientKey = ClientSettings.Default.ClientKey;
+                var port = ClientSettings.Instance.Port;
+                var address = ClientSettings.Instance.Address;
+                var clientId = ClientSettings.Instance.ClientId;
+                var clientKey = ClientSettings.Instance.ClientKey;
 
                 Context.clientInstanceId = WebService.LogOn(clientId, clientKey, address, port);
                 Context.checkInTimer.Start();

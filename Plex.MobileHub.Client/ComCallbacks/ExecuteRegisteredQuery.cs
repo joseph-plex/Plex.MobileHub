@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using System.Data;
 using MobileHubClient.PMH;
-using System.Threading;
 using MobileHubClient.Logs;
 using MobileHubClient.Data;
-using MobileHubClient.Data.Types;
-using System.Globalization;
 using Oracle.DataAccess.Client;
-
+using MobileHubClient.Core;
 namespace MobileHubClient.ComCallbacks
 {
     public static partial class Functions
@@ -22,7 +15,7 @@ namespace MobileHubClient.ComCallbacks
             RQryResult Result = new RQryResult();
             try
             {
-                using (var Con = ClientDbConnectionFactory.Instance.GetConnection(dbCode, true))
+                using (var Con = ClientSettings.Instance.GetOpenConnectionByCode(dbCode))
                 {
                     try
                     {

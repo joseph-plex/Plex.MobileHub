@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-
+using System.Collections.Generic;
 
 using MobileHubClient.Data;
+using MobileHubClient.Core;
 
 namespace MobileHubClient.Channels.Database
 {
@@ -12,16 +13,31 @@ namespace MobileHubClient.Channels.Database
     class DatabaseService : PlexServiceBase
     {
         [OperationContract]
-        public bool Reset()
-        { 
-            ClientDbConnectionFactory.Instance.Discover();
-            return true;
+        public void RegisterDbConnectionData(DbConnectionData dbc)
+        {
+            ClientSettings.Instance.DbConnections.Add(dbc);
         }
 
         [OperationContract]
-        public String GetDataMap()
+        public ClientDbConnectionFactory Discover()
         {
-            return ClientDbConnectionFactory.Instance.ToString();
+            ClientDbConnectionFactory DbFactory = new ClientDbConnectionFactory();
+            DbFactory.Discover();
+            return DbFactory;
+        }
+
+        [OperationContract]
+        public Result QuerySource(String companyCode, String commandText, params object [] arguments)
+        {
+            using (var Connection = ClientSettings.Instance.GetOpenConnectionByCode(companyCode))
+                return Connection.Query(commandText, arguments);
+            
+        }
+
+        [OperationContract]
+        public List<DbConnectionData> GetDbConnectionData()
+        {
+            return ClientSettings.Instance.DbConnections;
         }
     }
 }

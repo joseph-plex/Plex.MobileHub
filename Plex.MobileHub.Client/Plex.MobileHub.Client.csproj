@@ -107,31 +107,33 @@
     <Compile Include="Channels\IPlexChannelState.cs" />
     <Compile Include="Channels\IPlexService.cs" />
     <Compile Include="Channels\PlexServiceBase.cs" />
-    <Compile Include="ClientStateDisconnected.cs" />
-    <Compile Include="ClientStateConnected.cs" />
-    <Compile Include="ComCallbacks\IPlexChannelStateBehavior.cs" />
+    <Compile Include="Core\ClientStateDisconnected.cs" />
+    <Compile Include="Core\ClientStateConnected.cs" />
+    <Compile Include="Channels\IPlexChannelStateBehavior.cs" />
     <Compile Include="Channels\Logs\LogsChannel.cs" />
     <Compile Include="Channels\Logs\LogsService.cs" />
-    <Compile Include="Client.cs">
+    <Compile Include="Core\Client.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComCallbacks\ExecuteRegisteredQuery.cs" />
     <Compile Include="ComCallbacks\Query.cs" />
     <Compile Include="ComCallbacks\Sync.cs" />
+    <Compile Include="Core\ClientSettings.cs" />
     <Compile Include="Data\ClientDbConnectionFactory.cs" />
+    <Compile Include="Data\DbConnectionData.cs" />
     <Compile Include="Data\IDbConnectionExtensions.cs" />
     <Compile Include="Data\Listener.cs" />
     <Compile Include="Data\ListenerExtensions.cs" />
-    <Compile Include="Data\Types\Col.cs" />
-    <Compile Include="Data\Types\Result.cs" />
-    <Compile Include="Data\Types\Row.cs" />
+    <Compile Include="Data\Col.cs" />
+    <Compile Include="Data\Result.cs" />
+    <Compile Include="Data\Row.cs" />
     <Compile Include="Data\LogManagement\Behaviour\DefaultAddBehaviour.cs" />
     <Compile Include="Data\LogManagement\Behaviour\EventViewerAddBehaviour.cs" />
     <Compile Include="Data\LogManagement\Behaviour\IAddBehaviour.cs" />
     <Compile Include="Data\LogManagement\Log.cs" />
     <Compile Include="Data\LogManagement\LogManager.cs" />
     <Compile Include="Data\LogManagement\LogPriority.cs" />
-    <Compile Include="IClientStateBehaviour.cs" />
+    <Compile Include="Core\IClientStateBehaviour.cs" />
     <Compile Include="Misc\ClientServiceState.cs" />
     <Compile Include="Misc\IClientSettingState.cs" />
     <Compile Include="Misc\NoNameSpaceXmlWriter.cs" />
@@ -144,10 +146,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Properties\ClientSettings.Designer.cs">
+    <Compile Include="Properties\ServiceSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>ClientSettings.settings</DependentUpon>
+      <DependentUpon>ServiceSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +166,9 @@
   <ItemGroup>
     <None Include="Service References\PMH\clients.wsdl" />
     <None Include="Service References\PMH\configuration91.svcinfo" />
-    <None Include="Properties\ClientSettings.settings">
+    <None Include="Properties\ServiceSettings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ClientSettings.Designer.cs</LastGenOutput>
+      <LastGenOutput>ServiceSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -17,23 +17,8 @@ namespace MobileHubClient.Data
         const string EnvironmentVariablePath = "path";
         const string Lsnrctl = "lsnrctl.exe";
 
-        static ClientDbConnectionFactory instance = new ClientDbConnectionFactory();
-        public static ClientDbConnectionFactory Instance
+        public ClientDbConnectionFactory()
         {
-            get
-            {
-                return instance;
-            }
-        }
-
-        public static void Reset()
-        {
-            instance = new ClientDbConnectionFactory();
-        }
-
-        private ClientDbConnectionFactory()
-        {
-            Discover();
             Sources = new List<string>();
             Companies = new List<string>();
             Maps = new List<DataSourceMap>();
@@ -90,7 +75,7 @@ namespace MobileHubClient.Data
         {
         }
 
-        public void Discover()
+        public ClientDbConnectionFactory Discover()
         {
             List<String> Sour = new List<String>();
             List<String> Comp = new List<String>();
@@ -125,6 +110,7 @@ namespace MobileHubClient.Data
             this.Companies = Comp;
             this.Sources = Sour;
             this.Maps = Maps;
+            return this;
         }
 
         static IEnumerable<string> GenerateConnectionStrings(IEnumerable<string> ServiceNames, IEnumerable<string> Endpoints)

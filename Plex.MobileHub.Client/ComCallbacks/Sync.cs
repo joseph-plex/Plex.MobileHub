@@ -14,31 +14,32 @@ namespace MobileHubClient.ComCallbacks
 {
     public static partial class Functions
     {
-        public static bool Sync()
-        {
-            try
-            {
-                LogManager.Instance.Add("Initializing Synchro", LogPriority.Normal);
+        //Todo Reimplement Sync Function
+        //public static bool Sync()
+        //{
+        //    try
+        //    {
+        //        LogManager.Instance.Add("Initializing Synchro", LogPriority.Normal);
                
-                var SyncData = WebService.SyncDataGet();
-                foreach(var Conn in ClientDbConnectionFactory.Instance.GetUniqueConnections())
-                    foreach (var AppData in SyncData.Apps)
-                        try { SynchronizeApplicationData(Conn, AppData); }
-                        catch(Exception e)
-                        { LogManager.Instance.Add(e); }
+        //        var SyncData = WebService.SyncDataGet(); 
+        //        foreach(var Conn in ClientDbConnectionFactory.Instance.GetUniqueConnections())
+        //            foreach (var AppData in SyncData.Apps)
+        //                try { SynchronizeApplicationData(Conn, AppData); }
+        //                catch(Exception e)
+        //                { LogManager.Instance.Add(e); }
 
-                LogManager.Instance.Add("Synchro Complete", LogPriority.Normal);
-            }
-            catch (Exception e)
-            {
-                LogManager.Instance.Add(e);
-                return false;
-            }
-            return true;
-        }
+        //        LogManager.Instance.Add("Synchro Complete", LogPriority.Normal);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        LogManager.Instance.Add(e);
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         static void SynchronizeApplicationData(IDbConnection Conn, ApplicationSynchroData AppData)
-    {
+        {
             using (var Transaction = Conn.BeginTransaction())
             {
                 string IsAppRegisteredSql = "select * from pmh$_apps where APP_Id=:a";

@@ -11,6 +11,7 @@ using MobileHubClient.PMH;
 using System.Threading;
 using Oracle.DataAccess.Client;
 using MobileHubClient.Data;
+using MobileHubClient.Core;
 namespace MobileHubClient.ComCallbacks
 {
     public static partial class Functions
@@ -20,7 +21,7 @@ namespace MobileHubClient.ComCallbacks
             RQryResult result = new RQryResult();
             try
             {
-                using (var Conn = ClientDbConnectionFactory.Instance.GetConnection(dbCode))
+                using (var Conn = ClientSettings.Instance.GetOpenConnectionByCode(dbCode))
                 {
                     var sTime = DateTime.Now;
                     result = Conn.Query(qry).ToQueryResult();

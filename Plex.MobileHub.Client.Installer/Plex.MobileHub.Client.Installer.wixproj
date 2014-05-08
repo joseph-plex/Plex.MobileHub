@@ -26,7 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Plex.MobileHub.Client.Interface\Plex.MobileHub.Client.Interface.csproj">
       <Name>Plex.MobileHub.Client.Interface</Name>
-      <Project>{59e2b256-52de-41d5-8934-af6b5bd31a0e}</Project>
+      <Project>{73678087-a5b1-49f8-86f7-0367759d1df3}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>

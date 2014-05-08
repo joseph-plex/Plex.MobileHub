@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.ServiceModel;
+using MobileHubClient.Core;
 using System.ServiceModel.Description;
 namespace MobileHubClient.Channels.External
 {

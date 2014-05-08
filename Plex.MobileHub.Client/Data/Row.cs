@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MobileHubClient.PMH;
-namespace MobileHubClient.Data.Types
+namespace MobileHubClient.Data
 {
     public class Row
     {

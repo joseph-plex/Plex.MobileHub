@@ -2,8 +2,6 @@
 using System.Data;
 using System.Collections.Generic;
 
-using MobileHubClient.Data.Types;
-
 namespace MobileHubClient.Data
 {
     public static class IDbConnectionExtensions

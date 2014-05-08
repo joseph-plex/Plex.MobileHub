@@ -1,6 +1,6 @@
 ﻿using System;
 using MobileHubClient.PMH;
-namespace MobileHubClient.Data.Types
+namespace MobileHubClient.Data
 {
     public class Col
     {

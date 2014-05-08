@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="PMHC" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="PMHC" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="PMHC/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd0" namespace="PMHC" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GeneralService_SetClientKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetClientKey" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetClientKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetClientKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetClientId_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetClientId" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetClientId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetClientIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetAddress" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetPort_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPort" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetPort_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPortResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetAutoLogOn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetAutoLogOn" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_SetAutoLogOn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetAutoLogOnResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetClientKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientKey" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetClientKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetClientId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientId" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetClientId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetPort_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPort" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetPort_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetAutoLogOn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutoLogOn" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetAutoLogOn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutoLogOnResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetOutMessageLimt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutMessageLimt" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetOutMessageLimt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutMessageLimtResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_RestoreDefaultSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:RestoreDefaultSettings" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_RestoreDefaultSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RestoreDefaultSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_IsLoggedIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsLoggedIn" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_IsLoggedIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsLoggedInResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_LogOn_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOn" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_LogOn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogOnResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_LogOff_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOff" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_LogOff_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogOffResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GeneralService">
+    <wsdl:operation name="SetClientKey">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/SetClientKey" message="tns:GeneralService_SetClientKey_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/SetClientKeyResponse" message="tns:GeneralService_SetClientKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetClientId">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/SetClientId" message="tns:GeneralService_SetClientId_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/SetClientIdResponse" message="tns:GeneralService_SetClientId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAddress">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/SetAddress" message="tns:GeneralService_SetAddress_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/SetAddressResponse" message="tns:GeneralService_SetAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPort">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/SetPort" message="tns:GeneralService_SetPort_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/SetPortResponse" message="tns:GeneralService_SetPort_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoLogOn">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/SetAutoLogOn" message="tns:GeneralService_SetAutoLogOn_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/SetAutoLogOnResponse" message="tns:GeneralService_SetAutoLogOn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientKey">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetClientKey" message="tns:GeneralService_GetClientKey_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetClientKeyResponse" message="tns:GeneralService_GetClientKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientId">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetClientId" message="tns:GeneralService_GetClientId_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetClientIdResponse" message="tns:GeneralService_GetClientId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetAddress" message="tns:GeneralService_GetAddress_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetAddressResponse" message="tns:GeneralService_GetAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPort">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetPort" message="tns:GeneralService_GetPort_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetPortResponse" message="tns:GeneralService_GetPort_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoLogOn">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetAutoLogOn" message="tns:GeneralService_GetAutoLogOn_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetAutoLogOnResponse" message="tns:GeneralService_GetAutoLogOn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutMessageLimt">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetOutMessageLimt" message="tns:GeneralService_GetOutMessageLimt_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetOutMessageLimtResponse" message="tns:GeneralService_GetOutMessageLimt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RestoreDefaultSettings">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/RestoreDefaultSettings" message="tns:GeneralService_RestoreDefaultSettings_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/RestoreDefaultSettingsResponse" message="tns:GeneralService_RestoreDefaultSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsLoggedIn">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/IsLoggedIn" message="tns:GeneralService_IsLoggedIn_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/IsLoggedInResponse" message="tns:GeneralService_IsLoggedIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOn">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/LogOn" message="tns:GeneralService_LogOn_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/LogOnResponse" message="tns:GeneralService_LogOn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOff">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/LogOff" message="tns:GeneralService_LogOff_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/LogOffResponse" message="tns:GeneralService_LogOff_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

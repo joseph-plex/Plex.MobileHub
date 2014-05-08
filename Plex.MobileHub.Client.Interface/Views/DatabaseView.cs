@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Plex.MobileHub.Client.Interface
+namespace Plex.MobileHub.Client.Interface.Views
 {
-    public partial class Form1 : Form
+    public partial class DatabaseView : UserControl
     {
-        public Form1()
+        public DatabaseView()
         {
             InitializeComponent();
         }
