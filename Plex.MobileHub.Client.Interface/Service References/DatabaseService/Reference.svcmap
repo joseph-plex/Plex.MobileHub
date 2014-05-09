@@ -21,11 +21,13 @@
     <MetadataSource Address="http://127.0.0.1:55555/Database" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Database.disco" MetadataType="Disco" ID="68639558-5981-440e-8a3c-74097765e082" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?disco" />
-    <MetadataFile FileName="Database.xsd" MetadataType="Schema" ID="7a0e84a7-86ec-4608-b978-e304c76adf4e" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?xsd=xsd1" />
     <MetadataFile FileName="Database.wsdl" MetadataType="Wsdl" ID="6407ac30-0309-43f6-a9a5-b156af88cf35" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?wsdl=wsdl0" />
     <MetadataFile FileName="DatabaseService.wsdl" MetadataType="Wsdl" ID="e20dac44-ee72-4683-b04e-bb6317d79493" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?wsdl" />
+    <MetadataFile FileName="Database2.xsd" MetadataType="Schema" ID="8ec67252-025a-46fe-8ef6-e4a7c17143ef" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?xsd=xsd2" />
+    <MetadataFile FileName="Database21.xsd" MetadataType="Schema" ID="ef1fe9c9-784b-4706-8288-ad593a473f54" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?xsd=xsd3" />
+    <MetadataFile FileName="Database.xsd" MetadataType="Schema" ID="7a0e84a7-86ec-4608-b978-e304c76adf4e" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?xsd=xsd1" />
     <MetadataFile FileName="Database1.xsd" MetadataType="Schema" ID="166e33a4-7181-47df-92c7-07f25276c834" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?xsd=xsd0" />
+    <MetadataFile FileName="Database.disco" MetadataType="Disco" ID="68639558-5981-440e-8a3c-74097765e082" SourceId="1" SourceUrl="http://127.0.0.1:55555/Database?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

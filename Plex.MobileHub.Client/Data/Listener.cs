@@ -60,6 +60,8 @@ namespace MobileHubClient.Data
             Maps = new List<DataSourceMap>();
         }
 
+   
+
         public IEnumerable<string> CompanyGetSources(string Company)
         {
             return CompanyGetSources(Companies.FindIndex((a) => a == Company));
@@ -82,4 +84,6 @@ namespace MobileHubClient.Data
         public int CompanyIndex;
         public int SourceIndex;
     }
+
+    
 }

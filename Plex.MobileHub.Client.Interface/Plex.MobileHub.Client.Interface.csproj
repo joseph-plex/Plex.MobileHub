@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plex.MobileHub.Client.Interface</RootNamespace>
     <AssemblyName>Plex.MobileHub.Client.Interface</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -80,6 +83,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Logs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddDatabase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AddDatabase.Designer.cs">
+      <DependentUpon>AddDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatabaseSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +111,12 @@
     </Compile>
     <Compile Include="Views\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LogsView.Designer.cs">
+      <DependentUpon>LogsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\DialogWin.cs">
       <SubType>Form</SubType>
@@ -116,7 +136,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\AddDatabase.resx">
+      <DependentUpon>AddDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DatabaseSelection.resx">
       <DependentUpon>DatabaseSelection.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,10 +150,15 @@
     <EmbeddedResource Include="Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\LogsView.resx">
+      <DependentUpon>LogsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Dialogwin.resx">
       <DependentUpon>DialogWin.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,7 +175,22 @@
     <None Include="Service References\DatabaseService\Database1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\DatabaseService\Database2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DatabaseService\Database21.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\DatabaseService\DatabaseService.wsdl" />
+    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GeneralService\General.wsdl" />
     <None Include="Service References\GeneralService\General.xsd">
       <SubType>Designer</SubType>
@@ -155,6 +199,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GeneralService\GeneralService.wsdl" />
+    <None Include="Service References\Logs\Logs.wsdl" />
+    <None Include="Service References\Logs\Logs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Logs\Logs1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Logs\Logs2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Logs\LogsService.wsdl" />
+    <None Include="Service References\Logs\Plex.MobileHub.Client.Interface.Logs.Log.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -184,6 +242,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DatabaseService\" />
     <WCFMetadataStorage Include="Service References\GeneralService\" />
+    <WCFMetadataStorage Include="Service References\Logs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\GeneralService\General.disco" />
@@ -211,6 +270,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DatabaseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Logs\Logs.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Logs\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Logs\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Logs\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

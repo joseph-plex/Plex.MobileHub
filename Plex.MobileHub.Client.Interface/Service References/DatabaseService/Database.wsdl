@@ -4,28 +4,50 @@
     <xsd:schema targetNamespace="PMHC/Imports">
       <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd0" namespace="PMHC" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="DatabaseService_Reset_InputMessage">
-    <wsdl:part name="parameters" element="tns:Reset" />
+  <wsdl:message name="DatabaseService_RegisterDbConnectionData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterDbConnectionData" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_Reset_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ResetResponse" />
+  <wsdl:message name="DatabaseService_RegisterDbConnectionData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterDbConnectionDataResponse" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_GetDataMap_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataMap" />
+  <wsdl:message name="DatabaseService_Discover_InputMessage">
+    <wsdl:part name="parameters" element="tns:Discover" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_GetDataMap_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataMapResponse" />
+  <wsdl:message name="DatabaseService_Discover_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DiscoverResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_QuerySource_InputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySource" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_QuerySource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_GetDbConnectionData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbConnectionData" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_GetDbConnectionData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbConnectionDataResponse" />
   </wsdl:message>
   <wsdl:portType name="DatabaseService">
-    <wsdl:operation name="Reset">
-      <wsdl:input wsaw:Action="PMHC/DatabaseService/Reset" message="tns:DatabaseService_Reset_InputMessage" />
-      <wsdl:output wsaw:Action="PMHC/DatabaseService/ResetResponse" message="tns:DatabaseService_Reset_OutputMessage" />
+    <wsdl:operation name="RegisterDbConnectionData">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/RegisterDbConnectionData" message="tns:DatabaseService_RegisterDbConnectionData_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/RegisterDbConnectionDataResponse" message="tns:DatabaseService_RegisterDbConnectionData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataMap">
-      <wsdl:input wsaw:Action="PMHC/DatabaseService/GetDataMap" message="tns:DatabaseService_GetDataMap_InputMessage" />
-      <wsdl:output wsaw:Action="PMHC/DatabaseService/GetDataMapResponse" message="tns:DatabaseService_GetDataMap_OutputMessage" />
+    <wsdl:operation name="Discover">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/Discover" message="tns:DatabaseService_Discover_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/DiscoverResponse" message="tns:DatabaseService_Discover_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySource">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/QuerySource" message="tns:DatabaseService_QuerySource_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/QuerySourceResponse" message="tns:DatabaseService_QuerySource_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDbConnectionData">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/GetDbConnectionData" message="tns:DatabaseService_GetDbConnectionData_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/GetDbConnectionDataResponse" message="tns:DatabaseService_GetDbConnectionData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

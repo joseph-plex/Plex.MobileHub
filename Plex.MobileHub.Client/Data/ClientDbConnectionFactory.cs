@@ -19,12 +19,18 @@ namespace MobileHubClient.Data
 
         public ClientDbConnectionFactory()
         {
-            Sources = new List<string>();
-            Companies = new List<string>();
+            Sources = new List<String>();
+            Companies = new List<String>();
             Maps = new List<DataSourceMap>();
         }
 
-        public IDbConnection GetConnection(string companyCode, bool isOpen = true)
+        public IEnumerable<CompanyCodeConnectionPairing> GetCompanySourcePairing()
+        {
+            foreach (var map in Maps)
+                yield return new CompanyCodeConnectionPairing(Companies[map.CompanyIndex], Sources[map.SourceIndex]);
+        }
+
+        public IDbConnection GetConnection(String companyCode, bool isOpen = true)
         {
             int CompanyIndex = Companies.IndexOf(companyCode);
             var Source = Sources[Maps.FindAll(p => p.CompanyIndex == CompanyIndex)[1].SourceIndex];
@@ -35,7 +41,7 @@ namespace MobileHubClient.Data
 
         public IEnumerable<IDbConnection> GetUniqueConnections()
         {
-            List<string> Results = new List<string>();
+            List<String> Results = new List<String>();
             foreach(var ConnectionString in Sources)
             {
                 var Conn = new OracleConnection(ConnectionString);
@@ -47,7 +53,7 @@ namespace MobileHubClient.Data
             }
         }
 
-        public static IDbConnection ActiveConnection(string connectionString)
+        public static IDbConnection ActiveConnection(String connectionString)
         {
             var v = new OracleConnection(connectionString);
             v.Open();

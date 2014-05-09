@@ -2,9 +2,10 @@
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Collections.Generic;
-
+using System.Linq;
 using MobileHubClient.Data;
 using MobileHubClient.Core;
+using MobileHubClient.Logs;
 
 namespace MobileHubClient.Channels.Database
 {
@@ -15,15 +16,30 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public void RegisterDbConnectionData(DbConnectionData dbc)
         {
-            ClientSettings.Instance.DbConnections.Add(dbc);
+            var settings = ClientSettings.Instance;
+            var existing = settings.DbConnections.FirstOrDefault(p => p.Company.Equals(dbc.Company,StringComparison.OrdinalIgnoreCase));
+
+            if (existing == null)
+                settings.DbConnections.Add(dbc);
+            else
+                foreach(var connectionString in  dbc.ConnectionStrings)
+                    if (existing.ConnectionStrings.Exists(p=> p == connectionString))
+                        existing.ConnectionStrings.Add(connectionString);
         }
 
         [OperationContract]
-        public ClientDbConnectionFactory Discover()
+        public List<CompanyCodeConnectionPairing> Discover()
         {
-            ClientDbConnectionFactory DbFactory = new ClientDbConnectionFactory();
-            DbFactory.Discover();
-            return DbFactory;
+            try
+            {
+                var collection = new List<CompanyCodeConnectionPairing>(new ClientDbConnectionFactory().Discover().GetCompanySourcePairing());
+                return collection;
+            }
+            catch(Exception e)
+            {
+                LogManager.Instance.Add(e);
+                return null;
+            }
         }
 
         [OperationContract]

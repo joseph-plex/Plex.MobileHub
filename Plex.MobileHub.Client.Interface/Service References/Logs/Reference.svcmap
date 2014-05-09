@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2a2614c3-126a-493e-8a03-0bbd362c824e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1:55555/Logs" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Logs.disco" MetadataType="Disco" ID="ffbebd3e-7214-4cc7-a12b-942c343c6f0f" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?disco" />
+    <MetadataFile FileName="Logs.xsd" MetadataType="Schema" ID="de2adb25-712c-4a00-98ef-71432f433bd3" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?xsd=xsd2" />
+    <MetadataFile FileName="Logs1.xsd" MetadataType="Schema" ID="1d7be12f-b7a8-41af-ae2c-5051a5aea405" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?xsd=xsd0" />
+    <MetadataFile FileName="Logs.wsdl" MetadataType="Wsdl" ID="36c2e68f-dbaf-401f-87ae-f6ac28aad2eb" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?wsdl=wsdl0" />
+    <MetadataFile FileName="LogsService.wsdl" MetadataType="Wsdl" ID="25fd5d3d-7310-4217-a475-fe3a6a0e501f" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?wsdl" />
+    <MetadataFile FileName="Logs2.xsd" MetadataType="Schema" ID="10b9f723-61a0-4462-abcf-b1d18b0e609e" SourceId="1" SourceUrl="http://127.0.0.1:55555/Logs?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

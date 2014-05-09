@@ -44,5 +44,28 @@ namespace Plex.MobileHub.Client.Interface.Windows
 
             return win32;
         }
+
+
+        public Form GetLogsWin32()
+        {
+            LogsView view = new LogsView();
+            DialogWin win32 = new DialogWin();
+            win32.Controls.Add(view);
+            return win32;
+
+        }
+
+        public Form CreateDatabaseAdditionWindow()
+        {
+            DialogWin win32 = new DialogWin();
+            AddDatabase ad = new AddDatabase();
+            
+            ad.AddButton.Click += (s, e) => win32.Close();
+            ad.CancelButton.Click += (s, e) => win32.Close();
+
+            win32.Controls.Add(ad);
+            
+            return win32;
+        }
     }
 }

@@ -120,6 +120,7 @@
     <Compile Include="ComCallbacks\Sync.cs" />
     <Compile Include="Core\ClientSettings.cs" />
     <Compile Include="Data\ClientDbConnectionFactory.cs" />
+    <Compile Include="Data\CompanyCodeConnectionPairing.cs" />
     <Compile Include="Data\DbConnectionData.cs" />
     <Compile Include="Data\IDbConnectionExtensions.cs" />
     <Compile Include="Data\Listener.cs" />

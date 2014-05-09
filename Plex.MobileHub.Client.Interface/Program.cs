@@ -13,10 +13,10 @@ namespace Plex.MobileHub.Client.Interface
         [STAThread]
         static void Main()
         {
-            WinFactory wf = new WinFactory();
+            //WinFactory wf = new WinFactory();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(wf.GetDatabaseSelectionWin32());
+            Application.Run(new Main());
         }
     }
 }

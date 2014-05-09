@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using Plex.MobileHub.Client.Interface.DatabaseService;
 using Plex.MobileHub.Client.Interface.GeneralService;
+using Plex.MobileHub.Client.Interface.Logs;
+
 namespace Plex.MobileHub.Client.Interface
 {
     public class Manager
@@ -73,12 +77,42 @@ namespace Plex.MobileHub.Client.Interface
                     Service.SetAutoLogOn(value);
             }
         }
- 
-        private Manager() { }
+
+        public CompanyCodeConnectionPairing[] Discover()
+        {
+            using (var Service = GetDatabaseService())
+                return Service.Discover();
+        }
+        
+        public void RegisterDbConnection (string companyCode, string connectionString)
+        {
+            using (var Service = GetDatabaseService())
+                Service.RegisterDbConnectionData(new DbConnectionData(){ Company = companyCode, ConnectionStrings = new string[] { connectionString }} );
+        }
+
+        public DbConnectionData[] GetConnectionData()
+        {
+            using (var Service = GetDatabaseService())
+                return Service.GetDbConnectionData();
+        }
+
+        Manager() { }
 
         GeneralServiceClient GetGeneralService()
         {
             return new GeneralServiceClient("WSHttpBinding_GeneralService");
         }
+
+        DatabaseServiceClient GetDatabaseService()
+        {
+            return new DatabaseServiceClient("WSHttpBinding_DatabaseService");
+        }
+
+        LogsServiceClient GetLogService()
+        {
+            return new LogsServiceClient("WSHttpBinding_LogsService");
+        }
+
+
     }
 }

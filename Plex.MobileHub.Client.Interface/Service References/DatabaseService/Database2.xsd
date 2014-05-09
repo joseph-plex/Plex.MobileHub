@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="DbConnectionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ConnectionStrings" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbConnectionData" nillable="true" type="tns:DbConnectionData" />
+  <xs:complexType name="ArrayOfCompanyCodeConnectionPairing">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyCodeConnectionPairing" nillable="true" type="tns:CompanyCodeConnectionPairing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyCodeConnectionPairing" nillable="true" type="tns:ArrayOfCompanyCodeConnectionPairing" />
+  <xs:complexType name="CompanyCodeConnectionPairing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConnectionString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyCodeConnectionPairing" nillable="true" type="tns:CompanyCodeConnectionPairing" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Columns" nillable="true" type="tns:ArrayOfCol" />
+      <xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfRow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:complexType name="ArrayOfCol">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Col" nillable="true" type="tns:Col" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCol" nillable="true" type="tns:ArrayOfCol" />
+  <xs:complexType name="Col">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllowDbNull" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ColumnSequence" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DataLength" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DataPrecision" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DataScale" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DataType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsKey" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLong" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReadOnly" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUnique" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KeyType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Col" nillable="true" type="tns:Col" />
+  <xs:complexType name="ArrayOfRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRow" nillable="true" type="tns:ArrayOfRow" />
+  <xs:complexType name="Row">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Values" nillable="true" type="q2:ArrayOfanyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Row" nillable="true" type="tns:Row" />
+  <xs:complexType name="ArrayOfDbConnectionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbConnectionData" nillable="true" type="tns:DbConnectionData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbConnectionData" nillable="true" type="tns:ArrayOfDbConnectionData" />
+</xs:schema>

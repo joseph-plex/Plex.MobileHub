@@ -1,26 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="PMHC" elementFormDefault="qualified" targetNamespace="PMHC" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="Reset">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ResetResponse">
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="RegisterDbConnectionData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ResetResult" type="xs:boolean" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="dbc" nillable="true" type="q1:DbConnectionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataMap">
+  <xs:element name="RegisterDbConnectionDataResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataMapResponse">
+  <xs:element name="Discover">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DiscoverResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetDataMapResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DiscoverResult" nillable="true" type="q2:ArrayOfCompanyCodeConnectionPairing" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="companyCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="commandText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="arguments" nillable="true" type="q3:ArrayOfanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySourceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="QuerySourceResult" nillable="true" type="q4:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDbConnectionData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDbConnectionDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="GetDbConnectionDataResult" nillable="true" type="q5:ArrayOfDbConnectionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

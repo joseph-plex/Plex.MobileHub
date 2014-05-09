@@ -25,8 +25,8 @@
   <wsdl:binding name="WSHttpBinding_DatabaseService" type="i0:DatabaseService">
     <wsp:PolicyReference URI="#WSHttpBinding_DatabaseService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Reset">
-      <soap12:operation soapAction="PMHC/DatabaseService/Reset" style="document" />
+    <wsdl:operation name="RegisterDbConnectionData">
+      <soap12:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -34,8 +34,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataMap">
-      <soap12:operation soapAction="PMHC/DatabaseService/GetDataMap" style="document" />
+    <wsdl:operation name="Discover">
+      <soap12:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySource">
+      <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDbConnectionData">
+      <soap12:operation soapAction="PMHC/DatabaseService/GetDbConnectionData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -47,8 +65,8 @@
   <wsdl:binding name="WSDualHttpBinding_DatabaseService" type="i0:DatabaseService">
     <wsp:PolicyReference URI="#WSDualHttpBinding_DatabaseService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Reset">
-      <soap12:operation soapAction="PMHC/DatabaseService/Reset" style="document" />
+    <wsdl:operation name="RegisterDbConnectionData">
+      <soap12:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -56,8 +74,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataMap">
-      <soap12:operation soapAction="PMHC/DatabaseService/GetDataMap" style="document" />
+    <wsdl:operation name="Discover">
+      <soap12:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySource">
+      <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDbConnectionData">
+      <soap12:operation soapAction="PMHC/DatabaseService/GetDbConnectionData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
