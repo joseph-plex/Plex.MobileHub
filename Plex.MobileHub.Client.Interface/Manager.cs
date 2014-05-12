@@ -112,7 +112,5 @@ namespace Plex.MobileHub.Client.Interface
         {
             return new LogsServiceClient("WSHttpBinding_LogsService");
         }
-
-
     }
 }

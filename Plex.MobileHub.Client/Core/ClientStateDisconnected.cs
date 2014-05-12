@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MobileHubClient.Misc;
 using MobileHubClient.Properties;
-using MobileHubClient.Logs;
-
+using Plex.Logs;
 namespace MobileHubClient.Core
 {
     class ClientStateDisconnected : IClientStateBehaviour
@@ -32,7 +31,7 @@ namespace MobileHubClient.Core
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e);
+                LogManager.Instance.Add(e.ToString());
                 throw;
             }
         }

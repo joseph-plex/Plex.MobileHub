@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MobileHubClient.Data;
 using MobileHubClient.Core;
-using MobileHubClient.Logs;
+using Plex.Logs;
+
 
 namespace MobileHubClient.Channels.Database
 {
@@ -16,6 +17,7 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public void RegisterDbConnectionData(DbConnectionData dbc)
         {
+            LogManager.Instance.Add("Adding DBConnectoinData" + dbc.Company);
             var settings = ClientSettings.Instance;
             var existing = settings.DbConnections.FirstOrDefault(p => p.Company.Equals(dbc.Company,StringComparison.OrdinalIgnoreCase));
 
@@ -37,7 +39,7 @@ namespace MobileHubClient.Channels.Database
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e);
+                LogManager.Instance.Add(e.ToString());
                 return null;
             }
         }

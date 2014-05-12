@@ -13,9 +13,8 @@ using System.Xml.Serialization;
 using System.Globalization;
 using MobileHubClient.PMH;
 using MobileHubClient.Misc;
-using MobileHubClient.Logs;
 using MobileHubClient.ComCallbacks;
-
+using Plex.Logs;
 namespace MobileHubClient.Channels.External
 {
     [ServiceContract(Namespace = "PMHC")]
@@ -41,11 +40,11 @@ namespace MobileHubClient.Channels.External
             catch (AggregateException ae)
             {
                 foreach (var x in ae.InnerExceptions)
-                    LogManager.Instance.Add(new Log(x));
+                    LogManager.Instance.Add(new Log(x.ToString()));
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(new Log(e));
+                LogManager.Instance.Add(new Log(e.ToString()));
                 throw;
             }
         }

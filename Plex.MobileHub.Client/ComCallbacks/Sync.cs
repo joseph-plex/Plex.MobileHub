@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 
 using MobileHubClient.PMH;
-using MobileHubClient.Logs;
+using Plex.Logs;
 using MobileHubClient.Data;
 using MobileHubClient.Misc;
 using System.Data;

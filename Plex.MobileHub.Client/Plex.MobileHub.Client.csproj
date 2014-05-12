@@ -77,6 +77,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Logs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\LogManager\LogManager\bin\Release\Logs.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Oracle.DataAccess">
       <HintPath>..\..\..\..\..\Desktop\OracleComponents (12)\ODAC121010Xcopy_32bit\odp.net4\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
     </Reference>
@@ -128,12 +132,6 @@
     <Compile Include="Data\Col.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="Data\Row.cs" />
-    <Compile Include="Data\LogManagement\Behaviour\DefaultAddBehaviour.cs" />
-    <Compile Include="Data\LogManagement\Behaviour\EventViewerAddBehaviour.cs" />
-    <Compile Include="Data\LogManagement\Behaviour\IAddBehaviour.cs" />
-    <Compile Include="Data\LogManagement\Log.cs" />
-    <Compile Include="Data\LogManagement\LogManager.cs" />
-    <Compile Include="Data\LogManagement\LogPriority.cs" />
     <Compile Include="Core\IClientStateBehaviour.cs" />
     <Compile Include="Misc\ClientServiceState.cs" />
     <Compile Include="Misc\IClientSettingState.cs" />
@@ -208,7 +206,11 @@
   <ItemGroup>
     <None Include="Service References\PMH\clients.disco" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

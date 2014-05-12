@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
-using MobileHubClient.Logs;
 using MobileHubClient.Data;
+using Plex.Logs;
 using System.ComponentModel;
 using System.Data;
 namespace MobileHubClient.Core
@@ -23,8 +23,9 @@ namespace MobileHubClient.Core
                 using (var file = File.Create(FileName))
                     new XmlSerializer(Instance.GetType()).Serialize(file, Instance);
             }
-            catch(Exception e){
-                LogManager.Instance.Add(e);
+            catch(Exception e)
+            {
+                LogManager.Instance.Add(e.ToString());
             }
         }
         public static void Load()

@@ -2,8 +2,8 @@
 using System.Linq;
 
 using MobileHubClient.PMH;
-using MobileHubClient.Logs;
 using MobileHubClient.Data;
+using Plex.Logs;
 using Oracle.DataAccess.Client;
 using MobileHubClient.Core;
 namespace MobileHubClient.ComCallbacks
@@ -58,7 +58,7 @@ namespace MobileHubClient.ComCallbacks
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e);
+                LogManager.Instance.Add(e.ToString());
             }
             return Result;
         }

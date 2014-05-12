@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using MobileHubClient.Logs;
+using System.Linq;
+using Plex.Logs;
 
 namespace MobileHubClient.Channels.Logs
 {
@@ -13,7 +14,7 @@ namespace MobileHubClient.Channels.Logs
         [OperationContract]
         public List<Log> GetLogs()
         {
-            return LogManager.Instance.Logs;
+            return LogManager.Instance.GetLogs().ToList();
         }
 
         [OperationContract]

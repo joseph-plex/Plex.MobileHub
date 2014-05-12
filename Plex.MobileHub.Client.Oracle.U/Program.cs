@@ -23,17 +23,11 @@ namespace Plex.MobileHub.Client.Oracle.U
 
         static void Main(string[] args)
         {
-            try {
-                var path = args.Last().Trim();
-                foreach (var v in FileNames)
-                    if(File.Exists(@path + v))
-                        File.Delete(@path + v);
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e);
-                Console.ReadLine();
-            }
+            var path = args.Last().Trim();
+            foreach (var v in FileNames)
+                if(File.Exists(@path + v))
+                    File.Delete(@path + v);
+         
         }
     }
 }

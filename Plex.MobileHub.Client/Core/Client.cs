@@ -4,7 +4,6 @@ using MobileHubClient.Channels.External;
 using MobileHubClient.Channels.General;
 using MobileHubClient.Channels.Logs;
 using MobileHubClient.Data;
-using MobileHubClient.Logs;
 using MobileHubClient.Misc;
 using System;
 using System.Collections.Generic;
@@ -96,8 +95,11 @@ namespace MobileHubClient.Core
         }
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            // 
+            // ClientService
+            // 
             this.ServiceName = "Plexxis Mobile Hub Client";
+
         }
     }
 }

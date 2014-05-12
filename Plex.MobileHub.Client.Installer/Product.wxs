@@ -38,14 +38,11 @@
 			</Directory>
 		</Directory>
 	</Fragment>
-  
-  <Fragment>
-  </Fragment>
-
   <Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
-      <Component Id="ProductComponent" Guid="*"> 
+      <Component Id="ProductComponent" Guid="E9BB83C7-BB8D-49C2-ABB2-0E943AD38482"> 
         <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
+        <File Id ="Logs" Name="Logs.dll" Source="$(var.Plex.MobileHub.Client.TargetDir)Logs.dll" />
         <File Id="Plex.MobileHub.Client.Config" Name="Client.Config" Source="$(var.Plex.MobileHub.Client.TargetPath).Config" />
         <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
         <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Start="install" Stop="both" Remove="uninstall" Wait="yes"/>

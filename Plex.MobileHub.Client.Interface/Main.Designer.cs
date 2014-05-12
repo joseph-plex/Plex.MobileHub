@@ -103,7 +103,6 @@ namespace Plex.MobileHub.Client.Interface
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // fileToolStripMenuItem
             // 

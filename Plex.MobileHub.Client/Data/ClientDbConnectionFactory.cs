@@ -8,8 +8,7 @@ using System.Data;
 using System.Xml.Serialization;
 using Oracle.DataAccess.Client;
 using System.Globalization;
-
-using MobileHubClient.Logs;
+using Plex.Logs;
 namespace MobileHubClient.Data
 {
     public class ClientDbConnectionFactory
@@ -110,7 +109,7 @@ namespace MobileHubClient.Data
                     }
                     catch (Exception e)
                     {
-                        LogManager.Instance.Add(e);
+                        LogManager.Instance.Add(e.ToString());
                     }
             }
             this.Companies = Comp;
