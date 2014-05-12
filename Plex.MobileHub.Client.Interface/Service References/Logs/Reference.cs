@@ -15,7 +15,7 @@ namespace Plex.MobileHub.Client.Interface.Logs {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Log", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Log", Namespace="http://schemas.datacontract.org/2004/07/Plex.Logs")]
     [System.SerializableAttribute()]
     public partial class Log : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -107,7 +107,7 @@ namespace Plex.MobileHub.Client.Interface.Logs {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LogPriority", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LogPriority", Namespace="http://schemas.datacontract.org/2004/07/Plex.Logs")]
     public enum LogPriority : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]

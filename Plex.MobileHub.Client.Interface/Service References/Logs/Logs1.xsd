@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="PMHC" elementFormDefault="qualified" targetNamespace="PMHC" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs" />
+  <xs:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Plex.Logs" />
   <xs:element name="GetLogs">
     <xs:complexType>
       <xs:sequence />
@@ -9,14 +9,14 @@
   <xs:element name="GetLogsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs" minOccurs="0" name="GetLogsResult" nillable="true" type="q1:ArrayOfLog" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Plex.Logs" minOccurs="0" name="GetLogsResult" nillable="true" type="q1:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Add">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs" minOccurs="0" name="log" nillable="true" type="q2:Log" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Plex.Logs" minOccurs="0" name="log" nillable="true" type="q2:Log" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

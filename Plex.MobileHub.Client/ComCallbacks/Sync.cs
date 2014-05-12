@@ -46,10 +46,8 @@ namespace MobileHubClient.ComCallbacks
                 string IsAppRegisteredSql = "select * from pmh$_apps where APP_Id=:a";
                 string AppRegisteredSql = "insert into pmh$_apps(app_id, title, description) values (:a,:b,:c)";
 
-
                 if (Conn.Query(IsAppRegisteredSql, AppData.ApplicationId).Rows.Count == 0)
                     Conn.NonQuery(AppRegisteredSql, AppData.ApplicationId, AppData.ApplicationTitle, AppData.ApplicationDescription);
-
 
                 foreach (var QuerySyncData in AppData.ApplicationQueries)
                 {

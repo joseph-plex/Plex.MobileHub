@@ -27,7 +27,6 @@ namespace MobileHubClient.Channels.External
         [OperationContract]
         public  void RetrieveCommands()
         {
-
             ClientService.Logs.Add("Requests to pull retrieved from server");
             try
             {

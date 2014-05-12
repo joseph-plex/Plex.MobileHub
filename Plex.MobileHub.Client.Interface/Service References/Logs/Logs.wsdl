@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="PMHC/Imports">
       <xsd:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd0" namespace="PMHC" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Logs" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Logs?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Plex.Logs" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="LogsService_GetLogs_InputMessage">
