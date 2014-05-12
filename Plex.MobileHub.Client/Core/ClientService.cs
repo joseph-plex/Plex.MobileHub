@@ -38,35 +38,40 @@ namespace MobileHubClient.Core
 
         protected override void OnStart(string[] args)
         {
-            //Set Instance Variables
-            checkInTimer = new Timer();
-            checkInTimer.Elapsed += (s,e)=> LogOn();
-            checkInTimer.Interval = ClientSettings.Instance.CheckInTimer;
+            try { 
+                //Set Instance Variables
+                checkInTimer = new Timer();
+                checkInTimer.Elapsed += (s,e)=> LogOn();
+                checkInTimer.Interval = ClientSettings.Instance.CheckInTimer;
 
-            PlexServiceBase.Context = this;
-            clientChannels = new List<IClientChannel>();
-            CurrentState = ClientServiceState.Disconnected;
-            StateBehaviours = new Dictionary<ClientServiceState, IClientStateBehaviour>();
-            StateBehaviours.Add(ClientServiceState.Connected,  new ClientStateConnected() { Context = this});
-            StateBehaviours.Add(ClientServiceState.Disconnected, new ClientStateDisconnected() { Context = this });
+                PlexServiceBase.Context = this;
+                clientChannels = new List<IClientChannel>();
+                CurrentState = ClientServiceState.Disconnected;
+                StateBehaviours = new Dictionary<ClientServiceState, IClientStateBehaviour>();
+                StateBehaviours.Add(ClientServiceState.Connected,  new ClientStateConnected() { Context = this});
+                StateBehaviours.Add(ClientServiceState.Disconnected, new ClientStateDisconnected() { Context = this });
             
-            //Subscribers to events
-            OnLogOn += (s, e) => CurrentState = ClientServiceState.Connected;
-            OnLogOn += (s, e) => ExternalService.Context = this;
-            OnLogOn += (S,e)=> checkInTimer.Enabled = true;
+                //Subscribers to events
+                OnLogOn += (s, e) => CurrentState = ClientServiceState.Connected;
+                OnLogOn += (s, e) => ExternalService.Context = this;
+                OnLogOn += (S,e)=> checkInTimer.Enabled = true;
             
-            OnLogOff += (s, e) => CurrentState = ClientServiceState.Disconnected;
-            OnLogOff += (s, e) => clientInstanceId = 0;
+                OnLogOff += (s, e) => CurrentState = ClientServiceState.Disconnected;
+                OnLogOff += (s, e) => clientInstanceId = 0;
 
-            clientChannels.Add(new LogsChannel() { Context = this });
-            clientChannels.Add(new GeneralChannel() { Context = this });
-            clientChannels.Add(new ExternalChannel() { Context = this });
-            clientChannels.Add(new DatabaseChannel() { Context = this });
+                clientChannels.Add(new LogsChannel() { Context = this });
+                clientChannels.Add(new GeneralChannel() { Context = this });
+                clientChannels.Add(new ExternalChannel() { Context = this });
+                clientChannels.Add(new DatabaseChannel() { Context = this });
 
-            clientChannels.ForEach(a => a.Open());
+                clientChannels.ForEach(a => a.Open());
 
-            if (ClientSettings.Instance.AutoLogOn)
-                LogOn();
+                if (ClientSettings.Instance.AutoLogOn)
+                    LogOn();
+            }
+            catch(Exception e){
+                Logs.Add(e);
+            }
         }
 
         protected override void OnStop()
