@@ -9,10 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.ServiceProcess;
 using System.Timers;
+using Plex.Logs;
+
 namespace MobileHubClient.Core
 {
     public class ClientService : ServiceBase
     {
+        static public LogManager Logs = new LogManager();
+
         public delegate void Subscriber(object sender, EventArgs e);
         
         internal Dictionary<ClientServiceState, IClientStateBehaviour> StateBehaviours;
@@ -34,7 +38,6 @@ namespace MobileHubClient.Core
 
         protected override void OnStart(string[] args)
         {
-
             //Set Instance Variables
             checkInTimer = new Timer();
             checkInTimer.Elapsed += (s,e)=> LogOn();

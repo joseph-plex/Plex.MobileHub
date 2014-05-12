@@ -14,6 +14,7 @@ using System.Globalization;
 using MobileHubClient.PMH;
 using MobileHubClient.Misc;
 using MobileHubClient.ComCallbacks;
+using MobileHubClient.Core;
 using Plex.Logs;
 namespace MobileHubClient.Channels.External
 {
@@ -26,13 +27,14 @@ namespace MobileHubClient.Channels.External
         [OperationContract]
         public  void RetrieveCommands()
         {
-            LogManager.Instance.Add("Requests to pull retrieved from server");
+
+            ClientService.Logs.Add("Requests to pull retrieved from server");
             try
             {
                 var result = WebService.GetCommands(Context.clientInstanceId);
                 Parallel.ForEach<Command>(result, Command =>
                 {
-                    LogManager.Instance.Add(new Log("Executing Command : " + Command.Name, LogPriority.Low));
+                    ClientService.Logs.Add(new Log("Executing Command : " + Command.Name, LogPriority.Low));
                     var ret = typeof(Functions).InvokeMember(Command.Name, BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.Public, Type.DefaultBinder, null, Command.Params );
                     SendResponse(Command, ret);
                 });
@@ -40,11 +42,11 @@ namespace MobileHubClient.Channels.External
             catch (AggregateException ae)
             {
                 foreach (var x in ae.InnerExceptions)
-                    LogManager.Instance.Add(new Log(x.ToString()));
+                    ClientService.Logs.Add(new Log(x.ToString()));
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(new Log(e.ToString()));
+                ClientService.Logs.Add(new Log(e.ToString()));
                 throw;
             }
         }

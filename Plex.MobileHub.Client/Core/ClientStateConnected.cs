@@ -30,11 +30,11 @@ namespace MobileHubClient.Core
                 Context.checkInTimer.Start();
 
                 Context.clientInstanceId = WebService.LogOn(clientId, clientKey, address, port);
-                LogManager.Instance.Add("Checked into Web Service");
+                ClientService.Logs.Add("Checked into Web Service");
             }
             catch (Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
                 throw;
             }
         }
@@ -48,7 +48,7 @@ namespace MobileHubClient.Core
             }
             catch (Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
                 throw;
             }
         }

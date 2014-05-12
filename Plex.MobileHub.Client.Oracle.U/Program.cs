@@ -27,7 +27,6 @@ namespace Plex.MobileHub.Client.Oracle.U
             foreach (var v in FileNames)
                 if(File.Exists(@path + v))
                     File.Delete(@path + v);
-         
         }
     }
 }

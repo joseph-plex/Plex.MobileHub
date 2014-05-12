@@ -10,6 +10,7 @@ using Plex.Logs;
 using MobileHubClient.Data;
 using MobileHubClient.Misc;
 using System.Data;
+using MobileHubClient.Core;
 namespace MobileHubClient.ComCallbacks
 {
     public static partial class Functions
@@ -65,7 +66,7 @@ namespace MobileHubClient.ComCallbacks
                             }
                             catch (Exception e)
                             {
-                                LogManager.Instance.Add("Problem With Query " + Q.QueryId + e.ToString(), LogPriority.Highest, true);
+                                ClientService.Logs.Add("Problem With Query " + Q.QueryId + e.ToString(), LogPriority.Highest, true);
                                 throw;
                             }
 
@@ -76,7 +77,7 @@ namespace MobileHubClient.ComCallbacks
                             catch (AggregateException ae)
                             {
                                 foreach (var ex in ae.InnerExceptions)
-                                    LogManager.Instance.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
+                                    ClientService.Logs.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
                             }
 
                             try
@@ -86,14 +87,14 @@ namespace MobileHubClient.ComCallbacks
                             catch (AggregateException ae)
                             {
                                 foreach (var ex in ae.InnerExceptions)
-                                    LogManager.Instance.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
+                                    ClientService.Logs.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
                             }
                             Conn.InvokeProcedure<int>("PMH.QueryCreateSyncTrigger", Q.QueryId);
                             Conn.InvokeProcedure<int>("PMH.QuerySyncData", Q.QueryId);
                         }
                     }
                     catch(Exception ex) {
-                        LogManager.Instance.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
+                        ClientService.Logs.Add("Problem With Query " + Q.QueryId + ex.ToString(), LogPriority.Highest, true);
                     }
                 }
                 Transaction.Commit();

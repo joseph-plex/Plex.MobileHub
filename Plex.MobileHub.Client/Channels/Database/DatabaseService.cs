@@ -17,7 +17,7 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public void RegisterDbConnectionData(DbConnectionData dbc)
         {
-            LogManager.Instance.Add("Adding DBConnectoinData" + dbc.Company);
+            ClientService.Logs.Add("Adding DBConnectoinData" + dbc.Company);
             var settings = ClientSettings.Instance;
             var existing = settings.DbConnections.FirstOrDefault(p => p.Company.Equals(dbc.Company,StringComparison.OrdinalIgnoreCase));
 
@@ -39,7 +39,7 @@ namespace MobileHubClient.Channels.Database
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
                 return null;
             }
         }

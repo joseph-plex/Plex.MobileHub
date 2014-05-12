@@ -77,9 +77,9 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Logs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Logs">
       <HintPath>..\..\LogManager\LogManager\bin\Release\Logs.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.DataAccess">
       <HintPath>..\..\..\..\..\Desktop\OracleComponents (12)\ODAC121010Xcopy_32bit\odp.net4\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
@@ -116,7 +116,7 @@
     <Compile Include="Channels\IPlexChannelStateBehavior.cs" />
     <Compile Include="Channels\Logs\LogsChannel.cs" />
     <Compile Include="Channels\Logs\LogsService.cs" />
-    <Compile Include="Core\Client.cs">
+    <Compile Include="Core\ClientService.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComCallbacks\ExecuteRegisteredQuery.cs" />
@@ -207,8 +207,8 @@
     <None Include="Service References\PMH\clients.disco" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Core\Client.resx">
-      <DependentUpon>Client.cs</DependentUpon>
+    <EmbeddedResource Include="Core\ClientService.resx">
+      <DependentUpon>ClientService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

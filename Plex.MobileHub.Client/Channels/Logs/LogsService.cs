@@ -4,6 +4,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Linq;
 using Plex.Logs;
+using MobileHubClient.Core;
 
 namespace MobileHubClient.Channels.Logs
 {
@@ -14,13 +15,13 @@ namespace MobileHubClient.Channels.Logs
         [OperationContract]
         public List<Log> GetLogs()
         {
-            return LogManager.Instance.GetLogs().ToList();
+            return ClientService.Logs.GetLogs().ToList();
         }
 
         [OperationContract]
         public void Add(Log log)
         {
-            LogManager.Instance.Add(log);
+            ClientService.Logs.Add(log);
         }
     }
 }

@@ -27,11 +27,11 @@ namespace MobileHubClient.Core
 
                 Context.clientInstanceId = WebService.LogOn(clientId, clientKey, address, port);
                 Context.checkInTimer.Start();
-                LogManager.Instance.Add("Log On To Web Service");
+                ClientService.Logs.Add("Log On To Web Service");
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
                 throw;
             }
         }

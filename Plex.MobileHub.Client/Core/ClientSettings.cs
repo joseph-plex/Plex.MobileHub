@@ -25,7 +25,7 @@ namespace MobileHubClient.Core
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
             }
         }
         public static void Load()
@@ -34,8 +34,8 @@ namespace MobileHubClient.Core
                 using (var file = File.Open(FileName, FileMode.Open))
                     instance = (ClientSettings)new XmlSerializer(Instance.GetType()).Deserialize(file);
             }
-            catch(FileNotFoundException) {  
-                LogManager.Instance.Add(FileName + " has not been found. Loading ClientSettings Failed");
+            catch(FileNotFoundException) {
+                ClientService.Logs.Add(FileName + " has not been found. Loading ClientSettings Failed");
             }
         }
         public static void Reset()

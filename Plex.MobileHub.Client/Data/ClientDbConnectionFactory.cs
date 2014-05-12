@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using Oracle.DataAccess.Client;
 using System.Globalization;
 using Plex.Logs;
+using MobileHubClient.Core;
 namespace MobileHubClient.Data
 {
     public class ClientDbConnectionFactory
@@ -91,12 +92,12 @@ namespace MobileHubClient.Data
                 foreach (var Cstring in GenerateConnectionStrings(Listener.ExtractServiceNames(Status), Listener.ExtractEndPointSummary(Status)))
                     try
                     {
-                        LogManager.Instance.Add("Created string Cstring : " + Cstring);
+                        ClientService.Logs.Add("Created string Cstring : " + Cstring);
                         using (var Conn = new OracleConnection(Cstring))
                         {
                             Conn.Open();
                             if (!IsPMHC(Conn)) continue;
-                            LogManager.Instance.Add("PMH is pressent");
+                            ClientService.Logs.Add("PMH is pressent");
                             foreach (var c in GetCodes(Conn))
                             {
                                 if (!Comp.Exists(p => c == p))
@@ -109,7 +110,7 @@ namespace MobileHubClient.Data
                     }
                     catch (Exception e)
                     {
-                        LogManager.Instance.Add(e.ToString());
+                        ClientService.Logs.Add(e.ToString());
                     }
             }
             this.Companies = Comp;

@@ -19,9 +19,9 @@ namespace MobileHubClient.ComCallbacks
                 {
                     try
                     {
-                        LogManager.Instance.Add("Executing Query " + queryId);
+                        ClientService.Logs.Add("Executing Query " + queryId);
                         string Query = (string)Con.Query("select pmh.QueryGetSql(:a,:b) as SQL from dual", queryId, time)[0, 0];
-                        LogManager.Instance.Add(Query);
+                        ClientService.Logs.Add(Query);
 
                         var Start = DateTime.Now;
                         Result = Con.Query(Query).ToQueryResult();
@@ -58,7 +58,7 @@ namespace MobileHubClient.ComCallbacks
             }
             catch(Exception e)
             {
-                LogManager.Instance.Add(e.ToString());
+                ClientService.Logs.Add(e.ToString());
             }
             return Result;
         }
