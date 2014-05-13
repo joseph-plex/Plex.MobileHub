@@ -4,8 +4,9 @@
     <xsd:schema targetNamespace="PMHC/Imports">
       <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd0" namespace="PMHC" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
-      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="DatabaseService_RegisterDbConnectionData_InputMessage">
@@ -26,12 +27,6 @@
   <wsdl:message name="DatabaseService_QuerySource_OutputMessage">
     <wsdl:part name="parameters" element="tns:QuerySourceResponse" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_GetDbConnectionData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDbConnectionData" />
-  </wsdl:message>
-  <wsdl:message name="DatabaseService_GetDbConnectionData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDbConnectionDataResponse" />
-  </wsdl:message>
   <wsdl:portType name="DatabaseService">
     <wsdl:operation name="RegisterDbConnectionData">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/RegisterDbConnectionData" message="tns:DatabaseService_RegisterDbConnectionData_InputMessage" />
@@ -44,10 +39,6 @@
     <wsdl:operation name="QuerySource">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/QuerySource" message="tns:DatabaseService_QuerySource_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/DatabaseService/QuerySourceResponse" message="tns:DatabaseService_QuerySource_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDbConnectionData">
-      <wsdl:input wsaw:Action="PMHC/DatabaseService/GetDbConnectionData" message="tns:DatabaseService_GetDbConnectionData_InputMessage" />
-      <wsdl:output wsaw:Action="PMHC/DatabaseService/GetDbConnectionDataResponse" message="tns:DatabaseService_GetDbConnectionData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

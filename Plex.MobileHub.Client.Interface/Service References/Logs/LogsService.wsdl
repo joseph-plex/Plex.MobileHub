@@ -66,6 +66,27 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_LogsService" type="i0:LogsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLogs">
+      <soap:operation soapAction="PMHC/LogsService/GetLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="PMHC/LogsService/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="LogsService">
     <wsdl:port name="WSHttpBinding_LogsService" binding="tns:WSHttpBinding_LogsService">
       <soap12:address location="http://127.0.0.1:55555/Logs/webs" />
@@ -78,6 +99,9 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/Logs/dual</wsa10:Address>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_LogsService" binding="tns:BasicHttpBinding_LogsService">
+      <soap:address location="http://127.0.0.1:55555/Logs/basic" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

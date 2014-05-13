@@ -187,7 +187,7 @@
             // 
             // companyCodeConnectionPairingBindingSource
             // 
-            this.companyCodeConnectionPairingBindingSource.DataSource = typeof(Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing);
+            this.companyCodeConnectionPairingBindingSource.DataSource = typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory);
             // 
             // CancelButton
             // 

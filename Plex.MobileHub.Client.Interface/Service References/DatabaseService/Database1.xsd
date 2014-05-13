@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="PMHC" elementFormDefault="qualified" targetNamespace="PMHC" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
-  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
+  <xs:import schemaLocation="http://127.0.0.1:55555/Database?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="RegisterDbConnectionData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="dbc" nillable="true" type="q1:DbConnectionData" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="dbc" type="q1:KeyValuePairOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -22,7 +23,7 @@
   <xs:element name="DiscoverResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DiscoverResult" nillable="true" type="q2:ArrayOfCompanyCodeConnectionPairing" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DiscoverResult" nillable="true" type="q2:ClientDbConnectionFactory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -39,18 +40,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="QuerySourceResult" nillable="true" type="q4:Result" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDbConnectionData">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDbConnectionDataResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="GetDbConnectionDataResult" nillable="true" type="q5:ArrayOfDbConnectionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

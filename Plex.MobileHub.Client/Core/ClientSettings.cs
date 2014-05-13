@@ -129,54 +129,27 @@ namespace MobileHubClient.Core
 
 
         }
-        public List<DbConnectionData> DbConnections
+        public List<KeyValuePair<String,String>> DbConnections
         {
             get;
             set;
         }
 
-        string clientKey;
+        int port;
         int clientId;
         string address;
-        int port;
         bool autoLogOn;
+        string clientKey;
         int checkInTimer;
         bool autoSaveSettings;
 
         public IDbConnection GetOpenConnectionByCode(string companyCode)
         {
-            var ConnectionData = DbConnections.FirstOrDefault(p => companyCode == p.Company);
-            if (ConnectionData == null) 
-                throw new Exception("Company Code does not exist within the system");
-            return ConnectionData.GetOpenConnection();
+            foreach(var kvp in DbConnections.Where(p => p.Key == companyCode))
+               return new Oracle.DataAccess.Client.OracleConnection(kvp.Value).GetOpenConnection();
+            throw new Exception("No Connection Available");
         }
     
-        public List<DbConnectionData> RepairDbConnectionCollection()
-        {
-            var list = new List<DbConnectionData>();
-            lock (DbConnections)
-            {
-                foreach(var item in DbConnections)
-                {
-                    //Search for duplicate company names;
-                    var element = list.FirstOrDefault(p => p.Company == item.Company);
-
-                    // list elements must have : unique non empty non null company name and more than one connection strings
-                    if ((element == null) && ((item.Company ?? string.Empty) != string.Empty) && (item.ConnectionStrings.Count != 0))
-                        list.Add(item);
-                    
-                    //if Element does exist already
-                    if (element != null) //if Any of the connection strings do not current exist, add it.
-                        item.ConnectionStrings.ForEach(p => { 
-                            if (!element.ConnectionStrings.Contains(p)) 
-                                element.ConnectionStrings.Add(p); 
-                        });
-                }
-                //Replace the old broken version with the new version
-                return DbConnections = list;
-            }
-        }
-
         public string ToString(string value)
         {
 
@@ -204,7 +177,7 @@ namespace MobileHubClient.Core
                     Save();
             };
 
-            DbConnections = new List<DbConnectionData>();
+            DbConnections = new List<KeyValuePair<String, String>>();
         }
         static ClientSettings() { Load(); }
     }

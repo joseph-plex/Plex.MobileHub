@@ -78,7 +78,7 @@ namespace Plex.MobileHub.Client.Interface
             }
         }
 
-        public CompanyCodeConnectionPairing[] Discover()
+        public ClientDbConnectionFactory Discover()
         {
             using (var Service = GetDatabaseService())
                 return Service.Discover();
@@ -87,14 +87,14 @@ namespace Plex.MobileHub.Client.Interface
         public void RegisterDbConnection (string companyCode, string connectionString)
         {
             using (var Service = GetDatabaseService())
-                Service.RegisterDbConnectionData(new DbConnectionData(){ Company = companyCode, ConnectionStrings = new string[] { connectionString }} );
+                Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
         }
 
-        public DbConnectionData[] GetConnectionData()
-        {
-            using (var Service = GetDatabaseService())
-                return Service.GetDbConnectionData();
-        }
+        //public KeyValuePair<String,String>[] GetConnectionData()
+        //{
+        //    using (var Service = GetDatabaseService())
+        //        return Service.GetDbConnectionData();
+        //}
 
         Manager() { }
 

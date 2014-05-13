@@ -19,38 +19,7 @@ namespace MobileHubClient.Data
 
         public ClientDbConnectionFactory()
         {
-            Sources = new List<String>();
-            Companies = new List<String>();
-            Maps = new List<DataSourceMap>();
-        }
-
-        public IEnumerable<CompanyCodeConnectionPairing> GetCompanySourcePairing()
-        {
-            foreach (var map in Maps)
-                yield return new CompanyCodeConnectionPairing(Companies[map.CompanyIndex], Sources[map.SourceIndex]);
-        }
-
-        public IDbConnection GetConnection(String companyCode, bool isOpen = true)
-        {
-            int CompanyIndex = Companies.IndexOf(companyCode);
-            var Source = Sources[Maps.FindAll(p => p.CompanyIndex == CompanyIndex)[1].SourceIndex];
-            var Conn = new OracleConnection(Source);
-            if (isOpen) Conn.Open();
-            return Conn;
-        }
-
-        public IEnumerable<IDbConnection> GetUniqueConnections()
-        {
-            List<String> Results = new List<String>();
-            foreach(var ConnectionString in Sources)
-            {
-                var Conn = new OracleConnection(ConnectionString);
-                Conn.Open();
-                var dbInfo = Conn.Query("select * from v$database").ToString();
-                if(Results.Contains(dbInfo)) continue;
-                Results.Add(dbInfo);
-                yield return Conn;
-            }
+            CompanyConnectionPairings = new List<KeyValuePair<String, String>>();
         }
 
         public static IDbConnection ActiveConnection(String connectionString)
@@ -60,87 +29,49 @@ namespace MobileHubClient.Data
             return v;
         }
 
-        public List<String> Sources
+        public List<KeyValuePair<String, String>> CompanyConnectionPairings
         {
             get;
             set;
-        }
-        public List<String> Companies
-        {
-            get;
-            set;
-        }
-        public List<DataSourceMap> Maps
-        {
-            get;
-            set;
-        }
-
-
-        public void init()
-        {
         }
 
         public ClientDbConnectionFactory Discover()
         {
-            List<String> Sour = new List<String>();
-            List<String> Comp = new List<String>();
-            List<DataSourceMap> Maps = new List<DataSourceMap>();
-
-            foreach (var lsnr in GetListeners())
-            {
-                var Status = lsnr.LsnrCtlGetStatus();
-                foreach (var Cstring in GenerateConnectionStrings(Listener.ExtractServiceNames(Status), Listener.ExtractEndPointSummary(Status))) 
-                { 
-                    try
-                    {
-                        ClientService.Logs.Add("Created string Cstring : " + Cstring);
-                        using (var Conn = new OracleConnection(Cstring))
-                        {
-                            foreach (var c in IsMobileHubComponentInstalled(Cstring))
-                            {
-                                if (!Comp.Exists(p => c == p)) Comp.Add(c);
-                                if (!Sour.Exists(p => Cstring == p)) Sour.Add(Cstring);
-                                Maps.Add(new DataSourceMap() { CompanyIndex = Comp.LastIndexOf(c), SourceIndex = Sour.LastIndexOf(Cstring) });
-                            }
-                        }
-                    }
-                    catch (OracleException e)
-                    {
-                        ClientService.Logs.Add(e.ToString());
-                        continue;
-                    }
-                    catch(Exception e)
-                    {
-                        ClientService.Logs.Add(e);
-                    }
-                }
-            }
-            
-            this.Companies = Comp;
-            this.Sources = Sour;
-            this.Maps = Maps;
+            var Pairings = new List<KeyValuePair<String, String>>();
+            Parallel.ForEach(GetListeners(), p=> Pairings.AddRange(ParellelListenerHandle(p)));
+            lock (CompanyConnectionPairings)
+            CompanyConnectionPairings = Pairings;
             return this;
         }
 
-        IEnumerable<String> IsMobileHubComponentInstalled(string connectionString)
+        IEnumerable<KeyValuePair<String, String>> ParellelListenerHandle(Listener lsnr)
         {
+            var status = lsnr.LsnrCtlGetStatus();
+            var values = new List<KeyValuePair<String, String>>();
+            Parallel.ForEach(GenerateConnectionStrings(Listener.ExtractServiceNames(status), Listener.ExtractEndPointSummary(status)), p => values.AddRange(IsMobileHubComponentInstalled(p)));
+            return values;
+        }
+
+        IEnumerable<KeyValuePair<String, String>> IsMobileHubComponentInstalled(String connectionString)
+        {
+            List<KeyValuePair<String, String>> values = new List<KeyValuePair<String, String>>();
             try
             {
                 using(var Conn = new OracleConnection(connectionString))
                 {
                     Conn.Open();
                     if (!IsPMHC(Conn))
-                        return new String[0];
-                    return GetCodes(Conn);
+                        return new KeyValuePair<String,String>[0];
+                    foreach (var code in GetCodes(Conn))
+                        values.Add(new KeyValuePair<string, string>(code, connectionString));
+                    return values;
                 }
             }
             catch(OracleException)
             {
-                return new String[0];
+                return new KeyValuePair<String, String>[0];
             }
         }
-
 
         static IEnumerable<string> GenerateConnectionStrings(IEnumerable<string> ServiceNames, IEnumerable<string> Endpoints)
         {

@@ -181,11 +181,11 @@
     <None Include="Service References\DatabaseService\Database21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DatabaseService\DatabaseService.wsdl" />
-    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\DatabaseService\Database3.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData.datasource">
+    <None Include="Service References\DatabaseService\DatabaseService.wsdl" />
+    <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DatabaseService\Plex.MobileHub.Client.Interface.DatabaseService.Result.datasource">

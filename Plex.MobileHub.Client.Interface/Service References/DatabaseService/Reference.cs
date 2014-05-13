@@ -15,18 +15,15 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DbConnectionData", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientDbConnectionFactory", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
     [System.SerializableAttribute()]
-    public partial class DbConnectionData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ClientDbConnectionFactory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ConnectionStringsField;
+        private System.Collections.Generic.KeyValuePair<string, string>[] CompanyConnectionPairingsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,88 +36,14 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Company {
+        public System.Collections.Generic.KeyValuePair<string, string>[] CompanyConnectionPairings {
             get {
-                return this.CompanyField;
+                return this.CompanyConnectionPairingsField;
             }
             set {
-                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
-                    this.CompanyField = value;
-                    this.RaisePropertyChanged("Company");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] ConnectionStrings {
-            get {
-                return this.ConnectionStringsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ConnectionStringsField, value) != true)) {
-                    this.ConnectionStringsField = value;
-                    this.RaisePropertyChanged("ConnectionStrings");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompanyCodeConnectionPairing", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
-    [System.SerializableAttribute()]
-    public partial class CompanyCodeConnectionPairing : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ConnectionStringField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CompanyCode {
-            get {
-                return this.CompanyCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyCodeField, value) != true)) {
-                    this.CompanyCodeField = value;
-                    this.RaisePropertyChanged("CompanyCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ConnectionString {
-            get {
-                return this.ConnectionStringField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ConnectionStringField, value) != true)) {
-                    this.ConnectionStringField = value;
-                    this.RaisePropertyChanged("ConnectionString");
+                if ((object.ReferenceEquals(this.CompanyConnectionPairingsField, value) != true)) {
+                    this.CompanyConnectionPairingsField = value;
+                    this.RaisePropertyChanged("CompanyConnectionPairings");
                 }
             }
         }
@@ -437,15 +360,13 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Row", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Result))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     public partial class Row : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -493,27 +414,22 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
     public interface DatabaseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
-        void RegisterDbConnectionData(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData dbc);
+        void RegisterDbConnectionData(System.Collections.Generic.KeyValuePair<string, string> dbc);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
-        Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing[] Discover();
+        Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Result))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, object[] arguments);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/GetDbConnectionData", ReplyAction="PMHC/DatabaseService/GetDbConnectionDataResponse")]
-        Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData[] GetDbConnectionData();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -543,20 +459,16 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
                 base(binding, remoteAddress) {
         }
         
-        public void RegisterDbConnectionData(Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData dbc) {
+        public void RegisterDbConnectionData(System.Collections.Generic.KeyValuePair<string, string> dbc) {
             base.Channel.RegisterDbConnectionData(dbc);
         }
         
-        public Plex.MobileHub.Client.Interface.DatabaseService.CompanyCodeConnectionPairing[] Discover() {
+        public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover() {
             return base.Channel.Discover();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, object[] arguments) {
             return base.Channel.QuerySource(companyCode, commandText, arguments);
-        }
-        
-        public Plex.MobileHub.Client.Interface.DatabaseService.DbConnectionData[] GetDbConnectionData() {
-            return base.Channel.GetDbConnectionData();
         }
     }
 }

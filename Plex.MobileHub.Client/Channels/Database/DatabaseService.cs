@@ -15,31 +15,24 @@ namespace MobileHubClient.Channels.Database
     class DatabaseService : PlexServiceBase
     {
         [OperationContract]
-        public void RegisterDbConnectionData(DbConnectionData dbc)
+        public void RegisterDbConnectionData(KeyValuePair<String,String> dbc)
         {
-            ClientService.Logs.Add("Adding DBConnectionData" + dbc.Company);
+            ClientService.Logs.Add("Adding DBConnectionData" + dbc.Key);
             var settings = ClientSettings.Instance;
-            var existing = settings.DbConnections.FirstOrDefault(p => p.Company.Equals(dbc.Company,StringComparison.OrdinalIgnoreCase));
-
-            if (existing == null)
+            if(!settings.DbConnections.Exists(p => p.Key == dbc.Key && p.Value == dbc.Value))
                 settings.DbConnections.Add(dbc);
-            else
-                foreach(var connectionString in  dbc.ConnectionStrings)
-                    if (existing.ConnectionStrings.Exists(p=> p == connectionString))
-                        existing.ConnectionStrings.Add(connectionString);
         }
 
         [OperationContract]
-        public List<CompanyCodeConnectionPairing> Discover()
+        public ClientDbConnectionFactory Discover()
         {
             try
             {
-                var collection = new List<CompanyCodeConnectionPairing>(new ClientDbConnectionFactory().Discover().GetCompanySourcePairing());
-                return collection;
+                return new ClientDbConnectionFactory().Discover();
             }
             catch(Exception e)
             {
-                ClientService.Logs.Add(e.ToString());
+                ClientService.Logs.Add(e);
                 return null;
             }
         }
@@ -49,13 +42,6 @@ namespace MobileHubClient.Channels.Database
         {
             using (var Connection = ClientSettings.Instance.GetOpenConnectionByCode(companyCode))
                 return Connection.Query(commandText, arguments);
-            
-        }
-
-        [OperationContract]
-        public List<DbConnectionData> GetDbConnectionData()
-        {
-            return ClientSettings.Instance.DbConnections;
         }
     }
 }

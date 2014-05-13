@@ -62,6 +62,14 @@ namespace MobileHubClient.Data
             using (var Comm = conn.CreateCommand(commandText, arguments))
                 return Comm.ExecuteNonQuery();
         }
+
+        public static IDbConnection GetOpenConnection(this IDbConnection Conn)
+        {
+            Conn.Open();
+            Conn.Query("select * from dual");
+            return Conn;
+        }
+
         internal static IEnumerable<Col> GetColumnData(DataTable dataTable)
         {
             foreach (var Row in dataTable.Rows)
@@ -80,5 +88,6 @@ namespace MobileHubClient.Data
                 IsLong = (collection[19] != DBNull.Value) ? Convert.ToBoolean(collection[19]) : (bool?)null,
             };
         }
+
     }
 }

@@ -52,15 +52,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDbConnectionData">
-      <soap12:operation soapAction="PMHC/DatabaseService/GetDbConnectionData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WSDualHttpBinding_DatabaseService" type="i0:DatabaseService">
     <wsp:PolicyReference URI="#WSDualHttpBinding_DatabaseService_policy" />
@@ -92,13 +83,34 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDbConnectionData">
-      <soap12:operation soapAction="PMHC/DatabaseService/GetDbConnectionData" style="document" />
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_DatabaseService" type="i0:DatabaseService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterDbConnectionData">
+      <soap:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Discover">
+      <soap:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySource">
+      <soap:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
@@ -114,6 +126,9 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/Database/dual</wsa10:Address>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_DatabaseService" binding="tns:BasicHttpBinding_DatabaseService">
+      <soap:address location="http://127.0.0.1:55555/Database/basic" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
