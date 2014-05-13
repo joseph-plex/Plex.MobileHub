@@ -7,7 +7,15 @@ namespace MobileHubClient
     {
         static void Main()
         {
-            ServiceBase.Run(new ClientService());
+            ClientService myService = new ClientService();
+            
+            #if(!DEBUG)
+                ServiceBase.Run(myService);
+            #else
+            myService.OnDebug();
+            Console.WriteLine("Press Enter to terminate ...");
+            Console.ReadLine();
+        #endif
         }
     }
 }

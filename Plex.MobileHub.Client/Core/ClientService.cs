@@ -35,6 +35,10 @@ namespace MobileHubClient.Core
             InitializeComponent();
             Settings = ClientSettings.Instance;
         }
+        public void OnDebug()
+        {
+            OnStart(null);
+        }
 
         protected override void OnStart(string[] args)
         {
