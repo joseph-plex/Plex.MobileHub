@@ -18,11 +18,6 @@ namespace Plex.MobileHub.Client.Interface.Views
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         void AddDatabase_Load(object sender, EventArgs e)
         {
             try { 

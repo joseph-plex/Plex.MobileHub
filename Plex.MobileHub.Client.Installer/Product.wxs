@@ -50,7 +50,6 @@
       <Component>
         <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" KeyPath="yes"/>
         <File Id="Plex.MobileHub.Client.Interface.Config" Name="Interface.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>
-
       </Component>
 		</ComponentGroup>
 	</Fragment>

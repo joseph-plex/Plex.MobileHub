@@ -86,38 +86,61 @@ namespace MobileHubClient.Data
             List<String> Sour = new List<String>();
             List<String> Comp = new List<String>();
             List<DataSourceMap> Maps = new List<DataSourceMap>();
+
             foreach (var lsnr in GetListeners())
             {
                 var Status = lsnr.LsnrCtlGetStatus();
-                foreach (var Cstring in GenerateConnectionStrings(Listener.ExtractServiceNames(Status), Listener.ExtractEndPointSummary(Status)))
+                foreach (var Cstring in GenerateConnectionStrings(Listener.ExtractServiceNames(Status), Listener.ExtractEndPointSummary(Status))) 
+                { 
                     try
                     {
                         ClientService.Logs.Add("Created string Cstring : " + Cstring);
                         using (var Conn = new OracleConnection(Cstring))
                         {
-                            Conn.Open();
-                            if (!IsPMHC(Conn)) continue;
-                            ClientService.Logs.Add("PMH is pressent");
-                            foreach (var c in GetCodes(Conn))
+                            foreach (var c in IsMobileHubComponentInstalled(Cstring))
                             {
-                                if (!Comp.Exists(p => c == p))
-                                    Comp.Add(c);
-                                if (!Sour.Exists(p => Cstring == p))
-                                    Sour.Add(Cstring);
+                                if (!Comp.Exists(p => c == p)) Comp.Add(c);
+                                if (!Sour.Exists(p => Cstring == p)) Sour.Add(Cstring);
                                 Maps.Add(new DataSourceMap() { CompanyIndex = Comp.LastIndexOf(c), SourceIndex = Sour.LastIndexOf(Cstring) });
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (OracleException e)
                     {
                         ClientService.Logs.Add(e.ToString());
+                        continue;
                     }
+                    catch(Exception e)
+                    {
+                        ClientService.Logs.Add(e);
+                    }
+                }
             }
+            
             this.Companies = Comp;
             this.Sources = Sour;
             this.Maps = Maps;
             return this;
         }
+
+        IEnumerable<String> IsMobileHubComponentInstalled(string connectionString)
+        {
+            try
+            {
+                using(var Conn = new OracleConnection(connectionString))
+                {
+                    Conn.Open();
+                    if (!IsPMHC(Conn))
+                        return new String[0];
+                    return GetCodes(Conn);
+                }
+            }
+            catch(OracleException)
+            {
+                return new String[0];
+            }
+        }
+
 
         static IEnumerable<string> GenerateConnectionStrings(IEnumerable<string> ServiceNames, IEnumerable<string> Endpoints)
         {

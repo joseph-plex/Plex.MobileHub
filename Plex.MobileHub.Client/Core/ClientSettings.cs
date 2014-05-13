@@ -30,19 +30,17 @@ namespace MobileHubClient.Core
         }
         public static void Load()
         {
-            try { 
+            if(File.Exists(FileName))
                 using (var file = File.Open(FileName, FileMode.Open))
                     instance = (ClientSettings)new XmlSerializer(Instance.GetType()).Deserialize(file);
-            }
-            catch(FileNotFoundException) {
-                ClientService.Logs.Add(FileName + " has not been found. Loading ClientSettings Failed");
-            }
+         
         }
         public static void Reset()
         {
             instance = new ClientSettings();
         }
 
+        [XmlIgnore]
         public PropertyChangedEventHandler OnChange;
 
         public String ClientKey
@@ -179,14 +177,27 @@ namespace MobileHubClient.Core
             }
         }
 
+        public string ToString(string value)
+        {
+
+            if(value.Equals("x",StringComparison.OrdinalIgnoreCase))
+            {
+                var stringWriter = new StringWriter();
+                new XmlSerializer(GetType()).Serialize(stringWriter, this);
+                return stringWriter.ToString();
+            }
+            return base.ToString();
+        }
+
         private ClientSettings() 
         {
             clientKey = String.Empty;
             clientId = 0;
-            port = 0;
             address = String.Empty;
+            port = 0;
             autoLogOn = false;
             checkInTimer = 180000;
+            autoSaveSettings = false;
 
             OnChange += (s, e) =>{
                 if (autoSaveSettings)
