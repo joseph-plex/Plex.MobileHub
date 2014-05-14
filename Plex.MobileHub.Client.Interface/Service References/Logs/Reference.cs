@@ -131,10 +131,16 @@ namespace Plex.MobileHub.Client.Interface.Logs {
     public interface LogsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/LogsService/GetLogs", ReplyAction="PMHC/LogsService/GetLogsResponse")]
-        Plex.MobileHub.Client.Interface.Logs.Log[] GetLogs();
+        System.Collections.Generic.List<Plex.MobileHub.Client.Interface.Logs.Log> GetLogs();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/LogsService/GetLogs", ReplyAction="PMHC/LogsService/GetLogsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Plex.MobileHub.Client.Interface.Logs.Log>> GetLogsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/LogsService/Add", ReplyAction="PMHC/LogsService/AddResponse")]
         void Add(Plex.MobileHub.Client.Interface.Logs.Log log);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/LogsService/Add", ReplyAction="PMHC/LogsService/AddResponse")]
+        System.Threading.Tasks.Task AddAsync(Plex.MobileHub.Client.Interface.Logs.Log log);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,12 +170,20 @@ namespace Plex.MobileHub.Client.Interface.Logs {
                 base(binding, remoteAddress) {
         }
         
-        public Plex.MobileHub.Client.Interface.Logs.Log[] GetLogs() {
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.Logs.Log> GetLogs() {
             return base.Channel.GetLogs();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Plex.MobileHub.Client.Interface.Logs.Log>> GetLogsAsync() {
+            return base.Channel.GetLogsAsync();
         }
         
         public void Add(Plex.MobileHub.Client.Interface.Logs.Log log) {
             base.Channel.Add(log);
+        }
+        
+        public System.Threading.Tasks.Task AddAsync(Plex.MobileHub.Client.Interface.Logs.Log log) {
+            return base.Channel.AddAsync(log);
         }
     }
 }

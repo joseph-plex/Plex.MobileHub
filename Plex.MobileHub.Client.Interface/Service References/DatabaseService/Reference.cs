@@ -23,7 +23,7 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.KeyValuePair<string, string>[] CompanyConnectionPairingsField;
+        private System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> CompanyConnectionPairingsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -36,7 +36,7 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.KeyValuePair<string, string>[] CompanyConnectionPairings {
+        public System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> CompanyConnectionPairings {
             get {
                 return this.CompanyConnectionPairingsField;
             }
@@ -68,10 +68,10 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Plex.MobileHub.Client.Interface.DatabaseService.Col[] ColumnsField;
+        private System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Col> ColumnsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Plex.MobileHub.Client.Interface.DatabaseService.Row[] RowsField;
+        private System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Row> RowsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -84,7 +84,7 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Plex.MobileHub.Client.Interface.DatabaseService.Col[] Columns {
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Col> Columns {
             get {
                 return this.ColumnsField;
             }
@@ -97,7 +97,7 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Plex.MobileHub.Client.Interface.DatabaseService.Row[] Rows {
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Row> Rows {
             get {
                 return this.RowsField;
             }
@@ -361,20 +361,20 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Row", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Result))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Col>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Row>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
     public partial class Row : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private object[] ValuesField;
+        private System.Collections.Generic.List<object> ValuesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -387,7 +387,7 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public object[] Values {
+        public System.Collections.Generic.List<object> Values {
             get {
                 return this.ValuesField;
             }
@@ -416,23 +416,35 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
         void RegisterDbConnectionData(System.Collections.Generic.KeyValuePair<string, string> dbc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
+        System.Threading.Tasks.Task RegisterDbConnectionDataAsync(System.Collections.Generic.KeyValuePair<string, string> dbc);
+        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
+        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DiscoverAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation();
         
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
+        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> CurrentDatabaseInformationAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Col>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Col))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.DatabaseService.Row>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, object[] arguments);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
+        Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, System.Collections.Generic.List<object> arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
+        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.Result> QuerySourceAsync(string companyCode, string commandText, System.Collections.Generic.List<object> arguments);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -466,16 +478,32 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
             base.Channel.RegisterDbConnectionData(dbc);
         }
         
+        public System.Threading.Tasks.Task RegisterDbConnectionDataAsync(System.Collections.Generic.KeyValuePair<string, string> dbc) {
+            return base.Channel.RegisterDbConnectionDataAsync(dbc);
+        }
+        
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover() {
             return base.Channel.Discover();
+        }
+        
+        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DiscoverAsync() {
+            return base.Channel.DiscoverAsync();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation() {
             return base.Channel.CurrentDatabaseInformation();
         }
         
-        public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, object[] arguments) {
+        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> CurrentDatabaseInformationAsync() {
+            return base.Channel.CurrentDatabaseInformationAsync();
+        }
+        
+        public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, System.Collections.Generic.List<object> arguments) {
             return base.Channel.QuerySource(companyCode, commandText, arguments);
+        }
+        
+        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.Result> QuerySourceAsync(string companyCode, string commandText, System.Collections.Generic.List<object> arguments) {
+            return base.Channel.QuerySourceAsync(companyCode, commandText, arguments);
         }
     }
 }

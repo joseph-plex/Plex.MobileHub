@@ -40,15 +40,7 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public ClientDbConnectionFactory CurrentDatabaseInformation()
         {
-            try
-            {
-                return Context.DbFactory;
-            }
-            catch (Exception e)
-            {
-                ClientService.Logs.Add(e);
-                return null;
-            }
+             return Context.DbFactory;
         }
 
         [OperationContract]
