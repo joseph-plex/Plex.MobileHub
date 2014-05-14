@@ -43,6 +43,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CurrentDatabaseInformation">
+      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="QuerySource">
       <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
       <wsdl:input>
@@ -74,6 +83,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CurrentDatabaseInformation">
+      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="QuerySource">
       <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
       <wsdl:input>
@@ -97,6 +115,15 @@
     </wsdl:operation>
     <wsdl:operation name="Discover">
       <soap:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentDatabaseInformation">
+      <soap:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

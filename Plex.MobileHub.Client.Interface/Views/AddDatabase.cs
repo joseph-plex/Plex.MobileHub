@@ -22,7 +22,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         {
             try {
                 List<object> datasource = new List<object>();
-                foreach(var pair in Manager.Instance.Discover().CompanyConnectionPairings)
+                foreach(var pair in Manager.Instance.GetCurrentConnections().CompanyConnectionPairings)
                     datasource.Add(new{ CompanyCode = pair.Key, ConnectionString = pair.Value} );
                 dataGridView1.DataSource = datasource.ToArray();
             }

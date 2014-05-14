@@ -419,6 +419,9 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover();
         
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
+        Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation();
+        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>[]))]
@@ -465,6 +468,10 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover() {
             return base.Channel.Discover();
+        }
+        
+        public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation() {
+            return base.Channel.CurrentDatabaseInformation();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, object[] arguments) {

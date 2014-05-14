@@ -83,6 +83,12 @@ namespace Plex.MobileHub.Client.Interface
             using (var Service = GetDatabaseService())
                 return Service.Discover();
         }
+
+        public ClientDbConnectionFactory GetCurrentConnections()
+        {
+            using (var Service = GetDatabaseService())
+                return Service.CurrentDatabaseInformation();
+        }
         
         public void RegisterDbConnection (string companyCode, string connectionString)
         {
