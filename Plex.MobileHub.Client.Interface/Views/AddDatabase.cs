@@ -20,8 +20,11 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         void AddDatabase_Load(object sender, EventArgs e)
         {
-            try { 
-                dataGridView1.DataSource = Manager.Instance.Discover();
+            try {
+                List<object> datasource = new List<object>();
+                foreach(var pair in Manager.Instance.Discover().CompanyConnectionPairings)
+                    datasource.Add(new{ CompanyCode = pair.Key, ConnectionString = pair.Value} );
+                dataGridView1.DataSource = datasource.ToArray();
             }
             catch(Exception x){
                 MessageBox.Show(x.ToString());

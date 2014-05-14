@@ -37,8 +37,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.companyCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connectionStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyCodeConnectionPairingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
@@ -155,9 +153,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.companyCodeDataGridViewTextBoxColumn,
-            this.connectionStringDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.companyCodeConnectionPairingBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -168,22 +163,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(800, 365);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // companyCodeDataGridViewTextBoxColumn
-            // 
-            this.companyCodeDataGridViewTextBoxColumn.DataPropertyName = "CompanyCode";
-            this.companyCodeDataGridViewTextBoxColumn.HeaderText = "CompanyCode";
-            this.companyCodeDataGridViewTextBoxColumn.MaxInputLength = 8;
-            this.companyCodeDataGridViewTextBoxColumn.Name = "companyCodeDataGridViewTextBoxColumn";
-            this.companyCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // connectionStringDataGridViewTextBoxColumn
-            // 
-            this.connectionStringDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.connectionStringDataGridViewTextBoxColumn.DataPropertyName = "ConnectionString";
-            this.connectionStringDataGridViewTextBoxColumn.HeaderText = "ConnectionString";
-            this.connectionStringDataGridViewTextBoxColumn.Name = "connectionStringDataGridViewTextBoxColumn";
-            this.connectionStringDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // companyCodeConnectionPairingBindingSource
             // 

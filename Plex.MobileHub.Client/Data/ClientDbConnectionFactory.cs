@@ -10,16 +10,30 @@ using Oracle.DataAccess.Client;
 using System.Globalization;
 using Plex.Logs;
 using MobileHubClient.Core;
+using System.Timers;
 namespace MobileHubClient.Data
 {
     public class ClientDbConnectionFactory
     {
         const string EnvironmentVariablePath = "path";
         const string Lsnrctl = "lsnrctl.exe";
-
+        Timer DbCheckTimer;
         public ClientDbConnectionFactory()
         {
             CompanyConnectionPairings = new List<KeyValuePair<String, String>>();
+            Task.Run(()=> Discover());
+
+            DbCheckTimer = new Timer();
+            DbCheckTimer.Elapsed += DbCheckTimer_Elapsed;
+            DbCheckTimer.AutoReset = true;
+            DbCheckTimer.Interval = 300000;
+            DbCheckTimer.Enabled = true;
+        }
+
+        void DbCheckTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (CompanyConnectionPairings.Count == 0)
+                Discover();
         }
 
         public static IDbConnection ActiveConnection(String connectionString)
@@ -37,11 +51,13 @@ namespace MobileHubClient.Data
 
         public ClientDbConnectionFactory Discover()
         {
-            var Pairings = new List<KeyValuePair<String, String>>();
-            Parallel.ForEach(GetListeners(), p=> Pairings.AddRange(ParellelListenerHandle(p)));
-            lock (CompanyConnectionPairings)
-            CompanyConnectionPairings = Pairings;
-            return this;
+            lock (this) { 
+                var Pairings = new List<KeyValuePair<String, String>>();
+                Parallel.ForEach(GetListeners(), p=> Pairings.AddRange(ParellelListenerHandle(p)));
+                lock (CompanyConnectionPairings)
+                CompanyConnectionPairings = Pairings;
+                return this;
+            }
         }
 
         IEnumerable<KeyValuePair<String, String>> ParellelListenerHandle(Listener lsnr)

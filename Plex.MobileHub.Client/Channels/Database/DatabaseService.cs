@@ -28,9 +28,23 @@ namespace MobileHubClient.Channels.Database
         {
             try
             {
-                return new ClientDbConnectionFactory().Discover();
+                return Context.DbFactory.Discover();
             }
             catch(Exception e)
+            {
+                ClientService.Logs.Add(e);
+                return null;
+            }
+        }
+
+        [OperationContract]
+        public ClientDbConnectionFactory CurrentDatabaseInformation()
+        {
+            try
+            {
+                return Context.DbFactory;
+            }
+            catch (Exception e)
             {
                 ClientService.Logs.Add(e);
                 return null;

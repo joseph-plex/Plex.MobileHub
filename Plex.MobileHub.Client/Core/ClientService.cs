@@ -18,6 +18,7 @@ namespace MobileHubClient.Core
         static public LogManager Logs = new LogManager();
         
         public delegate void Subscriber(object sender, EventArgs e);
+        public ClientDbConnectionFactory DbFactory = new ClientDbConnectionFactory();
         
         internal Dictionary<ClientServiceState, IClientStateBehaviour> StateBehaviours;
         internal List<IClientChannel> clientChannels;
