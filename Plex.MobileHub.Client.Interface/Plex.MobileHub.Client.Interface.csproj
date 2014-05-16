@@ -127,6 +127,12 @@
     <Compile Include="Views\LogsView.Designer.cs">
       <DependentUpon>LogsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DialogWin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LogsView.resx">
       <DependentUpon>LogsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Dialogwin.resx">
       <DependentUpon>DialogWin.cs</DependentUpon>

@@ -52,7 +52,6 @@ namespace Plex.MobileHub.Client.Interface.Windows
             DialogWin win32 = new DialogWin();
             win32.Controls.Add(view);
             return win32;
-
         }
 
         public Form CreateDatabaseAdditionWindow()
@@ -64,10 +63,8 @@ namespace Plex.MobileHub.Client.Interface.Windows
 
             win32.AcceptButton = ad.AddButton;
             win32.CancelButton = ad.CancelButton;
-
             
             win32.Controls.Add(ad);
-            
             return win32;
         }
     }

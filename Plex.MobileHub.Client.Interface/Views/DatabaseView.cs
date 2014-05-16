@@ -56,7 +56,16 @@ namespace Plex.MobileHub.Client.Interface.Views
                     break;
                 default:
                     foreach (var companyCode in DbInfo.CompanyConnectionPairings)
-                        naviBar1.Bands.Add(new NaviBand() { Text = companyCode.Key });
+                    {
+                        NaviBand band = new NaviBand();
+                        band.ClientArea.Location = new Point(new int(), new int());
+                        band.ClientArea.Name = "ClientArea";
+                        band.Text = companyCode.Key;
+                        //band.ClientArea.Size = naviBar1.Size;
+
+                        naviBar1.Bands.Add(band);
+
+                    }
                     MessageBox.Show(naviBar1.Bands.Count.ToString());
                     splitContainer2.Panel1Collapsed = false;
                     break;
