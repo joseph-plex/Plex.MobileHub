@@ -24,7 +24,7 @@ namespace MobileHubClient.Channels.Database
         }
 
         [OperationContract]
-        public ClientDbConnectionFactory Discover()
+        public ClientDbConnectionFactory DatabaseInformationSearch()
         {
             try
             {
@@ -32,9 +32,15 @@ namespace MobileHubClient.Channels.Database
             }
             catch(Exception e)
             {
-                ClientService.Logs.Add(e);
-                return null;
-            }
+                ClientService.Logs.Add(e); 
+                throw;
+            } 
+        }
+
+        [OperationContract]
+        public ClientDbConnectionFactory DatabaseInformationRetrieve()
+        {
+            return Context.DbFactory;
         }
 
         [OperationContract]
