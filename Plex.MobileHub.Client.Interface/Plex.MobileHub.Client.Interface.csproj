@@ -50,6 +50,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guifreaks.Common">
+      <HintPath>..\..\..\..\..\Downloads\NaviBarDemo0.1\Guifreaks.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Guifreaks.NavigationBar">
+      <HintPath>..\..\..\..\..\Downloads\NaviBarDemo0.1\Guifreaks.NavigationBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Guifreaks.NavigationBar.XmlSerializers">
+      <HintPath>..\..\..\..\..\Downloads\NaviBarDemo0.1\Guifreaks.NavigationBar.XmlSerializers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
