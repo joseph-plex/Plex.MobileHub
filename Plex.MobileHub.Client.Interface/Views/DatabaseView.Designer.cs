@@ -130,7 +130,7 @@
             this.naviBar1.ShowMoreOptionsButton = false;
             this.naviBar1.Size = new System.Drawing.Size(210, 335);
             this.naviBar1.TabIndex = 0;
-            this.naviBar1.Text = "Database";
+            this.naviBar1.Text = "naviBar1";
             this.naviBar1.Resize += new System.EventHandler(this.naviBar1_Resize);
             // 
             // dataGridView1

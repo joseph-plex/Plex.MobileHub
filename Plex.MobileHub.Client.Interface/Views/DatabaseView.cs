@@ -20,11 +20,22 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+
+            Action action = () => ReloadDatabase();
+            if (InvokeRequired)
+                Invoke(action);
+            else
+                action();
+        }
+
+        void ReloadDatabase()
+        {
             WinFactory winFactory = new WinFactory();
             Form win32 = winFactory.CreateDatabaseAdditionWindow();
-            win32.ShowDialog(this);
+            Action action = () => win32.ShowDialog(this);
             Init();
         }
+
 
         private void naviBar1_Resize(object sender, EventArgs e)
         {
@@ -55,18 +66,23 @@ namespace Plex.MobileHub.Client.Interface.Views
                     
                     break;
                 default:
-                    foreach (var companyCode in DbInfo.CompanyConnectionPairings)
+                    foreach (var Info in DbInfo.CompanyConnectionPairings)
                     {
-                        NaviBand band = new NaviBand();
-                        band.ClientArea.Location = new Point(new int(), new int());
+                        NaviBand band = new NaviBand(components);
+
+                        naviBar1.ActiveBand = band;
+                        band.ClientArea.Location = new System.Drawing.Point(0, 0);
                         band.ClientArea.Name = "ClientArea";
-                        band.Text = companyCode.Key;
-                        //band.ClientArea.Size = naviBar1.Size;
+                        band.ClientArea.Size = new System.Drawing.Size(208, 300);
+                        band.ClientArea.TabIndex = 0;
+                        band.Location = new System.Drawing.Point(1, 27);
+                        band.Name = "naviBand1";
+                        band.Text = Info.Key;
+                        band.Size = new System.Drawing.Size(208, 300);
+                        band.TabIndex = 3;
 
-                        naviBar1.Bands.Add(band);
-
+                        naviBar1.Controls.Add(band);
                     }
-                    MessageBox.Show(naviBar1.Bands.Count.ToString());
                     splitContainer2.Panel1Collapsed = false;
                     break;
             }
