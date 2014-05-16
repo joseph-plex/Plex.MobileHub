@@ -26,12 +26,10 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public ClientDbConnectionFactory DatabaseInformationSearch()
         {
-            try
-            {
+            try {
                 return Context.DbFactory.Discover();
             }
-            catch(Exception e)
-            {
+            catch(Exception e) {
                 ClientService.Logs.Add(e); 
                 throw;
             } 
@@ -46,7 +44,9 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public ClientDbConnectionFactory CurrentDatabaseInformation()
         {
-             return Context.DbFactory;
+            ClientDbConnectionFactory dbConn = new ClientDbConnectionFactory();
+            dbConn.CompanyConnectionPairings = ClientSettings.Instance.DbConnections;
+            return dbConn;
         }
 
         [OperationContract]

@@ -23,6 +23,7 @@ namespace Plex.MobileHub.Client.Interface.Views
             WinFactory winFactory = new WinFactory();
             Form win32 = winFactory.CreateDatabaseAdditionWindow();
             win32.ShowDialog(this);
+            Init();
         }
 
         private void naviBar1_Resize(object sender, EventArgs e)

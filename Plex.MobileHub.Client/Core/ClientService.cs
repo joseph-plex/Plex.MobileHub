@@ -76,6 +76,7 @@ namespace MobileHubClient.Core
 
                 clientChannels.ForEach(a => a.Open());
                 LogCache.Add(ClientSettings.Instance.ToString("x"));
+
                 try { 
                     if (ClientSettings.Instance.AutoLogOn) 
                         LogOn();
