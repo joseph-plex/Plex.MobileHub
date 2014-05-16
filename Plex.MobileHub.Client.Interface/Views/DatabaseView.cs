@@ -15,6 +15,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         public DatabaseView()
         {
             InitializeComponent();
+            Init();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -39,9 +40,25 @@ namespace Plex.MobileHub.Client.Interface.Views
             }
         }
 
-
-        public void InitLayer()
+        public void Init()
         {
+            var mgr = Manager.Instance;
+            var DbInfo = mgr.CurrentDatabaseInformation();
+            int value = new int();
+
+            if (DbInfo != null)
+                if(DbInfo.CompanyConnectionPairings != null)
+                    value = DbInfo.CompanyConnectionPairings.Count();
+
+            switch (value)
+            {
+                case 0 :
+                    splitContainer2.Panel1Collapsed = true;
+                    break;
+                default:
+                    splitContainer2.Panel1Collapsed = false;
+                    break;
+            }
         }
     }
 }

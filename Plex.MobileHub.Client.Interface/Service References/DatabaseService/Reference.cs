@@ -419,11 +419,17 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
         System.Threading.Tasks.Task RegisterDbConnectionDataAsync(System.Collections.Generic.KeyValuePair<string, string> dbc);
         
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
-        Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover();
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationSearch", ReplyAction="PMHC/DatabaseService/DatabaseInformationSearchResponse")]
+        Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationSearch();
         
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/Discover", ReplyAction="PMHC/DatabaseService/DiscoverResponse")]
-        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DiscoverAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationSearch", ReplyAction="PMHC/DatabaseService/DatabaseInformationSearchResponse")]
+        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationSearchAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/DatabaseInformationRetrieveResponse")]
+        Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/DatabaseInformationRetrieveResponse")]
+        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationRetrieveAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation();
@@ -482,12 +488,20 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
             return base.Channel.RegisterDbConnectionDataAsync(dbc);
         }
         
-        public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory Discover() {
-            return base.Channel.Discover();
+        public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationSearch() {
+            return base.Channel.DatabaseInformationSearch();
         }
         
-        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DiscoverAsync() {
-            return base.Channel.DiscoverAsync();
+        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationSearchAsync() {
+            return base.Channel.DatabaseInformationSearchAsync();
+        }
+        
+        public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve() {
+            return base.Channel.DatabaseInformationRetrieve();
+        }
+        
+        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationRetrieveAsync() {
+            return base.Channel.DatabaseInformationRetrieveAsync();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation() {

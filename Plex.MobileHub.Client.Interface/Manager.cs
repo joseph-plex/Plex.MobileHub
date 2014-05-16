@@ -78,29 +78,29 @@ namespace Plex.MobileHub.Client.Interface
             }
         }
 
-        public ClientDbConnectionFactory Discover()
+        public ClientDbConnectionFactory DatabaseInformationSearch()
         {
             using (var Service = GetDatabaseService())
-                return Service.Discover();
+                return Service.DatabaseInformationSearch();
         }
 
-        public ClientDbConnectionFactory GetCurrentConnections()
+        public ClientDbConnectionFactory CurrentDatabaseInformation()
         {
             using (var Service = GetDatabaseService())
                 return Service.CurrentDatabaseInformation();
         }
-        
-        public void RegisterDbConnection (string companyCode, string connectionString)
+
+        public void RegisterDbConnectionData (string companyCode, string connectionString)
         {
             using (var Service = GetDatabaseService())
                 Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
         }
 
-        //public KeyValuePair<String, String>[] CurrentDatabaseInformation()
-        //{
-        //    using (var Service = GetDatabaseService())
-        //        return Service.CurrentDatabaseInformation();
-        //}
+        public void QuerySource(string companyCode, string commandText, params object[] arguments)
+        {
+            using (var Service = GetDatabaseService())
+                Service.QuerySource(companyCode, commandText, arguments.ToList());
+        }
 
         Manager() { }
 

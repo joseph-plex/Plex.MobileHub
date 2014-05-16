@@ -44,11 +44,27 @@ namespace Plex.MobileHub.Client.Interface.Views
         {
             try {
                 List<object> datasource = new List<object>();
-                foreach (var pair in Manager.Instance.GetCurrentConnections().CompanyConnectionPairings)
+                var DbInfo = Manager.Instance.CurrentDatabaseInformation();
+              
+                if(DbInfo == null)
+                    return;
+                if(DbInfo.CompanyConnectionPairings == null)
+                    return;
+
+                foreach (var pair in DbInfo.CompanyConnectionPairings)
                     datasource.Add(new { CompanyCode = pair.Key, ConnectionString = pair.Value });
+
                 dataGridView1.DataSource = datasource;
-                var col = dataGridView1.Columns.GetLastColumn(DataGridViewElementStates.None, DataGridViewElementStates.None);
-                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                switch (dataGridView1.Columns.Count)
+                {
+                    case 0 :
+                        return;
+                    default:
+                        var col = dataGridView1.Columns.GetLastColumn(DataGridViewElementStates.None, DataGridViewElementStates.None);
+                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        break;
+                }
             }
             catch (Exception x) {
                 MessageBox.Show(x.ToString());
@@ -57,8 +73,8 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         void button1_Click(object sender, EventArgs e)
         {
-            try { 
-                Manager.Instance.RegisterDbConnection(textBox1.Text, textBox2.Text);
+            try {
+                Manager.Instance.RegisterDbConnectionData(textBox1.Text, textBox2.Text);
             }
             catch(Exception x)
             {

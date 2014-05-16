@@ -15,11 +15,17 @@
   <wsdl:message name="DatabaseService_RegisterDbConnectionData_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterDbConnectionDataResponse" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_Discover_InputMessage">
-    <wsdl:part name="parameters" element="tns:Discover" />
+  <wsdl:message name="DatabaseService_DatabaseInformationSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationSearch" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_Discover_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DiscoverResponse" />
+  <wsdl:message name="DatabaseService_DatabaseInformationSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_DatabaseInformationRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_DatabaseInformationRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationRetrieveResponse" />
   </wsdl:message>
   <wsdl:message name="DatabaseService_CurrentDatabaseInformation_InputMessage">
     <wsdl:part name="parameters" element="tns:CurrentDatabaseInformation" />
@@ -38,9 +44,13 @@
       <wsdl:input wsaw:Action="PMHC/DatabaseService/RegisterDbConnectionData" message="tns:DatabaseService_RegisterDbConnectionData_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/DatabaseService/RegisterDbConnectionDataResponse" message="tns:DatabaseService_RegisterDbConnectionData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Discover">
-      <wsdl:input wsaw:Action="PMHC/DatabaseService/Discover" message="tns:DatabaseService_Discover_InputMessage" />
-      <wsdl:output wsaw:Action="PMHC/DatabaseService/DiscoverResponse" message="tns:DatabaseService_Discover_OutputMessage" />
+    <wsdl:operation name="DatabaseInformationSearch">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/DatabaseInformationSearch" message="tns:DatabaseService_DatabaseInformationSearch_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/DatabaseInformationSearchResponse" message="tns:DatabaseService_DatabaseInformationSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationRetrieve">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieve" message="tns:DatabaseService_DatabaseInformationRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieveResponse" message="tns:DatabaseService_DatabaseInformationRetrieve_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CurrentDatabaseInformation">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/CurrentDatabaseInformation" message="tns:DatabaseService_CurrentDatabaseInformation_InputMessage" />

@@ -15,15 +15,27 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="Discover">
+  <xs:element name="DatabaseInformationSearch">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="DiscoverResponse">
+  <xs:element name="DatabaseInformationSearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DiscoverResult" nillable="true" type="q2:ClientDbConnectionFactory" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DatabaseInformationSearchResult" nillable="true" type="q2:ClientDbConnectionFactory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatabaseInformationRetrieve">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatabaseInformationRetrieveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="DatabaseInformationRetrieveResult" nillable="true" type="q3:ClientDbConnectionFactory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -35,7 +47,7 @@
   <xs:element name="CurrentDatabaseInformationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="CurrentDatabaseInformationResult" nillable="true" type="q3:ClientDbConnectionFactory" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="CurrentDatabaseInformationResult" nillable="true" type="q4:ClientDbConnectionFactory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -44,14 +56,14 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="companyCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="commandText" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="arguments" nillable="true" type="q4:ArrayOfanyType" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="arguments" nillable="true" type="q5:ArrayOfanyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QuerySourceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="QuerySourceResult" nillable="true" type="q5:Result" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="QuerySourceResult" nillable="true" type="q6:Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

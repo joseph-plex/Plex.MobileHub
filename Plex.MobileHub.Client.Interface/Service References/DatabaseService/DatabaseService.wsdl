@@ -34,8 +34,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Discover">
-      <soap12:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+    <wsdl:operation name="DatabaseInformationSearch">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationRetrieve">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -74,8 +83,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Discover">
-      <soap12:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+    <wsdl:operation name="DatabaseInformationSearch">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationRetrieve">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -113,8 +131,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Discover">
-      <soap:operation soapAction="PMHC/DatabaseService/Discover" style="document" />
+    <wsdl:operation name="DatabaseInformationSearch">
+      <soap:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationRetrieve">
+      <soap:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
