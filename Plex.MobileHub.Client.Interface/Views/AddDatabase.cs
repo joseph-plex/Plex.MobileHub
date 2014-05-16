@@ -56,8 +56,7 @@ namespace Plex.MobileHub.Client.Interface.Views
 
                 dataGridView1.DataSource = datasource;
 
-                switch (dataGridView1.Columns.Count)
-                {
+                switch (dataGridView1.Columns.Count) {
                     case 0 :
                         return;
                     default:
@@ -76,8 +75,7 @@ namespace Plex.MobileHub.Client.Interface.Views
             try {
                 Manager.Instance.RegisterDbConnectionData(textBox1.Text, textBox2.Text);
             }
-            catch(Exception x)
-            {
+            catch(Exception x) {
                 MessageBox.Show(x.ToString());
             }
         }

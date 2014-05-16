@@ -32,9 +32,9 @@ namespace Plex.MobileHub.Client.Interface.Views
             try {
                 Manager mgr = Manager.Instance;
 
-                string clientKey = textBox1.Text;
-                int port = Int32.Parse(textBox4.Text);
-                int clientId = Int32.Parse(textBox2.Text);
+                var clientKey = textBox1.Text;
+                var port = Int32.Parse(textBox4.Text);
+                var clientId = Int32.Parse(textBox2.Text);
                 var address = IPAddress.Parse(textBox3.Text);
 
                 mgr.IPAddress = address.ToString();

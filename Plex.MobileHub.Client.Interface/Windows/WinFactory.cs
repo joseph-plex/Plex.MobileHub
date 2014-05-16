@@ -59,10 +59,13 @@ namespace Plex.MobileHub.Client.Interface.Windows
         {
             DialogWin win32 = new DialogWin();
             AddDatabase ad = new AddDatabase();
-            
-            ad.AddButton.Click += (s, e) => win32.Close();
-            ad.CancelButton.Click += (s, e) => win32.Close();
 
+            ad.AddButton.Click += (s, e) => win32.Close();
+
+            win32.AcceptButton = ad.AddButton;
+            win32.CancelButton = ad.CancelButton;
+
+            
             win32.Controls.Add(ad);
             
             return win32;
