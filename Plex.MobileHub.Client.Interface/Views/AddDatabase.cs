@@ -16,19 +16,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         public AddDatabase()
         {
             InitializeComponent();
-        }
-
-        void AddDatabase_Load(object sender, EventArgs e)
-        {
-            try {
-                List<object> datasource = new List<object>();
-                foreach(var pair in Manager.Instance.GetCurrentConnections().CompanyConnectionPairings)
-                    datasource.Add(new{ CompanyCode = pair.Key, ConnectionString = pair.Value} );
-                dataGridView1.DataSource = datasource.ToArray();
-            }
-            catch(Exception x){
-                MessageBox.Show(x.ToString());
-            }
+            LoadInformation();
         }
 
         void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -50,6 +38,21 @@ namespace Plex.MobileHub.Client.Interface.Views
             var selectedRow = rowCollection.First();
             textBox1.Text = Convert.ToString(selectedRow.Cells[0].Value);
             textBox2.Text = Convert.ToString(selectedRow.Cells[1].Value);
+        }
+
+        void LoadInformation()
+        {
+            try {
+                List<object> datasource = new List<object>();
+                foreach (var pair in Manager.Instance.GetCurrentConnections().CompanyConnectionPairings)
+                    datasource.Add(new { CompanyCode = pair.Key, ConnectionString = pair.Value });
+                dataGridView1.DataSource = datasource;
+                var col = dataGridView1.Columns.GetLastColumn(DataGridViewElementStates.None, DataGridViewElementStates.None);
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            catch (Exception x) {
+                MessageBox.Show(x.ToString());
+            }
         }
 
         void button1_Click(object sender, EventArgs e)

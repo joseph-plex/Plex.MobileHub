@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -37,7 +36,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.companyCodeConnectionPairingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -50,7 +48,6 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyCodeConnectionPairingBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -151,9 +148,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.companyCodeConnectionPairingBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
@@ -163,10 +158,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(800, 365);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // companyCodeConnectionPairingBindingSource
-            // 
-            this.companyCodeConnectionPairingBindingSource.DataSource = typeof(Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory);
             // 
             // CancelButton
             // 
@@ -194,7 +185,6 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "AddDatabase";
             this.Size = new System.Drawing.Size(800, 450);
-            this.Load += new System.EventHandler(this.AddDatabase_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -206,7 +196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyCodeConnectionPairingBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,7 +212,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn connectionStringDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource companyCodeConnectionPairingBindingSource;
         public System.Windows.Forms.Button CancelButton;
         public System.Windows.Forms.Button AddButton;
 

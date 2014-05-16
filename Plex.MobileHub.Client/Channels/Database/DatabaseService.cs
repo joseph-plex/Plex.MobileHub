@@ -17,7 +17,7 @@ namespace MobileHubClient.Channels.Database
         [OperationContract]
         public void RegisterDbConnectionData(KeyValuePair<String,String> dbc)
         {
-            ClientService.Logs.Add("Adding DBConnectionData" + dbc.Key);
+            ClientService.Logs.Add("Adding Database Connection Data " + dbc.Key);
             var settings = ClientSettings.Instance;
             if(!settings.DbConnections.Exists(p => p.Key == dbc.Key && p.Value == dbc.Value))
                 settings.DbConnections.Add(dbc);

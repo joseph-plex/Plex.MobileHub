@@ -96,10 +96,10 @@ namespace Plex.MobileHub.Client.Interface
                 Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
         }
 
-        //public KeyValuePair<String,String>[] GetConnectionData()
+        //public KeyValuePair<String, String>[] CurrentDatabaseInformation()
         //{
         //    using (var Service = GetDatabaseService())
-        //        return Service.GetDbConnectionData();
+        //        return Service.CurrentDatabaseInformation();
         //}
 
         Manager() { }
