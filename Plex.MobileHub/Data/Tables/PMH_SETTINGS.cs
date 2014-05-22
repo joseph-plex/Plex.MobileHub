@@ -10,7 +10,7 @@ namespace Plex.MobileHub.Data.Tables
             public static event Subscriber OnUpdate;
             public static event Subscriber OnDelete;
 
-            public int PMH_ID;//	NUMBER(10)	N			
+            public int PMH_ID { get; set; }//	NUMBER(10)	N			
 
             public static IEnumerable<PMH_SETTINGS> GetAll()
             {

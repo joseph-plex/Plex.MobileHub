@@ -2,10 +2,9 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" Name="Plex Mobile Hub Client" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
 
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
-    
-  
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate />
 
     <Feature Id="ProductFeature" Title="Plex Mobile Hub Client" Level="1">
@@ -43,13 +42,17 @@
       <Component Id="ProductComponent" Guid="E9BB83C7-BB8D-49C2-ABB2-0E943AD38482"> 
         <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
         <File Id ="Logs" Name="Logs.dll" Source="$(var.Plex.MobileHub.Client.TargetDir)Logs.dll" />
+   
         <File Id="Plex.MobileHub.Client.Config" Name="Client.Config" Source="$(var.Plex.MobileHub.Client.TargetPath).Config" />
         <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
         <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Start="install" Stop="both" Remove="uninstall" Wait="yes"/>
       </Component>
-      <Component>
+      <Component Guid="25767DB2-C59B-4CBC-BF11-731E338002D0">
         <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" KeyPath="yes"/>
         <File Id="Plex.MobileHub.Client.Interface.Config" Name="Interface.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>
+        <File Id="guifreak1" Name="Guifreaks.Common.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.Common.dll"/>
+        <File Id="guifreak2" Name="Guifreaks.NavigationBar.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.dll"/>
+        <File Id="guifreak3" Name="Guifreaks.NavigationBar.XmlSerializers.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.XmlSerializers.dll"/>
       </Component>
 		</ComponentGroup>
 	</Fragment>

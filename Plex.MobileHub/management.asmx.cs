@@ -130,25 +130,9 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public Result Test()
+        public string Test()
         {
-            using (var conn = Utilities.GetConnection(true))
-            {
-                using (var command = (OracleCommand)conn.CreateCommand("select * from all_cons_columns where constraint_name in (:a)"))
-                {
-                    var values = new string[] { "PA_COMPANY_ID", "COMPANYID_FK" };
-                    OracleParameter param = new OracleParameter();
-                    param.OracleDbType = OracleDbType.Varchar2;
-                    param.Value = values;
-                    command.ArrayBindCount = values.Length;
-
-                    //command.Parameters.Add(command.CreateParameter("COMPANYID_FK"));
-                    //IEnumerable<string> t = new string[] { "COMPANYID_FK", "PA_COMPANY_ID" };
-                    command.Parameters.Add(param);
-
-                    return new Result(command.ExecuteReader());
-                }
-            }
+            return new APP_QUERIES().GetUpdateText();
         }
 
         [WebMethod]

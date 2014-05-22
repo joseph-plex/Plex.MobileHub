@@ -35,15 +35,6 @@ namespace Plex.MobileHub.Client.Interface.Windows
 
             return win32;
         }
-        public Form GetDatabaseSelectionWin32()
-        {
-            DatabaseSelection dbv = new DatabaseSelection();
-            DialogWin win32 = new DialogWin();
-
-            win32.Controls.Add(dbv);
-
-            return win32;
-        }
 
 
         public Form GetLogsWin32()

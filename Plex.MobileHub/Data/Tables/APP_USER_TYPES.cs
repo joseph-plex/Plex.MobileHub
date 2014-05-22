@@ -41,10 +41,10 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int USER_TYPE_ID;//	NUMBER(10)	N			
-        public int APP_ID;//	NUMBER(10)	N			
-        public string CODE;//VARCHAR2(12)	N			
-        public string DESCRIPTION;//	VARCHAR2(50)	Y	
+        public int USER_TYPE_ID { get; set; }//	NUMBER(10)	N			
+        public int APP_ID { get; set; }//	NUMBER(10)	N			
+        public string CODE { get; set; }//VARCHAR2(12)	N			
+        public string DESCRIPTION { get; set; }//	VARCHAR2(50)	Y	
 
         public APP_USER_TYPES() : base()
         {

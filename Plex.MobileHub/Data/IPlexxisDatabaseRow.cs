@@ -5,7 +5,6 @@ namespace Plex.MobileHub.Data
 {
     public interface IPlexxisDatabaseRow
     {
-
         //for one shot changes (immediate commit)
         bool Insert();
         bool Update();

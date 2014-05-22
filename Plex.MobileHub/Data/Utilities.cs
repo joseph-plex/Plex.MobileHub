@@ -114,7 +114,7 @@ namespace Plex.MobileHub.Data
 
         public static Result GetColumnData(IDbConnection Conn)
         {
-            return Conn.Query("select TABLE_NAME,COLUMN_NAME from user_tab_columns");
+            return Conn.Query("select TABLE_NAME, COLUMN_NAME from user_tab_columns");
         }
     }
 

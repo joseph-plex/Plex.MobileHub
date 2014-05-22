@@ -11,8 +11,6 @@ namespace Plex.MobileHub.Data.Tables
         public static event Subscriber OnUpdate;
         public static event Subscriber OnDelete;
 
-        public int DEV_DATA_VER_ID;//DEV_DATA_VER_ID	NUMBER(10)	N	
-        public int DEV_DATA_ID;//DEV_DATA_ID	NUMBER(10)	N
 
         public static IEnumerable<DEV_DATA_VER> GetAll()
         {
@@ -29,6 +27,9 @@ namespace Plex.MobileHub.Data.Tables
                     collection.Add(new DEV_DATA_VER(reader));
             return collection;
         }
+        public int DEV_DATA_VER_ID { get; set; }//DEV_DATA_VER_ID	NUMBER(10)	N	
+        public int DEV_DATA_ID { get; set; }//DEV_DATA_ID	NUMBER(10)	N
+
         public DEV_DATA_VER()
             : base()
         { 

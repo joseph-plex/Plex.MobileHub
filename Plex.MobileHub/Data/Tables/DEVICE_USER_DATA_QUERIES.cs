@@ -27,10 +27,10 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int DEVICE_USER_DATA_QUERIES_ID;
-        public DateTime QUERY_EXECUTION_TIME;		
-        public int DEVICE_USER_DATA_ID;				
-        public int QUERY_ID;
+        public int DEVICE_USER_DATA_QUERIES_ID { get; set; }
+        public DateTime QUERY_EXECUTION_TIME { get; set; }
+        public int DEVICE_USER_DATA_ID { get; set; }
+        public int QUERY_ID { get; set; }
 
         public DEVICE_USER_DATA_QUERIES() : base()
         {

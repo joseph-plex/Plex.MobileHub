@@ -10,9 +10,9 @@ namespace Plex.MobileHub.Data.Tables
         public static event Subscriber OnUpdate;
         public static event Subscriber OnDelete;
 
-        public int CLIENT_APP_ID;//	NUMBER(10)	N			
-        public int APP_ID;//	NUMBER(10)	N			
-        public int CLIENT_ID;//	NUMBER(10)	N	
+        public int CLIENT_APP_ID { get; set; }//	NUMBER(10)	N			
+        public int APP_ID { get; set; }//	NUMBER(10)	N			
+        public int CLIENT_ID { get; set; }//	NUMBER(10)	N	
 
         public static IEnumerable<CLIENT_APPS> GetAll()
         {

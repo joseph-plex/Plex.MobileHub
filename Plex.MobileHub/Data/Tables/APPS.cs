@@ -101,11 +101,11 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int APP_ID;
-        public string AUTH_KEY;
-        public string TITLE;
-        public string DESCRIPTION;
-        public int IS_CLIENT_CUSTOM_APP;
+        public int APP_ID { get; set; }
+        public string AUTH_KEY { get; set; }
+        public string TITLE { get; set; }
+        public string DESCRIPTION { get; set; }
+        public int IS_CLIENT_CUSTOM_APP { get; set; }
 
         public APPS() : base() 
         {

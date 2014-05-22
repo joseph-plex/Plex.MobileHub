@@ -7,6 +7,7 @@ using System.Timers;
 using Plex.MobileHub.Objects.Clients;
 using Plex.MobileHub.Properties;
 using System.Xml.Serialization;
+using System.Collections;
 namespace Plex.MobileHub.Objects
 {
     public class Client 

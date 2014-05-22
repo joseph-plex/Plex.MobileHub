@@ -14,6 +14,7 @@ namespace MobileHubClient.Channels
             get;
             set;
         }
+
         public bool Open()
         {
             Parent.Service = new ServiceHost(ServiceType, new Uri("http://" + Parent.IP + ":" + Parent.Port + "/" + Parent.Name));

@@ -26,21 +26,21 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int TABLE_ID;//NUMBER(10)	N			
-        public int TABLE_COLUMN_ID;//NUMBER(10)	N			
-        public string  COLUMN_NAME;//VARCHAR2(50)	N			
-        public int COLUMN_SEQUENCE;//NUMBER(3)	N			
-        public string DATA_TYPE;//VARCHAR2(50)	Y			
-        public int? DATA_LENGTH;//NUMBER(10)	Y			
-        public int? DATA_PRECISION;//NUMBER(2)	Y			
-        public int? DATA_SCALE;//NUMBER(2)	Y			
-        public int? ALLOW_DB_NULL;//NUMBER(1)	Y			
-        public int? IS_READ_ONLY;//NUMBER(1)	Y			
-        public int? IS_LONG;//NUMBER(1)	Y			
-        public int? IS_KEY;//NUMBER(1)	Y			
-        public string KEY_TYPE;//VARCHAR2(20)	Y			
-        public int? IS_UNIQUE;//	NUMBER(1)	Y			
-        public string DESCRIPTION;//VARCHAR2(4000)	Y		
+        public int TABLE_ID { get; set; }//NUMBER(10)	N			
+        public int TABLE_COLUMN_ID { get; set; }//NUMBER(10)	N			
+        public string COLUMN_NAME { get; set; }//VARCHAR2(50)	N			
+        public int COLUMN_SEQUENCE { get; set; }//NUMBER(3)	N			
+        public string DATA_TYPE { get; set; }//VARCHAR2(50)	Y			
+        public int? DATA_LENGTH { get; set; }//NUMBER(10)	Y			
+        public int? DATA_PRECISION { get; set; }//NUMBER(2)	Y			
+        public int? DATA_SCALE { get; set; }//NUMBER(2)	Y			
+        public int? ALLOW_DB_NULL { get; set; }//NUMBER(1)	Y			
+        public int? IS_READ_ONLY { get; set; }//NUMBER(1)	Y			
+        public int? IS_LONG { get; set; }//NUMBER(1)	Y			
+        public int? IS_KEY { get; set; }//NUMBER(1)	Y			
+        public string KEY_TYPE { get; set; }//VARCHAR2(20)	Y			
+        public int? IS_UNIQUE { get; set; }//	NUMBER(1)	Y			
+        public string DESCRIPTION { get; set; }//VARCHAR2(4000)	Y		
 
         public APP_TABLE_COLUMNS() : base()
         {

@@ -20,7 +20,6 @@ namespace Plex.MobileHub.Client.Interface
 
         private void Main_Load(object sender, EventArgs e)
         {
-            tabPage1.Controls.Add(new DatabaseSelection() { Dock = DockStyle.Fill });
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
         }

@@ -26,12 +26,12 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int CONDITION_ID;//	NUMBER(10)	N			
-        public int QUERY_ID;//	NUMBER(10)	N			
-        public string COLUMN_NAME;//	VARCHAR2(30)	N			
-        public string COLUMN_NVL;//	VARCHAR2(1000)	Y			
-        public string COLUMN_VALUE;//	VARCHAR2(1000)	N			
-        public string OPERATOR;//	VARCHAR2(12)	N		
+        public int CONDITION_ID { get; set; }//	NUMBER(10)	N			
+        public int QUERY_ID { get; set; }//	NUMBER(10)	N			
+        public string COLUMN_NAME { get; set; }//	VARCHAR2(30)	N			
+        public string COLUMN_NVL { get; set; }//	VARCHAR2(1000)	Y			
+        public string COLUMN_VALUE { get; set; }//	VARCHAR2(1000)	N			
+        public string OPERATOR { get; set; }//	VARCHAR2(12)	N		
 
         public APP_QUERY_CONDITIONS() : base()
         {

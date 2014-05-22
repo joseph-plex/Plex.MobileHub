@@ -96,10 +96,15 @@ namespace Plex.MobileHub.Client.Interface
                 Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
         }
 
-        public void QuerySource(string companyCode, string commandText, params object[] arguments)
+        public Result QuerySource(string companyCode, string commandText, params object[] arguments)
         {
             using (var Service = GetDatabaseService())
-                Service.QuerySource(companyCode, commandText, arguments.ToList());
+                return Service.QuerySource(companyCode, commandText, arguments.ToList());
+        }
+        public ClientDbConnectionFactory DataInformationRetrieve()
+        {
+            using (var service = GetDatabaseService())
+                return service.DatabaseInformationRetrieve();
         }
 
         Manager() { }

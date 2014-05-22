@@ -4,21 +4,100 @@ using System.Data;
 using System.Reflection;
 using System.Collections.Generic;
 using Plex.MobileHub.Repositories;
+using System.Collections;
 namespace Plex.MobileHub.Data
 {
     public abstract class PlexxisDataTransferObjects : IPlexxisDatabaseRow
     {
-        //Constructors
-        public virtual List<String> PrimaryKey
+
+        #region Properties
+        protected virtual List<String> PrimaryKey
         {
             get;
             set;
         }
+        protected virtual String InsertText
+        {
+            get
+            {
+                if (String.Empty == (insertText ?? String.Empty))
+                    insertText = GenerateInsertText();
+                return insertText;
+            }
+            set
+            {
+                insertText = value;
+            }
+        }
+        protected virtual String UpdateText
+        {
+            get
+            {
+                if (String.Empty == (updateText ?? String.Empty))
+                    updateText = GenerateInsertText();
+                return updateText;
+            }
+            set
+            {
+                updateText = value;
+            }
+        }
+        protected virtual String DeleteText
+        {
+            get
+            {
+                if (String.Empty == (deleteText ?? String.Empty))
+                    deleteText = GenerateInsertText();
+                return deleteText;
+            }
+            set
+            {
+                deleteText = value;
+            }
+        }
+        #endregion
+
+        #region Fields
+        string insertText;
+        string updateText;
+        string deleteText;
+        #endregion
+
+        #region Constructors
+        //Constructors
         public PlexxisDataTransferObjects()
         {
             PrimaryKey = new List<String>();
+            insertText = String.Empty;
+            updateText = String.Empty;
+            deleteText = String.Empty;
         }
 
+        #endregion
+
+        #region Public Methods
+        public String GetInsertText()
+        {
+            return InsertText;
+        }
+
+        public String GetUpdateText()
+        {
+            return UpdateText;
+        }
+
+        public String GetDeleteText()
+        {
+            return DeleteText;
+        }
+
+        public void Randomize() 
+        {
+
+        }
+        #endregion
+
+        #region Public Virtual Methods
         //Methods
         public virtual bool Insert(IDbConnection Conn)
         {
@@ -28,7 +107,7 @@ namespace Plex.MobileHub.Data
 
             string sql = string.Empty;
 
-            var fields = this.GetType().GetFields();
+            var fields = GetType().GetProperties();
             string TableName = this.GetType().Name;
 
             string ret = "(*)";
@@ -81,36 +160,18 @@ namespace Plex.MobileHub.Data
             }
         }
 
-
         public virtual bool Update(IDbConnection Conn)
         {
-            string sql1 = "UPDATE ^T^ ";
-            string sql2 = "SET ^CVP^ "; //Column Value Pairing
-            string sql3 = "WHERE ^C^ ";
-
-            string sql = string.Empty;
-            string BindingStart = ":a";
-            string condition = string.Empty;
-            string TableName = GetType().Name;
-
-            for (int i = 0; i < PrimaryKey.Count; i++)
-                condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
-
             var FieldNames = new List<string>();
-            var fields = GetType().GetFields().ToList();
+            var fields = GetType().GetProperties().ToList();
             fields.ForEach((x) => FieldNames.Add(x.Name));
             FieldNames = FieldNames.FindAll((p) => !PrimaryKey.Contains(p));
 
             if (FieldNames.Count == 0)
                 throw new NotImplementedException("Updates are not supported because you cannot update any information in this table.");
 
-            string ColumnValuePairings = string.Empty;
-            int varCount = PrimaryKey.Count + FieldNames.Count;
-            for (int i = PrimaryKey.Count; i < varCount; i++)
-                ColumnValuePairings += ((i != PrimaryKey.Count) ? "," : "") + FieldNames[i - PrimaryKey.Count] + " = " + BindingStart + i;
 
-            sql = sql1.Replace("^T^", TableName) + sql2.Replace("^CVP^", ColumnValuePairings) + sql3.Replace("^C^", condition);
-            using (var Command = Conn.CreateCommand(sql))
+            using (var Command = Conn.CreateCommand(UpdateText))
             {
                 for (int i = 0; i < FieldNames.Count; i++)
                     Command.Parameters.Add(Command.CreateParameter(fields.Find((p) => FieldNames[i] == p.Name).GetValue(this)));
@@ -133,7 +194,7 @@ namespace Plex.MobileHub.Data
             string condition = string.Empty;
             string TableName = GetType().Name;
 
-            var fields = GetType().GetFields().ToList();
+            var fields = GetType().GetProperties().ToList();
 
             for (int i = 0; i < PrimaryKey.Count; i++)
                 condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
@@ -146,6 +207,7 @@ namespace Plex.MobileHub.Data
                 return Convert.ToBoolean(Command.ExecuteNonQuery());
             }
         }
+        
 
         public virtual bool Insert()
         {
@@ -164,11 +226,95 @@ namespace Plex.MobileHub.Data
             using (var Conn = Utilities.GetConnection(true))
                 return Delete(Conn);
         }
-        
+        #endregion
+
+        #region Protected Methods
         protected void AutoFill(IDataReader reader, Object obj)
         {
-            foreach (var f in  obj.GetType().GetFields())
-                f.SetValue(obj, (reader[f.Name] != DBNull.Value) ? (Convert.ChangeType(reader[f.Name], Nullable.GetUnderlyingType(f.FieldType) ?? f.FieldType)) : null);
+            foreach (var f in obj.GetType().GetProperties())
+                f.SetValue(obj, (reader[f.Name] != DBNull.Value) ? (Convert.ChangeType(reader[f.Name], Nullable.GetUnderlyingType(f.PropertyType) ?? f.PropertyType)) : null);
         }
+        #endregion
+
+        #region Private Methods
+        string GenerateInsertText()
+        {
+            //Init
+            IEnumerator Iterator;
+            Type type = GetType();
+            var fields = type.GetProperties();
+            String ValueBindings = String.Empty;
+            String FormattedIdentifers = String.Empty;
+
+            //Validation
+            if (fields.Length <= 0)
+                throw new NotSupportedException("Object not intended to express a table without columns ");
+
+            //Get Column Identifiers
+            Iterator = fields.GetEnumerator();
+            for (bool first = true; Iterator.MoveNext(); first = false)
+                FormattedIdentifers += ((first) ? String.Empty : ", ") + ((PropertyInfo)Iterator.Current).Name;
+            FormattedIdentifers = "(" + FormattedIdentifers + ")";
+
+            //Get Column Bindings
+            Iterator = fields.GetEnumerator();
+            for (int i = 0; Iterator.MoveNext(); i++)
+                ValueBindings += ((i == 0) ? String.Empty : ", ") + ":a" + i;
+            ValueBindings = " VALUES" + "(" + ValueBindings + ")";
+
+            //return Insert Text
+            return "INSERT INTO " + type.Name + FormattedIdentifers + ValueBindings;
+        }
+        string GenerateUpdateText()
+        {
+            string sql1 = "UPDATE ^T^ ";
+            string sql2 = "SET ^CVP^ "; //Column Value Pairing
+            string sql3 = "WHERE ^C^ ";
+
+            string sql = string.Empty;
+            string BindingStart = ":a";
+            string condition = string.Empty;
+            string TableName = GetType().Name;
+
+            for (int i = 0; i < PrimaryKey.Count; i++)
+                condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
+
+            var FieldNames = new List<string>();
+            var fields = GetType().GetProperties().ToList();
+            fields.ForEach((x) => FieldNames.Add(x.Name));
+            FieldNames = FieldNames.FindAll((p) => !PrimaryKey.Contains(p));
+
+            if (FieldNames.Count == 0)
+                throw new NotImplementedException("Updates are not supported because you cannot update any information in this table.");
+
+            string ColumnValuePairings = string.Empty;
+            int varCount = PrimaryKey.Count + FieldNames.Count;
+            for (int i = PrimaryKey.Count; i < varCount; i++)
+                ColumnValuePairings += ((i != PrimaryKey.Count) ? "," : "") + FieldNames[i - PrimaryKey.Count] + " = " + BindingStart + i;
+
+            sql = sql1.Replace("^T^", TableName) + sql2.Replace("^CVP^", ColumnValuePairings) + sql3.Replace("^C^", condition);
+            return sql;
+        }
+        string GenerateDeleteText()
+        {
+            string sql1 = "DELETE FROM ^T^ ";
+            string sql2 = "WHERE ^C^ ";
+
+            string sql = string.Empty;
+            string BindingStart = ":a";
+
+            string condition = string.Empty;
+            string TableName = GetType().Name;
+
+            var fields = GetType().GetProperties().ToList();
+
+            for (int i = 0; i < PrimaryKey.Count; i++)
+                condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
+
+            sql = sql1.Replace("^T^", TableName) + sql2.Replace("^C^", condition);
+            return sql;
+        }
+
+        #endregion
     }
 }

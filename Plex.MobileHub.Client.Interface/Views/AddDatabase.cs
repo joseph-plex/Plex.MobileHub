@@ -34,7 +34,7 @@ namespace Plex.MobileHub.Client.Interface.Views
                 grid.ClearSelection();
                 throw new InvalidOperationException("Only one row can be selected at any given time");
             }
-
+            
             var selectedRow = rowCollection.First();
             textBox1.Text = Convert.ToString(selectedRow.Cells[0].Value);
             textBox2.Text = Convert.ToString(selectedRow.Cells[1].Value);
@@ -44,7 +44,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         {
             try {
                 List<object> datasource = new List<object>();
-                var DbInfo = Manager.Instance.CurrentDatabaseInformation();
+                var DbInfo = Manager.Instance.DataInformationRetrieve();
               
                 if(DbInfo == null)
                     return;

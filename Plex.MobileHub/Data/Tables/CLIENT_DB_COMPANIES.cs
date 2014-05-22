@@ -42,11 +42,11 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int DB_COMPANY_ID;//	NUMBER(10)	N			
-        public string DATABASE_SID;//	VARCHAR2(25)	Y			
-        public int? COMPANY_ID;//	NUMBER(10)	Y			
-        public string COMPANY_CODE;//	VARCHAR2(12)	Y			
-        public int CLIENT_ID;//	NUMBER(10)	N			
+        public int DB_COMPANY_ID { get; set; }//	NUMBER(10)	N			
+        public string DATABASE_SID { get; set; }//	VARCHAR2(25)	Y			
+        public int? COMPANY_ID { get; set; }//	NUMBER(10)	Y			
+        public string COMPANY_CODE { get; set; }//	VARCHAR2(12)	Y			
+        public int CLIENT_ID { get; set; }//	NUMBER(10)	N			
 
         public CLIENT_DB_COMPANIES() : base()
         {

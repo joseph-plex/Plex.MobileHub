@@ -27,8 +27,8 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int DEVICE_ID;
-        public int APP_ID;
+        public int DEVICE_ID { get; set; }
+        public int APP_ID { get; set; }
 
         public DEVICES() : base()
         {

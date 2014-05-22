@@ -27,10 +27,10 @@ namespace Plex.MobileHub.Data.Tables
         }
 
 
-        public int COLUMN_ID;//	NUMBER(10)	N			
-        public int QUERY_ID;//	NUMBER(10)	N			
-        public string COLUMN_NAME;//	VARCHAR2(50)	N			
-        public int COLUMN_SEQUENCE;//	NUMBER(3)	N	
+        public int COLUMN_ID { get; set; }//	NUMBER(10)	N			
+        public int QUERY_ID { get; set; }//	NUMBER(10)	N			
+        public string COLUMN_NAME { get; set; }//	VARCHAR2(50)	N			
+        public int COLUMN_SEQUENCE { get; set; }//	NUMBER(3)	N	
 
         public APP_QUERY_COLUMNS(): base()
         {

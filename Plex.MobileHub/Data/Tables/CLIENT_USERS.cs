@@ -43,10 +43,10 @@ namespace Plex.MobileHub.Data.Tables
         }
 
 
-        public int USER_ID;//	NUMBER(10)	N			
-        public int CLIENT_ID;//NUMBER(10)	N			
-        public string NAME;//	VARCHAR2(25)	N			
-        public string PASSWORD;//VARCHAR2(25)	Y			
+        public int USER_ID { get; set; }//	NUMBER(10)	N			
+        public int CLIENT_ID { get; set; }//NUMBER(10)	N			
+        public string NAME { get; set; }//	VARCHAR2(25)	N			
+        public string PASSWORD { get; set; }//VARCHAR2(25)	Y			
 
         public CLIENT_USERS() : base()
         {

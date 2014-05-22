@@ -77,12 +77,12 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int CLIENT_ID;			
-        public string CLIENT_KEY;		
-        public string DESCRIPTION;
-        public int? CLIENT_INSTANCE_ID;			
-        public string CLIENT_IP_ADDRESS;		
-        public int? CLIENT_PORT;
+        public int CLIENT_ID { get; set; }			
+        public string CLIENT_KEY { get; set; }	
+        public string DESCRIPTION { get; set; }
+        public int? CLIENT_INSTANCE_ID { get; set; }
+        public string CLIENT_IP_ADDRESS { get; set; }
+        public int? CLIENT_PORT { get; set; }
 
         public CLIENTS() : base()
         {

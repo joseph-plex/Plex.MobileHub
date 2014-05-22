@@ -28,10 +28,10 @@ namespace Plex.MobileHub.Data.Tables
         }
 
 
-        public int DB_COMPANY_USER_ID	;//NUMBER(10)	N			
-        public int DB_COMPANY_ID;//	NUMBER(10)	N			
-        public int USER_ID	;//NUMBER(10)	N			
-        public string CONNECT_AS;//	VARCHAR2(100)	Y		
+        public int DB_COMPANY_USER_ID { get; set; }//NUMBER(10)	N			
+        public int DB_COMPANY_ID { get; set; }//	NUMBER(10)	N			
+        public int USER_ID { get; set; }//NUMBER(10)	N			
+        public string CONNECT_AS { get; set; }//	VARCHAR2(100)	Y		
 
         public CLIENT_DB_COMPANY_USERS() : base()
         {

@@ -30,10 +30,10 @@ namespace Plex.MobileHub.Data.Tables
 
         }
 
-        public int DEVICE_DATABASE_ID; //DEVICE_DATABASE_ID	NUMBER(10)	N
-        public int USER_ID; //USER_ID	NUMBER(10)	N	
-        public int APP_ID; //APP_ID	NUMBER(10)	N	
-        public int CLIENT_ID; //CLIENT_ID	NUMBER(10)	N		
+        public int DEVICE_DATABASE_ID { get; set; } //DEVICE_DATABASE_ID	NUMBER(10)	N
+        public int USER_ID { get; set; } //USER_ID	NUMBER(10)	N	
+        public int APP_ID { get; set; } //APP_ID	NUMBER(10)	N	
+        public int CLIENT_ID { get; set; } //CLIENT_ID	NUMBER(10)	N		
 
         public DEV_DATA(IDataReader reader)
             : this()

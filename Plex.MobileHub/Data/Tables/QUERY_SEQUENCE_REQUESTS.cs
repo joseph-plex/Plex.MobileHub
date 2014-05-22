@@ -26,11 +26,11 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-        public int TQR_ID;//NUMBER(10)	N			
-        public int USER_QUERYING;//	NUMBER(10)	Y			
-        public int DATABASE_QUERIED;//	NUMBER(10)	Y			
-        public int QUERY_SEQUENCING;//NUMBER(10)	Y			
-        public DateTime SEQ_QUERY_TIME;//DATE	Y			
+        public int TQR_ID { get; set; }//NUMBER(10)	N			
+        public int USER_QUERYING { get; set; }//	NUMBER(10)	Y			
+        public int DATABASE_QUERIED { get; set; }//	NUMBER(10)	Y			
+        public int QUERY_SEQUENCING { get; set; }//NUMBER(10)	Y			
+        public DateTime SEQ_QUERY_TIME { get; set; }//DATE	Y			
 
         public QUERY_SEQUENCE_REQUESTS() : base()
         {
