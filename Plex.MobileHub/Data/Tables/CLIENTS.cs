@@ -81,7 +81,7 @@ namespace Plex.MobileHub.Data.Tables
         public string CLIENT_KEY { get; set; }	
         public string DESCRIPTION { get; set; }
         public int? CLIENT_INSTANCE_ID { get; set; }
-        public string CLIENT_IP_ADDRESS { get; set; }
+        public string CLIENT_IP_ADDRESS { get; set; }	
         public int? CLIENT_PORT { get; set; }
 
         public CLIENTS() : base()

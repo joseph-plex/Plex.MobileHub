@@ -10,10 +10,8 @@ namespace Plex.MobileHub.Test.Data
     [TestClass]
     public class TestGeneral
     {
-        /// <summary>
-        /// Test to ensure that the connection string is working.
-        /// </summary>
         [TestMethod]
+        [Description("Test to ensure that the connection string is working.")]
         public void TestConnection()
         {
             using (IDbConnection connection = Utilities.GetConnection(true))

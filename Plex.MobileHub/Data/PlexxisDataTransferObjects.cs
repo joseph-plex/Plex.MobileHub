@@ -90,11 +90,6 @@ namespace Plex.MobileHub.Data
         {
             return DeleteText;
         }
-
-        public void Randomize() 
-        {
-
-        }
         #endregion
 
         #region Public Virtual Methods
@@ -121,11 +116,11 @@ namespace Plex.MobileHub.Data
                 {
                     if (first)
                     {
-                        FormattedIdentifers += ((FieldInfo)It.Current).Name;
+                        FormattedIdentifers += ((PropertyInfo)It.Current).Name;
                         first = false;
                     }
                     else
-                        FormattedIdentifers += ", " + ((FieldInfo)It.Current).Name;
+                        FormattedIdentifers += ", " + ((PropertyInfo)It.Current).Name;
                 }
             }
 
@@ -167,9 +162,9 @@ namespace Plex.MobileHub.Data
             fields.ForEach((x) => FieldNames.Add(x.Name));
             FieldNames = FieldNames.FindAll((p) => !PrimaryKey.Contains(p));
 
+            FieldNames.Sort();
             if (FieldNames.Count == 0)
                 throw new NotImplementedException("Updates are not supported because you cannot update any information in this table.");
-
 
             using (var Command = Conn.CreateCommand(UpdateText))
             {
@@ -234,6 +229,7 @@ namespace Plex.MobileHub.Data
             foreach (var f in obj.GetType().GetProperties())
                 f.SetValue(obj, (reader[f.Name] != DBNull.Value) ? (Convert.ChangeType(reader[f.Name], Nullable.GetUnderlyingType(f.PropertyType) ?? f.PropertyType)) : null);
         }
+
         #endregion
 
         #region Private Methods
@@ -283,12 +279,14 @@ namespace Plex.MobileHub.Data
             var fields = GetType().GetProperties().ToList();
             fields.ForEach((x) => FieldNames.Add(x.Name));
             FieldNames = FieldNames.FindAll((p) => !PrimaryKey.Contains(p));
+            FieldNames.Sort();
 
             if (FieldNames.Count == 0)
                 throw new NotImplementedException("Updates are not supported because you cannot update any information in this table.");
 
             string ColumnValuePairings = string.Empty;
             int varCount = PrimaryKey.Count + FieldNames.Count;
+          
             for (int i = PrimaryKey.Count; i < varCount; i++)
                 ColumnValuePairings += ((i != PrimaryKey.Count) ? "," : "") + FieldNames[i - PrimaryKey.Count] + " = " + BindingStart + i;
 
@@ -314,7 +312,6 @@ namespace Plex.MobileHub.Data
             sql = sql1.Replace("^T^", TableName) + sql2.Replace("^C^", condition);
             return sql;
         }
-
         #endregion
     }
 }

@@ -33,6 +33,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <RegisterForComInterop>false</RegisterForComInterop>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -122,6 +123,7 @@
       <DependentUpon>clients.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Data\PlexxisDataRandomizer.cs" />
     <Compile Include="Data\Tables\DEV_DATA.cs" />
     <Compile Include="Data\Tables\DEV_DATA_VER.cs" />
     <Compile Include="Data\Tables\DEV_DATA_VER_QUERIES.cs" />

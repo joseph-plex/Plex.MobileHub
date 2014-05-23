@@ -17,5 +17,19 @@ namespace Plex.MobileHub.Test.Data
         {
             APP_QUERIES variable = new APP_QUERIES();
         }
+
+        public void InsertAPP_QUERIES()
+        {
+            using(PlexxisDataRandomizer rng = new PlexxisDataRandomizer())
+            using(var connection = Utilities.GetConnection(true))
+            using (var transaction = connection.BeginTransaction())
+            {
+                APP_QUERIES variable = new APP_QUERIES();
+                rng.Fill(variable);
+
+                variable.IS_DELTA = 0;
+                variable.Insert(connection);
+            }
+        }
     }
 }

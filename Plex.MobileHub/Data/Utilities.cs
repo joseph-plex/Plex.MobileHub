@@ -41,12 +41,6 @@ namespace Plex.MobileHub.Data
         {
             return Assembly.GetExecutingAssembly().GetTypes().Where(t => String.Equals(t.Namespace, NameSpace, StringComparison.Ordinal));
         }
-
-        public static IEnumerable<FieldInfo> GetVariables(string FullAssemblyName)
-        {
-            return Assembly.GetExecutingAssembly().GetType(FullAssemblyName).GetFields();
-        }
-
         public static int GetNextSequenceValue(SequenceType Seq)
         {
             switch (Seq)
