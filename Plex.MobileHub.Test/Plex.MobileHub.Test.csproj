@@ -92,6 +92,12 @@
       <Name>Plex.MobileHub</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\" />
+    <Folder Include="Clients\" />
+    <Folder Include="Developers\" />
+    <Folder Include="Management\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

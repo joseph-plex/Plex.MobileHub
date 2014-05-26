@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using MobileHubClient.Properties;
 using MobileHubClient.Misc;
 using MobileHubClient.Core;
+using MobileHubClient.PMH;
 namespace MobileHubClient.Channels.General
 {
     [ServiceContract(Namespace = "PMHC")]
@@ -31,8 +32,7 @@ namespace MobileHubClient.Channels.General
         public void SetAddress(string Address)
         {
             Regex regex = new Regex(@ServiceSettings.Default.AddressRegex);
-            if (!regex.IsMatch(Address)) 
-                throw new ArgumentException("Invalid IPv4 Address");
+            if (!regex.IsMatch(Address)) throw new ArgumentException("Invalid IPv4 Address");
             ClientSettings.Instance.Address = Address;
         }
 
@@ -111,5 +111,22 @@ namespace MobileHubClient.Channels.General
             Context.LogOff();
         }
 
+        [OperationContract]
+        public void GetApplications(int clientId)
+        {
+            //todo implement applications
+        }
+
+        [OperationContract]
+        public void GetApplicationTables()
+        {
+            //todo implement application table
+        }
+
+        [OperationContract]
+        public void GetApplicationsTableColumns()
+        {
+            //todo Implement Application Table Column
+        }
     }
 }

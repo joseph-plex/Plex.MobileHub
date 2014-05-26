@@ -12,10 +12,6 @@ namespace Plex.MobileHub.Test.Data
     public class PlexxisDataTransferObjectTests
     {
 
-        #region General Database Tests
-     
-        #endregion
-
         #region APP_QUERIES' Tests
         /// <summary>
         /// Test to ensure that all APP_QUERY fields are actually columns in the database.
