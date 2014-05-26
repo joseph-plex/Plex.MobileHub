@@ -13,7 +13,7 @@ namespace Plex.MobileHub.Data
         {
             var Command = Conn.CreateCommand();
             Command.CommandText = CommandText;
-            foreach (var p in Parameters)
+            foreach (var p in Parameters ?? new object[0])
                 Command.Parameters.Add(Command.CreateParameter(p));
             return Command;
         }

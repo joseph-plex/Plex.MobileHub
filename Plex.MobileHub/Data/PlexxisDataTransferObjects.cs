@@ -157,16 +157,33 @@ namespace Plex.MobileHub.Data
 
         public virtual bool Update(IDbConnection Conn)
         {
+            string sql1 = "UPDATE ^T^ ";
+            string sql2 = "SET ^CVP^ "; //Column Value Pairing
+            string sql3 = "WHERE ^C^ ";
+
+            string sql = string.Empty;
+            string BindingStart = ":a";
+            string condition = string.Empty;
+            string TableName = GetType().Name;
+
+            for (int i = 0; i < PrimaryKey.Count; i++)
+                condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
+
             var FieldNames = new List<string>();
             var fields = GetType().GetProperties().ToList();
             fields.ForEach((x) => FieldNames.Add(x.Name));
             FieldNames = FieldNames.FindAll((p) => !PrimaryKey.Contains(p));
 
-            FieldNames.Sort();
             if (FieldNames.Count == 0)
                 throw new NotImplementedException("Updates are not supported because you cannot update any information in this table.");
 
-            using (var Command = Conn.CreateCommand(UpdateText))
+            string ColumnValuePairings = string.Empty;
+            int varCount = PrimaryKey.Count + FieldNames.Count;
+            for (int i = PrimaryKey.Count; i < varCount; i++)
+                ColumnValuePairings += ((i != PrimaryKey.Count) ? "," : "") + FieldNames[i - PrimaryKey.Count] + " = " + BindingStart + i;
+
+            sql = sql1.Replace("^T^", TableName) + sql2.Replace("^CVP^", ColumnValuePairings) + sql3.Replace("^C^", condition);
+            using (var Command = Conn.CreateCommand(sql))
             {
                 for (int i = 0; i < FieldNames.Count; i++)
                     Command.Parameters.Add(Command.CreateParameter(fields.Find((p) => FieldNames[i] == p.Name).GetValue(this)));

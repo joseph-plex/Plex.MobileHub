@@ -113,9 +113,10 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public Result QueryPMH(string sql)
+        public Result QueryPMH(string sql, object[] arguments)
         {
-            return Utilities.GetConnection(true).Query(sql);
+            using (var Conn = Utilities.GetConnection(true))
+                return Conn.Query(sql, arguments);
         }
         [WebMethod]
         public void RetrieveCommand(int Id) 
@@ -139,13 +140,10 @@ namespace Plex.MobileHub
         public object GetReferenceTree()
         {
             XmlDocument Tree = new XmlDocument();
-
             using (var Conn = Utilities.GetConnection(true))
             {
                 var user_constraints = Conn.Query("select c.* from user_tables t,user_constraints c where c.TABLE_NAME = t.TABLE_NAME and c.CONSTRAINT_TYPE = 'R'");
-
             }
-
             return Tree;
         }
     }

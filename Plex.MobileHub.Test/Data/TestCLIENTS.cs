@@ -39,5 +39,24 @@ namespace Plex.MobileHub.Test.Data
                 Assert.AreEqual<int>(variable.CLIENT_ID, dbvar.CLIENT_ID);
             }
         }
+
+        [TestMethod]
+        //[Timeout(100)]
+        public void updateCLIENTS()
+        {
+            using (PlexxisDataRandomizer rng = new PlexxisDataRandomizer())
+            using (var connection = Utilities.GetConnection(true))
+            using (var transaction = connection.BeginTransaction())
+            {
+                CLIENTS variable = CLIENTS.GetAll().First(p => p.CLIENT_ID == 9999);
+
+                variable.CLIENT_ID = -1;
+                variable.CLIENT_PORT = 65535;
+                variable.Update(connection);
+
+                //var dbvar = CLIENTS.GetAll(connection).First(p => p.CLIENT_ID == variable.CLIENT_ID);
+                //Assert.AreEqual<int>(variable.CLIENT_ID, dbvar.CLIENT_ID);
+            }
+        }
     }
 }
