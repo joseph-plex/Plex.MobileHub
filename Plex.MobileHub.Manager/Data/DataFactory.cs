@@ -12,6 +12,11 @@ namespace Plex.MobileHub.Manager.Data
         {
             return Result.FromQueryResult(GetService().QueryPMH(commandText, arguments));
         }
+
+        public IEnumerable<Log> GetLogs()
+        {
+            return GetService().GetLogRepository();
+        }
        
         ManagerSDKSoapClient GetService()
         {
