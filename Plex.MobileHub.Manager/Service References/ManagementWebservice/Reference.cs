@@ -110,16 +110,27 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         Plex.MobileHub.Manager.ManagementWebservice.Log[] EndLogsGetAll(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/QueryPMH", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        Plex.MobileHub.Manager.ManagementWebservice.Result QueryPMH(string sql, object[] arguments);
+        Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/QueryPMH", ReplyAction="*")]
-        System.IAsyncResult BeginQueryPMH(string sql, object[] arguments, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
+        System.IAsyncResult BeginQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState);
         
-        Plex.MobileHub.Manager.ManagementWebservice.Result EndQueryPMH(System.IAsyncResult result);
+        Plex.MobileHub.Manager.ManagementWebservice.Result EndQuery(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int NonQuery(string sql, object[] arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
+        System.IAsyncResult BeginNonQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState);
+        
+        int EndNonQuery(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/RetrieveCommand", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -2450,11 +2461,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class QueryPMHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class QueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public QueryPMHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public QueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2463,6 +2474,25 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((Plex.MobileHub.Manager.ManagementWebservice.Result)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class NonQueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public NonQueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -2563,11 +2593,17 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         private System.Threading.SendOrPostCallback onLogsGetAllCompletedDelegate;
         
-        private BeginOperationDelegate onBeginQueryPMHDelegate;
+        private BeginOperationDelegate onBeginQueryDelegate;
         
-        private EndOperationDelegate onEndQueryPMHDelegate;
+        private EndOperationDelegate onEndQueryDelegate;
         
-        private System.Threading.SendOrPostCallback onQueryPMHCompletedDelegate;
+        private System.Threading.SendOrPostCallback onQueryCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginNonQueryDelegate;
+        
+        private EndOperationDelegate onEndNonQueryDelegate;
+        
+        private System.Threading.SendOrPostCallback onNonQueryCompletedDelegate;
         
         private BeginOperationDelegate onBeginRetrieveCommandDelegate;
         
@@ -2630,7 +2666,9 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         public event System.EventHandler<LogsGetAllCompletedEventArgs> LogsGetAllCompleted;
         
-        public event System.EventHandler<QueryPMHCompletedEventArgs> QueryPMHCompleted;
+        public event System.EventHandler<QueryCompletedEventArgs> QueryCompleted;
+        
+        public event System.EventHandler<NonQueryCompletedEventArgs> NonQueryCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> RetrieveCommandCompleted;
         
@@ -3071,56 +3109,108 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             base.InvokeAsync(this.onBeginLogsGetAllDelegate, null, this.onEndLogsGetAllDelegate, this.onLogsGetAllCompletedDelegate, userState);
         }
         
-        public Plex.MobileHub.Manager.ManagementWebservice.Result QueryPMH(string sql, object[] arguments) {
-            return base.Channel.QueryPMH(sql, arguments);
+        public Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments) {
+            return base.Channel.Query(sql, arguments);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginQueryPMH(string sql, object[] arguments, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginQueryPMH(sql, arguments, callback, asyncState);
+        public System.IAsyncResult BeginQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQuery(sql, arguments, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Result EndQueryPMH(System.IAsyncResult result) {
-            return base.Channel.EndQueryPMH(result);
+        public Plex.MobileHub.Manager.ManagementWebservice.Result EndQuery(System.IAsyncResult result) {
+            return base.Channel.EndQuery(result);
         }
         
-        private System.IAsyncResult OnBeginQueryPMH(object[] inValues, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginQuery(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sql = ((string)(inValues[0]));
             object[] arguments = ((object[])(inValues[1]));
-            return this.BeginQueryPMH(sql, arguments, callback, asyncState);
+            return this.BeginQuery(sql, arguments, callback, asyncState);
         }
         
-        private object[] OnEndQueryPMH(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Result retVal = this.EndQueryPMH(result);
+        private object[] OnEndQuery(System.IAsyncResult result) {
+            Plex.MobileHub.Manager.ManagementWebservice.Result retVal = this.EndQuery(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnQueryPMHCompleted(object state) {
-            if ((this.QueryPMHCompleted != null)) {
+        private void OnQueryCompleted(object state) {
+            if ((this.QueryCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.QueryPMHCompleted(this, new QueryPMHCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.QueryCompleted(this, new QueryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void QueryPMHAsync(string sql, object[] arguments) {
-            this.QueryPMHAsync(sql, arguments, null);
+        public void QueryAsync(string sql, object[] arguments) {
+            this.QueryAsync(sql, arguments, null);
         }
         
-        public void QueryPMHAsync(string sql, object[] arguments, object userState) {
-            if ((this.onBeginQueryPMHDelegate == null)) {
-                this.onBeginQueryPMHDelegate = new BeginOperationDelegate(this.OnBeginQueryPMH);
+        public void QueryAsync(string sql, object[] arguments, object userState) {
+            if ((this.onBeginQueryDelegate == null)) {
+                this.onBeginQueryDelegate = new BeginOperationDelegate(this.OnBeginQuery);
             }
-            if ((this.onEndQueryPMHDelegate == null)) {
-                this.onEndQueryPMHDelegate = new EndOperationDelegate(this.OnEndQueryPMH);
+            if ((this.onEndQueryDelegate == null)) {
+                this.onEndQueryDelegate = new EndOperationDelegate(this.OnEndQuery);
             }
-            if ((this.onQueryPMHCompletedDelegate == null)) {
-                this.onQueryPMHCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryPMHCompleted);
+            if ((this.onQueryCompletedDelegate == null)) {
+                this.onQueryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryCompleted);
             }
-            base.InvokeAsync(this.onBeginQueryPMHDelegate, new object[] {
+            base.InvokeAsync(this.onBeginQueryDelegate, new object[] {
                         sql,
-                        arguments}, this.onEndQueryPMHDelegate, this.onQueryPMHCompletedDelegate, userState);
+                        arguments}, this.onEndQueryDelegate, this.onQueryCompletedDelegate, userState);
+        }
+        
+        public int NonQuery(string sql, object[] arguments) {
+            return base.Channel.NonQuery(sql, arguments);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginNonQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginNonQuery(sql, arguments, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndNonQuery(System.IAsyncResult result) {
+            return base.Channel.EndNonQuery(result);
+        }
+        
+        private System.IAsyncResult OnBeginNonQuery(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string sql = ((string)(inValues[0]));
+            object[] arguments = ((object[])(inValues[1]));
+            return this.BeginNonQuery(sql, arguments, callback, asyncState);
+        }
+        
+        private object[] OnEndNonQuery(System.IAsyncResult result) {
+            int retVal = this.EndNonQuery(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnNonQueryCompleted(object state) {
+            if ((this.NonQueryCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.NonQueryCompleted(this, new NonQueryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void NonQueryAsync(string sql, object[] arguments) {
+            this.NonQueryAsync(sql, arguments, null);
+        }
+        
+        public void NonQueryAsync(string sql, object[] arguments, object userState) {
+            if ((this.onBeginNonQueryDelegate == null)) {
+                this.onBeginNonQueryDelegate = new BeginOperationDelegate(this.OnBeginNonQuery);
+            }
+            if ((this.onEndNonQueryDelegate == null)) {
+                this.onEndNonQueryDelegate = new EndOperationDelegate(this.OnEndNonQuery);
+            }
+            if ((this.onNonQueryCompletedDelegate == null)) {
+                this.onNonQueryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnNonQueryCompleted);
+            }
+            base.InvokeAsync(this.onBeginNonQueryDelegate, new object[] {
+                        sql,
+                        arguments}, this.onEndNonQueryDelegate, this.onNonQueryCompletedDelegate, userState);
         }
         
         public void RetrieveCommand(int Id) {

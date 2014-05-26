@@ -10,7 +10,12 @@ namespace Plex.MobileHub.Manager.Data
     {
         public Result Query(string commandText, params object[] arguments)
         {
-            return Result.FromQueryResult(GetService().QueryPMH(commandText, arguments));
+            return Result.FromQueryResult(GetService().Query(commandText, arguments));
+        }
+
+        public Int32 NonQuery(string commandText, params object [] arguments)
+        {
+            return GetService().NonQuery(commandText, arguments);
         }
 
         public IEnumerable<Log> GetLogs()

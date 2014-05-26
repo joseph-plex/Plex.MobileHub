@@ -410,7 +410,7 @@ namespace Plex.MobileHub.Test.Data
         }
         [TestMethod]
         public void TableTestCLIENT_APPS_INSERT_TEXT()
-        {
+        {   
             var table = new CLIENT_APPS();
             using (IDbConnection connection = Utilities.GetConnection(true))
                 connection.NonQuery("EXPLAIN PLAN FOR " + table.GetInsertText());

@@ -113,10 +113,17 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public Result QueryPMH(string sql, object[] arguments)
+        public Result Query(string sql, object[] arguments)
         {
             using (var Conn = Utilities.GetConnection(true))
                 return Conn.Query(sql, arguments);
+        }
+
+        [WebMethod]
+        public int NonQuery(string sql, object[] arguments)
+        {
+            using (var Conn = Utilities.GetConnection(true))
+                return Conn.NonQuery(sql, arguments);
         }
         [WebMethod]
         public void RetrieveCommand(int Id) 

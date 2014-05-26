@@ -22,8 +22,9 @@ namespace Plex.MobileHub.Manager.Views
         void LoadGridView()
         {
             DataFactory factory = new DataFactory();
-            dataGridView1.DataSource = factory.GetLogs().ToArray();
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridView1.DataSource = factory.GetLogs().Reverse().ToArray();
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 

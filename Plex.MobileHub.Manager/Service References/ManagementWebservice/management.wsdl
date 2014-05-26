@@ -395,7 +395,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="QueryPMH">
+      <s:element name="Query">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
@@ -441,10 +441,25 @@
           <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
         </s:sequence>
       </s:complexType>
-      <s:element name="QueryPMHResponse">
+      <s:element name="QueryResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryPMHResult" type="tns:Result" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NonQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arguments" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NonQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NonQueryResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -548,11 +563,17 @@
   <wsdl:message name="LogsGetAllSoapOut">
     <wsdl:part name="parameters" element="tns:LogsGetAllResponse" />
   </wsdl:message>
-  <wsdl:message name="QueryPMHSoapIn">
-    <wsdl:part name="parameters" element="tns:QueryPMH" />
+  <wsdl:message name="QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:Query" />
   </wsdl:message>
-  <wsdl:message name="QueryPMHSoapOut">
-    <wsdl:part name="parameters" element="tns:QueryPMHResponse" />
+  <wsdl:message name="QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="NonQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:NonQuery" />
+  </wsdl:message>
+  <wsdl:message name="NonQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:NonQueryResponse" />
   </wsdl:message>
   <wsdl:message name="RetrieveCommandSoapIn">
     <wsdl:part name="parameters" element="tns:RetrieveCommand" />
@@ -711,9 +732,13 @@
       <wsdl:input message="tns:LogsGetAllSoapIn" />
       <wsdl:output message="tns:LogsGetAllSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="QueryPMH">
-      <wsdl:input message="tns:QueryPMHSoapIn" />
-      <wsdl:output message="tns:QueryPMHSoapOut" />
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QuerySoapIn" />
+      <wsdl:output message="tns:QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NonQuery">
+      <wsdl:input message="tns:NonQuerySoapIn" />
+      <wsdl:output message="tns:NonQuerySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetrieveCommand">
       <wsdl:input message="tns:RetrieveCommandSoapIn" />
@@ -923,8 +948,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryPMH">
-      <soap:operation soapAction="http://pmh.plexxis.com/QueryPMH" style="document" />
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://pmh.plexxis.com/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NonQuery">
+      <soap:operation soapAction="http://pmh.plexxis.com/NonQuery" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1052,8 +1086,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="QueryPMH">
-      <soap12:operation soapAction="http://pmh.plexxis.com/QueryPMH" style="document" />
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="http://pmh.plexxis.com/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NonQuery">
+      <soap12:operation soapAction="http://pmh.plexxis.com/NonQuery" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

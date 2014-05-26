@@ -36,14 +36,18 @@ namespace Plex.MobileHub.Test.Data
         [TestMethod]
         public void FillProperties()
         {
-            PlexxisDataRandomizer rng = new PlexxisDataRandomizer();
-            APPS app = new APPS();
-            rng.Fill(app);
+            using (PlexxisDataRandomizer rng = new PlexxisDataRandomizer())
+            using (var connection = Utilities.GetConnection(true))
+            using (var transaction = connection.BeginTransaction())
+            {
+                APPS app = new APPS();
+                rng.Fill(app);
 
-            app.IS_CLIENT_CUSTOM_APP = 0;
-            app.APP_ID = -1;
+                app.IS_CLIENT_CUSTOM_APP = 0;
+                app.APP_ID = -1;
 
-            app.Insert();
+                app.Insert(connection);
+            };
 
         }
     }
