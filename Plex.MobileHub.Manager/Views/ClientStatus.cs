@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Plex.MobileHub.Manager.Data;
+using Plex.MobileHub.Manager.Windows;
 
 namespace Plex.MobileHub.Manager.Views
 {
@@ -85,7 +86,14 @@ namespace Plex.MobileHub.Manager.Views
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            switch(new ClientCreate().ShowDialog(this))
+            {
+                case DialogResult.OK:
+                    LoadDataGrid();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
