@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Guifreaks.NavigationBar;
 using Plex.MobileHub.Manager.Data;
+using Plex.MobileHub.Manager.Windows;
 
 namespace Plex.MobileHub.Manager.Views
 {
@@ -171,7 +172,6 @@ namespace Plex.MobileHub.Manager.Views
             var name = selectedrow.Cells[0].Value;
             var id = Convert.ToInt32(selectedrow.Cells[1].Value);
 
-
             DataFactory factory = new DataFactory();
             var queryResult = factory.Query("select * from app_table_columns");
 
@@ -195,11 +195,19 @@ namespace Plex.MobileHub.Manager.Views
                     );
                 }
             }
+            toolStripButton5.Enabled = (dataGridView2.Rows.Count == 0)? false : true;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            switch(new AppCreate().ShowDialog(this))
+            {
+                case DialogResult.OK:
+                    LoadlistBox();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -270,6 +278,15 @@ namespace Plex.MobileHub.Manager.Views
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            DataFactory factory = new DataFactory();
+            if (dataGridView2.SelectedRows.Count == 1)
+                 toolStripButton7.Enabled  = toolStripButton6.Enabled = true;
+            else
+                toolStripButton7.Enabled = toolStripButton6.Enabled = false;
         }
     }
 }

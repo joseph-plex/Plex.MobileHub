@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Windows\AppCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\AppCreate.Designer.cs">
+      <DependentUpon>AppCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Column.cs" />
     <Compile Include="Data\DataFactory.cs" />
     <Compile Include="Data\Result.cs" />
@@ -100,6 +106,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Windows\AppCreate.resx">
+      <DependentUpon>AppCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
