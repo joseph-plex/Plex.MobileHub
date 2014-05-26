@@ -77,5 +77,15 @@ namespace Plex.MobileHub.Manager.Views
                     return;
             }
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

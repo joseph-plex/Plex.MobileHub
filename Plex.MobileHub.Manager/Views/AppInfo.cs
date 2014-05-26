@@ -28,7 +28,7 @@ namespace Plex.MobileHub.Manager.Views
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "table Column Id", Visible = false });
             
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Table Name" , AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill});
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Table Id ", Visible = false });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Table Id", Visible = false });
 
             LoadlistBox();
         }
@@ -36,8 +36,6 @@ namespace Plex.MobileHub.Manager.Views
         void LoadlistBox()
         {
             SuspendLayout();
-            listBox1.Items.Clear();
-
             DataFactory factory = new DataFactory();
             var queryResult = factory.Query("select * from apps");
             var appTitles = queryResult["Title"].Cast<String>();
@@ -67,8 +65,6 @@ namespace Plex.MobileHub.Manager.Views
                 LoadClientAppGrid(appId);
 
                 LoadAppGridViewInformation(appId);
-
-                ToggleToolStripButtons(true);
             }
             catch(Exception x)
             {
@@ -145,6 +141,10 @@ namespace Plex.MobileHub.Manager.Views
                 if (id == AppId)
                     dataGridView1.Rows.Add(name,table);
             }
+            toolStripButton3.Enabled = true;
+            toolStripButton4.Enabled = (dataGridView1.Rows.Count == 0) ? false : true;
+            toolStripButton8.Enabled = (dataGridView1.Rows.Count == 0) ? false : true;
+
         }
 
         void naviBar1_Resize(object sender, EventArgs e)
@@ -204,7 +204,21 @@ namespace Plex.MobileHub.Manager.Views
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (listBox1.SelectedItems.Count != 1)
+                return;
+
+            DataFactory factory = new DataFactory();
+            switch(MessageBox.Show("This will permanently delete the application from the system", "Are you sure?", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.Yes:
+                    factory.NonQuery("delete from APPS where title= :a", listBox1.SelectedItem.ToString());
+                    LoadlistBox();
+                    break;
+                case DialogResult.No:
+                    break;
+                default:
+                    return;
+            }
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
@@ -219,7 +233,22 @@ namespace Plex.MobileHub.Manager.Views
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            DataFactory factory = new DataFactory();
+            if (dataGridView1.SelectedRows.Count != 1)
+                return;
+
+            switch(MessageBox.Show("This will Permanently delete the application table from the system", "Are you sure?", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.Yes:
+                    DataGridViewRow row = dataGridView1.SelectedRows[0];
+                    MessageBox.Show(factory.NonQuery("delete from app_tables where table_id = :a", row.Cells["Table Id"].Value).ToString());
+                    LoadlistBox();
+                    break;
+                case DialogResult.No:
+                    break;
+                default:
+                    return;
+            }
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)
