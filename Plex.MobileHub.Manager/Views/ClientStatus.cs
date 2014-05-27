@@ -206,5 +206,15 @@ namespace Plex.MobileHub.Manager.Views
         {
             LoadDataGrid();
         }
+
+        private void toolStripButton3_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(new NotImplementedException().Message);
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(new NotImplementedException().Message);
+        }
     }
 }

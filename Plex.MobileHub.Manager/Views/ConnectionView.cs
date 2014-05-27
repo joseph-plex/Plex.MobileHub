@@ -39,5 +39,10 @@ namespace Plex.MobileHub.Manager.Views
             else
                 toolStripButton1.Enabled = true;
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(new NotImplementedException().Message);
+        }
     }
 }

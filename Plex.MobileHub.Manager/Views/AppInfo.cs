@@ -20,7 +20,6 @@ namespace Plex.MobileHub.Manager.Views
             InitializeComponent();
             Dock = DockStyle.Fill;
 
-
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Name", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Sequence", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Data Type", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
@@ -61,7 +60,6 @@ namespace Plex.MobileHub.Manager.Views
 
                 var row = queryResult.Rows.First(p => p[queryResult.GetColumnIndex("Title")].Equals(lbox.SelectedValue.ToString()));
                 var appId = Convert.ToInt32(row[queryResult.GetColumnIndex("app_id")]);
-                //LoadClientAppGrid(appId);
 
                 LoadAppGridViewInformation(appId);
             }
@@ -209,12 +207,12 @@ namespace Plex.MobileHub.Manager.Views
 
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -239,23 +237,24 @@ namespace Plex.MobileHub.Manager.Views
 
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
+
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
+
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            //Delete an app table column
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
         }
 
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(new NotImplementedException().Message);
         }
 
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
