@@ -17,7 +17,35 @@ namespace Plex.MobileHub.Manager.Views
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+
+            dataGridView2.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Access", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "App Id", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "App Title", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+
             LoadDataGrid();
+        }
+
+        void LoadClientAppGrid(int clientId)
+        {
+            DataFactory factory = new DataFactory();
+            List<object> ClientAppList = new List<object>();
+
+            Result apps = factory.Query("select * from APPS");
+            Result clientApps = factory.Query("Select * from client_apps where client_id = :a", clientId);
+
+
+            int Index = apps.GetColumnIndex("APP_ID");
+            int TitleIndex = apps.GetColumnIndex("TITLE");
+            int appIdIndex = clientApps.GetColumnIndex("APP_ID");
+
+            dataGridView2.Rows.Clear();
+
+            foreach (var row in apps.Rows)
+            {
+                int appId = Convert.ToInt32(row[Index]);
+                bool exists = clientApps.Rows.Any(p => Convert.ToInt32(p[appIdIndex]) == appId);
+                dataGridView2.Rows.Add(exists, appId, row[TitleIndex].ToString());
+            }
         }
 
         void LoadDataGrid()
@@ -57,6 +85,7 @@ namespace Plex.MobileHub.Manager.Views
             {
                 toolStripButton2.Enabled = true;
                 toolStripButton3.Enabled = true;
+                LoadClientAppGrid(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
             }
         }
 
@@ -66,7 +95,7 @@ namespace Plex.MobileHub.Manager.Views
             if (dataGridView1.SelectedRows.Count != 1)
                 return;
 
-            switch (MessageBox.Show("This will Permanently delete the application from the system", "Are you sure?", MessageBoxButtons.YesNo))
+            switch (MessageBox.Show("This will immediately and permanently delete the application from the system", "Are you sure?", MessageBoxButtons.YesNo))
             {
                 case DialogResult.Yes:
                     DataGridViewRow row = dataGridView1.SelectedRows[0];
@@ -94,6 +123,88 @@ namespace Plex.MobileHub.Manager.Views
                 default:
                     break;
             }
+        }
+
+  
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            SuspendLayout();
+            if (tableLayoutPanel1.RowStyles[0].SizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[0].SizeType = SizeType.Absolute;
+            else
+                tableLayoutPanel1.RowStyles[0].SizeType = SizeType.Percent;
+            ManagePanels();
+            ResumeLayout();
+
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            SuspendLayout();
+
+            if (tableLayoutPanel1.RowStyles[1].SizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[1].SizeType = SizeType.Absolute;
+            else
+                tableLayoutPanel1.RowStyles[1].SizeType = SizeType.Percent;
+            ManagePanels();
+            ResumeLayout();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            SuspendLayout();
+            if (tableLayoutPanel1.RowStyles[2].SizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
+            else
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Percent;
+            ManagePanels();
+            ResumeLayout();
+        }
+
+        void ManagePanels()
+        {
+            var accessSizeType = tableLayoutPanel1.RowStyles[0].SizeType;
+            var clientSizeType = tableLayoutPanel1.RowStyles[1].SizeType;
+            var logsSizeType = tableLayoutPanel1.RowStyles[2].SizeType;
+            int count = new int();
+
+            if (accessSizeType == SizeType.Percent)
+                count++;
+            else
+                tableLayoutPanel1.RowStyles[0].Height = 0;
+
+            if (clientSizeType == SizeType.Percent)
+                count++;
+            else
+                tableLayoutPanel1.RowStyles[1].Height = 0;
+
+            if (logsSizeType == SizeType.Percent)
+                count++;
+            else
+                tableLayoutPanel1.RowStyles[2].Height = 0;
+
+            if (count == 0){
+                splitContainer1.Panel2Collapsed = true;
+                return;
+            }
+            else
+                splitContainer1.Panel2Collapsed = false;
+           
+            float newHeight = (tableLayoutPanel1.Height / count);
+
+            if (accessSizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[0].Height = Convert.ToInt32(newHeight);
+
+            if (clientSizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[1].Height = Convert.ToInt32(newHeight);
+
+            if (logsSizeType == SizeType.Percent)
+                tableLayoutPanel1.RowStyles[2].Height = Convert.ToInt32(newHeight);
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            LoadDataGrid();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Plex.MobileHub.Manager.Views
             dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             LoadGridView();
         }

@@ -18,6 +18,16 @@ namespace Plex.MobileHub.Manager.Data
             return GetService().NonQuery(commandText, arguments);
         }
 
+        public IEnumerable<Consumer> GetConsumer()
+        {
+            return GetService().GetConsumerRepository();
+        }
+
+        public IEnumerable<Command> GetCommands()
+        {
+            return GetService().GetCommandRepo();
+        }
+
         public IEnumerable<Log> GetLogs()
         {
             return GetService().GetLogRepository();

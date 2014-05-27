@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\ConnectionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ConnectionView.Designer.cs">
+      <DependentUpon>ConnectionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AppCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Views\ConnectionView.resx">
+      <DependentUpon>ConnectionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\AppCreate.resx">
       <DependentUpon>AppCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +189,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

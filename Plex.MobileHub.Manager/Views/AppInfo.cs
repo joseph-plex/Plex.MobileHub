@@ -20,8 +20,6 @@ namespace Plex.MobileHub.Manager.Views
             InitializeComponent();
             Dock = DockStyle.Fill;
 
-            dataGridView3.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Access", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Client Id", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Name", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Sequence", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
@@ -63,7 +61,7 @@ namespace Plex.MobileHub.Manager.Views
 
                 var row = queryResult.Rows.First(p => p[queryResult.GetColumnIndex("Title")].Equals(lbox.SelectedValue.ToString()));
                 var appId = Convert.ToInt32(row[queryResult.GetColumnIndex("app_id")]);
-                LoadClientAppGrid(appId);
+                //LoadClientAppGrid(appId);
 
                 LoadAppGridViewInformation(appId);
             }
@@ -91,27 +89,7 @@ namespace Plex.MobileHub.Manager.Views
             textBox5.Text = Description.ToString();
         }
 
-        void LoadClientAppGrid(int AppId)
-        {
-            DataFactory factory = new DataFactory();
-            List<object> ClientAppList = new List<object>();
-            Result clients =  factory.Query("select * from clients");
-            Result clientApps = factory.Query("Select * from client_apps");
-
-            int clientIdIndex = clientApps.GetColumnIndex("CLIENT_ID");
-            int appIdIndex = clientApps.GetColumnIndex("APP_ID");
-
-            dataGridView3.Rows.Clear();
-            foreach(var row in clients["CLIENT_ID"])
-            {
-                int r = Convert.ToInt32(row);
-                bool exists = clientApps.Rows.Any(p => Convert.ToInt32(p[clientIdIndex]) == r && Convert.ToInt32(p[appIdIndex]) == AppId);
-
-                var index = dataGridView3.Rows.Add();
-                dataGridView3.Rows[index].Cells[1].Value = r;
-                dataGridView3.Rows[index].Cells[0].Value = exists;
-            }
-        }
+      
 
         void ToggleToolStripButtons(bool value)
         {
