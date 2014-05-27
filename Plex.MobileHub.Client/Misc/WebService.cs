@@ -43,6 +43,16 @@ namespace MobileHubClient.Misc
                 return Service.SyncDataGet();
         }
 
+        public static QryResult Query(string commandText, params object[] arguments)
+        {
+            throw new NotImplementedException();
+        }
+        public static QryResult NonQuery(string commandText, params object[] arguments)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public static ClientSDKSoapClient Service
         
         {

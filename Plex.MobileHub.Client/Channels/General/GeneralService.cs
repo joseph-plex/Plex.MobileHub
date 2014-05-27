@@ -112,6 +112,13 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
+        public void Query(string commandText, params object[] arguments)
+        {
+
+        }
+
+
+        [OperationContract]
         public void GetApplications(int clientId)
         {
             //todo implement applications

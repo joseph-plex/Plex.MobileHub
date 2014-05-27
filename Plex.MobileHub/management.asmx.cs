@@ -1,24 +1,15 @@
-﻿using System;
+﻿using Plex.Diagnostics;
+using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Tables;
+using Plex.MobileHub.Data.Types;
+using Plex.MobileHub.Objects;
+using Plex.MobileHub.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Xml;
 using System.Xml.Serialization;
-
-using System.Reflection;
-
-
-using Plex.MobileHub.Repositories;
-using Plex.MobileHub.Data;
-using Plex.MobileHub.Data.Tables;
-using Plex.MobileHub.Objects.Clients;
-using Plex.MobileHub.Objects;
-using Plex.MobileHub.Data.Types;
-
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
-using Plex.Diagnostics;
 namespace Plex.MobileHub
 {
     /// <summary>

@@ -31,8 +31,8 @@ namespace MobileHubClient.PMH {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommands", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.Command[] GetCommands(int ConnectionId);
         
@@ -41,8 +41,8 @@ namespace MobileHubClient.PMH {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Respond", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void Respond(MobileHubClient.PMH.Response Resp);
         
@@ -51,8 +51,8 @@ namespace MobileHubClient.PMH {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResponsePartial", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component);
         
@@ -61,8 +61,8 @@ namespace MobileHubClient.PMH {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.ClientSynchroData SyncDataGet();
         
@@ -571,126 +571,6 @@ namespace MobileHubClient.PMH {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class IUDData : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string tableNameField;
-        
-        private string[] columnNamesField;
-        
-        private Row[] rowsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string TableName {
-            get {
-                return this.tableNameField;
-            }
-            set {
-                this.tableNameField = value;
-                this.RaisePropertyChanged("TableName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public string[] ColumnNames {
-            get {
-                return this.columnNamesField;
-            }
-            set {
-                this.columnNamesField = value;
-                this.RaisePropertyChanged("ColumnNames");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public Row[] Rows {
-            get {
-                return this.rowsField;
-            }
-            set {
-                this.rowsField = value;
-                this.RaisePropertyChanged("Rows");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class Row : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int dBActionField;
-        
-        private int rowVersionField;
-        
-        private object[] valuesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DBAction {
-            get {
-                return this.dBActionField;
-            }
-            set {
-                this.dBActionField = value;
-                this.RaisePropertyChanged("DBAction");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int RowVersion {
-            get {
-                return this.rowVersionField;
-            }
-            set {
-                this.rowVersionField = value;
-                this.RaisePropertyChanged("RowVersion");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public object[] Values {
-            get {
-                return this.valuesField;
-            }
-            set {
-                this.valuesField = value;
-                this.RaisePropertyChanged("Values");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(QryResult))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RQryResult))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
@@ -1038,6 +918,66 @@ namespace MobileHubClient.PMH {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class Row : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int dBActionField;
+        
+        private int rowVersionField;
+        
+        private object[] valuesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int DBAction {
+            get {
+                return this.dBActionField;
+            }
+            set {
+                this.dBActionField = value;
+                this.RaisePropertyChanged("DBAction");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int RowVersion {
+            get {
+                return this.rowVersionField;
+            }
+            set {
+                this.rowVersionField = value;
+                this.RaisePropertyChanged("RowVersion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public object[] Values {
+            get {
+                return this.valuesField;
+            }
+            set {
+                this.valuesField = value;
+                this.RaisePropertyChanged("Values");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
     public partial class RQryResult : QryResult {
         
         private string tableNameField;
@@ -1065,6 +1005,66 @@ namespace MobileHubClient.PMH {
             set {
                 this.queryNameField = value;
                 this.RaisePropertyChanged("QueryName");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class IUDData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string tableNameField;
+        
+        private string[] columnNamesField;
+        
+        private Row[] rowsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string TableName {
+            get {
+                return this.tableNameField;
+            }
+            set {
+                this.tableNameField = value;
+                this.RaisePropertyChanged("TableName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public string[] ColumnNames {
+            get {
+                return this.columnNamesField;
+            }
+            set {
+                this.columnNamesField = value;
+                this.RaisePropertyChanged("ColumnNames");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public Row[] Rows {
+            get {
+                return this.rowsField;
+            }
+            set {
+                this.rowsField = value;
+                this.RaisePropertyChanged("Rows");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

@@ -1,11 +1,11 @@
-﻿using Plex.MobileHub.Functionality.Clients;
+﻿using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Types;
+using Plex.MobileHub.Functionality.Clients;
 using Plex.MobileHub.Objects;
-using Plex.MobileHub.Objects.ResultTypes;
 using Plex.MobileHub.Objects.Synchronization;
 using Plex.MobileHub.Repositories;
-using System.Collections.Generic;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Web.Services;
 using System.Xml.Serialization;
 
@@ -54,6 +54,20 @@ namespace Plex.MobileHub
             Logs.Instance.Add("partial Response " +Component.Id+ " Component " +  Component.ComponentId + "Recieved");
             Responses.Instance.Add(Component.Id, Component);
             Logs.Instance.Add(Component.Resp);
+        }
+
+        [WebMethod]
+        public Result Query(string sql, object[] arguments)
+        {
+            using (var Conn = Utilities.GetConnection(true))
+                return Conn.Query(sql, arguments);
+        }
+
+        [WebMethod]
+        public int NonQuery(string sql, object[] arguments)
+        {
+            using (var Conn = Utilities.GetConnection(true))
+                return Conn.NonQuery(sql, arguments);
         }
 
         [WebMethod]
