@@ -7,9 +7,7 @@
 		<MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature" Title="Plex Mobile Hub Client" Level="1">
-      <ComponentGroupRef Id="ProductComponents" />
-    </Feature>
-    <Feature Id="FolderPermissions">
+      <ComponentGroupRef Id="ProductComponents" Primary="yes" />
       <ComponentRef Id="Permissions"/>
     </Feature>
 
@@ -17,14 +15,15 @@
     <CustomAction Id="OracleDepUninstall" Execute="deferred" BinaryKey="OracleDepsRemove" ExeCommand=" &quot; [MobileHubFolder] &quot; " Return="ignore" />
 
     <InstallExecuteSequence>
-      <Custom Action="OracleDepInstall" After="InstallFiles" Overridable="no" >NOT Installed</Custom>
+      <Custom Action="OracleDepInstall" After="InstallFiles" Overridable="no"> NOT Installed</Custom>
       <Custom Action="OracleDepUninstall" Before="RemoveFolders">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
     </InstallExecuteSequence>
   </Product>
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Plexxis">
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Plexxis">
           <Directory Id="MobileHubFolder" Name="Mobile Hub">
             <Component Id="Permissions" KeyPath="no" Guid="0BED574F-A55D-45D4-A40A-F6A497C822BF">
               <CreateFolder Directory="MobileHubFolder">
@@ -33,38 +32,31 @@
             </Component>
           </Directory>
         </Directory>
-			</Directory>
-		</Directory>
-	
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="My Application Name"/>
+      </Directory>
+    </Directory>
   </Fragment>
-
   <Fragment>
-    <DirectoryRef Id="MobileHubFolder">
-      <Component Id="InterfaceShortcut">
-        
-        <RemoveFolder Id="MobileHubFolder" On="uninstall"/>
-      </Component>
-    </DirectoryRef>
-  </Fragment>
-  
-  <Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
-      <Component Id="ProductComponent" Guid="E9BB83C7-BB8D-49C2-ABB2-0E943AD38482"> 
+    <ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
+      <Component Id="ProductComponent" Guid="E9BB83C7-BB8D-49C2-ABB2-0E943AD38482">
         <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
         <File Id ="Logs" Name="Logs.dll" Source="$(var.Plex.MobileHub.Client.TargetDir)Logs.dll" />
-   
         <File Id="Plex.MobileHub.Client.Config" Name="Client.Config" Source="$(var.Plex.MobileHub.Client.TargetPath).Config" />
         <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
         <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Start="install" Stop="both" Remove="uninstall" Wait="yes"/>
       </Component>
-      <Component Guid="25767DB2-C59B-4CBC-BF11-731E338002D0">
-        <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" KeyPath="yes"/>
+      <Component Id="ClientInterface" Guid="25767DB2-C59B-4CBC-BF11-731E338002D0">
+        <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" />
         <File Id="Plex.MobileHub.Client.Interface.Config" Name="Interface.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>
         <File Id="guifreak1" Name="Guifreaks.Common.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.Common.dll"/>
         <File Id="guifreak2" Name="Guifreaks.NavigationBar.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.dll"/>
         <File Id="guifreak3" Name="Guifreaks.NavigationBar.XmlSerializers.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.XmlSerializers.dll"/>
-        <Shortcut Id="InterfaceStartMenuShortcut" Name="Plexxis Mobile Hub Client Interface" Target="[#Plex.MobileHub.Client.Interface]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
-        
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Plexxis Mobile Hub Client" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        <Shortcut Id="Shortcut" Name="Interface" Target="[#Plex.MobileHub.Client.Interface]" Directory="ApplicationProgramsFolder"/>
+        <Shortcut Id="Uninstallshortcut" Name="Uninstall Client" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]"/>
+        <RemoveFolder Id="removeFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
       </Component>
 		</ComponentGroup>
 	</Fragment>
@@ -72,5 +64,4 @@
     <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)"/>
     <Binary Id="OracleDepsRemove" SourceFile="$(var.Plex.MobileHub.Client.Oracle.U.TargetPath)" />
   </Fragment>
-  
 </Wix>
