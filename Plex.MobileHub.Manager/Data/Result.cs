@@ -29,7 +29,7 @@ namespace Plex.MobileHub.Manager.Data
 
         public static Res ToQueryResult(Result result)
         {
-            var rows = new List<Row>();
+            var rows = new List<ManagementWebservice.Tuple>();
             var cols = new List<Col>();
 
             foreach (var v in result.Columns)

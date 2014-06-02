@@ -168,9 +168,6 @@
     <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Task.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ManagementWebservice\" />
@@ -185,6 +182,9 @@
     <None Include="Service References\ManagementWebservice\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Task.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ManagementWebservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

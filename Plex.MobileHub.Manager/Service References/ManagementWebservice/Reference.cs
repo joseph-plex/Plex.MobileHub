@@ -19,19 +19,9 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void ValidateDataStructures();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/ValidateDataStructures", ReplyAction="*")]
-        System.IAsyncResult BeginValidateDataStructures(System.AsyncCallback callback, object asyncState);
-        
-        void EndValidateDataStructures(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetExternalIP", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string GetExternalIP();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetExternalIP", ReplyAction="*")]
-        System.IAsyncResult BeginGetExternalIP(System.AsyncCallback callback, object asyncState);
-        
-        string EndGetExternalIP(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetTaskData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -39,21 +29,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Task[] GetTaskData();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetTaskData", ReplyAction="*")]
-        System.IAsyncResult BeginGetTaskData(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Task[] EndGetTaskData(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommandRepo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Command[] GetCommandRepo();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetCommandRepo", ReplyAction="*")]
-        System.IAsyncResult BeginGetCommandRepo(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Command[] EndGetCommandRepo(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConnectionRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -61,21 +41,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Client[] GetConnectionRepository();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetConnectionRepository", ReplyAction="*")]
-        System.IAsyncResult BeginGetConnectionRepository(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Client[] EndGetConnectionRepository(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConsumerRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Consumer[] GetConsumerRepository();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetConsumerRepository", ReplyAction="*")]
-        System.IAsyncResult BeginGetConsumerRepository(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Consumer[] EndGetConsumerRepository(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetLogRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -83,21 +53,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] GetLogRepository();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetLogRepository", ReplyAction="*")]
-        System.IAsyncResult BeginGetLogRepository(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Log[] EndGetLogRepository(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetResponseRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Response[] GetResponseRepository();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetResponseRepository", ReplyAction="*")]
-        System.IAsyncResult BeginGetResponseRepository(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Response[] EndGetResponseRepository(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/LogsGetAll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -105,21 +65,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] LogsGetAll();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/LogsGetAll", ReplyAction="*")]
-        System.IAsyncResult BeginLogsGetAll(System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Log[] EndLogsGetAll(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
-        System.IAsyncResult BeginQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState);
-        
-        Plex.MobileHub.Manager.ManagementWebservice.Result EndQuery(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -127,21 +77,11 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         int NonQuery(string sql, object[] arguments);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
-        System.IAsyncResult BeginNonQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState);
-        
-        int EndNonQuery(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/RetrieveCommand", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void RetrieveCommand(int Id);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/RetrieveCommand", ReplyAction="*")]
-        System.IAsyncResult BeginRetrieveCommand(int Id, System.AsyncCallback callback, object asyncState);
-        
-        void EndRetrieveCommand(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResetLogs", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -149,32 +89,17 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResetLogs();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/ResetLogs", ReplyAction="*")]
-        System.IAsyncResult BeginResetLogs(System.AsyncCallback callback, object asyncState);
-        
-        void EndResetLogs(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Test", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         string Test();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/Test", ReplyAction="*")]
-        System.IAsyncResult BeginTest(System.AsyncCallback callback, object asyncState);
-        
-        string EndTest(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetReferenceTree", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         object GetReferenceTree();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://pmh.plexxis.com/GetReferenceTree", ReplyAction="*")]
-        System.IAsyncResult BeginGetReferenceTree(System.AsyncCallback callback, object asyncState);
-        
-        object EndGetReferenceTree(System.IAsyncResult result);
     }
     
     /// <remarks/>
@@ -243,7 +168,7 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class Row : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Tuple : object, System.ComponentModel.INotifyPropertyChanged {
         
         private object[] valuesField;
         
@@ -479,7 +404,7 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         private Col[] columnsField;
         
-        private Row[] rowsField;
+        private Tuple[] rowsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
@@ -495,7 +420,7 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public Row[] Rows {
+        public Tuple[] Rows {
             get {
                 return this.rowsField;
             }
@@ -833,8 +758,8 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(APPS))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_APPS))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANIES))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANY_USER_APPS))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(LOGS))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANY_USER_APPS))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANY_USERS))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
     [System.SerializableAttribute()]
@@ -2040,71 +1965,6 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_DB_COMPANY_USER_APPS : PlexxisDataTransferObjects {
-        
-        private int dB_COMPANY_USER_APP_IDField;
-        
-        private int dB_COMPANY_USER_IDField;
-        
-        private int aPP_IDField;
-        
-        private System.Nullable<int> aPP_USER_TYPE_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DB_COMPANY_USER_APP_ID {
-            get {
-                return this.dB_COMPANY_USER_APP_IDField;
-            }
-            set {
-                this.dB_COMPANY_USER_APP_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_USER_APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int DB_COMPANY_USER_ID {
-            get {
-                return this.dB_COMPANY_USER_IDField;
-            }
-            set {
-                this.dB_COMPANY_USER_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_USER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public System.Nullable<int> APP_USER_TYPE_ID {
-            get {
-                return this.aPP_USER_TYPE_IDField;
-            }
-            set {
-                this.aPP_USER_TYPE_IDField = value;
-                this.RaisePropertyChanged("APP_USER_TYPE_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
     public partial class LOGS : PlexxisDataTransferObjects {
         
         private int lOG_IDField;
@@ -2160,6 +2020,71 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             set {
                 this.cLIENT_IDField = value;
                 this.RaisePropertyChanged("CLIENT_ID");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class CLIENT_DB_COMPANY_USER_APPS : PlexxisDataTransferObjects {
+        
+        private int dB_COMPANY_USER_APP_IDField;
+        
+        private int dB_COMPANY_USER_IDField;
+        
+        private int aPP_IDField;
+        
+        private System.Nullable<int> aPP_USER_TYPE_IDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int DB_COMPANY_USER_APP_ID {
+            get {
+                return this.dB_COMPANY_USER_APP_IDField;
+            }
+            set {
+                this.dB_COMPANY_USER_APP_IDField = value;
+                this.RaisePropertyChanged("DB_COMPANY_USER_APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int DB_COMPANY_USER_ID {
+            get {
+                return this.dB_COMPANY_USER_IDField;
+            }
+            set {
+                this.dB_COMPANY_USER_IDField = value;
+                this.RaisePropertyChanged("DB_COMPANY_USER_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int APP_ID {
+            get {
+                return this.aPP_IDField;
+            }
+            set {
+                this.aPP_IDField = value;
+                this.RaisePropertyChanged("APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<int> APP_USER_TYPE_ID {
+            get {
+                return this.aPP_USER_TYPE_IDField;
+            }
+            set {
+                this.aPP_USER_TYPE_IDField = value;
+                this.RaisePropertyChanged("APP_USER_TYPE_ID");
             }
         }
     }
@@ -2309,325 +2234,7 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetExternalIPCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetExternalIPCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetTaskDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetTaskDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Task[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Task[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetCommandRepoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetCommandRepoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Command[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Command[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetConnectionRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetConnectionRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Client[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Client[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetConsumerRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetConsumerRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Consumer[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Consumer[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetLogRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetLogRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Log[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Log[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetResponseRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetResponseRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Response[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Response[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LogsGetAllCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public LogsGetAllCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Log[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Log[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class QueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public QueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Result Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Plex.MobileHub.Manager.ManagementWebservice.Result)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class NonQueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public NonQueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public int Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public TestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetReferenceTreeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetReferenceTreeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public object Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((object)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ManagerSDKSoapClient : System.ServiceModel.ClientBase<Plex.MobileHub.Manager.ManagementWebservice.ManagerSDKSoap>, Plex.MobileHub.Manager.ManagementWebservice.ManagerSDKSoap {
-        
-        private BeginOperationDelegate onBeginValidateDataStructuresDelegate;
-        
-        private EndOperationDelegate onEndValidateDataStructuresDelegate;
-        
-        private System.Threading.SendOrPostCallback onValidateDataStructuresCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetExternalIPDelegate;
-        
-        private EndOperationDelegate onEndGetExternalIPDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetExternalIPCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetTaskDataDelegate;
-        
-        private EndOperationDelegate onEndGetTaskDataDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetTaskDataCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetCommandRepoDelegate;
-        
-        private EndOperationDelegate onEndGetCommandRepoDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetCommandRepoCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetConnectionRepositoryDelegate;
-        
-        private EndOperationDelegate onEndGetConnectionRepositoryDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetConnectionRepositoryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetConsumerRepositoryDelegate;
-        
-        private EndOperationDelegate onEndGetConsumerRepositoryDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetConsumerRepositoryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetLogRepositoryDelegate;
-        
-        private EndOperationDelegate onEndGetLogRepositoryDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetLogRepositoryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetResponseRepositoryDelegate;
-        
-        private EndOperationDelegate onEndGetResponseRepositoryDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetResponseRepositoryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginLogsGetAllDelegate;
-        
-        private EndOperationDelegate onEndLogsGetAllDelegate;
-        
-        private System.Threading.SendOrPostCallback onLogsGetAllCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginQueryDelegate;
-        
-        private EndOperationDelegate onEndQueryDelegate;
-        
-        private System.Threading.SendOrPostCallback onQueryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginNonQueryDelegate;
-        
-        private EndOperationDelegate onEndNonQueryDelegate;
-        
-        private System.Threading.SendOrPostCallback onNonQueryCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginRetrieveCommandDelegate;
-        
-        private EndOperationDelegate onEndRetrieveCommandDelegate;
-        
-        private System.Threading.SendOrPostCallback onRetrieveCommandCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginResetLogsDelegate;
-        
-        private EndOperationDelegate onEndResetLogsDelegate;
-        
-        private System.Threading.SendOrPostCallback onResetLogsCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginTestDelegate;
-        
-        private EndOperationDelegate onEndTestDelegate;
-        
-        private System.Threading.SendOrPostCallback onTestCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetReferenceTreeDelegate;
-        
-        private EndOperationDelegate onEndGetReferenceTreeDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetReferenceTreeCompletedDelegate;
         
         public ManagerSDKSoapClient() {
         }
@@ -2648,761 +2255,64 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
                 base(binding, remoteAddress) {
         }
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ValidateDataStructuresCompleted;
-        
-        public event System.EventHandler<GetExternalIPCompletedEventArgs> GetExternalIPCompleted;
-        
-        public event System.EventHandler<GetTaskDataCompletedEventArgs> GetTaskDataCompleted;
-        
-        public event System.EventHandler<GetCommandRepoCompletedEventArgs> GetCommandRepoCompleted;
-        
-        public event System.EventHandler<GetConnectionRepositoryCompletedEventArgs> GetConnectionRepositoryCompleted;
-        
-        public event System.EventHandler<GetConsumerRepositoryCompletedEventArgs> GetConsumerRepositoryCompleted;
-        
-        public event System.EventHandler<GetLogRepositoryCompletedEventArgs> GetLogRepositoryCompleted;
-        
-        public event System.EventHandler<GetResponseRepositoryCompletedEventArgs> GetResponseRepositoryCompleted;
-        
-        public event System.EventHandler<LogsGetAllCompletedEventArgs> LogsGetAllCompleted;
-        
-        public event System.EventHandler<QueryCompletedEventArgs> QueryCompleted;
-        
-        public event System.EventHandler<NonQueryCompletedEventArgs> NonQueryCompleted;
-        
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> RetrieveCommandCompleted;
-        
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ResetLogsCompleted;
-        
-        public event System.EventHandler<TestCompletedEventArgs> TestCompleted;
-        
-        public event System.EventHandler<GetReferenceTreeCompletedEventArgs> GetReferenceTreeCompleted;
-        
         public void ValidateDataStructures() {
             base.Channel.ValidateDataStructures();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginValidateDataStructures(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginValidateDataStructures(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public void EndValidateDataStructures(System.IAsyncResult result) {
-            base.Channel.EndValidateDataStructures(result);
-        }
-        
-        private System.IAsyncResult OnBeginValidateDataStructures(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginValidateDataStructures(callback, asyncState);
-        }
-        
-        private object[] OnEndValidateDataStructures(System.IAsyncResult result) {
-            this.EndValidateDataStructures(result);
-            return null;
-        }
-        
-        private void OnValidateDataStructuresCompleted(object state) {
-            if ((this.ValidateDataStructuresCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.ValidateDataStructuresCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void ValidateDataStructuresAsync() {
-            this.ValidateDataStructuresAsync(null);
-        }
-        
-        public void ValidateDataStructuresAsync(object userState) {
-            if ((this.onBeginValidateDataStructuresDelegate == null)) {
-                this.onBeginValidateDataStructuresDelegate = new BeginOperationDelegate(this.OnBeginValidateDataStructures);
-            }
-            if ((this.onEndValidateDataStructuresDelegate == null)) {
-                this.onEndValidateDataStructuresDelegate = new EndOperationDelegate(this.OnEndValidateDataStructures);
-            }
-            if ((this.onValidateDataStructuresCompletedDelegate == null)) {
-                this.onValidateDataStructuresCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnValidateDataStructuresCompleted);
-            }
-            base.InvokeAsync(this.onBeginValidateDataStructuresDelegate, null, this.onEndValidateDataStructuresDelegate, this.onValidateDataStructuresCompletedDelegate, userState);
         }
         
         public string GetExternalIP() {
             return base.Channel.GetExternalIP();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetExternalIP(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetExternalIP(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetExternalIP(System.IAsyncResult result) {
-            return base.Channel.EndGetExternalIP(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetExternalIP(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetExternalIP(callback, asyncState);
-        }
-        
-        private object[] OnEndGetExternalIP(System.IAsyncResult result) {
-            string retVal = this.EndGetExternalIP(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetExternalIPCompleted(object state) {
-            if ((this.GetExternalIPCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetExternalIPCompleted(this, new GetExternalIPCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetExternalIPAsync() {
-            this.GetExternalIPAsync(null);
-        }
-        
-        public void GetExternalIPAsync(object userState) {
-            if ((this.onBeginGetExternalIPDelegate == null)) {
-                this.onBeginGetExternalIPDelegate = new BeginOperationDelegate(this.OnBeginGetExternalIP);
-            }
-            if ((this.onEndGetExternalIPDelegate == null)) {
-                this.onEndGetExternalIPDelegate = new EndOperationDelegate(this.OnEndGetExternalIP);
-            }
-            if ((this.onGetExternalIPCompletedDelegate == null)) {
-                this.onGetExternalIPCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetExternalIPCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetExternalIPDelegate, null, this.onEndGetExternalIPDelegate, this.onGetExternalIPCompletedDelegate, userState);
-        }
-        
         public Plex.MobileHub.Manager.ManagementWebservice.Task[] GetTaskData() {
             return base.Channel.GetTaskData();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetTaskData(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetTaskData(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Task[] EndGetTaskData(System.IAsyncResult result) {
-            return base.Channel.EndGetTaskData(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetTaskData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetTaskData(callback, asyncState);
-        }
-        
-        private object[] OnEndGetTaskData(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Task[] retVal = this.EndGetTaskData(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetTaskDataCompleted(object state) {
-            if ((this.GetTaskDataCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetTaskDataCompleted(this, new GetTaskDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetTaskDataAsync() {
-            this.GetTaskDataAsync(null);
-        }
-        
-        public void GetTaskDataAsync(object userState) {
-            if ((this.onBeginGetTaskDataDelegate == null)) {
-                this.onBeginGetTaskDataDelegate = new BeginOperationDelegate(this.OnBeginGetTaskData);
-            }
-            if ((this.onEndGetTaskDataDelegate == null)) {
-                this.onEndGetTaskDataDelegate = new EndOperationDelegate(this.OnEndGetTaskData);
-            }
-            if ((this.onGetTaskDataCompletedDelegate == null)) {
-                this.onGetTaskDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTaskDataCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetTaskDataDelegate, null, this.onEndGetTaskDataDelegate, this.onGetTaskDataCompletedDelegate, userState);
         }
         
         public Plex.MobileHub.Manager.ManagementWebservice.Command[] GetCommandRepo() {
             return base.Channel.GetCommandRepo();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetCommandRepo(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetCommandRepo(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Command[] EndGetCommandRepo(System.IAsyncResult result) {
-            return base.Channel.EndGetCommandRepo(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetCommandRepo(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetCommandRepo(callback, asyncState);
-        }
-        
-        private object[] OnEndGetCommandRepo(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Command[] retVal = this.EndGetCommandRepo(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetCommandRepoCompleted(object state) {
-            if ((this.GetCommandRepoCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetCommandRepoCompleted(this, new GetCommandRepoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetCommandRepoAsync() {
-            this.GetCommandRepoAsync(null);
-        }
-        
-        public void GetCommandRepoAsync(object userState) {
-            if ((this.onBeginGetCommandRepoDelegate == null)) {
-                this.onBeginGetCommandRepoDelegate = new BeginOperationDelegate(this.OnBeginGetCommandRepo);
-            }
-            if ((this.onEndGetCommandRepoDelegate == null)) {
-                this.onEndGetCommandRepoDelegate = new EndOperationDelegate(this.OnEndGetCommandRepo);
-            }
-            if ((this.onGetCommandRepoCompletedDelegate == null)) {
-                this.onGetCommandRepoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCommandRepoCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetCommandRepoDelegate, null, this.onEndGetCommandRepoDelegate, this.onGetCommandRepoCompletedDelegate, userState);
-        }
-        
         public Plex.MobileHub.Manager.ManagementWebservice.Client[] GetConnectionRepository() {
             return base.Channel.GetConnectionRepository();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetConnectionRepository(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetConnectionRepository(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Client[] EndGetConnectionRepository(System.IAsyncResult result) {
-            return base.Channel.EndGetConnectionRepository(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetConnectionRepository(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetConnectionRepository(callback, asyncState);
-        }
-        
-        private object[] OnEndGetConnectionRepository(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Client[] retVal = this.EndGetConnectionRepository(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetConnectionRepositoryCompleted(object state) {
-            if ((this.GetConnectionRepositoryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetConnectionRepositoryCompleted(this, new GetConnectionRepositoryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetConnectionRepositoryAsync() {
-            this.GetConnectionRepositoryAsync(null);
-        }
-        
-        public void GetConnectionRepositoryAsync(object userState) {
-            if ((this.onBeginGetConnectionRepositoryDelegate == null)) {
-                this.onBeginGetConnectionRepositoryDelegate = new BeginOperationDelegate(this.OnBeginGetConnectionRepository);
-            }
-            if ((this.onEndGetConnectionRepositoryDelegate == null)) {
-                this.onEndGetConnectionRepositoryDelegate = new EndOperationDelegate(this.OnEndGetConnectionRepository);
-            }
-            if ((this.onGetConnectionRepositoryCompletedDelegate == null)) {
-                this.onGetConnectionRepositoryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetConnectionRepositoryCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetConnectionRepositoryDelegate, null, this.onEndGetConnectionRepositoryDelegate, this.onGetConnectionRepositoryCompletedDelegate, userState);
         }
         
         public Plex.MobileHub.Manager.ManagementWebservice.Consumer[] GetConsumerRepository() {
             return base.Channel.GetConsumerRepository();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetConsumerRepository(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetConsumerRepository(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Consumer[] EndGetConsumerRepository(System.IAsyncResult result) {
-            return base.Channel.EndGetConsumerRepository(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetConsumerRepository(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetConsumerRepository(callback, asyncState);
-        }
-        
-        private object[] OnEndGetConsumerRepository(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Consumer[] retVal = this.EndGetConsumerRepository(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetConsumerRepositoryCompleted(object state) {
-            if ((this.GetConsumerRepositoryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetConsumerRepositoryCompleted(this, new GetConsumerRepositoryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetConsumerRepositoryAsync() {
-            this.GetConsumerRepositoryAsync(null);
-        }
-        
-        public void GetConsumerRepositoryAsync(object userState) {
-            if ((this.onBeginGetConsumerRepositoryDelegate == null)) {
-                this.onBeginGetConsumerRepositoryDelegate = new BeginOperationDelegate(this.OnBeginGetConsumerRepository);
-            }
-            if ((this.onEndGetConsumerRepositoryDelegate == null)) {
-                this.onEndGetConsumerRepositoryDelegate = new EndOperationDelegate(this.OnEndGetConsumerRepository);
-            }
-            if ((this.onGetConsumerRepositoryCompletedDelegate == null)) {
-                this.onGetConsumerRepositoryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetConsumerRepositoryCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetConsumerRepositoryDelegate, null, this.onEndGetConsumerRepositoryDelegate, this.onGetConsumerRepositoryCompletedDelegate, userState);
-        }
-        
         public Plex.MobileHub.Manager.ManagementWebservice.Log[] GetLogRepository() {
             return base.Channel.GetLogRepository();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetLogRepository(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetLogRepository(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Log[] EndGetLogRepository(System.IAsyncResult result) {
-            return base.Channel.EndGetLogRepository(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetLogRepository(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetLogRepository(callback, asyncState);
-        }
-        
-        private object[] OnEndGetLogRepository(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Log[] retVal = this.EndGetLogRepository(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetLogRepositoryCompleted(object state) {
-            if ((this.GetLogRepositoryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetLogRepositoryCompleted(this, new GetLogRepositoryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetLogRepositoryAsync() {
-            this.GetLogRepositoryAsync(null);
-        }
-        
-        public void GetLogRepositoryAsync(object userState) {
-            if ((this.onBeginGetLogRepositoryDelegate == null)) {
-                this.onBeginGetLogRepositoryDelegate = new BeginOperationDelegate(this.OnBeginGetLogRepository);
-            }
-            if ((this.onEndGetLogRepositoryDelegate == null)) {
-                this.onEndGetLogRepositoryDelegate = new EndOperationDelegate(this.OnEndGetLogRepository);
-            }
-            if ((this.onGetLogRepositoryCompletedDelegate == null)) {
-                this.onGetLogRepositoryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetLogRepositoryCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetLogRepositoryDelegate, null, this.onEndGetLogRepositoryDelegate, this.onGetLogRepositoryCompletedDelegate, userState);
         }
         
         public Plex.MobileHub.Manager.ManagementWebservice.Response[] GetResponseRepository() {
             return base.Channel.GetResponseRepository();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetResponseRepository(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetResponseRepository(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Response[] EndGetResponseRepository(System.IAsyncResult result) {
-            return base.Channel.EndGetResponseRepository(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetResponseRepository(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetResponseRepository(callback, asyncState);
-        }
-        
-        private object[] OnEndGetResponseRepository(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Response[] retVal = this.EndGetResponseRepository(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetResponseRepositoryCompleted(object state) {
-            if ((this.GetResponseRepositoryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetResponseRepositoryCompleted(this, new GetResponseRepositoryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetResponseRepositoryAsync() {
-            this.GetResponseRepositoryAsync(null);
-        }
-        
-        public void GetResponseRepositoryAsync(object userState) {
-            if ((this.onBeginGetResponseRepositoryDelegate == null)) {
-                this.onBeginGetResponseRepositoryDelegate = new BeginOperationDelegate(this.OnBeginGetResponseRepository);
-            }
-            if ((this.onEndGetResponseRepositoryDelegate == null)) {
-                this.onEndGetResponseRepositoryDelegate = new EndOperationDelegate(this.OnEndGetResponseRepository);
-            }
-            if ((this.onGetResponseRepositoryCompletedDelegate == null)) {
-                this.onGetResponseRepositoryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetResponseRepositoryCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetResponseRepositoryDelegate, null, this.onEndGetResponseRepositoryDelegate, this.onGetResponseRepositoryCompletedDelegate, userState);
-        }
-        
         public Plex.MobileHub.Manager.ManagementWebservice.Log[] LogsGetAll() {
             return base.Channel.LogsGetAll();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginLogsGetAll(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginLogsGetAll(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Log[] EndLogsGetAll(System.IAsyncResult result) {
-            return base.Channel.EndLogsGetAll(result);
-        }
-        
-        private System.IAsyncResult OnBeginLogsGetAll(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginLogsGetAll(callback, asyncState);
-        }
-        
-        private object[] OnEndLogsGetAll(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Log[] retVal = this.EndLogsGetAll(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnLogsGetAllCompleted(object state) {
-            if ((this.LogsGetAllCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.LogsGetAllCompleted(this, new LogsGetAllCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void LogsGetAllAsync() {
-            this.LogsGetAllAsync(null);
-        }
-        
-        public void LogsGetAllAsync(object userState) {
-            if ((this.onBeginLogsGetAllDelegate == null)) {
-                this.onBeginLogsGetAllDelegate = new BeginOperationDelegate(this.OnBeginLogsGetAll);
-            }
-            if ((this.onEndLogsGetAllDelegate == null)) {
-                this.onEndLogsGetAllDelegate = new EndOperationDelegate(this.OnEndLogsGetAll);
-            }
-            if ((this.onLogsGetAllCompletedDelegate == null)) {
-                this.onLogsGetAllCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLogsGetAllCompleted);
-            }
-            base.InvokeAsync(this.onBeginLogsGetAllDelegate, null, this.onEndLogsGetAllDelegate, this.onLogsGetAllCompletedDelegate, userState);
         }
         
         public Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments) {
             return base.Channel.Query(sql, arguments);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginQuery(sql, arguments, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Plex.MobileHub.Manager.ManagementWebservice.Result EndQuery(System.IAsyncResult result) {
-            return base.Channel.EndQuery(result);
-        }
-        
-        private System.IAsyncResult OnBeginQuery(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string sql = ((string)(inValues[0]));
-            object[] arguments = ((object[])(inValues[1]));
-            return this.BeginQuery(sql, arguments, callback, asyncState);
-        }
-        
-        private object[] OnEndQuery(System.IAsyncResult result) {
-            Plex.MobileHub.Manager.ManagementWebservice.Result retVal = this.EndQuery(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnQueryCompleted(object state) {
-            if ((this.QueryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.QueryCompleted(this, new QueryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void QueryAsync(string sql, object[] arguments) {
-            this.QueryAsync(sql, arguments, null);
-        }
-        
-        public void QueryAsync(string sql, object[] arguments, object userState) {
-            if ((this.onBeginQueryDelegate == null)) {
-                this.onBeginQueryDelegate = new BeginOperationDelegate(this.OnBeginQuery);
-            }
-            if ((this.onEndQueryDelegate == null)) {
-                this.onEndQueryDelegate = new EndOperationDelegate(this.OnEndQuery);
-            }
-            if ((this.onQueryCompletedDelegate == null)) {
-                this.onQueryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryCompleted);
-            }
-            base.InvokeAsync(this.onBeginQueryDelegate, new object[] {
-                        sql,
-                        arguments}, this.onEndQueryDelegate, this.onQueryCompletedDelegate, userState);
-        }
-        
         public int NonQuery(string sql, object[] arguments) {
             return base.Channel.NonQuery(sql, arguments);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginNonQuery(string sql, object[] arguments, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginNonQuery(sql, arguments, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public int EndNonQuery(System.IAsyncResult result) {
-            return base.Channel.EndNonQuery(result);
-        }
-        
-        private System.IAsyncResult OnBeginNonQuery(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string sql = ((string)(inValues[0]));
-            object[] arguments = ((object[])(inValues[1]));
-            return this.BeginNonQuery(sql, arguments, callback, asyncState);
-        }
-        
-        private object[] OnEndNonQuery(System.IAsyncResult result) {
-            int retVal = this.EndNonQuery(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnNonQueryCompleted(object state) {
-            if ((this.NonQueryCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.NonQueryCompleted(this, new NonQueryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void NonQueryAsync(string sql, object[] arguments) {
-            this.NonQueryAsync(sql, arguments, null);
-        }
-        
-        public void NonQueryAsync(string sql, object[] arguments, object userState) {
-            if ((this.onBeginNonQueryDelegate == null)) {
-                this.onBeginNonQueryDelegate = new BeginOperationDelegate(this.OnBeginNonQuery);
-            }
-            if ((this.onEndNonQueryDelegate == null)) {
-                this.onEndNonQueryDelegate = new EndOperationDelegate(this.OnEndNonQuery);
-            }
-            if ((this.onNonQueryCompletedDelegate == null)) {
-                this.onNonQueryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnNonQueryCompleted);
-            }
-            base.InvokeAsync(this.onBeginNonQueryDelegate, new object[] {
-                        sql,
-                        arguments}, this.onEndNonQueryDelegate, this.onNonQueryCompletedDelegate, userState);
         }
         
         public void RetrieveCommand(int Id) {
             base.Channel.RetrieveCommand(Id);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginRetrieveCommand(int Id, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginRetrieveCommand(Id, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public void EndRetrieveCommand(System.IAsyncResult result) {
-            base.Channel.EndRetrieveCommand(result);
-        }
-        
-        private System.IAsyncResult OnBeginRetrieveCommand(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int Id = ((int)(inValues[0]));
-            return this.BeginRetrieveCommand(Id, callback, asyncState);
-        }
-        
-        private object[] OnEndRetrieveCommand(System.IAsyncResult result) {
-            this.EndRetrieveCommand(result);
-            return null;
-        }
-        
-        private void OnRetrieveCommandCompleted(object state) {
-            if ((this.RetrieveCommandCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.RetrieveCommandCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void RetrieveCommandAsync(int Id) {
-            this.RetrieveCommandAsync(Id, null);
-        }
-        
-        public void RetrieveCommandAsync(int Id, object userState) {
-            if ((this.onBeginRetrieveCommandDelegate == null)) {
-                this.onBeginRetrieveCommandDelegate = new BeginOperationDelegate(this.OnBeginRetrieveCommand);
-            }
-            if ((this.onEndRetrieveCommandDelegate == null)) {
-                this.onEndRetrieveCommandDelegate = new EndOperationDelegate(this.OnEndRetrieveCommand);
-            }
-            if ((this.onRetrieveCommandCompletedDelegate == null)) {
-                this.onRetrieveCommandCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRetrieveCommandCompleted);
-            }
-            base.InvokeAsync(this.onBeginRetrieveCommandDelegate, new object[] {
-                        Id}, this.onEndRetrieveCommandDelegate, this.onRetrieveCommandCompletedDelegate, userState);
-        }
-        
         public void ResetLogs() {
             base.Channel.ResetLogs();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginResetLogs(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginResetLogs(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public void EndResetLogs(System.IAsyncResult result) {
-            base.Channel.EndResetLogs(result);
-        }
-        
-        private System.IAsyncResult OnBeginResetLogs(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginResetLogs(callback, asyncState);
-        }
-        
-        private object[] OnEndResetLogs(System.IAsyncResult result) {
-            this.EndResetLogs(result);
-            return null;
-        }
-        
-        private void OnResetLogsCompleted(object state) {
-            if ((this.ResetLogsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.ResetLogsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void ResetLogsAsync() {
-            this.ResetLogsAsync(null);
-        }
-        
-        public void ResetLogsAsync(object userState) {
-            if ((this.onBeginResetLogsDelegate == null)) {
-                this.onBeginResetLogsDelegate = new BeginOperationDelegate(this.OnBeginResetLogs);
-            }
-            if ((this.onEndResetLogsDelegate == null)) {
-                this.onEndResetLogsDelegate = new EndOperationDelegate(this.OnEndResetLogs);
-            }
-            if ((this.onResetLogsCompletedDelegate == null)) {
-                this.onResetLogsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnResetLogsCompleted);
-            }
-            base.InvokeAsync(this.onBeginResetLogsDelegate, null, this.onEndResetLogsDelegate, this.onResetLogsCompletedDelegate, userState);
         }
         
         public string Test() {
             return base.Channel.Test();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginTest(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginTest(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndTest(System.IAsyncResult result) {
-            return base.Channel.EndTest(result);
-        }
-        
-        private System.IAsyncResult OnBeginTest(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginTest(callback, asyncState);
-        }
-        
-        private object[] OnEndTest(System.IAsyncResult result) {
-            string retVal = this.EndTest(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnTestCompleted(object state) {
-            if ((this.TestCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.TestCompleted(this, new TestCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void TestAsync() {
-            this.TestAsync(null);
-        }
-        
-        public void TestAsync(object userState) {
-            if ((this.onBeginTestDelegate == null)) {
-                this.onBeginTestDelegate = new BeginOperationDelegate(this.OnBeginTest);
-            }
-            if ((this.onEndTestDelegate == null)) {
-                this.onEndTestDelegate = new EndOperationDelegate(this.OnEndTest);
-            }
-            if ((this.onTestCompletedDelegate == null)) {
-                this.onTestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnTestCompleted);
-            }
-            base.InvokeAsync(this.onBeginTestDelegate, null, this.onEndTestDelegate, this.onTestCompletedDelegate, userState);
-        }
-        
         public object GetReferenceTree() {
             return base.Channel.GetReferenceTree();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetReferenceTree(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetReferenceTree(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public object EndGetReferenceTree(System.IAsyncResult result) {
-            return base.Channel.EndGetReferenceTree(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetReferenceTree(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetReferenceTree(callback, asyncState);
-        }
-        
-        private object[] OnEndGetReferenceTree(System.IAsyncResult result) {
-            object retVal = this.EndGetReferenceTree(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetReferenceTreeCompleted(object state) {
-            if ((this.GetReferenceTreeCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetReferenceTreeCompleted(this, new GetReferenceTreeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetReferenceTreeAsync() {
-            this.GetReferenceTreeAsync(null);
-        }
-        
-        public void GetReferenceTreeAsync(object userState) {
-            if ((this.onBeginGetReferenceTreeDelegate == null)) {
-                this.onBeginGetReferenceTreeDelegate = new BeginOperationDelegate(this.OnBeginGetReferenceTree);
-            }
-            if ((this.onEndGetReferenceTreeDelegate == null)) {
-                this.onEndGetReferenceTreeDelegate = new EndOperationDelegate(this.OnEndGetReferenceTree);
-            }
-            if ((this.onGetReferenceTreeCompletedDelegate == null)) {
-                this.onGetReferenceTreeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetReferenceTreeCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetReferenceTreeDelegate, null, this.onEndGetReferenceTreeDelegate, this.onGetReferenceTreeCompletedDelegate, userState);
         }
     }
 }

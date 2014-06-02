@@ -17,22 +17,22 @@ namespace Plex.MobileHub.Manager.Data
         }
         public List<object> Values = new List<object>();
 
-        public static Tuple FromRow(Row row)
+        public static Tuple FromRow(ManagementWebservice.Tuple row)
         {
             return new Tuple()
             {
                 Values = row.Values.ToList()
             };
         }
-        public static Row ToRow(Tuple row)
+        public static ManagementWebservice.Tuple ToRow(Tuple row)
         {
-            return new Row()
+            return new ManagementWebservice.Tuple()
             {
                 Values = row.Values.ToArray()
             };
         }
 
-        public Row ToRow()
+        public ManagementWebservice.Tuple ToRow()
         {
             return ToRow(this);
         }

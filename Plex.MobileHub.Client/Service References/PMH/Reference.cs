@@ -44,6 +44,20 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        MobileHubClient.PMH.Result Query(string sql, object[] arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int NonQuery(string sql, object[] arguments);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
@@ -441,6 +455,284 @@ namespace MobileHubClient.PMH {
             set {
                 this.appsField = value;
                 this.RaisePropertyChanged("Apps");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class Tuple : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private object[] valuesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public object[] Values {
+            get {
+                return this.valuesField;
+            }
+            set {
+                this.valuesField = value;
+                this.RaisePropertyChanged("Values");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class Col : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string columnNameField;
+        
+        private System.Nullable<int> columnSequenceField;
+        
+        private string dataTypeField;
+        
+        private System.Nullable<int> dataLengthField;
+        
+        private System.Nullable<int> dataPrecisionField;
+        
+        private System.Nullable<int> dataScaleField;
+        
+        private System.Nullable<bool> allowDbNullField;
+        
+        private System.Nullable<bool> isReadOnlyField;
+        
+        private System.Nullable<bool> isLongField;
+        
+        private System.Nullable<bool> isKeyField;
+        
+        private string keyTypeField;
+        
+        private System.Nullable<bool> isUniqueField;
+        
+        private string descriptionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string ColumnName {
+            get {
+                return this.columnNameField;
+            }
+            set {
+                this.columnNameField = value;
+                this.RaisePropertyChanged("ColumnName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<int> ColumnSequence {
+            get {
+                return this.columnSequenceField;
+            }
+            set {
+                this.columnSequenceField = value;
+                this.RaisePropertyChanged("ColumnSequence");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string DataType {
+            get {
+                return this.dataTypeField;
+            }
+            set {
+                this.dataTypeField = value;
+                this.RaisePropertyChanged("DataType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<int> DataLength {
+            get {
+                return this.dataLengthField;
+            }
+            set {
+                this.dataLengthField = value;
+                this.RaisePropertyChanged("DataLength");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public System.Nullable<int> DataPrecision {
+            get {
+                return this.dataPrecisionField;
+            }
+            set {
+                this.dataPrecisionField = value;
+                this.RaisePropertyChanged("DataPrecision");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public System.Nullable<int> DataScale {
+            get {
+                return this.dataScaleField;
+            }
+            set {
+                this.dataScaleField = value;
+                this.RaisePropertyChanged("DataScale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
+        public System.Nullable<bool> AllowDbNull {
+            get {
+                return this.allowDbNullField;
+            }
+            set {
+                this.allowDbNullField = value;
+                this.RaisePropertyChanged("AllowDbNull");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public System.Nullable<bool> IsReadOnly {
+            get {
+                return this.isReadOnlyField;
+            }
+            set {
+                this.isReadOnlyField = value;
+                this.RaisePropertyChanged("IsReadOnly");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
+        public System.Nullable<bool> IsLong {
+            get {
+                return this.isLongField;
+            }
+            set {
+                this.isLongField = value;
+                this.RaisePropertyChanged("IsLong");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
+        public System.Nullable<bool> IsKey {
+            get {
+                return this.isKeyField;
+            }
+            set {
+                this.isKeyField = value;
+                this.RaisePropertyChanged("IsKey");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string KeyType {
+            get {
+                return this.keyTypeField;
+            }
+            set {
+                this.keyTypeField = value;
+                this.RaisePropertyChanged("KeyType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
+        public System.Nullable<bool> IsUnique {
+            get {
+                return this.isUniqueField;
+            }
+            set {
+                this.isUniqueField = value;
+                this.RaisePropertyChanged("IsUnique");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("Description");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class Result : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Col[] columnsField;
+        
+        private Tuple[] rowsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public Col[] Columns {
+            get {
+                return this.columnsField;
+            }
+            set {
+                this.columnsField = value;
+                this.RaisePropertyChanged("Columns");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public Tuple[] Rows {
+            get {
+                return this.rowsField;
+            }
+            set {
+                this.rowsField = value;
+                this.RaisePropertyChanged("Rows");
             }
         }
         
@@ -1096,6 +1388,14 @@ namespace MobileHubClient.PMH {
         
         public void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component) {
             base.Channel.ResponsePartial(Component);
+        }
+        
+        public MobileHubClient.PMH.Result Query(string sql, object[] arguments) {
+            return base.Channel.Query(sql, arguments);
+        }
+        
+        public int NonQuery(string sql, object[] arguments) {
+            return base.Channel.NonQuery(sql, arguments);
         }
         
         public MobileHubClient.PMH.ClientSynchroData SyncDataGet() {
