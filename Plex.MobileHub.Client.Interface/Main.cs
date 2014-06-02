@@ -17,18 +17,23 @@ namespace Plex.MobileHub.Client.Interface
             InitializeComponent();
         }
 
-
         private void Main_Load(object sender, EventArgs e)
         {
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
         }
 
-        private void loginInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WinFactory winFactory = new WinFactory();
             Form form = winFactory.GetLoginSettingWin32();
             form.ShowDialog(this);
+
+        }
+
+        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manager manager = Manager.Instance;
         }
     }
 }

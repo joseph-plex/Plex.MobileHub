@@ -107,6 +107,17 @@ namespace Plex.MobileHub.Client.Interface
                 return service.DatabaseInformationRetrieve();
         }
 
+        public void LogOn()
+        {
+            using(var service = GetGeneralService())
+                service.LogOn();
+        }
+
+        public void LogOff()
+        {
+            using (var service = GetGeneralService())
+                service.LogOff();
+        }
         Manager() { }
 
         GeneralServiceClient GetGeneralService()
