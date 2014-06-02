@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" Name="Plex Mobile Hub Client" Language="1033" Version="1.0.0.0" Manufacturer="Joseph" UpgradeCode="6daf463c-958c-4853-944d-0e0ad5b27569">
-
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 		
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature" Title="Plex Mobile Hub Client" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
