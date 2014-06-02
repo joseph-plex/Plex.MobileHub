@@ -125,9 +125,7 @@ namespace Plex.MobileHub.Client.Interface.Views
             }
             catch{
                 tabs = new List<DatabaseService.Row>();
-                tabs.Add(new DatabaseService.Row(){ Values = new List<object>(){ "hello"}});
             }
-
             foreach (var r in tabs)
                 tables.Nodes.Add(new TreeNode(r.Values[0].ToString()));
 

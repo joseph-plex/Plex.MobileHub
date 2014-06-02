@@ -1,5 +1,6 @@
 ﻿using Plex.MobileHub.Data;
 using Plex.MobileHub.Data.Types;
+using Plex.MobileHub.Data.Tables;
 using Plex.MobileHub.Functionality.Clients;
 using Plex.MobileHub.Objects;
 using Plex.MobileHub.Objects.Synchronization;
@@ -8,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Web.Services;
 using System.Xml.Serialization;
-
 namespace Plex.MobileHub
 {
     /// <summary>
@@ -68,6 +68,29 @@ namespace Plex.MobileHub
         {
             using (var Conn = Utilities.GetConnection(true))
                 return Conn.NonQuery(sql, arguments);
+        }
+
+        [WebMethod]
+        public bool AddClientDbCompany(int clientId, string companyCode,string ConnectionString)
+        {
+            if (!Connections.Instance.ConnectionExists(clientId))
+                return false;
+
+            var client = Connections.Instance.Retrieve(clientId);
+            if (!client.IsConnected)
+                return false;
+
+            using (var Conn = Utilities.GetConnection(true))
+            {
+                new CLIENT_DB_COMPANIES()
+                {
+                    COMPANY_CODE = companyCode,
+                    DATABASE_SID = ConnectionString,
+                    CLIENT_ID = clientId,
+                    DB_COMPANY_ID = Convert.ToInt32(Conn.Query("select id_gen.nextval from dual")[0,0])
+                };
+            }
+            return true;
         }
 
         [WebMethod]

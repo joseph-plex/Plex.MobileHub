@@ -78,6 +78,19 @@ namespace Plex.MobileHub.Objects
             }
         }
 
+        [XmlIgnore]
+        public virtual bool IsConnected
+        {
+            get
+            {
+                if (String.Empty == (IPv4 ?? String.Empty))
+                    return false;
+                if (port == 0)
+                    return false;
+                return true;
+            }
+        }
+
         protected internal int port;
         protected internal string key;
         protected internal int clientId;
