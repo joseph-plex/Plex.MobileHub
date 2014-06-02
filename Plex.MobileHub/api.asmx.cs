@@ -21,8 +21,6 @@ namespace Plex.MobileHub
     // [System.Web.Script.Services.ScriptService]
     public class API : WebService
     {
-        [XmlInclude(typeof(object))]
-
         [WebMethod]
         public MethodResult ConnectionConnect(int ClientId, int AppId, String Database, String User, String Password)
         {

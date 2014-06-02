@@ -7,6 +7,7 @@ using Plex.MobileHub.Data.Types;
 
 namespace Plex.MobileHub.Data
 {
+    using Tuple = Plex.MobileHub.Data.Types.Tuple;
     public static class IDbConnectionExtensions
     {
         public static IDbCommand CreateCommand(this IDbConnection Conn, string CommandText, params object[] Parameters)
@@ -32,7 +33,7 @@ namespace Plex.MobileHub.Data
             using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
             {
                 r.Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
-                for (var Curr = new Row(); reader.Read(); r.Rows.Add(Curr), Curr = new Row())
+                for (var Curr = new Tuple(); reader.Read(); r.Rows.Add(Curr), Curr = new Tuple())
                     for (int i = 0; i < r.Columns.Count; i++)
                         Curr.Values.Add((reader[r.Columns[i].ColumnName] != DBNull.Value) ? reader[r.Columns[i].ColumnName] : null);
             }

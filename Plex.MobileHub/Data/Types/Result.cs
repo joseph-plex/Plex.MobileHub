@@ -41,7 +41,7 @@ namespace Plex.MobileHub.Data.Types
         }
 
         public List<Col> Columns = new List<Col>();
-        public List<Row> Rows = new List<Row>();
+        public List<Tuple> Rows = new List<Tuple>();
 
         public Result()
         {
@@ -50,7 +50,7 @@ namespace Plex.MobileHub.Data.Types
         public Result(IDataReader reader)
         {
             Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
-            for (var Curr = new Row(); reader.Read(); Rows.Add(Curr), Curr = new Row())
+            for (var Curr = new Tuple(); reader.Read(); Rows.Add(Curr), Curr = new Tuple())
                 for (int i = 0; i < Columns.Count; i++)
                     Curr.Values.Add((reader[Columns[i].ColumnName] != DBNull.Value) ? reader[Columns[i].ColumnName] : null);
         }       

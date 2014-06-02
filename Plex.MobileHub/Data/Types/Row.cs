@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class Row
+    public class Tuple
     {
         public object this[int i]
         {
