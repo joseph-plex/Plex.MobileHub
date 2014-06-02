@@ -7,19 +7,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_DatabaseService_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="600000" />
-          <wsrm:AcknowledgementInterval Milliseconds="200" />
-        </wsrm:RMAssertion>
-        <cdp:CompositeDuplex xmlns:cdp="http://schemas.microsoft.com/net/2006/06/duplex" />
-        <ow:OneWay xmlns:ow="http://schemas.microsoft.com/ws/2005/05/routing/policy" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsdl:import namespace="PMHC" location="http://127.0.0.1:55555/Database?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_DatabaseService" type="i0:DatabaseService">
@@ -71,118 +58,12 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="WSDualHttpBinding_DatabaseService" type="i0:DatabaseService">
-    <wsp:PolicyReference URI="#WSDualHttpBinding_DatabaseService_policy" />
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="RegisterDbConnectionData">
-      <soap12:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DatabaseInformationSearch">
-      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DatabaseInformationRetrieve">
-      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CurrentDatabaseInformation">
-      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QuerySource">
-      <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="BasicHttpBinding_DatabaseService" type="i0:DatabaseService">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="RegisterDbConnectionData">
-      <soap:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DatabaseInformationSearch">
-      <soap:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DatabaseInformationRetrieve">
-      <soap:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CurrentDatabaseInformation">
-      <soap:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QuerySource">
-      <soap:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
   <wsdl:service name="DatabaseService">
     <wsdl:port name="WSHttpBinding_DatabaseService" binding="tns:WSHttpBinding_DatabaseService">
       <soap12:address location="http://127.0.0.1:55555/Database/webs" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/Database/webs</wsa10:Address>
       </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="WSDualHttpBinding_DatabaseService" binding="tns:WSDualHttpBinding_DatabaseService">
-      <soap12:address location="http://127.0.0.1:55555/Database/dual" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>http://127.0.0.1:55555/Database/dual</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="BasicHttpBinding_DatabaseService" binding="tns:BasicHttpBinding_DatabaseService">
-      <soap:address location="http://127.0.0.1:55555/Database/basic" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -104,6 +104,31 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/LogOff", ReplyAction="PMHC/GeneralService/LogOffResponse")]
         System.Threading.Tasks.Task LogOffAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
+        void Query(string commandText, System.Collections.Generic.List<object> arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
+        System.Threading.Tasks.Task QueryAsync(string commandText, System.Collections.Generic.List<object> arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplications", ReplyAction="PMHC/GeneralService/GetApplicationsResponse")]
+        void GetApplications(int clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplications", ReplyAction="PMHC/GeneralService/GetApplicationsResponse")]
+        System.Threading.Tasks.Task GetApplicationsAsync(int clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationTables", ReplyAction="PMHC/GeneralService/GetApplicationTablesResponse")]
+        void GetApplicationTables();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationTables", ReplyAction="PMHC/GeneralService/GetApplicationTablesResponse")]
+        System.Threading.Tasks.Task GetApplicationTablesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationsTableColumns", ReplyAction="PMHC/GeneralService/GetApplicationsTableColumnsResponse")]
+        void GetApplicationsTableColumns();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationsTableColumns", ReplyAction="PMHC/GeneralService/GetApplicationsTableColumnsResponse")]
+        System.Threading.Tasks.Task GetApplicationsTableColumnsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -251,6 +276,38 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         public System.Threading.Tasks.Task LogOffAsync() {
             return base.Channel.LogOffAsync();
+        }
+        
+        public void Query(string commandText, System.Collections.Generic.List<object> arguments) {
+            base.Channel.Query(commandText, arguments);
+        }
+        
+        public System.Threading.Tasks.Task QueryAsync(string commandText, System.Collections.Generic.List<object> arguments) {
+            return base.Channel.QueryAsync(commandText, arguments);
+        }
+        
+        public void GetApplications(int clientId) {
+            base.Channel.GetApplications(clientId);
+        }
+        
+        public System.Threading.Tasks.Task GetApplicationsAsync(int clientId) {
+            return base.Channel.GetApplicationsAsync(clientId);
+        }
+        
+        public void GetApplicationTables() {
+            base.Channel.GetApplicationTables();
+        }
+        
+        public System.Threading.Tasks.Task GetApplicationTablesAsync() {
+            return base.Channel.GetApplicationTablesAsync();
+        }
+        
+        public void GetApplicationsTableColumns() {
+            base.Channel.GetApplicationsTableColumns();
+        }
+        
+        public System.Threading.Tasks.Task GetApplicationsTableColumnsAsync() {
+            return base.Channel.GetApplicationsTableColumnsAsync();
         }
     }
 }

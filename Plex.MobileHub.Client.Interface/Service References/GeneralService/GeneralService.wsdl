@@ -7,19 +7,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_GeneralService_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="600000" />
-          <wsrm:AcknowledgementInterval Milliseconds="200" />
-        </wsrm:RMAssertion>
-        <cdp:CompositeDuplex xmlns:cdp="http://schemas.microsoft.com/net/2006/06/duplex" />
-        <ow:OneWay xmlns:ow="http://schemas.microsoft.com/ws/2005/05/routing/policy" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsdl:import namespace="PMHC" location="http://127.0.0.1:55555/General?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_GeneralService" type="i0:GeneralService">
@@ -160,12 +147,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WSDualHttpBinding_GeneralService" type="i0:GeneralService">
-    <wsp:PolicyReference URI="#WSDualHttpBinding_GeneralService_policy" />
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SetClientKey">
-      <soap12:operation soapAction="PMHC/GeneralService/SetClientKey" style="document" />
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="PMHC/GeneralService/Query" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -173,8 +156,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetClientId">
-      <soap12:operation soapAction="PMHC/GeneralService/SetClientId" style="document" />
+    <wsdl:operation name="GetApplications">
+      <soap12:operation soapAction="PMHC/GeneralService/GetApplications" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -182,8 +165,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetAddress">
-      <soap12:operation soapAction="PMHC/GeneralService/SetAddress" style="document" />
+    <wsdl:operation name="GetApplicationTables">
+      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationTables" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -191,250 +174,13 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPort">
-      <soap12:operation soapAction="PMHC/GeneralService/SetPort" style="document" />
+    <wsdl:operation name="GetApplicationsTableColumns">
+      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationsTableColumns" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetAutoLogOn">
-      <soap12:operation soapAction="PMHC/GeneralService/SetAutoLogOn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClientKey">
-      <soap12:operation soapAction="PMHC/GeneralService/GetClientKey" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClientId">
-      <soap12:operation soapAction="PMHC/GeneralService/GetClientId" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAddress">
-      <soap12:operation soapAction="PMHC/GeneralService/GetAddress" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPort">
-      <soap12:operation soapAction="PMHC/GeneralService/GetPort" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAutoLogOn">
-      <soap12:operation soapAction="PMHC/GeneralService/GetAutoLogOn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetOutMessageLimt">
-      <soap12:operation soapAction="PMHC/GeneralService/GetOutMessageLimt" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RestoreDefaultSettings">
-      <soap12:operation soapAction="PMHC/GeneralService/RestoreDefaultSettings" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsLoggedIn">
-      <soap12:operation soapAction="PMHC/GeneralService/IsLoggedIn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogOn">
-      <soap12:operation soapAction="PMHC/GeneralService/LogOn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogOff">
-      <soap12:operation soapAction="PMHC/GeneralService/LogOff" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="BasicHttpBinding_GeneralService" type="i0:GeneralService">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SetClientKey">
-      <soap:operation soapAction="PMHC/GeneralService/SetClientKey" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetClientId">
-      <soap:operation soapAction="PMHC/GeneralService/SetClientId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetAddress">
-      <soap:operation soapAction="PMHC/GeneralService/SetAddress" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetPort">
-      <soap:operation soapAction="PMHC/GeneralService/SetPort" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetAutoLogOn">
-      <soap:operation soapAction="PMHC/GeneralService/SetAutoLogOn" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClientKey">
-      <soap:operation soapAction="PMHC/GeneralService/GetClientKey" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClientId">
-      <soap:operation soapAction="PMHC/GeneralService/GetClientId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAddress">
-      <soap:operation soapAction="PMHC/GeneralService/GetAddress" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPort">
-      <soap:operation soapAction="PMHC/GeneralService/GetPort" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAutoLogOn">
-      <soap:operation soapAction="PMHC/GeneralService/GetAutoLogOn" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetOutMessageLimt">
-      <soap:operation soapAction="PMHC/GeneralService/GetOutMessageLimt" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RestoreDefaultSettings">
-      <soap:operation soapAction="PMHC/GeneralService/RestoreDefaultSettings" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsLoggedIn">
-      <soap:operation soapAction="PMHC/GeneralService/IsLoggedIn" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogOn">
-      <soap:operation soapAction="PMHC/GeneralService/LogOn" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogOff">
-      <soap:operation soapAction="PMHC/GeneralService/LogOff" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
@@ -444,15 +190,6 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/General/webs</wsa10:Address>
       </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="WSDualHttpBinding_GeneralService" binding="tns:WSDualHttpBinding_GeneralService">
-      <soap12:address location="http://127.0.0.1:55555/General/dual" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>http://127.0.0.1:55555/General/dual</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="BasicHttpBinding_GeneralService" binding="tns:BasicHttpBinding_GeneralService">
-      <soap:address location="http://127.0.0.1:55555/General/basic" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

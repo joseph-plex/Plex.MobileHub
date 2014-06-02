@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="PMHC/Imports">
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd0" namespace="PMHC" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="GeneralService_SetClientKey_InputMessage">
@@ -96,6 +97,30 @@
   <wsdl:message name="GeneralService_LogOff_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogOffResponse" />
   </wsdl:message>
+  <wsdl:message name="GeneralService_Query_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_Query_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplications" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplicationTables_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationTables" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplicationTables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplicationsTableColumns_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsTableColumns" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_GetApplicationsTableColumns_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsTableColumnsResponse" />
+  </wsdl:message>
   <wsdl:portType name="GeneralService">
     <wsdl:operation name="SetClientKey">
       <wsdl:input wsaw:Action="PMHC/GeneralService/SetClientKey" message="tns:GeneralService_SetClientKey_InputMessage" />
@@ -156,6 +181,22 @@
     <wsdl:operation name="LogOff">
       <wsdl:input wsaw:Action="PMHC/GeneralService/LogOff" message="tns:GeneralService_LogOff_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/GeneralService/LogOffResponse" message="tns:GeneralService_LogOff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/Query" message="tns:GeneralService_Query_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/QueryResponse" message="tns:GeneralService_Query_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplications">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetApplications" message="tns:GeneralService_GetApplications_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetApplicationsResponse" message="tns:GeneralService_GetApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationTables">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetApplicationTables" message="tns:GeneralService_GetApplicationTables_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetApplicationTablesResponse" message="tns:GeneralService_GetApplicationTables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationsTableColumns">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/GetApplicationsTableColumns" message="tns:GeneralService_GetApplicationsTableColumns_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/GetApplicationsTableColumnsResponse" message="tns:GeneralService_GetApplicationsTableColumns_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

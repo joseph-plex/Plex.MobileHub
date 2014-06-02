@@ -209,6 +209,9 @@
     <None Include="Service References\GeneralService\General1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GeneralService\General2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GeneralService\GeneralService.wsdl" />
     <None Include="Service References\Logs\Logs.wsdl" />
     <None Include="Service References\Logs\Logs.xsd">
