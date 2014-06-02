@@ -24,16 +24,12 @@ namespace MobileHubClient.Channels
             var basic = new BasicHttpBinding();
 
             webs.Security.Mode = SecurityMode.None;
-            dual.Security.Mode = WSDualHttpSecurityMode.None;
-            basic.Security.Mode = BasicHttpSecurityMode.None;
 
             //decribe how metadata behaves
             Parent.Service.Description.Behaviors.Add(new ServiceMetadataBehavior() { HttpGetEnabled = true, HttpsGetEnabled = true });
 
             //add bindings to site
             Parent.Service.AddServiceEndpoint(ServiceType, webs, "webs");
-            Parent.Service.AddServiceEndpoint(ServiceType, dual, "dual");
-            Parent.Service.AddServiceEndpoint(ServiceType, basic,"basic");
 
             Parent.Service.BeginOpen((IAsyncResult ar) => { ((ServiceHost)ar.AsyncState).EndOpen(ar); }, Parent.Service);
             Parent.CurrentState = IClientChannelState.Opened;

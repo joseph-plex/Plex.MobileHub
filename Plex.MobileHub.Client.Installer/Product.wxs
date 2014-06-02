@@ -34,7 +34,7 @@
         </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="My Application Name"/>
+        <Directory Id="ApplicationProgramsFolder" Name="Plexxis Mobile Hub Client"/>
       </Directory>
     </Directory>
   </Fragment>

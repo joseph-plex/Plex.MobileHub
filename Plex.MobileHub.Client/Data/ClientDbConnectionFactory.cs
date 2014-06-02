@@ -52,28 +52,51 @@ namespace MobileHubClient.Data
         public ClientDbConnectionFactory Discover()
         {
             lock (this) { 
-                var Pairings = new List<KeyValuePair<String, String>>();
-                Parallel.ForEach(GetListeners(), p=> Pairings.AddRange(ParellelListenerHandle(p)));
-                lock (CompanyConnectionPairings)
-                CompanyConnectionPairings = Pairings;
-                return this;
+                using(LogCache cache = ClientService.Logs.CreateLogCache())
+                {
+                    cache.Add("Starting Discovery");
+                  
+                    var Pairings = new List<KeyValuePair<String, String>>();
+                    Parallel.ForEach(GetListeners(), p=> Pairings.AddRange(ParellelListenerHandle(p)));
+                    CompanyConnectionPairings = Pairings;
+                    
+                    cache.Add("Discovery Complete");
+                    cache.CommitCache();
+                    return this;
+                }
             }
         }
 
         IEnumerable<KeyValuePair<String, String>> ParellelListenerHandle(Listener lsnr)
         {
-            var status = lsnr.LsnrCtlGetStatus();
-            var values = new List<KeyValuePair<String, String>>();
-            Parallel.ForEach(GenerateConnectionStrings(Listener.ExtractServiceNames(status), Listener.ExtractEndPointSummary(status)), p => values.AddRange(IsMobileHubComponentInstalled(p)));
-            return values;
-        }
+            using(LogCache cache = ClientService.Logs.CreateLogCache())
+            {
+                cache.Add("Reading from Lsnrctl : " + lsnr.Executable);
+                
+                var status = lsnr.LsnrCtlGetStatus();
+                var values = new List<KeyValuePair<String, String>>();
+                var ServiceNames = Listener.ExtractServiceNames(status);
+                var EndPointSummary = Listener.ExtractEndPointSummary(status);
+                var ConnectionStrings =  GenerateConnectionStrings(ServiceNames, EndPointSummary);
+                Parallel.ForEach(ConnectionStrings, p => values.AddRange(IsMobileHubComponentInstalled(p)));
 
+                if (values.Count == 0)
+                    cache.Add(lsnr.Executable + " has 0/" + ConnectionStrings.Count() + " usable Companies strings");
+                else
+                    foreach (var kvp in values)
+                        cache.Add("Found Code " + kvp.Key + " in connection string " + kvp.Value);
+
+                cache.CommitCache();
+                return values;
+            }
+        }
         IEnumerable<KeyValuePair<String, String>> IsMobileHubComponentInstalled(String connectionString)
         {
             List<KeyValuePair<String, String>> values = new List<KeyValuePair<String, String>>();
             try
             {
-                using(var Conn = new OracleConnection(connectionString))
+                using (LogCache cache = ClientService.Logs.CreateLogCache())
+                using (var Conn = new OracleConnection(connectionString))
                 {
                     Conn.Open();
                     if (!IsPMHC(Conn))

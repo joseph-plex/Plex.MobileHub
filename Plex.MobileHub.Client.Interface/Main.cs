@@ -34,6 +34,13 @@ namespace Plex.MobileHub.Client.Interface
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Manager manager = Manager.Instance;
+            manager.LogOn();
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manager manager = Manager.Instance;
+            manager.LogOff();
         }
     }
 }
