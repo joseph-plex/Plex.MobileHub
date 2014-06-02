@@ -41,13 +41,6 @@ namespace MobileHubClient.Channels.Database
             return Context.DbFactory;
         }
 
-        [OperationContract]
-        public ClientDbConnectionFactory CurrentDatabaseInformation()
-        {
-            ClientDbConnectionFactory dbConn = new ClientDbConnectionFactory();
-            dbConn.CompanyConnectionPairings = ClientSettings.Instance.DbConnections;
-            return dbConn;
-        }
 
         [OperationContract]
         public Result QuerySource(String companyCode, String commandText, params object [] arguments)

@@ -84,10 +84,10 @@ namespace Plex.MobileHub.Client.Interface
                 return Service.DatabaseInformationSearch();
         }
 
-        public ClientDbConnectionFactory CurrentDatabaseInformation()
+        public ClientDbConnectionFactory DatabaseInformationRetrieve()
         {
             using (var Service = GetDatabaseService())
-                return Service.CurrentDatabaseInformation();
+                return Service.DatabaseInformationRetrieve();
         }
 
         public void RegisterDbConnectionData (string companyCode, string connectionString)
@@ -132,7 +132,7 @@ namespace Plex.MobileHub.Client.Interface
 
         LogsServiceClient GetLogService()
         {
-            return new LogsServiceClient("NetNamedPipeBinding_LogsService");
+            return new LogsServiceClient("WSHttpBindinNetNamedPipeBinding_LogsServiceg_LogsService");
         }
     }
 }

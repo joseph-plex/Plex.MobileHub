@@ -27,11 +27,11 @@
   <wsdl:message name="DatabaseService_DatabaseInformationRetrieve_OutputMessage">
     <wsdl:part name="parameters" element="tns:DatabaseInformationRetrieveResponse" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_CurrentDatabaseInformation_InputMessage">
-    <wsdl:part name="parameters" element="tns:CurrentDatabaseInformation" />
+  <wsdl:message name="DatabaseService_DatabaseInformationRefresh_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationRefresh" />
   </wsdl:message>
-  <wsdl:message name="DatabaseService_CurrentDatabaseInformation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CurrentDatabaseInformationResponse" />
+  <wsdl:message name="DatabaseService_DatabaseInformationRefresh_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseInformationRefreshResponse" />
   </wsdl:message>
   <wsdl:message name="DatabaseService_QuerySource_InputMessage">
     <wsdl:part name="parameters" element="tns:QuerySource" />
@@ -52,9 +52,9 @@
       <wsdl:input wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieve" message="tns:DatabaseService_DatabaseInformationRetrieve_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieveResponse" message="tns:DatabaseService_DatabaseInformationRetrieve_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CurrentDatabaseInformation">
-      <wsdl:input wsaw:Action="PMHC/DatabaseService/CurrentDatabaseInformation" message="tns:DatabaseService_CurrentDatabaseInformation_InputMessage" />
-      <wsdl:output wsaw:Action="PMHC/DatabaseService/CurrentDatabaseInformationResponse" message="tns:DatabaseService_CurrentDatabaseInformation_OutputMessage" />
+    <wsdl:operation name="DatabaseInformationRefresh">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/DatabaseInformationRefresh" message="tns:DatabaseService_DatabaseInformationRefresh_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/DatabaseInformationRefreshResponse" message="tns:DatabaseService_DatabaseInformationRefresh_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="QuerySource">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/QuerySource" message="tns:DatabaseService_QuerySource_InputMessage" />

@@ -55,7 +55,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         public void Init()
         {
             var mgr = Manager.Instance;
-            var DbInfo = mgr.CurrentDatabaseInformation();
+            var DbInfo = mgr.DatabaseInformationRetrieve();
             int value = new int();
 
             if (DbInfo != null)
@@ -79,11 +79,9 @@ namespace Plex.MobileHub.Client.Interface.Views
                             band.ClientArea.Location = new Point(0, 0);
                             band.ClientArea.Name = "ClientArea";
                             band.ClientArea.Size = new Size(208, 300);
-                            //band.Location = new System.Drawing.Point(1, 27);
+
                             band.Name = "naviBand1";
                             band.Text = Info.Key;
-                            //band.Size = new System.Drawing.Size(208, 300);
-                            //band.TabIndex = 3;
 
                             tree.Dock = DockStyle.Fill;
                             band.ClientArea.Controls.Add(tree);

@@ -47,8 +47,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CurrentDatabaseInformation">
-      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
+    <wsdl:operation name="DatabaseInformationRefresh">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRefresh" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -96,8 +96,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CurrentDatabaseInformation">
-      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
+    <wsdl:operation name="DatabaseInformationRefresh">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRefresh" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
