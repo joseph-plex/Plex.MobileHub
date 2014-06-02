@@ -26,7 +26,7 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         LogsServiceClient GetLogService()
         {
-            return new LogsServiceClient("WSDualHttpBinding_LogsService");
+            return new LogsServiceClient("NetNamedPipeBinding_LogsService");
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -7,6 +7,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetNamedPipeBinding_DatabaseService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:import namespace="PMHC" location="http://127.0.0.1:55555/Database?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_DatabaseService" type="i0:DatabaseService">
@@ -58,11 +66,66 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetNamedPipeBinding_DatabaseService" type="i0:DatabaseService">
+    <wsp:PolicyReference URI="#NetNamedPipeBinding_DatabaseService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="RegisterDbConnectionData">
+      <soap12:operation soapAction="PMHC/DatabaseService/RegisterDbConnectionData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationSearch">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseInformationRetrieve">
+      <soap12:operation soapAction="PMHC/DatabaseService/DatabaseInformationRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentDatabaseInformation">
+      <soap12:operation soapAction="PMHC/DatabaseService/CurrentDatabaseInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySource">
+      <soap12:operation soapAction="PMHC/DatabaseService/QuerySource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="DatabaseService">
     <wsdl:port name="WSHttpBinding_DatabaseService" binding="tns:WSHttpBinding_DatabaseService">
       <soap12:address location="http://127.0.0.1:55555/Database/webs" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/Database/webs</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetNamedPipeBinding_DatabaseService" binding="tns:NetNamedPipeBinding_DatabaseService">
+      <soap12:address location="net.pipe://localhost/Database/pipe" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/Database/pipe</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

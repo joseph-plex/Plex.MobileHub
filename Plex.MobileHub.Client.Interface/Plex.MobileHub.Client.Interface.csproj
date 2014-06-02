@@ -175,10 +175,7 @@
     <EmbeddedResource Include="Windows\Dialogwin.resx">
       <DependentUpon>DialogWin.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Service References\DatabaseService\Database.wsdl" />
     <None Include="Service References\DatabaseService\Database.xsd">
       <SubType>Designer</SubType>

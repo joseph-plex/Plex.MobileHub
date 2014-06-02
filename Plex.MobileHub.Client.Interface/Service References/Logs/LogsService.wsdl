@@ -7,6 +7,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetNamedPipeBinding_LogsService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:import namespace="PMHC" location="http://127.0.0.1:55555/Logs?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_LogsService" type="i0:LogsService">
@@ -31,11 +39,39 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetNamedPipeBinding_LogsService" type="i0:LogsService">
+    <wsp:PolicyReference URI="#NetNamedPipeBinding_LogsService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="GetLogs">
+      <soap12:operation soapAction="PMHC/LogsService/GetLogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="PMHC/LogsService/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="LogsService">
     <wsdl:port name="WSHttpBinding_LogsService" binding="tns:WSHttpBinding_LogsService">
       <soap12:address location="http://127.0.0.1:55555/Logs/webs" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://127.0.0.1:55555/Logs/webs</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetNamedPipeBinding_LogsService" binding="tns:NetNamedPipeBinding_LogsService">
+      <soap12:address location="net.pipe://localhost/Logs/pipe" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/Logs/pipe</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
