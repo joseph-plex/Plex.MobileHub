@@ -43,10 +43,34 @@ namespace MobileHubClient.Misc
                 return Service.SyncDataGet();
         }
 
-        public static QryResult Query(string commandText, params object[] arguments)
+        public static Data.Result Query(string commandText, params object[] arguments)
         {
-            throw new NotImplementedException();
+            using (Service)
+            {   
+                var ans = Service.Query(commandText, arguments);
+                Data.Result r = new Data.Result() { Rows = new List<Data.Row>(), Columns = new List<Data.Col>() };
+                foreach(var resultRow in ans.Rows) r.Rows.Add(new Data.Row(){ Values = resultRow.Values.ToList()});
+                
+                foreach(var resultColumn in ans.Columns)
+                    r.Columns.Add(new Data.Col(){
+                        AllowDbNull = resultColumn.AllowDbNull,
+                        ColumnName = resultColumn.ColumnName,
+                        ColumnSequence = resultColumn.ColumnSequence,
+                        DataLength = resultColumn.DataLength,
+                        DataPrecision = resultColumn.DataPrecision,
+                        DataScale = resultColumn.DataScale,
+                        DataType = resultColumn.DataType,
+                        Description = resultColumn.Description,
+                        IsKey = resultColumn.IsKey,
+                        IsReadOnly = resultColumn.IsReadOnly,
+                        IsLong = resultColumn.IsLong,
+                        IsUnique = resultColumn.IsUnique,
+                        KeyType = resultColumn.KeyType
+                    });
+                return r;
+            }
         }
+
         public static QryResult NonQuery(string commandText, params object[] arguments)
         {
             throw new NotImplementedException();

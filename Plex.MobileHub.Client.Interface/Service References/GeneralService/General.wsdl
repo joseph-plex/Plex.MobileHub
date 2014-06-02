@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd0" namespace="PMHC" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="GeneralService_SetClientKey_InputMessage">

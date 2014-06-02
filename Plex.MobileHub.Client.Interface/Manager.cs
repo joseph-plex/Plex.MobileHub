@@ -96,7 +96,7 @@ namespace Plex.MobileHub.Client.Interface
                 Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
         }
 
-        public Result QuerySource(string companyCode, string commandText, params object[] arguments)
+        public DatabaseService.Result QuerySource(string companyCode, string commandText, params object[] arguments)
         {
             using (var Service = GetDatabaseService())
                 return Service.QuerySource(companyCode, commandText, arguments.ToList());
@@ -105,6 +105,12 @@ namespace Plex.MobileHub.Client.Interface
         {
             using (var service = GetDatabaseService())
                 return service.DatabaseInformationRetrieve();
+        }
+
+        public GeneralService.Result Query(string query, params object [] arguments )
+        {
+            using (var service = GetGeneralService())
+                return service.Query(query, arguments.ToList());
         }
 
         public void LogOn()

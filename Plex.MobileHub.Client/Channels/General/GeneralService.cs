@@ -112,9 +112,9 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
-        public void Query(string commandText, params object[] arguments)
+        public MobileHubClient.Data.Result Query(string commandText, params object[] arguments)
         {
-
+            return WebService.Query(commandText, arguments);
         }
 
 

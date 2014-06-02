@@ -209,7 +209,13 @@
     <None Include="Service References\GeneralService\General2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GeneralService\General3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GeneralService\GeneralService.wsdl" />
+    <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Logs\Logs.wsdl" />
     <None Include="Service References\Logs\Logs.xsd">
       <SubType>Designer</SubType>

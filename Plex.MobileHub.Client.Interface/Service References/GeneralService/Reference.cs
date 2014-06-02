@@ -9,7 +9,357 @@
 //------------------------------------------------------------------------------
 
 namespace Plex.MobileHub.Client.Interface.GeneralService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
+    [System.SerializableAttribute()]
+    public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col> ColumnsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row> RowsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col> Columns {
+            get {
+                return this.ColumnsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColumnsField, value) != true)) {
+                    this.ColumnsField = value;
+                    this.RaisePropertyChanged("Columns");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row> Rows {
+            get {
+                return this.RowsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowsField, value) != true)) {
+                    this.RowsField = value;
+                    this.RaisePropertyChanged("Rows");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Col", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
+    [System.SerializableAttribute()]
+    public partial class Col : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> AllowDbNullField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ColumnNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ColumnSequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> DataLengthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> DataPrecisionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> DataScaleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DataTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsLongField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsReadOnlyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsUniqueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> AllowDbNull {
+            get {
+                return this.AllowDbNullField;
+            }
+            set {
+                if ((this.AllowDbNullField.Equals(value) != true)) {
+                    this.AllowDbNullField = value;
+                    this.RaisePropertyChanged("AllowDbNull");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ColumnName {
+            get {
+                return this.ColumnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColumnNameField, value) != true)) {
+                    this.ColumnNameField = value;
+                    this.RaisePropertyChanged("ColumnName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ColumnSequence {
+            get {
+                return this.ColumnSequenceField;
+            }
+            set {
+                if ((this.ColumnSequenceField.Equals(value) != true)) {
+                    this.ColumnSequenceField = value;
+                    this.RaisePropertyChanged("ColumnSequence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> DataLength {
+            get {
+                return this.DataLengthField;
+            }
+            set {
+                if ((this.DataLengthField.Equals(value) != true)) {
+                    this.DataLengthField = value;
+                    this.RaisePropertyChanged("DataLength");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> DataPrecision {
+            get {
+                return this.DataPrecisionField;
+            }
+            set {
+                if ((this.DataPrecisionField.Equals(value) != true)) {
+                    this.DataPrecisionField = value;
+                    this.RaisePropertyChanged("DataPrecision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> DataScale {
+            get {
+                return this.DataScaleField;
+            }
+            set {
+                if ((this.DataScaleField.Equals(value) != true)) {
+                    this.DataScaleField = value;
+                    this.RaisePropertyChanged("DataScale");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DataType {
+            get {
+                return this.DataTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataTypeField, value) != true)) {
+                    this.DataTypeField = value;
+                    this.RaisePropertyChanged("DataType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsKey {
+            get {
+                return this.IsKeyField;
+            }
+            set {
+                if ((this.IsKeyField.Equals(value) != true)) {
+                    this.IsKeyField = value;
+                    this.RaisePropertyChanged("IsKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsLong {
+            get {
+                return this.IsLongField;
+            }
+            set {
+                if ((this.IsLongField.Equals(value) != true)) {
+                    this.IsLongField = value;
+                    this.RaisePropertyChanged("IsLong");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsReadOnly {
+            get {
+                return this.IsReadOnlyField;
+            }
+            set {
+                if ((this.IsReadOnlyField.Equals(value) != true)) {
+                    this.IsReadOnlyField = value;
+                    this.RaisePropertyChanged("IsReadOnly");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsUnique {
+            get {
+                return this.IsUniqueField;
+            }
+            set {
+                if ((this.IsUniqueField.Equals(value) != true)) {
+                    this.IsUniqueField = value;
+                    this.RaisePropertyChanged("IsUnique");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string KeyType {
+            get {
+                return this.KeyTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyTypeField, value) != true)) {
+                    this.KeyTypeField = value;
+                    this.RaisePropertyChanged("KeyType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Row", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Result))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Col))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row>))]
+    public partial class Row : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<object> ValuesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<object> Values {
+            get {
+                return this.ValuesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValuesField, value) != true)) {
+                    this.ValuesField = value;
+                    this.RaisePropertyChanged("Values");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="PMHC", ConfigurationName="GeneralService.GeneralService")]
@@ -62,7 +412,12 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
-        void Query(string commandText, System.Collections.Generic.List<object> arguments);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Col))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Row))]
+        Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplications", ReplyAction="PMHC/GeneralService/GetApplicationsResponse")]
         void GetApplications(int clientId);
@@ -161,8 +516,8 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
             base.Channel.LogOff();
         }
         
-        public void Query(string commandText, System.Collections.Generic.List<object> arguments) {
-            base.Channel.Query(commandText, arguments);
+        public Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments) {
+            return base.Channel.Query(commandText, arguments);
         }
         
         public void GetApplications(int clientId) {
