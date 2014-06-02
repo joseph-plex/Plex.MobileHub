@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Plex.MobileHub.Data.Types;
 
 namespace Plex.MobileHub.Objects
 {

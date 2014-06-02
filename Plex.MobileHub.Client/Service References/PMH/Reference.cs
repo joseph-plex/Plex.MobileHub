@@ -19,15 +19,9 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         int Login(int ClientId, string Key, string IPv4, int Port);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Login", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> LoginAsync(int ClientId, string Key, string IPv4, int Port);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Logout", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void Logout(int ConnectionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Logout", ReplyAction="*")]
-        System.Threading.Tasks.Task LogoutAsync(int ConnectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommands", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -36,18 +30,12 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.Command[] GetCommands(int ConnectionId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommands", ReplyAction="*")]
-        System.Threading.Tasks.Task<MobileHubClient.PMH.Command[]> GetCommandsAsync(int ConnectionId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Respond", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void Respond(MobileHubClient.PMH.Response Resp);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Respond", ReplyAction="*")]
-        System.Threading.Tasks.Task RespondAsync(MobileHubClient.PMH.Response Resp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResponsePartial", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -56,18 +44,12 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResponsePartial", ReplyAction="*")]
-        System.Threading.Tasks.Task ResponsePartialAsync(MobileHubClient.PMH.ResponseComponent Component);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.ClientSynchroData SyncDataGet();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
-        System.Threading.Tasks.Task<MobileHubClient.PMH.ClientSynchroData> SyncDataGetAsync();
     }
     
     /// <remarks/>
@@ -1100,48 +1082,24 @@ namespace MobileHubClient.PMH {
             return base.Channel.Login(ClientId, Key, IPv4, Port);
         }
         
-        public System.Threading.Tasks.Task<int> LoginAsync(int ClientId, string Key, string IPv4, int Port) {
-            return base.Channel.LoginAsync(ClientId, Key, IPv4, Port);
-        }
-        
         public void Logout(int ConnectionId) {
             base.Channel.Logout(ConnectionId);
-        }
-        
-        public System.Threading.Tasks.Task LogoutAsync(int ConnectionId) {
-            return base.Channel.LogoutAsync(ConnectionId);
         }
         
         public MobileHubClient.PMH.Command[] GetCommands(int ConnectionId) {
             return base.Channel.GetCommands(ConnectionId);
         }
         
-        public System.Threading.Tasks.Task<MobileHubClient.PMH.Command[]> GetCommandsAsync(int ConnectionId) {
-            return base.Channel.GetCommandsAsync(ConnectionId);
-        }
-        
         public void Respond(MobileHubClient.PMH.Response Resp) {
             base.Channel.Respond(Resp);
-        }
-        
-        public System.Threading.Tasks.Task RespondAsync(MobileHubClient.PMH.Response Resp) {
-            return base.Channel.RespondAsync(Resp);
         }
         
         public void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component) {
             base.Channel.ResponsePartial(Component);
         }
         
-        public System.Threading.Tasks.Task ResponsePartialAsync(MobileHubClient.PMH.ResponseComponent Component) {
-            return base.Channel.ResponsePartialAsync(Component);
-        }
-        
         public MobileHubClient.PMH.ClientSynchroData SyncDataGet() {
             return base.Channel.SyncDataGet();
-        }
-        
-        public System.Threading.Tasks.Task<MobileHubClient.PMH.ClientSynchroData> SyncDataGetAsync() {
-            return base.Channel.SyncDataGetAsync();
         }
     }
 }
