@@ -416,26 +416,14 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
         void RegisterDbConnectionData(System.Collections.Generic.KeyValuePair<string, string> dbc);
         
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/RegisterDbConnectionData", ReplyAction="PMHC/DatabaseService/RegisterDbConnectionDataResponse")]
-        System.Threading.Tasks.Task RegisterDbConnectionDataAsync(System.Collections.Generic.KeyValuePair<string, string> dbc);
-        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationSearch", ReplyAction="PMHC/DatabaseService/DatabaseInformationSearchResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationSearch();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationSearch", ReplyAction="PMHC/DatabaseService/DatabaseInformationSearchResponse")]
-        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationSearchAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/DatabaseInformationRetrieveResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve();
         
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/DatabaseInformationRetrieveResponse")]
-        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationRetrieveAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/CurrentDatabaseInformation", ReplyAction="PMHC/DatabaseService/CurrentDatabaseInformationResponse")]
-        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> CurrentDatabaseInformationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
@@ -448,9 +436,6 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.DatabaseService.Row))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
         Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, System.Collections.Generic.List<object> arguments);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
-        System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.Result> QuerySourceAsync(string companyCode, string commandText, System.Collections.Generic.List<object> arguments);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -484,40 +469,20 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
             base.Channel.RegisterDbConnectionData(dbc);
         }
         
-        public System.Threading.Tasks.Task RegisterDbConnectionDataAsync(System.Collections.Generic.KeyValuePair<string, string> dbc) {
-            return base.Channel.RegisterDbConnectionDataAsync(dbc);
-        }
-        
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationSearch() {
             return base.Channel.DatabaseInformationSearch();
-        }
-        
-        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationSearchAsync() {
-            return base.Channel.DatabaseInformationSearchAsync();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve() {
             return base.Channel.DatabaseInformationRetrieve();
         }
         
-        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> DatabaseInformationRetrieveAsync() {
-            return base.Channel.DatabaseInformationRetrieveAsync();
-        }
-        
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory CurrentDatabaseInformation() {
             return base.Channel.CurrentDatabaseInformation();
         }
         
-        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory> CurrentDatabaseInformationAsync() {
-            return base.Channel.CurrentDatabaseInformationAsync();
-        }
-        
         public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, System.Collections.Generic.List<object> arguments) {
             return base.Channel.QuerySource(companyCode, commandText, arguments);
-        }
-        
-        public System.Threading.Tasks.Task<Plex.MobileHub.Client.Interface.DatabaseService.Result> QuerySourceAsync(string companyCode, string commandText, System.Collections.Generic.List<object> arguments) {
-            return base.Channel.QuerySourceAsync(companyCode, commandText, arguments);
         }
     }
 }
