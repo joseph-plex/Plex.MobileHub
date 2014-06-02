@@ -36,7 +36,18 @@
         </Directory>
 			</Directory>
 		</Directory>
-	</Fragment>
+	
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="MobileHubFolder">
+      <Component Id="InterfaceShortcut">
+        
+        <RemoveFolder Id="MobileHubFolder" On="uninstall"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  
   <Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="MobileHubFolder">
       <Component Id="ProductComponent" Guid="E9BB83C7-BB8D-49C2-ABB2-0E943AD38482"> 
@@ -53,6 +64,8 @@
         <File Id="guifreak1" Name="Guifreaks.Common.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.Common.dll"/>
         <File Id="guifreak2" Name="Guifreaks.NavigationBar.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.dll"/>
         <File Id="guifreak3" Name="Guifreaks.NavigationBar.XmlSerializers.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.XmlSerializers.dll"/>
+        <Shortcut Id="InterfaceStartMenuShortcut" Name="Plexxis Mobile Hub Client Interface" Target="[#Plex.MobileHub.Client.Interface]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
+        
       </Component>
 		</ComponentGroup>
 	</Fragment>
