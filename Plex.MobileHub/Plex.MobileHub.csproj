@@ -179,9 +179,15 @@
     <Compile Include="Exceptions\MultipleClientLoginException.cs" />
     <Compile Include="Exceptions\PlexError.cs" />
     <Compile Include="Exceptions\UnauthorizedClientException.cs" />
+    <Compile Include="Functionality\Clients\AddLog.cs" />
+    <Compile Include="Functionality\Clients\AddUserCompanyPermission.cs" />
+    <Compile Include="Functionality\Clients\AddClientUser.cs" />
     <Compile Include="Functionality\Clients\AddCompanyDatabase.cs" />
     <Compile Include="Functionality\Clients\ClientStatus.cs" />
     <Compile Include="Functionality\Clients\GetCommands.cs" />
+    <Compile Include="Functionality\Clients\RemoveClientUser.cs" />
+    <Compile Include="Functionality\Clients\RemoveCompanyDatabase.cs" />
+    <Compile Include="Functionality\Clients\RemoveUserCompanyPermission.cs" />
     <Compile Include="Functionality\Developers\AppGetQueries.cs" />
     <Compile Include="Functionality\Developers\AppGetTableDefinitions.cs" />
     <Compile Include="Functionality\Developers\ClientGetDatabaseList.cs" />
