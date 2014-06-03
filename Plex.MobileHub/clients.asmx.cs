@@ -98,14 +98,5 @@ namespace Plex.MobileHub
         {
             return Functions.SyncInfoGet();
         }
-
-        public MethodResult CheckIn(int clientInstanceId)
-        {
-            throw new NotImplementedException();
-        }
-        public MethodResult IsConnected(int clientInstanceId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

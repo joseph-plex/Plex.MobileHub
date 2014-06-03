@@ -19,7 +19,8 @@ namespace MobileHubClient.Core
 
         public static void Save()
         {
-            try { 
+            try 
+            { 
                 using (var file = File.Create(FileName))
                     new XmlSerializer(Instance.GetType()).Serialize(file, Instance);
             }

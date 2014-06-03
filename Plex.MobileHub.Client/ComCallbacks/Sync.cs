@@ -15,29 +15,26 @@ namespace MobileHubClient.ComCallbacks
 {
     public static partial class Functions
     {
-        //Todo Reimplement Sync Function
-        //public static bool Sync()
-        //{
-        //    try
-        //    {
-        //        LogManager.Instance.Add("Initializing Synchro", LogPriority.Normal);
-               
-        //        var SyncData = WebService.SyncDataGet(); 
-        //        foreach(var Conn in ClientDbConnectionFactory.Instance.GetUniqueConnections())
-        //            foreach (var AppData in SyncData.Apps)
-        //                try { SynchronizeApplicationData(Conn, AppData); }
-        //                catch(Exception e)
-        //                { LogManager.Instance.Add(e); }
-
-        //        LogManager.Instance.Add("Synchro Complete", LogPriority.Normal);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        LogManager.Instance.Add(e);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public static bool Sync()
+        {
+            try
+            {
+                ClientService.Logs.Add("Initializing Synchro", LogPriority.Normal);
+                var SyncData = WebService.SyncDataGet();
+                foreach(var kvp in ClientSettings.Instance.DbConnections)
+                    using(var connection = ClientDbConnectionFactory.ActiveConnection(kvp.Value))
+                        foreach (var AppData in SyncData.Apps)
+                            try { SynchronizeApplicationData(connection, AppData); }
+                            catch (Exception e) { ClientService.Logs.Add(e); }
+                ClientService.Logs.Add("Synchro Complete", LogPriority.Normal);
+            }
+            catch (Exception e)
+            {
+                ClientService.Logs.Add(e);
+                return false;
+            }
+            return true;
+        }
 
         static void SynchronizeApplicationData(IDbConnection Conn, ApplicationSynchroData AppData)
         {
