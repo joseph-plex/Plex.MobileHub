@@ -39,6 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDbCommandExtensions.cs" />
+    <Compile Include="IDbConnectionExtensions.cs" />
+    <Compile Include="IListExtenstions.cs" />
+    <Compile Include="IPlexRepository.cs" />
+    <Compile Include="IPlexRepositoryEntry.cs" />
+    <Compile Include="IPlexResult.cs" />
+    <Compile Include="IPlexResultColumn.cs" />
+    <Compile Include="IPlexResultTuple.cs" />
+    <Compile Include="PlexResult.cs" />
+    <Compile Include="PlexResultColumn.cs" />
+    <Compile Include="PlexResultTuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

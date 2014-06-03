@@ -13,10 +13,6 @@ namespace Plex.MobileHub.Data.Types
             {
                 return Values[i];
             }
-            set
-            {
-                Values[i] = value;
-            }
         }
         public List<object> Values = new List<object>();
     }

@@ -42,11 +42,7 @@ namespace Plex.MobileHub.Data.Types
 
         public List<Col> Columns = new List<Col>();
         public List<Tuple> Rows = new List<Tuple>();
-
-        public Result()
-        {
-        }
-
+        public Result() { }
         public Result(IDataReader reader)
         {
             Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
