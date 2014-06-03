@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Plex.MobileHub.Functionality.Clients
 {
+    //todo implement this
     public class AddUserCompanyPermission
     {
     }

@@ -44,13 +44,6 @@ namespace Plex.MobileHub
 
 
         [WebMethod]
-        public void ValidateDataStructures()
-        {
-            Utilities.AreTablesCorrect();
-            Utilities.AreObjectsCorrect();
-        }
-
-        [WebMethod]
         public string GetExternalIP()
         {
             using (var sr = new System.IO.StreamReader(System.Net.WebRequest.Create("http://checkip.dyndns.org").GetResponse().GetResponseStream()))

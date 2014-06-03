@@ -96,8 +96,7 @@ namespace Plex.MobileHub.Objects.Clients
             ClientTuple.Update();
 
             Logs.Instance.Add("Client " + ClientTuple.CLIENT_ID + " has logged in");
-
-            //Context.connectionTimeout.Enabled = true;
+            Context.connectionTimeout.Enabled = true;
 
         }
 

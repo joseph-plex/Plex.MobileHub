@@ -29,8 +29,6 @@ namespace Plex.MobileHub.Functionality.Developers
                 throw new InvalidApplicationKeyException();
 
 
-           // var QueryIndex = Access.AppQueries.GetAll().FindIndex((p) => Applications[ApplicationIndex].AppId == p.AppId && p.Name == QryDef.QueryName);
-            //if (QueryIndex != -1) throw new Exception("A query of this name already exists for this application");
             if (new List<APP_QUERIES>(APP_QUERIES.GetAll()).Exists((p) => Applications[ApplicationIndex].APP_ID == p.APP_ID && p.NAME == QryDef.QueryName))
                 throw new Exception("A query of this name already exists for this application");
 
@@ -80,9 +78,6 @@ namespace Plex.MobileHub.Functionality.Developers
                     Query.TABLE_ID = Tables[TableIndex].TABLE_ID;
                     Query.IS_DELTA = Convert.ToInt32(QryDef.TrackDelta);
 
-                    //todo Move this out of here
-                    Query.SEQ_LIMIT_TIMESPAN = new int();
-                    Query.SEQ_LIMIT = new int();
 
                     //Insert Query into database
                     Query.Insert(Conn);

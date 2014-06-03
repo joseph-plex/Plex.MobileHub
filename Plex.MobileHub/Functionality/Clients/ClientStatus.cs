@@ -5,6 +5,7 @@ using System.Web;
 
 namespace MobileHub.Functionality.Clients
 {
+    //todo implement this
     public class ClientStatus
     {
     }

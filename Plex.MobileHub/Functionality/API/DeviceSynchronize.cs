@@ -172,7 +172,7 @@ namespace Plex.MobileHub.Functionality.API
             Consumer consumer = Consumers.Instance.Retrieve(connectionId);
 
             using (var Conn = Utilities.GetConnection(true))
-                tuple.DEVICE_DATABASE_ID = Utilities.GetNextSequenceValue(SequenceType.DEV_DATA_SEQ);
+                tuple.DEVICE_DATABASE_ID = Convert.ToInt32(Conn.Query("select DEV_DATA_SEQ.nextval from dual")[0,0]); //Utilities.GetNextSequenceValue(SequenceType.DEV_DATA_SEQ);
 
             tuple.APP_ID = consumer.AppId;
             tuple.CLIENT_ID = consumer.ClientId;
