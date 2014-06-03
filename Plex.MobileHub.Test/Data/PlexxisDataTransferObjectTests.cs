@@ -29,9 +29,9 @@ namespace Plex.MobileHub.Test.Data
                 var tableColumns = columnData.Rows.FindAll(p => p[tabIndex].Equals(type.Name));
                 foreach (var field in type.GetProperties())
                     Assert.IsTrue(tableColumns.Any(p => p[colIndex].Equals(field.Name)), "The Field " + field.Name + " in the type " + type.Name + " does not have a database representation");
-
             }
         }
+
         /// <summary>
         /// Ensure that the Text for Inserting APP_QUERIES works.
         /// </summary>
