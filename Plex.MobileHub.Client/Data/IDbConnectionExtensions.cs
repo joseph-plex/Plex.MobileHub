@@ -17,6 +17,7 @@ namespace MobileHubClient.Data
                 Command.Parameters.Add(Command.CreateParameter(p));
             return Command;
         }
+
         public static IDbDataParameter CreateParameter(this IDbCommand command, object value)
         {
             if (command == null) throw new ArgumentException("Command cannot be null");
@@ -88,6 +89,5 @@ namespace MobileHubClient.Data
                 IsLong = (collection[19] != DBNull.Value) ? Convert.ToBoolean(collection[19]) : (bool?)null,
             };
         }
-
     }
 }

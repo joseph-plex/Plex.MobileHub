@@ -9,9 +9,9 @@ using Plex.MobileHub.Data;
 
 namespace Plex.MobileHub.Functionality.Clients
 {
-    public class AddCompanyDatabase : FunctionStrategyBase<int>
+    public class AddCompanyDatabase : FunctionStrategyBase<Int32>
     {
-        public int Strategy(int clientId, string companyCode, string  connectionString)
+        public int Strategy(Int32 clientId, String companyCode, String connectionString)
         {
             using(var connection = Utilities.GetConnection(true))
                 new CLIENT_DB_COMPANIES()

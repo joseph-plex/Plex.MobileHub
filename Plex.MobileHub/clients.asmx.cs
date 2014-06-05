@@ -98,5 +98,50 @@ namespace Plex.MobileHub
         {
             return Functions.SyncInfoGet();
         }
+
+        [WebMethod]
+        public void ClientDbCompanyAdd()
+        {
+            return;
+        }
+
+        [WebMethod]
+        public void ClientDbCompanyUserAdd()
+        {
+            return;
+        }
+        [WebMethod]
+        public void ClientDbCompanyUserAppsAdd()
+        {
+            return;
+        }
+        [WebMethod]
+        public void ClientUserAdd()
+        {
+            return;
+        }
+        [WebMethod]
+        public void LogAdd()
+        {
+            return;
+        }
+        [WebMethod]
+        public void ClientDbCompanyRemove() { }
+
+        [WebMethod]
+        public void ClientDbCompanyUserRemove()
+        {
+            return;
+        }
+        [WebMethod]
+        public void ClientDbCompanyUserAppsRemove()
+        {
+            return;
+        }
+        [WebMethod]
+        public void ClientUserRemove()
+        {
+            return;
+        }
     }
 }

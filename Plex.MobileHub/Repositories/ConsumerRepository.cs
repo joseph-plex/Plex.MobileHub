@@ -16,16 +16,16 @@ namespace Plex.MobileHub.Repositories
             }
         }
 
-        Dictionary<int, Consumer> ConsumerRepo = new Dictionary<int, Consumer>();
+        Dictionary<Int32, Consumer> ConsumerRepo = new Dictionary<Int32, Consumer>();
 
-        public Dictionary<int, Consumer> GetAll()
+        public Dictionary<Int32, Consumer> GetAll()
         {
-            return new Dictionary<int, Consumer>(ConsumerRepo);
+            return new Dictionary<Int32, Consumer>(ConsumerRepo);
         }
 
-        public int Add(Consumer consumer)
+        public Int32 Add(Consumer consumer)
         {
-            int Key;
+            Int32 Key;
             var r = new Random();
 
             do Key = r.Next();
@@ -36,22 +36,22 @@ namespace Plex.MobileHub.Repositories
             return Key;
         }
 
-        public void Modify(int ConnectionId, Consumer Data)
+        public void Modify(Int32 ConnectionId, Consumer Data)
         {
             ConsumerRepo[ConnectionId] = Data;
         }
 
-        public void Remove(int i)
+        public void Remove(Int32 i)
         {
             ConsumerRepo.Remove(i);
         }
 
-        public Consumer Retrieve(int i)
+        public Consumer Retrieve(Int32 i)
         {
             return ConsumerRepo[i];
         }
 
-        public bool Exists(int i)
+        public bool Exists(Int32 i)
         {
             return ConsumerRepo.ContainsKey(i);
         }
