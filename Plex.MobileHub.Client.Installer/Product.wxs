@@ -39,8 +39,10 @@
         <File Id="Plex.MobileHub.Client" Name="Client" Source="$(var.Plex.MobileHub.Client.TargetPath)" KeyPath="yes"/>
         <File Id ="Logs" Name="Logs.dll" Source="$(var.Plex.MobileHub.Client.TargetDir)Logs.dll" />
         <File Id="Plex.MobileHub.Client.Config" Name="Client.Config" Source="$(var.Plex.MobileHub.Client.TargetPath).Config" />
-        <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="demand" ErrorControl="normal" Vital="yes"/>
         <ServiceControl Id="Plex.MobileHub.Client.ServiceControl" Name="Plexxis Mobile Hub" Start="install" Stop="both" Remove="uninstall" Wait="yes"/>
+        <ServiceInstall Id="Plex.MobileHub.Client.ServiceInstall" Name="Plexxis Mobile Hub" Type="ownProcess" Start="auto"  ErrorControl="normal" Vital="yes">
+          <ServiceConfig DelayedAutoStart="yes" OnInstall="yes"  OnReinstall="yes"/>
+        </ServiceInstall>
       </Component>
       <Component Id="ClientInterface" Guid="25767DB2-C59B-4CBC-BF11-731E338002D0">
         <RegistryValue Root="HKCU" Key="Software\Microsoft\Plexxis Mobile Hub Client 2" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
