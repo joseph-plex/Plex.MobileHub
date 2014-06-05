@@ -422,6 +422,9 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/DatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/DatabaseInformationRetrieveResponse")]
         Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve();
         
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/StoredDatabaseInformationRetrieve", ReplyAction="PMHC/DatabaseService/StoredDatabaseInformationRetrieveResponse")]
+        System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> StoredDatabaseInformationRetrieve();
+        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/DatabaseService/QuerySource", ReplyAction="PMHC/DatabaseService/QuerySourceResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.KeyValuePair<string, string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>))]
@@ -472,6 +475,10 @@ namespace Plex.MobileHub.Client.Interface.DatabaseService {
         
         public Plex.MobileHub.Client.Interface.DatabaseService.ClientDbConnectionFactory DatabaseInformationRetrieve() {
             return base.Channel.DatabaseInformationRetrieve();
+        }
+        
+        public System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> StoredDatabaseInformationRetrieve() {
+            return base.Channel.StoredDatabaseInformationRetrieve();
         }
         
         public Plex.MobileHub.Client.Interface.DatabaseService.Result QuerySource(string companyCode, string commandText, System.Collections.Generic.List<object> arguments) {

@@ -41,6 +41,11 @@ namespace MobileHubClient.Channels.Database
             return Context.DbFactory;
         }
 
+        [OperationContract]
+        public List<KeyValuePair<String,String>> StoredDatabaseInformationRetrieve()
+        {
+            return ClientSettings.Instance.DbConnections;
+        }
 
         [OperationContract]
         public Result QuerySource(String companyCode, String commandText, params object [] arguments)

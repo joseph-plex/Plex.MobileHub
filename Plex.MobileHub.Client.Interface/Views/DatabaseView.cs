@@ -21,7 +21,6 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
             Action action = () => ReloadDatabase();
             if (InvokeRequired)
                 Invoke(action);
@@ -55,12 +54,11 @@ namespace Plex.MobileHub.Client.Interface.Views
         public void Init()
         {
             var mgr = Manager.Instance;
-            var DbInfo = mgr.DatabaseInformationRetrieve();
+            var DbInfo = mgr.StoredDatabaseInformationRetrieve();
             int value = new int();
 
             if (DbInfo != null)
-                if(DbInfo.CompanyConnectionPairings != null)
-                    value = DbInfo.CompanyConnectionPairings.Count();
+                    value = DbInfo.Count();
 
             switch (value) {
                 case 0 :
@@ -69,7 +67,7 @@ namespace Plex.MobileHub.Client.Interface.Views
                 default:
                     naviBar1.SuspendLayout();
                     naviBar1.Bands.Clear();
-                    foreach (var Info in DbInfo.CompanyConnectionPairings)
+                    foreach (var Info in DbInfo)
                     {
                         try
                         {

@@ -21,7 +21,6 @@ namespace MobileHubClient.Data
         public ClientDbConnectionFactory()
         {
             CompanyConnectionPairings = new List<KeyValuePair<String, String>>();
-            Task.Run(()=> Discover());
 
             DbCheckTimer = new Timer();
             DbCheckTimer.Elapsed += DbCheckTimer_Elapsed;
@@ -30,10 +29,17 @@ namespace MobileHubClient.Data
             DbCheckTimer.Enabled = true;
         }
 
+        public ClientDbConnectionFactory(bool Search) : this()
+        {
+            Task.Run(() => Discover());
+        }
+
         void DbCheckTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (CompanyConnectionPairings.Count == 0)
                 Discover();
+            else
+                DbCheckTimer.Stop();
         }
 
         public static IDbConnection ActiveConnection(String connectionString)
@@ -52,8 +58,8 @@ namespace MobileHubClient.Data
         public ClientDbConnectionFactory Discover()
         {
             lock (this) { 
-                using(LogCache cache = ClientService.Logs.CreateLogCache())
-                {
+                using(LogCache cache = ClientService.Logs.CreateLogCache()){
+                    
                     cache.Add("Starting Discovery");
                   
                     var Pairings = new List<KeyValuePair<String, String>>();

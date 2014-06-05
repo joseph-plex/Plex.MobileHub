@@ -90,6 +90,12 @@ namespace Plex.MobileHub.Client.Interface
                 return Service.DatabaseInformationRetrieve();
         }
 
+        public List<KeyValuePair<String, String>> StoredDatabaseInformationRetrieve()
+        {
+            using (var Service = GetDatabaseService())
+                return Service.StoredDatabaseInformationRetrieve();
+        }
+
         public void RegisterDbConnectionData (string companyCode, string connectionString)
         {
             using (var Service = GetDatabaseService())

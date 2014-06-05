@@ -27,6 +27,12 @@
   <wsdl:message name="DatabaseService_DatabaseInformationRetrieve_OutputMessage">
     <wsdl:part name="parameters" element="tns:DatabaseInformationRetrieveResponse" />
   </wsdl:message>
+  <wsdl:message name="DatabaseService_StoredDatabaseInformationRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoredDatabaseInformationRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseService_StoredDatabaseInformationRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoredDatabaseInformationRetrieveResponse" />
+  </wsdl:message>
   <wsdl:message name="DatabaseService_QuerySource_InputMessage">
     <wsdl:part name="parameters" element="tns:QuerySource" />
   </wsdl:message>
@@ -45,6 +51,10 @@
     <wsdl:operation name="DatabaseInformationRetrieve">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieve" message="tns:DatabaseService_DatabaseInformationRetrieve_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/DatabaseService/DatabaseInformationRetrieveResponse" message="tns:DatabaseService_DatabaseInformationRetrieve_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoredDatabaseInformationRetrieve">
+      <wsdl:input wsaw:Action="PMHC/DatabaseService/StoredDatabaseInformationRetrieve" message="tns:DatabaseService_StoredDatabaseInformationRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/DatabaseService/StoredDatabaseInformationRetrieveResponse" message="tns:DatabaseService_StoredDatabaseInformationRetrieve_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="QuerySource">
       <wsdl:input wsaw:Action="PMHC/DatabaseService/QuerySource" message="tns:DatabaseService_QuerySource_InputMessage" />
