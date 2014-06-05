@@ -13,7 +13,7 @@ namespace Plex.MobileHub.Client.Interface.Windows
         public Form GetLoginSettingWin32()
         {
             LoginView view = new LoginView();
-            DialogWin win32 = new DialogWin();
+            DialogWin win32 = new DialogWin() { Text = "Connection Settings" };
 
             win32.Controls.Add(view);
             
@@ -41,13 +41,14 @@ namespace Plex.MobileHub.Client.Interface.Windows
         {
             LogsView view = new LogsView();
             DialogWin win32 = new DialogWin();
+            win32.Text = "Logs";
             win32.Controls.Add(view);
             return win32;
         }
 
         public Form CreateDatabaseAdditionWindow()
         {
-            DialogWin win32 = new DialogWin();
+            DialogWin win32 = new DialogWin() { Text = "Database Connections" };
             AddDatabase ad = new AddDatabase();
 
             ad.AddButton.Click += (s, e) => win32.Close();

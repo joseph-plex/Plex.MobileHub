@@ -87,7 +87,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(766, 320);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Logs";
+            this.tabPage3.Text = "Diagnostic Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Main

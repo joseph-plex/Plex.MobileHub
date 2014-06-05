@@ -51,10 +51,18 @@ namespace Plex.MobileHub.Client.Interface
 
         void toggleConnectionMenuItems()
         {
-            Manager manager = Manager.Instance;
-            connectToolStripMenuItem.Enabled = manager.IsConnected() ? false : true;
-            disconnectToolStripMenuItem.Enabled = !connectToolStripMenuItem.Enabled;
-            Text = OriginalName + ((connectionToolStripMenuItem.Enabled) ? "Connected" : "Disconnected");
+            if(Manager.Instance.IsConnected())
+            {
+                Text = OriginalName + "Connected";
+                connectToolStripMenuItem.Enabled = false;
+                disconnectToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                Text = OriginalName + "Disconnected";
+                connectToolStripMenuItem.Enabled = true;
+                disconnectToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
