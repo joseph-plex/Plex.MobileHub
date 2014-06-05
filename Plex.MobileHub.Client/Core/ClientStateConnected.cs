@@ -45,6 +45,8 @@ namespace MobileHubClient.Core
             {
                 Context.checkInTimer.Stop();
                 WebService.LogOff(Context.clientInstanceId);
+                ClientService.Logs.Add("Checked Logged out of Web Service");
+
             }
             catch (Exception e)
             {
