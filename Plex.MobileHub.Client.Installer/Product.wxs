@@ -45,9 +45,9 @@
         </ServiceInstall>
       </Component>
       <Component Id="ClientInterface" Guid="25767DB2-C59B-4CBC-BF11-731E338002D0">
-        <RegistryValue Root="HKCU" Key="Software\Microsoft\Plexxis Mobile Hub Client 2" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
-        <File Id="Plex.MobileHub.Client.Interface" Name="Interface.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" />
-        <File Id="Plex.MobileHub.Client.Interface.Config" Name="Interface.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Plexxis Mobile Hub Client" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        <File Id="Plex.MobileHub.Client.Interface" Name="Plexxis Hub Client.exe" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath)" />
+        <File Id="Plex.MobileHub.Client.Interface.Config" Name="Plexxis Hub Client.exe.Config" Source="$(var.Plex.MobileHub.Client.Interface.TargetPath).Config"/>
         <File Id="guifreak1" Name="Guifreaks.Common.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.Common.dll"/>
         <File Id="guifreak2" Name="Guifreaks.NavigationBar.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.dll"/>
         <File Id="guifreak3" Name="Guifreaks.NavigationBar.XmlSerializers.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.XmlSerializers.dll"/>
@@ -59,6 +59,6 @@
       </Component>
 		</ComponentGroup>
     <Binary Id="OracleDepsExe" SourceFile="$(var.Plex.MobileHub.Client.Oracle.TargetPath)"/>
-    <Binary Id="OracleDepsRemove" SourceFile="$(var.Plex.MobileHub.Client.Oracle.U.TargetPath)" />
+    <Binary Id="OracleDepsRemove" SourceFile="$(var.Plex.MobileHub.Client.Oracle.U.TargetPath)"/>
   </Fragment>
 </Wix>
