@@ -12,6 +12,8 @@ namespace Plex.MobileHub.Client.Interface
 {
     public partial class Main : Form
     {
+        const string OriginalName = "Plexxis Hub Client - ";
+
         public Main()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace Plex.MobileHub.Client.Interface
         {
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
+            toggleConnectionMenuItems();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,12 +38,23 @@ namespace Plex.MobileHub.Client.Interface
         {
             Manager manager = Manager.Instance;
             manager.LogOn();
+
+            toggleConnectionMenuItems();
         }
 
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Manager manager = Manager.Instance;
             manager.LogOff();
+            toggleConnectionMenuItems();
+        }
+
+        void toggleConnectionMenuItems()
+        {
+            Manager manager = Manager.Instance;
+            connectToolStripMenuItem.Enabled = manager.IsConnected() ? false : true;
+            disconnectToolStripMenuItem.Enabled = !connectToolStripMenuItem.Enabled;
+            Name = OriginalName + ((connectionToolStripMenuItem.Enabled) ? "Connected" : "Disconnected");
         }
     }
 }
