@@ -110,21 +110,25 @@ namespace Plex.MobileHub
         {
             return;
         }
+
         [WebMethod]
         public void ClientDbCompanyUserAppsAdd()
         {
             return;
         }
+
         [WebMethod]
         public void ClientUserAdd()
         {
             return;
         }
+
         [WebMethod]
         public void LogAdd()
         {
             return;
         }
+
         [WebMethod]
         public void ClientDbCompanyRemove() { }
 
@@ -133,14 +137,18 @@ namespace Plex.MobileHub
         {
             return;
         }
+
         [WebMethod]
         public void ClientDbCompanyUserAppsRemove()
         {
             return;
         }
+
         [WebMethod]
-        public void ClientUserRemove()
+        public void ClientUserRemove(int clientUserId)
         {
+            RemoveClientUser strategy = new RemoveClientUser();
+            strategy.Strategy(clientUserId);
             return;
         }
     }
