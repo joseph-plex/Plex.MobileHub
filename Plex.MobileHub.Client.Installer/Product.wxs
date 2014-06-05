@@ -52,7 +52,7 @@
         <File Id="guifreak2" Name="Guifreaks.NavigationBar.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.dll"/>
         <File Id="guifreak3" Name="Guifreaks.NavigationBar.XmlSerializers.dll" Source="$(var.Plex.MobileHub.Client.Interface.TargetDir)Guifreaks.NavigationBar.XmlSerializers.dll"/>
 
-        <Shortcut Id="Shortcut" Name="Interface" Target="[#Plex.MobileHub.Client.Interface]" Directory="ApplicationProgramsFolder"/>
+        <Shortcut Id="Shortcut" Name="Plexxis Hub Client" Target="[#Plex.MobileHub.Client.Interface]" Directory="ApplicationProgramsFolder"/>
         <Shortcut Id="Uninstallshortcut" Name="Uninstall Client" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]"/>
         <Shortcut Id="StartMenuUninstall" Name="Uninstall Client" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Directory="ApplicationProgramsFolder"/>
         <RemoveFolder Id="removeFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
