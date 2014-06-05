@@ -50,7 +50,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>pmhc icon.ico</ApplicationIcon>
+    <ApplicationIcon>PlexxisIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guifreaks.Common">
@@ -310,7 +310,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pmhc icon.ico" />
+    <Content Include="PlexxisIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
