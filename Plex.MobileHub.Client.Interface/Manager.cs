@@ -136,6 +136,11 @@ namespace Plex.MobileHub.Client.Interface
             using (var service = GetGeneralService())
                 return service.IsLoggedIn();
         }
+
+        public bool ValidateClientSettings()
+        {
+            return true;
+        }
         Manager() { }
 
         GeneralServiceClient GetGeneralService()
