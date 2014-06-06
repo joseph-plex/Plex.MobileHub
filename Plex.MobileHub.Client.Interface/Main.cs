@@ -21,11 +21,24 @@ namespace Plex.MobileHub.Client.Interface
 
         private void Main_Load(object sender, EventArgs e)
         {
-            accountSettingsToolStripMenuItem_Click(this, EventArgs.Empty);
+            if(!Manager.Instance.ValidateClientSettings())
+                accountSettingsToolStripMenuItem_Click(this, EventArgs.Empty);
+            init();
+        }
+          
+
+        void init()
+        {
+            SuspendLayout();
+            tabPage1.Controls.Clear();
             tabPage1.Controls.Add(new UsersView() { Dock = DockStyle.Fill });
+            tabPage2.Controls.Clear();
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
+            tabPage3.Controls.Clear();
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
             toggleConnectionMenuItems();
+            ResumeLayout();
+
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,8 +109,8 @@ namespace Plex.MobileHub.Client.Interface
                         }
                         break;
                 }
-
             } while (!OmitError);
+            init();
         }
     }
 }
