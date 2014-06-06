@@ -26,6 +26,20 @@ namespace Plex.MobileHub.Client.Interface.Windows
             return win32;
         }
 
+        public Form GetAccountSettingsWin32()
+        {
+            AccountView view = new AccountView();
+            DialogWin win32 = new DialogWin() { Text = "Client Account Settings" };
+
+            win32.Controls.Add(view);
+            win32.AcceptButton = view.AcceptButton;
+            win32.CancelButton = view.CancelButton;
+
+            view.AcceptButton.Click += (s, e) => win32.Close();
+            view.CancelButton.Click += (s, e) => win32.Close();
+
+            return win32;
+        }
         public Form GetDatabaseManWin32()
         {
             DatabaseView dbv = new DatabaseView();

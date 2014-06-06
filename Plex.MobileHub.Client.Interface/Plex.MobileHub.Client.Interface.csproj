@@ -101,6 +101,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Views\AccountView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AccountView.Designer.cs">
+      <DependentUpon>AccountView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddDatabase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +163,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\AccountView.resx">
+      <DependentUpon>AccountView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AddDatabase.resx">
       <DependentUpon>AddDatabase.cs</DependentUpon>
     </EmbeddedResource>

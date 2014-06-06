@@ -102,11 +102,7 @@ namespace Plex.MobileHub.Client.Interface.Views
             }
         }
 
-        private void splitContainer2_SplitterMoving(object sender, SplitterCancelEventArgs e)
-        {
-            naviBar1.Width = splitContainer2.SplitterDistance;
-        }
-
+       
         private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
         {
             naviBar1.Width = splitContainer2.SplitterDistance;

@@ -21,6 +21,7 @@ namespace Plex.MobileHub.Client.Interface
 
         private void Main_Load(object sender, EventArgs e)
         {
+            tabPage1.Controls.Add(new UsersView() { Dock = DockStyle.Fill });
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
             toggleConnectionMenuItems();
@@ -63,6 +64,12 @@ namespace Plex.MobileHub.Client.Interface
                 connectToolStripMenuItem.Enabled = true;
                 disconnectToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void accountSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WinFactory factory = new WinFactory();
+            factory.GetAccountSettingsWin32().ShowDialog(this);
         }
     }
 }
