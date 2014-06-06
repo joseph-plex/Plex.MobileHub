@@ -19,6 +19,19 @@ namespace Plex.MobileHub.Repositories
     public class Connections
     {
         private static Connections Repo = new Connections();
+        
+        /// <summary>
+        /// External Use
+        /// </summary>
+        public static void RestartSingleton(){
+            Repo = new Connections();
+        }
+
+        static Connections GetNewInstance()
+        {
+            return new Connections();
+        }
+
         public static Connections Instance
         {
             get{
@@ -31,6 +44,14 @@ namespace Plex.MobileHub.Repositories
         private Connections()
         {
             ConnectionRepo = new Dictionary<int, Client>();
+            foreach (var client in CLIENTS.GetAll())
+            {
+                Client data = new Client();
+                data.ClientId = client.CLIENT_ID;
+                data.Key = client.CLIENT_KEY;
+                data.AdjustState();
+                Add(data);
+            }
         }
 
         public Dictionary<int, Client> GetAll() 
@@ -55,22 +76,50 @@ namespace Plex.MobileHub.Repositories
 
         public void Modify(Client Data)
         {
-            if (!CLIENTS.GetAll().ToList().Exists((p) => p.CLIENT_ID == Data.ClientId && p.CLIENT_KEY == Data.Key))
+            var client = CLIENTS.GetAll().ToList().FirstOrDefault((p) => p.CLIENT_ID == Data.ClientId && p.CLIENT_KEY == Data.Key);
+
+            if(client == null)
                 throw new Exception("Invalid Client Credentials");
+
+            if(!ConnectionExists(Data.ClientId))
+            {
+                Client data = new Client() { ClientId = client.CLIENT_ID, key = client.CLIENT_KEY};
+                data.AdjustState();
+                Add(data);
+            }
 
             ConnectionRepo[Data.ClientId] = Data;
         }
 
         public void Remove(int i)
         {
-            if(ConnectionRepo.ContainsKey(i))
-                ConnectionRepo.Remove(i);
+            var client = CLIENTS.GetAll().ToList().FirstOrDefault((p) => p.CLIENT_ID == i);
+
+            if(client == null)
+                throw new Exception("Invalid Client Id");
+
+            if(!ConnectionExists(i))
+            {
+                Client data = new Client() { ClientId = client.CLIENT_ID, key = client.CLIENT_KEY };
+                data.AdjustState();
+                Add(data);
+            }
+            ConnectionRepo.Remove(i);
         }
 
         public Client Retrieve(int i)
         {
-            if (!ConnectionExists(i))
-                throw new Exception("No Client With Specified Id does not Exists");
+            var client = CLIENTS.GetAll().ToList().FirstOrDefault((p) => p.CLIENT_ID == i);
+
+            if (client == null)
+                throw new Exception("Invalid Client Id");
+                
+            if(!ConnectionExists(i))
+            {
+                Client data = new Client() { ClientId = client.CLIENT_ID, key = client.CLIENT_KEY };
+                data.AdjustState();
+                Add(data);
+            }
             return ConnectionRepo[i];
         }
 

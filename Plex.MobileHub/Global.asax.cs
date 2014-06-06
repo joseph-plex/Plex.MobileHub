@@ -15,6 +15,7 @@ namespace Plex.MobileHub
     {
         public void Application_Start(object sender, EventArgs e)
         {
+
             var con = Connections.Instance;
             var comm = Commands.Instance;
             var resp = Responses.Instance;
@@ -22,20 +23,18 @@ namespace Plex.MobileHub
             var cons = Consumers.Instance;
 
             resp.OnAdd += (s, args) => comm.CommandRepo.Remove(((Response)s).Id);
+            CLIENTS.OnInsert += CLIENTS_OnInsert;
 
-            foreach (var client in CLIENTS.GetAll())
-            {
-                Client data = new Client();
-                data.ClientId = client.CLIENT_ID;
-                data.Key = client.CLIENT_KEY;
-                data.AdjustState();
-                con.Add(data);
-            }
         }
 
-        void resp_OnAdd(object sender, EventArgs e)
+        void CLIENTS_OnInsert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CLIENTS client = sender as CLIENTS;
+            if (client == null) return;
+            Client data = new Client();
+            data.ClientId = client.CLIENT_ID;
+            data.Key = client.CLIENT_KEY;
+            data.AdjustState();
         }
       
         protected void Session_Start(object sender, EventArgs e)
