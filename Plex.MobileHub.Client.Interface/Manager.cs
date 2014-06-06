@@ -139,7 +139,8 @@ namespace Plex.MobileHub.Client.Interface
 
         public bool ValidateClientSettings()
         {
-            return true;
+            using (var service = GetGeneralService())
+                return service.ValidateClientCredentials();
         }
         Manager() { }
 

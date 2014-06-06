@@ -15,5 +15,7 @@ namespace Plex.MobileHub.Client.Interface.Windows
         {
             InitializeComponent();
         }
+
+
     }
 }

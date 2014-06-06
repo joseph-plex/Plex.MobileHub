@@ -410,6 +410,9 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/LogOff", ReplyAction="PMHC/GeneralService/LogOffResponse")]
         void LogOff();
         
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ValidateClientCredentials", ReplyAction="PMHC/GeneralService/ValidateClientCredentialsResponse")]
+        bool ValidateClientCredentials();
+        
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Result))]
@@ -418,15 +421,6 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Row))]
         Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplications", ReplyAction="PMHC/GeneralService/GetApplicationsResponse")]
-        void GetApplications(int clientId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationTables", ReplyAction="PMHC/GeneralService/GetApplicationTablesResponse")]
-        void GetApplicationTables();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/GetApplicationsTableColumns", ReplyAction="PMHC/GeneralService/GetApplicationsTableColumnsResponse")]
-        void GetApplicationsTableColumns();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -516,20 +510,12 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
             base.Channel.LogOff();
         }
         
+        public bool ValidateClientCredentials() {
+            return base.Channel.ValidateClientCredentials();
+        }
+        
         public Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments) {
             return base.Channel.Query(commandText, arguments);
-        }
-        
-        public void GetApplications(int clientId) {
-            base.Channel.GetApplications(clientId);
-        }
-        
-        public void GetApplicationTables() {
-            base.Channel.GetApplicationTables();
-        }
-        
-        public void GetApplicationsTableColumns() {
-            base.Channel.GetApplicationsTableColumns();
         }
     }
 }

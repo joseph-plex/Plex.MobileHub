@@ -21,6 +21,7 @@ namespace Plex.MobileHub.Client.Interface
 
         private void Main_Load(object sender, EventArgs e)
         {
+            accountSettingsToolStripMenuItem_Click(this, EventArgs.Empty);
             tabPage1.Controls.Add(new UsersView() { Dock = DockStyle.Fill });
             tabPage2.Controls.Add(new DatabaseView() { Dock = DockStyle.Fill });
             tabPage3.Controls.Add(new LogsView() { Dock = DockStyle.Fill });
@@ -69,7 +70,34 @@ namespace Plex.MobileHub.Client.Interface
         private void accountSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WinFactory factory = new WinFactory();
-            factory.GetAccountSettingsWin32().ShowDialog(this);
+            Manager mgr = Manager.Instance;
+
+            var WasValid = mgr.ValidateClientSettings();
+            var key = mgr.ClientKey;
+            var Id = mgr.ClientId;
+            var OmitError = true;
+
+            do
+            {
+
+                if (!OmitError)
+                    MessageBox.Show("Invalid Client Credentials, Please try again");
+
+                switch (factory.GetAccountSettingsWin32().ShowDialog())
+                {
+                    case DialogResult.OK:
+                        OmitError = mgr.ValidateClientSettings();
+                        break;
+                    default:
+                        if (WasValid) { 
+                            mgr.ClientKey = key;
+                            mgr.ClientId = Id;
+                            return;
+                        }
+                        break;
+                }
+
+            } while (!OmitError);
         }
     }
 }

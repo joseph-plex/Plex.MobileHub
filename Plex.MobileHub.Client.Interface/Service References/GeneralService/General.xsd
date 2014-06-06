@@ -176,6 +176,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="ValidateClientCredentials">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateClientCredentialsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateClientCredentialsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Query">
     <xs:complexType>
       <xs:sequence>
@@ -189,38 +201,6 @@
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" minOccurs="0" name="QueryResult" nillable="true" type="q2:Result" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplications">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="clientId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationsResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationTables">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationTablesResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationsTableColumns">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationsTableColumnsResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

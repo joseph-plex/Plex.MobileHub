@@ -115,6 +115,7 @@
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Location = new System.Drawing.Point(201, 5);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
@@ -125,6 +126,7 @@
             // AcceptButton
             // 
             this.AcceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AcceptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AcceptButton.Location = new System.Drawing.Point(282, 4);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(75, 23);

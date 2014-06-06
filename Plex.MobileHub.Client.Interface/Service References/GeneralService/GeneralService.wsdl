@@ -155,35 +155,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidateClientCredentials">
+      <soap12:operation soapAction="PMHC/GeneralService/ValidateClientCredentials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Query">
       <soap12:operation soapAction="PMHC/GeneralService/Query" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplications">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplications" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplicationTables">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationTables" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplicationsTableColumns">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationsTableColumns" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -330,35 +312,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidateClientCredentials">
+      <soap12:operation soapAction="PMHC/GeneralService/ValidateClientCredentials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Query">
       <soap12:operation soapAction="PMHC/GeneralService/Query" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplications">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplications" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplicationTables">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationTables" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetApplicationsTableColumns">
-      <soap12:operation soapAction="PMHC/GeneralService/GetApplicationsTableColumns" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
