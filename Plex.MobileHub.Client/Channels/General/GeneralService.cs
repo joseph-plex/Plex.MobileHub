@@ -112,28 +112,17 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
+        public bool ValidateClientCredentials()
+        {
+            var clientinfo = ClientSettings.Instance;
+            var result = Query("select count(*) as valid from clients c where c.client_id = :a and c.client_key = :b", clientinfo.ClientId, clientinfo.ClientKey);
+            return Convert.ToInt32(result[0, 0]) > 0;
+        } 
+
+        [OperationContract]
         public MobileHubClient.Data.Result Query(string commandText, params object[] arguments)
         {
             return WebService.Query(commandText, arguments);
-        }
-
-
-        [OperationContract]
-        public void GetApplications(int clientId)
-        {
-            //todo implement applications
-        }
-
-        [OperationContract]
-        public void GetApplicationTables()
-        {
-            //todo implement application table
-        }
-
-        [OperationContract]
-        public void GetApplicationsTableColumns()
-        {
-            //todo Implement Application Table Column
         }
     }
 }
