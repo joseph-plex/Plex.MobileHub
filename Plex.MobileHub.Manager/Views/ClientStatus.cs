@@ -95,7 +95,7 @@ namespace Plex.MobileHub.Manager.Views
             if (dataGridView1.SelectedRows.Count != 1)
                 return;
 
-            switch (MessageBox.Show("This will immediately and permanently delete the application from the system", "Are you sure?", MessageBoxButtons.YesNo))
+            switch (MessageBox.Show("This will immediately and permanently delete the client credentials from the system", "Are you sure?", MessageBoxButtons.YesNo))
             {
                 case DialogResult.Yes:
                     DataGridViewRow row = dataGridView1.SelectedRows[0];
