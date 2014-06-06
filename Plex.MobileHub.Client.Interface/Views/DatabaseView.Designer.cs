@@ -36,10 +36,10 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.naviBar1 = new Guifreaks.NavigationBar.NaviBar(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -126,6 +126,11 @@
             this.toolStripButton4.Size = new System.Drawing.Size(23, 25);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -140,21 +145,21 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer2.Size = new System.Drawing.Size(836, 335);
-            this.splitContainer2.SplitterDistance = 210;
+            this.splitContainer2.SplitterDistance = 227;
             this.splitContainer2.TabIndex = 3;
             this.splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer2_SplitterMoved);
             // 
             // naviBar1
             // 
             this.naviBar1.ActiveBand = null;
-            this.naviBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.naviBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.naviBar1.Location = new System.Drawing.Point(0, 0);
             this.naviBar1.MinimizedButtonWidth = 0;
             this.naviBar1.MinimizedPanelHeight = 0;
             this.naviBar1.Name = "naviBar1";
             this.naviBar1.ShowMinimizeButton = false;
             this.naviBar1.ShowMoreOptionsButton = false;
-            this.naviBar1.Size = new System.Drawing.Size(210, 335);
+            this.naviBar1.Size = new System.Drawing.Size(227, 335);
             this.naviBar1.TabIndex = 0;
             this.naviBar1.Text = "naviBar1";
             this.naviBar1.Resize += new System.EventHandler(this.naviBar1_Resize);
@@ -168,13 +173,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(622, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(605, 335);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
             // 
             // DatabaseView
             // 

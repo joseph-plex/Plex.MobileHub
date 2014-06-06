@@ -100,13 +100,13 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public void ClientDbCompanyAdd()
+        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString )
         {
             return;
         }
 
         [WebMethod]
-        public void ClientDbCompanyUserAdd()
+        public void ClientDbCompanyUserAdd(int appId, int dcCompanyUserId, int appUserTypeId)
         {
             return;
         }
@@ -118,13 +118,13 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public void ClientUserAdd()
+        public void ClientUserAdd(int clientId, string name, string password)
         {
             return;
         }
 
         [WebMethod]
-        public void LogAdd()
+        public void LogAdd(DateTime logDate, string description, int id = 0)
         {
             return;
         }
