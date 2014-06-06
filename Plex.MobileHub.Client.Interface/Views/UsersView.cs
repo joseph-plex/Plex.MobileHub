@@ -39,7 +39,6 @@ namespace Plex.MobileHub.Client.Interface.Views
             naviBar1.Width = splitContainer1.SplitterDistance;
         }
 
-
         void SetClientUsers()
         {
             var result = Manager.Instance.Query(DbResource.UserClientCompany, Manager.Instance.ClientId);
@@ -47,5 +46,48 @@ namespace Plex.MobileHub.Client.Interface.Views
                 listBox1.Items.Add(Convert.ToString(row.Values[0]));
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox lbox = (ListBox)sender;
+            Manager mgr = Manager.Instance;
+            var item = lbox.SelectedItem as String;
+            if (item != null) 
+            { 
+                string sql = "select * from client_users where client_id = :a and name = :b and rownum >= 1";
+                var general = mgr.Query(sql, mgr.ClientId, item);
+
+                var name = Convert.ToString(general.GetValue("name",0));
+                var userId = Convert.ToInt32(general.GetValue("user_id",0));
+                var password = Convert.ToString(general.GetValue("password",0));
+                var clientId = Convert.ToInt32(general.GetValue("client_id",0));
+
+                textBox1.Text = userId.ToString();
+                textBox2.Text = name.ToString();
+                textBox3.Text = password.ToString();
+
+                var c = mgr.Query(DbResource.UserClientCompanyPermission, userId);
+                dataGridView1.Rows.Clear();
+                for (int i = 0, pI = c.GetColumnIndex("permission"), cI = c.GetColumnIndex("company_code"); i < c.Rows.Count; i++)
+                    dataGridView1.Rows.Add(c.GetValue(pI, i), c.GetValue(cI, i));
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridView2.Rows.Clear();
+            if (dataGridView1.SelectedRows.Count != 1)
+                return;
+            Manager mgr = Manager.Instance;
+            var row = dataGridView1.SelectedRows[0];
+            var companyCode = Convert.ToString(row.Cells["Column1"].Value);
+            var result = mgr.Query(DbResource.UserCompanyDbAppPermission, companyCode, Convert.ToInt32(textBox1.Text));
+
+            for (int i = 0; i < result.Rows.Count; i++)
+                dataGridView2.Rows.Add(
+                    Convert.ToBoolean(result.Rows[i].Values[0]),
+                    Convert.ToString(result.Rows[i].Values[1]),
+                    Convert.ToString(result.Rows[i].Values[2])
+                );
+        }
     }
 }
