@@ -227,7 +227,6 @@ namespace Plex.MobileHub.Manager.Views
                 case DialogResult.Yes:
                     DataGridViewRow row = dataGridView1.SelectedRows[0];
                     factory.AppTableRemove(Convert.ToInt32(row.Cells["Table Id"].Value));
-                    //MessageBox.Show(factory.NonQuery("delete from app_tables where table_id = :a", ).ToString());
                     LoadlistBox();
                     break;
                 case DialogResult.No:
