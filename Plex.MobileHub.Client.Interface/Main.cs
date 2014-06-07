@@ -107,6 +107,10 @@ namespace Plex.MobileHub.Client.Interface
                             mgr.ClientId = Id;
                             return;
                         }
+                        else
+                        {
+                            Close();
+                        }
                         break;
                 }
             } while (!OmitError);
