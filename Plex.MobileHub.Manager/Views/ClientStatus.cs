@@ -99,7 +99,9 @@ namespace Plex.MobileHub.Manager.Views
             {
                 case DialogResult.Yes:
                     DataGridViewRow row = dataGridView1.SelectedRows[0];
-                    var queryResult = factory.NonQuery("delete from clients where client_id = :a", row.Cells[1].Value);
+
+                    factory.ClientRemove(Convert.ToInt32(row.Cells[1].Value));
+                    //var queryResult = factory.NonQuery("delete from clients where client_id = :a", );
                     LoadDataGrid();
                     break;
                 case DialogResult.No :

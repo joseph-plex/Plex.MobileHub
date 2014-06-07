@@ -22,27 +22,6 @@ namespace Plex.MobileHub
     // [System.Web.Script.Services.ScriptService]
     public class ManagerSDK : WebService
     {
-        [XmlInclude(typeof(APP_QUERIES))]
-        [XmlInclude(typeof(APP_QUERY_COLUMNS))]
-        [XmlInclude(typeof(APP_QUERY_CONDITIONS))]
-        [XmlInclude(typeof(APP_TABLE_COLUMNS))]
-
-        [XmlInclude(typeof(APP_TABLES))]
-        [XmlInclude(typeof(APP_USER_TYPES))]
-        [XmlInclude(typeof(APPS))]
-        [XmlInclude(typeof(CLIENT_APPS))]
-
-        [XmlInclude(typeof(CLIENT_DB_COMPANIES))]
-        [XmlInclude(typeof(CLIENT_DB_COMPANY_USER_APPS))]
-        [XmlInclude(typeof(CLIENT_DB_COMPANY_USERS))]
-        [XmlInclude(typeof(CLIENT_USERS))]
-
-        [XmlInclude(typeof(CLIENTS))]
-        [XmlInclude(typeof(LOGS))]
-        [XmlInclude(typeof(PMH_SETTINGS))]
-        [XmlInclude(typeof(QUERY_SEQUENCE_REQUESTS))]
-
-
         [WebMethod]
         public string GetExternalIP()
         {
@@ -220,6 +199,7 @@ namespace Plex.MobileHub
             app.Delete();
         }
 
+
         [WebMethod]
         public void AppTableRemove(int id)
         {
@@ -237,7 +217,7 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public void Clients(int id)
+        public void ClientRemove(int id)
         {
             var client = CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == id);
             if (client == null) throw new Exception("Client does not exist");

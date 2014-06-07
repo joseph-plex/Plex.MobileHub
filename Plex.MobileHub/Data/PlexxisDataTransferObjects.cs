@@ -197,6 +197,7 @@ namespace Plex.MobileHub.Data
 
         public virtual bool Delete(IDbConnection Conn)
         {
+            List<Object> arguments = new List<Object>();
             string sql1 = "DELETE FROM ^T^ ";
             string sql2 = "WHERE ^C^ ";
 
@@ -212,12 +213,12 @@ namespace Plex.MobileHub.Data
                 condition += ((i != 0) ? "," : "") + PrimaryKey[i] + "=" + BindingStart + i;
 
             sql = sql1.Replace("^T^", TableName) + sql2.Replace("^C^", condition);
-            using (var Command = Conn.CreateCommand(sql))
-            {
-                for (int i = 0; i < PrimaryKey.Count; i++)
-                    Command.CreateParameter(fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this));
+
+            for (int i = 0; i < PrimaryKey.Count; i++)
+                arguments.Add(fields.Find((p) => PrimaryKey[i] == p.Name).GetValue(this));
+
+            using (var Command = Conn.CreateCommand(sql,arguments.ToArray()))
                 return Convert.ToBoolean(Command.ExecuteNonQuery());
-            }
         }
         
 

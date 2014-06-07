@@ -195,7 +195,8 @@ namespace Plex.MobileHub.Manager.Views
             switch(MessageBox.Show("This will permanently delete the application from the system", "Are you sure?", MessageBoxButtons.YesNo))
             {
                 case DialogResult.Yes:
-                    factory.NonQuery("delete from APPS where title= :a", listBox1.SelectedItem.ToString());
+                    var result = factory.Query("select a.app_id from apps a where rownum >= 1 and a.title = :a", listBox1.SelectedItem.ToString());
+                    factory.AppRemove(Convert.ToInt32(result.Rows[0].Values[0]));
                     LoadlistBox();
                     break;
                 case DialogResult.No:
@@ -225,7 +226,8 @@ namespace Plex.MobileHub.Manager.Views
             {
                 case DialogResult.Yes:
                     DataGridViewRow row = dataGridView1.SelectedRows[0];
-                    MessageBox.Show(factory.NonQuery("delete from app_tables where table_id = :a", row.Cells["Table Id"].Value).ToString());
+                    factory.AppTableRemove(Convert.ToInt32(row.Cells["Table Id"].Value));
+                    //MessageBox.Show(factory.NonQuery("delete from app_tables where table_id = :a", ).ToString());
                     LoadlistBox();
                     break;
                 case DialogResult.No:

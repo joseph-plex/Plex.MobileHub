@@ -142,6 +142,7 @@ namespace Plex.MobileHub.Client.Interface
             using (var service = GetGeneralService())
                 return service.ValidateClientCredentials();
         }
+
         Manager() { }
 
         GeneralServiceClient GetGeneralService()

@@ -18,6 +18,7 @@ namespace MobileHubClient.Channels
         {
             throw new InvalidOperationException("The Channel is already open");
         }
+
         public bool Close()
         {
             if (Parent.Service.State == CommunicationState.Faulted) Parent.Service.Abort();
@@ -26,10 +27,7 @@ namespace MobileHubClient.Channels
             return true;
         }
 
-        private DefaultOpenedStateBehavior()
-        {
-
-        }
+        private DefaultOpenedStateBehavior() { }
 
         public static DefaultOpenedStateBehavior Create(IClientChannel channel)
         {

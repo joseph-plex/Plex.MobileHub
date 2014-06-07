@@ -25,8 +25,7 @@ namespace Plex.MobileHub.Manager.Windows
                 int clientId = Convert.ToInt32(textBox1.Text);
                 string clientKey = Convert.ToString(textBox2.Text);
                 string description = Convert.ToString(textBox3.Text);
-
-                factory.NonQuery("INSERT INTO CLIENTS(CLIENT_ID, CLIENT_KEY, DESCRIPTION) VALUES (:A,:B,:C)", clientId, clientKey, description);
+                factory.ClientAdd(clientId, description, clientKey);
             }
             catch(Exception x) {
                 MessageBox.Show(x.Message);

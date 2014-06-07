@@ -61,28 +61,9 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="IUDData">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
-          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="ArrayOfString">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfRow">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Row">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Column">
@@ -127,6 +108,18 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="ArrayOfRow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Row">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="RQryResult">
         <s:complexContent mixed="false">
           <s:extension base="tns:QryResult">
@@ -136,6 +129,13 @@
             </s:sequence>
           </s:extension>
         </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IUDData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+        </s:sequence>
       </s:complexType>
       <s:element name="Respond">
         <s:complexType>
@@ -242,6 +242,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddClientDbCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectionString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddClientDbCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddClientDbCompanyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SyncDataGet">
         <s:complexType />
       </s:element>
@@ -309,8 +325,91 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ClientDbCompanyAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="connectionString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientDbCompanyAddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dcCompanyUserId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="appUserTypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientDbCompanyUserAddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserAppsAdd">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserAppsAddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientUserAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientUserAddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="logDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogAddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyRemove">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserRemove">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserAppsRemove">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientDbCompanyUserAppsRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientUserRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientUserId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientUserRemoveResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
+      <s:element name="boolean" type="s:boolean" />
       <s:element name="ClientSynchroData" nillable="true" type="tns:ClientSynchroData" />
     </s:schema>
   </wsdl:types>
@@ -356,11 +455,71 @@
   <wsdl:message name="NonQuerySoapOut">
     <wsdl:part name="parameters" element="tns:NonQueryResponse" />
   </wsdl:message>
+  <wsdl:message name="AddClientDbCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:AddClientDbCompany" />
+  </wsdl:message>
+  <wsdl:message name="AddClientDbCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:AddClientDbCompanyResponse" />
+  </wsdl:message>
   <wsdl:message name="SyncDataGetSoapIn">
     <wsdl:part name="parameters" element="tns:SyncDataGet" />
   </wsdl:message>
   <wsdl:message name="SyncDataGetSoapOut">
     <wsdl:part name="parameters" element="tns:SyncDataGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAppsAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAppsAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientUserAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientUserAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogAddSoapIn">
+    <wsdl:part name="parameters" element="tns:LogAdd" />
+  </wsdl:message>
+  <wsdl:message name="LogAddSoapOut">
+    <wsdl:part name="parameters" element="tns:LogAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientUserRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientUserRemoveResponse" />
   </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="ClientId" type="s:string" />
@@ -381,10 +540,54 @@
   <wsdl:message name="GetCommandsHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfCommand" />
   </wsdl:message>
+  <wsdl:message name="AddClientDbCompanyHttpGetIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="companyCode" type="s:string" />
+    <wsdl:part name="ConnectionString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddClientDbCompanyHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
   <wsdl:message name="SyncDataGetHttpGetIn" />
   <wsdl:message name="SyncDataGetHttpGetOut">
     <wsdl:part name="Body" element="tns:ClientSynchroData" />
   </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddHttpGetIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="companyCode" type="s:string" />
+    <wsdl:part name="connectionString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddHttpGetOut" />
+  <wsdl:message name="ClientDbCompanyUserAddHttpGetIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="dcCompanyUserId" type="s:string" />
+    <wsdl:part name="appUserTypeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAddHttpGetOut" />
+  <wsdl:message name="ClientDbCompanyUserAppsAddHttpGetIn" />
+  <wsdl:message name="ClientDbCompanyUserAppsAddHttpGetOut" />
+  <wsdl:message name="ClientUserAddHttpGetIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserAddHttpGetOut" />
+  <wsdl:message name="LogAddHttpGetIn">
+    <wsdl:part name="logDate" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogAddHttpGetOut" />
+  <wsdl:message name="ClientDbCompanyRemoveHttpGetIn" />
+  <wsdl:message name="ClientDbCompanyRemoveHttpGetOut" />
+  <wsdl:message name="ClientDbCompanyUserRemoveHttpGetIn" />
+  <wsdl:message name="ClientDbCompanyUserRemoveHttpGetOut" />
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveHttpGetIn" />
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveHttpGetOut" />
+  <wsdl:message name="ClientUserRemoveHttpGetIn">
+    <wsdl:part name="clientUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRemoveHttpGetOut" />
   <wsdl:message name="LoginHttpPostIn">
     <wsdl:part name="ClientId" type="s:string" />
     <wsdl:part name="Key" type="s:string" />
@@ -404,10 +607,54 @@
   <wsdl:message name="GetCommandsHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfCommand" />
   </wsdl:message>
+  <wsdl:message name="AddClientDbCompanyHttpPostIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="companyCode" type="s:string" />
+    <wsdl:part name="ConnectionString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddClientDbCompanyHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
   <wsdl:message name="SyncDataGetHttpPostIn" />
   <wsdl:message name="SyncDataGetHttpPostOut">
     <wsdl:part name="Body" element="tns:ClientSynchroData" />
   </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddHttpPostIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="companyCode" type="s:string" />
+    <wsdl:part name="connectionString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyAddHttpPostOut" />
+  <wsdl:message name="ClientDbCompanyUserAddHttpPostIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="dcCompanyUserId" type="s:string" />
+    <wsdl:part name="appUserTypeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompanyUserAddHttpPostOut" />
+  <wsdl:message name="ClientDbCompanyUserAppsAddHttpPostIn" />
+  <wsdl:message name="ClientDbCompanyUserAppsAddHttpPostOut" />
+  <wsdl:message name="ClientUserAddHttpPostIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserAddHttpPostOut" />
+  <wsdl:message name="LogAddHttpPostIn">
+    <wsdl:part name="logDate" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogAddHttpPostOut" />
+  <wsdl:message name="ClientDbCompanyRemoveHttpPostIn" />
+  <wsdl:message name="ClientDbCompanyRemoveHttpPostOut" />
+  <wsdl:message name="ClientDbCompanyUserRemoveHttpPostIn" />
+  <wsdl:message name="ClientDbCompanyUserRemoveHttpPostOut" />
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveHttpPostIn" />
+  <wsdl:message name="ClientDbCompanyUserAppsRemoveHttpPostOut" />
+  <wsdl:message name="ClientUserRemoveHttpPostIn">
+    <wsdl:part name="clientUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRemoveHttpPostOut" />
   <wsdl:portType name="ClientSDKSoap">
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
@@ -437,9 +684,49 @@
       <wsdl:input message="tns:NonQuerySoapIn" />
       <wsdl:output message="tns:NonQuerySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <wsdl:input message="tns:AddClientDbCompanySoapIn" />
+      <wsdl:output message="tns:AddClientDbCompanySoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <wsdl:input message="tns:SyncDataGetSoapIn" />
       <wsdl:output message="tns:SyncDataGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <wsdl:input message="tns:ClientDbCompanyAddSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAddSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsAddSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <wsdl:input message="tns:ClientUserAddSoapIn" />
+      <wsdl:output message="tns:ClientUserAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <wsdl:input message="tns:LogAddSoapIn" />
+      <wsdl:output message="tns:LogAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <wsdl:input message="tns:ClientDbCompanyRemoveSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserRemoveSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsRemoveSoapIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <wsdl:input message="tns:ClientUserRemoveSoapIn" />
+      <wsdl:output message="tns:ClientUserRemoveSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ClientSDKHttpGet">
@@ -455,9 +742,49 @@
       <wsdl:input message="tns:GetCommandsHttpGetIn" />
       <wsdl:output message="tns:GetCommandsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <wsdl:input message="tns:AddClientDbCompanyHttpGetIn" />
+      <wsdl:output message="tns:AddClientDbCompanyHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <wsdl:input message="tns:SyncDataGetHttpGetIn" />
       <wsdl:output message="tns:SyncDataGetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <wsdl:input message="tns:ClientDbCompanyAddHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAddHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsAddHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <wsdl:input message="tns:ClientUserAddHttpGetIn" />
+      <wsdl:output message="tns:ClientUserAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <wsdl:input message="tns:LogAddHttpGetIn" />
+      <wsdl:output message="tns:LogAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <wsdl:input message="tns:ClientDbCompanyRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <wsdl:input message="tns:ClientUserRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientUserRemoveHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ClientSDKHttpPost">
@@ -473,9 +800,49 @@
       <wsdl:input message="tns:GetCommandsHttpPostIn" />
       <wsdl:output message="tns:GetCommandsHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <wsdl:input message="tns:AddClientDbCompanyHttpPostIn" />
+      <wsdl:output message="tns:AddClientDbCompanyHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <wsdl:input message="tns:SyncDataGetHttpPostIn" />
       <wsdl:output message="tns:SyncDataGetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <wsdl:input message="tns:ClientDbCompanyAddHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAddHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsAddHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <wsdl:input message="tns:ClientUserAddHttpPostIn" />
+      <wsdl:output message="tns:ClientUserAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <wsdl:input message="tns:LogAddHttpPostIn" />
+      <wsdl:output message="tns:LogAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <wsdl:input message="tns:ClientDbCompanyRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <wsdl:input message="tns:ClientDbCompanyUserAppsRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompanyUserAppsRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <wsdl:input message="tns:ClientUserRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientUserRemoveHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ClientSDKSoap" type="tns:ClientSDKSoap">
@@ -543,8 +910,98 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <soap:operation soapAction="http://pmh.plexxis.com/AddClientDbCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <soap:operation soapAction="http://pmh.plexxis.com/SyncDataGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAppsAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientUserAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/LogAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAppsRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientUserRemove" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -618,8 +1075,98 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AddClientDbCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <soap12:operation soapAction="http://pmh.plexxis.com/SyncDataGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAppsAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/LogAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAppsRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientUserRemove" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -655,6 +1202,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <http:operation location="/AddClientDbCompany" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <http:operation location="/SyncDataGet" />
       <wsdl:input>
@@ -663,6 +1219,69 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <http:operation location="/ClientDbCompanyAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <http:operation location="/ClientDbCompanyUserAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <http:operation location="/ClientDbCompanyUserAppsAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <http:operation location="/ClientUserAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <http:operation location="/LogAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <http:operation location="/ClientDbCompanyRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <http:operation location="/ClientDbCompanyUserRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <http:operation location="/ClientDbCompanyUserAppsRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <http:operation location="/ClientUserRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ClientSDKHttpPost" type="tns:ClientSDKHttpPost">
@@ -692,6 +1311,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddClientDbCompany">
+      <http:operation location="/AddClientDbCompany" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SyncDataGet">
       <http:operation location="/SyncDataGet" />
       <wsdl:input>
@@ -700,6 +1328,69 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <http:operation location="/ClientDbCompanyAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <http:operation location="/ClientDbCompanyUserAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <http:operation location="/ClientDbCompanyUserAppsAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <http:operation location="/ClientUserAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LogAdd">
+      <http:operation location="/LogAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <http:operation location="/ClientDbCompanyRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <http:operation location="/ClientDbCompanyUserRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsRemove">
+      <http:operation location="/ClientDbCompanyUserAppsRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <http:operation location="/ClientUserRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ClientSDK">

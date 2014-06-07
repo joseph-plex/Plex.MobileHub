@@ -15,91 +15,124 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://pmh.plexxis.com", ConfigurationName="ManagementWebservice.ManagerSDKSoap")]
     public interface ManagerSDKSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ValidateDataStructures", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void ValidateDataStructures();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetExternalIP", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string GetExternalIP();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetTaskData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Task[] GetTaskData();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommandRepo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Command[] GetCommandRepo();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConnectionRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Client[] GetConnectionRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConsumerRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Consumer[] GetConsumerRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetLogRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] GetLogRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetResponseRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Response[] GetResponseRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/LogsGetAll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] LogsGetAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         int NonQuery(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/RetrieveCommand", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void RetrieveCommand(int Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResetLogs", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResetLogs();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Test", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         string Test();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetReferenceTree", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         object GetReferenceTree();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int AppAdd(string authKey, string title, string description, bool isClientCustomApp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int ClientAdd(int clientId, string desc, string key);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppsAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int ClientAppsAdd(int appId, int clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppRemove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void AppRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableRemove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void AppTableRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnRemove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void AppTableColumnRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientRemove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void ClientRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppRemove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void ClientAppRemove(int id);
     }
     
     /// <remarks/>
@@ -745,1416 +778,6 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PMH_SETTINGS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(QUERY_SEQUENCE_REQUESTS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_TABLE_COLUMNS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_USERS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENTS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_QUERIES))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_QUERY_COLUMNS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_QUERY_CONDITIONS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_TABLES))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_USER_TYPES))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APPS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_APPS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANIES))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LOGS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANY_USER_APPS))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANY_USERS))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public abstract partial class PlexxisDataTransferObjects : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class PMH_SETTINGS : PlexxisDataTransferObjects {
-        
-        private int pMH_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int PMH_ID {
-            get {
-                return this.pMH_IDField;
-            }
-            set {
-                this.pMH_IDField = value;
-                this.RaisePropertyChanged("PMH_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class QUERY_SEQUENCE_REQUESTS : PlexxisDataTransferObjects {
-        
-        private int tQR_IDField;
-        
-        private int uSER_QUERYINGField;
-        
-        private int dATABASE_QUERIEDField;
-        
-        private int qUERY_SEQUENCINGField;
-        
-        private System.DateTime sEQ_QUERY_TIMEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int TQR_ID {
-            get {
-                return this.tQR_IDField;
-            }
-            set {
-                this.tQR_IDField = value;
-                this.RaisePropertyChanged("TQR_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int USER_QUERYING {
-            get {
-                return this.uSER_QUERYINGField;
-            }
-            set {
-                this.uSER_QUERYINGField = value;
-                this.RaisePropertyChanged("USER_QUERYING");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int DATABASE_QUERIED {
-            get {
-                return this.dATABASE_QUERIEDField;
-            }
-            set {
-                this.dATABASE_QUERIEDField = value;
-                this.RaisePropertyChanged("DATABASE_QUERIED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int QUERY_SEQUENCING {
-            get {
-                return this.qUERY_SEQUENCINGField;
-            }
-            set {
-                this.qUERY_SEQUENCINGField = value;
-                this.RaisePropertyChanged("QUERY_SEQUENCING");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public System.DateTime SEQ_QUERY_TIME {
-            get {
-                return this.sEQ_QUERY_TIMEField;
-            }
-            set {
-                this.sEQ_QUERY_TIMEField = value;
-                this.RaisePropertyChanged("SEQ_QUERY_TIME");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_TABLE_COLUMNS : PlexxisDataTransferObjects {
-        
-        private int tABLE_IDField;
-        
-        private int tABLE_COLUMN_IDField;
-        
-        private string cOLUMN_NAMEField;
-        
-        private int cOLUMN_SEQUENCEField;
-        
-        private string dATA_TYPEField;
-        
-        private System.Nullable<int> dATA_LENGTHField;
-        
-        private System.Nullable<int> dATA_PRECISIONField;
-        
-        private System.Nullable<int> dATA_SCALEField;
-        
-        private System.Nullable<int> aLLOW_DB_NULLField;
-        
-        private System.Nullable<int> iS_READ_ONLYField;
-        
-        private System.Nullable<int> iS_LONGField;
-        
-        private System.Nullable<int> iS_KEYField;
-        
-        private string kEY_TYPEField;
-        
-        private System.Nullable<int> iS_UNIQUEField;
-        
-        private string dESCRIPTIONField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int TABLE_ID {
-            get {
-                return this.tABLE_IDField;
-            }
-            set {
-                this.tABLE_IDField = value;
-                this.RaisePropertyChanged("TABLE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int TABLE_COLUMN_ID {
-            get {
-                return this.tABLE_COLUMN_IDField;
-            }
-            set {
-                this.tABLE_COLUMN_IDField = value;
-                this.RaisePropertyChanged("TABLE_COLUMN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string COLUMN_NAME {
-            get {
-                return this.cOLUMN_NAMEField;
-            }
-            set {
-                this.cOLUMN_NAMEField = value;
-                this.RaisePropertyChanged("COLUMN_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int COLUMN_SEQUENCE {
-            get {
-                return this.cOLUMN_SEQUENCEField;
-            }
-            set {
-                this.cOLUMN_SEQUENCEField = value;
-                this.RaisePropertyChanged("COLUMN_SEQUENCE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string DATA_TYPE {
-            get {
-                return this.dATA_TYPEField;
-            }
-            set {
-                this.dATA_TYPEField = value;
-                this.RaisePropertyChanged("DATA_TYPE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
-        public System.Nullable<int> DATA_LENGTH {
-            get {
-                return this.dATA_LENGTHField;
-            }
-            set {
-                this.dATA_LENGTHField = value;
-                this.RaisePropertyChanged("DATA_LENGTH");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
-        public System.Nullable<int> DATA_PRECISION {
-            get {
-                return this.dATA_PRECISIONField;
-            }
-            set {
-                this.dATA_PRECISIONField = value;
-                this.RaisePropertyChanged("DATA_PRECISION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
-        public System.Nullable<int> DATA_SCALE {
-            get {
-                return this.dATA_SCALEField;
-            }
-            set {
-                this.dATA_SCALEField = value;
-                this.RaisePropertyChanged("DATA_SCALE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
-        public System.Nullable<int> ALLOW_DB_NULL {
-            get {
-                return this.aLLOW_DB_NULLField;
-            }
-            set {
-                this.aLLOW_DB_NULLField = value;
-                this.RaisePropertyChanged("ALLOW_DB_NULL");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
-        public System.Nullable<int> IS_READ_ONLY {
-            get {
-                return this.iS_READ_ONLYField;
-            }
-            set {
-                this.iS_READ_ONLYField = value;
-                this.RaisePropertyChanged("IS_READ_ONLY");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
-        public System.Nullable<int> IS_LONG {
-            get {
-                return this.iS_LONGField;
-            }
-            set {
-                this.iS_LONGField = value;
-                this.RaisePropertyChanged("IS_LONG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
-        public System.Nullable<int> IS_KEY {
-            get {
-                return this.iS_KEYField;
-            }
-            set {
-                this.iS_KEYField = value;
-                this.RaisePropertyChanged("IS_KEY");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
-        public string KEY_TYPE {
-            get {
-                return this.kEY_TYPEField;
-            }
-            set {
-                this.kEY_TYPEField = value;
-                this.RaisePropertyChanged("KEY_TYPE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=13)]
-        public System.Nullable<int> IS_UNIQUE {
-            get {
-                return this.iS_UNIQUEField;
-            }
-            set {
-                this.iS_UNIQUEField = value;
-                this.RaisePropertyChanged("IS_UNIQUE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_USERS : PlexxisDataTransferObjects {
-        
-        private int uSER_IDField;
-        
-        private int cLIENT_IDField;
-        
-        private string nAMEField;
-        
-        private string pASSWORDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int USER_ID {
-            get {
-                return this.uSER_IDField;
-            }
-            set {
-                this.uSER_IDField = value;
-                this.RaisePropertyChanged("USER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int CLIENT_ID {
-            get {
-                return this.cLIENT_IDField;
-            }
-            set {
-                this.cLIENT_IDField = value;
-                this.RaisePropertyChanged("CLIENT_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string NAME {
-            get {
-                return this.nAMEField;
-            }
-            set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string PASSWORD {
-            get {
-                return this.pASSWORDField;
-            }
-            set {
-                this.pASSWORDField = value;
-                this.RaisePropertyChanged("PASSWORD");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENTS : PlexxisDataTransferObjects {
-        
-        private int cLIENT_IDField;
-        
-        private string cLIENT_KEYField;
-        
-        private string dESCRIPTIONField;
-        
-        private System.Nullable<int> cLIENT_INSTANCE_IDField;
-        
-        private string cLIENT_IP_ADDRESSField;
-        
-        private System.Nullable<int> cLIENT_PORTField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int CLIENT_ID {
-            get {
-                return this.cLIENT_IDField;
-            }
-            set {
-                this.cLIENT_IDField = value;
-                this.RaisePropertyChanged("CLIENT_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string CLIENT_KEY {
-            get {
-                return this.cLIENT_KEYField;
-            }
-            set {
-                this.cLIENT_KEYField = value;
-                this.RaisePropertyChanged("CLIENT_KEY");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public System.Nullable<int> CLIENT_INSTANCE_ID {
-            get {
-                return this.cLIENT_INSTANCE_IDField;
-            }
-            set {
-                this.cLIENT_INSTANCE_IDField = value;
-                this.RaisePropertyChanged("CLIENT_INSTANCE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string CLIENT_IP_ADDRESS {
-            get {
-                return this.cLIENT_IP_ADDRESSField;
-            }
-            set {
-                this.cLIENT_IP_ADDRESSField = value;
-                this.RaisePropertyChanged("CLIENT_IP_ADDRESS");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
-        public System.Nullable<int> CLIENT_PORT {
-            get {
-                return this.cLIENT_PORTField;
-            }
-            set {
-                this.cLIENT_PORTField = value;
-                this.RaisePropertyChanged("CLIENT_PORT");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_QUERIES : PlexxisDataTransferObjects {
-        
-        private int qUERY_IDField;
-        
-        private int aPP_IDField;
-        
-        private string nAMEField;
-        
-        private string tABLE_NAMEField;
-        
-        private string dESCRIPTIONField;
-        
-        private int tABLE_IDField;
-        
-        private int iS_DELTAField;
-        
-        private string sQLField;
-        
-        private System.Nullable<int> sEQ_LIMIT_TIMESPANField;
-        
-        private System.Nullable<int> sEQ_LIMITField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int QUERY_ID {
-            get {
-                return this.qUERY_IDField;
-            }
-            set {
-                this.qUERY_IDField = value;
-                this.RaisePropertyChanged("QUERY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string NAME {
-            get {
-                return this.nAMEField;
-            }
-            set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string TABLE_NAME {
-            get {
-                return this.tABLE_NAMEField;
-            }
-            set {
-                this.tABLE_NAMEField = value;
-                this.RaisePropertyChanged("TABLE_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public int TABLE_ID {
-            get {
-                return this.tABLE_IDField;
-            }
-            set {
-                this.tABLE_IDField = value;
-                this.RaisePropertyChanged("TABLE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public int IS_DELTA {
-            get {
-                return this.iS_DELTAField;
-            }
-            set {
-                this.iS_DELTAField = value;
-                this.RaisePropertyChanged("IS_DELTA");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public string SQL {
-            get {
-                return this.sQLField;
-            }
-            set {
-                this.sQLField = value;
-                this.RaisePropertyChanged("SQL");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
-        public System.Nullable<int> SEQ_LIMIT_TIMESPAN {
-            get {
-                return this.sEQ_LIMIT_TIMESPANField;
-            }
-            set {
-                this.sEQ_LIMIT_TIMESPANField = value;
-                this.RaisePropertyChanged("SEQ_LIMIT_TIMESPAN");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
-        public System.Nullable<int> SEQ_LIMIT {
-            get {
-                return this.sEQ_LIMITField;
-            }
-            set {
-                this.sEQ_LIMITField = value;
-                this.RaisePropertyChanged("SEQ_LIMIT");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_QUERY_COLUMNS : PlexxisDataTransferObjects {
-        
-        private int cOLUMN_IDField;
-        
-        private int qUERY_IDField;
-        
-        private string cOLUMN_NAMEField;
-        
-        private int cOLUMN_SEQUENCEField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int COLUMN_ID {
-            get {
-                return this.cOLUMN_IDField;
-            }
-            set {
-                this.cOLUMN_IDField = value;
-                this.RaisePropertyChanged("COLUMN_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int QUERY_ID {
-            get {
-                return this.qUERY_IDField;
-            }
-            set {
-                this.qUERY_IDField = value;
-                this.RaisePropertyChanged("QUERY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string COLUMN_NAME {
-            get {
-                return this.cOLUMN_NAMEField;
-            }
-            set {
-                this.cOLUMN_NAMEField = value;
-                this.RaisePropertyChanged("COLUMN_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int COLUMN_SEQUENCE {
-            get {
-                return this.cOLUMN_SEQUENCEField;
-            }
-            set {
-                this.cOLUMN_SEQUENCEField = value;
-                this.RaisePropertyChanged("COLUMN_SEQUENCE");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_QUERY_CONDITIONS : PlexxisDataTransferObjects {
-        
-        private int cONDITION_IDField;
-        
-        private int qUERY_IDField;
-        
-        private string cOLUMN_NAMEField;
-        
-        private string cOLUMN_NVLField;
-        
-        private string cOLUMN_VALUEField;
-        
-        private string oPERATORField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int CONDITION_ID {
-            get {
-                return this.cONDITION_IDField;
-            }
-            set {
-                this.cONDITION_IDField = value;
-                this.RaisePropertyChanged("CONDITION_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int QUERY_ID {
-            get {
-                return this.qUERY_IDField;
-            }
-            set {
-                this.qUERY_IDField = value;
-                this.RaisePropertyChanged("QUERY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string COLUMN_NAME {
-            get {
-                return this.cOLUMN_NAMEField;
-            }
-            set {
-                this.cOLUMN_NAMEField = value;
-                this.RaisePropertyChanged("COLUMN_NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string COLUMN_NVL {
-            get {
-                return this.cOLUMN_NVLField;
-            }
-            set {
-                this.cOLUMN_NVLField = value;
-                this.RaisePropertyChanged("COLUMN_NVL");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string COLUMN_VALUE {
-            get {
-                return this.cOLUMN_VALUEField;
-            }
-            set {
-                this.cOLUMN_VALUEField = value;
-                this.RaisePropertyChanged("COLUMN_VALUE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string OPERATOR {
-            get {
-                return this.oPERATORField;
-            }
-            set {
-                this.oPERATORField = value;
-                this.RaisePropertyChanged("OPERATOR");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_TABLES : PlexxisDataTransferObjects {
-        
-        private int tABLE_IDField;
-        
-        private int aPP_IDField;
-        
-        private string nAMEField;
-        
-        private string dESCRIPTIONField;
-        
-        private int iNSERT_ALLOWEDField;
-        
-        private int uPDATE_ALLOWEDField;
-        
-        private int dELETE_ALLOWEDField;
-        
-        private int qUERY_ALLOWEDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int TABLE_ID {
-            get {
-                return this.tABLE_IDField;
-            }
-            set {
-                this.tABLE_IDField = value;
-                this.RaisePropertyChanged("TABLE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string NAME {
-            get {
-                return this.nAMEField;
-            }
-            set {
-                this.nAMEField = value;
-                this.RaisePropertyChanged("NAME");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int INSERT_ALLOWED {
-            get {
-                return this.iNSERT_ALLOWEDField;
-            }
-            set {
-                this.iNSERT_ALLOWEDField = value;
-                this.RaisePropertyChanged("INSERT_ALLOWED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public int UPDATE_ALLOWED {
-            get {
-                return this.uPDATE_ALLOWEDField;
-            }
-            set {
-                this.uPDATE_ALLOWEDField = value;
-                this.RaisePropertyChanged("UPDATE_ALLOWED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public int DELETE_ALLOWED {
-            get {
-                return this.dELETE_ALLOWEDField;
-            }
-            set {
-                this.dELETE_ALLOWEDField = value;
-                this.RaisePropertyChanged("DELETE_ALLOWED");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public int QUERY_ALLOWED {
-            get {
-                return this.qUERY_ALLOWEDField;
-            }
-            set {
-                this.qUERY_ALLOWEDField = value;
-                this.RaisePropertyChanged("QUERY_ALLOWED");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APP_USER_TYPES : PlexxisDataTransferObjects {
-        
-        private int uSER_TYPE_IDField;
-        
-        private int aPP_IDField;
-        
-        private string cODEField;
-        
-        private string dESCRIPTIONField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int USER_TYPE_ID {
-            get {
-                return this.uSER_TYPE_IDField;
-            }
-            set {
-                this.uSER_TYPE_IDField = value;
-                this.RaisePropertyChanged("USER_TYPE_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string CODE {
-            get {
-                return this.cODEField;
-            }
-            set {
-                this.cODEField = value;
-                this.RaisePropertyChanged("CODE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class APPS : PlexxisDataTransferObjects {
-        
-        private int aPP_IDField;
-        
-        private string aUTH_KEYField;
-        
-        private string tITLEField;
-        
-        private string dESCRIPTIONField;
-        
-        private int iS_CLIENT_CUSTOM_APPField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string AUTH_KEY {
-            get {
-                return this.aUTH_KEYField;
-            }
-            set {
-                this.aUTH_KEYField = value;
-                this.RaisePropertyChanged("AUTH_KEY");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string TITLE {
-            get {
-                return this.tITLEField;
-            }
-            set {
-                this.tITLEField = value;
-                this.RaisePropertyChanged("TITLE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int IS_CLIENT_CUSTOM_APP {
-            get {
-                return this.iS_CLIENT_CUSTOM_APPField;
-            }
-            set {
-                this.iS_CLIENT_CUSTOM_APPField = value;
-                this.RaisePropertyChanged("IS_CLIENT_CUSTOM_APP");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_APPS : PlexxisDataTransferObjects {
-        
-        private int cLIENT_APP_IDField;
-        
-        private int aPP_IDField;
-        
-        private int cLIENT_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int CLIENT_APP_ID {
-            get {
-                return this.cLIENT_APP_IDField;
-            }
-            set {
-                this.cLIENT_APP_IDField = value;
-                this.RaisePropertyChanged("CLIENT_APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int CLIENT_ID {
-            get {
-                return this.cLIENT_IDField;
-            }
-            set {
-                this.cLIENT_IDField = value;
-                this.RaisePropertyChanged("CLIENT_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_DB_COMPANIES : PlexxisDataTransferObjects {
-        
-        private int dB_COMPANY_IDField;
-        
-        private string dATABASE_SIDField;
-        
-        private System.Nullable<int> cOMPANY_IDField;
-        
-        private string cOMPANY_CODEField;
-        
-        private int cLIENT_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DB_COMPANY_ID {
-            get {
-                return this.dB_COMPANY_IDField;
-            }
-            set {
-                this.dB_COMPANY_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string DATABASE_SID {
-            get {
-                return this.dATABASE_SIDField;
-            }
-            set {
-                this.dATABASE_SIDField = value;
-                this.RaisePropertyChanged("DATABASE_SID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public System.Nullable<int> COMPANY_ID {
-            get {
-                return this.cOMPANY_IDField;
-            }
-            set {
-                this.cOMPANY_IDField = value;
-                this.RaisePropertyChanged("COMPANY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string COMPANY_CODE {
-            get {
-                return this.cOMPANY_CODEField;
-            }
-            set {
-                this.cOMPANY_CODEField = value;
-                this.RaisePropertyChanged("COMPANY_CODE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int CLIENT_ID {
-            get {
-                return this.cLIENT_IDField;
-            }
-            set {
-                this.cLIENT_IDField = value;
-                this.RaisePropertyChanged("CLIENT_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class LOGS : PlexxisDataTransferObjects {
-        
-        private int lOG_IDField;
-        
-        private System.DateTime lOG_DATEField;
-        
-        private string dESCRIPTIONField;
-        
-        private System.Nullable<int> cLIENT_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int LOG_ID {
-            get {
-                return this.lOG_IDField;
-            }
-            set {
-                this.lOG_IDField = value;
-                this.RaisePropertyChanged("LOG_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public System.DateTime LOG_DATE {
-            get {
-                return this.lOG_DATEField;
-            }
-            set {
-                this.lOG_DATEField = value;
-                this.RaisePropertyChanged("LOG_DATE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string DESCRIPTION {
-            get {
-                return this.dESCRIPTIONField;
-            }
-            set {
-                this.dESCRIPTIONField = value;
-                this.RaisePropertyChanged("DESCRIPTION");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public System.Nullable<int> CLIENT_ID {
-            get {
-                return this.cLIENT_IDField;
-            }
-            set {
-                this.cLIENT_IDField = value;
-                this.RaisePropertyChanged("CLIENT_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_DB_COMPANY_USER_APPS : PlexxisDataTransferObjects {
-        
-        private int dB_COMPANY_USER_APP_IDField;
-        
-        private int dB_COMPANY_USER_IDField;
-        
-        private int aPP_IDField;
-        
-        private System.Nullable<int> aPP_USER_TYPE_IDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DB_COMPANY_USER_APP_ID {
-            get {
-                return this.dB_COMPANY_USER_APP_IDField;
-            }
-            set {
-                this.dB_COMPANY_USER_APP_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_USER_APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int DB_COMPANY_USER_ID {
-            get {
-                return this.dB_COMPANY_USER_IDField;
-            }
-            set {
-                this.dB_COMPANY_USER_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_USER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int APP_ID {
-            get {
-                return this.aPP_IDField;
-            }
-            set {
-                this.aPP_IDField = value;
-                this.RaisePropertyChanged("APP_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public System.Nullable<int> APP_USER_TYPE_ID {
-            get {
-                return this.aPP_USER_TYPE_IDField;
-            }
-            set {
-                this.aPP_USER_TYPE_IDField = value;
-                this.RaisePropertyChanged("APP_USER_TYPE_ID");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class CLIENT_DB_COMPANY_USERS : PlexxisDataTransferObjects {
-        
-        private int dB_COMPANY_USER_IDField;
-        
-        private int dB_COMPANY_IDField;
-        
-        private int uSER_IDField;
-        
-        private string cONNECT_ASField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DB_COMPANY_USER_ID {
-            get {
-                return this.dB_COMPANY_USER_IDField;
-            }
-            set {
-                this.dB_COMPANY_USER_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_USER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int DB_COMPANY_ID {
-            get {
-                return this.dB_COMPANY_IDField;
-            }
-            set {
-                this.dB_COMPANY_IDField = value;
-                this.RaisePropertyChanged("DB_COMPANY_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int USER_ID {
-            get {
-                return this.uSER_IDField;
-            }
-            set {
-                this.uSER_IDField = value;
-                this.RaisePropertyChanged("USER_ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string CONNECT_AS {
-            get {
-                return this.cONNECT_ASField;
-            }
-            set {
-                this.cONNECT_ASField = value;
-                this.RaisePropertyChanged("CONNECT_AS");
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2255,10 +878,6 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
                 base(binding, remoteAddress) {
         }
         
-        public void ValidateDataStructures() {
-            base.Channel.ValidateDataStructures();
-        }
-        
         public string GetExternalIP() {
             return base.Channel.GetExternalIP();
         }
@@ -2313,6 +932,46 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         public object GetReferenceTree() {
             return base.Channel.GetReferenceTree();
+        }
+        
+        public int AppAdd(string authKey, string title, string description, bool isClientCustomApp) {
+            return base.Channel.AppAdd(authKey, title, description, isClientCustomApp);
+        }
+        
+        public int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select) {
+            return base.Channel.AppTableAdd(appId, name, desc, insert, update, delete, select);
+        }
+        
+        public int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc) {
+            return base.Channel.AppTableColumnAdd(tabId, nom, seq, type, length, prec, scale, nullable, readOnly, isLong, isKey, keyType, unique, desc);
+        }
+        
+        public int ClientAdd(int clientId, string desc, string key) {
+            return base.Channel.ClientAdd(clientId, desc, key);
+        }
+        
+        public int ClientAppsAdd(int appId, int clientId) {
+            return base.Channel.ClientAppsAdd(appId, clientId);
+        }
+        
+        public void AppRemove(int id) {
+            base.Channel.AppRemove(id);
+        }
+        
+        public void AppTableRemove(int id) {
+            base.Channel.AppTableRemove(id);
+        }
+        
+        public void AppTableColumnRemove(int id) {
+            base.Channel.AppTableColumnRemove(id);
+        }
+        
+        public void ClientRemove(int id) {
+            base.Channel.ClientRemove(id);
+        }
+        
+        public void ClientAppRemove(int id) {
+            base.Channel.ClientAppRemove(id);
         }
     }
 }

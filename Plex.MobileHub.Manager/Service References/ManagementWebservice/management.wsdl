@@ -2,12 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://pmh.plexxis.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://pmh.plexxis.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://pmh.plexxis.com">
-      <s:element name="ValidateDataStructures">
-        <s:complexType />
-      </s:element>
-      <s:element name="ValidateDataStructuresResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="GetExternalIP">
         <s:complexType />
       </s:element>
@@ -67,223 +61,6 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
         </s:sequence>
-      </s:complexType>
-      <s:complexType name="PlexxisDataTransferObjects" abstract="true" />
-      <s:complexType name="CLIENT_DB_COMPANY_USERS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_USER_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="USER_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CONNECT_AS" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CLIENT_DB_COMPANY_USER_APPS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_USER_APP_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_USER_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_USER_TYPE_ID" nillable="true" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="LOGS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="LOG_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="LOG_DATE" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" nillable="true" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CLIENT_DB_COMPANIES">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="DATABASE_SID" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="COMPANY_ID" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="COMPANY_CODE" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CLIENT_APPS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_APP_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APPS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="AUTH_KEY" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="TITLE" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_CLIENT_CUSTOM_APP" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_USER_TYPES">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="USER_TYPE_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CODE" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_TABLES">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="INSERT_ALLOWED" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="UPDATE_ALLOWED" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DELETE_ALLOWED" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ALLOWED" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_QUERY_CONDITIONS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CONDITION_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NVL" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_VALUE" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="OPERATOR" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_QUERY_COLUMNS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_SEQUENCE" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_QUERIES">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="QUERY_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="TABLE_NAME" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_DELTA" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="SQL" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="SEQ_LIMIT_TIMESPAN" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="SEQ_LIMIT" nillable="true" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CLIENTS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CLIENT_KEY" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_INSTANCE_ID" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CLIENT_IP_ADDRESS" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_PORT" nillable="true" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CLIENT_USERS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="USER_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="APP_TABLE_COLUMNS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="TABLE_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="TABLE_COLUMN_ID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="COLUMN_NAME" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="COLUMN_SEQUENCE" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="DATA_TYPE" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="DATA_LENGTH" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DATA_PRECISION" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DATA_SCALE" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="ALLOW_DB_NULL" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_READ_ONLY" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_LONG" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_KEY" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="KEY_TYPE" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="IS_UNIQUE" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="QUERY_SEQUENCE_REQUESTS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="TQR_ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="USER_QUERYING" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="DATABASE_QUERIED" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="QUERY_SEQUENCING" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="SEQ_QUERY_TIME" type="s:dateTime" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="PMH_SETTINGS">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PlexxisDataTransferObjects">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="PMH_ID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
       </s:complexType>
       <s:element name="GetConnectionRepository">
         <s:complexType />
@@ -499,6 +276,151 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AppAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isClientCustomApp" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="insert" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="update" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="delete" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="select" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppTableAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableColumnAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tabId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="seq" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="length" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="prec" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scale" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nullable" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="readOnly" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isLong" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isKey" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unique" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableColumnAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppTableColumnAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClientAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientAppsAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientAppsAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClientAppsAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AppTableRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AppTableColumnRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppTableColumnRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientAppRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientAppRemoveResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="ArrayOfTask" nillable="true" type="tns:ArrayOfTask" />
       <s:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
@@ -507,14 +429,9 @@
       <s:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
       <s:element name="ArrayOfResponse" nillable="true" type="tns:ArrayOfResponse" />
       <s:element name="anyType" nillable="true" />
+      <s:element name="int" type="s:int" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="ValidateDataStructuresSoapIn">
-    <wsdl:part name="parameters" element="tns:ValidateDataStructures" />
-  </wsdl:message>
-  <wsdl:message name="ValidateDataStructuresSoapOut">
-    <wsdl:part name="parameters" element="tns:ValidateDataStructuresResponse" />
-  </wsdl:message>
   <wsdl:message name="GetExternalIPSoapIn">
     <wsdl:part name="parameters" element="tns:GetExternalIP" />
   </wsdl:message>
@@ -599,8 +516,66 @@
   <wsdl:message name="GetReferenceTreeSoapOut">
     <wsdl:part name="parameters" element="tns:GetReferenceTreeResponse" />
   </wsdl:message>
-  <wsdl:message name="ValidateDataStructuresHttpGetIn" />
-  <wsdl:message name="ValidateDataStructuresHttpGetOut" />
+  <wsdl:message name="AppAddSoapIn">
+    <wsdl:part name="parameters" element="tns:AppAdd" />
+  </wsdl:message>
+  <wsdl:message name="AppAddSoapOut">
+    <wsdl:part name="parameters" element="tns:AppAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddSoapIn">
+    <wsdl:part name="parameters" element="tns:AppTableAdd" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddSoapOut">
+    <wsdl:part name="parameters" element="tns:AppTableAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddSoapIn">
+    <wsdl:part name="parameters" element="tns:AppTableColumnAdd" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddSoapOut">
+    <wsdl:part name="parameters" element="tns:AppTableColumnAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientAppsAdd" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientAppsAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:AppRemove" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:AppRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppTableRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:AppTableRemove" />
+  </wsdl:message>
+  <wsdl:message name="AppTableRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:AppTableRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:AppTableColumnRemove" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:AppTableColumnRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientAppRemove" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientAppRemoveResponse" />
+  </wsdl:message>
   <wsdl:message name="GetExternalIPHttpGetIn" />
   <wsdl:message name="GetExternalIPHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -647,8 +622,81 @@
   <wsdl:message name="GetReferenceTreeHttpGetOut">
     <wsdl:part name="Body" element="tns:anyType" />
   </wsdl:message>
-  <wsdl:message name="ValidateDataStructuresHttpPostIn" />
-  <wsdl:message name="ValidateDataStructuresHttpPostOut" />
+  <wsdl:message name="AppAddHttpGetIn">
+    <wsdl:part name="authKey" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="isClientCustomApp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddHttpGetIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+    <wsdl:part name="insert" type="s:string" />
+    <wsdl:part name="update" type="s:string" />
+    <wsdl:part name="delete" type="s:string" />
+    <wsdl:part name="select" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddHttpGetIn">
+    <wsdl:part name="tabId" type="s:string" />
+    <wsdl:part name="nom" type="s:string" />
+    <wsdl:part name="seq" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="length" type="s:string" />
+    <wsdl:part name="prec" type="s:string" />
+    <wsdl:part name="scale" type="s:string" />
+    <wsdl:part name="nullable" type="s:string" />
+    <wsdl:part name="readOnly" type="s:string" />
+    <wsdl:part name="isLong" type="s:string" />
+    <wsdl:part name="isKey" type="s:string" />
+    <wsdl:part name="keyType" type="s:string" />
+    <wsdl:part name="unique" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddHttpGetIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddHttpGetIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="clientId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveHttpGetOut" />
+  <wsdl:message name="AppTableRemoveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableRemoveHttpGetOut" />
+  <wsdl:message name="AppTableColumnRemoveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnRemoveHttpGetOut" />
+  <wsdl:message name="ClientRemoveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientRemoveHttpGetOut" />
+  <wsdl:message name="ClientAppRemoveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppRemoveHttpGetOut" />
   <wsdl:message name="GetExternalIPHttpPostIn" />
   <wsdl:message name="GetExternalIPHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -695,11 +743,82 @@
   <wsdl:message name="GetReferenceTreeHttpPostOut">
     <wsdl:part name="Body" element="tns:anyType" />
   </wsdl:message>
+  <wsdl:message name="AppAddHttpPostIn">
+    <wsdl:part name="authKey" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="isClientCustomApp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddHttpPostIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+    <wsdl:part name="insert" type="s:string" />
+    <wsdl:part name="update" type="s:string" />
+    <wsdl:part name="delete" type="s:string" />
+    <wsdl:part name="select" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddHttpPostIn">
+    <wsdl:part name="tabId" type="s:string" />
+    <wsdl:part name="nom" type="s:string" />
+    <wsdl:part name="seq" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="length" type="s:string" />
+    <wsdl:part name="prec" type="s:string" />
+    <wsdl:part name="scale" type="s:string" />
+    <wsdl:part name="nullable" type="s:string" />
+    <wsdl:part name="readOnly" type="s:string" />
+    <wsdl:part name="isLong" type="s:string" />
+    <wsdl:part name="isKey" type="s:string" />
+    <wsdl:part name="keyType" type="s:string" />
+    <wsdl:part name="unique" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddHttpPostIn">
+    <wsdl:part name="clientId" type="s:string" />
+    <wsdl:part name="desc" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddHttpPostIn">
+    <wsdl:part name="appId" type="s:string" />
+    <wsdl:part name="clientId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppsAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppRemoveHttpPostOut" />
+  <wsdl:message name="AppTableRemoveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableRemoveHttpPostOut" />
+  <wsdl:message name="AppTableColumnRemoveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppTableColumnRemoveHttpPostOut" />
+  <wsdl:message name="ClientRemoveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientRemoveHttpPostOut" />
+  <wsdl:message name="ClientAppRemoveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientAppRemoveHttpPostOut" />
   <wsdl:portType name="ManagerSDKSoap">
-    <wsdl:operation name="ValidateDataStructures">
-      <wsdl:input message="tns:ValidateDataStructuresSoapIn" />
-      <wsdl:output message="tns:ValidateDataStructuresSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <wsdl:input message="tns:GetExternalIPSoapIn" />
       <wsdl:output message="tns:GetExternalIPSoapOut" />
@@ -756,12 +875,48 @@
       <wsdl:input message="tns:GetReferenceTreeSoapIn" />
       <wsdl:output message="tns:GetReferenceTreeSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <wsdl:input message="tns:AppAddSoapIn" />
+      <wsdl:output message="tns:AppAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <wsdl:input message="tns:AppTableAddSoapIn" />
+      <wsdl:output message="tns:AppTableAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <wsdl:input message="tns:AppTableColumnAddSoapIn" />
+      <wsdl:output message="tns:AppTableColumnAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <wsdl:input message="tns:ClientAddSoapIn" />
+      <wsdl:output message="tns:ClientAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <wsdl:input message="tns:ClientAppsAddSoapIn" />
+      <wsdl:output message="tns:ClientAppsAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <wsdl:input message="tns:AppRemoveSoapIn" />
+      <wsdl:output message="tns:AppRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <wsdl:input message="tns:AppTableRemoveSoapIn" />
+      <wsdl:output message="tns:AppTableRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <wsdl:input message="tns:AppTableColumnRemoveSoapIn" />
+      <wsdl:output message="tns:AppTableColumnRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <wsdl:input message="tns:ClientRemoveSoapIn" />
+      <wsdl:output message="tns:ClientRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <wsdl:input message="tns:ClientAppRemoveSoapIn" />
+      <wsdl:output message="tns:ClientAppRemoveSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ManagerSDKHttpGet">
-    <wsdl:operation name="ValidateDataStructures">
-      <wsdl:input message="tns:ValidateDataStructuresHttpGetIn" />
-      <wsdl:output message="tns:ValidateDataStructuresHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <wsdl:input message="tns:GetExternalIPHttpGetIn" />
       <wsdl:output message="tns:GetExternalIPHttpGetOut" />
@@ -810,12 +965,48 @@
       <wsdl:input message="tns:GetReferenceTreeHttpGetIn" />
       <wsdl:output message="tns:GetReferenceTreeHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <wsdl:input message="tns:AppAddHttpGetIn" />
+      <wsdl:output message="tns:AppAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <wsdl:input message="tns:AppTableAddHttpGetIn" />
+      <wsdl:output message="tns:AppTableAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <wsdl:input message="tns:AppTableColumnAddHttpGetIn" />
+      <wsdl:output message="tns:AppTableColumnAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <wsdl:input message="tns:ClientAddHttpGetIn" />
+      <wsdl:output message="tns:ClientAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <wsdl:input message="tns:ClientAppsAddHttpGetIn" />
+      <wsdl:output message="tns:ClientAppsAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <wsdl:input message="tns:AppRemoveHttpGetIn" />
+      <wsdl:output message="tns:AppRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <wsdl:input message="tns:AppTableRemoveHttpGetIn" />
+      <wsdl:output message="tns:AppTableRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <wsdl:input message="tns:AppTableColumnRemoveHttpGetIn" />
+      <wsdl:output message="tns:AppTableColumnRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <wsdl:input message="tns:ClientRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientRemoveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <wsdl:input message="tns:ClientAppRemoveHttpGetIn" />
+      <wsdl:output message="tns:ClientAppRemoveHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ManagerSDKHttpPost">
-    <wsdl:operation name="ValidateDataStructures">
-      <wsdl:input message="tns:ValidateDataStructuresHttpPostIn" />
-      <wsdl:output message="tns:ValidateDataStructuresHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <wsdl:input message="tns:GetExternalIPHttpPostIn" />
       <wsdl:output message="tns:GetExternalIPHttpPostOut" />
@@ -864,18 +1055,49 @@
       <wsdl:input message="tns:GetReferenceTreeHttpPostIn" />
       <wsdl:output message="tns:GetReferenceTreeHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <wsdl:input message="tns:AppAddHttpPostIn" />
+      <wsdl:output message="tns:AppAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <wsdl:input message="tns:AppTableAddHttpPostIn" />
+      <wsdl:output message="tns:AppTableAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <wsdl:input message="tns:AppTableColumnAddHttpPostIn" />
+      <wsdl:output message="tns:AppTableColumnAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <wsdl:input message="tns:ClientAddHttpPostIn" />
+      <wsdl:output message="tns:ClientAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <wsdl:input message="tns:ClientAppsAddHttpPostIn" />
+      <wsdl:output message="tns:ClientAppsAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <wsdl:input message="tns:AppRemoveHttpPostIn" />
+      <wsdl:output message="tns:AppRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <wsdl:input message="tns:AppTableRemoveHttpPostIn" />
+      <wsdl:output message="tns:AppTableRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <wsdl:input message="tns:AppTableColumnRemoveHttpPostIn" />
+      <wsdl:output message="tns:AppTableColumnRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <wsdl:input message="tns:ClientRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <wsdl:input message="tns:ClientAppRemoveHttpPostIn" />
+      <wsdl:output message="tns:ClientAppRemoveHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ManagerSDKSoap" type="tns:ManagerSDKSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ValidateDataStructures">
-      <soap:operation soapAction="http://pmh.plexxis.com/ValidateDataStructures" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <soap:operation soapAction="http://pmh.plexxis.com/GetExternalIP" style="document" />
       <wsdl:input>
@@ -1002,18 +1224,99 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppTableAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppTableColumnAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientAppsAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppTableRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/AppTableColumnRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientAppRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ManagerSDKSoap12" type="tns:ManagerSDKSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ValidateDataStructures">
-      <soap12:operation soapAction="http://pmh.plexxis.com/ValidateDataStructures" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <soap12:operation soapAction="http://pmh.plexxis.com/GetExternalIP" style="document" />
       <wsdl:input>
@@ -1140,16 +1443,99 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppTableAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppTableColumnAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientAppsAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppTableRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/AppTableColumnRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientAppRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ManagerSDKHttpGet" type="tns:ManagerSDKHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="ValidateDataStructures">
-      <http:operation location="/ValidateDataStructures" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <http:operation location="/GetExternalIP" />
       <wsdl:input>
@@ -1253,17 +1639,90 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <http:operation location="/AppAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <http:operation location="/AppTableAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <http:operation location="/AppTableColumnAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <http:operation location="/ClientAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <http:operation location="/ClientAppsAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <http:operation location="/AppRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <http:operation location="/AppTableRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <http:operation location="/AppTableColumnRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <http:operation location="/ClientRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <http:operation location="/ClientAppRemove" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ManagerSDKHttpPost" type="tns:ManagerSDKHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="ValidateDataStructures">
-      <http:operation location="/ValidateDataStructures" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="GetExternalIP">
       <http:operation location="/GetExternalIP" />
       <wsdl:input>
@@ -1367,6 +1826,86 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppAdd">
+      <http:operation location="/AppAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableAdd">
+      <http:operation location="/AppTableAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnAdd">
+      <http:operation location="/AppTableColumnAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAdd">
+      <http:operation location="/ClientAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppsAdd">
+      <http:operation location="/ClientAppsAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppRemove">
+      <http:operation location="/AppRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableRemove">
+      <http:operation location="/AppTableRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AppTableColumnRemove">
+      <http:operation location="/AppTableColumnRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientRemove">
+      <http:operation location="/ClientRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientAppRemove">
+      <http:operation location="/ClientAppRemove" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ManagerSDK">
