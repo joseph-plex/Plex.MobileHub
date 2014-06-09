@@ -190,6 +190,8 @@ namespace Plex.MobileHub
                 return cApps.CLIENT_APP_ID;
             }
         }
+        
+
 
         [WebMethod]
         public void AppRemove(int id)
@@ -198,7 +200,6 @@ namespace Plex.MobileHub
             if (app == null) throw new Exception("Invalid Application Id");
             app.Delete();
         }
-
 
         [WebMethod]
         public void AppTableRemove(int id)
@@ -230,6 +231,36 @@ namespace Plex.MobileHub
             var clientApp = CLIENT_APPS.GetAll().FirstOrDefault(p => p.CLIENT_APP_ID == id);
             if (clientApp == null) throw new Exception("Client App permission does not exist");
             clientApp.Delete();
+        }
+
+        [WebMethod]
+        public APPS AppRetrieve(int appId)
+        {
+            return APPS.GetAll().FirstOrDefault(p => p.APP_ID == appId);
+        }
+
+        [WebMethod]
+        public APP_TABLES AppTableRetrieve(int appTableId)
+        {
+            return APP_TABLES.GetAll().FirstOrDefault(p => p.TABLE_ID == appTableId);
+        }
+
+        [WebMethod]
+        public APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId)
+        {
+            return APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == appTableColumnId);
+        }
+
+        [WebMethod]
+        public CLIENTS ClientRetrieve(int clientId)
+        {
+            return CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == clientId);
+        }
+
+        [WebMethod]
+        public CLIENT_APPS ClientAppRetrieve(int clientAppId)
+        {
+            return CLIENT_APPS.GetAll().FirstOrDefault(p => p.CLIENT_APP_ID == clientAppId);
         }
     }
 }
