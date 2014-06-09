@@ -78,8 +78,6 @@ namespace Plex.MobileHub.Manager.Views
             textBox5.Text = Description.ToString();
         }
 
-      
-
         void ToggleToolStripButtons(bool value)
         {
             toolStripButton3.Enabled = value;

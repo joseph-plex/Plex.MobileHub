@@ -18,8 +18,6 @@ namespace Plex.MobileHub.Manager.Windows
             tabPage2.Controls.Add(new AppInfo());
             tabPage3.Controls.Add(new LogView());
             tabPage4.Controls.Add(new ConnectionView());
-
-
         }
     }
 }
