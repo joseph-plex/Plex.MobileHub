@@ -19,15 +19,6 @@ namespace Plex.MobileHub.Manager.Views
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
-
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Name", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Column Sequence", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Data Type", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "table Column Id", Visible = false });
-            
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Table Name" , AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill});
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Table Id", Visible = false });
-
             LoadlistBox();
         }
 
