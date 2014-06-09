@@ -18,10 +18,6 @@ namespace Plex.MobileHub.Manager.Views
             InitializeComponent();
             Dock = DockStyle.Fill;
 
-            dataGridView2.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Access", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "App Id", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn() { Name = "App Title", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-
             LoadDataGrid();
         }
 
@@ -38,13 +34,14 @@ namespace Plex.MobileHub.Manager.Views
             int TitleIndex = apps.GetColumnIndex("TITLE");
             int appIdIndex = clientApps.GetColumnIndex("APP_ID");
 
+
             dataGridView2.Rows.Clear();
 
             foreach (var row in apps.Rows)
             {
                 int appId = Convert.ToInt32(row[Index]);
                 bool exists = clientApps.Rows.Any(p => Convert.ToInt32(p[appIdIndex]) == appId);
-                dataGridView2.Rows.Add(exists, appId, row[TitleIndex].ToString());
+                dataGridView2.Rows.Add(exists, appId, row[TitleIndex].ToString(), clientId);
             }
         }
 
@@ -128,6 +125,11 @@ namespace Plex.MobileHub.Manager.Views
         }
 
   
+        /// <summary>
+        /// Toggle visability of the application access 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             SuspendLayout();
@@ -139,7 +141,11 @@ namespace Plex.MobileHub.Manager.Views
             ResumeLayout();
 
         }
-
+        /// <summary>
+        /// Toggle visibility of the client users 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             SuspendLayout();
@@ -152,6 +158,11 @@ namespace Plex.MobileHub.Manager.Views
             ResumeLayout();
         }
 
+        /// <summary>
+        /// Toggle visibility of the Client Logs 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             SuspendLayout();
@@ -163,6 +174,9 @@ namespace Plex.MobileHub.Manager.Views
             ResumeLayout();
         }
 
+        /// <summary>
+        /// Ensures that the right hand panel is always the correct size
+        /// </summary>
         void ManagePanels()
         {
             var accessSizeType = tableLayoutPanel1.RowStyles[0].SizeType;
@@ -217,6 +231,38 @@ namespace Plex.MobileHub.Manager.Views
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             MessageBox.Show(new NotImplementedException().Message);
+        }
+
+        /// <summary>
+        /// Application Access Changed 
+        /// </summary>
+        /// <param name="sender">DataGridView</param>
+        /// <param name="e"></param>
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //There is a bug here. Where we cannot determine if the value is changed. Fix by added more values to the data base columns. 
+            if (e.RowIndex == -1)
+                return;
+            var gridView = sender as DataGridView;
+            if (gridView == null) return;
+
+
+            var row = gridView.Rows[e.RowIndex];
+            var clientId = Convert.ToInt32(gridView.Rows[e.RowIndex].Cells["Column10"].Value);
+            var appId = Convert.ToInt32(gridView.Rows[e.RowIndex].Cells["Column8"].Value);
+            var cell = row.Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
+            var access = (cell.Value == cell.TrueValue) ? true : false;
+            DataFactory factory = new DataFactory();
+            
+
+            if (!access) { 
+                factory.ClientAppAdd(appId, clientId);
+            }
+            else {
+                var result = factory.Query("select a.client_app_id from client_apps a where a.app_id = :a and a.client_id = :b and rownum >= 1;", appId, clientId);
+                var clientAppId = Convert.ToInt32(result.Rows[0].Values[0]);
+                factory.ClientAppRemove(clientAppId);
+            }
         }
     }
 }
