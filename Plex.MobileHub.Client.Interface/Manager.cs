@@ -145,17 +145,17 @@ namespace Plex.MobileHub.Client.Interface
 
         Manager() { }
 
-        GeneralServiceClient GetGeneralService()
+        public GeneralServiceClient GetGeneralService()
         {
             return new GeneralServiceClient("NetNamedPipeBinding_GeneralService");
         }
 
-        DatabaseServiceClient GetDatabaseService()
+        public DatabaseServiceClient GetDatabaseService()
         {
             return new DatabaseServiceClient("NetNamedPipeBinding_DatabaseService");
         }
 
-        LogsServiceClient GetLogService()
+        public LogsServiceClient GetLogService()
         {
             return new LogsServiceClient("WSHttpBindinNetNamedPipeBinding_LogsServiceg_LogsService");
         }

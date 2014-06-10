@@ -90,7 +90,6 @@ namespace Plex.MobileHub
         }
         #endregion
 
-        
         #region APP_USER_TYPES CRUD
         [WebMethod]
         public void AppUserTypesRetrieve() 
@@ -98,7 +97,6 @@ namespace Plex.MobileHub
             //todo implement AppUserTypesRetrieve
         }
         #endregion
-
 
         #region CLIENTS CRUD
         [WebMethod]
@@ -139,20 +137,6 @@ namespace Plex.MobileHub
                 };
             }
             return true;
-        }
-       
-        [WebMethod]
-        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
-        {
-            
-            var company = new CLIENT_DB_COMPANIES();
-            company.COMPANY_CODE = companyCode;
-            company.CLIENT_ID = clientId;
-            company.DATABASE_SID = connectionString;
-            using (var connection = Utilities.GetConnection(true)){
-                company.DB_COMPANY_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual")[0, 0]);
-                company.Insert(connection);
-            }
         }
 
         [WebMethod]

@@ -15,6 +15,148 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlexxisDataTransferObjects", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
+    public partial class PlexxisDataTransferObjects : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.ComponentModel.PropertyChangedEventHandler PropertyChanged1Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="PropertyChanged", IsRequired=true)]
+        public System.ComponentModel.PropertyChangedEventHandler PropertyChanged1 {
+            get {
+                return this.PropertyChanged1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertyChanged1Field, value) != true)) {
+                    this.PropertyChanged1Field = value;
+                    this.RaisePropertyChanged("PropertyChanged1");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CLIENTS", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH")]
+    [System.SerializableAttribute()]
+    public partial class CLIENTS : Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects {
+        
+        private int cLIENT_IDFieldField;
+        
+        private System.Nullable<int> cLIENT_INSTANCE_IDFieldField;
+        
+        private string cLIENT_IP_ADDRESSFieldField;
+        
+        private string cLIENT_KEYFieldField;
+        
+        private System.Nullable<int> cLIENT_PORTFieldField;
+        
+        private string dESCRIPTIONFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int cLIENT_IDField {
+            get {
+                return this.cLIENT_IDFieldField;
+            }
+            set {
+                if ((this.cLIENT_IDFieldField.Equals(value) != true)) {
+                    this.cLIENT_IDFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_IDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> cLIENT_INSTANCE_IDField {
+            get {
+                return this.cLIENT_INSTANCE_IDFieldField;
+            }
+            set {
+                if ((this.cLIENT_INSTANCE_IDFieldField.Equals(value) != true)) {
+                    this.cLIENT_INSTANCE_IDFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_INSTANCE_IDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string cLIENT_IP_ADDRESSField {
+            get {
+                return this.cLIENT_IP_ADDRESSFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cLIENT_IP_ADDRESSFieldField, value) != true)) {
+                    this.cLIENT_IP_ADDRESSFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_IP_ADDRESSField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string cLIENT_KEYField {
+            get {
+                return this.cLIENT_KEYFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cLIENT_KEYFieldField, value) != true)) {
+                    this.cLIENT_KEYFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_KEYField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> cLIENT_PORTField {
+            get {
+                return this.cLIENT_PORTFieldField;
+            }
+            set {
+                if ((this.cLIENT_PORTFieldField.Equals(value) != true)) {
+                    this.cLIENT_PORTFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_PORTField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string dESCRIPTIONField {
+            get {
+                return this.dESCRIPTIONFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dESCRIPTIONFieldField, value) != true)) {
+                    this.dESCRIPTIONFieldField = value;
+                    this.RaisePropertyChanged("dESCRIPTIONField");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
     [System.SerializableAttribute()]
     public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -315,6 +457,11 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Row", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.ComponentModel.PropertyChangedEventHandler))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MulticastDelegate))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Delegate))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Result))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col>))]
@@ -414,6 +561,11 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         bool ValidateClientCredentials();
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.ComponentModel.PropertyChangedEventHandler))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.MulticastDelegate))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Delegate))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Result))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Col>))]
@@ -421,6 +573,9 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.Row>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.Row))]
         Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/CilentsRetrieve", ReplyAction="PMHC/GeneralService/CilentsRetrieveResponse")]
+        Plex.MobileHub.Client.Interface.GeneralService.CLIENTS CilentsRetrieve(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -516,6 +671,10 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         public Plex.MobileHub.Client.Interface.GeneralService.Result Query(string commandText, System.Collections.Generic.List<object> arguments) {
             return base.Channel.Query(commandText, arguments);
+        }
+        
+        public Plex.MobileHub.Client.Interface.GeneralService.CLIENTS CilentsRetrieve(int id) {
+            return base.Channel.CilentsRetrieve(id);
         }
     }
 }

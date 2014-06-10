@@ -72,11 +72,77 @@ namespace MobileHubClient.Misc
         }
 
         public static ClientSDKSoapClient Service
-        
         {
             get{
                   return new ClientSDKSoapClient("ClientSDKSoap12");
             }
+        }
+
+        public static CLIENTS CilentsRetrieve(int id)
+        {
+            using (Service)
+                return Service.ClientsRetrieve(id);
+        }
+
+        public static CLIENT_APPS ClientsAppsRetrieve(int id)
+        {
+            using (Service)
+                return Service.ClientsAppsRetrieve(id);
+        }
+
+        public static void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
+        {
+            using (Service)
+                Service.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+        }
+
+        public static void ClientDbCompanyRemove(int id)
+        {
+            using (Service)
+                Service.ClientDbCompanyRemove(id);
+        }
+
+        public static void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs = null)
+        {
+            using (Service)
+                Service.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+        }
+
+        public static void ClientDbCompanyUserRemove(int id)
+        {
+
+            using (Service)
+                Service.ClientDbCompanyUserRemove(id);
+        }
+
+        public static void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
+        {
+            using (Service)
+                Service.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+        }
+
+        public static void ClientUserAdd(int clientId, string name, string password)
+        {
+            using (Service)
+                Service.ClientUserAdd(clientId, name, password);
+        }
+
+        public static void ClientUserRemove(int clientUserId)
+        {
+            using (Service)
+                Service.ClientUserRemove(clientUserId);
+        }
+
+        public static List<CLIENT_USERS> ClientUserRetrieveAllForClients(int clientId)
+        {
+            using (Service)
+                return Service.ClientUserRetrieveAllForClient(clientId).ToList();
+        }
+
+        public static CLIENT_USERS ClientUserRetrieve(int clientUserId)
+        {
+            using (Service)
+                return Service.ClientUserRetrieve(clientUserId);
         }
     }
 }

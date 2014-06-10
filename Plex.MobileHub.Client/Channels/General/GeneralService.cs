@@ -10,6 +10,7 @@ using MobileHubClient.Properties;
 using MobileHubClient.Misc;
 using MobileHubClient.Core;
 using MobileHubClient.PMH;
+using System.Collections.Generic;
 namespace MobileHubClient.Channels.General
 {
     [ServiceContract(Namespace = "PMHC")]
@@ -123,6 +124,72 @@ namespace MobileHubClient.Channels.General
         public MobileHubClient.Data.Result Query(string commandText, params object[] arguments)
         {
             return WebService.Query(commandText, arguments);
+        }
+
+        [OperationContract]
+        public CLIENTS CilentsRetrieve(int id)
+        {
+            return WebService.CilentsRetrieve(id);
+        }
+
+        [OperationContract]
+        public CLIENT_APPS ClientsAppsRetrieve(int id)
+        {
+            return WebService.ClientsAppsRetrieve(id);
+        }
+
+        [OperationContract]
+        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
+        {
+            WebService.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+        }
+
+        [OperationContract]
+        public void ClientDbCompanyRemove(int id)
+        {
+            WebService.ClientDbCompanyRemove(id);
+        }
+
+        [OperationContract]
+        public void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs)
+        {
+            WebService.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+        }
+
+        [OperationContract]
+        public void ClientDbCompanyUserRemove(int id)
+        {
+            WebService.ClientDbCompanyUserRemove(id);
+        }
+
+        [OperationContract]
+        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null) 
+        {
+            WebService.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+        }
+
+        [OperationContract]
+        public void ClientUserAdd(int clientId, string name, string password)
+        {
+            WebService.ClientUserAdd(clientId, name, password);
+        }
+
+        [OperationContract]
+        public void ClientUserRemove(int clientUserId)
+        {
+            WebService.ClientUserRemove(clientUserId);
+        }
+
+        [OperationContract]
+        public List<CLIENT_USERS> ClientUserRetrieveAllForClients(int clientId)
+        {
+            return WebService.ClientUserRetrieveAllForClients(clientId);
+        }
+
+        [OperationContract]
+        public CLIENT_USERS ClientUserRetrieve(int clientUserId)
+        {
+            return WebService.ClientUserRetrieve(clientUserId);
         }
     }
 }

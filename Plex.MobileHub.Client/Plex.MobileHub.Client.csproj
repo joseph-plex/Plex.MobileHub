@@ -175,7 +175,16 @@
     <None Include="Service References\PMH\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\PMH\MobileHubClient.PMH.CLIENTS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PMH\MobileHubClient.PMH.ClientSynchroData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PMH\MobileHubClient.PMH.CLIENT_APPS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PMH\MobileHubClient.PMH.CLIENT_USERS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\PMH\MobileHubClient.PMH.Command.datasource">

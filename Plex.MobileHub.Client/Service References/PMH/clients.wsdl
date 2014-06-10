@@ -61,9 +61,28 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="IUDData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="ArrayOfString">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Row">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Column">
@@ -108,18 +127,6 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfRow">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Row">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="DBAction" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RowVersion" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfAnyType" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="RQryResult">
         <s:complexContent mixed="false">
           <s:extension base="tns:QryResult">
@@ -129,13 +136,6 @@
             </s:sequence>
           </s:extension>
         </s:complexContent>
-      </s:complexType>
-      <s:complexType name="IUDData">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ColumnNames" type="tns:ArrayOfString" />
-          <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfRow" />
-        </s:sequence>
       </s:complexType>
       <s:element name="Respond">
         <s:complexType>
@@ -321,6 +321,60 @@
       <s:element name="AppUserTypesRetrieveResponse">
         <s:complexType />
       </s:element>
+      <s:element name="ClientsRetrieve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlexxisDataTransferObjects" abstract="true" />
+      <s:complexType name="CLIENTS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CLIENT_KEY" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DESCRIPTION" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_INSTANCE_ID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CLIENT_IP_ADDRESS" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_PORT" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ClientsRetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientsRetrieveResult" type="tns:CLIENTS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientsAppsRetrieve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientsAppsRetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientsAppsRetrieveResult" type="tns:CLIENT_APPS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CLIENT_APPS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_APP_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="APP_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="AddClientDbCompany">
         <s:complexType>
           <s:sequence>
@@ -425,10 +479,59 @@
       <s:element name="ClientUserRemoveResponse">
         <s:complexType />
       </s:element>
+      <s:element name="ClientUserRetrieveAllForClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCLIENT_USERS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CLIENT_USERS" nillable="true" type="tns:CLIENT_USERS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CLIENT_USERS">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="USER_ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="NAME" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ClientUserRetrieveAllForClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserRetrieveAllForClientResult" type="tns:ArrayOfCLIENT_USERS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientUserRetrieve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientUserId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientUserRetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserRetrieveResult" type="tns:CLIENT_USERS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
       <s:element name="ClientSynchroData" nillable="true" type="tns:ClientSynchroData" />
+      <s:element name="CLIENTS" nillable="true" type="tns:CLIENTS" />
+      <s:element name="CLIENT_APPS" nillable="true" type="tns:CLIENT_APPS" />
       <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfCLIENT_USERS" nillable="true" type="tns:ArrayOfCLIENT_USERS" />
+      <s:element name="CLIENT_USERS" nillable="true" type="tns:CLIENT_USERS" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="LoginSoapIn">
@@ -491,6 +594,18 @@
   <wsdl:message name="AppUserTypesRetrieveSoapOut">
     <wsdl:part name="parameters" element="tns:AppUserTypesRetrieveResponse" />
   </wsdl:message>
+  <wsdl:message name="ClientsRetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientsRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="ClientsRetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientsRetrieveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientsAppsRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientsAppsRetrieveResponse" />
+  </wsdl:message>
   <wsdl:message name="AddClientDbCompanySoapIn">
     <wsdl:part name="parameters" element="tns:AddClientDbCompany" />
   </wsdl:message>
@@ -545,6 +660,18 @@
   <wsdl:message name="ClientUserRemoveSoapOut">
     <wsdl:part name="parameters" element="tns:ClientUserRemoveResponse" />
   </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveAllForClientSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveAllForClient" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveAllForClientSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveAllForClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveResponse" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="ClientId" type="s:string" />
     <wsdl:part name="Key" type="s:string" />
@@ -572,6 +699,18 @@
   <wsdl:message name="AppQueriesRetrieveHttpGetOut" />
   <wsdl:message name="AppUserTypesRetrieveHttpGetIn" />
   <wsdl:message name="AppUserTypesRetrieveHttpGetOut" />
+  <wsdl:message name="ClientsRetrieveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientsRetrieveHttpGetOut">
+    <wsdl:part name="Body" element="tns:CLIENTS" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveHttpGetOut">
+    <wsdl:part name="Body" element="tns:CLIENT_APPS" />
+  </wsdl:message>
   <wsdl:message name="AddClientDbCompanyHttpGetIn">
     <wsdl:part name="clientId" type="s:string" />
     <wsdl:part name="companyCode" type="s:string" />
@@ -614,6 +753,18 @@
     <wsdl:part name="clientUserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ClientUserRemoveHttpGetOut" />
+  <wsdl:message name="ClientUserRetrieveAllForClientHttpGetIn">
+    <wsdl:part name="clientId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveAllForClientHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCLIENT_USERS" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveHttpGetIn">
+    <wsdl:part name="clientUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveHttpGetOut">
+    <wsdl:part name="Body" element="tns:CLIENT_USERS" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpPostIn">
     <wsdl:part name="ClientId" type="s:string" />
     <wsdl:part name="Key" type="s:string" />
@@ -641,6 +792,18 @@
   <wsdl:message name="AppQueriesRetrieveHttpPostOut" />
   <wsdl:message name="AppUserTypesRetrieveHttpPostIn" />
   <wsdl:message name="AppUserTypesRetrieveHttpPostOut" />
+  <wsdl:message name="ClientsRetrieveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientsRetrieveHttpPostOut">
+    <wsdl:part name="Body" element="tns:CLIENTS" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientsAppsRetrieveHttpPostOut">
+    <wsdl:part name="Body" element="tns:CLIENT_APPS" />
+  </wsdl:message>
   <wsdl:message name="AddClientDbCompanyHttpPostIn">
     <wsdl:part name="clientId" type="s:string" />
     <wsdl:part name="companyCode" type="s:string" />
@@ -683,6 +846,18 @@
     <wsdl:part name="clientUserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ClientUserRemoveHttpPostOut" />
+  <wsdl:message name="ClientUserRetrieveAllForClientHttpPostIn">
+    <wsdl:part name="clientId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveAllForClientHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCLIENT_USERS" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveHttpPostIn">
+    <wsdl:part name="clientUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientUserRetrieveHttpPostOut">
+    <wsdl:part name="Body" element="tns:CLIENT_USERS" />
+  </wsdl:message>
   <wsdl:portType name="ClientSDKSoap">
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
@@ -724,6 +899,14 @@
       <wsdl:input message="tns:AppUserTypesRetrieveSoapIn" />
       <wsdl:output message="tns:AppUserTypesRetrieveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <wsdl:input message="tns:ClientsRetrieveSoapIn" />
+      <wsdl:output message="tns:ClientsRetrieveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <wsdl:input message="tns:ClientsAppsRetrieveSoapIn" />
+      <wsdl:output message="tns:ClientsAppsRetrieveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <wsdl:input message="tns:AddClientDbCompanySoapIn" />
       <wsdl:output message="tns:AddClientDbCompanySoapOut" />
@@ -760,6 +943,14 @@
       <wsdl:input message="tns:ClientUserRemoveSoapIn" />
       <wsdl:output message="tns:ClientUserRemoveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <wsdl:input message="tns:ClientUserRetrieveAllForClientSoapIn" />
+      <wsdl:output message="tns:ClientUserRetrieveAllForClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <wsdl:input message="tns:ClientUserRetrieveSoapIn" />
+      <wsdl:output message="tns:ClientUserRetrieveSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ClientSDKHttpGet">
     <wsdl:operation name="Login">
@@ -785,6 +976,14 @@
     <wsdl:operation name="AppUserTypesRetrieve">
       <wsdl:input message="tns:AppUserTypesRetrieveHttpGetIn" />
       <wsdl:output message="tns:AppUserTypesRetrieveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <wsdl:input message="tns:ClientsRetrieveHttpGetIn" />
+      <wsdl:output message="tns:ClientsRetrieveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <wsdl:input message="tns:ClientsAppsRetrieveHttpGetIn" />
+      <wsdl:output message="tns:ClientsAppsRetrieveHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <wsdl:input message="tns:AddClientDbCompanyHttpGetIn" />
@@ -818,6 +1017,14 @@
       <wsdl:input message="tns:ClientUserRemoveHttpGetIn" />
       <wsdl:output message="tns:ClientUserRemoveHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <wsdl:input message="tns:ClientUserRetrieveAllForClientHttpGetIn" />
+      <wsdl:output message="tns:ClientUserRetrieveAllForClientHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <wsdl:input message="tns:ClientUserRetrieveHttpGetIn" />
+      <wsdl:output message="tns:ClientUserRetrieveHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ClientSDKHttpPost">
     <wsdl:operation name="Login">
@@ -843,6 +1050,14 @@
     <wsdl:operation name="AppUserTypesRetrieve">
       <wsdl:input message="tns:AppUserTypesRetrieveHttpPostIn" />
       <wsdl:output message="tns:AppUserTypesRetrieveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <wsdl:input message="tns:ClientsRetrieveHttpPostIn" />
+      <wsdl:output message="tns:ClientsRetrieveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <wsdl:input message="tns:ClientsAppsRetrieveHttpPostIn" />
+      <wsdl:output message="tns:ClientsAppsRetrieveHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <wsdl:input message="tns:AddClientDbCompanyHttpPostIn" />
@@ -875,6 +1090,14 @@
     <wsdl:operation name="ClientUserRemove">
       <wsdl:input message="tns:ClientUserRemoveHttpPostIn" />
       <wsdl:output message="tns:ClientUserRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <wsdl:input message="tns:ClientUserRetrieveAllForClientHttpPostIn" />
+      <wsdl:output message="tns:ClientUserRetrieveAllForClientHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <wsdl:input message="tns:ClientUserRetrieveHttpPostIn" />
+      <wsdl:output message="tns:ClientUserRetrieveHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ClientSDKSoap" type="tns:ClientSDKSoap">
@@ -969,6 +1192,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientsRetrieve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientsAppsRetrieve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <soap:operation soapAction="http://pmh.plexxis.com/AddClientDbCompany" style="document" />
       <wsdl:input>
@@ -1043,6 +1284,24 @@
     </wsdl:operation>
     <wsdl:operation name="ClientUserRemove">
       <soap:operation soapAction="http://pmh.plexxis.com/ClientUserRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientUserRetrieveAllForClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientUserRetrieve" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1143,6 +1402,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientsAppsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <soap12:operation soapAction="http://pmh.plexxis.com/AddClientDbCompany" style="document" />
       <wsdl:input>
@@ -1224,6 +1501,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientUserRetrieveAllForClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientUserRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ClientSDKHttpGet" type="tns:ClientSDKHttpGet">
     <http:binding verb="GET" />
@@ -1274,6 +1569,24 @@
         <http:urlEncoded />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <http:operation location="/ClientsRetrieve" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <http:operation location="/ClientsAppsRetrieve" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <http:operation location="/AddClientDbCompany" />
@@ -1332,6 +1645,24 @@
         <http:urlEncoded />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <http:operation location="/ClientUserRetrieveAllForClient" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <http:operation location="/ClientUserRetrieve" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ClientSDKHttpPost" type="tns:ClientSDKHttpPost">
@@ -1384,6 +1715,24 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="ClientsRetrieve">
+      <http:operation location="/ClientsRetrieve" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <http:operation location="/ClientsAppsRetrieve" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddClientDbCompany">
       <http:operation location="/AddClientDbCompany" />
       <wsdl:input>
@@ -1441,6 +1790,24 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClient">
+      <http:operation location="/ClientUserRetrieveAllForClient" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <http:operation location="/ClientUserRetrieve" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ClientSDK">

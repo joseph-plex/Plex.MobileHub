@@ -6,6 +6,9 @@
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.Data" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.ComponentModel" />
+      <xsd:import schemaLocation="http://127.0.0.1:55555/General?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="GeneralService_SetClientKey_InputMessage">
@@ -110,6 +113,12 @@
   <wsdl:message name="GeneralService_Query_OutputMessage">
     <wsdl:part name="parameters" element="tns:QueryResponse" />
   </wsdl:message>
+  <wsdl:message name="GeneralService_CilentsRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:CilentsRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_CilentsRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CilentsRetrieveResponse" />
+  </wsdl:message>
   <wsdl:portType name="GeneralService">
     <wsdl:operation name="SetClientKey">
       <wsdl:input wsaw:Action="PMHC/GeneralService/SetClientKey" message="tns:GeneralService_SetClientKey_InputMessage" />
@@ -178,6 +187,10 @@
     <wsdl:operation name="Query">
       <wsdl:input wsaw:Action="PMHC/GeneralService/Query" message="tns:GeneralService_Query_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/GeneralService/QueryResponse" message="tns:GeneralService_Query_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CilentsRetrieve">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/CilentsRetrieve" message="tns:GeneralService_CilentsRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/CilentsRetrieveResponse" message="tns:GeneralService_CilentsRetrieve_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

@@ -173,6 +173,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CilentsRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/CilentsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetNamedPipeBinding_GeneralService" type="i0:GeneralService">
     <wsp:PolicyReference URI="#NetNamedPipeBinding_GeneralService_policy" />
@@ -323,6 +332,15 @@
     </wsdl:operation>
     <wsdl:operation name="Query">
       <soap12:operation soapAction="PMHC/GeneralService/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CilentsRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/CilentsRetrieve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

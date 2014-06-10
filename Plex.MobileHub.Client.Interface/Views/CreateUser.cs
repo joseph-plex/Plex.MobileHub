@@ -19,7 +19,7 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         void button1_Click(object sender, EventArgs e)
         {
-
+            Manager mgr = Manager.Instance;
         }
     }
 }

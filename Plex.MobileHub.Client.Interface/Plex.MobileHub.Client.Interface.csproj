@@ -224,7 +224,19 @@
     <None Include="Service References\GeneralService\General3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GeneralService\General4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeneralService\General41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeneralService\General42.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GeneralService\GeneralService.wsdl" />
+    <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.CLIENTS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
