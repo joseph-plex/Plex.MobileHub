@@ -99,8 +99,8 @@ namespace Plex.MobileHub.Client.Interface.Views
             switch(result)
             {
                 case DialogResult.OK:
-
-
+                    listBox1.Items.Clear();
+                    SetClientUsers();
                     break;
                 case DialogResult.Cancel:
                     break;

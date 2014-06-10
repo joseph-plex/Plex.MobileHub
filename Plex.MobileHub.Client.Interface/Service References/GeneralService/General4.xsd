@@ -22,4 +22,35 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlexxisDataTransferObjects" nillable="true" type="tns:PlexxisDataTransferObjects" />
+  <xs:complexType name="CLIENT_APPS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PlexxisDataTransferObjects">
+        <xs:sequence>
+          <xs:element name="aPP_IDField" type="xs:int" />
+          <xs:element name="cLIENT_APP_IDField" type="xs:int" />
+          <xs:element name="cLIENT_IDField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CLIENT_APPS" nillable="true" type="tns:CLIENT_APPS" />
+  <xs:complexType name="ArrayOfCLIENT_USERS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CLIENT_USERS" nillable="true" type="tns:CLIENT_USERS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCLIENT_USERS" nillable="true" type="tns:ArrayOfCLIENT_USERS" />
+  <xs:complexType name="CLIENT_USERS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PlexxisDataTransferObjects">
+        <xs:sequence>
+          <xs:element name="cLIENT_IDField" type="xs:int" />
+          <xs:element name="nAMEField" nillable="true" type="xs:string" />
+          <xs:element name="pASSWORDField" nillable="true" type="xs:string" />
+          <xs:element name="uSER_IDField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CLIENT_USERS" nillable="true" type="tns:CLIENT_USERS" />
 </xs:schema>

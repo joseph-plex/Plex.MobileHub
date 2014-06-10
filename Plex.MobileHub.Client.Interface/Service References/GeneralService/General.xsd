@@ -218,4 +218,138 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ClientsAppsRetrieve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientsAppsRetrieveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH" minOccurs="0" name="ClientsAppsRetrieveResult" nillable="true" type="q4:CLIENT_APPS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" type="xs:int" />
+        <xs:element minOccurs="0" name="companyCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="connectionString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyAddResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyRemove">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyRemoveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dbCompanyId" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="connectAs" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserAddResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserRemove">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserRemoveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserAppsAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appId" type="xs:int" />
+        <xs:element minOccurs="0" name="dbCompanyUserId" type="xs:int" />
+        <xs:element minOccurs="0" name="appUserTypeId" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientDbCompanyUserAppsAddResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" type="xs:int" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserAddResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRemove">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRemoveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRetrieveAllForClients">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRetrieveAllForClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH" minOccurs="0" name="ClientUserRetrieveAllForClientsResult" nillable="true" type="q5:ArrayOfCLIENT_USERS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRetrieve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientUserRetrieveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH" minOccurs="0" name="ClientUserRetrieveResult" nillable="true" type="q6:CLIENT_USERS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

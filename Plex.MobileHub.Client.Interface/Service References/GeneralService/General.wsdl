@@ -119,6 +119,66 @@
   <wsdl:message name="GeneralService_CilentsRetrieve_OutputMessage">
     <wsdl:part name="parameters" element="tns:CilentsRetrieveResponse" />
   </wsdl:message>
+  <wsdl:message name="GeneralService_ClientsAppsRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientsAppsRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientsAppsRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientsAppsRetrieveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyAdd" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyRemove_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyRemove" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyRemove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAdd" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserRemove_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserRemove" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserRemove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserAppsAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsAdd" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientDbCompanyUserAppsAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAppsAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserAdd" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRemove_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRemove" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRemove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRetrieveAllForClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveAllForClients" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRetrieveAllForClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveAllForClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="GeneralService_ClientUserRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientUserRetrieveResponse" />
+  </wsdl:message>
   <wsdl:portType name="GeneralService">
     <wsdl:operation name="SetClientKey">
       <wsdl:input wsaw:Action="PMHC/GeneralService/SetClientKey" message="tns:GeneralService_SetClientKey_InputMessage" />
@@ -191,6 +251,46 @@
     <wsdl:operation name="CilentsRetrieve">
       <wsdl:input wsaw:Action="PMHC/GeneralService/CilentsRetrieve" message="tns:GeneralService_CilentsRetrieve_InputMessage" />
       <wsdl:output wsaw:Action="PMHC/GeneralService/CilentsRetrieveResponse" message="tns:GeneralService_CilentsRetrieve_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientsAppsRetrieve" message="tns:GeneralService_ClientsAppsRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientsAppsRetrieveResponse" message="tns:GeneralService_ClientsAppsRetrieve_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientDbCompanyAdd" message="tns:GeneralService_ClientDbCompanyAdd_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientDbCompanyAddResponse" message="tns:GeneralService_ClientDbCompanyAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientDbCompanyRemove" message="tns:GeneralService_ClientDbCompanyRemove_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientDbCompanyRemoveResponse" message="tns:GeneralService_ClientDbCompanyRemove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserAdd" message="tns:GeneralService_ClientDbCompanyUserAdd_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserAddResponse" message="tns:GeneralService_ClientDbCompanyUserAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserRemove" message="tns:GeneralService_ClientDbCompanyUserRemove_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserRemoveResponse" message="tns:GeneralService_ClientDbCompanyUserRemove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserAppsAdd" message="tns:GeneralService_ClientDbCompanyUserAppsAdd_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientDbCompanyUserAppsAddResponse" message="tns:GeneralService_ClientDbCompanyUserAppsAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientUserAdd" message="tns:GeneralService_ClientUserAdd_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientUserAddResponse" message="tns:GeneralService_ClientUserAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientUserRemove" message="tns:GeneralService_ClientUserRemove_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientUserRemoveResponse" message="tns:GeneralService_ClientUserRemove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClients">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientUserRetrieveAllForClients" message="tns:GeneralService_ClientUserRetrieveAllForClients_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientUserRetrieveAllForClientsResponse" message="tns:GeneralService_ClientUserRetrieveAllForClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <wsdl:input wsaw:Action="PMHC/GeneralService/ClientUserRetrieve" message="tns:GeneralService_ClientUserRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="PMHC/GeneralService/ClientUserRetrieveResponse" message="tns:GeneralService_ClientUserRetrieve_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

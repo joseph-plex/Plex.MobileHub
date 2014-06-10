@@ -20,6 +20,12 @@ namespace Plex.MobileHub.Client.Interface.Views
         void button1_Click(object sender, EventArgs e)
         {
             Manager mgr = Manager.Instance;
+            
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+            
+            using(var service = mgr.GetGeneralService())
+                service.ClientUserAdd(mgr.ClientId, username, password);
         }
     }
 }

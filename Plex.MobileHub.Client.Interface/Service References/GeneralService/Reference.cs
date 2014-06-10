@@ -17,6 +17,8 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlexxisDataTransferObjects", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
     public partial class PlexxisDataTransferObjects : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -54,6 +56,125 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CLIENT_APPS", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH")]
+    [System.SerializableAttribute()]
+    public partial class CLIENT_APPS : Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects {
+        
+        private int aPP_IDFieldField;
+        
+        private int cLIENT_APP_IDFieldField;
+        
+        private int cLIENT_IDFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int aPP_IDField {
+            get {
+                return this.aPP_IDFieldField;
+            }
+            set {
+                if ((this.aPP_IDFieldField.Equals(value) != true)) {
+                    this.aPP_IDFieldField = value;
+                    this.RaisePropertyChanged("aPP_IDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int cLIENT_APP_IDField {
+            get {
+                return this.cLIENT_APP_IDFieldField;
+            }
+            set {
+                if ((this.cLIENT_APP_IDFieldField.Equals(value) != true)) {
+                    this.cLIENT_APP_IDFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_APP_IDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int cLIENT_IDField {
+            get {
+                return this.cLIENT_IDFieldField;
+            }
+            set {
+                if ((this.cLIENT_IDFieldField.Equals(value) != true)) {
+                    this.cLIENT_IDFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_IDField");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CLIENT_USERS", Namespace="http://schemas.datacontract.org/2004/07/MobileHubClient.PMH")]
+    [System.SerializableAttribute()]
+    public partial class CLIENT_USERS : Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects {
+        
+        private int cLIENT_IDFieldField;
+        
+        private string nAMEFieldField;
+        
+        private string pASSWORDFieldField;
+        
+        private int uSER_IDFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int cLIENT_IDField {
+            get {
+                return this.cLIENT_IDFieldField;
+            }
+            set {
+                if ((this.cLIENT_IDFieldField.Equals(value) != true)) {
+                    this.cLIENT_IDFieldField = value;
+                    this.RaisePropertyChanged("cLIENT_IDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string nAMEField {
+            get {
+                return this.nAMEFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nAMEFieldField, value) != true)) {
+                    this.nAMEFieldField = value;
+                    this.RaisePropertyChanged("nAMEField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string pASSWORDField {
+            get {
+                return this.pASSWORDFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.pASSWORDFieldField, value) != true)) {
+                    this.pASSWORDFieldField = value;
+                    this.RaisePropertyChanged("pASSWORDField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int uSER_IDField {
+            get {
+                return this.uSER_IDFieldField;
+            }
+            set {
+                if ((this.uSER_IDFieldField.Equals(value) != true)) {
+                    this.uSER_IDFieldField = value;
+                    this.RaisePropertyChanged("uSER_IDField");
+                }
             }
         }
     }
@@ -459,6 +580,9 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.ComponentModel.PropertyChangedEventHandler))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MulticastDelegate))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Delegate))]
@@ -563,6 +687,9 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/Query", ReplyAction="PMHC/GeneralService/QueryResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENTS))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.ComponentModel.PropertyChangedEventHandler))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.MulticastDelegate))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Delegate))]
@@ -576,6 +703,36 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/CilentsRetrieve", ReplyAction="PMHC/GeneralService/CilentsRetrieveResponse")]
         Plex.MobileHub.Client.Interface.GeneralService.CLIENTS CilentsRetrieve(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientsAppsRetrieve", ReplyAction="PMHC/GeneralService/ClientsAppsRetrieveResponse")]
+        Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS ClientsAppsRetrieve(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyAddResponse")]
+        void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyRemove", ReplyAction="PMHC/GeneralService/ClientDbCompanyRemoveResponse")]
+        void ClientDbCompanyRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserAddResponse")]
+        void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserRemove", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserRemoveResponse")]
+        void ClientDbCompanyUserRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserAppsAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserAppsAddResponse")]
+        void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientUserAdd", ReplyAction="PMHC/GeneralService/ClientUserAddResponse")]
+        void ClientUserAdd(int clientId, string name, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientUserRemove", ReplyAction="PMHC/GeneralService/ClientUserRemoveResponse")]
+        void ClientUserRemove(int clientUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientUserRetrieveAllForClients", ReplyAction="PMHC/GeneralService/ClientUserRetrieveAllForClientsResponse")]
+        System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS> ClientUserRetrieveAllForClients(int clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientUserRetrieve", ReplyAction="PMHC/GeneralService/ClientUserRetrieveResponse")]
+        Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS ClientUserRetrieve(int clientUserId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -675,6 +832,46 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         
         public Plex.MobileHub.Client.Interface.GeneralService.CLIENTS CilentsRetrieve(int id) {
             return base.Channel.CilentsRetrieve(id);
+        }
+        
+        public Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS ClientsAppsRetrieve(int id) {
+            return base.Channel.ClientsAppsRetrieve(id);
+        }
+        
+        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString) {
+            base.Channel.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+        }
+        
+        public void ClientDbCompanyRemove(int id) {
+            base.Channel.ClientDbCompanyRemove(id);
+        }
+        
+        public void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs) {
+            base.Channel.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+        }
+        
+        public void ClientDbCompanyUserRemove(int id) {
+            base.Channel.ClientDbCompanyUserRemove(id);
+        }
+        
+        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
+            base.Channel.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+        }
+        
+        public void ClientUserAdd(int clientId, string name, string password) {
+            base.Channel.ClientUserAdd(clientId, name, password);
+        }
+        
+        public void ClientUserRemove(int clientUserId) {
+            base.Channel.ClientUserRemove(clientUserId);
+        }
+        
+        public System.Collections.Generic.List<Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS> ClientUserRetrieveAllForClients(int clientId) {
+            return base.Channel.ClientUserRetrieveAllForClients(clientId);
+        }
+        
+        public Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS ClientUserRetrieve(int clientUserId) {
+            return base.Channel.ClientUserRetrieve(clientUserId);
         }
     }
 }

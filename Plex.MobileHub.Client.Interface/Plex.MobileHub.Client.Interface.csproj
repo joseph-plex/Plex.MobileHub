@@ -237,6 +237,12 @@
     <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.CLIENTS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.CLIENT_USERS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GeneralService\Plex.MobileHub.Client.Interface.GeneralService.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

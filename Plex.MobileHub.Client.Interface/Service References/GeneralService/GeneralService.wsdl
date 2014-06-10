@@ -182,6 +182,96 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientsAppsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserAppsAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClients">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRetrieveAllForClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetNamedPipeBinding_GeneralService" type="i0:GeneralService">
     <wsp:PolicyReference URI="#NetNamedPipeBinding_GeneralService_policy" />
@@ -341,6 +431,96 @@
     </wsdl:operation>
     <wsdl:operation name="CilentsRetrieve">
       <soap12:operation soapAction="PMHC/GeneralService/CilentsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientsAppsRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientsAppsRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompanyUserAppsAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientDbCompanyUserAppsAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserAdd">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRemove">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieveAllForClients">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRetrieveAllForClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientUserRetrieve">
+      <soap12:operation soapAction="PMHC/GeneralService/ClientUserRetrieve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
