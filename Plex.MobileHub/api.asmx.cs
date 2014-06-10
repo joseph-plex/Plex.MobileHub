@@ -115,10 +115,5 @@ namespace Plex.MobileHub
         {
             return new DeviceRequestId().Strategy(connectionId);
         }
-        [WebMethod]
-        public object test()
-        {
-            return new object();
-        }
     }
 }
