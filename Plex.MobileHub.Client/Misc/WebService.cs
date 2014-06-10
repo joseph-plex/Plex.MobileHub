@@ -71,13 +71,6 @@ namespace MobileHubClient.Misc
             }
         }
 
-
-        public static QryResult NonQuery(string commandText, params object[] arguments)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public static ClientSDKSoapClient Service
         
         {

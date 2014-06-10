@@ -101,6 +101,7 @@ namespace Plex.MobileHub
 
 
         #region CLIENTS CRUD
+        [WebMethod]
         public CLIENTS ClientsRetrieve(int id)
         {
             return CLIENTS.GetAll().First(p => p.CLIENT_ID == id);
@@ -108,6 +109,7 @@ namespace Plex.MobileHub
         #endregion
 
         #region CLIENT_APPS CRUD
+        [WebMethod]
         public CLIENT_APPS ClientsAppsRetrieve(int id)
         {
             return CLIENT_APPS.GetAll().First(p => p.CLIENT_APP_ID == id);
@@ -228,11 +230,13 @@ namespace Plex.MobileHub
             strategy.Strategy(clientUserId);
             return;
         }
+        [WebMethod]
         public List<CLIENT_USERS> ClientUserRetrieveAllForClient(int clientId)
         {
             return CLIENT_USERS.GetAll().Where(p => p.CLIENT_ID == clientId).ToList();
         }
 
+        [WebMethod]
         public CLIENT_USERS ClientUserRetrieve(int clientUserId)
         {
             return CLIENT_USERS.GetAll().FirstOrDefault(p => p.USER_ID == clientUserId);
