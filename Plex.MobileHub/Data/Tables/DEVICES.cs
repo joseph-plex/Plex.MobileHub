@@ -7,9 +7,9 @@ namespace Plex.MobileHub.Data.Tables
 {
     public class DEVICES : PlexxisDataTransferObjects
     {
-        public static event Subscriber OnInsert;
-        public static event Subscriber OnUpdate;
-        public static event Subscriber OnDelete;
+        public static event EventHandler OnInsert;
+        public static event EventHandler OnUpdate;
+        public static event EventHandler OnDelete;
 
         public static IEnumerable<DEVICES> GetAll()
         {

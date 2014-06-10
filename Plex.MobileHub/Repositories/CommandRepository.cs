@@ -40,9 +40,9 @@ namespace Plex.MobileHub.Repositories
 
         public Dictionary<Int32, Command> CommandRepo = new Dictionary<Int32, Command>();
 
-        public event Subscriber OnAdd;
-        public event Subscriber OnModify;
-        public event Subscriber OnDelete;
+        public event EventHandler OnAdd;
+        public event EventHandler OnModify;
+        public event EventHandler OnDelete;
 
         public Dictionary<Int32, Command> GetAll()
         {

@@ -64,7 +64,7 @@ namespace Plex.MobileHub.Repositories
             };
         }
 
-        public event Subscriber OnAdd;
+        public event EventHandler OnAdd;
         Dictionary<int, Response> Repo = new Dictionary<int, Response>();
 
         public void Add(int ResponseId, Response response)

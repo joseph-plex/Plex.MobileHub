@@ -6,9 +6,9 @@ namespace Plex.MobileHub.Data.Tables
 {
     public class QUERY_SEQUENCE_REQUESTS : PlexxisDataTransferObjects
     {
-        public static event Subscriber OnInsert;
-        public static event Subscriber OnUpdate;
-        public static event Subscriber OnDelete;
+        public static event EventHandler OnInsert;
+        public static event EventHandler OnUpdate;
+        public static event EventHandler OnDelete;
 
         public static IEnumerable<QUERY_SEQUENCE_REQUESTS> GetAll()
         {

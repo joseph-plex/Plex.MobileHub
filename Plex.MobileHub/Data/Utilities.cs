@@ -10,9 +10,7 @@ using Plex.MobileHub.Objects;
 using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.Data
 {
-
-    public delegate void Subscriber(Object sender, EventArgs e);
-
+   
     public static class Utilities
     {
         public static String ConnectionString

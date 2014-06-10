@@ -10,7 +10,6 @@ using Plex.MobileHub.Data.Tables;
 using Plex.MobileHub.Objects;
 namespace Plex.MobileHub
 {
-    public delegate void Subscriber(object sender, EventArgs e);
     public class Global : HttpApplication
     {
         public void Application_Start(object sender, EventArgs e)

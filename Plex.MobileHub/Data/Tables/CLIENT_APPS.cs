@@ -6,9 +6,9 @@ namespace Plex.MobileHub.Data.Tables
 {
     public class CLIENT_APPS : PlexxisDataTransferObjects
     {
-        public static event Subscriber OnInsert;
-        public static event Subscriber OnUpdate;
-        public static event Subscriber OnDelete;
+        public static event EventHandler OnInsert;
+        public static event EventHandler OnUpdate;
+        public static event EventHandler OnDelete;
 
         public int CLIENT_APP_ID { get; set; }//	NUMBER(10)	N			
         public int APP_ID { get; set; }//	NUMBER(10)	N			
