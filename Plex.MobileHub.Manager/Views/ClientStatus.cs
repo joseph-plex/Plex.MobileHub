@@ -255,13 +255,30 @@ namespace Plex.MobileHub.Manager.Views
 
             DataFactory factory = new DataFactory();
 
-            if (access) { 
-                factory.ClientAppAdd(appId, clientId);
+            if (access) {
+                switch(MessageBox.Show("Grant access to this application", "Are you aure?", MessageBoxButtons.OKCancel))
+                {
+                    case DialogResult.OK:
+                        factory.ClientAppAdd(appId, clientId);
+                        break;
+                    case DialogResult.Cancel:
+                        LoadDataGrid();
+                        break;
+                  }
             }
-            else {
-                var result = factory.Query("select a.client_app_id from client_apps a where a.app_id = :a and a.client_id = :b and rownum >= 1", appId, clientId);
-                var clientAppId = Convert.ToInt32(result.Rows[0].Values[0]);
-                factory.ClientAppRemove(clientAppId);
+            else 
+            {
+                switch(  MessageBox.Show("remove access to this application", "Are you aure?", MessageBoxButtons.OKCancel))
+                {
+                    case DialogResult.OK:
+                        var result = factory.Query("select a.client_app_id from client_apps a where a.app_id = :a and a.client_id = :b and rownum >= 1", appId, clientId);
+                        var clientAppId = Convert.ToInt32(result.Rows[0].Values[0]);
+                        factory.ClientAppRemove(clientAppId);
+                        break;
+                    case DialogResult.Cancel:
+                        LoadDataGrid();
+                        break;
+                }
             }
         }
     }
