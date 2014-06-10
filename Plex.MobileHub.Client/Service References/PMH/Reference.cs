@@ -25,113 +25,121 @@ namespace MobileHubClient.PMH {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommands", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.Command[] GetCommands(int ConnectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Respond", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void Respond(MobileHubClient.PMH.Response Resp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResponsePartial", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.Result Query(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         int NonQuery(string sql, object[] arguments);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AddClientDbCompany", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         MobileHubClient.PMH.ClientSynchroData SyncDataGet();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppQueriesRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void AppQueriesRetrieve();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppUserTypesRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void AppUserTypesRetrieve();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AddClientDbCompany", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyAdd", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyUserAdd(int appId, int dcCompanyUserId, int appUserTypeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAppsAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyUserAppsAdd();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientUserAdd(int clientId, string name, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/LogAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void LogAdd(System.DateTime logDate, string description, int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyRemove();
+        void ClientDbCompanyRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyUserRemove();
+        void ClientDbCompanyUserRemove(int id);
+        
+        // CODEGEN: Parameter 'appUserTypeId' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAppsAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        MobileHubClient.PMH.ClientDbCompanyUserAppsAddResponse ClientDbCompanyUserAppsAdd(MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAppsRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyUserAppsRemove();
+        void ClientDbCompanyUserAppsRemove(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        void ClientUserAdd(int clientId, string name, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ClientUserRemove(int clientUserId);
     }
@@ -915,126 +923,6 @@ namespace MobileHubClient.PMH {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class IUDData : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string tableNameField;
-        
-        private string[] columnNamesField;
-        
-        private Row[] rowsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string TableName {
-            get {
-                return this.tableNameField;
-            }
-            set {
-                this.tableNameField = value;
-                this.RaisePropertyChanged("TableName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public string[] ColumnNames {
-            get {
-                return this.columnNamesField;
-            }
-            set {
-                this.columnNamesField = value;
-                this.RaisePropertyChanged("ColumnNames");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public Row[] Rows {
-            get {
-                return this.rowsField;
-            }
-            set {
-                this.rowsField = value;
-                this.RaisePropertyChanged("Rows");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class Row : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int dBActionField;
-        
-        private int rowVersionField;
-        
-        private object[] valuesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int DBAction {
-            get {
-                return this.dBActionField;
-            }
-            set {
-                this.dBActionField = value;
-                this.RaisePropertyChanged("DBAction");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int RowVersion {
-            get {
-                return this.rowVersionField;
-            }
-            set {
-                this.rowVersionField = value;
-                this.RaisePropertyChanged("RowVersion");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public object[] Values {
-            get {
-                return this.valuesField;
-            }
-            set {
-                this.valuesField = value;
-                this.RaisePropertyChanged("Values");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(QryResult))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RQryResult))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
@@ -1382,6 +1270,66 @@ namespace MobileHubClient.PMH {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class Row : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int dBActionField;
+        
+        private int rowVersionField;
+        
+        private object[] valuesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int DBAction {
+            get {
+                return this.dBActionField;
+            }
+            set {
+                this.dBActionField = value;
+                this.RaisePropertyChanged("DBAction");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int RowVersion {
+            get {
+                return this.rowVersionField;
+            }
+            set {
+                this.rowVersionField = value;
+                this.RaisePropertyChanged("RowVersion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public object[] Values {
+            get {
+                return this.valuesField;
+            }
+            set {
+                this.valuesField = value;
+                this.RaisePropertyChanged("Values");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
     public partial class RQryResult : QryResult {
         
         private string tableNameField;
@@ -1410,6 +1358,102 @@ namespace MobileHubClient.PMH {
                 this.queryNameField = value;
                 this.RaisePropertyChanged("QueryName");
             }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class IUDData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string tableNameField;
+        
+        private string[] columnNamesField;
+        
+        private Row[] rowsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string TableName {
+            get {
+                return this.tableNameField;
+            }
+            set {
+                this.tableNameField = value;
+                this.RaisePropertyChanged("TableName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public string[] ColumnNames {
+            get {
+                return this.columnNamesField;
+            }
+            set {
+                this.columnNamesField = value;
+                this.RaisePropertyChanged("ColumnNames");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public Row[] Rows {
+            get {
+                return this.rowsField;
+            }
+            set {
+                this.rowsField = value;
+                this.RaisePropertyChanged("Rows");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ClientDbCompanyUserAppsAdd", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
+    public partial class ClientDbCompanyUserAppsAddRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
+        public int appId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=1)]
+        public int dbCompanyUserId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> appUserTypeId;
+        
+        public ClientDbCompanyUserAppsAddRequest() {
+        }
+        
+        public ClientDbCompanyUserAppsAddRequest(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
+            this.appId = appId;
+            this.dbCompanyUserId = dbCompanyUserId;
+            this.appUserTypeId = appUserTypeId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ClientDbCompanyUserAppsAddResponse", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
+    public partial class ClientDbCompanyUserAppsAddResponse {
+        
+        public ClientDbCompanyUserAppsAddResponse() {
         }
     }
     
@@ -1468,44 +1512,57 @@ namespace MobileHubClient.PMH {
             return base.Channel.NonQuery(sql, arguments);
         }
         
-        public bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString) {
-            return base.Channel.AddClientDbCompany(clientId, companyCode, ConnectionString);
-        }
-        
         public MobileHubClient.PMH.ClientSynchroData SyncDataGet() {
             return base.Channel.SyncDataGet();
+        }
+        
+        public void AppQueriesRetrieve() {
+            base.Channel.AppQueriesRetrieve();
+        }
+        
+        public void AppUserTypesRetrieve() {
+            base.Channel.AppUserTypesRetrieve();
+        }
+        
+        public bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString) {
+            return base.Channel.AddClientDbCompany(clientId, companyCode, ConnectionString);
         }
         
         public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString) {
             base.Channel.ClientDbCompanyAdd(clientId, companyCode, connectionString);
         }
         
-        public void ClientDbCompanyUserAdd(int appId, int dcCompanyUserId, int appUserTypeId) {
-            base.Channel.ClientDbCompanyUserAdd(appId, dcCompanyUserId, appUserTypeId);
+        public void ClientDbCompanyRemove(int id) {
+            base.Channel.ClientDbCompanyRemove(id);
         }
         
-        public void ClientDbCompanyUserAppsAdd() {
-            base.Channel.ClientDbCompanyUserAppsAdd();
+        public void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs) {
+            base.Channel.ClientDbCompanyUserAdd(dbCompanyId, UserId, ConnectAs);
+        }
+        
+        public void ClientDbCompanyUserRemove(int id) {
+            base.Channel.ClientDbCompanyUserRemove(id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        MobileHubClient.PMH.ClientDbCompanyUserAppsAddResponse MobileHubClient.PMH.ClientSDKSoap.ClientDbCompanyUserAppsAdd(MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest request) {
+            return base.Channel.ClientDbCompanyUserAppsAdd(request);
+        }
+        
+        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
+            MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest inValue = new MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest();
+            inValue.appId = appId;
+            inValue.dbCompanyUserId = dbCompanyUserId;
+            inValue.appUserTypeId = appUserTypeId;
+            MobileHubClient.PMH.ClientDbCompanyUserAppsAddResponse retVal = ((MobileHubClient.PMH.ClientSDKSoap)(this)).ClientDbCompanyUserAppsAdd(inValue);
+        }
+        
+        public void ClientDbCompanyUserAppsRemove(int id) {
+            base.Channel.ClientDbCompanyUserAppsRemove(id);
         }
         
         public void ClientUserAdd(int clientId, string name, string password) {
             base.Channel.ClientUserAdd(clientId, name, password);
-        }
-        
-        public void LogAdd(System.DateTime logDate, string description, int id) {
-            base.Channel.LogAdd(logDate, description, id);
-        }
-        
-        public void ClientDbCompanyRemove() {
-            base.Channel.ClientDbCompanyRemove();
-        }
-        
-        public void ClientDbCompanyUserRemove() {
-            base.Channel.ClientDbCompanyUserRemove();
-        }
-        
-        public void ClientDbCompanyUserAppsRemove() {
-            base.Channel.ClientDbCompanyUserAppsRemove();
         }
         
         public void ClientUserRemove(int clientUserId) {

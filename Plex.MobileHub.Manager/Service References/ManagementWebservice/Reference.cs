@@ -19,118 +19,153 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string GetExternalIP();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetTaskData", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        Plex.MobileHub.Manager.ManagementWebservice.Task[] GetTaskData();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetCommandRepo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Command[] GetCommandRepo();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConnectionRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Client[] GetConnectionRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetConsumerRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Consumer[] GetConsumerRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetLogRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] GetLogRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetResponseRepository", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Response[] GetResponseRepository();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/LogsGetAll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Log[] LogsGetAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         Plex.MobileHub.Manager.ManagementWebservice.Result Query(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         int NonQuery(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/RetrieveCommand", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void RetrieveCommand(int Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResetLogs", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ResetLogs();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Test", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        string Test();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/GetReferenceTree", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        object GetReferenceTree();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppAdd", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         int AppAdd(string authKey, string title, string description, bool isClientCustomApp);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableAdd", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        int ClientAdd(int clientId, string desc, string key);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppsAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        int ClientAppsAdd(int appId, int clientId);
+        Plex.MobileHub.Manager.ManagementWebservice.APPS AppRetrieve(int appId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void AppRemove(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        Plex.MobileHub.Manager.ManagementWebservice.APP_TABLES AppTableRetrieve(int appTableId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void AppTableRemove(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void AppTableColumnRemove(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppTableColumnRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        Plex.MobileHub.Manager.ManagementWebservice.APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        Plex.MobileHub.Manager.ManagementWebservice.CLIENTS ClientRetrieve(int clientId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ClientRemove(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int ClientAdd(int clientId, string desc, string key);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppsAdd", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        int ClientAppsAdd(int appId, int clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        Plex.MobileHub.Manager.ManagementWebservice.CLIENT_APPS ClientAppRetrieve(int clientAppId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientAppRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ClientAppRemove(int id);
     }
@@ -141,13 +176,15 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class Task : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Command : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string nameField;
         
-        private long durationField;
+        private int clientIdField;
         
-        private long millisecondsField;
+        private int requestIdField;
+        
+        private object[] paramsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -163,25 +200,37 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public long Duration {
+        public int ClientId {
             get {
-                return this.durationField;
+                return this.clientIdField;
             }
             set {
-                this.durationField = value;
-                this.RaisePropertyChanged("Duration");
+                this.clientIdField = value;
+                this.RaisePropertyChanged("ClientId");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public long Milliseconds {
+        public int RequestId {
             get {
-                return this.millisecondsField;
+                return this.requestIdField;
             }
             set {
-                this.millisecondsField = value;
-                this.RaisePropertyChanged("Milliseconds");
+                this.requestIdField = value;
+                this.RaisePropertyChanged("RequestId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        public object[] Params {
+            get {
+                return this.paramsField;
+            }
+            set {
+                this.paramsField = value;
+                this.RaisePropertyChanged("Params");
             }
         }
         
@@ -191,6 +240,592 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_APPS))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENTS))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_TABLE_COLUMNS))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APP_TABLES))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(APPS))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public abstract partial class PlexxisDataTransferObjects : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class CLIENT_APPS : PlexxisDataTransferObjects {
+        
+        private int cLIENT_APP_IDField;
+        
+        private int aPP_IDField;
+        
+        private int cLIENT_IDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int CLIENT_APP_ID {
+            get {
+                return this.cLIENT_APP_IDField;
+            }
+            set {
+                this.cLIENT_APP_IDField = value;
+                this.RaisePropertyChanged("CLIENT_APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int APP_ID {
+            get {
+                return this.aPP_IDField;
+            }
+            set {
+                this.aPP_IDField = value;
+                this.RaisePropertyChanged("APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int CLIENT_ID {
+            get {
+                return this.cLIENT_IDField;
+            }
+            set {
+                this.cLIENT_IDField = value;
+                this.RaisePropertyChanged("CLIENT_ID");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class CLIENTS : PlexxisDataTransferObjects {
+        
+        private int cLIENT_IDField;
+        
+        private string cLIENT_KEYField;
+        
+        private string dESCRIPTIONField;
+        
+        private System.Nullable<int> cLIENT_INSTANCE_IDField;
+        
+        private string cLIENT_IP_ADDRESSField;
+        
+        private System.Nullable<int> cLIENT_PORTField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int CLIENT_ID {
+            get {
+                return this.cLIENT_IDField;
+            }
+            set {
+                this.cLIENT_IDField = value;
+                this.RaisePropertyChanged("CLIENT_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string CLIENT_KEY {
+            get {
+                return this.cLIENT_KEYField;
+            }
+            set {
+                this.cLIENT_KEYField = value;
+                this.RaisePropertyChanged("CLIENT_KEY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string DESCRIPTION {
+            get {
+                return this.dESCRIPTIONField;
+            }
+            set {
+                this.dESCRIPTIONField = value;
+                this.RaisePropertyChanged("DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<int> CLIENT_INSTANCE_ID {
+            get {
+                return this.cLIENT_INSTANCE_IDField;
+            }
+            set {
+                this.cLIENT_INSTANCE_IDField = value;
+                this.RaisePropertyChanged("CLIENT_INSTANCE_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string CLIENT_IP_ADDRESS {
+            get {
+                return this.cLIENT_IP_ADDRESSField;
+            }
+            set {
+                this.cLIENT_IP_ADDRESSField = value;
+                this.RaisePropertyChanged("CLIENT_IP_ADDRESS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public System.Nullable<int> CLIENT_PORT {
+            get {
+                return this.cLIENT_PORTField;
+            }
+            set {
+                this.cLIENT_PORTField = value;
+                this.RaisePropertyChanged("CLIENT_PORT");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class APP_TABLE_COLUMNS : PlexxisDataTransferObjects {
+        
+        private int tABLE_IDField;
+        
+        private int tABLE_COLUMN_IDField;
+        
+        private string cOLUMN_NAMEField;
+        
+        private int cOLUMN_SEQUENCEField;
+        
+        private string dATA_TYPEField;
+        
+        private System.Nullable<int> dATA_LENGTHField;
+        
+        private System.Nullable<int> dATA_PRECISIONField;
+        
+        private System.Nullable<int> dATA_SCALEField;
+        
+        private System.Nullable<int> aLLOW_DB_NULLField;
+        
+        private System.Nullable<int> iS_READ_ONLYField;
+        
+        private System.Nullable<int> iS_LONGField;
+        
+        private System.Nullable<int> iS_KEYField;
+        
+        private string kEY_TYPEField;
+        
+        private System.Nullable<int> iS_UNIQUEField;
+        
+        private string dESCRIPTIONField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int TABLE_ID {
+            get {
+                return this.tABLE_IDField;
+            }
+            set {
+                this.tABLE_IDField = value;
+                this.RaisePropertyChanged("TABLE_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int TABLE_COLUMN_ID {
+            get {
+                return this.tABLE_COLUMN_IDField;
+            }
+            set {
+                this.tABLE_COLUMN_IDField = value;
+                this.RaisePropertyChanged("TABLE_COLUMN_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string COLUMN_NAME {
+            get {
+                return this.cOLUMN_NAMEField;
+            }
+            set {
+                this.cOLUMN_NAMEField = value;
+                this.RaisePropertyChanged("COLUMN_NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int COLUMN_SEQUENCE {
+            get {
+                return this.cOLUMN_SEQUENCEField;
+            }
+            set {
+                this.cOLUMN_SEQUENCEField = value;
+                this.RaisePropertyChanged("COLUMN_SEQUENCE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string DATA_TYPE {
+            get {
+                return this.dATA_TYPEField;
+            }
+            set {
+                this.dATA_TYPEField = value;
+                this.RaisePropertyChanged("DATA_TYPE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public System.Nullable<int> DATA_LENGTH {
+            get {
+                return this.dATA_LENGTHField;
+            }
+            set {
+                this.dATA_LENGTHField = value;
+                this.RaisePropertyChanged("DATA_LENGTH");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
+        public System.Nullable<int> DATA_PRECISION {
+            get {
+                return this.dATA_PRECISIONField;
+            }
+            set {
+                this.dATA_PRECISIONField = value;
+                this.RaisePropertyChanged("DATA_PRECISION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public System.Nullable<int> DATA_SCALE {
+            get {
+                return this.dATA_SCALEField;
+            }
+            set {
+                this.dATA_SCALEField = value;
+                this.RaisePropertyChanged("DATA_SCALE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
+        public System.Nullable<int> ALLOW_DB_NULL {
+            get {
+                return this.aLLOW_DB_NULLField;
+            }
+            set {
+                this.aLLOW_DB_NULLField = value;
+                this.RaisePropertyChanged("ALLOW_DB_NULL");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
+        public System.Nullable<int> IS_READ_ONLY {
+            get {
+                return this.iS_READ_ONLYField;
+            }
+            set {
+                this.iS_READ_ONLYField = value;
+                this.RaisePropertyChanged("IS_READ_ONLY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
+        public System.Nullable<int> IS_LONG {
+            get {
+                return this.iS_LONGField;
+            }
+            set {
+                this.iS_LONGField = value;
+                this.RaisePropertyChanged("IS_LONG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
+        public System.Nullable<int> IS_KEY {
+            get {
+                return this.iS_KEYField;
+            }
+            set {
+                this.iS_KEYField = value;
+                this.RaisePropertyChanged("IS_KEY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string KEY_TYPE {
+            get {
+                return this.kEY_TYPEField;
+            }
+            set {
+                this.kEY_TYPEField = value;
+                this.RaisePropertyChanged("KEY_TYPE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=13)]
+        public System.Nullable<int> IS_UNIQUE {
+            get {
+                return this.iS_UNIQUEField;
+            }
+            set {
+                this.iS_UNIQUEField = value;
+                this.RaisePropertyChanged("IS_UNIQUE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string DESCRIPTION {
+            get {
+                return this.dESCRIPTIONField;
+            }
+            set {
+                this.dESCRIPTIONField = value;
+                this.RaisePropertyChanged("DESCRIPTION");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class APP_TABLES : PlexxisDataTransferObjects {
+        
+        private int tABLE_IDField;
+        
+        private int aPP_IDField;
+        
+        private string nAMEField;
+        
+        private string dESCRIPTIONField;
+        
+        private int iNSERT_ALLOWEDField;
+        
+        private int uPDATE_ALLOWEDField;
+        
+        private int dELETE_ALLOWEDField;
+        
+        private int qUERY_ALLOWEDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int TABLE_ID {
+            get {
+                return this.tABLE_IDField;
+            }
+            set {
+                this.tABLE_IDField = value;
+                this.RaisePropertyChanged("TABLE_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int APP_ID {
+            get {
+                return this.aPP_IDField;
+            }
+            set {
+                this.aPP_IDField = value;
+                this.RaisePropertyChanged("APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string NAME {
+            get {
+                return this.nAMEField;
+            }
+            set {
+                this.nAMEField = value;
+                this.RaisePropertyChanged("NAME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string DESCRIPTION {
+            get {
+                return this.dESCRIPTIONField;
+            }
+            set {
+                this.dESCRIPTIONField = value;
+                this.RaisePropertyChanged("DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int INSERT_ALLOWED {
+            get {
+                return this.iNSERT_ALLOWEDField;
+            }
+            set {
+                this.iNSERT_ALLOWEDField = value;
+                this.RaisePropertyChanged("INSERT_ALLOWED");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int UPDATE_ALLOWED {
+            get {
+                return this.uPDATE_ALLOWEDField;
+            }
+            set {
+                this.uPDATE_ALLOWEDField = value;
+                this.RaisePropertyChanged("UPDATE_ALLOWED");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int DELETE_ALLOWED {
+            get {
+                return this.dELETE_ALLOWEDField;
+            }
+            set {
+                this.dELETE_ALLOWEDField = value;
+                this.RaisePropertyChanged("DELETE_ALLOWED");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public int QUERY_ALLOWED {
+            get {
+                return this.qUERY_ALLOWEDField;
+            }
+            set {
+                this.qUERY_ALLOWEDField = value;
+                this.RaisePropertyChanged("QUERY_ALLOWED");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class APPS : PlexxisDataTransferObjects {
+        
+        private int aPP_IDField;
+        
+        private string aUTH_KEYField;
+        
+        private string tITLEField;
+        
+        private string dESCRIPTIONField;
+        
+        private int iS_CLIENT_CUSTOM_APPField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int APP_ID {
+            get {
+                return this.aPP_IDField;
+            }
+            set {
+                this.aPP_IDField = value;
+                this.RaisePropertyChanged("APP_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string AUTH_KEY {
+            get {
+                return this.aUTH_KEYField;
+            }
+            set {
+                this.aUTH_KEYField = value;
+                this.RaisePropertyChanged("AUTH_KEY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string TITLE {
+            get {
+                return this.tITLEField;
+            }
+            set {
+                this.tITLEField = value;
+                this.RaisePropertyChanged("TITLE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string DESCRIPTION {
+            get {
+                return this.dESCRIPTIONField;
+            }
+            set {
+                this.dESCRIPTIONField = value;
+                this.RaisePropertyChanged("DESCRIPTION");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int IS_CLIENT_CUSTOM_APP {
+            get {
+                return this.iS_CLIENT_CUSTOM_APPField;
+            }
+            set {
+                this.iS_CLIENT_CUSTOM_APPField = value;
+                this.RaisePropertyChanged("IS_CLIENT_CUSTOM_APP");
             }
         }
     }
@@ -777,80 +1412,6 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
-    public partial class Command : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string nameField;
-        
-        private int clientIdField;
-        
-        private int requestIdField;
-        
-        private object[] paramsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("Name");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int ClientId {
-            get {
-                return this.clientIdField;
-            }
-            set {
-                this.clientIdField = value;
-                this.RaisePropertyChanged("ClientId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int RequestId {
-            get {
-                return this.requestIdField;
-            }
-            set {
-                this.requestIdField = value;
-                this.RaisePropertyChanged("RequestId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
-        public object[] Params {
-            get {
-                return this.paramsField;
-            }
-            set {
-                this.paramsField = value;
-                this.RaisePropertyChanged("Params");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ManagerSDKSoapChannel : Plex.MobileHub.Manager.ManagementWebservice.ManagerSDKSoap, System.ServiceModel.IClientChannel {
     }
@@ -880,10 +1441,6 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
         
         public string GetExternalIP() {
             return base.Channel.GetExternalIP();
-        }
-        
-        public Plex.MobileHub.Manager.ManagementWebservice.Task[] GetTaskData() {
-            return base.Channel.GetTaskData();
         }
         
         public Plex.MobileHub.Manager.ManagementWebservice.Command[] GetCommandRepo() {
@@ -926,36 +1483,24 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             base.Channel.ResetLogs();
         }
         
-        public string Test() {
-            return base.Channel.Test();
-        }
-        
-        public object GetReferenceTree() {
-            return base.Channel.GetReferenceTree();
-        }
-        
         public int AppAdd(string authKey, string title, string description, bool isClientCustomApp) {
             return base.Channel.AppAdd(authKey, title, description, isClientCustomApp);
         }
         
-        public int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select) {
-            return base.Channel.AppTableAdd(appId, name, desc, insert, update, delete, select);
-        }
-        
-        public int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc) {
-            return base.Channel.AppTableColumnAdd(tabId, nom, seq, type, length, prec, scale, nullable, readOnly, isLong, isKey, keyType, unique, desc);
-        }
-        
-        public int ClientAdd(int clientId, string desc, string key) {
-            return base.Channel.ClientAdd(clientId, desc, key);
-        }
-        
-        public int ClientAppsAdd(int appId, int clientId) {
-            return base.Channel.ClientAppsAdd(appId, clientId);
+        public Plex.MobileHub.Manager.ManagementWebservice.APPS AppRetrieve(int appId) {
+            return base.Channel.AppRetrieve(appId);
         }
         
         public void AppRemove(int id) {
             base.Channel.AppRemove(id);
+        }
+        
+        public Plex.MobileHub.Manager.ManagementWebservice.APP_TABLES AppTableRetrieve(int appTableId) {
+            return base.Channel.AppTableRetrieve(appTableId);
+        }
+        
+        public int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select) {
+            return base.Channel.AppTableAdd(appId, name, desc, insert, update, delete, select);
         }
         
         public void AppTableRemove(int id) {
@@ -966,8 +1511,32 @@ namespace Plex.MobileHub.Manager.ManagementWebservice {
             base.Channel.AppTableColumnRemove(id);
         }
         
+        public int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc) {
+            return base.Channel.AppTableColumnAdd(tabId, nom, seq, type, length, prec, scale, nullable, readOnly, isLong, isKey, keyType, unique, desc);
+        }
+        
+        public Plex.MobileHub.Manager.ManagementWebservice.APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId) {
+            return base.Channel.AppTableColumnRetrieve(appTableColumnId);
+        }
+        
+        public Plex.MobileHub.Manager.ManagementWebservice.CLIENTS ClientRetrieve(int clientId) {
+            return base.Channel.ClientRetrieve(clientId);
+        }
+        
         public void ClientRemove(int id) {
             base.Channel.ClientRemove(id);
+        }
+        
+        public int ClientAdd(int clientId, string desc, string key) {
+            return base.Channel.ClientAdd(clientId, desc, key);
+        }
+        
+        public int ClientAppsAdd(int appId, int clientId) {
+            return base.Channel.ClientAppsAdd(appId, clientId);
+        }
+        
+        public Plex.MobileHub.Manager.ManagementWebservice.CLIENT_APPS ClientAppRetrieve(int clientAppId) {
+            return base.Channel.ClientAppRetrieve(clientAppId);
         }
         
         public void ClientAppRemove(int id) {

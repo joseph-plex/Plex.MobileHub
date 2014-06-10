@@ -152,7 +152,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ManagementWebservice\management.wsdl" />
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.APPS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.APP_TABLES.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.APP_TABLE_COLUMNS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Client.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.CLIENTS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.CLIENT_APPS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Command.datasource">
@@ -184,9 +199,6 @@
     <None Include="Service References\ManagementWebservice\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ManagementWebservice\Plex.MobileHub.Manager.ManagementWebservice.Task.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ManagementWebservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

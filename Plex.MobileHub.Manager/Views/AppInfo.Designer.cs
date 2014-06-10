@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppInfo));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -64,8 +63,8 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.naviBar1 = new Guifreaks.NavigationBar.NaviBar(this.components);
-            this.naviBand1 = new Guifreaks.NavigationBar.NaviBand(this.components);
+            this.naviBar1 = new Guifreaks.NavigationBar.NaviBar();
+            this.naviBand1 = new Guifreaks.NavigationBar.NaviBand();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();

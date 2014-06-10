@@ -82,9 +82,12 @@ namespace Plex.MobileHub
 
         #region APP_QUERIES CRUD
 
-        //todo implement 
         [WebMethod]
-        public void AppQueriesRetrieve() { }
+        public void AppQueriesRetrieve() 
+        {
+            //todo implement AppQueriesRetrieve
+
+        }
         #endregion
 
         
@@ -98,17 +101,17 @@ namespace Plex.MobileHub
 
 
         #region CLIENTS CRUD
-        public void ClientsRetrieve()
+        public CLIENTS ClientsRetrieve(int id)
         {
-            //todo implement ClientsRetrieve
+            return CLIENTS.GetAll().First(p => p.CLIENT_ID == id);
         }
         #endregion
 
 
         #region CLIENT_APPS CRUD
-        public void ClientsAppsRetrieve()
+        public CLIENT_APPS ClientsAppsRetrieve(int id)
         {
-            //todo imlplement ClientsAppsRetrieve
+            return CLIENT_APPS.GetAll().First(p => p.CLIENT_APP_ID == id);
         }
         #endregion
 
@@ -141,55 +144,84 @@ namespace Plex.MobileHub
         [WebMethod]
         public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
         {
-            //todo implement  ClientDbCompanyAdd
+            
+            var company = new CLIENT_DB_COMPANIES();
+            company.COMPANY_CODE = companyCode;
+            company.CLIENT_ID = clientId;
+            company.DATABASE_SID = connectionString;
+            using (var connection = Utilities.GetConnection(true)){
+                company.DB_COMPANY_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual")[0, 0]);
+                company.Insert(connection);
+            }
         }
 
         [WebMethod]
-        public void ClientDbCompanyRemove() 
+        public void ClientDbCompanyRemove(int id) 
         {
-            //todo implement ClientDbCompanyRemove
+            CLIENT_DB_COMPANIES.GetAll().First(p => p.DB_COMPANY_ID == id).Delete();
         }
         #endregion
 
 
         #region CLIENT_DB_COMPANY_USERS CRUD
         [WebMethod]
-        public void ClientDbCompanyUserAdd(int appId, int dcCompanyUserId, int appUserTypeId)
+        public void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs = null)
         {
-            //todo implement ClientDbCompanyUserAdd
-            return;
+            CLIENT_DB_COMPANY_USERS userPermission = new CLIENT_DB_COMPANY_USERS();
+            userPermission.DB_COMPANY_ID = dbCompanyId;
+            userPermission.USER_ID = UserId;
+            userPermission.CONNECT_AS = ConnectAs; 
+            
+            using (var connection = Utilities.GetConnection(true))
+            {
+                userPermission.DB_COMPANY_USER_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
+                userPermission.Insert(connection);
+            }
         }
 
         [WebMethod]
-        public void ClientDbCompanyUserRemove()
+        public void ClientDbCompanyUserRemove(int id)
         {
-            //todo implement ClientDbCompanyUserRemove
-            return;
+            CLIENT_DB_COMPANY_USERS.GetAll().First(p => p.DB_COMPANY_USER_ID == id).Delete();
         }
         #endregion
 
         #region CLIENTS_DB_COMPANY_USER_APPS CRUD
         [WebMethod]
-        public void ClientDbCompanyUserAppsAdd()
+        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
         {
-            //todo implement ClientDbCompanyUserAppsAdd
-            return;
+            CLIENT_DB_COMPANY_USER_APPS permission = new CLIENT_DB_COMPANY_USER_APPS();
+            permission.APP_ID = appId;
+            permission.APP_USER_TYPE_ID = appUserTypeId;
+            permission.DB_COMPANY_USER_ID = dbCompanyUserId;
+            
+            using(var connection = Utilities.GetConnection(true))
+            {
+                permission.DB_COMPANY_USER_APP_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
+                permission.Insert(connection);
+            }
         }
         [WebMethod]
-        public void ClientDbCompanyUserAppsRemove()
+        public void ClientDbCompanyUserAppsRemove(int id)
         {
-            //todo implement ClientDbCompanyUserAppsRemove
-            return;
+            CLIENT_DB_COMPANY_USER_APPS.GetAll().First(p => p.DB_COMPANY_USER_APP_ID == id).Delete();
         }
         #endregion
-
 
         #region CLIENT_USERS CRUD
         [WebMethod]
         public void ClientUserAdd(int clientId, string name, string password)
         {
-            //todo implement ClientUserAdd
-            return;
+
+            CLIENT_USERS user =  new CLIENT_USERS();
+            user.CLIENT_ID = clientId;
+            user.PASSWORD = password;
+            user.NAME = name;
+            using (var connection = Utilities.GetConnection(true))
+            {
+                user.USER_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
+                user.Insert(connection);
+            }
         }
 
         [WebMethod]
@@ -210,14 +242,6 @@ namespace Plex.MobileHub
         }
         #endregion
 
-        #region LOGS CRUD
-        [WebMethod]
-        public void LogAdd(DateTime logDate, string description, int id = 0)
-        {
-            //todo implement LogAdd
-            return;
-        }
-        #endregion
 
         #region QUERY_SEQUENCE_REQUEST CRUD
         #endregion
