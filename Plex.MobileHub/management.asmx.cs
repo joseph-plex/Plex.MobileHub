@@ -92,45 +92,58 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
-        public string Test()
+        public APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId)
         {
-            return new APP_QUERIES().GetUpdateText();
+            return APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == appTableColumnId);
         }
 
-        [WebMethod]
-        public object GetReferenceTree()
-        {
-            XmlDocument Tree = new XmlDocument();
-            using (var Conn = Utilities.GetConnection(true))
-            {
-                var user_constraints = Conn.Query("select c.* from user_tables t,user_constraints c where c.TABLE_NAME = t.TABLE_NAME and c.CONSTRAINT_TYPE = 'R'");
-            }
-            return Tree;
-        }
 
+        #region APPS CRUD
         [WebMethod]
         public int AppAdd(string authKey, string title, string description, bool isClientCustomApp)
         {
-            APPS apps = new APPS(){ AUTH_KEY = authKey, TITLE = title, DESCRIPTION = description, IS_CLIENT_CUSTOM_APP = Convert.ToInt32(isClientCustomApp)};
-            using (var conn = Utilities.GetConnection(true)) { 
+            APPS apps = new APPS() { AUTH_KEY = authKey, TITLE = title, DESCRIPTION = description, IS_CLIENT_CUSTOM_APP = Convert.ToInt32(isClientCustomApp) };
+            using (var conn = Utilities.GetConnection(true))
+            {
                 apps.APP_ID = Convert.ToInt32(conn.Query("select id_gen.nextval from dual")[0, 0]);
                 apps.Insert(conn);
             }
             return apps.APP_ID;
         }
+        [WebMethod]
+        public APPS AppRetrieve(int appId)
+        {
+            return APPS.GetAll().FirstOrDefault(p => p.APP_ID == appId);
+        }
+
+        [WebMethod]
+        public void AppRemove(int id)
+        {
+            var app = APPS.GetAll().FirstOrDefault(p => p.APP_ID == id);
+            if (app == null) throw new Exception("Invalid Application Id");
+            app.Delete();
+        }
+        #endregion
+
+        #region APP_TABLES CRUD
+        [WebMethod]
+        public APP_TABLES AppTableRetrieve(int appTableId)
+        {
+            return APP_TABLES.GetAll().FirstOrDefault(p => p.TABLE_ID == appTableId);
+        }
 
         [WebMethod]
         public int AppTableAdd(int appId, string name, string desc, int insert, int update, int delete, int select)
         {
-            APP_TABLES aTables = new APP_TABLES() 
-            { 
-                APP_ID = appId, 
-                NAME = name, 
-                DESCRIPTION = desc, 
-                INSERT_ALLOWED = insert, 
-                UPDATE_ALLOWED = update, 
+            APP_TABLES aTables = new APP_TABLES()
+            {
+                APP_ID = appId,
+                NAME = name,
+                DESCRIPTION = desc,
+                INSERT_ALLOWED = insert,
+                UPDATE_ALLOWED = update,
                 DELETE_ALLOWED = delete,
-                QUERY_ALLOWED = select 
+                QUERY_ALLOWED = select
             };
             using (var conn = Utilities.GetConnection(true))
             {
@@ -141,13 +154,34 @@ namespace Plex.MobileHub
         }
 
         [WebMethod]
+        public void AppTableRemove(int id)
+        {
+            var appTable = APP_TABLES.GetAll().FirstOrDefault(p => p.TABLE_ID == id);
+            if (appTable == null) throw new Exception("Invalid Application Table Id");
+            appTable.Delete();
+        }
+
+        #endregion
+
+        #region APP_TABLE_COLUMNS
+
+        [WebMethod]
+        public void AppTableColumnRemove(int id)
+        {
+            var appTableColumn = APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == id);
+            if (appTableColumn == null) throw new Exception("Invalid Application Table Column Id");
+            appTableColumn.Delete();
+        }
+
+
+        [WebMethod]
         public int AppTableColumnAdd(int tabId, string nom, int seq, string type, int length, int prec, int scale, int nullable, int readOnly, int isLong, int isKey, string keyType, int unique, string desc)
         {
-            using (var conn = Utilities.GetConnection(true)) 
-            { 
+            using (var conn = Utilities.GetConnection(true))
+            {
                 APP_TABLE_COLUMNS column = new APP_TABLE_COLUMNS()
                 {
-                    TABLE_COLUMN_ID =  Convert.ToInt32(conn.Query("select id_gen.nextval from dual")[0, 0]),
+                    TABLE_COLUMN_ID = Convert.ToInt32(conn.Query("select id_gen.nextval from dual")[0, 0]),
                     TABLE_ID = tabId,
                     COLUMN_NAME = nom,
                     COLUMN_SEQUENCE = seq,
@@ -156,7 +190,7 @@ namespace Plex.MobileHub
                     DATA_PRECISION = prec,
                     DATA_SCALE = scale,
                     ALLOW_DB_NULL = nullable,
-                    IS_READ_ONLY = readOnly, 
+                    IS_READ_ONLY = readOnly,
                     IS_LONG = isLong,
                     IS_KEY = isKey,
                     KEY_TYPE = keyType,
@@ -168,19 +202,38 @@ namespace Plex.MobileHub
             }
         }
 
+
+        #endregion
+
+        #region CLIENTS CRUD
+        [WebMethod]
+        public CLIENTS ClientRetrieve(int clientId)
+        {
+            return CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == clientId);
+        }
+        [WebMethod]
+        public void ClientRemove(int id)
+        {
+            var client = CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == id);
+            if (client == null) throw new Exception("Client does not exist");
+            client.Delete();
+        }
         [WebMethod]
         public int ClientAdd(int clientId, string desc, string key)
         {
-            new CLIENTS(){ CLIENT_ID = clientId, DESCRIPTION = desc, CLIENT_KEY = key }.Insert();
+            new CLIENTS() { CLIENT_ID = clientId, DESCRIPTION = desc, CLIENT_KEY = key }.Insert();
             return clientId;
         }
 
+        #endregion
+
+        #region CLIENT_APPS CRUD
         [WebMethod]
         public int ClientAppsAdd(int appId, int clientId)
         {
-            using(var conn = Utilities.GetConnection(true))
+            using (var conn = Utilities.GetConnection(true))
             {
-                var cApps = new CLIENT_APPS() 
+                var cApps = new CLIENT_APPS()
                 {
                     CLIENT_APP_ID = Convert.ToInt32(conn.Query("select id_gen.nextval from dual")[0, 0]),
                     APP_ID = appId,
@@ -192,75 +245,21 @@ namespace Plex.MobileHub
         }
         
 
-
-        [WebMethod]
-        public void AppRemove(int id)
-        {
-            var app = APPS.GetAll().FirstOrDefault(p => p.APP_ID == id);
-            if (app == null) throw new Exception("Invalid Application Id");
-            app.Delete();
-        }
-
-        [WebMethod]
-        public void AppTableRemove(int id)
-        {
-            var appTable = APP_TABLES.GetAll().FirstOrDefault(p => p.TABLE_ID == id);
-            if (appTable == null) throw new Exception("Invalid Application Table Id");
-            appTable.Delete();
-        }
-
-        [WebMethod]
-        public void AppTableColumnRemove(int id)
-        {
-            var appTableColumn = APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == id);
-            if (appTableColumn == null) throw new Exception("Invalid Application Table Column Id");
-            appTableColumn.Delete();
-        }
-
-        [WebMethod]
-        public void ClientRemove(int id)
-        {
-            var client = CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == id);
-            if (client == null) throw new Exception("Client does not exist");
-            client.Delete();
-        }
-
-        [WebMethod]
-        public void ClientAppRemove(int id) 
-        {
-            var clientApp = CLIENT_APPS.GetAll().FirstOrDefault(p => p.CLIENT_APP_ID == id);
-            if (clientApp == null) throw new Exception("Client App permission does not exist");
-            clientApp.Delete();
-        }
-
-        [WebMethod]
-        public APPS AppRetrieve(int appId)
-        {
-            return APPS.GetAll().FirstOrDefault(p => p.APP_ID == appId);
-        }
-
-        [WebMethod]
-        public APP_TABLES AppTableRetrieve(int appTableId)
-        {
-            return APP_TABLES.GetAll().FirstOrDefault(p => p.TABLE_ID == appTableId);
-        }
-
-        [WebMethod]
-        public APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId)
-        {
-            return APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == appTableColumnId);
-        }
-
-        [WebMethod]
-        public CLIENTS ClientRetrieve(int clientId)
-        {
-            return CLIENTS.GetAll().FirstOrDefault(p => p.CLIENT_ID == clientId);
-        }
-
         [WebMethod]
         public CLIENT_APPS ClientAppRetrieve(int clientAppId)
         {
             return CLIENT_APPS.GetAll().FirstOrDefault(p => p.CLIENT_APP_ID == clientAppId);
         }
+
+
+        [WebMethod]
+        public void ClientAppRemove(int id)
+        {
+            var clientApp = CLIENT_APPS.GetAll().FirstOrDefault(p => p.CLIENT_APP_ID == id);
+            if (clientApp == null) throw new Exception("Client App permission does not exist");
+            clientApp.Delete();
+        }
+      
+        #endregion
     }
 }

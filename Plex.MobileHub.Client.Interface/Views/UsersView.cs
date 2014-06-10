@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guifreaks.NavigationBar;
+using Plex.MobileHub.Client.Interface.Windows;
 
 namespace Plex.MobileHub.Client.Interface.Views
 {
@@ -88,6 +89,22 @@ namespace Plex.MobileHub.Client.Interface.Views
                     Convert.ToString(result.Rows[i].Values[1]),
                     Convert.ToString(result.Rows[i].Values[2])
                 );
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            WinFactory factory = new WinFactory();
+
+            DialogResult result = factory.CreateUserCreateWindow().ShowDialog();
+            switch(result)
+            {
+                case DialogResult.OK:
+
+
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
         }
     }
 }

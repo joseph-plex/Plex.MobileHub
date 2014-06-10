@@ -113,6 +113,12 @@
     <Compile Include="Views\AddDatabase.Designer.cs">
       <DependentUpon>AddDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatabaseView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddDatabase.resx">
       <DependentUpon>AddDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DatabaseView.resx">
       <DependentUpon>DatabaseView.cs</DependentUpon>

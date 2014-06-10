@@ -73,5 +73,13 @@ namespace Plex.MobileHub.Client.Interface.Windows
             win32.Controls.Add(ad);
             return win32;
         }
+        public Form CreateUserCreateWindow()
+        {
+            DialogWin win32 = new DialogWin() { Text = "Create User" };
+            CreateUser cu = new CreateUser();
+            
+            win32.Controls.Add(cu);
+            return win32;
+        }
     }
 }
