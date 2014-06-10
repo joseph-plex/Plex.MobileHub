@@ -107,14 +107,12 @@ namespace Plex.MobileHub
         }
         #endregion
 
-
         #region CLIENT_APPS CRUD
         public CLIENT_APPS ClientsAppsRetrieve(int id)
         {
             return CLIENT_APPS.GetAll().First(p => p.CLIENT_APP_ID == id);
         }
         #endregion
-
 
         #region CLIENT_DB_COMPANIES CRUD
 
@@ -161,7 +159,6 @@ namespace Plex.MobileHub
             CLIENT_DB_COMPANIES.GetAll().First(p => p.DB_COMPANY_ID == id).Delete();
         }
         #endregion
-
 
         #region CLIENT_DB_COMPANY_USERS CRUD
         [WebMethod]
@@ -241,7 +238,6 @@ namespace Plex.MobileHub
             return CLIENT_USERS.GetAll().FirstOrDefault(p => p.USER_ID == clientUserId);
         }
         #endregion
-
 
         #region QUERY_SEQUENCE_REQUEST CRUD
         #endregion
