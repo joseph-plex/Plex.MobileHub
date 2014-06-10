@@ -251,15 +251,15 @@ namespace Plex.MobileHub.Manager.Views
             var clientId = Convert.ToInt32(gridView.Rows[e.RowIndex].Cells["Column10"].Value);
             var appId = Convert.ToInt32(gridView.Rows[e.RowIndex].Cells["Column8"].Value);
             var cell = row.Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
-            var access = (cell.Value == cell.TrueValue) ? true : false;
-            DataFactory factory = new DataFactory();
-            
+            var access = (Convert.ToBoolean(cell.Value));
 
-            if (!access) { 
+            DataFactory factory = new DataFactory();
+
+            if (access) { 
                 factory.ClientAppAdd(appId, clientId);
             }
             else {
-                var result = factory.Query("select a.client_app_id from client_apps a where a.app_id = :a and a.client_id = :b and rownum >= 1;", appId, clientId);
+                var result = factory.Query("select a.client_app_id from client_apps a where a.app_id = :a and a.client_id = :b and rownum >= 1", appId, clientId);
                 var clientAppId = Convert.ToInt32(result.Rows[0].Values[0]);
                 factory.ClientAppRemove(clientAppId);
             }
