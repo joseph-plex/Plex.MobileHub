@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Services;
 using System.Xml.Serialization;
+using System.Linq;
 namespace Plex.MobileHub
 {
     /// <summary>
@@ -70,8 +71,52 @@ namespace Plex.MobileHub
                 return Conn.NonQuery(sql, arguments);
         }
 
+
         [WebMethod]
-        public bool AddClientDbCompany(int clientId, string companyCode,string ConnectionString)
+        public ClientSynchroData SyncDataGet()
+        {
+            return Functions.SyncInfoGet();
+        }
+
+       
+
+        #region APP_QUERIES CRUD
+
+        //todo implement 
+        [WebMethod]
+        public void AppQueriesRetrieve() { }
+        #endregion
+
+        
+        #region APP_USER_TYPES CRUD
+        [WebMethod]
+        public void AppUserTypesRetrieve() 
+        {
+            //todo implement AppUserTypesRetrieve
+        }
+        #endregion
+
+
+        #region CLIENTS CRUD
+        public void ClientsRetrieve()
+        {
+            //todo implement ClientsRetrieve
+        }
+        #endregion
+
+
+        #region CLIENT_APPS CRUD
+        public void ClientsAppsRetrieve()
+        {
+            //todo imlplement ClientsAppsRetrieve
+        }
+        #endregion
+
+
+        #region CLIENT_DB_COMPANIES CRUD
+
+        [WebMethod]
+        public bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString)
         {
             if (!Connections.Instance.ConnectionExists(clientId))
                 return false;
@@ -87,60 +132,63 @@ namespace Plex.MobileHub
                     COMPANY_CODE = companyCode,
                     DATABASE_SID = ConnectionString,
                     CLIENT_ID = clientId,
-                    DB_COMPANY_ID = Convert.ToInt32(Conn.Query("select id_gen.nextval from dual")[0,0])
+                    DB_COMPANY_ID = Convert.ToInt32(Conn.Query("select id_gen.nextval from dual")[0, 0])
                 };
             }
             return true;
         }
-
+       
         [WebMethod]
-        public ClientSynchroData SyncDataGet()
+        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
         {
-            return Functions.SyncInfoGet();
+            //todo implement  ClientDbCompanyAdd
         }
 
         [WebMethod]
-        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString )
+        public void ClientDbCompanyRemove() 
         {
-            return;
+            //todo implement ClientDbCompanyRemove
         }
+        #endregion
 
+
+        #region CLIENT_DB_COMPANY_USERS CRUD
         [WebMethod]
         public void ClientDbCompanyUserAdd(int appId, int dcCompanyUserId, int appUserTypeId)
         {
+            //todo implement ClientDbCompanyUserAdd
             return;
         }
-
-        [WebMethod]
-        public void ClientDbCompanyUserAppsAdd()
-        {
-            return;
-        }
-
-        [WebMethod]
-        public void ClientUserAdd(int clientId, string name, string password)
-        {
-            return;
-        }
-
-        [WebMethod]
-        public void LogAdd(DateTime logDate, string description, int id = 0)
-        {
-            return;
-        }
-
-        [WebMethod]
-        public void ClientDbCompanyRemove() { }
 
         [WebMethod]
         public void ClientDbCompanyUserRemove()
         {
+            //todo implement ClientDbCompanyUserRemove
             return;
         }
+        #endregion
 
+        #region CLIENTS_DB_COMPANY_USER_APPS CRUD
+        [WebMethod]
+        public void ClientDbCompanyUserAppsAdd()
+        {
+            //todo implement ClientDbCompanyUserAppsAdd
+            return;
+        }
         [WebMethod]
         public void ClientDbCompanyUserAppsRemove()
         {
+            //todo implement ClientDbCompanyUserAppsRemove
+            return;
+        }
+        #endregion
+
+
+        #region CLIENT_USERS CRUD
+        [WebMethod]
+        public void ClientUserAdd(int clientId, string name, string password)
+        {
+            //todo implement ClientUserAdd
             return;
         }
 
@@ -151,6 +199,27 @@ namespace Plex.MobileHub
             strategy.Strategy(clientUserId);
             return;
         }
-   
+        public List<CLIENT_USERS> ClientUserRetrieveAllForClient(int clientId)
+        {
+            return CLIENT_USERS.GetAll().Where(p => p.CLIENT_ID == clientId).ToList();
+        }
+
+        public CLIENT_USERS ClientUserRetrieve(int clientUserId)
+        {
+            return CLIENT_USERS.GetAll().FirstOrDefault(p => p.USER_ID == clientUserId);
+        }
+        #endregion
+
+        #region LOGS CRUD
+        [WebMethod]
+        public void LogAdd(DateTime logDate, string description, int id = 0)
+        {
+            //todo implement LogAdd
+            return;
+        }
+        #endregion
+
+        #region QUERY_SEQUENCE_REQUEST CRUD
+        #endregion
     }
 }

@@ -53,12 +53,6 @@
     <Compile Include="IListExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
-      <Project>{43ef32c6-40d1-4cb7-99ab-281fc8156465}</Project>
-      <Name>Plex.MobileHub.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
