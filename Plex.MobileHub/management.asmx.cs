@@ -29,11 +29,7 @@ namespace Plex.MobileHub
                 return sr.ReadToEnd().Trim().Split(':')[1].Substring(1).Split('<')[0];
         }
      
-        [WebMethod]
-        public List<Task> GetTaskData()
-        {
-            return TimeAnalyst.Tasks.ToList(); ;
-        }
+    
         [WebMethod]
         public List<Command> GetCommandRepo()
         {
@@ -65,7 +61,7 @@ namespace Plex.MobileHub
         {
             return Logs.Instance.GetLogs();
         }
-
+        
         [WebMethod]
         public Result Query(string sql, object[] arguments)
         {
@@ -90,13 +86,6 @@ namespace Plex.MobileHub
         {
             Logs.Instance.logs.Clear();
         }
-
-        [WebMethod]
-        public APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId)
-        {
-            return APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == appTableColumnId);
-        }
-
 
         #region APPS CRUD
         [WebMethod]
@@ -202,6 +191,11 @@ namespace Plex.MobileHub
             }
         }
 
+        [WebMethod]
+        public APP_TABLE_COLUMNS AppTableColumnRetrieve(int appTableColumnId)
+        {
+            return APP_TABLE_COLUMNS.GetAll().FirstOrDefault(p => p.TABLE_COLUMN_ID == appTableColumnId);
+        }
 
         #endregion
 
