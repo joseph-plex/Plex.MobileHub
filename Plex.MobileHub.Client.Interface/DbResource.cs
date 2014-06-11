@@ -20,32 +20,47 @@ public const string UserDatabaseAppPermission = @"select a.app_id,a.title,  e.co
 /// <summary>
 /// Does get the permissions from a user on a particular client
 /// </summary>
-public const string UserClientCompanyPermission = @"
-select (select count(*) from client_db_company_users p where p.user_id = c.user_id and p.db_company_id = b.db_company_id) as permission, b.company_code
-from client_db_companies b, client_users c
-where
-  b.client_id = c.client_id
-  and c.user_id = :a";
-public const string UserClientCompany = @"select name from client_users t where client_id = :a";
-public const string UserCompanyDbAppPermission =
-    @"
-select distinct
+public const string UserClientCompanyPermission =
+@"
+select 
   (select count(*) 
-    from client_db_company_user_apps a 
-    where a.db_company_user_id = c.db_company_user_id
-    and a.app_id = d.app_id) permission,
-  d.title,
-  d.description
-  from client_db_company_user_apps b, 
-    client_db_company_users c,
-    apps d,
-    client_apps e,
-    client_db_companies f
-  where c.db_company_user_id = b.db_company_user_id
-  and f.db_company_id = c.db_company_id
-  and d.app_id = e.app_id
-  and f.company_code = :a
-  and c.user_id = :b
+    from client_db_company_users cu 
+    where cu.db_company_id = db.db_company_id
+    and cu.user_id = u.user_id) has_Access, 
+  db.company_code CompanyCode,
+  db.db_company_id CompanyId
+  from client_users u, 
+    clients c, 
+    client_db_companies db
+  where u.client_id = c.client_id
+    and c.client_id = db.client_id
+    and u.user_id = :a
+";
+public const string UserClientCompany = @"select name from client_users t where client_id = :a";
+public const string UserCompanyDbAppPermission = @"
+select
+  (
+    select count(*) 
+      from client_db_company_user_apps v 
+      where v. db_company_user_app_id = dbua.db_company_user_app_id
+  ) as has_access,
+  a.title,
+  a.description
+  from client_db_company_users dbu
+  right join client_users cu
+    on cu.user_id = dbu.user_id
+  join client_db_companies db
+    on db.client_id = cu.client_id
+  right join client_apps ca 
+    join apps a
+      on a.app_id = ca.app_id
+    on ca.client_id = cu.client_id
+  left join client_db_company_user_apps dbua
+    on dbua.db_company_user_id = dbu.db_company_user_id
+    and a.app_id = dbua.app_id
+  where db.db_company_id = :a
+    and cu.user_id = :b
+
 ";
 
     public static object GetValue(this Result result, int columnIndex, int rowIndex)

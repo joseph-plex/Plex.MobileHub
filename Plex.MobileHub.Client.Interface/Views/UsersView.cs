@@ -42,8 +42,7 @@ namespace Plex.MobileHub.Client.Interface.Views
 
         void SetClientUsers()
         {
-            var result = Manager.Instance.Query(DbResource.UserClientCompany, Manager.Instance.ClientId);
-            foreach(var row in result.Rows)
+            foreach(var row in Manager.Instance.Query(DbResource.UserClientCompany, Manager.Instance.ClientId).Rows)
                 listBox1.Items.Add(Convert.ToString(row.Values[0]));
         }
 
@@ -67,9 +66,15 @@ namespace Plex.MobileHub.Client.Interface.Views
                 textBox3.Text = password.ToString();
 
                 var c = mgr.Query(DbResource.UserClientCompanyPermission, userId);
+
                 dataGridView1.Rows.Clear();
-                for (int i = 0, pI = c.GetColumnIndex("permission"), cI = c.GetColumnIndex("company_code"); i < c.Rows.Count; i++)
-                    dataGridView1.Rows.Add(c.GetValue(pI, i), c.GetValue(cI, i));
+
+                var CII = c.GetColumnIndex("CompanyId");//Company Id Index
+                var HAI = c.GetColumnIndex("has_access");//Has Access Index
+                var CCI = c.GetColumnIndex("companycode");//Company Code Index 
+
+                for (int i = 0 ; i < c.Rows.Count; i++)
+                    dataGridView1.Rows.Add(c.GetValue(HAI, i), c.GetValue(CCI, i), c.GetValue(CII, i));
             }
         }
 
@@ -80,7 +85,7 @@ namespace Plex.MobileHub.Client.Interface.Views
                 return;
             Manager mgr = Manager.Instance;
             var row = dataGridView1.SelectedRows[0];
-            var companyCode = Convert.ToString(row.Cells["Column1"].Value);
+            var companyCode = Convert.ToInt32(row.Cells["Column6"].Value);
             var result = mgr.Query(DbResource.UserCompanyDbAppPermission, companyCode, Convert.ToInt32(textBox1.Text));
 
             for (int i = 0; i < result.Rows.Count; i++)
@@ -94,9 +99,7 @@ namespace Plex.MobileHub.Client.Interface.Views
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             WinFactory factory = new WinFactory();
-
-            DialogResult result = factory.CreateUserCreateWindow().ShowDialog();
-            switch(result)
+            switch(factory.CreateUserCreateWindow().ShowDialog())
             {
                 case DialogResult.OK:
                     listBox1.Items.Clear();
@@ -105,6 +108,11 @@ namespace Plex.MobileHub.Client.Interface.Views
                 case DialogResult.Cancel:
                     break;
             }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //todo implement adding db_company permissions
         }
     }
 }
