@@ -62,7 +62,6 @@ select
     and cu.user_id = :b
 
 ";
-
     public static object GetValue(this Result result, int columnIndex, int rowIndex)
     {
         return result.Rows[rowIndex].Values[columnIndex];

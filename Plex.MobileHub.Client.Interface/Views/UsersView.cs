@@ -85,8 +85,8 @@ namespace Plex.MobileHub.Client.Interface.Views
                 return;
             Manager mgr = Manager.Instance;
             var row = dataGridView1.SelectedRows[0];
-            var companyCode = Convert.ToInt32(row.Cells["Column6"].Value);
-            var result = mgr.Query(DbResource.UserCompanyDbAppPermission, companyCode, Convert.ToInt32(textBox1.Text));
+            var companyId = Convert.ToInt32(row.Cells["Column6"].Value);
+            var result = mgr.Query(DbResource.UserCompanyDbAppPermission, companyId, Convert.ToInt32(textBox1.Text));
 
             for (int i = 0; i < result.Rows.Count; i++)
                 dataGridView2.Rows.Add(
