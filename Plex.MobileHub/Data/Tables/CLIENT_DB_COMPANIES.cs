@@ -43,8 +43,7 @@ namespace Plex.MobileHub.Data.Tables
         }
 
         public int DB_COMPANY_ID { get; set; }//	NUMBER(10)	N			
-        public string DATABASE_SID { get; set; }//	VARCHAR2(25)	Y			
-        public int? COMPANY_ID { get; set; }//	NUMBER(10)	Y			
+        public string DATABASE_CSTRING { get; set; }//	VARCHAR2(25)	Y			
         public string COMPANY_CODE { get; set; }//	VARCHAR2(12)	Y			
         public int CLIENT_ID { get; set; }//	NUMBER(10)	N			
 
