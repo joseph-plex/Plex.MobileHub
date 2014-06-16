@@ -79,7 +79,7 @@ namespace Plex.MobileHub
             return new QryExecuteXml().Strategy(ConnectionId, QueryName);
         }
         [WebMethod]
-        public MethodResult IUD(int nConnectionId, IUDData DBModData)
+        public MethodResult IUD(int nConnectionId, IUDData [] DBModData)
         {
             throw new NotImplementedException();
         }
