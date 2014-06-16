@@ -21,8 +21,8 @@ namespace MobileHubClient.ComCallbacks
             {
                 ClientService.Logs.Add("Initializing Synchro", LogPriority.Normal);
                 var SyncData = WebService.SyncDataGet();
-                foreach(var kvp in ClientSettings.Instance.DbConnections)
-                    using(var connection = ClientDbConnectionFactory.ActiveConnection(kvp.Value))
+                foreach (var kvp in Context.DbConnections)
+                    using(var connection = ClientDbConnectionFactory.ActiveConnection(kvp.DATABASE_CSTRING))
                         foreach (var AppData in SyncData.Apps)
                             try { SynchronizeApplicationData(connection, AppData); }
                             catch (Exception e) { ClientService.Logs.Add(e); }

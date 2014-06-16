@@ -55,51 +55,41 @@ namespace Plex.MobileHub.Client.Interface.Views
         {
             var mgr = Manager.Instance;
             var DbInfo = mgr.StoredDatabaseInformationRetrieve();
-            int value = new int();
 
-            if (DbInfo != null)
-                    value = DbInfo.Count();
+            naviBar1.SuspendLayout();
+            naviBar1.Bands.Clear();
+            foreach (var Info in DbInfo ?? new List<KeyValuePair<string,string>>())
+            {
+                try
+                {
+                    var tree = RetrieveCompanyTableTree(Info.Key);
+                    var nodes = tree.Nodes;
+                    if (tree.GetNodeCount(true) == 0)
+                        continue;
 
-            switch (value) {
-                case 0 :
-                    splitContainer2.Panel1Collapsed = true;
-                    break;
-                default:
-                    naviBar1.SuspendLayout();
-                    naviBar1.Bands.Clear();
-                    foreach (var Info in DbInfo)
-                    {
-                        try
-                        {
-                            var tree = RetrieveCompanyTableTree(Info.Key);
+                    NaviBand band = new NaviBand(components);
+                    band.ClientArea.Location = new Point(0, 0);
+                    band.ClientArea.Name = "ClientArea";
+                    band.ClientArea.Size = new Size(208, 300);
 
-                            NaviBand band = new NaviBand(components);
-                            band.ClientArea.Location = new Point(0, 0);
-                            band.ClientArea.Name = "ClientArea";
-                            band.ClientArea.Size = new Size(208, 300);
+                    band.Name = "naviBand1";
+                    band.Text = Info.Key;
 
-                            band.Name = "naviBand1";
-                            band.Text = Info.Key;
+                    tree.Dock = DockStyle.Fill;
+                    band.ClientArea.Controls.Add(tree);
+                    naviBar1.Controls.Add(band);
+                    naviBar1.ActiveBand = band;
 
-                            tree.Dock = DockStyle.Fill;
-                            band.ClientArea.Controls.Add(tree);
-                            naviBar1.Controls.Add(band);
-                            naviBar1.ActiveBand = band;
-
-                            tree.NodeMouseClick += OnNodeDoubleClick; // show in table.
-                        }
-                        catch(Exception e)
-                        {
-                            MessageBox.Show(e.ToString());
-                            continue;
-                        }
-                    }
-                    naviBar1.Collapsed = true;
-                    naviBar1.ResumeLayout();
-
-                    splitContainer2.Panel1Collapsed = (naviBar1.Bands.Count > 0)? false : true;
-                    break;
+                    tree.NodeMouseClick += OnNodeDoubleClick; // show in table.
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    continue;
+                }
             }
+            naviBar1.ResumeLayout();
+            splitContainer2.Panel1Collapsed = (naviBar1.Bands.Count > 0) ? false : true;
         }
 
        
@@ -111,19 +101,18 @@ namespace Plex.MobileHub.Client.Interface.Views
         TreeView RetrieveCompanyTableTree(string code)
         {
             TreeView tree = new TreeView() { Dock = DockStyle.Fill };
-            TreeNode tables = new TreeNode("Tables");
             List<DatabaseService.Row> tabs;
-
             try{
-                tabs =  Manager.Instance.QuerySource(code, "select table_name from user_tables").Rows;
+                TreeNode tables = new TreeNode("Tables");
+                tabs = Manager.Instance.QuerySource(code, "select table_name from user_tables").Rows;
+                foreach (var r in tabs)
+                    tables.Nodes.Add(new TreeNode(r.Values[0].ToString()));
+                tree.Nodes.Add(tables);
+
             }
             catch{
                 tabs = new List<DatabaseService.Row>();
             }
-            foreach (var r in tabs)
-                tables.Nodes.Add(new TreeNode(r.Values[0].ToString()));
-
-            tree.Nodes.Add(tables);
             return tree;
         }
 

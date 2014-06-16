@@ -99,7 +99,7 @@ namespace Plex.MobileHub.Client.Interface
         public void RegisterDbConnectionData (string companyCode, string connectionString)
         {
             using (var Service = GetDatabaseService())
-                Service.RegisterDbConnectionData(new KeyValuePair<String,String>(companyCode, connectionString));
+                Service.RegisterDbConnectionData(new KeyValuePair<String, String>(companyCode, connectionString));
         }
 
         public DatabaseService.Result QuerySource(string companyCode, string commandText, params object[] arguments)

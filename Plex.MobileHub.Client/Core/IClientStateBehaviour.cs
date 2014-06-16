@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using MobileHubClient.PMH;
+
 namespace MobileHubClient.Core
 {
     interface IClientStateBehaviour
@@ -16,6 +18,8 @@ namespace MobileHubClient.Core
         
         void LogOn();
         void LogOff();
+
+        IDbConnection GetOpenConnection(String Code);
 
         //todo This need to be implemented at some point.
         //void AddDatabase();

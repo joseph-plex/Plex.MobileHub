@@ -26,7 +26,6 @@ namespace Plex.MobileHub.Client.Interface
             init();
         }
           
-
         void init()
         {
             SuspendLayout();

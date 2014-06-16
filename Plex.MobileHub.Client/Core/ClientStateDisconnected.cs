@@ -7,6 +7,11 @@ using MobileHubClient.Misc;
 using MobileHubClient.Properties;
 using Plex.Logs;
 using MobileHubClient.PMH;
+using System.Data;
+using MobileHubClient.Data;
+using Oracle.DataAccess.Client;
+//using MobileHubClient.Misc;
+
 namespace MobileHubClient.Core
 {
     class ClientStateDisconnected : IClientStateBehaviour
@@ -21,7 +26,7 @@ namespace MobileHubClient.Core
         {
             get
             {
-                throw new NotSupportedException("Cannot Get DbConnnections List while in disconnected state");
+                return WebService.ClientDbCompaniesRetrieve(ClientSettings.Instance.ClientId);
             }
         }
 
@@ -43,6 +48,23 @@ namespace MobileHubClient.Core
                 ClientService.Logs.Add(e.ToString());
                 throw;
             }
+        }
+
+        public IDbConnection GetOpenConnection(String Code)
+        {
+            foreach (var Db in DbConnections.Where(p => p.COMPANY_CODE == Code))
+            {
+                try
+                {
+                    return new OracleConnection(Db.DATABASE_CSTRING).GetOpenConnection();
+                }
+                catch (Exception e)
+                {
+                    ClientService.Logs.Add(e);
+                    continue;
+                }
+            }
+            throw new Exception("No Open Connection Is Available");
         }
 
         public void LogOff()

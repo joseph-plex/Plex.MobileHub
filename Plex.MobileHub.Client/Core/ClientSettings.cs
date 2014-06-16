@@ -9,6 +9,7 @@ using MobileHubClient.Data;
 using Plex.Logs;
 using System.ComponentModel;
 using System.Data;
+using MobileHubClient.PMH;
 namespace MobileHubClient.Core
 {
     public class ClientSettings
@@ -130,11 +131,6 @@ namespace MobileHubClient.Core
 
 
         }
-        public List<KeyValuePair<String,String>> DbConnections
-        {
-            get;
-            set;
-        }
 
         int port;
         int clientId;
@@ -144,12 +140,12 @@ namespace MobileHubClient.Core
         int checkInTimer;
         bool autoSaveSettings;
 
-        public IDbConnection GetOpenConnectionByCode(string companyCode)
-        {
-            foreach(var kvp in DbConnections.Where(p => p.Key == companyCode))
-               return new Oracle.DataAccess.Client.OracleConnection(kvp.Value).GetOpenConnection();
-            throw new Exception("No Connection Available");
-        }
+        //public IDbConnection GetOpenConnectionByCode(string companyCode)
+        //{
+        //    foreach(var kvp in DbConnections.Where(p => p.Key == companyCode))
+        //       return new Oracle.DataAccess.Client.OracleConnection(kvp.Value).GetOpenConnection();
+        //    throw new Exception("No Connection Available");
+        //}
     
         public string ToString(string value)
         {
@@ -178,7 +174,7 @@ namespace MobileHubClient.Core
                     Save();
             };
 
-            DbConnections = new List<KeyValuePair<String, String>>();
+            //DbConnections = new List<KeyValuePair<String, String>>();
         }
         static ClientSettings() { Load(); }
     }

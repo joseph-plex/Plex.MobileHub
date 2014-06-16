@@ -15,7 +15,7 @@ namespace MobileHubClient.ComCallbacks
             RQryResult Result = new RQryResult();
             try
             {
-                using (var Con = ClientSettings.Instance.GetOpenConnectionByCode(dbCode))
+                using (var Con = Context.GetOpenConnection(dbCode))
                 {
                     try
                     {

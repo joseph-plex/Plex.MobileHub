@@ -23,8 +23,8 @@ namespace Plex.MobileHub.Client.Interface.Views
             {
                 Manager mgr = Manager.Instance;
 
-                var clientKey = textBox1.Text;
-                var clientId = Int32.Parse(textBox2.Text);
+                var clientId =  Int32.Parse(textBox1.Text);
+                var clientKey = textBox2.Text;
 
                 mgr.ClientKey = clientKey;
                 mgr.ClientId = clientId;
@@ -38,8 +38,8 @@ namespace Plex.MobileHub.Client.Interface.Views
         private void AccountView_Load(object sender, EventArgs e)
         {
             Manager mgr = Manager.Instance;
-            textBox1.Text = mgr.ClientKey;
-            textBox2.Text = mgr.ClientId.ToString();
+            textBox1.Text = mgr.ClientId.ToString();
+            textBox2.Text = mgr.ClientKey;
         }
     }
 }

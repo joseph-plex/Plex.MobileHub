@@ -45,6 +45,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -59,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Clients\AddClientDbCompanyTest.cs" />
     <Compile Include="Data\PlexxisDataTransferObjectTests.cs" />
     <Compile Include="Data\TestAPPS.cs" />
     <Compile Include="Data\TestAPP_QUERIES.cs" />
@@ -94,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Api\" />
-    <Folder Include="Clients\" />
     <Folder Include="Developers\" />
     <Folder Include="Management\" />
   </ItemGroup>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MobileHubClient.Data;
 using MobileHubClient.Core;
+using MobileHubClient.Misc;
 using Plex.Logs;
 
 
@@ -15,12 +16,13 @@ namespace MobileHubClient.Channels.Database
     class DatabaseService : PlexServiceBase
     {
         [OperationContract]
-        public void RegisterDbConnectionData(KeyValuePair<String,String> dbc)
+        public void RegisterDbConnectionData(KeyValuePair<String, String> dbc)
         {
             ClientService.Logs.Add("Adding Database Connection Data " + dbc.Key);
             var settings = ClientSettings.Instance;
-            if(!settings.DbConnections.Exists(p => p.Key == dbc.Key && p.Value == dbc.Value))
-                settings.DbConnections.Add(dbc);
+            
+            if (!Context.DbConnections.Any(p => p.COMPANY_CODE == dbc.Key && p.DATABASE_CSTRING == dbc.Value))
+                WebService.ClientDbCompanyAdd(ClientSettings.Instance.ClientId, dbc.Key, dbc.Value);                
         }
 
         [OperationContract]
@@ -42,15 +44,19 @@ namespace MobileHubClient.Channels.Database
         }
 
         [OperationContract]
-        public List<KeyValuePair<String,String>> StoredDatabaseInformationRetrieve()
+        public List<KeyValuePair<String, String>> StoredDatabaseInformationRetrieve()
         {
-            return ClientSettings.Instance.DbConnections;
+            List<KeyValuePair<String, String>> values = new List<KeyValuePair<String, String>>();
+            foreach(var connection in Context.DbConnections)
+                values.Add(new KeyValuePair<string,string>(connection.COMPANY_CODE, connection.DATABASE_CSTRING));
+
+            return values;
         }
 
         [OperationContract]
         public Result QuerySource(String companyCode, String commandText, params object [] arguments)
         {
-            using (var Connection = ClientSettings.Instance.GetOpenConnectionByCode(companyCode))
+            using (var Connection = Context.GetOpenConnection(companyCode))
                 return Connection.Query(commandText, arguments);
         }
     }

@@ -114,6 +114,7 @@
     <Compile Include="Channels\IPlexChannelState.cs" />
     <Compile Include="Channels\IPlexService.cs" />
     <Compile Include="Channels\PlexServiceBase.cs" />
+    <Compile Include="ComCallbacks\Functions.cs" />
     <Compile Include="Core\ClientStateDisconnected.cs" />
     <Compile Include="Core\ClientStateConnected.cs" />
     <Compile Include="Channels\IPlexChannelStateBehavior.cs" />

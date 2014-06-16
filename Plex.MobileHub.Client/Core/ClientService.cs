@@ -6,11 +6,16 @@ using MobileHubClient.Channels.Logs;
 using MobileHubClient.Data;
 using MobileHubClient.Misc;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.ServiceProcess;
+using System.Linq;
 using System.Timers;
 using Plex.Logs;
+using Oracle.DataAccess.Client;
 using MobileHubClient.PMH;
+using MobileHubClient.ComCallbacks;
+
 
 namespace MobileHubClient.Core
 {
@@ -44,6 +49,7 @@ namespace MobileHubClient.Core
         {
             InitializeComponent();
             Settings = ClientSettings.Instance;
+            Functions.Context = this;
         }
         public void OnDebug()
         {
@@ -117,6 +123,11 @@ namespace MobileHubClient.Core
         {
             StateBehaviours[CurrentState].LogOff();
             OnLogOff(this, EventArgs.Empty);
+        }
+
+        public IDbConnection GetOpenConnection(String Code)
+        {
+            return StateBehaviours[CurrentState].GetOpenConnection(Code);
         }
         #endregion
 

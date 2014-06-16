@@ -119,11 +119,8 @@ namespace Plex.MobileHub
         [WebMethod]
         public int AddClientDbCompany(int clientId, string companyCode, string ConnectionString)
         {
+            Logs.Instance.Add("Add Client Db Company Was Called");
             if (!Connections.Instance.ConnectionExists(clientId))
-                return -1;
-
-            var client = Connections.Instance.Retrieve(clientId);
-            if (!client.IsConnected)
                 return -1;
 
             using (var Conn = Utilities.GetConnection(true))
@@ -135,6 +132,7 @@ namespace Plex.MobileHub
                     CLIENT_ID = clientId,
                     DB_COMPANY_ID = Convert.ToInt32(Conn.Query("select id_gen.nextval from dual")[0, 0])
                 };
+                Db.Insert();
                 return Db.DB_COMPANY_ID;
             }
         }
