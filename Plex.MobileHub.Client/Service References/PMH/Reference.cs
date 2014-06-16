@@ -109,15 +109,7 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyAdd", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString);
+        int AddClientDbCompany(int clientId, string companyCode, string ConnectionString);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -133,7 +125,7 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs);
+        int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -166,7 +158,7 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
-        void ClientUserAdd(int clientId, string name, string password);
+        int ClientUserAdd(int clientId, string name, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -1732,7 +1724,14 @@ namespace MobileHubClient.PMH {
     [System.ServiceModel.MessageContractAttribute(WrapperName="ClientDbCompanyUserAppsAddResponse", WrapperNamespace="http://pmh.plexxis.com", IsWrapped=true)]
     public partial class ClientDbCompanyUserAppsAddResponse {
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://pmh.plexxis.com", Order=0)]
+        public int ClientDbCompanyUserAppsAddResult;
+        
         public ClientDbCompanyUserAppsAddResponse() {
+        }
+        
+        public ClientDbCompanyUserAppsAddResponse(int ClientDbCompanyUserAppsAddResult) {
+            this.ClientDbCompanyUserAppsAddResult = ClientDbCompanyUserAppsAddResult;
         }
     }
     
@@ -1811,20 +1810,16 @@ namespace MobileHubClient.PMH {
             return base.Channel.ClientsAppsRetrieve(id);
         }
         
-        public bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString) {
+        public int AddClientDbCompany(int clientId, string companyCode, string ConnectionString) {
             return base.Channel.AddClientDbCompany(clientId, companyCode, ConnectionString);
-        }
-        
-        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString) {
-            base.Channel.ClientDbCompanyAdd(clientId, companyCode, connectionString);
         }
         
         public void ClientDbCompanyRemove(int id) {
             base.Channel.ClientDbCompanyRemove(id);
         }
         
-        public void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs) {
-            base.Channel.ClientDbCompanyUserAdd(dbCompanyId, UserId, ConnectAs);
+        public int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs) {
+            return base.Channel.ClientDbCompanyUserAdd(dbCompanyId, UserId, ConnectAs);
         }
         
         public void ClientDbCompanyUserRemove(int id) {
@@ -1836,20 +1831,21 @@ namespace MobileHubClient.PMH {
             return base.Channel.ClientDbCompanyUserAppsAdd(request);
         }
         
-        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
+        public int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
             MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest inValue = new MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest();
             inValue.appId = appId;
             inValue.dbCompanyUserId = dbCompanyUserId;
             inValue.appUserTypeId = appUserTypeId;
             MobileHubClient.PMH.ClientDbCompanyUserAppsAddResponse retVal = ((MobileHubClient.PMH.ClientSDKSoap)(this)).ClientDbCompanyUserAppsAdd(inValue);
+            return retVal.ClientDbCompanyUserAppsAddResult;
         }
         
         public void ClientDbCompanyUserAppsRemove(int id) {
             base.Channel.ClientDbCompanyUserAppsRemove(id);
         }
         
-        public void ClientUserAdd(int clientId, string name, string password) {
-            base.Channel.ClientUserAdd(clientId, name, password);
+        public int ClientUserAdd(int clientId, string name, string password) {
+            return base.Channel.ClientUserAdd(clientId, name, password);
         }
         
         public void ClientUserRemove(int clientUserId) {

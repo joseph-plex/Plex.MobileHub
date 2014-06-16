@@ -708,19 +708,19 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
         Plex.MobileHub.Client.Interface.GeneralService.CLIENT_APPS ClientsAppsRetrieve(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyAddResponse")]
-        void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString);
+        int ClientDbCompanyAdd(int clientId, string companyCode, string connectionString);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyRemove", ReplyAction="PMHC/GeneralService/ClientDbCompanyRemoveResponse")]
         void ClientDbCompanyRemove(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserAddResponse")]
-        void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs);
+        int ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserRemove", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserRemoveResponse")]
         void ClientDbCompanyUserRemove(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientDbCompanyUserAppsAdd", ReplyAction="PMHC/GeneralService/ClientDbCompanyUserAppsAddResponse")]
-        void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId);
+        int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="PMHC/GeneralService/ClientUserAdd", ReplyAction="PMHC/GeneralService/ClientUserAddResponse")]
         void ClientUserAdd(int clientId, string name, string password);
@@ -838,24 +838,24 @@ namespace Plex.MobileHub.Client.Interface.GeneralService {
             return base.Channel.ClientsAppsRetrieve(id);
         }
         
-        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString) {
-            base.Channel.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+        public int ClientDbCompanyAdd(int clientId, string companyCode, string connectionString) {
+            return base.Channel.ClientDbCompanyAdd(clientId, companyCode, connectionString);
         }
         
         public void ClientDbCompanyRemove(int id) {
             base.Channel.ClientDbCompanyRemove(id);
         }
         
-        public void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs) {
-            base.Channel.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+        public int ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs) {
+            return base.Channel.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
         }
         
         public void ClientDbCompanyUserRemove(int id) {
             base.Channel.ClientDbCompanyUserRemove(id);
         }
         
-        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
-            base.Channel.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+        public int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, System.Nullable<int> appUserTypeId) {
+            return base.Channel.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
         }
         
         public void ClientUserAdd(int clientId, string name, string password) {

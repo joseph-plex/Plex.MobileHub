@@ -243,7 +243,9 @@
   </xs:element>
   <xs:element name="ClientDbCompanyAddResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientDbCompanyAddResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ClientDbCompanyRemove">
@@ -269,7 +271,9 @@
   </xs:element>
   <xs:element name="ClientDbCompanyUserAddResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientDbCompanyUserAddResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ClientDbCompanyUserRemove">
@@ -295,7 +299,9 @@
   </xs:element>
   <xs:element name="ClientDbCompanyUserAppsAddResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientDbCompanyUserAppsAddResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ClientUserAdd">

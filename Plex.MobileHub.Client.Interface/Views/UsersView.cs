@@ -52,48 +52,25 @@ namespace Plex.MobileHub.Client.Interface.Views
             Manager mgr = Manager.Instance;
             var item = lbox.SelectedItem as String;
             if (item != null) 
-            { 
-                string sql = "select * from client_users where client_id = :a and name = :b and rownum >= 1";
-                var general = mgr.Query(sql, mgr.ClientId, item);
-
-                var name = Convert.ToString(general.GetValue("name",0));
-                var userId = Convert.ToInt32(general.GetValue("user_id",0));
-                var password = Convert.ToString(general.GetValue("password",0));
-                var clientId = Convert.ToInt32(general.GetValue("client_id",0));
-
-                textBox1.Text = userId.ToString();
-                textBox2.Text = name.ToString();
-                textBox3.Text = password.ToString();
-
-                var c = mgr.Query(DbResource.UserClientCompanyPermission, userId);
-
-                dataGridView1.Rows.Clear();
-
-                var CII = c.GetColumnIndex("CompanyId");//Company Id Index
-                var HAI = c.GetColumnIndex("has_access");//Has Access Index
-                var CCI = c.GetColumnIndex("companycode");//Company Code Index 
-
-                for (int i = 0 ; i < c.Rows.Count; i++)
-                    dataGridView1.Rows.Add(c.GetValue(HAI, i), c.GetValue(CCI, i), c.GetValue(CII, i));
-            }
+                LoadUser(mgr.ClientId, item);
+      
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            dataGridView2.Rows.Clear();
-            if (dataGridView1.SelectedRows.Count != 1)
-                return;
-            Manager mgr = Manager.Instance;
-            var row = dataGridView1.SelectedRows[0];
-            var companyId = Convert.ToInt32(row.Cells["Column6"].Value);
-            var result = mgr.Query(DbResource.UserCompanyDbAppPermission, companyId, Convert.ToInt32(textBox1.Text));
+            DataGridView view = sender as DataGridView;
+            if (view == null) return;
+            if (view.SelectedRows.Count != 1) return;
+            DataGridViewRow selectedRow = view.SelectedRows[0];
+            var dbCompanyId = Convert.ToInt32(selectedRow.Cells["Column6"].Value);
 
-            for (int i = 0; i < result.Rows.Count; i++)
-                dataGridView2.Rows.Add(
-                    Convert.ToBoolean(result.Rows[i].Values[0]),
-                    Convert.ToString(result.Rows[i].Values[1]),
-                    Convert.ToString(result.Rows[i].Values[2])
-                );
+            var rows = dataGridView2.Rows.Cast<DataGridViewRow>();
+
+            foreach(var row in rows)
+                row.Visible = false;
+
+            foreach (var v in rows.Where(p => Convert.ToInt32(p.Cells["Column8"].Value) == dbCompanyId))
+                v.Visible = true;
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
@@ -109,10 +86,108 @@ namespace Plex.MobileHub.Client.Interface.Views
                     break;
             }
         }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+    
+        void SaveScreenData()
         {
-            //todo implement adding db_company permissions
+            var mgr = Manager.Instance;
+            var ClientId = mgr.ClientId;
+            var UserId = Convert.ToInt32(textBox1.Text);
+            //var CompanyName = listBox1.SelectedItem as String;
+            //var dbRows = .Cast<DataGridViewRow>();
+            var dbuaRows = dataGridView2.Rows.Cast<DataGridViewRow>().Where(p=> ((DataGridViewCheckBoxCell)p.Cells[0]).EditingCellValueChanged);
+            //var AccessibleRows = dbuaRows.Where(p => Convert.ToBoolean(p.Cells["Column5"].EditedFormattedValue));
+            var dbRows = dataGridView1.Rows.Cast<DataGridViewRow>().Where(p => Convert.ToBoolean(p.Cells[0].EditedFormattedValue)
+                || dbuaRows.Any(d => d.Cells[4].EditedFormattedValue.Equals(p.Cells[2].EditedFormattedValue) && p.Cells[0].EditedFormattedValue.Equals(false)));
+            using(var Service = mgr.GetGeneralService())
+            { 
+                //foreach(DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dbRows)
+                {
+                    var dbCompanyId = Convert.ToInt32(row.Cells["Column6"].EditedFormattedValue);
+                    dbCompanyId = Service.ClientDbCompanyUserAdd(dbCompanyId, UserId, null);
+                    foreach (var aRow in dbuaRows)
+                    {
+                        if (Convert.ToBoolean(aRow.Cells[0].EditedFormattedValue))
+                            Service.ClientDbCompanyUserAppsAdd(Convert.ToInt32(aRow.Cells["Column7"].EditedFormattedValue), dbCompanyId, null);
+                            //else
+                    }
+                }
+                //else
+                //{
+                //    Service.ClientDbCompanyUserRemove(dbCompanyId);
+                    //Service.ClientDbCompanyRemove(dbCompanyId);
+                //}
+                //if(dataGridView1.Rows.Contains(row))
+                //{
+                //}
+                //foreach()
+                //The nullable part is to satisify the compiler; however, Column6 should always have a value.
+
+                //var dbCompanyId = Convert.ToInt32(row.Cells["Column6"].Value);
+                //If the user specifies to create the relationship or any child permissions require its creation set the create flag to true.
+                //bool ShouldExist = (Convert.ToBoolean(row.Cells["Column2"].EditedFormattedValue)) ? true : dbuaRows.Any(p => Convert.ToBoolean(p.Cells["Column5"].EditedFormattedValue));
+
+                //if (ShouldExist)
+                    //dbCompanyId = Service.ClientDbCompanyUserAdd(dbCompanyId, UserId, null);
+
+                //foreach (var permissionForCreation in dbuaRows.Where(p => Convert.ToBoolean(p.Cells["Column5"].EditedFormattedValue)))
+                    //Service.ClientDbCompanyUserAppsAdd(Convert.ToInt32(permissionForCreation.Cells["Column7"].EditedFormattedValue), dbCompanyId, null);
+            }
+        }
+
+        void LoadUser(int clientId, string username)
+        {
+            Manager mgr = Manager.Instance;
+            String sqlUserInformation = "select * from client_users where client_id = :a and name = :b and rownum >= 1";
+
+            var general = mgr.Query(sqlUserInformation, clientId, username);
+            int UserId = Convert.ToInt32(general.GetValue("user_id", 0));
+
+            textBox1.Text = UserId.ToString();
+            textBox2.Text = general.GetValue("name", 0).ToString();
+            textBox3.Text = general.GetValue("password", 0).ToString();
+
+            var companies = mgr.Query(DbResource.UserClientCompanyPermission, UserId);
+            var applications = mgr.Query(DbResource.UserCompanyDbAppPermission, UserId);
+
+
+            //Do applications (gridview2) first so that implicit selection in gridview1 will still show.
+            //Increase performance by getting indexes ahead of time.
+            var AppIdIndex = applications.IndexOf("App_id");
+            var appNameIndex = applications.IndexOf("title");
+            var AppDbId = applications.IndexOf("db_company_id");
+            var appDescIndex = applications.IndexOf("description");
+            var appHasAccessIndex = applications.IndexOf("has_access");
+
+            dataGridView2.Rows.Clear();
+            for (int i = 0; i < applications.Rows.Count; i++)
+            {
+                dataGridView2.Rows.Add(applications.GetValue(appHasAccessIndex, i), applications.GetValue(appNameIndex, i), applications.GetValue(appDescIndex, i), applications.GetValue(AppIdIndex, i),applications.GetValue(AppDbId,i));
+                dataGridView2.Rows[i].Visible = false;
+            }
+
+            //Increase performance by getting indexes ahead of time.
+            var coHasAccessIndex = companies.IndexOf("has_access");
+            var companyCodeIndex = companies.IndexOf("companycode");
+            var dbCompanyIndex = companies.IndexOf("db_company_id");
+
+            dataGridView1.Rows.Clear();
+            for(int i = 0 ; i < companies.Rows.Count; i++)
+                dataGridView1.Rows.Add(companies.GetValue(coHasAccessIndex,i), companies.GetValue(companyCodeIndex,i), companies.GetValue(dbCompanyIndex,i));
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Manager mgr = Manager.Instance;
+            var item = listBox1.SelectedItem as String;
+            if (item != null)
+                LoadUser(mgr.ClientId, item);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            SaveScreenData();
+            toolStripButton1_Click(this, EventArgs.Empty);
         }
     }
 }

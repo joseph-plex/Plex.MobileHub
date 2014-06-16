@@ -139,9 +139,9 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
-        public void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
+        public int ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
         {
-            WebService.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+            return WebService.ClientDbCompanyAdd(clientId, companyCode, connectionString);
         }
 
         [OperationContract]
@@ -151,9 +151,9 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
-        public void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs)
+        public int ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs)
         {
-            WebService.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+            return WebService.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
         }
 
         [OperationContract]
@@ -163,9 +163,9 @@ namespace MobileHubClient.Channels.General
         }
 
         [OperationContract]
-        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null) 
+        public int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null) 
         {
-            WebService.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+            return WebService.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
         }
 
         [OperationContract]

@@ -18,7 +18,7 @@ namespace Plex.MobileHub.Functionality.Clients
                 {
                     CLIENT_ID = clientId,
                     COMPANY_CODE = companyCode,
-                    DATABASE_SID = connectionString,
+                    DATABASE_CSTRING = connectionString,
                     DB_COMPANY_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual")[0, 0])
                 }.Insert(connection);
             return 0;

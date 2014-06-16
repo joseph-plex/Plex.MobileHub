@@ -90,10 +90,10 @@ namespace MobileHubClient.Misc
                 return Service.ClientsAppsRetrieve(id);
         }
 
-        public static void ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
+        public static int ClientDbCompanyAdd(int clientId, string companyCode, string connectionString)
         {
             using (Service)
-                Service.ClientDbCompanyAdd(clientId, companyCode, connectionString);
+                return Service.AddClientDbCompany(clientId, companyCode, connectionString);
         }
 
         public static void ClientDbCompanyRemove(int id)
@@ -102,10 +102,10 @@ namespace MobileHubClient.Misc
                 Service.ClientDbCompanyRemove(id);
         }
 
-        public static void ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs = null)
+        public static int ClientDbCompanyUserAdd(int dbCompanyId, int userId, string connectAs = null)
         {
             using (Service)
-                Service.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
+                return Service.ClientDbCompanyUserAdd(dbCompanyId, userId, connectAs);
         }
 
         public static void ClientDbCompanyUserRemove(int id)
@@ -115,10 +115,10 @@ namespace MobileHubClient.Misc
                 Service.ClientDbCompanyUserRemove(id);
         }
 
-        public static void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
+        public static int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
         {
             using (Service)
-                Service.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
+                return Service.ClientDbCompanyUserAppsAdd(appId, dbCompanyUserId, appUserTypeId);
         }
 
         public static void ClientUserAdd(int clientId, string name, string password)

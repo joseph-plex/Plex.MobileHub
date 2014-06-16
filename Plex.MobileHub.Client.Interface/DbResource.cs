@@ -28,7 +28,7 @@ select
     where cu.db_company_id = db.db_company_id
     and cu.user_id = u.user_id) has_Access, 
   db.company_code CompanyCode,
-  db.db_company_id CompanyId
+  db.db_company_id db_company_id
   from client_users u, 
     clients c, 
     client_db_companies db
@@ -38,14 +38,16 @@ select
 ";
 public const string UserClientCompany = @"select name from client_users t where client_id = :a";
 public const string UserCompanyDbAppPermission = @"
-select
+select 
   (
     select count(*) 
       from client_db_company_user_apps v 
       where v. db_company_user_app_id = dbua.db_company_user_app_id
   ) as has_access,
   a.title,
-  a.description
+  a.description,
+  a.app_id,
+  db.db_company_id
   from client_db_company_users dbu
   right join client_users cu
     on cu.user_id = dbu.user_id
@@ -57,10 +59,9 @@ select
     on ca.client_id = cu.client_id
   left join client_db_company_user_apps dbua
     on dbua.db_company_user_id = dbu.db_company_user_id
-    and a.app_id = dbua.app_id
-  where db.db_company_id = :a
-    and cu.user_id = :b
-
+      and a.app_id = dbua.app_id
+  where dbu.db_company_id = db.db_company_id and
+   cu.user_id = 1
 ";
     public static object GetValue(this Result result, int columnIndex, int rowIndex)
     {
@@ -69,9 +70,9 @@ select
 
     public static object GetValue(this Result result, string columnName, int rowIndex)
     {
-        return result.Rows[rowIndex].Values[result.GetColumnIndex(columnName)];
+        return result.Rows[rowIndex].Values[result.IndexOf(columnName)];
     }
-    static public int GetColumnIndex(this Result result, String columnName)
+    static public int IndexOf(this Result result, String columnName)
     {
         return result.Columns.FindIndex((p) => p.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase));
     }

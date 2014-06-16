@@ -117,26 +117,26 @@ namespace Plex.MobileHub
         #region CLIENT_DB_COMPANIES CRUD
 
         [WebMethod]
-        public bool AddClientDbCompany(int clientId, string companyCode, string ConnectionString)
+        public int AddClientDbCompany(int clientId, string companyCode, string ConnectionString)
         {
             if (!Connections.Instance.ConnectionExists(clientId))
-                return false;
+                return -1;
 
             var client = Connections.Instance.Retrieve(clientId);
             if (!client.IsConnected)
-                return false;
+                return -1;
 
             using (var Conn = Utilities.GetConnection(true))
             {
-                new CLIENT_DB_COMPANIES()
+                var Db = new CLIENT_DB_COMPANIES()
                 {
                     COMPANY_CODE = companyCode,
                     DATABASE_CSTRING = ConnectionString,
                     CLIENT_ID = clientId,
                     DB_COMPANY_ID = Convert.ToInt32(Conn.Query("select id_gen.nextval from dual")[0, 0])
                 };
+                return Db.DB_COMPANY_ID;
             }
-            return true;
         }
 
         [WebMethod]
@@ -148,17 +148,25 @@ namespace Plex.MobileHub
 
         #region CLIENT_DB_COMPANY_USERS CRUD
         [WebMethod]
-        public void ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs = null)
+        public int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs = null)
         {
             CLIENT_DB_COMPANY_USERS userPermission = new CLIENT_DB_COMPANY_USERS();
             userPermission.DB_COMPANY_ID = dbCompanyId;
             userPermission.USER_ID = UserId;
             userPermission.CONNECT_AS = ConnectAs; 
-            
+
             using (var connection = Utilities.GetConnection(true))
             {
-                userPermission.DB_COMPANY_USER_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
-                userPermission.Insert(connection);
+                var permission = CLIENT_DB_COMPANY_USERS.GetAll(connection).FirstOrDefault(p => p.DB_COMPANY_ID == dbCompanyId && p.USER_ID == UserId);
+
+                if (permission == null)
+                {
+                    userPermission.DB_COMPANY_USER_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
+                    userPermission.Insert(connection);
+                    return userPermission.DB_COMPANY_USER_ID;
+                }
+                else
+                    return permission.DB_COMPANY_USER_ID;
             }
         }
 
@@ -171,7 +179,7 @@ namespace Plex.MobileHub
 
         #region CLIENTS_DB_COMPANY_USER_APPS CRUD
         [WebMethod]
-        public void ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
+        public int ClientDbCompanyUserAppsAdd(int appId, int dbCompanyUserId, int? appUserTypeId = null)
         {
             CLIENT_DB_COMPANY_USER_APPS permission = new CLIENT_DB_COMPANY_USER_APPS();
             permission.APP_ID = appId;
@@ -180,8 +188,15 @@ namespace Plex.MobileHub
             
             using(var connection = Utilities.GetConnection(true))
             {
-                permission.DB_COMPANY_USER_APP_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
-                permission.Insert(connection);
+                var perm = CLIENT_DB_COMPANY_USER_APPS.GetAll(connection).FirstOrDefault(p => p.DB_COMPANY_USER_ID == dbCompanyUserId && p.APP_ID == appId);
+                if (perm == null)
+                {
+                    permission.DB_COMPANY_USER_APP_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual")[0, 0]);
+                    permission.Insert(connection);
+                    return permission.DB_COMPANY_USER_APP_ID;
+                }
+                else
+                    return perm.DB_COMPANY_USER_APP_ID;
             }
         }
         [WebMethod]
@@ -193,7 +208,7 @@ namespace Plex.MobileHub
 
         #region CLIENT_USERS CRUD
         [WebMethod]
-        public void ClientUserAdd(int clientId, string name, string password)
+        public int ClientUserAdd(int clientId, string name, string password)
         {
 
             CLIENT_USERS user =  new CLIENT_USERS();
@@ -204,6 +219,7 @@ namespace Plex.MobileHub
             {
                 user.USER_ID = Convert.ToInt32(connection.Query("select id_gen.nextval from dual ")[0, 0]);
                 user.Insert(connection);
+                return user.USER_ID;
             }
         }
 
