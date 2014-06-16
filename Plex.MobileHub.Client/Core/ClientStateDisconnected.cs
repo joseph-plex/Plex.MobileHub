@@ -16,6 +16,14 @@ namespace MobileHubClient.Core
             set;
         }
 
+        public IReadOnlyCollection<object> DbConnections
+        {
+            get
+            {
+                throw new NotSupportedException("Cannot Get DbConnnections List while disconnected");
+            }
+        }
+
         public void LogOn()
         {
             try

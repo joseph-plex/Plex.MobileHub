@@ -8,12 +8,12 @@ namespace MobileHubClient.Core
 {
     interface IClientStateBehaviour
     {
-        ClientService Context
+        //todo Change this to client_db_companies
+        IReadOnlyCollection<object> DbConnections
         {
             get;
-            set;
         }
-
+        
         void LogOn();
         void LogOff();
     }

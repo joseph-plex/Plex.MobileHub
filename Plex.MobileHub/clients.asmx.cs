@@ -146,6 +146,13 @@ namespace Plex.MobileHub
         }
         #endregion
 
+        [WebMethod]
+        public List<CLIENT_DB_COMPANIES> ClientDbCompaniesRetrieve(int connectionId)
+        {
+            var client = Connections.Instance.Retrieve(connectionId);
+            return CLIENT_DB_COMPANIES.GetAll().Where(p => p.CLIENT_ID == client.ClientId).ToList();
+        }
+
         #region CLIENT_DB_COMPANY_USERS CRUD
         [WebMethod]
         public int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs = null)

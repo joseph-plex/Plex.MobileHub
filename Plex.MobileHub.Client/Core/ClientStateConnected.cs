@@ -17,6 +17,14 @@ namespace MobileHubClient.Core
             set;
         }
 
+        public IReadOnlyCollection<object> DbConnections
+        {
+            get
+            {
+                //todo this needs to be implemented to get valuse from mobile client
+                return null;
+            }
+        }
         public void LogOn()
         {
             try

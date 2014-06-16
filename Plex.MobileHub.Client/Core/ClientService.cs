@@ -13,7 +13,7 @@ using Plex.Logs;
 
 namespace MobileHubClient.Core
 {
-    public class ClientService : ServiceBase
+    public class ClientService : ServiceBase, IClientStateBehaviour
     {
         static public LogManager Logs = new LogManager();
         
@@ -25,6 +25,14 @@ namespace MobileHubClient.Core
         internal ClientServiceState CurrentState;
         internal int clientInstanceId = 0;
         internal Timer checkInTimer;
+
+        public IReadOnlyCollection<object> DbConnections
+        {
+            get
+            {
+                return StateBehaviours[CurrentState].DbConnections;
+            }
+        }
 
         ClientSettings Settings;
 
@@ -97,18 +105,21 @@ namespace MobileHubClient.Core
             LogOff();
         }
 
-        internal void LogOn()
+        #region Behavior Implementations
+        public void LogOn()
         {
             StateBehaviours[CurrentState].LogOn();
             OnLogOn(this, EventArgs.Empty);
         }
 
-        internal void LogOff()
+        public void LogOff()
         {
             StateBehaviours[CurrentState].LogOff();
             OnLogOff(this, EventArgs.Empty);
         }
+        #endregion
 
+        #region Generated Code (Do Not Modify)
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
         {
@@ -122,5 +133,6 @@ namespace MobileHubClient.Core
         {
             this.ServiceName = "Plexxis Mobile Hub Client";
         }
+        #endregion
     }
 }
