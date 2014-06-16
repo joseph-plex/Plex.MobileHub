@@ -16,5 +16,10 @@ namespace MobileHubClient.Core
         
         void LogOn();
         void LogOff();
+
+        //todo This need to be implemented at some point.
+        //void AddDatabase();
+        //void DeleteDatabase();
+
     }
 }

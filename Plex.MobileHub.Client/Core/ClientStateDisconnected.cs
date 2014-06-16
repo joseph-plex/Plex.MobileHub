@@ -20,7 +20,7 @@ namespace MobileHubClient.Core
         {
             get
             {
-                throw new NotSupportedException("Cannot Get DbConnnections List while disconnected");
+                throw new NotSupportedException("Cannot Get DbConnnections List while in disconnected state");
             }
         }
 
