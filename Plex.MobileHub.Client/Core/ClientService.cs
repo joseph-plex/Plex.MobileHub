@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ServiceProcess;
 using System.Timers;
 using Plex.Logs;
+using MobileHubClient.PMH;
 
 namespace MobileHubClient.Core
 {
@@ -26,7 +27,7 @@ namespace MobileHubClient.Core
         internal int clientInstanceId = 0;
         internal Timer checkInTimer;
 
-        public IReadOnlyCollection<object> DbConnections
+        public IReadOnlyCollection<CLIENT_DB_COMPANIES> DbConnections
         {
             get
             {

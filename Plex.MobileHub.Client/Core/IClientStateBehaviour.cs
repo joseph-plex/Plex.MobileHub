@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MobileHubClient.PMH;
 namespace MobileHubClient.Core
 {
     interface IClientStateBehaviour
     {
         //todo Change this to client_db_companies
-        IReadOnlyCollection<object> DbConnections
+        IReadOnlyCollection<CLIENT_DB_COMPANIES> DbConnections
         {
             get;
         }

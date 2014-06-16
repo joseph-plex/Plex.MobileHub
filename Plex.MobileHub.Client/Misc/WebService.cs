@@ -144,5 +144,11 @@ namespace MobileHubClient.Misc
             using (Service)
                 return Service.ClientUserRetrieve(clientUserId);
         }
+
+        public static List<CLIENT_DB_COMPANIES> ClientDbCompaniesRetrieve(int connectionId)
+        {
+            using (Service)
+                return Service.ClientDbCompaniesRetrieve(connectionId).ToList();
+        }
     }
 }

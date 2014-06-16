@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MobileHubClient.Misc;
 using MobileHubClient.Properties;
 using Plex.Logs;
+using MobileHubClient.PMH;
 namespace MobileHubClient.Core
 {
     class ClientStateDisconnected : IClientStateBehaviour
@@ -16,7 +17,7 @@ namespace MobileHubClient.Core
             set;
         }
 
-        public IReadOnlyCollection<object> DbConnections
+        public IReadOnlyCollection<CLIENT_DB_COMPANIES> DbConnections
         {
             get
             {

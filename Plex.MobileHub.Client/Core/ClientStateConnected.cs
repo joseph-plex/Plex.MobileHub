@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MobileHubClient.Misc;
 using MobileHubClient.Properties;
 using Plex.Logs;
+using MobileHubClient.PMH;
 namespace MobileHubClient.Core
 {
     class ClientStateConnected : IClientStateBehaviour
@@ -17,12 +18,11 @@ namespace MobileHubClient.Core
             set;
         }
 
-        public IReadOnlyCollection<object> DbConnections
+        public IReadOnlyCollection<CLIENT_DB_COMPANIES> DbConnections
         {
             get
             {
-                //todo this needs to be implemented to get valuse from mobile client
-                return null;
+                return WebService.ClientDbCompaniesRetrieve(Context.clientInstanceId);
             }
         }
         public void LogOn()
@@ -62,5 +62,6 @@ namespace MobileHubClient.Core
                 throw;
             }
         }
+
     }
 }
