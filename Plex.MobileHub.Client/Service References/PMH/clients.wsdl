@@ -401,6 +401,37 @@
       <s:element name="ClientDbCompanyRemoveResponse">
         <s:complexType />
       </s:element>
+      <s:element name="ClientDbCompaniesRetrieve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="connectionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCLIENT_DB_COMPANIES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CLIENT_DB_COMPANIES" nillable="true" type="tns:CLIENT_DB_COMPANIES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CLIENT_DB_COMPANIES">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PlexxisDataTransferObjects">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DB_COMPANY_ID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DATABASE_CSTRING" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="COMPANY_CODE" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CLIENT_ID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ClientDbCompaniesRetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientDbCompaniesRetrieveResult" type="tns:ArrayOfCLIENT_DB_COMPANIES" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ClientDbCompanyUserAdd">
         <s:complexType>
           <s:sequence>
@@ -529,6 +560,7 @@
       <s:element name="ClientSynchroData" nillable="true" type="tns:ClientSynchroData" />
       <s:element name="CLIENTS" nillable="true" type="tns:CLIENTS" />
       <s:element name="CLIENT_APPS" nillable="true" type="tns:CLIENT_APPS" />
+      <s:element name="ArrayOfCLIENT_DB_COMPANIES" nillable="true" type="tns:ArrayOfCLIENT_DB_COMPANIES" />
       <s:element name="ArrayOfCLIENT_USERS" nillable="true" type="tns:ArrayOfCLIENT_USERS" />
       <s:element name="CLIENT_USERS" nillable="true" type="tns:CLIENT_USERS" />
     </s:schema>
@@ -616,6 +648,12 @@
   </wsdl:message>
   <wsdl:message name="ClientDbCompanyRemoveSoapOut">
     <wsdl:part name="parameters" element="tns:ClientDbCompanyRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompaniesRetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientDbCompaniesRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompaniesRetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientDbCompaniesRetrieveResponse" />
   </wsdl:message>
   <wsdl:message name="ClientDbCompanyUserAddSoapIn">
     <wsdl:part name="parameters" element="tns:ClientDbCompanyUserAdd" />
@@ -716,6 +754,12 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ClientDbCompanyRemoveHttpGetOut" />
+  <wsdl:message name="ClientDbCompaniesRetrieveHttpGetIn">
+    <wsdl:part name="connectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompaniesRetrieveHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCLIENT_DB_COMPANIES" />
+  </wsdl:message>
   <wsdl:message name="ClientDbCompanyUserAddHttpGetIn">
     <wsdl:part name="dbCompanyId" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -807,6 +851,12 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ClientDbCompanyRemoveHttpPostOut" />
+  <wsdl:message name="ClientDbCompaniesRetrieveHttpPostIn">
+    <wsdl:part name="connectionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ClientDbCompaniesRetrieveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCLIENT_DB_COMPANIES" />
+  </wsdl:message>
   <wsdl:message name="ClientDbCompanyUserAddHttpPostIn">
     <wsdl:part name="dbCompanyId" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -904,6 +954,10 @@
       <wsdl:input message="tns:ClientDbCompanyRemoveSoapIn" />
       <wsdl:output message="tns:ClientDbCompanyRemoveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <wsdl:input message="tns:ClientDbCompaniesRetrieveSoapIn" />
+      <wsdl:output message="tns:ClientDbCompaniesRetrieveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <wsdl:input message="tns:ClientDbCompanyUserAddSoapIn" />
       <wsdl:output message="tns:ClientDbCompanyUserAddSoapOut" />
@@ -978,6 +1032,10 @@
       <wsdl:input message="tns:ClientDbCompanyRemoveHttpGetIn" />
       <wsdl:output message="tns:ClientDbCompanyRemoveHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <wsdl:input message="tns:ClientDbCompaniesRetrieveHttpGetIn" />
+      <wsdl:output message="tns:ClientDbCompaniesRetrieveHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <wsdl:input message="tns:ClientDbCompanyUserAddHttpGetIn" />
       <wsdl:output message="tns:ClientDbCompanyUserAddHttpGetOut" />
@@ -1047,6 +1105,10 @@
     <wsdl:operation name="ClientDbCompanyRemove">
       <wsdl:input message="tns:ClientDbCompanyRemoveHttpPostIn" />
       <wsdl:output message="tns:ClientDbCompanyRemoveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <wsdl:input message="tns:ClientDbCompaniesRetrieveHttpPostIn" />
+      <wsdl:output message="tns:ClientDbCompaniesRetrieveHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <wsdl:input message="tns:ClientDbCompanyUserAddHttpPostIn" />
@@ -1198,6 +1260,15 @@
     </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyRemove">
       <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <soap:operation soapAction="http://pmh.plexxis.com/ClientDbCompaniesRetrieve" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1406,6 +1477,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompaniesRetrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <soap12:operation soapAction="http://pmh.plexxis.com/ClientDbCompanyUserAdd" style="document" />
       <wsdl:input>
@@ -1563,6 +1643,15 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <http:operation location="/ClientDbCompaniesRetrieve" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <http:operation location="/ClientDbCompanyUserAdd" />
       <wsdl:input>
@@ -1704,6 +1793,15 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ClientDbCompaniesRetrieve">
+      <http:operation location="/ClientDbCompaniesRetrieve" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClientDbCompanyUserAdd">
       <http:operation location="/ClientDbCompanyUserAdd" />

@@ -184,6 +184,9 @@
     <None Include="Service References\PMH\MobileHubClient.PMH.CLIENT_APPS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PMH\MobileHubClient.PMH.CLIENT_DB_COMPANIES.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PMH\MobileHubClient.PMH.CLIENT_USERS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -119,6 +119,14 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
         void ClientDbCompanyRemove(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompaniesRetrieve", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        MobileHubClient.PMH.CLIENT_DB_COMPANIES[] ClientDbCompaniesRetrieve(int connectionId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAdd", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
@@ -261,6 +269,7 @@ namespace MobileHubClient.PMH {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_USERS))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_DB_COMPANIES))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENT_APPS))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CLIENTS))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
@@ -341,6 +350,71 @@ namespace MobileHubClient.PMH {
             set {
                 this.pASSWORDField = value;
                 this.RaisePropertyChanged("PASSWORD");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pmh.plexxis.com")]
+    public partial class CLIENT_DB_COMPANIES : PlexxisDataTransferObjects {
+        
+        private int dB_COMPANY_IDField;
+        
+        private string dATABASE_CSTRINGField;
+        
+        private string cOMPANY_CODEField;
+        
+        private int cLIENT_IDField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int DB_COMPANY_ID {
+            get {
+                return this.dB_COMPANY_IDField;
+            }
+            set {
+                this.dB_COMPANY_IDField = value;
+                this.RaisePropertyChanged("DB_COMPANY_ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string DATABASE_CSTRING {
+            get {
+                return this.dATABASE_CSTRINGField;
+            }
+            set {
+                this.dATABASE_CSTRINGField = value;
+                this.RaisePropertyChanged("DATABASE_CSTRING");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string COMPANY_CODE {
+            get {
+                return this.cOMPANY_CODEField;
+            }
+            set {
+                this.cOMPANY_CODEField = value;
+                this.RaisePropertyChanged("COMPANY_CODE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int CLIENT_ID {
+            get {
+                return this.cLIENT_IDField;
+            }
+            set {
+                this.cLIENT_IDField = value;
+                this.RaisePropertyChanged("CLIENT_ID");
             }
         }
     }
@@ -1816,6 +1890,10 @@ namespace MobileHubClient.PMH {
         
         public void ClientDbCompanyRemove(int id) {
             base.Channel.ClientDbCompanyRemove(id);
+        }
+        
+        public MobileHubClient.PMH.CLIENT_DB_COMPANIES[] ClientDbCompaniesRetrieve(int connectionId) {
+            return base.Channel.ClientDbCompaniesRetrieve(connectionId);
         }
         
         public int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs) {
