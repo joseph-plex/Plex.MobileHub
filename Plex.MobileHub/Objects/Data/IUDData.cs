@@ -16,7 +16,6 @@ namespace Plex.MobileHub.Objects
         /// 2 means to update
         /// 3 means to delete.
         /// </summary>
-        public Int32 Operation { get; set; }
         public String TableName { get; set; }
         public List<String> ColumnNames { get; set; }
         public List<Row> Rows { get; set; }
@@ -28,10 +27,6 @@ namespace Plex.MobileHub.Objects
         }
         public bool IsValid()
         {
-            //Check to ensure the operation is valid.
-            if(Operation < 0 && Operation > 3)
-                return false;
-
             //This is required to ensure data ingrety in operations. 
             foreach (var r in Rows)
                 if (r.Values.Count != ColumnNames.Count)
