@@ -35,7 +35,7 @@ namespace Plex.MobileHub.Functionality.API
                     if (!appTableColumns.Any(p => p.COLUMN_NAME == col))
                         throw new Exception("Unauthorized Table Column Reference in IUDData");
 
-            return consumer.ClientGet().ExecuteRequest<MethodResult>("IUD", consumer.ClientDbCompaniesGet().COMPANY_CODE ,Data);
+            return consumer.ClientGet().ExecuteRequest<MethodResult>("IUD", consumer.ClientDbCompaniesGet().COMPANY_CODE, Data);
         }
     }
 }

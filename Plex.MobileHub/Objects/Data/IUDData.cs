@@ -25,8 +25,14 @@ namespace Plex.MobileHub.Objects
             ColumnNames = new List<String>();
             Rows = new List<Row>();
         }
+
         public bool IsValid()
         {
+            //Ensure that all rows have a valid DB Action
+            foreach (var r in Rows)
+                if (r.DBAction > 3 || r.DBAction < 1)
+                    return false;
+
             //This is required to ensure data ingrety in operations. 
             foreach (var r in Rows)
                 if (r.Values.Count != ColumnNames.Count)
@@ -43,6 +49,5 @@ namespace Plex.MobileHub.Objects
 
             return true;
         }
-
     }
 }
