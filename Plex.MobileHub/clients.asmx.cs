@@ -22,7 +22,11 @@ namespace Plex.MobileHub
     // [System.Web.Script.Services.ScriptService]
     public class ClientSDK : WebService
     {
+        //[XmlInclude(typeof(IUDData))]
+        [XmlInclude(typeof(Row))]
+        [XmlInclude(typeof(Column))]
         [XmlInclude(typeof(IUDData))]
+        [XmlInclude(typeof(IUDData[]))]
         [XmlInclude(typeof(RQryResult))]
 
         [WebMethod]

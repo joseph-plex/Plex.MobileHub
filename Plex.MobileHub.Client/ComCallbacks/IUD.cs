@@ -16,40 +16,48 @@ namespace MobileHubClient.ComCallbacks
             String sql = String.Empty;
             MethodResult mr = new MethodResult();
 
-            using(var Conn = Context.GetOpenConnection(Code))
-            using(var transaction = Conn.BeginTransaction())
-            {
-                foreach(var iud in Data)
+            try { 
+                using(var Conn = Context.GetOpenConnection(Code))
+                using(var transaction = Conn.BeginTransaction())
                 {
-                    bool SinglePK = ValidForOperation(Conn, iud.TableName);
-                    foreach( var row in iud.Rows)
+                    foreach(var iud in Data)
                     {
-                        switch(row.DBAction)
+                        bool SinglePK = ValidForOperation(Conn, iud.TableName);
+                        foreach( var row in iud.Rows)
                         {
-                            case 1:
-                                sql = CreateInsertCommandText(iud.TableName, iud.ColumnNames);
-                                Conn.NonQuery(sql, row.Values);
-                                ClientService.Logs.Add(sql);
-                                break;
-                            case 2:
-                                if (!SinglePK)
-                                    throw new InvalidOperationException("Multiple PK, operation cannot be completed");
-                                sql = CreateUpdateCommandText(iud.TableName, iud.ColumnNames);
-                                Conn.NonQuery(sql, row.Values);
-                                ClientService.Logs.Add(sql);
-                                break;
-                            case 3:
-                                if (!SinglePK)
-                                    throw new InvalidOperationException("Multiple PK, operation cannot be completed");
-                                sql = CreateDeleteCommandText(iud.TableName, iud.ColumnNames);
-                                Conn.NonQuery(sql, row.Values);
-                                ClientService.Logs.Add(sql);
-                                break;
-                            default:
-                                break;
+                            switch(row.DBAction)
+                            {
+                                case 1:
+                                    sql = CreateInsertCommandText(iud.TableName, iud.ColumnNames);
+                                    Conn.NonQuery(sql, row.Values);
+                                    ClientService.Logs.Add(sql);
+                                    break;
+                                case 2:
+                                    if (!SinglePK)
+                                        throw new InvalidOperationException("Multiple PK, operation cannot be completed");
+                                    sql = CreateUpdateCommandText(iud.TableName, iud.ColumnNames);
+                                    Conn.NonQuery(sql, row.Values);
+                                    ClientService.Logs.Add(sql);
+                                    break;
+                                case 3:
+                                    if (!SinglePK)
+                                        throw new InvalidOperationException("Multiple PK, operation cannot be completed");
+                                    sql = CreateDeleteCommandText(iud.TableName, iud.ColumnNames);
+                                    Conn.NonQuery(sql, row.Values);
+                                    ClientService.Logs.Add(sql);
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
+            }
+            catch(Exception e)
+            {
+                mr.Msg = e.Message;
+                mr.Response = -9999;
+                ClientService.Logs.Add(e);
             }
             return mr;
         }

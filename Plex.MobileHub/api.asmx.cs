@@ -81,7 +81,7 @@ namespace Plex.MobileHub
         [WebMethod]
         public MethodResult IUD(int nConnectionId, IUDData [] DBModData)
         {
-            throw new NotImplementedException();
+            return new IUD().Strategy(nConnectionId, DBModData);
         }
         
         /*********************************** Internal Plexxis Methods *****************************************/

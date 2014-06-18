@@ -27,120 +27,120 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.Command[] GetCommands(int ConnectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Respond", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void Respond(MobileHubClient.PMH.Response Resp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ResponsePartial", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void ResponsePartial(MobileHubClient.PMH.ResponseComponent Component);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.Result Query(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/NonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         int NonQuery(string sql, object[] arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/SyncDataGet", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.ClientSynchroData SyncDataGet();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppQueriesRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void AppQueriesRetrieve();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AppUserTypesRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void AppUserTypesRetrieve();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientsRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.CLIENTS ClientsRetrieve(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientsAppsRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.CLIENT_APPS ClientsAppsRetrieve(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/AddClientDbCompany", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         int AddClientDbCompany(int clientId, string companyCode, string ConnectionString);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void ClientDbCompanyRemove(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompaniesRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.CLIENT_DB_COMPANIES[] ClientDbCompaniesRetrieve(int connectionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAdd", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         int ClientDbCompanyUserAdd(int dbCompanyId, int UserId, string ConnectAs);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void ClientDbCompanyUserRemove(int id);
         
         // CODEGEN: Parameter 'appUserTypeId' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
@@ -148,48 +148,48 @@ namespace MobileHubClient.PMH {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.ClientDbCompanyUserAppsAddResponse ClientDbCompanyUserAppsAdd(MobileHubClient.PMH.ClientDbCompanyUserAppsAddRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientDbCompanyUserAppsRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void ClientDbCompanyUserAppsRemove(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserAdd", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         int ClientUserAdd(int clientId, string name, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserRemove", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         void ClientUserRemove(int clientUserId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserRetrieveAllForClient", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.CLIENT_USERS[] ClientUserRetrieveAllForClient(int clientId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://pmh.plexxis.com/ClientUserRetrieve", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(PlexxisDataTransferObjects))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MethodResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Command[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IUDData[]))]
         MobileHubClient.PMH.CLIENT_USERS ClientUserRetrieve(int clientUserId);
     }
     

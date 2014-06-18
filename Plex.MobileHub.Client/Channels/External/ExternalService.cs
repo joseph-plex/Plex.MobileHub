@@ -31,6 +31,7 @@ namespace MobileHubClient.Channels.External
             try
             {
                 var result = WebService.GetCommands(Context.clientInstanceId);
+                ClientService.Logs.Add(result.Count + " Commands Retrieved");
                 Parallel.ForEach<Command>(result, Command =>
                 {
                     ClientService.Logs.Add(new Log("Executing Command : " + Command.Name, LogPriority.Low));

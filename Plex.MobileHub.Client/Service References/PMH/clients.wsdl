@@ -137,6 +137,11 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:complexType name="ArrayOfIUDData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IUDData" nillable="true" type="tns:IUDData" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Respond">
         <s:complexType>
           <s:sequence>

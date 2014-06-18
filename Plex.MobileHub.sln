@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client.Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Test", "Plex.MobileHub.Test\Plex.MobileHub.Test.csproj", "{7E0887EC-D2D7-4F0E-9EB1-D25542755470}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Example", "Plex.MobileHub.Example\Plex.MobileHub.Example.csproj", "{24839E64-A3B8-4579-808B-45662CEC3ED1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -156,6 +158,18 @@ Global
 		{7E0887EC-D2D7-4F0E-9EB1-D25542755470}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7E0887EC-D2D7-4F0E-9EB1-D25542755470}.Release|x64.ActiveCfg = Release|Any CPU
 		{7E0887EC-D2D7-4F0E-9EB1-D25542755470}.Release|x86.ActiveCfg = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|x64.ActiveCfg = Release|Any CPU
+		{24839E64-A3B8-4579-808B-45662CEC3ED1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

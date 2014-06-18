@@ -22,8 +22,10 @@ namespace Plex.MobileHub.Objects
 
         public IUDData()
         {
-            ColumnNames = new List<String>();
             Rows = new List<Row>();
+            TableName = String.Empty;
+            ColumnNames = new List<String>();
+
         }
 
         public bool IsValid()

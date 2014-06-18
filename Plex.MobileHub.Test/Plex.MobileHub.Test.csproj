@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Api\IUDTest.cs" />
     <Compile Include="Clients\AddClientDbCompanyTest.cs" />
     <Compile Include="Data\PlexxisDataTransferObjectTests.cs" />
     <Compile Include="Data\TestAPPS.cs" />
@@ -95,7 +96,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\" />
     <Folder Include="Developers\" />
     <Folder Include="Management\" />
   </ItemGroup>
