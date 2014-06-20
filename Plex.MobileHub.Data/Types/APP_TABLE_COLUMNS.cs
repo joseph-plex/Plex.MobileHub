@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class APP_TABLE_COLUMNS : IRepositoryEntry
+    public class APP_TABLE_COLUMNS : RepositoryEntryBase, IRepositoryEntry
     {
         public int TABLE_ID { get; set; }//NUMBER(10)	N			
         public int TABLE_COLUMN_ID { get; set; }//NUMBER(10)	N			
@@ -24,5 +24,8 @@ namespace Plex.MobileHub.Data.Types
         public int? IS_UNIQUE { get; set; }//	NUMBER(1)	Y			
         public string DESCRIPTION { get; set; }//VARCHAR2(4000)	Y		
 
+        public APP_TABLE_COLUMNS() : base() { }
+
+        public APP_TABLE_COLUMNS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

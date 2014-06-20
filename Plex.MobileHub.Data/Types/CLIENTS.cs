@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class CLIENTS : IRepositoryEntry
+    public class CLIENTS : RepositoryEntryBase, IRepositoryEntry
     {
         public int CLIENT_ID { get; set; }
         public string CLIENT_KEY { get; set; }
@@ -14,6 +14,9 @@ namespace Plex.MobileHub.Data.Types
         public int? CLIENT_INSTANCE_ID { get; set; }
         public string CLIENT_IP_ADDRESS { get; set; }
         public int? CLIENT_PORT { get; set; }
+
+        public CLIENTS() : base() { }
+        public CLIENTS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 
     }
 }

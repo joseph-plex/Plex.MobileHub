@@ -24,12 +24,7 @@ namespace Plex.MobileHub.Data
                 int index = result.Tuples.IndexOf(plexTuple);
                 var conversationType = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
                 var value = Convert.ChangeType(result[p.Name, index], conversationType) ;
-
-                //if([])
                 p.SetValue(this, value);
-
-                //This can also be written as follows:
-                //property.SetValue(this, plexTuple.parent[property.Name, plexTuple.parent.Tuples.IndexOf(plexTuple)]);
             }
         }
     }

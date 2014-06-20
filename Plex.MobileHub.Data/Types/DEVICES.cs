@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class DEVICES : IRepositoryEntry
+    public class DEVICES : RepositoryEntryBase, IRepositoryEntry
     {
         public int DEVICE_ID { get; set; }
         public int APP_ID { get; set; }
+
+        public DEVICES() : base() { }
+        public DEVICES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

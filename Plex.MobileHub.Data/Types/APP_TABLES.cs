@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class APP_TABLES : IRepositoryEntry
+    public class APP_TABLES : RepositoryEntryBase, IRepositoryEntry
     {
         public int TABLE_ID { get; set; }//NUMBER(10)	N			
         public int APP_ID { get; set; }//	NUMBER(10)	N			
@@ -15,7 +15,10 @@ namespace Plex.MobileHub.Data.Types
         public int INSERT_ALLOWED { get; set; }//	NUMBER(1)	Y			
         public int UPDATE_ALLOWED { get; set; }//	NUMBER(1)	Y			
         public int DELETE_ALLOWED { get; set; }//	NUMBER(1)	Y			
-        public int QUERY_ALLOWED { get; set; }//	NUMBER(1)	Y	
+        public int QUERY_ALLOWED { get; set; }//	NUMBER(1)	Y
+	
+        public APP_TABLES() : base () { }
+        public APP_TABLES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 
     }
 }

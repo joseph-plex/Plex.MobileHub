@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    public class CLIENT_DB_COMPANY_USER_APPS : IRepositoryEntry
+    public class CLIENT_DB_COMPANY_USER_APPS : RepositoryEntryBase, IRepositoryEntry
     {
         public int DB_COMPANY_USER_APP_ID { get; set; }//	NUMBER(10)	N			
         public int DB_COMPANY_USER_ID { get; set; }//	NUMBER(10)	N			
         public int APP_ID { get; set; }//	NUMBER(10)	N			
         public int? APP_USER_TYPE_ID { get; set; }//	NUMBER(10)	Y	
+
+        public CLIENT_DB_COMPANY_USER_APPS() : base() { }
+        public CLIENT_DB_COMPANY_USER_APPS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }
