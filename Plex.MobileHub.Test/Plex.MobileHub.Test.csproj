@@ -90,14 +90,14 @@
     <Compile Include="Data\TestAPP_USER_TYPES.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plex.MobileHub\Plex.MobileHub.csproj">
-      <Project>{d107cc7f-d119-47e1-95cc-448267a0d3da}</Project>
-      <Name>Plex.MobileHub</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Developers\" />
     <Folder Include="Management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\~Plex.MobileHub\~Plex.MobileHub.csproj">
+      <Project>{d107cc7f-d119-47e1-95cc-448267a0d3da}</Project>
+      <Name>~Plex.MobileHub</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

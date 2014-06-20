@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client.Oracl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client", "Plex.MobileHub.Client\Plex.MobileHub.Client.csproj", "{D077995E-C183-409A-8EA3-EB67AF6368D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub", "Plex.MobileHub\Plex.MobileHub.csproj", "{D107CC7F-D119-47E1-95CC-448267A0D3DA}"
-EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Plex.MobileHub.Client.Installer", "Plex.MobileHub.Client.Installer\Plex.MobileHub.Client.Installer.wixproj", "{F5BD177F-1709-4D05-A930-7508AB9FA7C9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D107CC7F-D119-47E1-95CC-448267A0D3DA} = {D107CC7F-D119-47E1-95CC-448267A0D3DA}
@@ -37,6 +35,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Data", "Plex.MobileHub.Data\Plex.MobileHub.Data.csproj", "{108936C8-CB1E-4380-A465-E081CAB924EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Data.Tests", "Plex.MobileHub.Data.Tests\Plex.MobileHub.Data.Tests.csproj", "{95C795C6-46CF-4493-A8B2-2C257892BC4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "~Plex.MobileHub", "~Plex.MobileHub\~Plex.MobileHub.csproj", "{D107CC7F-D119-47E1-95CC-448267A0D3DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,18 +100,6 @@ Global
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x64.ActiveCfg = Release|x64
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x64.Build.0 = Release|x64
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x86.ActiveCfg = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|x64.ActiveCfg = Release|Any CPU
-		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{F5BD177F-1709-4D05-A930-7508AB9FA7C9}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{F5BD177F-1709-4D05-A930-7508AB9FA7C9}.Debug|Any CPU.Build.0 = Debug|x86
 		{F5BD177F-1709-4D05-A930-7508AB9FA7C9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
@@ -198,6 +186,18 @@ Global
 		{95C795C6-46CF-4493-A8B2-2C257892BC4A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{95C795C6-46CF-4493-A8B2-2C257892BC4A}.Release|x64.ActiveCfg = Release|Any CPU
 		{95C795C6-46CF-4493-A8B2-2C257892BC4A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{D107CC7F-D119-47E1-95CC-448267A0D3DA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
