@@ -23,27 +23,36 @@ namespace MobileHubClient.ComCallbacks
                     foreach(var iud in Data)
                     {
                         bool SinglePK = ValidForOperation(Conn, iud.TableName);
+                        List<object> variables = null;
                         foreach( var row in iud.Rows)
                         {
                             switch(row.DBAction)
                             {
                                 case 1:
                                     sql = CreateInsertCommandText(iud.TableName, iud.ColumnNames);
-                                    Conn.NonQuery(sql, row.Values);
+                                    ClientService.Logs.Add(Conn.NonQuery(sql, row.Values).ToString());
                                     ClientService.Logs.Add(sql);
                                     break;
                                 case 2:
                                     if (!SinglePK)
                                         throw new InvalidOperationException("Multiple PK, operation cannot be completed");
+
                                     sql = CreateUpdateCommandText(iud.TableName, iud.ColumnNames);
-                                    Conn.NonQuery(sql, row.Values);
+                                    variables  = row.Values.Where((p, i) => i != 0).ToList();
+                                    variables.Add(row.Values.First());
+
+                                    ClientService.Logs.Add(Conn.NonQuery(sql, variables.ToArray()).ToString());
                                     ClientService.Logs.Add(sql);
                                     break;
                                 case 3:
                                     if (!SinglePK)
                                         throw new InvalidOperationException("Multiple PK, operation cannot be completed");
                                     sql = CreateDeleteCommandText(iud.TableName, iud.ColumnNames);
-                                    Conn.NonQuery(sql, row.Values);
+
+                                    variables  = row.Values.Where((p, i) => i != 0).ToList();
+                                    variables.Add(row.Values.First());
+
+                                    ClientService.Logs.Add(Conn.NonQuery(sql, variables.ToArray()).ToString());
                                     ClientService.Logs.Add(sql);
                                     break;
                                 default:
@@ -51,6 +60,7 @@ namespace MobileHubClient.ComCallbacks
                             }
                         }
                     }
+                    transaction.Commit();
                 }
             }
             catch(Exception e)

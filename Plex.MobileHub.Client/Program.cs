@@ -9,13 +9,13 @@ namespace MobileHubClient
         {
             ClientService myService = new ClientService();
 
-#if(!DEBUG)
+//#if(!DEBUG)
             ServiceBase.Run(myService);
-#else
-            myService.OnDebug();
-            Console.WriteLine("Press Enter to terminate ...");
-            Console.ReadLine();
-#endif
+//#else
+//            myService.OnDebug();
+//            Console.WriteLine("Press Enter to terminate ...");
+//            Console.ReadLine();
+//#endif
         }
     }
 }

@@ -24,7 +24,6 @@ namespace Plex.MobileHub.Example
                 data.Rows = Rows.ToArray();
                 MData.Add(data);
 
-
                 mr = service.IUD(mr.Response, MData.ToArray());
             }
         }

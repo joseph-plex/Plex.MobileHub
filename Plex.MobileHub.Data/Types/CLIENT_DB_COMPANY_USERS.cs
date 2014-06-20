@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Plex.MobileHub.Data.Types
+{
+    class CLIENT_DB_COMPANY_USERS
+    {
+        public int DB_COMPANY_USER_ID { get; set; }//NUMBER(10)	N			
+        public int DB_COMPANY_ID { get; set; }//	NUMBER(10)	N			
+        public int USER_ID { get; set; }//NUMBER(10)	N			
+        public string CONNECT_AS { get; set; }//	VARCHAR2(100)	Y		
+
+    }
+}

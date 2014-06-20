@@ -26,7 +26,6 @@ namespace Plex.MobileHub.Data.Tables
             return collection;
         }
 
-
         public int COLUMN_ID { get; set; }//	NUMBER(10)	N			
         public int QUERY_ID { get; set; }//	NUMBER(10)	N			
         public string COLUMN_NAME { get; set; }//	VARCHAR2(50)	N			
