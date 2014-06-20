@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class APP_TABLES
+    public class APP_TABLES : IRepositoryEntry
     {
         public int TABLE_ID { get; set; }//NUMBER(10)	N			
         public int APP_ID { get; set; }//	NUMBER(10)	N			

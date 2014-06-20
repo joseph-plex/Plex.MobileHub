@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class DEVICE_USER_DATA_QUERIES
+    public class DEVICE_USER_DATA_QUERIES : IRepositoryEntry
     {
         public int DEVICE_USER_DATA_QUERIES_ID { get; set; }
         public DateTime QUERY_EXECUTION_TIME { get; set; }

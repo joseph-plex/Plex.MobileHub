@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data
 {
-    interface PlexQueryResultTuple
+    public class PlexQueryResultTuple : IPlexQueryResultTuple
     {
+        public Object this[int i]
+        {
+            get
+            {
+                return Values[i];
+            }
+            set 
+            {
+                Values[i] = value;
+            }
+        }
+
+        public IList<Object> Values { get; set; }
+
+        public PlexQueryResultTuple()
+        {
+            Values = new List<Object>();
+        }
     }
 }

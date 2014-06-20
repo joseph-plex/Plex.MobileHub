@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class CLIENTS
+    public class CLIENTS : IRepositoryEntry
     {
         public int CLIENT_ID { get; set; }
         public string CLIENT_KEY { get; set; }

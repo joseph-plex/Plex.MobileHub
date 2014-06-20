@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class LOGS
+    class LOGS : IRepositoryEntry
     {
         public int LOG_ID { get; set; }//NUMBER(10)	N			
         public DateTime LOG_DATE { get; set; }//DATE	N			

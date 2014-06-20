@@ -39,6 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDbConnectionExtensions.cs" />
+    <Compile Include="IPlexQueryResult.cs" />
+    <Compile Include="IPlexQueryResultColumn.cs" />
+    <Compile Include="IPlexQueryResultTuple.cs" />
+    <Compile Include="PlexQueryResult.cs" />
+    <Compile Include="PlexQueryResultColumn.cs" />
+    <Compile Include="PlexQueryResultTuple.cs" />
     <Compile Include="Types\DEVICES.cs" />
     <Compile Include="Types\LOGS.cs" />
     <Compile Include="Types\APP_QUERY_CONDITIONS.cs" />

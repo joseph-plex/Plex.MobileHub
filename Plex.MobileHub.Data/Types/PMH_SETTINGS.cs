@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class PMH_SETTINGS
+    public class PMH_SETTINGS : IRepositoryEntry
     {
         public int PMH_ID { get; set; }//	NUMBER(10)	N			
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class DEV_DATA_VER_QUERIES
+    public class DEV_DATA_VER_QUERIES : IRepositoryEntry
     {
         public int DATABASE_VERSION_ID { get; set; }//DATABASE_VERSION_ID	NUMBER(10)	N
         public int QUERY_ID { get; set; }//QUERY_ID	NUMBER(10)	N		

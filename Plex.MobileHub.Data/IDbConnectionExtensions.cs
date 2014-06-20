@@ -26,43 +26,11 @@ namespace Plex.MobileHub.Data
             return Param;
         }
 
-        public static Result Query(this IDbConnection conn, String CommandText, params object[] Arguments)
+        public static PlexQueryResult Query(this IDbConnection conn, String CommandText, params object[] Arguments)
         {
-            Result r = new Result();
             using (var Comm = conn.CreateCommand(CommandText, Arguments))
             using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
-            {
-                r.Columns = new List<Col>(GetColumnData(reader.GetSchemaTable()));
-                for (var Curr = new Tuple(); reader.Read(); r.Rows.Add(Curr), Curr = new Tuple())
-                    for (int i = 0; i < r.Columns.Count; i++)
-                        Curr.Values.Add((reader[r.Columns[i].ColumnName] != DBNull.Value) ? reader[r.Columns[i].ColumnName] : null);
-            }
-            return r;
-        }
-
-
-        public static int NonQuery(this IDbConnection conn, String CommandText, params object[] Arguments)
-        {
-            using (var Comm = conn.CreateCommand(CommandText, Arguments))
-                return Comm.ExecuteNonQuery();
-        }
-        static IEnumerable<Col> GetColumnData(DataTable dataTable)
-        {
-            foreach (var Row in dataTable.Rows)
-                yield return GetColumnData((DataRow)Row);
-        }
-        static Col GetColumnData(DataRow Collection)
-        {
-            return new Col()
-            {
-                ColumnName = (Collection[0] != DBNull.Value) ? Convert.ToString(Collection[0]) : string.Empty,
-                IsUnique = (Collection[5] != DBNull.Value) ? Convert.ToBoolean(Collection[5]) : (bool?)null,
-
-                IsKey = (Collection[6] != DBNull.Value) ? Convert.ToBoolean(Collection[6]) : (bool?)null,
-                DataType = (Collection[11] != DBNull.Value) ? Collection[11].ToString() : string.Empty,
-                IsReadOnly = (Collection[18] != DBNull.Value) ? Convert.ToBoolean(Collection[18]) : (bool?)null,
-                IsLong = (Collection[19] != DBNull.Value) ? Convert.ToBoolean(Collection[19]) : (bool?)null,
-            };
+                return new PlexQueryResult(reader);
         }
     }
 }

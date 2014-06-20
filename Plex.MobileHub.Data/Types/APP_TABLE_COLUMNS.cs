@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class APP_TABLE_COLUMNS
+    public class APP_TABLE_COLUMNS : IRepositoryEntry
     {
         public int TABLE_ID { get; set; }//NUMBER(10)	N			
         public int TABLE_COLUMN_ID { get; set; }//NUMBER(10)	N			

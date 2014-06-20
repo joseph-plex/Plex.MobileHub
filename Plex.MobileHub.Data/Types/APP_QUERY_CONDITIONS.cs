@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.Data.Types
 {
-    class APP_QUERY_CONDITIONS
+    public class APP_QUERY_CONDITIONS : IRepositoryEntry
     {
         public int CONDITION_ID { get; set; }//	NUMBER(10)	N			
         public int QUERY_ID { get; set; }//	NUMBER(10)	N			
