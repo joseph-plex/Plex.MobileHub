@@ -22,11 +22,8 @@ namespace Plex.MobileHub.Data.Tests
 
         public void TestMethod1()
         {
-            using (IDbConnection connection = new OracleConnection(ConnectionString))
-            {
-                connection.Open();
-                var result = connection.Query("select * from dual");
-            }
+            using (IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection())
+                Assert.AreEqual("X", connection.Query("select * from dual")[0,0]);
         }
     }
 }
