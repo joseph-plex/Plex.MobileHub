@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.DataAccess.Client;
 using System.Data;
-
+using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.Data.Tests
 {
     /// <summary>
@@ -19,8 +19,8 @@ namespace Plex.MobileHub.Data.Tests
         const string ConnectionString = "User Id=" + User + ";" + "Password=" + Pass + ";" + "Data Source=" + Source + ";";
 
         [TestMethod]
-
-        public void TestMethod1()
+        [Description("A simple Test to ensure everything is working")]
+        public void SimpleTest()
         {
             try
             {
@@ -34,6 +34,15 @@ namespace Plex.MobileHub.Data.Tests
             {
                 Assert.Fail(e.Message);
             }
+        }
+
+        [TestMethod]
+        public void RepoEntrybaseParseTest()
+        {
+            List<APPS> list = new List<APPS>();
+            using(IDbConnection connect = new OracleConnection(ConnectionString).OpenConnection())
+                foreach (var c in connect.Query("SELECT * FROM APPS").Tuples)
+                    list.Add(new APPS(c));
         }
     }
 }

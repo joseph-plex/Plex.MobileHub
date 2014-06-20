@@ -73,6 +73,7 @@
     <Compile Include="Types\DEV_DATA_VER_QUERIES.cs" />
     <Compile Include="Types\PMH_SETTINGS.cs" />
     <Compile Include="Types\QUERY_SEQUENCE_REQUESTS.cs" />
+    <Compile Include="RepositoryEntryBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

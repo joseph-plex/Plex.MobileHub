@@ -54,7 +54,7 @@ namespace Plex.MobileHub.Data
             foreach (var column in GetColumnData(schemaTable))
                 Columns.Add(column);
 
-            for (var Curr = new PlexQueryResultTuple(); reader.Read(); Tuples.Add(Curr), Curr = new PlexQueryResultTuple())
+            for (var Curr = new PlexQueryResultTuple() { parent = this }; reader.Read(); Tuples.Add(Curr), Curr = new PlexQueryResultTuple() { parent = this })
                 for (int i = 0; i < Columns.Count; i++)
                     Curr.Values.Add((reader[Columns[i].ColumnName] != DBNull.Value) ? reader[Columns[i].ColumnName] : null);
         }

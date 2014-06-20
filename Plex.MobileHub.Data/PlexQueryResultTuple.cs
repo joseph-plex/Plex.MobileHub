@@ -8,6 +8,8 @@ namespace Plex.MobileHub.Data
 {
     public class PlexQueryResultTuple : IPlexQueryResultTuple
     {
+        internal PlexQueryResult parent;
+         
         public Object this[int i]
         {
             get
@@ -24,6 +26,7 @@ namespace Plex.MobileHub.Data
 
         public PlexQueryResultTuple()
         {
+            parent = null;
             Values = new List<Object>();
         }
     }

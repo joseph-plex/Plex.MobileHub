@@ -10,6 +10,10 @@ namespace Plex.MobileHub.Data
         where T: IPlexQueryResultTuple
         where C: IPlexQueryResultColumn 
     {
+        Object this[Int32 ColumnIndex, Int32 RowIndex]{ get; }
+        Object this[String ColumnName, Int32 RowIndex]{ get; }
+        IEnumerable<Object> this[Int32 ColumnIndex] { get; }
+        IEnumerable<Object> this[String ColumnName] { get; }
         IList<C> Columns { get; set; }
         IList<T> Tuples { get; set; }
         
