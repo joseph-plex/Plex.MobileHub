@@ -6,9 +6,6 @@ namespace Plex.MobileHub.Data.Tests
     [TestClass]
     public class DataIntegrity
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+       
     }
 }

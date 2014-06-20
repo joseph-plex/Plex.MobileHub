@@ -32,5 +32,11 @@ namespace Plex.MobileHub.Data
             using (var reader = Comm.ExecuteReader(CommandBehavior.KeyInfo))
                 return new PlexQueryResult(reader);
         }
+
+        public static IDbConnection OpenConnection(this IDbConnection connection)
+        {
+            connection.Open();
+            return connection;
+        }
     }
 }
