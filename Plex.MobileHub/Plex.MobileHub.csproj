@@ -59,14 +59,25 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Api.svc" />
+    <Content Include="ApiService.svc" />
+    <Content Include="ClientService.svc" />
+    <Content Include="DeveloperService.svc" />
+    <Content Include="ManagementService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api.svc.cs">
-      <DependentUpon>Api.svc</DependentUpon>
+    <Compile Include="ApiService.svc.cs">
+      <DependentUpon>ApiService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
+    <Compile Include="ClientService.svc.cs">
+      <DependentUpon>ClientService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DeveloperService.svc.cs">
+      <DependentUpon>DeveloperService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementService.svc.cs">
+      <DependentUpon>ManagementService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +91,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibraries\Plex.MobileHub.ServiceLibraries.csproj">
+      <Project>{79cee8aa-6fd6-4b7f-9c48-6c16dcc4df0e}</Project>
+      <Name>Plex.MobileHub.ServiceLibraries</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
     [ServiceContract]
-    public interface ClientService
+    public interface IClientService
     {
     }
 }

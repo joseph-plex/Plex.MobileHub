@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIServiceLibrary\APIService.cs" />
-    <Compile Include="ClientServiceLibrary\ClientService.cs" />
-    <Compile Include="DeveloperServiceLibrary\DeveloperService.cs" />
-    <Compile Include="ManagementServiceLibrary\ManagementService.cs" />
+    <Compile Include="ClientServiceLibrary\IClientService.cs" />
+    <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
+    <Compile Include="ManagementServiceLibrary\IManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

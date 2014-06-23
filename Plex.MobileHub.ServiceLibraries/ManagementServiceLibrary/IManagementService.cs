@@ -7,7 +7,7 @@ using System.ServiceModel;
 namespace Plex.MobileHub.ServiceLibraries.ManagementServiceLibrary
 {
     [ServiceContract]
-    public interface ManagementService
+    public interface IManagementService
     {
     }
 }

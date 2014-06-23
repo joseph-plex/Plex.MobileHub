@@ -8,7 +8,7 @@ using System.ServiceModel;
 namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     [ServiceContract]
-    public interface APIService
+    public interface IApiService
     {
         void ConnectionConnect();
         void ConnectionRelease();
