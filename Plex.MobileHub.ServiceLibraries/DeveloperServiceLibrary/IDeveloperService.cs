@@ -10,5 +10,8 @@ namespace Plex.MobileHub.ServiceLibraries.DeveloperServiceLibrary
     [ServiceContract]
     public interface IDeveloperService
     {
+        [OperationContract]
+        void DoWork();
+
     }
 }

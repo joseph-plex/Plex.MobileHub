@@ -10,5 +10,7 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     [ServiceContract]
     public interface IClientService
     {
+        [OperationContract]
+        void DoWork();
     }
 }

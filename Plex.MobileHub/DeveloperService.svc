@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Plex.MobileHub.Developer" CodeBehind="DeveloperService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Plex.MobileHub.DeveloperService" CodeBehind="DeveloperService.svc.cs" %>

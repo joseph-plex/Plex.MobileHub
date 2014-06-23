@@ -9,5 +9,7 @@ namespace Plex.MobileHub.ServiceLibraries.ManagementServiceLibrary
     [ServiceContract]
     public interface IManagementService
     {
+        [OperationContract]
+        void DoWork();
     }
 }
