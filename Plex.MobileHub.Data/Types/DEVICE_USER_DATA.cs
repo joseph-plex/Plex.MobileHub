@@ -14,7 +14,9 @@ namespace Plex.MobileHub.Data.Types
         public DateTime? EXECUTION_INITIATION { get; set; }
         public DateTime? EXECUTION_COMPLETION { get; set; }
 
-        public DEVICE_USER_DATA() : base() { }
+        public DEVICE_USER_DATA() : base() {
+            PrimaryKeys.Add("USER_DATA_ID");
+        }
         public DEVICE_USER_DATA(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 
     }

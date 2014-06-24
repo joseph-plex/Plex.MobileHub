@@ -22,18 +22,12 @@ namespace Plex.MobileHub.Data.Tests
         [Description("A simple Test to ensure everything is working")]
         public void SimpleTest()
         {
-            try
-            {
-                using (IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection())
-                    if ("X".Equals(connection.Query("select * from dual")[0, 0]))
-                        Assert.IsTrue(true);
-                    else
-                        Assert.Inconclusive();
-            }
-            catch(OracleException e)
-            {
-                Assert.Fail(e.Message);
-            }
+            using (IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection())
+                if ("X".Equals(connection.Query("select * from dual")[0, 0]))
+                    Assert.IsTrue(true);
+                else
+                    Assert.Inconclusive();
+     
         }
 
         [TestMethod]

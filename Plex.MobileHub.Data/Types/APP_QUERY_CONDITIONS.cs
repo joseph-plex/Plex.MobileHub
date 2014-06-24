@@ -15,7 +15,10 @@ namespace Plex.MobileHub.Data.Types
         public string COLUMN_VALUE { get; set; }//	VARCHAR2(1000)	N			
         public string OPERATOR { get; set; }//	VARCHAR2(12)	N		
 
-        public APP_QUERY_CONDITIONS() : base() { }
+        public APP_QUERY_CONDITIONS() : base() 
+        {
+            PrimaryKeys.Add("CONDITION_ID");
+        }
 
         public APP_QUERY_CONDITIONS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 

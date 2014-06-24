@@ -13,7 +13,10 @@ namespace Plex.MobileHub.Data.Types
         public string COLUMN_NAME { get; set; }//VARCHAR2(50)	N			
         public int COLUMN_SEQUENCE { get; set; }//NUMBER(3)	N	
 
-        public APP_QUERY_COLUMNS() : base() { }
+        public APP_QUERY_COLUMNS() : base() 
+        { 
+            PrimaryKeys.Add("COLUMN_ID");
+        }
         public APP_QUERY_COLUMNS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

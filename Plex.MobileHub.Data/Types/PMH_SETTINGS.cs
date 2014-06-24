@@ -10,7 +10,9 @@ namespace Plex.MobileHub.Data.Types
     {
         public int PMH_ID { get; set; }//	NUMBER(10)	N		
 
-        public PMH_SETTINGS() : base() { }
+        public PMH_SETTINGS() : base() {
+            PrimaryKeys.Add("PMH_ID");
+        }
         public PMH_SETTINGS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

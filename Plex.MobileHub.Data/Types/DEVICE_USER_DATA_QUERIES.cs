@@ -14,7 +14,9 @@ namespace Plex.MobileHub.Data.Types
         public int QUERY_ID { get; set; }
 
 
-        public DEVICE_USER_DATA_QUERIES() : base() { }
+        public DEVICE_USER_DATA_QUERIES() : base() {
+            PrimaryKeys.Add("DEVICE_USER_DATA_QUERIES_ID");
+        }
         public DEVICE_USER_DATA_QUERIES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

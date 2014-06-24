@@ -8,7 +8,7 @@ namespace Plex.MobileHub.Data
 {
     public interface IRepository<T> where T : IRepositoryEntry, new()
     {
-        IList<String> PrimaryKeys { get; set; }
+        IList<String> PrimaryKeys { get; }
         
         void Insert(T Entry);
         void Update(Predicate<T> predicate, T Entry);

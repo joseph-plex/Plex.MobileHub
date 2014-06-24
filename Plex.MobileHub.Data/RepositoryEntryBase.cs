@@ -8,7 +8,12 @@ namespace Plex.MobileHub.Data
 {
     public class RepositoryEntryBase
     {
-        public RepositoryEntryBase() { }
+        public virtual IList<String> PrimaryKeys { get; protected set; }
+
+        public RepositoryEntryBase() 
+        {
+            PrimaryKeys = new List<String>();
+        }
         public RepositoryEntryBase(PlexQueryResultTuple plexTuple) : this()
         {
             if (plexTuple.parent == null)

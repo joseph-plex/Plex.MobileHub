@@ -15,7 +15,9 @@ namespace Plex.MobileHub.Data.Types
         public int IS_CLIENT_CUSTOM_APP { get; set; }
 
 
-        public APPS() : base() { }
+        public APPS() : base() {
+            PrimaryKeys.Add("APP_ID");
+        }
         public APPS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }

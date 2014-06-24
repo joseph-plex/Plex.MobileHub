@@ -17,8 +17,11 @@ namespace Plex.MobileHub.Data.Types
         public int DELETE_ALLOWED { get; set; }//	NUMBER(1)	Y			
         public int QUERY_ALLOWED { get; set; }//	NUMBER(1)	Y
 	
-        public APP_TABLES() : base () { }
-        public APP_TABLES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
-
+        public APP_TABLES() : base () {
+            PrimaryKeys.Add("TABLE_ID");
+        }
+        public APP_TABLES(PlexQueryResultTuple plexTuple) : base(plexTuple) {
+            
+        }
     }
 }

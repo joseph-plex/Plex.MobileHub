@@ -18,5 +18,11 @@ namespace Plex.MobileHub.Data.Types
         public string SQL { get; set; }//VARCHAR2(4000)	N			
         public int? SEQ_LIMIT_TIMESPAN { get; set; }//NUMBER(10)	Y			
         public int? SEQ_LIMIT { get; set; }//NUMBER(10)	Y		
+
+        public APP_QUERIES()
+            : base()
+        {
+            PrimaryKeys.Add("QUERY_ID");
+        }
     }
 }

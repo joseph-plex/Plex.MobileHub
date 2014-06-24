@@ -11,7 +11,9 @@ namespace Plex.MobileHub.Data.Types
         public int DEVICE_ID { get; set; }
         public int APP_ID { get; set; }
 
-        public DEVICES() : base() { }
+        public DEVICES() : base() {
+            PrimaryKeys.Add("DEVICE_ID");
+        }
         public DEVICES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }
 }
