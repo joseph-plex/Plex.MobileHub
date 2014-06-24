@@ -14,42 +14,49 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
     /// This Class represnts the Pmh Oracle database
     /// </summary>
     /// <typeparam name="T">This Parameter represents a table in the database</typeparam>
-    public class OracleRepository<T> : IRepository<T> where T : IRepositoryEntry, new()
+    public sealed class  OracleRepository<T> : IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
     {
         const string User = "C##PMH";
         const string Pass = "!!!plex!!!sa";
         const string Source = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.0.1.96)(PORT = 1521)))(CONNECT_DATA = (SERVICE_NAME = PLE1LIVE)))";
         const string ConnectionString = "User Id=" + User + ";" + "Password=" + Pass + ";" + "Data Source=" + Source + ";";
 
-        public IDbConnection GetConnection()
+        /// <summary>
+        /// Gets all property names from a type.
+        /// </summary>
+        /// <returns>IEnumerable of strings</returns>
+        static IEnumerable<String> GetEntryPropertyNames(Type type)
         {
-            IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
-            if (!commit)
-                connection.BeginTransaction(); 
-            return connection;
+            foreach (var propInfo in type.GetProperties())
+                yield return propInfo.Name;
         }
 
+        #region Properties
         public IList<String> PrimaryKeys
         {
             get
             {
                 return primaryKeys.AsReadOnly();
             }
-            protected set
+            private set
             {
                 primaryKeys = new List<String>(value);
             }
         }
-        public IList<String> Properties { get; protected set; }
+        public IList<String> Properties { get; private set; }
 
-        public String InsertText { get; protected set; }
-        public String UpdateText { get; protected set; }
-        public String DeleteText { get; protected set; }
-        public String SelectText { get; protected set; }
+        public String InsertText { get; private set; }
+        public String UpdateText { get; private set; }
+        public String DeleteText { get; private set; }
+        public String SelectText { get; private set; }
+        #endregion
 
+        #region Fields
         List<String> primaryKeys;
         bool commit;
+        #endregion
 
+        #region Constructors
         public OracleRepository()
         {
             PrimaryKeys = new List<String>(new T().GetPrimaryKeys());
@@ -65,41 +72,102 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             commit = commitCommands;
         }
 
+        #endregion
+
+        #region Interface Implementations
         public void Insert(T Entry)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+                Insert(connection, Entry);
         }
-
-        public void Update(Predicate<T> predicate, T Entry)
+        public void Update(T Entry)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+                Update(connection, Entry);
         }
-
         public void Delete(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+                Delete(connection, predicate);
         }
 
         public T Retrieve(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+                return Retrieve(connection, predicate);
         }
 
         public IEnumerable<T> RetrieveAll()
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+                return RetrieveAll(connection);
+        }
+        #endregion
+
+        #region Public Methods
+        public IDbConnection GetConnection()
+        {
+            IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
+            if (!commit)
+                connection.BeginTransaction();
+            return connection;
         }
 
-        /// <summary>
-        /// Gets all property names from a type.
-        /// </summary>
-        /// <returns>IEnumerable of strings</returns>
-        static IEnumerable<String> GetEntryPropertyNames(Type type)
+        public void Insert(IDbConnection connection, T Entry)
         {
-            foreach (var propInfo in type.GetProperties())
-                yield return propInfo.Name;
+            Type type = typeof(T);
+            List<Object> args = new List<Object>();
+            for (int i = 0; i < Properties.Count; i++)
+                args.Add(type.GetProperty(Properties[i]).GetValue(Entry));
+            connection.NonQuery(InsertText, args.ToArray());
         }
-        
+   
+        public void Update(IDbConnection connection, T Entry)
+        {
+            Type type = typeof(T);
+            List<Object> args = new List<Object>();
+            
+            foreach (var propertyName in Properties.Where(p => !PrimaryKeys.Any(k => k == p)))
+                args.Add(type.GetProperty(propertyName).GetValue(Entry));
+            foreach (var PropertyName in PrimaryKeys)
+                args.Add(type.GetProperty(PropertyName).GetValue(Entry));
+
+            connection.NonQuery(UpdateText, args.ToArray());
+        }
+
+  
+        public void Delete(IDbConnection connection, Predicate<T> predicate)
+        {
+            var entryList = RetrieveAll().Where(new Func<T, bool>(predicate));
+            Type type = typeof(T);
+
+            foreach(var entry in entryList)
+            {
+                List<Object> args = new List<Object>();
+                foreach (var PropertyName in PrimaryKeys)
+                    args.Add(type.GetProperty(PropertyName).GetValue(entry));
+                connection.NonQuery(DeleteText, args.ToArray());
+            }
+        }
+
+        public T Retrieve(IDbConnection connection, Predicate<T> predicate)
+        {
+            return RetrieveAll(connection).First(new Func<T, bool>(predicate));
+
+        }
+  
+        public IEnumerable<T> RetrieveAll(IDbConnection connection)
+        {
+            List<T> collection = new List<T>();
+            var result = connection.Query(SelectText);
+            foreach (var row in result.Tuples)
+                collection.Add(RepositoryEntryBase.FromPlexQueryResultTuple(new T(), row) as T);
+            return collection;
+        }
+        #endregion
+
+        #region Private Methods
+
         String GenerateInsertText()
         {
             String statement = "INSERT INTO {0}({1}) VALUES ({2})";
@@ -121,6 +189,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             statement = String.Format(statement, typeof(T).Name, columnNames, placeHolders);
             return statement;
         }
+
         String GenerateUpdateText()
         {
             String bph = ":a"; 
@@ -143,18 +212,12 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             statement = String.Format(statement, typeof(T).Name, cvp, condition);
             return statement;
         }
-        String GenerateSelectText()
-        {
-            String statement = "SELECT * FROM {0}";
-            statement = String.Format(statement, typeof(T).Name);
-            return statement;
-        }
+
         String GenerateDeleteText()
         {
-            String statement = "DELETE FROM {0} WHERE {1}";
             String bph = ":a";
             String cvpTemplate = "{0} = {1}";
-            //var Settables = Properties.Where(p => PrimaryKeys.Any(k => k == p)).ToList();
+            String statement = "DELETE FROM {0} WHERE {1}";
             String condition = String.Format(cvpTemplate, PrimaryKeys.First(), bph + 0);
 
             for (int i =1; i < PrimaryKeys.Count; i++)
@@ -162,9 +225,14 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
 
             statement = String.Format(statement, typeof(T).Name, condition);
             return statement;
-
-
-
         }
+
+        String GenerateSelectText()
+        {
+            String statement = "SELECT * FROM {0}";
+            statement = String.Format(statement, typeof(T).Name);
+            return statement;
+        }
+        #endregion
     }
 }

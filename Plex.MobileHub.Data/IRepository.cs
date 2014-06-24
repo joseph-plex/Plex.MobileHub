@@ -11,7 +11,7 @@ namespace Plex.MobileHub.Data
         IList<String> PrimaryKeys { get; }
         
         void Insert(T Entry);
-        void Update(Predicate<T> predicate, T Entry);
+        void Update(T Entry);
         void Delete(Predicate<T> predicate);
         T Retrieve(Predicate<T> predicate);
         IEnumerable<T> RetrieveAll();
