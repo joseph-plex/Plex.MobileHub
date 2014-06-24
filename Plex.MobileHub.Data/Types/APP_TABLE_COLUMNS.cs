@@ -28,7 +28,7 @@ namespace Plex.MobileHub.Data.Types
 
         public APP_TABLE_COLUMNS(PlexQueryResultTuple plexTuple) : base(plexTuple) 
         {
-            PrimaryKeys.Add("TABLE_COLUMN_ID");
+            primaryKeys.Add("TABLE_COLUMN_ID");
         }
     }
 }

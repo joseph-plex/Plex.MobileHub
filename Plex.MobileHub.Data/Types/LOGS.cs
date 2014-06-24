@@ -14,7 +14,7 @@ namespace Plex.MobileHub.Data.Types
         public int? CLIENT_ID { get; set; }//	NUMBER(10)	Y		
 
         public LOGS() : base() {
-            PrimaryKeys.Add("LOG_ID");
+            primaryKeys.Add("LOG_ID");
         }
         public LOGS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }

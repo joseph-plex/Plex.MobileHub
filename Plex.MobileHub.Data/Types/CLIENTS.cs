@@ -16,7 +16,7 @@ namespace Plex.MobileHub.Data.Types
         public int? CLIENT_PORT { get; set; }
 
         public CLIENTS() : base() {
-            PrimaryKeys.Add("CLIENT_ID");
+            primaryKeys.Add("CLIENT_ID");
         }
         public CLIENTS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 

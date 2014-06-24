@@ -16,7 +16,7 @@ namespace Plex.MobileHub.Data.Types
 
 
         public APPS() : base() {
-            PrimaryKeys.Add("APP_ID");
+            primaryKeys.Add("APP_ID");
         }
         public APPS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }

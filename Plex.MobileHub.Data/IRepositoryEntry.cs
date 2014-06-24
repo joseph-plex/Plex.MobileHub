@@ -8,6 +8,6 @@ namespace Plex.MobileHub.Data
 {
     public interface IRepositoryEntry
     {
-        IList<String> PrimaryKeys { get; }
+        IList<String> GetPrimaryKeys();
     }
 }

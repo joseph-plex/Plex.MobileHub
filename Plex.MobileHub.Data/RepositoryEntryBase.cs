@@ -8,11 +8,12 @@ namespace Plex.MobileHub.Data
 {
     public class RepositoryEntryBase
     {
-        public virtual IList<String> PrimaryKeys { get; protected set; }
+
+        protected IList<String> primaryKeys;
 
         public RepositoryEntryBase() 
         {
-            PrimaryKeys = new List<String>();
+            primaryKeys = new List<String>();
         }
         public RepositoryEntryBase(PlexQueryResultTuple plexTuple) : this()
         {
@@ -31,6 +32,10 @@ namespace Plex.MobileHub.Data
                 var value = Convert.ChangeType(result[p.Name, index], conversationType) ;
                 p.SetValue(this, value);
             }
+        }
+        public IList<String> GetPrimaryKeys()
+        {
+            return primaryKeys;
         }
     }
 }

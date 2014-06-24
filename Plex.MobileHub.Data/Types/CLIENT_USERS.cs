@@ -14,7 +14,7 @@ namespace Plex.MobileHub.Data.Types
         public string PASSWORD { get; set; }//VARCHAR2(25)	Y	
 
         public CLIENT_USERS() : base() {
-            PrimaryKeys.Add("USER_ID");
+            primaryKeys.Add("USER_ID");
         }
         public CLIENT_USERS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 

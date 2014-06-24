@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Plex.MobileHub.Data;
+using System.Reflection;
 using Oracle.DataAccess.Client;
 
 namespace Plex.MobileHub.ServiceLibraries.Repositories
@@ -24,19 +25,19 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
         }
         public IList<String> Properties { get; protected set; }
 
-        String insertText;
-        String updateText;
-        String deleteText;
-        String selectText;
+        public String InsertText { get; protected set; }
+        public String UpdateText { get; protected set; }
+        public String DeleteText { get; protected set; }
+        public String SelectText { get; protected set; }
 
         List<String> primaryKeys;
 
 
         public OracleRepository()
         {
-            PrimaryKeys = new List<String>(new T().PrimaryKeys);
+            PrimaryKeys = new List<String>(new T().GetPrimaryKeys());
             Properties = new List<String>(GetEntryPropertyNames(typeof(T))).AsReadOnly();
-            insertText = GenerateInsertText();
+            InsertText = GenerateInsertText();
         }
 
         public void Insert(T Entry)
@@ -73,21 +74,24 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             foreach (var propInfo in type.GetProperties())
                 yield return propInfo.Name;
         }
-
+        
         String GenerateInsertText()
         {
-            String statement = "INSERT INTO {0} VALUES ({1})";
-            String placeHolders = Properties.First();
-            String columnNames = ":a" + 0;
+            String statement = "INSERT INTO {0}({1}) VALUES ({2})";
+            //Do first entry here becasse its unique input.
+            String columnNames = Properties.First();
+            String placeHolders = ":a" + 0;
 
-            for (int i = Properties.IndexOf(placeHolders); i < placeHolders.Length; i++)
+            //Start @ 1 since first entry is already done
+            for (int i = 1; i < Properties.Count; i++)
             {
-                placeHolders += ", " + Properties[i];
-                columnNames += ", :a" + i;
+                columnNames += ", " + Properties[i];
+                placeHolders += ", :a" + i;
             }
 
-            statement = String.Format(statement, columnNames, placeHolders);
+            statement = String.Format(statement, typeof(T).Name, columnNames, placeHolders);
             return statement;
         }
+
     }
 }

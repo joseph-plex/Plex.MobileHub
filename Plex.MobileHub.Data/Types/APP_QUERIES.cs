@@ -22,7 +22,7 @@ namespace Plex.MobileHub.Data.Types
         public APP_QUERIES()
             : base()
         {
-            PrimaryKeys.Add("QUERY_ID");
+            primaryKeys.Add("QUERY_ID");
         }
     }
 }

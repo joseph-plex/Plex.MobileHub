@@ -15,7 +15,7 @@ namespace Plex.MobileHub.Data.Types
         public DateTime SEQ_QUERY_TIME { get; set; }//DATE	Y	
 
         public QUERY_SEQUENCE_REQUESTS() : base() {
-            PrimaryKeys.Add("TQR_ID");
+            primaryKeys.Add("TQR_ID");
         }
         public QUERY_SEQUENCE_REQUESTS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }

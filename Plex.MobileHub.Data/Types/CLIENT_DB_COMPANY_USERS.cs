@@ -14,7 +14,7 @@ namespace Plex.MobileHub.Data.Types
         public string CONNECT_AS { get; set; }//	VARCHAR2(100)	Y		
         
         public CLIENT_DB_COMPANY_USERS() : base() {
-            PrimaryKeys.Add("DB_COMPANY_USER_ID");
+            primaryKeys.Add("DB_COMPANY_USER_ID");
         }
         public CLIENT_DB_COMPANY_USERS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
 

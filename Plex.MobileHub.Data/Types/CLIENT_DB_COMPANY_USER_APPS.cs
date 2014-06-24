@@ -14,7 +14,7 @@ namespace Plex.MobileHub.Data.Types
         public int? APP_USER_TYPE_ID { get; set; }//	NUMBER(10)	Y	
 
         public CLIENT_DB_COMPANY_USER_APPS() : base() {
-            PrimaryKeys.Add("DB_COMPANY_USER_APP_ID");
+            primaryKeys.Add("DB_COMPANY_USER_APP_ID");
         }
         public CLIENT_DB_COMPANY_USER_APPS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
     }

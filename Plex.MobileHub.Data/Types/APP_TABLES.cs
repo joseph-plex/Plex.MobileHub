@@ -18,7 +18,7 @@ namespace Plex.MobileHub.Data.Types
         public int QUERY_ALLOWED { get; set; }//	NUMBER(1)	Y
 	
         public APP_TABLES() : base () {
-            PrimaryKeys.Add("TABLE_ID");
+            primaryKeys.Add("TABLE_ID");
         }
         public APP_TABLES(PlexQueryResultTuple plexTuple) : base(plexTuple) {
             
