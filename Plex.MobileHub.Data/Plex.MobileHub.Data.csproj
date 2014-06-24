@@ -45,6 +45,7 @@
     <Compile Include="IPlexQueryResult.cs" />
     <Compile Include="IPlexQueryResultColumn.cs" />
     <Compile Include="IPlexQueryResultTuple.cs" />
+    <Compile Include="IPlexRandomizer.cs" />
     <Compile Include="PlexQueryResult.cs" />
     <Compile Include="PlexQueryResultColumn.cs" />
     <Compile Include="PlexQueryResultTuple.cs" />

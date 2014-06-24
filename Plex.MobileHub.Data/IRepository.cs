@@ -13,7 +13,10 @@ namespace Plex.MobileHub.Data
         void Insert(T Entry);
         void Update(T Entry);
         void Delete(Predicate<T> predicate);
+        bool Exists(Predicate<T> predicate);
         T Retrieve(Predicate<T> predicate);
+
         IEnumerable<T> RetrieveAll();
+
     }
 }

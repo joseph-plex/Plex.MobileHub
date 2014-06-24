@@ -21,6 +21,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
         const string Source = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.0.1.96)(PORT = 1521)))(CONNECT_DATA = (SERVICE_NAME = PLE1LIVE)))";
         const string ConnectionString = "User Id=" + User + ";" + "Password=" + Pass + ";" + "Data Source=" + Source + ";";
 
+
         /// <summary>
         /// Gets all property names from a type.
         /// </summary>
@@ -96,6 +97,12 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             using (var connection = GetConnection())
                 return Retrieve(connection, predicate);
         }
+        public bool Exists( Predicate<T> predicate)
+        {
+
+            using (var connection = GetConnection())
+                return Exists(connection, predicate);
+        }
 
         public IEnumerable<T> RetrieveAll()
         {
@@ -153,7 +160,10 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
         public T Retrieve(IDbConnection connection, Predicate<T> predicate)
         {
             return RetrieveAll(connection).First(new Func<T, bool>(predicate));
-
+        }
+        public bool Exists(IDbConnection connection, Predicate<T> predicate)
+        {
+            return RetrieveAll(connection).Any(new Func<T, bool>(predicate));
         }
   
         public IEnumerable<T> RetrieveAll(IDbConnection connection)
