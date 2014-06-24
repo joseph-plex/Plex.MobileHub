@@ -10,17 +10,20 @@ namespace Plex.MobileHub.ServiceLibraries.Test
     [TestClass]
     public class OracleRepositoryTest
     {
+
         [TestMethod]
         [ExpectedException(typeof(OracleException))]
+        [Description("We want to ensure that if the query is invalid NonQuery will throw exceptions for invalid queries")]
         public void OracleRepositoryFailTest()
         {
-            //We want to ensure that if the query is invalid NOnQuery will throw exceptions.
             OracleRepository<APPS> Repo = new OracleRepository<APPS>();
             using (var connection = Repo.GetConnection())
                 connection.NonQuery("EXPLAIN PLAN FOR (select * from chickenmonkey");
         }
 
         [TestMethod]
+        [Timeout(1000)]
+        [Description("Ensure that the generated SQL is valid and can be generated quickly.")]
         public void APPS_OracleRepoSqlTest()
         {
             OracleRepository<APPS> Repo = new OracleRepository<APPS>();
