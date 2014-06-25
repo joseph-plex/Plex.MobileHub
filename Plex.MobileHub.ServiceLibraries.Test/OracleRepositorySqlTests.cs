@@ -28,7 +28,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test
             OracleRepository<APP_QUERIES> Repo = new OracleRepository<APP_QUERIES>();
             using (var connection = Repo.GetConnection())
             {
-                // As long as the query syntax is valid these should not throw an exception.
+                //As long as the query syntax is valid these should not throw an exception.
                 connection.NonQuery("Explain Plan for " + Repo.InsertText);
                 connection.NonQuery("Explain Plan for " + Repo.UpdateText);
                 connection.NonQuery("Explain Plan for " + Repo.SelectText);

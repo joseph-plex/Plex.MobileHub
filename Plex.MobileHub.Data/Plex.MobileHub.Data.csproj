@@ -15,7 +15,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -45,7 +45,7 @@
     <Compile Include="IPlexQueryResult.cs" />
     <Compile Include="IPlexQueryResultColumn.cs" />
     <Compile Include="IPlexQueryResultTuple.cs" />
-    <Compile Include="IPlexRandomizer.cs" />
+    <Compile Include="PlexRandomizer.cs" />
     <Compile Include="PlexQueryResult.cs" />
     <Compile Include="PlexQueryResultColumn.cs" />
     <Compile Include="PlexQueryResultTuple.cs" />

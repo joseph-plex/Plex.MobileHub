@@ -145,7 +145,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
   
         public void Delete(IDbConnection connection, Predicate<T> predicate)
         {
-            var entryList = RetrieveAll().Where(new Func<T, bool>(predicate));
+            var entryList = RetrieveAll(connection).Where(new Func<T, bool>(predicate));
             Type type = typeof(T);
 
             foreach(var entry in entryList)
@@ -159,7 +159,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
 
         public T Retrieve(IDbConnection connection, Predicate<T> predicate)
         {
-            return RetrieveAll(connection).First(new Func<T, bool>(predicate));
+            return RetrieveAll(connection).FirstOrDefault(new Func<T, bool>(predicate));
         }
         public bool Exists(IDbConnection connection, Predicate<T> predicate)
         {

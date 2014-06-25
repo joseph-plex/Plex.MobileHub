@@ -9,16 +9,16 @@ using System.Reflection;
 
 namespace Plex.MobileHub.Data
 {
-    public class IPlexRandomizer : IDisposable
+    public class PlexRandomizer : IDisposable
     {
         
         RandomNumberGenerator rng;
 
-        public IPlexRandomizer()
+        public PlexRandomizer()
         {
             rng = new RNGCryptoServiceProvider();
         }
-        public IPlexRandomizer(RandomNumberGenerator NumberGenerator)
+        public PlexRandomizer(RandomNumberGenerator NumberGenerator)
         {
             rng = NumberGenerator;
         }
@@ -61,7 +61,7 @@ namespace Plex.MobileHub.Data
             return BitConverter.ToInt32(buffer, 0);
         }
 
-        public String GetString(int size = 10)
+        public String GetString(int size = 8)
         {
             Byte[] buffer = GetBytes(size);
             return Encoding.Default.GetString(buffer);
