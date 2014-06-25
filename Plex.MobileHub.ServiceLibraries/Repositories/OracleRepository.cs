@@ -14,7 +14,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
     /// This Class represnts the Pmh Oracle database
     /// </summary>
     /// <typeparam name="T">This Parameter represents a table in the database</typeparam>
-    public sealed class  OracleRepository<T> : IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
+    public  class  OracleRepository<T> : IDisposable, IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
     {
         const string User = "C##PMH";
         const string Pass = "!!!plex!!!sa";
@@ -31,6 +31,10 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             foreach (var propInfo in type.GetProperties())
                 yield return propInfo.Name;
         }
+
+        public event RepoEventHandler InsertEvent;
+        public event RepoEventHandler UpdateEvent;
+        public event RepoEventHandler DeleteEvent;
 
         #region Properties
         public IList<String> PrimaryKeys
@@ -53,8 +57,9 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
         #endregion
 
         #region Fields
+        IDbConnection connection;
+        IDbTransaction transaction;
         List<String> primaryKeys;
-        bool commit;
         #endregion
 
         #region Constructors
@@ -66,57 +71,74 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             UpdateText = GenerateUpdateText();
             SelectText = GenerateSelectText();
             DeleteText = GenerateDeleteText();
+            connection = GetConnection();
         }
 
-        public OracleRepository(bool commitCommands) : this()
-        {
-            commit = commitCommands;
-        }
 
         #endregion
 
         #region Interface Implementations
         public void Insert(T Entry)
         {
-            using (var connection = GetConnection())
-                Insert(connection, Entry);
+            Insert(connection, Entry);
         }
         public void Update(T Entry)
         {
-            using (var connection = GetConnection())
-                Update(connection, Entry);
+            Update(connection, Entry);
         }
         public void Delete(Predicate<T> predicate)
         {
-            using (var connection = GetConnection())
-                Delete(connection, predicate);
+            Delete(connection, predicate);
         }
 
         public T Retrieve(Predicate<T> predicate)
         {
-            using (var connection = GetConnection())
-                return Retrieve(connection, predicate);
+            return Retrieve(connection, predicate);
         }
         public bool Exists( Predicate<T> predicate)
         {
 
-            using (var connection = GetConnection())
-                return Exists(connection, predicate);
+            return Exists(connection, predicate);
         }
 
         public IEnumerable<T> RetrieveAll()
         {
-            using (var connection = GetConnection())
-                return RetrieveAll(connection);
+            return RetrieveAll(connection);
+        }
+
+        public void Dispose()
+        {
+            if (transaction != null)
+                transaction.Dispose();
+            connection.Dispose();
         }
         #endregion
 
         #region Public Methods
+
+        public void StartTransaction()
+        {
+            if (transaction != null)
+                throw new InvalidOperationException("Transaction is already set. Please Rollback or commit transaction");
+            transaction = connection.BeginTransaction();
+        }
+        public void CommitTransaction()
+        {
+            transaction.Commit();
+            transaction.Dispose();
+            transaction = null;
+        }
+        public void RollbackTransaction()
+        {
+
+            transaction.Rollback();
+            transaction.Dispose();
+            transaction = null;
+        }
+
         public IDbConnection GetConnection()
         {
             IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
-            if (!commit)
-                connection.BeginTransaction();
             return connection;
         }
 

@@ -8,6 +8,9 @@ namespace Plex.MobileHub.Data
 {
     public interface IRepository<T> where T : IRepositoryEntry, new()
     {
+        event RepoEventHandler InsertEvent;
+        event RepoEventHandler UpdateEvent;
+        event RepoEventHandler DeleteEvent;
         IList<String> PrimaryKeys { get; }
         
         void Insert(T Entry);

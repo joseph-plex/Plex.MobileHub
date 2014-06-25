@@ -49,6 +49,7 @@
     <Compile Include="PlexQueryResult.cs" />
     <Compile Include="PlexQueryResultColumn.cs" />
     <Compile Include="PlexQueryResultTuple.cs" />
+    <Compile Include="RepositoryOperationEventArgs.cs" />
     <Compile Include="Types\DEVICES.cs" />
     <Compile Include="Types\LOGS.cs" />
     <Compile Include="Types\APP_QUERY_CONDITIONS.cs" />
