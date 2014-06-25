@@ -14,8 +14,8 @@ namespace Plex.MobileHub.Data
         Object this[String ColumnName, Int32 RowIndex]{ get; }
         IEnumerable<Object> this[Int32 ColumnIndex] { get; }
         IEnumerable<Object> this[String ColumnName] { get; }
-        IList<C> Columns { get; set; }
-        IList<T> Tuples { get; set; }
+        List<C> Columns { get; set; }
+        List<T> Tuples { get; set; }
         
     }
 }

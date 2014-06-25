@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 namespace Plex.MobileHub.Data
 {
+    
     public class PlexQueryResult : IPlexQueryResult<PlexQueryResultColumn, PlexQueryResultTuple>
     {
         public Object this[Int32 ColumnIndex, Int32 RowIndex]
@@ -38,9 +42,8 @@ namespace Plex.MobileHub.Data
                 return this[GetColumnIndex(ColumnName)];
             }
         }
-     
-        public virtual IList<PlexQueryResultColumn> Columns { get; set; }
-        public virtual IList<PlexQueryResultTuple> Tuples { get; set; }
+        public virtual List<PlexQueryResultColumn> Columns { get; set; }
+        public virtual List<PlexQueryResultTuple> Tuples { get; set; }
 
         #region Constructors
         public PlexQueryResult()
@@ -48,15 +51,15 @@ namespace Plex.MobileHub.Data
             Columns = new List<PlexQueryResultColumn>();
             Tuples = new List<PlexQueryResultTuple>();
         }
-        public PlexQueryResult(IDataReader reader) : this()
+        public PlexQueryResult(IDataReader r) : this()
         {
-            var schemaTable = reader.GetSchemaTable();
+            var schemaTable = r.GetSchemaTable();
             foreach (var column in GetColumnData(schemaTable))
                 Columns.Add(column);
 
-            for (var Curr = new PlexQueryResultTuple() { parent = this }; reader.Read(); Tuples.Add(Curr), Curr = new PlexQueryResultTuple() { parent = this })
+            for (var Curr = new PlexQueryResultTuple() { parent = this }; r.Read(); Tuples.Add(Curr), Curr = new PlexQueryResultTuple() { parent = this })
                 for (int i = 0; i < Columns.Count; i++)
-                    Curr.Values.Add((reader[Columns[i].ColumnName] != DBNull.Value) ? reader[Columns[i].ColumnName] : null);
+                    Curr.Values.Add((r[Columns[i].ColumnName] != DBNull.Value) ? r[Columns[i].ColumnName] : null);
         }
         #endregion
 

@@ -43,6 +43,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,10 +59,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ApiService\ConnectionConnectTests.cs" />
     <Compile Include="InMemoryRepository.cs" />
-    <Compile Include="OracleRepositoryCrudTests.cs" />
-    <Compile Include="OracleRepositorySqlTests.cs" />
+    <Compile Include="General\OracleRepositoryCrudTests.cs" />
+    <Compile Include="General\OracleRepositorySqlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
@@ -72,6 +76,7 @@
       <Name>Plex.MobileHub.ServiceLibraries</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

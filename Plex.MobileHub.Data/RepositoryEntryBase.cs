@@ -22,12 +22,11 @@ namespace Plex.MobileHub.Data
             foreach (var p in pInfo)
             {
                 int index = result.Tuples.IndexOf(plexTuple);
+
                 if (result[p.Name, index] == null)
                     continue;
-
+               
                 var conversationType = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
-                //Make a special case for which if the conversation type is null and the value is null,
-                //I should circumvent the possibilty of casting from a larger range of numbers to a smaller nullable range of numbers
                 object value = Convert.ChangeType(result[p.Name, index], (result[p.Name, index] != null)?conversationType: p.PropertyType);
                 p.SetValue(reb, value);
             }

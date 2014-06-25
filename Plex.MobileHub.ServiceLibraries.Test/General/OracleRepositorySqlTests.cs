@@ -4,7 +4,8 @@ using Plex.MobileHub.ServiceLibraries.Repositories;
 using Plex.MobileHub.Data;
 using Plex.MobileHub.Data.Types;
 using Oracle.DataAccess.Client;
-namespace Plex.MobileHub.ServiceLibraries.Test
+
+namespace Plex.MobileHub.ServiceLibraries.Test.General
 {
     [TestClass]
     public class OracleRepositorySqlTests

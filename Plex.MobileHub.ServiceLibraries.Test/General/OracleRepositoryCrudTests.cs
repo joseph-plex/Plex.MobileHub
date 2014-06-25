@@ -4,7 +4,7 @@ using Plex.MobileHub.ServiceLibraries.Repositories;
 using Plex.MobileHub.Data;
 using Plex.MobileHub.Data.Types;
 
-namespace Plex.MobileHub.ServiceLibraries.Test
+namespace Plex.MobileHub.ServiceLibraries.Test.General
 {
     [TestClass]
     public class OracleRepositoryCrudTests
