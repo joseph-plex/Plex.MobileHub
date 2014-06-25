@@ -73,8 +73,6 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             DeleteText = GenerateDeleteText();
             connection = GetConnection();
         }
-
-
         #endregion
 
         #region Interface Implementations

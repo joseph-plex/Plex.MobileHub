@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="InMemoryRepository.cs" />
     <Compile Include="OracleRepositoryCrudTests.cs" />
     <Compile Include="OracleRepositorySqlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

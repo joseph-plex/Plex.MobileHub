@@ -9,6 +9,6 @@ namespace Plex.MobileHub.Data
     public delegate void RepoEventHandler(object sender, RepositoryOperationEventArgs e);
     public class RepositoryOperationEventArgs : EventArgs
     {
-        public Object Entry { get; set; }
+        public IRepositoryEntry Entry { get; set; }
     }
 }
