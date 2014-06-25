@@ -26,7 +26,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
             var db = clientDbCompaniesRepository.Retrieve(p => p.CLIENT_ID == clientId && p.COMPANY_CODE == database);
             var consumer = clientUsersRepository.Retrieve(p => p.CLIENT_ID == clientId && p.NAME == user && p.PASSWORD == password);
 
-
             if (AnyNull(client, app, db, consumer))
                 throw new Exception("Invalid Authentication, one or more of the values does incorrect");
 

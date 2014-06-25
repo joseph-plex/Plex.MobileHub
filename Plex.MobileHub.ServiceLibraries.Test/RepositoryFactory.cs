@@ -7,7 +7,7 @@ using Plex.MobileHub.Data.Types;
 
 namespace Plex.MobileHub.ServiceLibraries.Test
 {
-    public class RepositoryFactory
+    public class RepoFactory
     {
         public InMemoryRepository<APP_QUERIES> APP_QUERIES() 
         {
@@ -37,7 +37,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test
             InMemoryRepository<APP_USER_TYPES> repo = new InMemoryRepository<APP_USER_TYPES>();
             return repo;
         }
-        public InMemoryRepository<APPS> APP_QUERIES()
+        public InMemoryRepository<APPS> APPS()
         {
             InMemoryRepository<APPS> repo = new InMemoryRepository<APPS>();
             APPS v = new APPS();

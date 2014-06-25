@@ -13,7 +13,7 @@ namespace Plex.MobileHub.ServiceLibraries
             foreach (var o in arguments)
                 if (o == null)
                     return true;
-            return true;
+            return false;
         }
 
         public virtual T Strategy(params object[] parameters)
