@@ -7,9 +7,9 @@ namespace Plex.MobileHub.ServiceLibraries.Test
 {
     public class InMemoryRepository<T> : IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
     {
-        public event RepoEventHandler InsertEvent;
-        public event RepoEventHandler UpdateEvent;
-        public event RepoEventHandler DeleteEvent;
+        public event EventHandler<RepositoryOperationEventArgs> InsertEvent;
+        public event EventHandler<RepositoryOperationEventArgs> UpdateEvent;
+        public event EventHandler<RepositoryOperationEventArgs> DeleteEvent;
 
         public IList<String> PrimaryKeys { get; protected set; }
         List<T> data;

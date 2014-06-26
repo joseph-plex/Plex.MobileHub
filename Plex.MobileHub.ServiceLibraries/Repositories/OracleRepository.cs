@@ -32,9 +32,9 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
                 yield return propInfo.Name;
         }
 
-        public event RepoEventHandler InsertEvent;
-        public event RepoEventHandler UpdateEvent;
-        public event RepoEventHandler DeleteEvent;
+        public event EventHandler<RepositoryOperationEventArgs> InsertEvent;
+        public event EventHandler<RepositoryOperationEventArgs> UpdateEvent;
+        public event EventHandler<RepositoryOperationEventArgs> DeleteEvent;
 
         #region Properties
         public IList<String> PrimaryKeys
