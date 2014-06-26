@@ -21,38 +21,45 @@ namespace Plex.MobileHub.ServiceConsumer
             serviceFactory = new ChannelFactory<IApiService>(httpBinding, address);
         }
 
-        public void ConnectionConnect() 
+        public void ConnectionConnect(int clientid, int appid, string database, string user, string password) 
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionConnect();
+            channel.ConnectionConnect(clientid, appid, database, user, password);
         }
-        public void ConnectionRelease() {
+        public void ConnectionRelease(int connectionId)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionRelease();
+            channel.ConnectionRelease(connectionId);
         }
-        public void ConnectionStatus() {
+        public void ConnectionStatus(int connectionId)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionStatus();
+            channel.ConnectionStatus(connectionId);
         }
-        public void DeviceRequestId() {
+        public void DeviceRequestId(int connectionId)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.DeviceRequestId();
+            channel.DeviceRequestId(connectionId);
         }
-        public void IUD() {
+        public void IUD(int connection, object IUDData)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.IUD();
+            channel.IUD(connection, IUDData);
         }
-        public void QryExecute() {
+        public void QryExecute(int connectionId, string QueryName)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.QryExecute();
+            channel.QryExecute(connectionId, QueryName);
         }
-        public void QueryDatabase() {
+        public void QueryDatabase(int connectionId, string Query)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.QueryDatabase();
+            channel.QueryDatabase(connectionId, Query);
         }
-        public void DeviceSynchronization() {
+        public void DeviceSynchronize(int connectionId, int versionId)
+        {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.DeviceSynchronization();
+            channel.DeviceSynchronize(connectionId, versionId);
         }
         public void Dispose()
         {

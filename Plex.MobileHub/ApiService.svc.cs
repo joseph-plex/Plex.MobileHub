@@ -12,35 +12,35 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Api : IApiService
     {
-        public void ConnectionConnect()
+        public void ConnectionConnect(int clientId, int appId, string database, string user, string password)
         {
             throw new NotImplementedException();
         }
-        public void ConnectionRelease()
+        public void ConnectionRelease(int connectionId)
         {
             throw new NotImplementedException();
         }
-        public void ConnectionStatus()
+        public void ConnectionStatus(int connectionId)
         {
             throw new NotImplementedException();
         }
-        public void DeviceRequestId()
+        public void QryExecute(int connectionId, string QueryName)
         {
             throw new NotImplementedException();
         }
-        public void DeviceSynchronization()
+        public void QueryDatabase(int connectionId, string Query)
         {
             throw new NotImplementedException();
         }
-        public void IUD()
+        public void DeviceRequestId(int connectionId)
         {
             throw new NotImplementedException();
         }
-        public void QryExecute()
+        public void DeviceSynchronize(int connectionId, int versionId)
         {
             throw new NotImplementedException();
         }
-        public void QueryDatabase()
+        public void IUD(int connection, object IUDData)
         {
             throw new NotImplementedException();
         }

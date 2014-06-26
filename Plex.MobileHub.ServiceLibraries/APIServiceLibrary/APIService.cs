@@ -11,20 +11,29 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
     public interface IApiService
     {
         [OperationContract]
-        void ConnectionConnect();
+        void ConnectionConnect(int clientId, int appId, string database, string user, string password);
+
         [OperationContract]
-        void ConnectionRelease();
+        void ConnectionRelease(int connectionId);
+        
         [OperationContract]
-        void ConnectionStatus();
+        void ConnectionStatus(int connectionId);
+
         [OperationContract]
-        void DeviceRequestId();
+        void QryExecute(int connectionId, string QueryName);
+
         [OperationContract]
-        void DeviceSynchronization();
+        void QueryDatabase(int connectionId, string Query);
+        
         [OperationContract]
-        void IUD();
+        void DeviceRequestId(int connectionId);
+        
         [OperationContract]
-        void QryExecute();
+        void DeviceSynchronize(int connectionId, int versionId);
+        
         [OperationContract]
-        void QueryDatabase();
+        void IUD(int connection, object IUDData);
+        
+
     }
 }
