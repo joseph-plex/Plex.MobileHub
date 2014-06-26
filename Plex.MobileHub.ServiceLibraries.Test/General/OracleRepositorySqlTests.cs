@@ -36,6 +36,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.General
                 connection.NonQuery("Explain Plan for " + Repo.DeleteText);
             }
         }
+
         [TestMethod]
         [Timeout(1000)]
         [Description("Ensure that the generated SQL is valid and can be generated quickly.")]

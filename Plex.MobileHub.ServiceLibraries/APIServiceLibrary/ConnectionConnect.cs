@@ -27,16 +27,15 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
             var consumer = clientUsersRepository.Retrieve(p => p.CLIENT_ID == clientId && p.NAME == user && p.PASSWORD == password);
 
             if (AnyNull(client, app, db, consumer))
-                throw new Exception("Invalid Authentication, one or more of the values does incorrect");
+                throw new Exception("Invalid Authentication, one or more of the values is incorrect");
 
             if (clientAppsRepository.Retrieve(p => p.APP_ID == appId && p.CLIENT_ID == clientId) == null)
                 throw new Exception("Client is not authorized to use application");
 
-            //This  can happen by mistake but is generally an indication of someone hacking the system
+            //This can happen by mistake but is generally an indication of someone abusing the system
             var permission = clientDbCompanyUsersRepository.Retrieve(p => p.DB_COMPANY_ID == db.DB_COMPANY_ID && consumer.USER_ID == p.USER_ID);
             if (permission == null)
-                throw new Exception("User does not belong to the specified client");
-
+                throw new Exception("User Is not authorized to view this database");
 
             if (clientDbCompanyUserAppsRepository.Retrieve(p=> p.APP_ID == appId && permission.DB_COMPANY_USER_ID == p.DB_COMPANY_USER_ID) == null)
                 throw new Exception("User Database pairing is not authorized to use the application");

@@ -49,8 +49,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test
 
         public T Retrieve(Predicate<T> predicate)
         {
-            int index = data.FindIndex(predicate);
-            return (index != -1)? data[index] : null;
+            return data.FirstOrDefault(new Func<T, bool>(predicate));
         }
 
         public IEnumerable<T> RetrieveAll()

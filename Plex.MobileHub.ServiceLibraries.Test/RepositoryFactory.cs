@@ -48,6 +48,16 @@ namespace Plex.MobileHub.ServiceLibraries.Test
             v.TITLE = "APP1";
 
             repo.Insert(v);
+
+            v = new APPS();
+            v.APP_ID = 2;
+            v.AUTH_KEY = "App2";
+            v.DESCRIPTION = "desc";
+            v.IS_CLIENT_CUSTOM_APP = 1;
+            v.TITLE = "APP2";
+
+            repo.Insert(v);
+
             return repo;
         }
 
@@ -55,9 +65,18 @@ namespace Plex.MobileHub.ServiceLibraries.Test
         {
             InMemoryRepository<CLIENT_APPS> repo = new InMemoryRepository<CLIENT_APPS>();
             CLIENT_APPS v = new CLIENT_APPS();
+
             v.APP_ID = v.CLIENT_ID = v.CLIENT_APP_ID = 1;
+            repo.Insert(v);
+           
+            v = new CLIENT_APPS();
+
+            v.APP_ID = 2;
+            v.CLIENT_ID = 1;
+            v.CLIENT_APP_ID = 2;
 
             repo.Insert(v);
+            
             return repo;
         }
         public InMemoryRepository<CLIENT_DB_COMPANIES> CLIENT_DB_COMPANIES()
@@ -106,6 +125,24 @@ namespace Plex.MobileHub.ServiceLibraries.Test
             v.USER_ID = 1;
 
             repo.Insert(v);
+            
+            v = new CLIENT_USERS();
+            v.CLIENT_ID = 2;
+            v.NAME = "Marci";
+            v.PASSWORD = "Morain";
+            v.USER_ID = 2;
+            
+            repo.Insert(v);
+
+            v = new CLIENT_USERS();
+            v.CLIENT_ID = 1;
+            v.NAME = "Nash";
+            v.PASSWORD = "Bacon";
+            v.USER_ID = 3;
+
+            repo.Insert(v);
+
+            
             return repo;
         }
         public InMemoryRepository<CLIENTS> CLIENTS()
@@ -117,6 +154,13 @@ namespace Plex.MobileHub.ServiceLibraries.Test
             v.DESCRIPTION = "This is a client";
 
             repo.Insert(v);
+            v = new CLIENTS();
+
+            v.CLIENT_ID = 2;
+            v.CLIENT_KEY = "Client2";
+            v.DESCRIPTION = "This is the second client.";
+            repo.Insert(v);
+
             return repo;
         }
         public InMemoryRepository<DEV_DATA> DEV_DATA()
