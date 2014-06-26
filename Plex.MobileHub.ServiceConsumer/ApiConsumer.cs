@@ -8,6 +8,8 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
+using Plex.MobileHub.ServiceLibraries;
+using Plex.MobileHub.Data;
 namespace Plex.MobileHub.ServiceConsumer
 {
     public class ApiConsumer : IApiService, IDisposable
@@ -21,40 +23,40 @@ namespace Plex.MobileHub.ServiceConsumer
             serviceFactory = new ChannelFactory<IApiService>(httpBinding, address);
         }
 
-        public void ConnectionConnect(int clientid, int appid, string database, string user, string password) 
+        public MethodResult ConnectionConnect(int clientid, int appid, string database, string user, string password) 
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionConnect(clientid, appid, database, user, password);
+            return channel.ConnectionConnect(clientid, appid, database, user, password);
         }
-        public void ConnectionRelease(int connectionId)
+        public MethodResult ConnectionRelease(int connectionId)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionRelease(connectionId);
+            return channel.ConnectionRelease(connectionId);
         }
-        public void ConnectionStatus(int connectionId)
+        public MethodResult ConnectionStatus(int connectionId)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.ConnectionStatus(connectionId);
+            return channel.ConnectionStatus(connectionId);
         }
-        public void DeviceRequestId(int connectionId)
+        public MethodResult DeviceRequestId(int connectionId)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.DeviceRequestId(connectionId);
+            return channel.DeviceRequestId(connectionId);
         }
-        public void IUD(int connection, object IUDData)
+        public MethodResult IUD(int connection, object IUDData)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.IUD(connection, IUDData);
+            return channel.IUD(connection, IUDData);
         }
         public void QryExecute(int connectionId, string QueryName)
         {
             IApiService channel = serviceFactory.CreateChannel();
             channel.QryExecute(connectionId, QueryName);
         }
-        public void QueryDatabase(int connectionId, string Query)
+        public PlexQueryResult QueryDatabase(int connectionId, string Query)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.QueryDatabase(connectionId, Query);
+            return channel.QueryDatabase(connectionId, Query);
         }
         public void DeviceSynchronize(int connectionId, int versionId)
         {
@@ -63,7 +65,7 @@ namespace Plex.MobileHub.ServiceConsumer
         }
         public void Dispose()
         {
-            ((IDisposable)serviceFactory).Dispose();
+            serviceFactory.Close();
         }
     }
 }

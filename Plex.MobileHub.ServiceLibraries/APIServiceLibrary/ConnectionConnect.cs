@@ -7,6 +7,7 @@ using Plex.MobileHub.Data;
 using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
+
     public class ConnectionConnect : MethodStrategyBase<bool> 
     {
         public IRepository<CLIENT_DB_COMPANY_USER_APPS> clientDbCompanyUserAppsRepository { get; set; }

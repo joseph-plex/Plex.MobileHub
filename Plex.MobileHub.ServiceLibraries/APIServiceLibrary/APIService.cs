@@ -4,35 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
-
+using Plex.MobileHub.Data;
 namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     [ServiceContract]
     public interface IApiService
     {
         [OperationContract]
-        void ConnectionConnect(int clientId, int appId, string database, string user, string password);
+        MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password);
 
         [OperationContract]
-        void ConnectionRelease(int connectionId);
+        MethodResult ConnectionRelease(int connectionId);
         
         [OperationContract]
-        void ConnectionStatus(int connectionId);
+        MethodResult ConnectionStatus(int connectionId);
 
         [OperationContract]
         void QryExecute(int connectionId, string QueryName);
 
         [OperationContract]
-        void QueryDatabase(int connectionId, string Query);
+        PlexQueryResult QueryDatabase(int connectionId, string Query);
         
         [OperationContract]
-        void DeviceRequestId(int connectionId);
+        MethodResult DeviceRequestId(int connectionId);
         
         [OperationContract]
         void DeviceSynchronize(int connectionId, int versionId);
         
         [OperationContract]
-        void IUD(int connection, object IUDData);
+        MethodResult IUD(int connection, object IUDData);
         
 
     }

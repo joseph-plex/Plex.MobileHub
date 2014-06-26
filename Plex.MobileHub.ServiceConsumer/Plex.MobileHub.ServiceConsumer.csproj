@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
+      <Project>{108936c8-cb1e-4380-a465-e081cab924ef}</Project>
+      <Name>Plex.MobileHub.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibraries\Plex.MobileHub.ServiceLibraries.csproj">
       <Project>{79cee8aa-6fd6-4b7f-9c48-6c16dcc4df0e}</Project>
       <Name>Plex.MobileHub.ServiceLibraries</Name>

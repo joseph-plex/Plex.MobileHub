@@ -6,21 +6,23 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
+using Plex.MobileHub.ServiceLibraries;
+using Plex.MobileHub.Data;
 namespace Plex.MobileHub
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Api : IApiService
     {
-        public void ConnectionConnect(int clientId, int appId, string database, string user, string password)
+        public MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
         {
             throw new NotImplementedException();
         }
-        public void ConnectionRelease(int connectionId)
+        public MethodResult ConnectionRelease(int connectionId)
         {
             throw new NotImplementedException();
         }
-        public void ConnectionStatus(int connectionId)
+        public MethodResult ConnectionStatus(int connectionId)
         {
             throw new NotImplementedException();
         }
@@ -28,11 +30,11 @@ namespace Plex.MobileHub
         {
             throw new NotImplementedException();
         }
-        public void QueryDatabase(int connectionId, string Query)
+        public PlexQueryResult QueryDatabase(int connectionId, string Query)
         {
             throw new NotImplementedException();
         }
-        public void DeviceRequestId(int connectionId)
+        public MethodResult DeviceRequestId(int connectionId)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +42,7 @@ namespace Plex.MobileHub
         {
             throw new NotImplementedException();
         }
-        public void IUD(int connection, object IUDData)
+        public MethodResult IUD(int connection, object IUDData)
         {
             throw new NotImplementedException();
         }

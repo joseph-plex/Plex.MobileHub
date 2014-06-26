@@ -14,7 +14,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
     /// This Class represnts the Pmh Oracle database
     /// </summary>
     /// <typeparam name="T">This Parameter represents a table in the database</typeparam>
-    public  class  OracleRepository<T> : IDisposable, IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
+    public  class OracleRepository<T> : IDisposable, IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
     {
         const string User = "C##PMH";
         const string Pass = "!!!plex!!!sa";
@@ -225,6 +225,7 @@ namespace Plex.MobileHub.ServiceLibraries.Repositories
             String bph = ":a"; 
             String cvpTemplate = "{0} = {1}";
             String statement = "UPDATE {0} SET {1} WHERE {2}";
+
             //Can only set Cols that are not a primary Keys, Get those Columns
             var Settables = Properties.Where(p => !PrimaryKeys.Any(k => k == p)).ToList();
 
