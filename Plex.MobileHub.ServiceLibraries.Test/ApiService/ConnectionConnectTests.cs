@@ -1,6 +1,6 @@
 ﻿using System;
 using Plex.MobileHub.Data.Types;
-using Plex.MobileHub.ServiceLibraries.Repositories;
+using Plex.MobileHub.ServiceLibraries;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

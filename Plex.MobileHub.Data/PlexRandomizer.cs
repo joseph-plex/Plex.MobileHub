@@ -80,7 +80,7 @@ namespace Plex.MobileHub.Data
             int range = (maxValue - minValue).Days;
             range = Math.Abs(GetInt32()) % range;
             return minValue.AddDays(range);
-        } 
+        }   
 
         public Byte[] GetBytes(int size)
         {
@@ -92,8 +92,8 @@ namespace Plex.MobileHub.Data
         static object GetType(String Object)
         {
             return null;
-
         }
+
         public void Dispose()
         {
             rng.Dispose();

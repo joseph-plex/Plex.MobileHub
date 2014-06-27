@@ -3,7 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Plex.MobileHub.Data.Types;
 using Plex.MobileHub.Data;
-namespace Plex.MobileHub.ServiceLibraries.Test 
+
+namespace Plex.MobileHub.ServiceLibraries 
 {
     public class InMemoryRepository<T> : IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
     {

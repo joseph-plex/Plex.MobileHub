@@ -8,7 +8,7 @@ using System.Reflection;
 using Oracle.DataAccess.Client;
 using System.Data;
 
-namespace Plex.MobileHub.ServiceLibraries.Repositories
+namespace Plex.MobileHub.ServiceLibraries
 {
     /// <summary>
     /// This Class represnts the Pmh Oracle database
