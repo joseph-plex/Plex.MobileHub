@@ -70,7 +70,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.General
         }
 
         [TestMethod]
-        [Timeout(1000)]
+        //[Timeout(1000)]
         [Description("Ensure that the generated SQL is valid and can be generated quickly.")]
         public void APP_TABLE_COLUMNS_OracleRepoSqlTest()
         {

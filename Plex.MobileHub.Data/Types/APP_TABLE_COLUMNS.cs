@@ -24,11 +24,13 @@ namespace Plex.MobileHub.Data.Types
         public int? IS_UNIQUE { get; set; }//	NUMBER(1)	Y			
         public string DESCRIPTION { get; set; }//VARCHAR2(4000)	Y		
 
-        public APP_TABLE_COLUMNS() : base() { }
+        public APP_TABLE_COLUMNS() : base() 
+        {
+            primaryKeys.Add("TABLE_COLUMN_ID");
+        }
 
         public APP_TABLE_COLUMNS(PlexQueryResultTuple plexTuple) : base(plexTuple) 
         {
-            primaryKeys.Add("TABLE_COLUMN_ID");
         }
     }
 }

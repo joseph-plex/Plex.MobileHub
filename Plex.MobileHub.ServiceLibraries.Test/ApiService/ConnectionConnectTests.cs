@@ -36,7 +36,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("The Client Id specified does not exist")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestClientFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -50,12 +50,13 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            cc.Strategy(0, ValidAppId, ValidDb, ValidUser, ValidPassword);
+            Assert.IsTrue(cc.Strategy(0, ValidAppId, ValidDb, ValidUser, ValidPassword).Response< 0);
+
         }
 
         [TestMethod]
         [Description("he Applciation Id does not exist")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestAppFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -69,12 +70,14 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, 0, ValidDb, ValidUser, ValidPassword));
+            Assert.IsTrue(cc.Strategy(ValidClientId, 0, ValidDb, ValidUser, ValidPassword).Response < 0);
+
+            //Assert.AreEqual(true, cc.Strategy(ValidClientId, 0, ValidDb, ValidUser, ValidPassword));
         }
 
         [TestMethod]
         [Description("The Database Code does not exist.")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestDbFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -88,12 +91,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, ValidAppId, String.Empty, ValidUser, ValidPassword));
+            Assert.IsTrue(cc.Strategy(ValidClientId, ValidAppId, String.Empty, ValidUser, ValidPassword).Response < 0);
         }
 
         [TestMethod]
         [Description("Username does not exist")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -107,12 +110,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, ValidAppId, ValidDb, String.Empty, ValidPassword));
+            Assert.IsTrue(cc.Strategy(ValidClientId, ValidAppId, ValidDb, String.Empty, ValidPassword).Response < 0);
         }
 
         [TestMethod]
         [Description("Username does exist but password is incorrect")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestPasswordFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -126,12 +129,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, ValidAppId, ValidDb, ValidUser, String.Empty));
+            Assert.AreEqual(true,cc.Strategy(ValidClientId, ValidAppId, ValidDb, ValidUser, String.Empty).Response < 0);
         }
 
         [TestMethod]
         [Description("The database is not associated with the client")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestDbClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -145,12 +148,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(2, ValidAppId, ValidDb, ValidUser, ValidPassword));
+            Assert.AreEqual(true, cc.Strategy(2, ValidAppId, ValidDb, ValidUser, ValidPassword).Response < 0);
         }
 
         [TestMethod]
         [Description("The client is not associated with the app")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestAppClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -164,12 +167,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, 2, ValidDb, ValidUser, ValidPassword));
+            Assert.AreEqual(true, cc.Strategy(ValidClientId, 2, ValidDb, ValidUser, ValidPassword).Response < 0);
         }
 
         [TestMethod]
         [Description("User is not associated with the client")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -183,12 +186,12 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, 1, ValidDb, "Marci" ,ValidPassword));
+            Assert.AreEqual(true, cc.Strategy(ValidClientId, 1, ValidDb, "Marci" ,ValidPassword).Response < 0);
         }
 
         [TestMethod]
         [Description("User is not associated with a database associated with the client.")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserDbRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -202,13 +205,13 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, 1, ValidDb, "Nash", "Bacon"));
+            Assert.AreEqual(true, cc.Strategy(ValidClientId, 1, ValidDb, "Nash", "Bacon").Response < 0);
         }
 
 
         [TestMethod]
         [Description("User database permission pairing does not associated with the application")]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserDbPermssionAppRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -222,7 +225,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(ValidClientId, 2, ValidDb, "Joseph" , "Morain"));
+            Assert.AreEqual(true, cc.Strategy(ValidClientId, 2, ValidDb, "Joseph" , "Morain").Response <0 );
         }
     }
 }
