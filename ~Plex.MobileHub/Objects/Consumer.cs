@@ -31,6 +31,5 @@ namespace Plex.MobileHub.Objects
         {
             return Connections.Instance.Retrieve(ClientId);
         }
-
     }
 }

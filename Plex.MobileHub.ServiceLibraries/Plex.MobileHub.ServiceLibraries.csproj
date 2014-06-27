@@ -68,6 +68,7 @@
     <Compile Include="APIServiceLibrary\APIService.cs" />
     <Compile Include="APIServiceLibrary\ConnectionConnect.cs" />
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
+    <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
     <Compile Include="IMessageCallback.cs" />
     <Compile Include="IMethodStrategy.cs" />

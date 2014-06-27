@@ -60,6 +60,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ApiService\ConnectionConnectTests.cs" />
+    <Compile Include="General\InMemoryRepostoryCrudTests.cs" />
     <Compile Include="General\OracleRepositoryCrudTests.cs" />
     <Compile Include="General\OracleRepositorySqlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
