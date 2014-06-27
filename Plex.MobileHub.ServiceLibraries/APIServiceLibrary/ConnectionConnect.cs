@@ -58,9 +58,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 
             ConsumerRepository.Insert(consumer);
             return new MethodResult().Success(consumer.ConsumerId);
-            
-            //Indicates success.
-            //return true;
         }
 
         Int32 GetConsumerId()
