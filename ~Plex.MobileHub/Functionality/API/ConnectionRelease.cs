@@ -19,9 +19,8 @@ namespace Plex.MobileHub.Functionality.API
             }
             catch(Exception e)
             {
-                mr.Failure(e);
+                return new mr.Failure(e);
             }
-            return mr;
         }
     }
 }
