@@ -6,8 +6,9 @@ using Plex.MobileHub.Data;
 
 namespace Plex.MobileHub.ServiceLibraries 
 {
-    public class InMemoryRepository<T> : IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
+    public class InMemoryRepository<T> : IRepository<T> where T :  IRepositoryEntry, new()
     {
+        //RepositoryEntryBase,
         public event EventHandler<RepositoryOperationEventArgs> InsertEvent;
         public event EventHandler<RepositoryOperationEventArgs> UpdateEvent;
         public event EventHandler<RepositoryOperationEventArgs> DeleteEvent;
@@ -74,7 +75,7 @@ namespace Plex.MobileHub.ServiceLibraries
                 if (AlreadyExists)
                     return v;
             }
-            return null;
+            return default(T);
         }
 
 

@@ -22,6 +22,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             RepoFactory factory = new RepoFactory();
             ConnectionConnect cc = new ConnectionConnect();
 
+            cc.ConsumerRepository = new InMemoryRepository<Consumer>(); 
             cc.appsRepository = factory.APPS();
             cc.clientAppsRepository = factory.CLIENT_APPS();
             cc.clientDbCompaniesRepository = factory.CLIENT_DB_COMPANIES();
@@ -30,7 +31,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(1, 1, "PDRYWALL", "Joseph", "Morain"));
+            Assert.IsTrue(cc.Strategy(1, 1, "PDRYWALL", "Joseph", "Morain").Response > 0);
         }
 
         [TestMethod]
@@ -49,7 +50,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
             cc.clientRepository = factory.CLIENTS();
             cc.clientUsersRepository = factory.CLIENT_USERS();
 
-            Assert.AreEqual(true, cc.Strategy(0, ValidAppId, ValidDb, ValidUser, ValidPassword));
+            cc.Strategy(0, ValidAppId, ValidDb, ValidUser, ValidPassword);
         }
 
         [TestMethod]

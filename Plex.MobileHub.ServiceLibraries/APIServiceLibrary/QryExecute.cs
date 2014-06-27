@@ -8,5 +8,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     public class QryExecute
     {
+        public QryExecute()
+        {
+        }
     }
 }

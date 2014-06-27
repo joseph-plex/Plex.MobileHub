@@ -64,11 +64,10 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         {
             int num;
             using(PlexRandomizer pr = new PlexRandomizer())
-            {
                 do num = pr.GetInt32();
                 while (ConsumerRepository.Exists(p => p.ConsumerId == num));
-                return num;
-            }
+
+            return Math.Abs(num);
         }
     }
 }

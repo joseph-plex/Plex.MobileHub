@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-using System.Security.Cryptography;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 
 namespace Plex.MobileHub.Data
