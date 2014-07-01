@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AE9A209-A70E-4B06-8D28-CCAB422E1BA6}</ProjectGuid>
+    <ProjectGuid>{2717950D-CFCE-48EF-B5F0-DDBC238010C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plex.MobileHub.ServiceLibraries.Test</RootNamespace>
-    <AssemblyName>Plex.MobileHub.ServiceLibraries.Test</AssemblyName>
+    <RootNamespace>Plex.MobileHub.Integration.Test</RootNamespace>
+    <AssemblyName>Plex.MobileHub.Integration.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -20,7 +20,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -37,14 +37,7 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\ora\product\12.1.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -59,28 +52,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiService\ConnectionConnectTests.cs" />
-    <Compile Include="ClientService\DisableConnectionsTest.cs" />
-    <Compile Include="ClientService\EnableConnectionsTest.cs" />
-    <Compile Include="ClientService\LogInTests.cs" />
-    <Compile Include="ClientService\LogOutTests.cs" />
-    <Compile Include="General\InMemoryRepostoryCrudTests.cs" />
-    <Compile Include="General\OracleRepositoryCrudTests.cs" />
-    <Compile Include="General\OracleRepositorySqlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="ServiceIntegration\ClientTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
-      <Project>{108936c8-cb1e-4380-a465-e081cab924ef}</Project>
-      <Name>Plex.MobileHub.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Plex.MobileHub.ServiceLibraries\Plex.MobileHub.ServiceLibraries.csproj">
-      <Project>{79cee8aa-6fd6-4b7f-9c48-6c16dcc4df0e}</Project>
-      <Name>Plex.MobileHub.ServiceLibraries</Name>
+    <ProjectReference Include="..\Plex.MobileHub\Plex.MobileHub.csproj">
+      <Project>{fe322f87-9301-4a28-873d-aeb2d8589ccc}</Project>
+      <Name>Plex.MobileHub</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

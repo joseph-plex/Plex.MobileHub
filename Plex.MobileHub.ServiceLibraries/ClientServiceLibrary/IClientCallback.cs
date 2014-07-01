@@ -10,9 +10,13 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     [ServiceContract(CallbackContract = typeof(IClientCallback), SessionMode = SessionMode.Required)]
     public interface IClientCallback : IDisposable
     {
+        [OperationContract]
         void IUD();
+        [OperationContract]
         void Query();
+        [OperationContract]
         void ExecuteRegisteredQuery();
+        [OperationContract]
         void Synchronize();
     }
 }

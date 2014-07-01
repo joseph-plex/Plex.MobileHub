@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
-    class LogOut
+    public class LogOut
     {
     }
 }

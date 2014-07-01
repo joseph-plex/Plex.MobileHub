@@ -36,7 +36,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("The Client Id specified does not exist")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestClientFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -56,7 +55,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("he Applciation Id does not exist")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestAppFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -77,7 +75,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("The Database Code does not exist.")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestDbFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -96,7 +93,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("Username does not exist")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -115,7 +111,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("Username does exist but password is incorrect")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestPasswordFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -134,7 +129,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("The database is not associated with the client")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestDbClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -153,7 +147,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("The client is not associated with the app")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestAppClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -172,7 +165,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("User is not associated with the client")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserClientRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -191,7 +183,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("User is not associated with a database associated with the client.")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserDbRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();
@@ -211,7 +202,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
         [TestMethod]
         [Description("User database permission pairing does not associated with the application")]
-        //[ExpectedException(typeof(Exception))]
         public void SimpleTestUserDbPermssionAppRelationshipFailure()
         {
             RepoFactory factory = new RepoFactory();

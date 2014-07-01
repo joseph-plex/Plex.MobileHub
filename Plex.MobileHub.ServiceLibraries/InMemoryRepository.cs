@@ -64,20 +64,17 @@ namespace Plex.MobileHub.ServiceLibraries
             //Returns Entry based on Identical PrimaryKeys
             Type entryType = typeof(T);
             var KeyPropertyInfo = entryType.GetProperties().Where(p => PrimaryKeys.Any(p2 => p2 == p.Name));
-
             foreach (var v in data)
             {
                 //Assume the objects are identical by default to prevent false positives.
                 Boolean AlreadyExists = true;
                 foreach (var property in KeyPropertyInfo)
-                    if (property.GetValue(v) != property.GetValue(Entry))
+                    if (!property.GetValue(v).Equals(property.GetValue(Entry)))
                         AlreadyExists = false;
                 if (AlreadyExists)
                     return v;
             }
             return default(T);
         }
-
-
     }
 }
