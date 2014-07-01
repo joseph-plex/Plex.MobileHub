@@ -30,7 +30,9 @@ namespace Plex.MobileHub.Functionality.API
                 var dbCode = cust.ClientDbCompaniesGet().COMPANY_CODE;
                 var client = Connections.Instance.Retrieve(cust.ClientId);
                 TimeAnalyst.StartTask(query.QUERY_ID.ToString());
+                
                 r = client.ExecuteRequest<RQryResult>("ExecuteRegisteredQuery", dbCode, query.QUERY_ID, time);
+                
                 TimeAnalyst.StopTask(query.QUERY_ID.ToString());
                 
                 if(r.Response > 0)

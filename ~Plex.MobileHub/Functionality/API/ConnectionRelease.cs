@@ -10,16 +10,15 @@ namespace Plex.MobileHub.Functionality.API
     {
         public MethodResult Strategy(int connectionId)
         {
-            MethodResult mr = new MethodResult();
             try
             {
                 if(Connections.Instance.ConnectionExists(connectionId))
                     Connections.Instance.Remove(connectionId);
-                mr.Success();
+                return new MethodResult().Success();
             }
             catch(Exception e)
             {
-                return new mr.Failure(e);
+                return new MethodResult().Failure(e);
             }
         }
     }

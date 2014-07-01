@@ -10,10 +10,10 @@ namespace Plex.MobileHub.ServiceLibraries
 {
     public class MethodResult
     {
-        private const int UnhandledErrorCode = -9999;
-        private const string UnhandledErrorMessage = "An Unhandled Error Has Occured";
         private const int SuccessfulCode = 0;
+        private const int UnhandledErrorCode = -9999;
         private const string SuccessfulMessage = "The Operation Has Succeeded";
+        private const string UnhandledErrorMessage = "An Unhandled Error Has Occured";
 
         public string Msg;
         public int Response;

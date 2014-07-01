@@ -48,9 +48,10 @@ namespace Plex.MobileHub.Data
         #region Constructors
         public PlexQueryResult()
         {
-            Columns = new List<PlexQueryResultColumn>();
-            Tuples = new List<PlexQueryResultTuple>();
+            this.Columns = new List<PlexQueryResultColumn>();
+            this.Tuples = new List<PlexQueryResultTuple>();
         }
+
         public PlexQueryResult(IDataReader r) : this()
         {
             var schemaTable = r.GetSchemaTable();

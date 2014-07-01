@@ -13,7 +13,7 @@ namespace Plex.MobileHub.Data
     {
         internal PlexQueryResult parent;
          
-        public Object this[int i]
+        public virtual Object this[int i]
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Plex.MobileHub.Data
         }
 
         
-        public List<Object> Values { get; set; }
+        public virtual List<Object> Values { get; set; }
 
         public PlexQueryResultTuple()
         {

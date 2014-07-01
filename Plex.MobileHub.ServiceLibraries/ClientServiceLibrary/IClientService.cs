@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
-    [ServiceContract(SessionMode = SessionMode.Required,CallbackContract = typeof(IMessageCallback))]
+    [ServiceContract]
     public interface IClientService
     {
         void DoWork();

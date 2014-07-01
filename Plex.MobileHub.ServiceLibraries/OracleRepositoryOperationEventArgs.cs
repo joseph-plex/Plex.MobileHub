@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceModel;
+using Plex.MobileHub.Data;
 
 namespace Plex.MobileHub.ServiceLibraries
 {
-    [ServiceContract]
-    public interface IMessageCallback
+    public class OracleRepositoryOperationEventArgs : RepositoryOperationEventArgs
     {
-        [OperationContract]
-        void SendMessage(String msg);
+        public Boolean Transaction { get; set; }
     }
 }

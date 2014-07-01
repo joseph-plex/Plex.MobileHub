@@ -73,13 +73,13 @@
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
     <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
-    <Compile Include="IMessageCallback.cs" />
     <Compile Include="IMethodStrategy.cs" />
     <Compile Include="InMemoryRepository.cs" />
     <Compile Include="APIServiceLibrary\IUD.cs" />
     <Compile Include="ManagementServiceLibrary\IManagementService.cs" />
     <Compile Include="MethodResult.cs" />
     <Compile Include="MethodStrategyBase.cs" />
+    <Compile Include="OracleRepositoryOperationEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OracleRepository.cs" />
     <Compile Include="APIServiceLibrary\QryDatabase.cs" />

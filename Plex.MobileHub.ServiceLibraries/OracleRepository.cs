@@ -147,6 +147,8 @@ namespace Plex.MobileHub.ServiceLibraries
             for (int i = 0; i < Properties.Count; i++)
                 args.Add(type.GetProperty(Properties[i]).GetValue(Entry));
             connection.NonQuery(InsertText, args.ToArray());
+            if (InsertEvent != null)
+                InsertEvent(this, new OracleRepositoryOperationEventArgs() { Entry = Entry, Transaction = (transaction != null) });
         }
    
         public void Update(IDbConnection connection, T Entry)
@@ -160,6 +162,9 @@ namespace Plex.MobileHub.ServiceLibraries
                 args.Add(type.GetProperty(PropertyName).GetValue(Entry));
 
             connection.NonQuery(UpdateText, args.ToArray());
+            if (UpdateEvent != null)
+                UpdateEvent(this, new OracleRepositoryOperationEventArgs() { Entry = Entry, Transaction = (transaction != null) });
+
         }
 
   
@@ -174,6 +179,9 @@ namespace Plex.MobileHub.ServiceLibraries
                 foreach (var PropertyName in PrimaryKeys)
                     args.Add(type.GetProperty(PropertyName).GetValue(entry));
                 connection.NonQuery(DeleteText, args.ToArray());
+                if (DeleteEvent != null)
+                    DeleteEvent(this, new OracleRepositoryOperationEventArgs() { Entry = null, Transaction = (transaction != null) });
+
             }
         }
 
