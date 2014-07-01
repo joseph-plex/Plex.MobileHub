@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.ServiceLibraries.DeveloperServiceLibrary
 {
-    [ServiceContract]
+    [ServiceContract] 
     public interface IDeveloperService : IDisposable
     {
         [OperationContract]

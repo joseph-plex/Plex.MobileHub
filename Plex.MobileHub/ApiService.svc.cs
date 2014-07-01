@@ -8,6 +8,8 @@ using System.Text;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
 using Plex.MobileHub.ServiceLibraries;
 using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Types;
+
 namespace Plex.MobileHub
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -16,7 +18,17 @@ namespace Plex.MobileHub
     {
         public MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
         {
-            throw new NotImplementedException();
+            ConnectionConnect cc, connectionConnectionBehavior = cc = new ConnectionConnect();
+            cc.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+
+            cc.clientRepository = new OracleRepository<CLIENTS>();
+            cc.clientAppsRepository = new OracleRepository<CLIENT_APPS>();
+            cc.clientUsersRepository = new OracleRepository<CLIENT_USERS>();
+            cc.clientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
+            cc.clientDbCompanyUsersRepository = new OracleRepository<CLIENT_DB_COMPANY_USERS>();
+            cc.clientDbCompanyUserAppsRepository = new OracleRepository<CLIENT_DB_COMPANY_USER_APPS>();
+
+            return cc.Strategy(clientId, appId, database, user, password);
         }
         public MethodResult ConnectionRelease(int connectionId)
         {

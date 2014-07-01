@@ -70,13 +70,13 @@
     <Compile Include="APIServiceLibrary\ConnectionRelease.cs" />
     <Compile Include="APIServiceLibrary\ConnectionStatus.cs" />
     <Compile Include="APIServiceLibrary\QryExecute.cs" />
+    <Compile Include="ClientInformation.cs" />
     <Compile Include="ClientServiceLibrary\DisableConnections.cs" />
     <Compile Include="ClientServiceLibrary\EnableConnections.cs" />
     <Compile Include="ClientServiceLibrary\IClientCallback.cs" />
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
     <Compile Include="ClientServiceLibrary\LogIn.cs" />
     <Compile Include="ClientServiceLibrary\LogOut.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
     <Compile Include="IMethodStrategy.cs" />
