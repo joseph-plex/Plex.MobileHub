@@ -13,7 +13,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<APP_QUERIES> AppQueryRepository { get; set; }
         public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
 
-
         public MethodResult Strategy(int connectionId, string queryName, DateTime? time = null)
         {
             try
