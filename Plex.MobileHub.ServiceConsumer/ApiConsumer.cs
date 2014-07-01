@@ -16,10 +16,10 @@ namespace Plex.MobileHub.ServiceConsumer
     {
         ChannelFactory<IApiService> serviceFactory;
 
-        public ApiConsumer(String endPointUri)
+        public ApiConsumer(String endpointUri)
         {
             BasicHttpBinding httpBinding = new BasicHttpBinding();
-            EndpointAddress address = new EndpointAddress(endPointUri);
+            EndpointAddress address = new EndpointAddress(endpointUri);
             serviceFactory = new ChannelFactory<IApiService>(httpBinding, address);
         }
 
