@@ -70,6 +70,7 @@
     <Compile Include="APIServiceLibrary\ConnectionRelease.cs" />
     <Compile Include="APIServiceLibrary\ConnectionStatus.cs" />
     <Compile Include="APIServiceLibrary\QryExecute.cs" />
+    <Compile Include="ClientServiceLibrary\IClientCallback.cs" />
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Consumer.cs" />

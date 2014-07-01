@@ -10,10 +10,10 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     [ServiceContract]
     public interface IClientService
     {
-        [OperationContract(IsOneWay = true)]
-        void LogIn(Int32 ClientId, String ClientKey);
+        [OperationContract]
+        String LogIn(Int32 ClientId, String ClientKey);
 
         [OperationContract(IsOneWay = true)]
-        void LogOut();
+        void LogOut(String Key);
     }
 }

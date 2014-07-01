@@ -12,11 +12,11 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Client.svc or Client.svc.cs at the Solution Explorer and start debugging.
     public class ClientService : IClientService
     {
-        public void LogIn(Int32 ClientId, String ClientKey) {
+        public String LogIn(Int32 ClientId, String ClientKey) {
             throw new NotImplementedException();
         }
 
-        public void LogOut(){
+        public void LogOut(String Key){
             throw new NotImplementedException();
         }
     }

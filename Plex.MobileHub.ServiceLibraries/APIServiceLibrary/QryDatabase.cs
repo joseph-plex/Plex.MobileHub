@@ -26,7 +26,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 if (query == null)
                     throw new Exception();
 
-
                 ClientDbCompaniesRepository.RetrieveAll().Where(p => p.CLIENT_ID == consumer.ClientId && p.COMPANY_CODE == consumer.DatabaseCode);
 
                 //Complete this.
@@ -39,6 +38,5 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 return new MethodResult().Failure(e);
             }
         }
-
     }
 }
