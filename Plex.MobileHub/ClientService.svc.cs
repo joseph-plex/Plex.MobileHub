@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.Text;
 using Plex.MobileHub.ServiceLibraries.ClientServiceLibrary;
 using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Types;
+using Plex.MobileHub.ServiceLibraries;
 
 namespace Plex.MobileHub
 {
@@ -13,8 +15,11 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Client.svc or Client.svc.cs at the Solution Explorer and start debugging.
     public class ClientService :  IClientService
     {
-        public void LogIn(Int32 ClientId, String ClientKey) {
-            throw new NotImplementedException();
+        public void LogIn(Int32 clientId, String clientKey)
+        {
+            LogIn logIn = new LogIn();
+            logIn.ClientsRepository = new OracleRepository<CLIENTS>();
+            logIn.Strategy(clientId, clientKey);
         }
 
         public void LogOut(){
