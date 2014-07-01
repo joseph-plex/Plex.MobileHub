@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
     [ServiceContract]
-    public interface IClientService
+    public interface IClientService : IDisposable
     {
-        [OperationContract]
-        String LogIn(Int32 ClientId, String ClientKey);
+        [OperationContract(IsOneWay = true)]
+        void LogIn(Int32 ClientId, String ClientKey);
 
         [OperationContract(IsOneWay = true)]
-        void LogOut(String Key);
+        void EnableConnections(String IPAddress, Int32 Port);
+
+        [OperationContract(IsOneWay = true)]
+        void DisableConnections();
+
+        [OperationContract(IsOneWay = true)]
+        void LogOut();
     }
 }

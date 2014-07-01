@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace Plex.MobileHub.ServiceLibraries.DeveloperServiceLibrary
 {
     [ServiceContract]
-    public interface IDeveloperService
+    public interface IDeveloperService : IDisposable
     {
         [OperationContract]
         void DoWork();
-
     }
 }

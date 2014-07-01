@@ -15,5 +15,9 @@ namespace Plex.MobileHub
         public void DoWork()
         {
         }
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

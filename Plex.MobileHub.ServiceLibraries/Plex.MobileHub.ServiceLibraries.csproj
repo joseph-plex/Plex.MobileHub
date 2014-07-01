@@ -72,6 +72,7 @@
     <Compile Include="APIServiceLibrary\QryExecute.cs" />
     <Compile Include="ClientServiceLibrary\IClientCallback.cs" />
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
+    <Compile Include="ClientServiceLibrary\LogIn.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />

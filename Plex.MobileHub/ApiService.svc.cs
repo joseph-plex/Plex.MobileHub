@@ -46,5 +46,10 @@ namespace Plex.MobileHub
         {
             throw new NotImplementedException();
         }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

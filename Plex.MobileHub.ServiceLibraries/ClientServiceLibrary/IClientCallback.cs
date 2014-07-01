@@ -8,7 +8,7 @@ using System.ServiceModel;
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
     [ServiceContract(CallbackContract = typeof(IClientCallback), SessionMode = SessionMode.Required)]
-    public interface IClientCallback
+    public interface IClientCallback : IDisposable
     {
         void IUD();
         void Query();
