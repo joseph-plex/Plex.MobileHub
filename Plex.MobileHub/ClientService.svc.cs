@@ -19,7 +19,5 @@ namespace Plex.MobileHub
         public void LogOut(){
             throw new NotImplementedException();
         }
-
-
     }
 }

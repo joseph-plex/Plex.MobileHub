@@ -32,8 +32,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 //Complete this.
                 //todo : Execute Query
 
-
-
                 return null;
             }
             catch(Exception e)
