@@ -8,7 +8,7 @@ using Plex.MobileHub.Data;
 namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     [ServiceContract]
-    public interface IApiService : IDisposable
+    public interface IApiService
     {
         [OperationContract]
         MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password);

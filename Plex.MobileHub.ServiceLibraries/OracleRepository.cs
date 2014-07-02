@@ -10,16 +10,32 @@ using System.Data;
 
 namespace Plex.MobileHub.ServiceLibraries
 {
-    /// <summary>
-    /// This Class represnts the Pmh Oracle database
-    /// </summary>
-    /// <typeparam name="T">This Parameter represents a table in the database</typeparam>
-    public  class OracleRepository<T> : IDisposable, IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
+
+    public class OracleRepository
     {
         const string User = "C##PMH";
         const string Pass = "!!!plex!!!sa";
         const string Source = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.0.1.96)(PORT = 1521)))(CONNECT_DATA = (SERVICE_NAME = PLE1LIVE)))";
         const string ConnectionString = "User Id=" + User + ";" + "Password=" + Pass + ";" + "Data Source=" + Source + ";";
+
+        public static IDbConnection GetIDbConnection()
+        {
+            IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
+            return connection;
+        }
+        public IDbConnection GetConnection()
+        {
+            IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
+            return connection;
+        }
+
+    }
+    /// <summary>
+    /// This Class represnts the Pmh Oracle database
+    /// </summary>
+    /// <typeparam name="T">This Parameter represents a table in the database</typeparam>
+    public  class OracleRepository<T> : OracleRepository, IDisposable, IRepository<T> where T : RepositoryEntryBase, IRepositoryEntry, new()
+    {
 
 
         /// <summary>
@@ -134,12 +150,7 @@ namespace Plex.MobileHub.ServiceLibraries
             transaction = null;
         }
 
-        public IDbConnection GetConnection()
-        {
-            IDbConnection connection = new OracleConnection(ConnectionString).OpenConnection();
-            return connection;
-        }
-
+      
         public void Insert(IDbConnection connection, T Entry)
         {
             Type type = typeof(T);

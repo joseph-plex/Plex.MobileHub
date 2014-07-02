@@ -64,6 +64,7 @@ namespace Plex.MobileHub
 
         public MethodResult DeviceRequestId(int connectionId)
         {
+
             throw new NotImplementedException();
         }
 
@@ -73,11 +74,6 @@ namespace Plex.MobileHub
         }
 
         public MethodResult IUD(int connection, object IUDData)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
         {
             throw new NotImplementedException();
         }

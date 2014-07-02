@@ -65,6 +65,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIServiceLibrary\DeviceRequestId.cs" />
+    <Compile Include="APIServiceLibrary\DeviceSynchronize.cs" />
     <Compile Include="APIServiceLibrary\IApiService.cs" />
     <Compile Include="APIServiceLibrary\ConnectionConnect.cs" />
     <Compile Include="APIServiceLibrary\ConnectionRelease.cs" />
