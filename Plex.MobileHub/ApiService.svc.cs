@@ -64,8 +64,10 @@ namespace Plex.MobileHub
 
         public MethodResult DeviceRequestId(int connectionId)
         {
-
-            throw new NotImplementedException();
+            DeviceRequestId deviceRequestId = new DeviceRequestId();
+            deviceRequestId.DevDataRepository = new OracleRepository<DEV_DATA>();
+            deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            return deviceRequestId.Strategy(connectionId);
         }
 
         public void DeviceSynchronize(int connectionId, int versionId)

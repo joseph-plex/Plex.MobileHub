@@ -44,6 +44,7 @@ namespace Plex.MobileHub.ServiceLibraries
         {
             methodResult = new MethodResult();
         }
+
         public QryResult(IDataReader r)
             : base (r)
         {
