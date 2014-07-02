@@ -23,7 +23,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         void QryExecute(int connectionId, string QueryName);
 
         [OperationContract]
-        PlexQueryResult QueryDatabase(int connectionId, string Query);
+        QryResult QueryDatabase(int connectionId, string Query, params object[] arguments);
         
         [OperationContract]
         MethodResult DeviceRequestId(int connectionId);

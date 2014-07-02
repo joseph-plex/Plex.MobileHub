@@ -53,10 +53,10 @@ namespace Plex.MobileHub.ServiceConsumer
             IApiService channel = serviceFactory.CreateChannel();
             channel.QryExecute(connectionId, QueryName);
         }
-        public PlexQueryResult QueryDatabase(int connectionId, string Query)
+        public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            return channel.QueryDatabase(connectionId, Query);
+            return channel.QueryDatabase(connectionId, Query, arguments);
         }
         public void DeviceSynchronize(int connectionId, int versionId)
         {
