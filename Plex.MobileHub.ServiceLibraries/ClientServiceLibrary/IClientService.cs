@@ -10,6 +10,9 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     [ServiceContract]
     public interface IClientService : IDisposable
     {
+        IClientCallback ClientCallback { get; }
+
+
         [OperationContract(IsOneWay = true)]
         void LogIn(Int32 ClientId, String ClientKey);
 
@@ -21,5 +24,6 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 
         [OperationContract(IsOneWay = true)]
         void LogOut();
+
     }
 }

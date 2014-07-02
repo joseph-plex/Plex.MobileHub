@@ -9,10 +9,17 @@ namespace Plex.MobileHub.ServiceConsumer
 {
     public class ClientConsumer : IClientService, IDisposable
     {
+        public IClientCallback ClientCallback
+        {
+            get;
+            private set;
+        }
+
         DuplexChannelFactory<IClientService> serviceFactory { get; set; }
 
-        public ClientConsumer(String endpointUri, IClientCallback ClientCallback)
+        public ClientConsumer(String endpointUri, IClientCallback clientCallback)
         {
+            ClientCallback = clientCallback;
             WSDualHttpBinding binding = new WSDualHttpBinding();
             EndpointAddress address = new EndpointAddress(endpointUri);
             InstanceContext context = new InstanceContext(ClientCallback);

@@ -15,6 +15,13 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Client.svc or Client.svc.cs at the Solution Explorer and start debugging.
     public class ClientService :  IClientService
     {
+        public IClientCallback ClientCallback
+        {
+            get
+            {
+                return OperationContext.Current.GetCallbackChannel<IClientCallback>();
+            }
+        }
         public void LogIn(Int32 clientId, String clientKey)
         {
             LogIn logIn = new LogIn();

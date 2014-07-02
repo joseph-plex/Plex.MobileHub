@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceModel;
 
 using Plex.MobileHub.Data;
 using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
-    [ServiceContract]
     public class LogIn : MethodStrategyBase<Boolean>
     {
         public IRepository<CLIENTS> ClientsRepository { get; set; }
-        public Boolean Strategy(Int32 clientId, String clientKey)
+        public IRepository<ClientInformation> ClientInfoRepository { get; set; }
+
+        public Boolean Strategy(Int32 clientId, String clientKey, IClientService service )
         {
             var client = ClientsRepository.Retrieve(p => p.CLIENT_ID == clientId);
             if (client == null)
@@ -24,6 +24,13 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
             //This is how we determine a client is online
             client.CLIENT_INSTANCE_ID = client.CLIENT_ID;
             ClientsRepository.Update(client);
+
+            ClientInformation info = new ClientInformation()
+            {
+                ClientId = client.CLIENT_ID,
+                Service = service
+            };
+            ClientInfoRepository.Insert(info);
             return true;
         }
     }

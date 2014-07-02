@@ -12,8 +12,10 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<Consumer> ConsumerRepository { get; set; }
         public IRepository<APP_QUERIES> AppQueryRepository { get; set; }
         public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
+        public IRepository<ClientInformation> ClientInfoRepository { get; set; }
 
-        public MethodResult Strategy(int connectionId, string queryName, DateTime? time = null)
+   
+        public QryResult Strategy(Int32 connectionId, String Query, params object [] arguments)
         {
             try
             {
@@ -21,22 +23,29 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                     throw new Exception();
 
                 var consumer = ConsumerRepository.Retrieve(p=> p.ConsumerId == connectionId);
-                var query = AppQueryRepository.Retrieve(p => p.APP_ID == consumer.AppId && queryName == p.NAME);
-                
-                if (query == null)
-                    throw new Exception();
+                var clientInfo = ClientInfoRepository.Retrieve(p => consumer.ClientId == p.ClientId);
+                var dbs = ClientDbCompaniesRepository.RetrieveAll().Where(p => p.CLIENT_ID == consumer.ClientId && p.COMPANY_CODE == consumer.DatabaseCode);
 
-                ClientDbCompaniesRepository.RetrieveAll().Where(p => p.CLIENT_ID == consumer.ClientId && p.COMPANY_CODE == consumer.DatabaseCode);
-
-                //Complete this.
-                //todo : Execute Query
-
-                return null;
+                List<Exception> exceptions = new List<Exception>();
+                foreach(var database in dbs)
+                {
+                    try {
+                        return clientInfo.Service.ClientCallback.Query(database.DATABASE_CSTRING, Query, arguments);
+                    }
+                    catch(Exception e){
+                        exceptions.Add(e);
+                        continue;
+                    }
+                }
+                throw new AggregateException(exceptions);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return new MethodResult().Failure(e);
+                QryResult result = new QryResult();
+                result.Failure(e);
+                return result;
             }
         }
     }
+
 }
