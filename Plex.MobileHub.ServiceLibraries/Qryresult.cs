@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 using Plex.MobileHub.Data;
 
 namespace Plex.MobileHub.ServiceLibraries
 {
-    public class QryResult : PlexQueryResult,  IMethodResult
+    public class QryResult : PlexQueryResult,  IMethodResult<MethodResult>, IMethodResult
     {
-        public String Msg
+        public virtual String Msg
         {
             get
             {
@@ -21,7 +21,7 @@ namespace Plex.MobileHub.ServiceLibraries
                 methodResult.Msg = value;
             }
         }
-        public Int32 Response
+        public virtual Int32 Response
         {
             get
             {
@@ -32,57 +32,63 @@ namespace Plex.MobileHub.ServiceLibraries
                 methodResult.Response = value;
             }
         }
-        public DateTime StartTimeStamp { get; set; }
-        public DateTime CompetelionTimeStamp { get; set; }
+        public virtual DateTime StartTimeStamp { get; set; }
+        public virtual DateTime CompetelionTimeStamp { get; set; }
 
-        public Int32 DBErrorCode { get; set; }
-        public String DBErrorMessage { get; set; }
+        public virtual Int32 DBErrorCode { get; set; }
+        public virtual String DBErrorMessage { get; set; }
 
-        MethodResult methodResult;
-        public QryResult()
+        protected MethodResult methodResult;
+        public QryResult() 
+            : base ()
         {
             methodResult = new MethodResult();
         }
+        public QryResult(IDataReader r)
+            : base (r)
+        {
+  
+        }
 
         #region MethodResult Implementations
-        public IMethodResult Success()
+        public virtual MethodResult Success()
         {
             return methodResult.Success();
         }
-        public IMethodResult Success(int SuccessCode)
+        public virtual MethodResult Success(int SuccessCode)
         {
             return methodResult.Success(SuccessCode);
         }
-        public IMethodResult Success(String SuccessMsg)
+        public virtual MethodResult Success(String SuccessMsg)
         {
             return methodResult.Success(SuccessMsg);
         }
-        public IMethodResult Success(int SuccessCode, string SuccessMessage)
+        public MethodResult Success(int SuccessCode, string SuccessMessage)
         {
             return methodResult.Success(SuccessCode, SuccessMessage);
         }
 
-        public IMethodResult Failure()
+        public MethodResult Failure()
         {
             return methodResult.Failure();
         }
-        public IMethodResult Failure(Exception e)
+        public MethodResult Failure(Exception e)
         {
             return methodResult.Failure(e);
         }
-        public IMethodResult Failure(int ErrorCode)
+        public MethodResult Failure(int ErrorCode)
         {
             return methodResult.Failure(ErrorCode);
         }
-        public IMethodResult Failure(string ErrorMessage)
+        public MethodResult Failure(string ErrorMessage)
         {
             return methodResult.Failure(ErrorMessage);
         }
-        public IMethodResult Failure(int ErrorCode, Exception e)
+        public MethodResult Failure(int ErrorCode, Exception e)
         {
             return methodResult.Failure(ErrorCode, e);
         }
-        public IMethodResult Failure(int ErrorCode, string ErrorMessage)
+        public MethodResult Failure(int ErrorCode, string ErrorMessage)
         {
             return methodResult.Failure(ErrorCode, ErrorMessage);
         }

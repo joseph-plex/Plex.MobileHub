@@ -13,6 +13,7 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ClientService
             RepoFactory factory = new RepoFactory();
             LogIn login = new LogIn();
             login.ClientsRepository = factory.CLIENTS();
+            login.ClientInfoRepository = new InMemoryRepository<ClientInformation>();
 
             Assert.IsTrue(login.Strategy(1, "Client1"));
         }

@@ -10,10 +10,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
     public class QryDatabase : MethodStrategyBase<MethodResult>
     {
         public IRepository<Consumer> ConsumerRepository { get; set; }
-        public IRepository<APP_QUERIES> AppQueryRepository { get; set; }
-        public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
         public IRepository<ClientInformation> ClientInfoRepository { get; set; }
-
+        public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
    
         public QryResult Strategy(Int32 connectionId, String Query, params object [] arguments)
         {
@@ -26,6 +24,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 var clientInfo = ClientInfoRepository.Retrieve(p => consumer.ClientId == p.ClientId);
                 var dbs = ClientDbCompaniesRepository.RetrieveAll().Where(p => p.CLIENT_ID == consumer.ClientId && p.COMPANY_CODE == consumer.DatabaseCode);
 
+                if (dbs.Count() == 0)
+                    throw new Exception("No Accessible Databases for current user");
                 List<Exception> exceptions = new List<Exception>();
                 foreach(var database in dbs)
                 {

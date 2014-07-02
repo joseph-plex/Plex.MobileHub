@@ -49,7 +49,6 @@ namespace Plex.MobileHub
         public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
         {
             QryDatabase qryDatabase = new QryDatabase();
-            qryDatabase.AppQueryRepository = new OracleRepository<APP_QUERIES>();
             qryDatabase.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
             qryDatabase.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
             qryDatabase.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;

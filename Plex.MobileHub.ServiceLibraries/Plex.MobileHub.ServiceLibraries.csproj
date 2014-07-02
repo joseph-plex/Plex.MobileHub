@@ -91,6 +91,7 @@
     <Compile Include="OracleRepository.cs" />
     <Compile Include="APIServiceLibrary\QryDatabase.cs" />
     <Compile Include="QryResult.cs" />
+    <Compile Include="RegisteredQueryResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -101,9 +102,7 @@
       <Name>Plex.MobileHub.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
