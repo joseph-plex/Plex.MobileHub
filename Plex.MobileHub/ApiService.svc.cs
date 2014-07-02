@@ -40,7 +40,9 @@ namespace Plex.MobileHub
 
         public MethodResult ConnectionStatus(int connectionId)
         {
-            throw new NotImplementedException();
+            ConnectionStatus connectionStatus = new ConnectionStatus();
+            connectionStatus.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            return connectionStatus.Strategy(connectionId);
         }
 
         public RegisteredQueryResult QryExecute(int connectionId, string queryName)
