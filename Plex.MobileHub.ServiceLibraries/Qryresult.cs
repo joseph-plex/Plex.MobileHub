@@ -44,6 +44,7 @@ namespace Plex.MobileHub.ServiceLibraries
             methodResult = new MethodResult();
         }
 
+        #region MethodResult Implementations
         public MethodResult Success()
         {
             return methodResult.Success();
@@ -85,6 +86,6 @@ namespace Plex.MobileHub.ServiceLibraries
         {
             return methodResult.Failure(ErrorCode, ErrorMessage);
         }
-
+        #endregion
     }
 }

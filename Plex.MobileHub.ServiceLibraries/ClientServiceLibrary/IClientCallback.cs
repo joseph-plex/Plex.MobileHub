@@ -12,10 +12,13 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     {
         [OperationContract]
         void IUD();
+
         [OperationContract]
-        void Query();
+        QryResult Query();
+
         [OperationContract]
         void ExecuteRegisteredQuery();
+
         [OperationContract]
         void Synchronize();
     }
