@@ -8,15 +8,15 @@ using System.Xml.Serialization;
 
 namespace Plex.MobileHub.ServiceLibraries
 {
-    public class MethodResult
+    public class MethodResult : IMethodResult<MethodResult>
     {
         private const int SuccessfulCode = 0;
         private const int UnhandledErrorCode = -9999;
         private const string SuccessfulMessage = "The Operation Has Succeeded";
         private const string UnhandledErrorMessage = "An Unhandled Error Has Occured";
 
-        public string Msg;
-        public int Response;
+        public string Msg { get; set; }
+        public int Response { get; set; }
 
         public virtual MethodResult Success()
         {

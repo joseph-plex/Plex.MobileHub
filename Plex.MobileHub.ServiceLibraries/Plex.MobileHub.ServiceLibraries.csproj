@@ -79,6 +79,7 @@
     <Compile Include="ClientServiceLibrary\LogOut.cs" />
     <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
+    <Compile Include="IMethodResult.cs" />
     <Compile Include="IMethodStrategy.cs" />
     <Compile Include="InMemoryRepository.cs" />
     <Compile Include="APIServiceLibrary\IUD.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OracleRepository.cs" />
     <Compile Include="APIServiceLibrary\QryDatabase.cs" />
+    <Compile Include="QryResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

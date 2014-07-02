@@ -30,10 +30,14 @@ namespace Plex.MobileHub
 
             return cc.Strategy(clientId, appId, database, user, password);
         }
+
         public MethodResult ConnectionRelease(int connectionId)
         {
-            throw new NotImplementedException();
+            ConnectionRelease connectionRelease = new ConnectionRelease();
+            connectionRelease.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            return connectionRelease.Strategy(connectionId);
         }
+
         public MethodResult ConnectionStatus(int connectionId)
         {
             throw new NotImplementedException();
