@@ -30,7 +30,9 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 foreach(var database in dbs)
                 {
                     try {
-                        return clientInfo.Service.ClientCallback.Query(database.DATABASE_CSTRING, Query, arguments);
+                        QryResult qr= clientInfo.Service.ClientCallback.Query(database.DATABASE_CSTRING, Query, arguments);
+                        qr.Success();
+                        return qr;
                     }
                     catch(Exception e){
                         exceptions.Add(e);

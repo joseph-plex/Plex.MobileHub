@@ -48,10 +48,10 @@ namespace Plex.MobileHub.ServiceConsumer
             IApiService channel = serviceFactory.CreateChannel();
             return channel.IUD(connection, IUDData);
         }
-        public void QryExecute(int connectionId, string QueryName)
+        public RegisteredQueryResult QryExecute(int connectionId, string QueryName)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.QryExecute(connectionId, QueryName);
+            return channel.QryExecute(connectionId, QueryName);
         }
         public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
         {

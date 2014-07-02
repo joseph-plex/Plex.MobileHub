@@ -42,10 +42,17 @@ namespace Plex.MobileHub
         {
             throw new NotImplementedException();
         }
-        public void QryExecute(int connectionId, string QueryName)
+
+        public RegisteredQueryResult QryExecute(int connectionId, string queryName)
         {
-            throw new NotImplementedException();
+            QryExecute qryExecute = new QryExecute();
+            qryExecute.AppQueryRepository = new OracleRepository<APP_QUERIES>();
+            qryExecute.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
+            qryExecute.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
+            qryExecute.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            return qryExecute.Strategy(connectionId, queryName);
         }
+
         public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
         {
             QryDatabase qryDatabase = new QryDatabase();
@@ -54,14 +61,17 @@ namespace Plex.MobileHub
             qryDatabase.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
             return qryDatabase.Strategy(connectionId, Query, arguments);
         }
+
         public MethodResult DeviceRequestId(int connectionId)
         {
             throw new NotImplementedException();
         }
+
         public void DeviceSynchronize(int connectionId, int versionId)
         {
             throw new NotImplementedException();
         }
+
         public MethodResult IUD(int connection, object IUDData)
         {
             throw new NotImplementedException();

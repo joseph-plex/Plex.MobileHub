@@ -13,8 +13,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<APP_QUERIES> AppQueryRepository { get; set; }
         public IRepository<ClientInformation> ClientInfoRepository { get; set; }
         public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
-   
-        public QryResult Strategy(Int32 connectionId, String queryName)
+
+        public RegisteredQueryResult Strategy(Int32 connectionId, String queryName)
         {
             try
             {
@@ -36,7 +36,11 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 {
                     try
                     {
-                        return clientInfo.Service.ClientCallback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName);
+                        RegisteredQueryResult rqr = clientInfo.Service.ClientCallback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName);
+                        rqr.Success();
+                        rqr.TableName = query.TABLE_NAME;
+                        rqr.QueryName = query.NAME;
+                        return rqr;
                     }
                     catch (Exception e)
                     {
@@ -48,7 +52,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
             }
             catch(Exception e)
             {
-                QryResult result = new QryResult();
+                RegisteredQueryResult result = new RegisteredQueryResult();
                 result.Failure(e);
                 return result;
             }

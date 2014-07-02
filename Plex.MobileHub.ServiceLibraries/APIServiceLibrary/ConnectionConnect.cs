@@ -38,8 +38,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                     throw new Exception("Client is not authorized to use application");
 
                 //This can happen by mistake but is generally an indication of someone abusing the system
-          
-                //var perm = clientDbCompanyUsersRepository.RetrieveAll().Where(p => p.DB_COMPANY_ID == dbs.DB_COMPANY_ID && person.USER_ID == p.USER_ID);
                 var perm = clientDbCompanyUsersRepository.RetrieveAll().Where(p=> dbs.Any(db=> db.DB_COMPANY_ID == p.DB_COMPANY_ID && person.USER_ID == p.USER_ID));
                 if (perm.Count() == 0)
                     throw new Exception("User Is not authorized to view this database");
