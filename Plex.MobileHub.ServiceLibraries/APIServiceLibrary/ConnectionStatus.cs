@@ -16,12 +16,13 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         {
             try
             {
+                //This is liable to change.
                 /*
                CONSTANT CONN_STATUS_OK = 1
                CONSTANT CONN_STATUS_PMH_ONLY = 2 //not implemented
                CONSTANT CONN_STATUS_INVALID_ID = 3
                CONSTANT CONN_STATUS_CLIENT_DB_OFFLINE = 4 //not implemented
-            **/
+                **/
                 if(ConsumerRepository.Exists(p => p.ConsumerId == connectionId))
                     return new MethodResult().Success(3," Connection Id is Invalid");
                 return new MethodResult().Success(1, "Connection is Okay");

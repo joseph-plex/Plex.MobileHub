@@ -18,7 +18,6 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<Consumer> ConsumerRepository { get; set; }
         public IRepository<APP_QUERIES> AppQueriesRepository { get; set; }
         public IRepository<DEV_DATA_VER> DevDataVerRepository { get; set; }
-        public IRepository<ClientInformation> ClientInformationRepository { get; set; }
         public IRepository<DEV_DATA_VER_QUERIES> DevDataVerQueriesRepository { get; set; }
 
         public DeviceSynchronize(IApiService service)

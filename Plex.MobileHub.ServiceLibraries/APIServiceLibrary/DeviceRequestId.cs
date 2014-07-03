@@ -20,7 +20,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
             {
                 DEV_DATA tuple = new DEV_DATA();
                 var consumer = ConsumerRepository.Retrieve(p=> p.ConsumerId == connectionId);
-
+                //Do something different.
                 using (var connection = OracleRepository.GetIDbConnection())
                     tuple.DEVICE_DATABASE_ID = Convert.ToInt32(connection.Query("select DEVICE_ID.nextval from dual")[0, 0]);
 
