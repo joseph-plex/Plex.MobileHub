@@ -11,8 +11,14 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     public class DeviceRequestId : MethodStrategyBase<Object>
     {
+        Func<int> KeyGenerator;
         public IRepository<Consumer> ConsumerRepository { get; set; }
         public IRepository<DEV_DATA> DevDataRepository { get; set; }
+
+        public DeviceRequestId(Func<int> keyGenerator)
+        {
+            KeyGenerator = keyGenerator;
+        }
 
         public MethodResult Strategy(int connectionId)
         {
@@ -20,10 +26,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
             {
                 DEV_DATA tuple = new DEV_DATA();
                 var consumer = ConsumerRepository.Retrieve(p=> p.ConsumerId == connectionId);
-                //Do something different.
-                using (var connection = OracleRepository.GetIDbConnection())
-                    tuple.DEVICE_DATABASE_ID = Convert.ToInt32(connection.Query("select DEVICE_ID.nextval from dual")[0, 0]);
-
+                
+                tuple.DEVICE_DATABASE_ID = KeyGenerator();
                 tuple.CLIENT_ID = consumer.ClientId;
                 tuple.USER_ID = consumer.UserId;
                 tuple.APP_ID = consumer.AppId;

@@ -16,6 +16,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         {
             try
             {
+                //Todo Finish Implementing this Function along with Test cases
                 //This is liable to change.
                 /*
                CONSTANT CONN_STATUS_OK = 1
@@ -24,8 +25,8 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                CONSTANT CONN_STATUS_CLIENT_DB_OFFLINE = 4 //not implemented
                 **/
                 if(ConsumerRepository.Exists(p => p.ConsumerId == connectionId))
-                    return new MethodResult().Success(3," Connection Id is Invalid");
-                return new MethodResult().Success(1, "Connection is Okay");
+                    return new MethodResult().Success(1," Connection Id is Okay");
+                return new MethodResult().Success(3, "Connection Id is Invalid");
             }
             catch(Exception e)
             {

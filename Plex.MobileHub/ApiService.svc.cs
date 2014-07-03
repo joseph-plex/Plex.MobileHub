@@ -66,7 +66,7 @@ namespace Plex.MobileHub
 
         public MethodResult DeviceRequestId(int connectionId)
         {
-            DeviceRequestId deviceRequestId = new DeviceRequestId();
+            DeviceRequestId deviceRequestId = new DeviceRequestId(()=> Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
             deviceRequestId.DevDataRepository = new OracleRepository<DEV_DATA>();
             deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
             return deviceRequestId.Strategy(connectionId);
