@@ -81,6 +81,7 @@
     <Compile Include="ClientServiceLibrary\LogOut.cs" />
     <Compile Include="Consumer.cs" />
     <Compile Include="DeveloperServiceLibrary\IDeveloperService.cs" />
+    <Compile Include="DeviceSynchronizeMethodResult.cs" />
     <Compile Include="IMethodResult.cs" />
     <Compile Include="IMethodStrategy.cs" />
     <Compile Include="InMemoryRepository.cs" />

@@ -11,7 +11,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     public class DeviceSynchronize : MethodStrategyBase<Object>
     {
-        public Object Strategy(int connectionId)
+        public Object Strategy(int connectionId, int DataVersion)
         {
             return null;
         }
