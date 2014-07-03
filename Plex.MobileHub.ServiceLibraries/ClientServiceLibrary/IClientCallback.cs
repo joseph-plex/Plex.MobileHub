@@ -17,7 +17,7 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
         QryResult Query(String connectionString, String query, params object [] arguments);
 
         [OperationContract]
-        RegisteredQueryResult ExecuteRegisteredQuery(String connetionString, String queryName);
+        RegisteredQueryResult ExecuteRegisteredQuery(String connetionString, String queryName, DateTime? time = null);
 
         [OperationContract]
         void Synchronize();

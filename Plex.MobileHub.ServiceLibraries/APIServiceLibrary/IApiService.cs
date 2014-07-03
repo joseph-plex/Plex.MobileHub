@@ -20,7 +20,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         MethodResult ConnectionStatus(int connectionId);
 
         [OperationContract]
-        RegisteredQueryResult QryExecute(int connectionId, string QueryName);
+        RegisteredQueryResult QryExecute(int connectionId, string QueryName, DateTime? Time = null);
 
         [OperationContract]
         QryResult QueryDatabase(int connectionId, string Query, params object[] arguments);
@@ -29,7 +29,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         MethodResult DeviceRequestId(int connectionId);
         
         [OperationContract]
-        void DeviceSynchronize(int connectionId, int versionId);
+        DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int versionId);
         
         [OperationContract]
         MethodResult IUD(int connection, object IUDData);

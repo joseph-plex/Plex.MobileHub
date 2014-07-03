@@ -48,20 +48,20 @@ namespace Plex.MobileHub.ServiceConsumer
             IApiService channel = serviceFactory.CreateChannel();
             return channel.IUD(connection, IUDData);
         }
-        public RegisteredQueryResult QryExecute(int connectionId, string QueryName)
+        public RegisteredQueryResult QryExecute(int connectionId, string QueryName, DateTime? time = null)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            return channel.QryExecute(connectionId, QueryName);
+            return channel.QryExecute(connectionId, QueryName, time);
         }
         public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
         {
             IApiService channel = serviceFactory.CreateChannel();
             return channel.QueryDatabase(connectionId, Query, arguments);
         }
-        public void DeviceSynchronize(int connectionId, int versionId)
+        public DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int versionId)
         {
             IApiService channel = serviceFactory.CreateChannel();
-            channel.DeviceSynchronize(connectionId, versionId);
+            return channel.DeviceSynchronize(connectionId, versionId);
         }
         public void Dispose()
         {

@@ -32,17 +32,6 @@ namespace Plex.MobileHub.ServiceConsumer
             service.LogIn(clientId, clientKey);
         }
 
-        public void EnableConnections(String IPAddress, Int32 Port)
-        {
-            IClientService service = serviceFactory.CreateChannel();
-            service.EnableConnections(IPAddress, Port);
-        }
-
-        public void DisableConnections()
-        {
-            IClientService service = serviceFactory.CreateChannel();
-            service.DisableConnections();
-        }
 
         public void LogOut()
         {

@@ -120,20 +120,19 @@ namespace Plex.MobileHub.Functionality.API
                 IEnumerable<DEV_DATA_VER_QUERIES> pQueries = null;
                 if (DataVersion != 0) { 
                     Previous = DEV_DATA_VER.GetAll().FirstOrDefault(p => p.DEV_DATA_VER_ID == DataVersion);
-                
                     if (Previous == null) throw new Exception("Device Database Version does not exist");
                     pQueries = (Previous == null) ? new List<DEV_DATA_VER_QUERIES>() : DEV_DATA_VER_QUERIES.GetAll().Where(p => p.DATABASE_VERSION_ID == Previous.DEV_DATA_VER_ID).ToList();
                 }
+               
                 DEV_DATA_VER current = new DEV_DATA_VER()
                 {
                     DEV_DATA_ID = (DataVersion != 0) ? (Previous ?? new DEV_DATA_VER()).DEV_DATA_ID : InitDeviceDatabase(connectionId),
                     DEV_DATA_VER_ID = Utilities.GetNextSequenceValue(SequenceType.DEV_DATA_VER_SEQ)
                 };
                 current.Insert();
-
                 List<APP_QUERIES> Queries = new List<APP_QUERIES>(GetDeviceDataVersionQueries(current.DEV_DATA_VER_ID));
                 List<RQryResult> results = new List<RQryResult>();
-
+ //here
                 using(var Conn = Utilities.GetConnection(true))
                 {
                     result.StartTimeStamp = DateTime.Now;

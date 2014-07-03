@@ -38,6 +38,7 @@ namespace Plex.MobileHub.ServiceLibraries
 
         public DeviceSynchronizeMethodResult()
         {
+            methodResult = new MethodResult();
             Results = new List<RegisteredQueryResult>();
         }
 

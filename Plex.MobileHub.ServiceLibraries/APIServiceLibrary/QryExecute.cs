@@ -14,7 +14,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<ClientInformation> ClientInfoRepository { get; set; }
         public IRepository<CLIENT_DB_COMPANIES> ClientDbCompaniesRepository { get; set; }
 
-        public RegisteredQueryResult Strategy(Int32 connectionId, String queryName)
+        public RegisteredQueryResult Strategy(Int32 connectionId, String queryName, DateTime? time)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 {
                     try
                     {
-                        RegisteredQueryResult rqr = clientInfo.Service.ClientCallback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName);
+                        RegisteredQueryResult rqr = clientInfo.Service.ClientCallback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName, time);
                         rqr.Success();
                         rqr.TableName = query.TABLE_NAME;
                         rqr.QueryName = query.NAME;

@@ -12,15 +12,8 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
     {
         IClientCallback ClientCallback { get; }
 
-
         [OperationContract(IsOneWay = true)]
         void LogIn(Int32 ClientId, String ClientKey);
-
-        [OperationContract(IsOneWay = true)]
-        void EnableConnections(String IPAddress, Int32 Port);
-
-        [OperationContract(IsOneWay = true)]
-        void DisableConnections();
 
         [OperationContract(IsOneWay = true)]
         void LogOut();
