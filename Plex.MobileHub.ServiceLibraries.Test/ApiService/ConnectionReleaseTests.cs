@@ -1,9 +1,8 @@
 ﻿using System;
+using Plex.MobileHub.Data;
 using Plex.MobileHub.ServiceLibraries;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
-
-using Plex.MobileHub.Data;
 
 namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 {

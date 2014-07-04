@@ -62,6 +62,7 @@
     <Compile Include="ApiService\ConnectionConnectTests.cs" />
     <Compile Include="ApiService\ConnectionReleaseTests.cs" />
     <Compile Include="ApiService\ConnectionStatusTests.cs" />
+    <Compile Include="ApiService\UnitTest1.cs" />
     <Compile Include="ClientService\DisableConnectionsTest.cs" />
     <Compile Include="ClientService\EnableConnectionsTest.cs" />
     <Compile Include="ClientService\LogInTests.cs" />

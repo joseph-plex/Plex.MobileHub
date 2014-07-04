@@ -11,7 +11,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     public class DeviceRequestId : MethodStrategyBase<Object>
     {
-        Func<int> KeyGenerator;
+        Func<Int32> KeyGenerator;
         public IRepository<Consumer> ConsumerRepository { get; set; }
         public IRepository<DEV_DATA> DevDataRepository { get; set; }
 
