@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using Plex.MobileHub.Data;
+using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
 {
     [ServiceContract]
     public interface IApiService
     {
+
+
         [OperationContract]
         MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password);
 

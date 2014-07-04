@@ -16,70 +16,134 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Api : IApiService
     {
-        public MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
+        public IRepository<APP_QUERIES> APP_QUERIES { get; set; }
+        public IRepository<APP_QUERY_COLUMNS> APP_QUERY_COLUMNS { get; set; }
+        public IRepository<APP_QUERY_CONDITIONS> APP_QUERY_CONDITIONS { get; set; }
+        public IRepository<APP_TABLE_COLUMNS> APP_TABLE_COLUMNS { get; set; }
+        public IRepository<APP_TABLES> APP_TABLES { get; set; }
+        public IRepository<APP_USER_TYPES> APP_USER_TYPES { get; set; }
+        public IRepository<APPS> APPS { get; set; }
+        public IRepository<CLIENT_APPS> CLIENT_APPS { get; set; }
+        public IRepository<CLIENT_DB_COMPANIES> CLIENT_DB_COMPANIES { get; set; }
+        public IRepository<CLIENT_DB_COMPANY_USER_APPS> CLIENT_DB_COMPANY_USER_APPS { get; set; }
+        public IRepository<CLIENT_DB_COMPANY_USERS> CLIENT_DB_COMPANY_USERS { get; set; }
+        public IRepository<CLIENT_USERS> CLIENT_USERS { get; set; }
+        public IRepository<CLIENTS> CLIENTS { get; set; }
+        public IRepository<DEV_DATA> DEV_DATA { get; set; }
+        public IRepository<DEV_DATA_VER> DEV_DATA_VER { get; set; }
+        public IRepository<DEV_DATA_VER_QUERIES> DEV_DATA_VER_QUERIES { get; set; }
+        public IRepository<DEVICE_USER_DATA> DEVICE_USER_DATA { get; set; }
+        public IRepository<DEVICE_USER_DATA_QUERIES> DEVICE_USER_DATA_QUERIES { get; set; }
+        public IRepository<DEVICES> DEVICES { get; set; }
+        public IRepository<LOGS> LOGS { get; set; }
+        public IRepository<PMH_SETTINGS> PMH_SETTINGS { get; set; }
+        public IRepository<QUERY_SEQUENCE_REQUESTS> QUERY_SEQUENCE_REQUESTS { get; set; }
+
+        ConnectionConnect connectionConnection;
+        ConnectionRelease connectionRelease;
+        ConnectionStatus connectionStatus;
+        QryExecute qryExecute;
+        QryDatabase qryDatabase;
+        DeviceRequestId deviceRequestId;
+
+        public Api()
         {
-            ConnectionConnect cc, connectionConnectionBehavior = cc = new ConnectionConnect();
-            cc.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            //Defaults for Repositories
+            APP_QUERIES = new OracleRepository<APP_QUERIES>();
+            APP_QUERY_COLUMNS = new OracleRepository<APP_QUERY_COLUMNS>();
+            APP_QUERY_CONDITIONS = new OracleRepository<APP_QUERY_CONDITIONS>();
+            APP_TABLE_COLUMNS = new OracleRepository<APP_TABLE_COLUMNS>();
+            APP_TABLES = new OracleRepository<APP_TABLES>();
+            APP_USER_TYPES = new OracleRepository<APP_USER_TYPES>();
+            APPS = new OracleRepository<APPS>();
+            CLIENT_APPS = new OracleRepository<CLIENT_APPS>();
+            CLIENT_DB_COMPANIES = new OracleRepository<CLIENT_DB_COMPANIES>();
+            CLIENT_DB_COMPANY_USER_APPS = new OracleRepository<CLIENT_DB_COMPANY_USER_APPS>();
+            CLIENT_DB_COMPANY_USERS = new OracleRepository<CLIENT_DB_COMPANY_USERS>();
+            CLIENT_USERS = new OracleRepository<CLIENT_USERS>();
+            CLIENTS = new OracleRepository<CLIENTS>();
+            DEV_DATA = new OracleRepository<DEV_DATA>();
+            DEV_DATA_VER = new OracleRepository<DEV_DATA_VER>();
+            DEV_DATA_VER_QUERIES = new OracleRepository<DEV_DATA_VER_QUERIES>();
+            DEVICE_USER_DATA = new OracleRepository<DEVICE_USER_DATA>();
+            DEVICE_USER_DATA_QUERIES = new OracleRepository<DEVICE_USER_DATA_QUERIES>();
+            DEVICES = new OracleRepository<DEVICES>();
+            LOGS = new OracleRepository<LOGS>();
+            PMH_SETTINGS = new OracleRepository<PMH_SETTINGS>();
+            QUERY_SEQUENCE_REQUESTS = new OracleRepository<QUERY_SEQUENCE_REQUESTS>();
 
-            cc.clientRepository = new OracleRepository<CLIENTS>();
-            cc.clientAppsRepository = new OracleRepository<CLIENT_APPS>();
-            cc.clientUsersRepository = new OracleRepository<CLIENT_USERS>();
-            cc.clientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
-            cc.clientDbCompanyUsersRepository = new OracleRepository<CLIENT_DB_COMPANY_USERS>();
-            cc.clientDbCompanyUserAppsRepository = new OracleRepository<CLIENT_DB_COMPANY_USER_APPS>();
 
-            return cc.Strategy(clientId, appId, database, user, password);
-        }
+            //This Strategies aren't designed to be changed.
+            connectionConnection = new ConnectionConnect();
+            connectionConnection.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
 
-        public MethodResult ConnectionRelease(int connectionId)
-        {
-            ConnectionRelease connectionRelease = new ConnectionRelease();
+            connectionConnection.clientRepository = CLIENTS;
+            connectionConnection.clientAppsRepository = new OracleRepository<CLIENT_APPS>();
+            connectionConnection.clientUsersRepository = new OracleRepository<CLIENT_USERS>();
+            connectionConnection.clientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
+            connectionConnection.clientDbCompanyUsersRepository = new OracleRepository<CLIENT_DB_COMPANY_USERS>();
+            connectionConnection.clientDbCompanyUserAppsRepository = new OracleRepository<CLIENT_DB_COMPANY_USER_APPS>();
+
+            connectionRelease = new ConnectionRelease();
             connectionRelease.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
-            return connectionRelease.Strategy(connectionId);
-        }
 
-        public MethodResult ConnectionStatus(int connectionId)
-        {
-            ConnectionStatus connectionStatus = new ConnectionStatus();
+            connectionStatus = new ConnectionStatus();
             connectionStatus.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
-            return connectionStatus.Strategy(connectionId);
-        }
 
-        public RegisteredQueryResult QryExecute(int connectionId, string queryName, DateTime? time = null)
-        {
-            QryExecute qryExecute = new QryExecute();
+            qryExecute = new QryExecute();
             qryExecute.AppQueryRepository = new OracleRepository<APP_QUERIES>();
             qryExecute.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
             qryExecute.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
             qryExecute.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
-            return qryExecute.Strategy(connectionId, queryName, time);
-        }
 
-        public QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
-        {
-            QryDatabase qryDatabase = new QryDatabase();
+            qryDatabase = new QryDatabase();
             qryDatabase.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
             qryDatabase.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
             qryDatabase.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
+
+            deviceRequestId = new DeviceRequestId(() => Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
+            deviceRequestId.DevDataRepository = new OracleRepository<DEV_DATA>();
+            deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+        }
+        public virtual MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
+        {
+            return connectionConnection.Strategy(clientId, appId, database, user, password);
+        }
+
+        public virtual MethodResult ConnectionRelease(int connectionId)
+        {
+            return connectionRelease.Strategy(connectionId);
+        }
+
+        public virtual MethodResult ConnectionStatus(int connectionId)
+        {
+            return connectionStatus.Strategy(connectionId);
+        }
+
+        public virtual RegisteredQueryResult QryExecute(int connectionId, string queryName, DateTime? time = null)
+        {
+            return qryExecute.Strategy(connectionId, queryName, time);
+        }
+
+        public virtual QryResult QueryDatabase(int connectionId, string Query, params object[] arguments)
+        {
             return qryDatabase.Strategy(connectionId, Query, arguments);
         }
 
-        public MethodResult DeviceRequestId(int connectionId)
+        public virtual MethodResult DeviceRequestId(int connectionId)
         {
-            DeviceRequestId deviceRequestId = new DeviceRequestId(()=> Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
-            deviceRequestId.DevDataRepository = new OracleRepository<DEV_DATA>();
-            deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
             return deviceRequestId.Strategy(connectionId);
         }
 
-        public DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int versionId)
+        public virtual DeviceSynchronizeMethodResult DeviceSynchronize(int connectionId, int versionId)
         {
             throw new NotImplementedException();
         }
 
-        public MethodResult IUD(int connection, object IUDData)
+        public virtual MethodResult IUD(int connection, object IUDData)
         {
             throw new NotImplementedException();
         }
+
     }
 }

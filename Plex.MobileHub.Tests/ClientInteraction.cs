@@ -15,10 +15,7 @@ namespace Plex.MobileHub.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            using (ServiceHost host = new ServiceHost())
-            {
-
-            }
+      
         }
     }
 }
