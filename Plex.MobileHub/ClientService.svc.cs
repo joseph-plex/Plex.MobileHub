@@ -32,13 +32,6 @@ namespace Plex.MobileHub
         public void LogOut(){
             throw new NotImplementedException();
         }
-        public void EnableConnections(String IPAddress, Int32 Port) {
-            throw new NotImplementedException();
-        }
-
-        public void DisableConnections() {
-            throw new NotImplementedException();
-        }
 
         public void Dispose() {
             throw new NotImplementedException();

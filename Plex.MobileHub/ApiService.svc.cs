@@ -39,6 +39,9 @@ namespace Plex.MobileHub
         public IRepository<PMH_SETTINGS> PMH_SETTINGS { get; set; }
         public IRepository<QUERY_SEQUENCE_REQUESTS> QUERY_SEQUENCE_REQUESTS { get; set; }
 
+        public IRepository<Consumer> Consumers { get; set; }
+        public IRepository<ClientInformation> ClientInfo { get; set; }
+
         ConnectionConnect connectionConnection;
         ConnectionRelease connectionRelease;
         ConnectionStatus connectionStatus;
@@ -72,10 +75,12 @@ namespace Plex.MobileHub
             PMH_SETTINGS = new OracleRepository<PMH_SETTINGS>();
             QUERY_SEQUENCE_REQUESTS = new OracleRepository<QUERY_SEQUENCE_REQUESTS>();
 
+            Consumers = Singleton<InMemoryRepository<Consumer>>.Instance;
+            ClientInfo = Singleton<InMemoryRepository<ClientInformation>>.Instance;
 
             //This Strategies aren't designed to be changed.
             connectionConnection = new ConnectionConnect();
-            connectionConnection.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            connectionConnection.ConsumerRepository = Consumers;
 
             connectionConnection.clientRepository = CLIENTS;
             connectionConnection.clientAppsRepository = CLIENT_APPS;
@@ -85,26 +90,27 @@ namespace Plex.MobileHub
             connectionConnection.clientDbCompanyUserAppsRepository = CLIENT_DB_COMPANY_USER_APPS;
 
             connectionRelease = new ConnectionRelease();
-            connectionRelease.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            connectionRelease.ConsumerRepository = Consumers;
 
             connectionStatus = new ConnectionStatus();
-            connectionStatus.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            connectionStatus.ConsumerRepository = Consumers;
 
             qryExecute = new QryExecute();
             qryExecute.AppQueryRepository = APP_QUERIES;
             qryExecute.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
-            qryExecute.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
-            qryExecute.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            qryExecute.ClientInfoRepository = ClientInfo;
+            qryExecute.ConsumerRepository = Consumers;
 
             qryDatabase = new QryDatabase();
-            qryDatabase.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            qryDatabase.ConsumerRepository = Consumers;
             qryDatabase.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
-            qryDatabase.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
+            qryDatabase.ClientInfoRepository = ClientInfo;
 
             deviceRequestId = new DeviceRequestId(() => Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
             deviceRequestId.DevDataRepository = DEV_DATA;
-            deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
+            deviceRequestId.ConsumerRepository = Consumers;
         }
+
         public virtual MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
         {
             return connectionConnection.Strategy(clientId, appId, database, user, password);
