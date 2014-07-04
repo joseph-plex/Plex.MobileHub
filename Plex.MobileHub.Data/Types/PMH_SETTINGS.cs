@@ -9,6 +9,7 @@ namespace Plex.MobileHub.Data.Types
     public class PMH_SETTINGS : RepositoryEntryBase, IRepositoryEntry
     {
         public int PMH_ID { get; set; }//	NUMBER(10)	N		
+        public int MISC { get; set; }//	NUMBER(10)	N	
 
         public PMH_SETTINGS() : base() {
             primaryKeys.Add("PMH_ID");

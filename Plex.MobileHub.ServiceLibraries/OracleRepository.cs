@@ -257,7 +257,7 @@ namespace Plex.MobileHub.ServiceLibraries
 
             //This creates the conditions under which the values are set. | Start @ 1 since first entry is done above.
             for (int i = Settables.Count + 1; i < Properties.Count; i++)
-                condition += ", " + String.Format(cvpTemplate, PrimaryKeys[i - Settables.Count], bph + i);
+                condition += " AND " + String.Format(cvpTemplate, PrimaryKeys[i - Settables.Count], bph + i);
 
             statement = String.Format(statement, typeof(T).Name, cvp, condition);
             return statement;
@@ -271,7 +271,7 @@ namespace Plex.MobileHub.ServiceLibraries
             String condition = String.Format(cvpTemplate, PrimaryKeys.First(), bph + 0);
 
             for (int i =1; i < PrimaryKeys.Count; i++)
-                condition += ", " + String.Format(cvpTemplate, PrimaryKeys[i], bph + i);
+                condition += " AND " + String.Format(cvpTemplate, PrimaryKeys[i], bph + i);
 
             statement = String.Format(statement, typeof(T).Name, condition);
             return statement;

@@ -13,7 +13,10 @@ namespace Plex.MobileHub.Data.Types
         public int APP_ID { get; set; } //APP_ID	NUMBER(10)	N	
         public int CLIENT_ID { get; set; } //CLIENT_ID	NUMBER(10)	N	
 
-        public DEV_DATA() : base() { }
+        public DEV_DATA() : base() 
+        {
+            primaryKeys.Add("DEVICE_DATABASE_ID");
+        }
         public DEV_DATA(PlexQueryResultTuple plexTuple) :
             this()
         {

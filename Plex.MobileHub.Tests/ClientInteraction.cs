@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
 
 namespace Plex.MobileHub.Tests
@@ -13,14 +14,25 @@ namespace Plex.MobileHub.Tests
         const string myPipeServiceName = "ApiPipe";
 
         [TestMethod]
+        [Timeout(2000)]
         public void ApiInitTest()
         {
-            Api api = new Api();
-            ServiceHost host = new ServiceHost(api,new Uri(myPipeService));
+            bool Success , SuccessSet = Success = false;
+            ServiceHost host = new ServiceHost(typeof(Api),new Uri(myPipeService));
             host.AddServiceEndpoint(typeof(IApiService), new NetNamedPipeBinding(), myPipeServiceName);
+            host.Opened += (s, e) => 
+            { 
+                host.BeginClose(OnClose, host);
+                SuccessSet = Success =  true;
+            };
             host.BeginOpen(OnOpen, host);
-            host.BeginClose(OnClose, host);
+
+            while (!SuccessSet)
+                Thread.Yield();
+
+            Assert.IsTrue(Success);
         }
+
 
 
         void OnOpen(IAsyncResult ar)
