@@ -24,5 +24,11 @@ namespace Plex.MobileHub.Data.Types
         {
             primaryKeys.Add("QUERY_ID");
         }
+
+        public APP_QUERIES(PlexQueryResultTuple plexTuple) :
+            this() 
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
     }
 }

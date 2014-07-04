@@ -13,7 +13,11 @@ namespace Plex.MobileHub.Data.Types
         public DateTime QUERY_EXECUTION_TIME { get; set; }//QUERY_EXECUTION_TIME	DATE	N
 
         public DEV_DATA_VER_QUERIES() : base() { }
-        public DEV_DATA_VER_QUERIES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public DEV_DATA_VER_QUERIES(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
 
     }
 }

@@ -13,6 +13,10 @@ namespace Plex.MobileHub.Data.Types
         public PMH_SETTINGS() : base() {
             primaryKeys.Add("PMH_ID");
         }
-        public PMH_SETTINGS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public PMH_SETTINGS(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
     }
 }

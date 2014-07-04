@@ -17,6 +17,10 @@ namespace Plex.MobileHub.Data.Types
         public QUERY_SEQUENCE_REQUESTS() : base() {
             primaryKeys.Add("TQR_ID");
         }
-        public QUERY_SEQUENCE_REQUESTS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public QUERY_SEQUENCE_REQUESTS(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
     }
 }

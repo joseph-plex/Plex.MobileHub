@@ -20,7 +20,11 @@ namespace Plex.MobileHub.Data.Types
             primaryKeys.Add("CONDITION_ID");
         }
 
-        public APP_QUERY_CONDITIONS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public APP_QUERY_CONDITIONS(PlexQueryResultTuple plexTuple) :
+            this() 
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
 
 
     }

@@ -16,6 +16,10 @@ namespace Plex.MobileHub.Data.Types
         public CLIENT_DB_COMPANIES() : base() {
             primaryKeys.Add("DB_COMPANY_ID");
         }
-        public CLIENT_DB_COMPANIES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public CLIENT_DB_COMPANIES(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
     }
 }

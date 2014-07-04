@@ -16,6 +16,10 @@ namespace Plex.MobileHub.Data.Types
         public LOGS() : base() {
             primaryKeys.Add("LOG_ID");
         }
-        public LOGS(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public LOGS(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
     }
 }

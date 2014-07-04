@@ -13,9 +13,25 @@ namespace Plex.MobileHub.Tests
         const string myPipeServiceName = "ApiPipe";
 
         [TestMethod]
-        public void TestMethod1()
+        public void ApiInitTest()
         {
-      
+            Api api = new Api();
+            ServiceHost host = new ServiceHost(api,new Uri(myPipeService));
+            host.AddServiceEndpoint(typeof(IApiService), new NetNamedPipeBinding(), myPipeServiceName);
+            host.BeginOpen(OnOpen, host);
+            host.BeginClose(OnClose, host);
+        }
+
+
+        void OnOpen(IAsyncResult ar)
+        {
+            ServiceHost service = (ServiceHost)ar.AsyncState;
+            service.EndOpen(ar);
+        }
+        void OnClose(IAsyncResult ar)
+        {
+            ServiceHost service = (ServiceHost)ar.AsyncState;
+            service.EndClose(ar);
         }
     }
 }

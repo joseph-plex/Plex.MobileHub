@@ -20,8 +20,10 @@ namespace Plex.MobileHub.Data.Types
         public APP_TABLES() : base () {
             primaryKeys.Add("TABLE_ID");
         }
-        public APP_TABLES(PlexQueryResultTuple plexTuple) : base(plexTuple) {
-            
+        public APP_TABLES(PlexQueryResultTuple plexTuple) :
+            this() 
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
         }
     }
 }

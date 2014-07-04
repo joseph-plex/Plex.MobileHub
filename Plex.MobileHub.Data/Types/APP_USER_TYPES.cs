@@ -17,7 +17,11 @@ namespace Plex.MobileHub.Data.Types
         public APP_USER_TYPES() : base() {
             primaryKeys.Add("USER_TYPE_ID");
         }
-        public APP_USER_TYPES(PlexQueryResultTuple plexTuple) : base(plexTuple) { }
+        public APP_USER_TYPES(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
 
     }
 }
