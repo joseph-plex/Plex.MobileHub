@@ -70,7 +70,6 @@ namespace Plex.MobileHub.ServiceLibraries.Test.ApiService
 
             Assert.IsTrue(cc.Strategy(ValidClientId, 0, ValidDb, ValidUser, ValidPassword).Response < 0);
 
-            //Assert.AreEqual(true, cc.Strategy(ValidClientId, 0, ValidDb, ValidUser, ValidPassword));
         }
 
         [TestMethod]

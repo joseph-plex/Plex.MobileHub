@@ -33,7 +33,6 @@ namespace Plex.MobileHub.ServiceLibraries
         public virtual DateTime StartTimeStamp { get; set; }
         public virtual DateTime CompletionTimeStamp { get; set; }
         public virtual List<RegisteredQueryResult> Results { get; set; }
-
         protected virtual MethodResult methodResult { get; set; }
 
         public DeviceSynchronizeMethodResult()

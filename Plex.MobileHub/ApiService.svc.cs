@@ -78,11 +78,11 @@ namespace Plex.MobileHub
             connectionConnection.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
 
             connectionConnection.clientRepository = CLIENTS;
-            connectionConnection.clientAppsRepository = new OracleRepository<CLIENT_APPS>();
-            connectionConnection.clientUsersRepository = new OracleRepository<CLIENT_USERS>();
-            connectionConnection.clientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
-            connectionConnection.clientDbCompanyUsersRepository = new OracleRepository<CLIENT_DB_COMPANY_USERS>();
-            connectionConnection.clientDbCompanyUserAppsRepository = new OracleRepository<CLIENT_DB_COMPANY_USER_APPS>();
+            connectionConnection.clientAppsRepository = CLIENT_APPS;
+            connectionConnection.clientUsersRepository = CLIENT_USERS;
+            connectionConnection.clientDbCompaniesRepository = CLIENT_DB_COMPANIES;
+            connectionConnection.clientDbCompanyUsersRepository = CLIENT_DB_COMPANY_USERS;
+            connectionConnection.clientDbCompanyUserAppsRepository = CLIENT_DB_COMPANY_USER_APPS;
 
             connectionRelease = new ConnectionRelease();
             connectionRelease.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
@@ -91,18 +91,18 @@ namespace Plex.MobileHub
             connectionStatus.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
 
             qryExecute = new QryExecute();
-            qryExecute.AppQueryRepository = new OracleRepository<APP_QUERIES>();
-            qryExecute.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
+            qryExecute.AppQueryRepository = APP_QUERIES;
+            qryExecute.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
             qryExecute.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
             qryExecute.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
 
             qryDatabase = new QryDatabase();
             qryDatabase.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
-            qryDatabase.ClientDbCompaniesRepository = new OracleRepository<CLIENT_DB_COMPANIES>();
+            qryDatabase.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
             qryDatabase.ClientInfoRepository = Singleton<InMemoryRepository<ClientInformation>>.Instance;
 
             deviceRequestId = new DeviceRequestId(() => Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
-            deviceRequestId.DevDataRepository = new OracleRepository<DEV_DATA>();
+            deviceRequestId.DevDataRepository = DEV_DATA;
             deviceRequestId.ConsumerRepository = Singleton<InMemoryRepository<Consumer>>.Instance;
         }
         public virtual MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
