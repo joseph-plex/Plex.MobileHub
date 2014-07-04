@@ -15,17 +15,17 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
         public IRepository<Consumer> ConsumerRepository { get; set; }
         public IRepository<DEV_DATA> DevDataRepository { get; set; }
 
-        public DeviceRequestId(Func<int> keyGenerator)
+        public DeviceRequestId(Func<Int32> keyGenerator)
         {
             KeyGenerator = keyGenerator;
         }
 
-        public MethodResult Strategy(int connectionId)
+        public MethodResult Strategy(Int32 connectionId)
         {
             try
             {
                 DEV_DATA tuple = new DEV_DATA();
-                var consumer = ConsumerRepository.Retrieve(p=> p.ConsumerId == connectionId);
+                var consumer = ConsumerRepository.Retrieve(p => p.ConsumerId == connectionId);
                 
                 tuple.DEVICE_DATABASE_ID = KeyGenerator();
                 tuple.CLIENT_ID = consumer.ClientId;
