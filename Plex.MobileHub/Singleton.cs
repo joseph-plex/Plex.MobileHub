@@ -7,7 +7,7 @@ namespace Plex.MobileHub
 {
     public class Singleton<T> where T :new()
     {
-        public static T Instance { get { return Instance; } }
+        public static T Instance { get { return instance; } }
         private static T instance;
         private Singleton() 
         {
