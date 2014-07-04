@@ -284,5 +284,9 @@ namespace Plex.MobileHub.ServiceLibraries
             return statement;
         }
         #endregion
+        ~OracleRepository()
+        {
+            Dispose();
+        }
     }
 }
