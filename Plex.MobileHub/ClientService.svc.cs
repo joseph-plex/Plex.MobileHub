@@ -15,6 +15,55 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Client.svc or Client.svc.cs at the Solution Explorer and start debugging.
     public class ClientService :  IClientService
     {
+        public IRepository<CLIENTS> CLIENTS
+        {
+            get
+            {
+                return clients;
+            }
+            set
+            {
+                clients = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<ClientInformation> ClientInfo
+        {
+            get
+            {
+                return clientInfo;
+            }
+            set
+            {
+                clientInfo = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+
+        event EventHandler RepositoryChangedEvent;
+
+        IRepository<CLIENTS> clients;
+        IRepository<ClientInformation> clientInfo;
+
+        LogIn logIn;
+
+        public ClientService()
+        {
+            CLIENTS = new OracleRepository<CLIENTS>();
+            ClientInfo = Singleton<InMemoryRepository<ClientInformation>>.Instance;
+            
+            logIn = new LogIn();
+            RepositoryChangedEvent += (s, e) => init();
+            init();
+        }
+
+        void init()
+        {
+            logIn.ClientsRepository = CLIENTS;
+            logIn.ClientInfoRepository = ClientInfo;
+        }
         public IClientCallback ClientCallback
         {
             get
@@ -22,11 +71,10 @@ namespace Plex.MobileHub
                 return OperationContext.Current.GetCallbackChannel<IClientCallback>();
             }
         }
+
         public void LogIn(Int32 clientId, String clientKey)
         {
-            LogIn logIn = new LogIn();
-            logIn.ClientsRepository = new OracleRepository<CLIENTS>();
-            logIn.Strategy(clientId, clientKey);
+            logIn.Strategy(clientId, clientKey, ClientCallback);
         }
 
         public void LogOut(){

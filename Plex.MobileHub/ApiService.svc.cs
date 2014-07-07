@@ -16,31 +16,345 @@ namespace Plex.MobileHub
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Api : IApiService
     {
-        public IRepository<APP_QUERIES> APP_QUERIES { get; set; }
-        public IRepository<APP_QUERY_COLUMNS> APP_QUERY_COLUMNS { get; set; }
-        public IRepository<APP_QUERY_CONDITIONS> APP_QUERY_CONDITIONS { get; set; }
-        public IRepository<APP_TABLE_COLUMNS> APP_TABLE_COLUMNS { get; set; }
-        public IRepository<APP_TABLES> APP_TABLES { get; set; }
-        public IRepository<APP_USER_TYPES> APP_USER_TYPES { get; set; }
-        public IRepository<APPS> APPS { get; set; }
-        public IRepository<CLIENT_APPS> CLIENT_APPS { get; set; }
-        public IRepository<CLIENT_DB_COMPANIES> CLIENT_DB_COMPANIES { get; set; }
-        public IRepository<CLIENT_DB_COMPANY_USER_APPS> CLIENT_DB_COMPANY_USER_APPS { get; set; }
-        public IRepository<CLIENT_DB_COMPANY_USERS> CLIENT_DB_COMPANY_USERS { get; set; }
-        public IRepository<CLIENT_USERS> CLIENT_USERS { get; set; }
-        public IRepository<CLIENTS> CLIENTS { get; set; }
-        public IRepository<DEV_DATA> DEV_DATA { get; set; }
-        public IRepository<DEV_DATA_VER> DEV_DATA_VER { get; set; }
-        public IRepository<DEV_DATA_VER_QUERIES> DEV_DATA_VER_QUERIES { get; set; }
-        public IRepository<DEVICE_USER_DATA> DEVICE_USER_DATA { get; set; }
-        public IRepository<DEVICE_USER_DATA_QUERIES> DEVICE_USER_DATA_QUERIES { get; set; }
-        public IRepository<DEVICES> DEVICES { get; set; }
-        public IRepository<LOGS> LOGS { get; set; }
-        public IRepository<PMH_SETTINGS> PMH_SETTINGS { get; set; }
-        public IRepository<QUERY_SEQUENCE_REQUESTS> QUERY_SEQUENCE_REQUESTS { get; set; }
+        public IRepository<APP_QUERIES> APP_QUERIES
+        {
+            get
+            {
+         
+                return app_queries;
+            }
+            set
+            {
+                app_queries = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APP_QUERY_COLUMNS> APP_QUERY_COLUMNS
+        {
+            get
+            {
+                return app_query_columns;
+            }
+            set
+            {
+                app_query_columns = value; 
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APP_QUERY_CONDITIONS> APP_QUERY_CONDITIONS
+        {
+            get
+            {
+                return app_query_conditions;
+            }
+            set
+            {
+                app_query_conditions = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APP_TABLE_COLUMNS> APP_TABLE_COLUMNS
+        {
+            get
+            {
+                return app_table_columns;
+            }
+            set
+            {
+                app_table_columns = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APP_TABLES> APP_TABLES
+        {
+            get
+            {
+                return app_tables;
+            }
+            set
+            {
+                app_tables = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APP_USER_TYPES> APP_USER_TYPES
+        {
+            get
+            {
+                return app_user_types;
+            }
+            set
+            {
+                app_user_types = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<APPS> APPS
+        {
+            get
+            {
+                return apps;
+            }
+            set
+            {
+                apps = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENT_APPS> CLIENT_APPS
+        {
+            get
+            {
+                return client_apps;
+            }
+            set
+            {
+                client_apps = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENT_DB_COMPANIES> CLIENT_DB_COMPANIES
+        {
+            get
+            {
+                return client_db_companies;
+            }
+            set
+            {
+                client_db_companies = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENT_DB_COMPANY_USER_APPS> CLIENT_DB_COMPANY_USER_APPS
+        {
+            get
+            {
+                return client_db_company_user_apps;
+            }
+            set
+            {
+                client_db_company_user_apps = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENT_DB_COMPANY_USERS> CLIENT_DB_COMPANY_USERS
+        {
+            get
+            {
+                return client_db_company_users;
+            }
+            set
+            {
+                client_db_company_users = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENT_USERS> CLIENT_USERS
+        {
+            get
+            {
+                return client_users;
+            }
+            set
+            {
+                client_users = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<CLIENTS> CLIENTS
+        {
+            get
+            {
+                return clients;
+            }
+            set
+            {
+                clients = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEV_DATA> DEV_DATA
+        {
+            get
+            {
+                return dev_data;
+            }
+            set
+            {
+                dev_data = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEV_DATA_VER> DEV_DATA_VER
+        {
+            get
+            {
+                return dev_data_ver;
 
-        public IRepository<Consumer> Consumers { get; set; }
-        public IRepository<ClientInformation> ClientInfo { get; set; }
+            }
+            set
+            {
+                dev_data_ver = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEV_DATA_VER_QUERIES> DEV_DATA_VER_QUERIES
+        {
+            get
+            {
+                return dev_data_ver_queries;
+            }
+            set
+            {
+                dev_data_ver_queries = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEVICE_USER_DATA> DEVICE_USER_DATA
+        {
+            get
+            {
+                return device_user_data;
+            }
+            set
+            {
+                device_user_data = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEVICE_USER_DATA_QUERIES> DEVICE_USER_DATA_QUERIES
+        {
+            get
+            {
+                return device_user_data_queries;
+            }
+            set
+            {
+                device_user_data_queries = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<DEVICES> DEVICES
+        {
+            get
+            {
+                return devices;
+            }
+            set
+            {
+                devices = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<LOGS> LOGS
+        {
+            get
+            {
+                return logs;
+            }
+            set
+            {
+                logs = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<PMH_SETTINGS> PMH_SETTINGS
+        {
+            get
+            {
+                return pmh_settings;
+            }
+            set
+            {
+                pmh_settings = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+        public IRepository<QUERY_SEQUENCE_REQUESTS> QUERY_SEQUENCE_REQUESTS
+        {
+            get
+            {
+                return query_sequence_requests;
+            }
+            set
+            {
+                query_sequence_requests = value;
+                if (RepositoryChangedEvent != null)
+                    RepositoryChangedEvent(this, EventArgs.Empty);
+            }
+        }
+
+        public IRepository<Consumer> Consumers
+        {
+            get
+            {
+                return consumers;
+            }
+            set
+            {
+                consumers = value;
+            }
+        }
+        public IRepository<ClientInformation> ClientInfo
+        {
+            get
+            {
+                return clientInfo;
+            }
+            set
+            {
+                clientInfo = value;
+            }
+        }
+
+        event EventHandler RepositoryChangedEvent;
+        
+        IRepository<APP_QUERIES> app_queries;
+        IRepository<APP_QUERY_COLUMNS> app_query_columns;
+        IRepository<APP_QUERY_CONDITIONS> app_query_conditions;
+        IRepository<APP_TABLE_COLUMNS> app_table_columns;
+        IRepository<APP_TABLES> app_tables;
+        IRepository<APP_USER_TYPES> app_user_types;
+        IRepository<APPS> apps;
+        IRepository<CLIENT_APPS> client_apps;
+        IRepository<CLIENT_DB_COMPANIES> client_db_companies;
+        IRepository<CLIENT_DB_COMPANY_USER_APPS> client_db_company_user_apps;
+        IRepository<CLIENT_DB_COMPANY_USERS> client_db_company_users;
+        IRepository<CLIENT_USERS> client_users;
+        IRepository<CLIENTS> clients;
+        IRepository<DEV_DATA> dev_data;
+        IRepository<DEV_DATA_VER> dev_data_ver;
+        IRepository<DEV_DATA_VER_QUERIES> dev_data_ver_queries;
+        IRepository<DEVICE_USER_DATA> device_user_data;
+        IRepository<DEVICE_USER_DATA_QUERIES> device_user_data_queries;
+        IRepository<DEVICES> devices;
+        IRepository<LOGS> logs;
+        IRepository<PMH_SETTINGS> pmh_settings;
+        IRepository<QUERY_SEQUENCE_REQUESTS> query_sequence_requests;
+        IRepository<Consumer> consumers;
+        IRepository<ClientInformation> clientInfo;
+
 
         ConnectionConnect connectionConnection;
         ConnectionRelease connectionRelease;
@@ -51,6 +365,7 @@ namespace Plex.MobileHub
 
         public Api()
         {
+
             //Defaults for Repositories
             APP_QUERIES = new OracleRepository<APP_QUERIES>();
             APP_QUERY_COLUMNS = new OracleRepository<APP_QUERY_COLUMNS>();
@@ -80,8 +395,23 @@ namespace Plex.MobileHub
 
             //This Strategies aren't designed to be changed.
             connectionConnection = new ConnectionConnect();
+            connectionRelease = new ConnectionRelease();
+            connectionStatus = new ConnectionStatus();
+            qryExecute = new QryExecute();
+            qryDatabase = new QryDatabase();
+            deviceRequestId = new DeviceRequestId(() => Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
+
+            //This is to keep the behavior repositories in sync with the service repositories.
+            RepositoryChangedEvent += (s,e) => init();
+            init();
+        }
+
+
+        public void init()
+        {
             connectionConnection.ConsumerRepository = Consumers;
 
+            connectionConnection.appsRepository = APPS;
             connectionConnection.clientRepository = CLIENTS;
             connectionConnection.clientAppsRepository = CLIENT_APPS;
             connectionConnection.clientUsersRepository = CLIENT_USERS;
@@ -89,28 +419,24 @@ namespace Plex.MobileHub
             connectionConnection.clientDbCompanyUsersRepository = CLIENT_DB_COMPANY_USERS;
             connectionConnection.clientDbCompanyUserAppsRepository = CLIENT_DB_COMPANY_USER_APPS;
 
-            connectionRelease = new ConnectionRelease();
-            connectionRelease.ConsumerRepository = Consumers;
-
-            connectionStatus = new ConnectionStatus();
             connectionStatus.ConsumerRepository = Consumers;
 
-            qryExecute = new QryExecute();
+            connectionRelease.ConsumerRepository = Consumers;
+
             qryExecute.AppQueryRepository = APP_QUERIES;
             qryExecute.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
             qryExecute.ClientInfoRepository = ClientInfo;
             qryExecute.ConsumerRepository = Consumers;
 
-            qryDatabase = new QryDatabase();
             qryDatabase.ConsumerRepository = Consumers;
             qryDatabase.ClientDbCompaniesRepository = CLIENT_DB_COMPANIES;
             qryDatabase.ClientInfoRepository = ClientInfo;
 
-            deviceRequestId = new DeviceRequestId(() => Convert.ToInt32(OracleRepository.GetIDbConnection().Query("select DEVICE_ID.nextval from dual")[0, 0]));
             deviceRequestId.DevDataRepository = DEV_DATA;
             deviceRequestId.ConsumerRepository = Consumers;
-        }
 
+        }
+        
         public virtual MethodResult ConnectionConnect(int clientId, int appId, string database, string user, string password)
         {
             return connectionConnection.Strategy(clientId, appId, database, user, password);

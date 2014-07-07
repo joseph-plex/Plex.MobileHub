@@ -53,8 +53,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ApiTestService.cs" />
     <Compile Include="ClientInteraction.cs" />
+    <Compile Include="ClientTestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestClientCallback.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plex.MobileHub.Client\Plex.MobileHub.Client.csproj">
@@ -68,6 +71,10 @@
     <ProjectReference Include="..\Plex.MobileHub.ServiceConsumer\Plex.MobileHub.ServiceConsumer.csproj">
       <Project>{9c2459d0-95dc-4177-930c-53bd2056c20a}</Project>
       <Name>Plex.MobileHub.ServiceConsumer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibraries.Test\Plex.MobileHub.ServiceLibraries.Test.csproj">
+      <Project>{2ae9a209-a70e-4b06-8d28-ccab422e1ba6}</Project>
+      <Name>Plex.MobileHub.ServiceLibraries.Test</Name>
     </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibraries\Plex.MobileHub.ServiceLibraries.csproj">
       <Project>{79cee8aa-6fd6-4b7f-9c48-6c16dcc4df0e}</Project>

@@ -44,7 +44,6 @@ namespace Plex.MobileHub.Data
             FromPlexQueryResultTuple(this, plexTuple);
         }
 
-
         public IList<String> GetPrimaryKeys()
         {
             return primaryKeys;

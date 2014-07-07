@@ -36,7 +36,7 @@ namespace Plex.MobileHub.ServiceLibraries.APIServiceLibrary
                 {
                     try
                     {
-                        RegisteredQueryResult rqr = clientInfo.Service.ClientCallback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName, time);
+                        RegisteredQueryResult rqr = clientInfo.Callback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName, time);
                         rqr.Success();
                         rqr.TableName = query.TABLE_NAME;
                         rqr.QueryName = query.NAME;

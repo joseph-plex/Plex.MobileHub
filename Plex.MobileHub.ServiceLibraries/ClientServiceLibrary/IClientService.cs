@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract=(typeof(IClientCallback)))]
     public interface IClientService : IDisposable
     {
         IClientCallback ClientCallback { get; }

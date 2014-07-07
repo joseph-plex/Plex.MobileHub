@@ -10,11 +10,10 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
     public class LogIn : MethodStrategyBase<Boolean>
     {
-        public IClientService Service { get; set; }
         public IRepository<CLIENTS> ClientsRepository { get; set; }
         public IRepository<ClientInformation> ClientInfoRepository { get; set; }
 
-        public Boolean Strategy(Int32 clientId, String clientKey)
+        public Boolean Strategy(Int32 clientId, String clientKey, IClientCallback callback = null)
         {
             var client = ClientsRepository.Retrieve(p => p.CLIENT_ID == clientId);
             if (client == null)
@@ -29,7 +28,7 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
             ClientInformation info = new ClientInformation()
             {
                 ClientId = client.CLIENT_ID,
-                Service = Service
+                Callback = callback
             };
             ClientInfoRepository.Insert(info);
             return true;
