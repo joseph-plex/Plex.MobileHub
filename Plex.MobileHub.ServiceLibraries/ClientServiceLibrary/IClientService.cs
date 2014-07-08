@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 using System.Threading.Tasks;
+using Plex.MobileHub.Data.Types;
 
 namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
 {
@@ -20,81 +21,84 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
         
         #region Access to Pmh Database Data 
         [OperationContract]
-        void SelectAPPS();
-        [OperationContract]
         void GetAllAPPS();
+
+        [OperationContract]
+        void SelectAPPS(Predicate<APPS> predicate);
+
 
         [OperationContract]
         void GetAllAPP_QUERIES();
         [OperationContract]
-        void SelectAPP_QUERIES();
+        void SelectAPP_QUERIES(Predicate<APP_QUERIES> predicate);
 
 
         [OperationContract]
-        void GetAllAPP_QUERY_COLUMNS();
+        IEnumerable<APP_QUERY_COLUMNS> GetAllAPP_QUERY_COLUMNS();
         [OperationContract]
-        void SelectAPP_QUERY_COLUMNS();
-
-        [OperationContract]
-        void GetAllCLIENT_APPS();
-        [OperationContract]
-        void SelectCLIENT_APPS();
-
+        APP_QUERY_COLUMNS SelectAPP_QUERY_COLUMNS(Predicate<APP_QUERY_COLUMNS> predicate) ;
 
 
         [OperationContract]
-        void GetAllCLIENT_DB_COMPANIES();
+        IEnumerable<CLIENT_APPS> GetAllCLIENT_APPS();
         [OperationContract]
-        void SelectCLIENT_DB_COMPANIES();
-        [OperationContract]
-        void InsertCLIENT_DB_COMPANIES();
-        [OperationContract]
-        void UpdateCLIENT_DB_COMPANIES();
-        [OperationContract]
-        void DeleteCLIENT_DB_COMPANIES();
+        CLIENT_APPS SelectCLIENT_APPS(Predicate<CLIENT_APPS> predicate);
+
 
 
         [OperationContract]
-        void GetAllCLIENT_DB_COMPANY_USERS();
+        IEnumerable<CLIENT_DB_COMPANIES> GetAllCLIENT_DB_COMPANIES();
         [OperationContract]
-        void SelectCLIENT_DB_COMPANY_USERS();
+        CLIENT_DB_COMPANIES SelectCLIENT_DB_COMPANIES(Predicate<CLIENT_DB_COMPANIES> predicate);
         [OperationContract]
-        void InsertCLIENT_DB_COMPANY_USERS();
+        void InsertCLIENT_DB_COMPANIES(CLIENT_DB_COMPANIES value);
         [OperationContract]
-        void UpdateCLIENT_DB_COMPANY_USERS();
+        void UpdateCLIENT_DB_COMPANIES(CLIENT_DB_COMPANIES value);
         [OperationContract]
-        void DeleteCLIENT_DB_COMPANY_USERS();
+        void DeleteCLIENT_DB_COMPANIES(Predicate<CLIENT_DB_COMPANIES> predicate);
 
 
         [OperationContract]
-        void GetAllCLIENT_DB_COMPANY_USER_APPS();
+        IEnumerable<CLIENT_DB_COMPANY_USERS> GetAllCLIENT_DB_COMPANY_USERS();
         [OperationContract]
-        void InsertCLIENT_DB_COMPANY_USER_APPS();
+        CLIENT_DB_COMPANY_USERS SelectCLIENT_DB_COMPANY_USERS(Predicate<CLIENT_DB_COMPANY_USERS> predicate);
         [OperationContract]
-        void SelectCLIENT_DB_COMPANY_USER_APPS();
+        void InsertCLIENT_DB_COMPANY_USERS(CLIENT_DB_COMPANY_USERS value);
         [OperationContract]
-        void UpdateCLIENT_DB_COMPANY_USER_APPS();
+        void UpdateCLIENT_DB_COMPANY_USERS(CLIENT_DB_COMPANY_USERS value);
         [OperationContract]
-        void DeleteCLIENT_DB_COMPANY_USER_APPS();
+        void DeleteCLIENT_DB_COMPANY_USERS(Predicate<CLIENT_DB_COMPANY_USERS> value);
 
 
         [OperationContract]
-        void GetAllCLIENT_USERS();
+        IEnumerable<CLIENT_DB_COMPANY_USER_APPS> GetAllCLIENT_DB_COMPANY_USER_APPS();
         [OperationContract]
-        void InsertCLIENT_USERS();
+        CLIENT_DB_COMPANY_USER_APPS SelectCLIENT_DB_COMPANY_USER_APPS(Predicate<CLIENT_DB_COMPANY_USER_APPS> predicate);
         [OperationContract]
-        void SelectCLIENT_USERS();
+        void InsertCLIENT_DB_COMPANY_USER_APPS(CLIENT_DB_COMPANY_USER_APPS value);
         [OperationContract]
-        void UpdateCLIENT_USERS();
+        void UpdateCLIENT_DB_COMPANY_USER_APPS(CLIENT_DB_COMPANY_USER_APPS value);
         [OperationContract]
-        void DeleteCLIENT_USERS();
+        void DeleteCLIENT_DB_COMPANY_USER_APPS(Predicate<CLIENT_DB_COMPANY_USER_APPS> predicate);
+
 
         [OperationContract]
-        void GetAllLOGS();
+        IEnumerable<CLIENT_USERS> GetAllCLIENT_USERS();
         [OperationContract]
-        void SelectLOGS();
+        CLIENT_USERS SelectCLIENT_USERS(Predicate<CLIENT_USERS> predicate);
         [OperationContract]
-        void InsertLOGS();
+        void InsertCLIENT_USERS(CLIENT_USERS value);
+        [OperationContract]
+        void UpdateCLIENT_USERS(CLIENT_USERS value);
+        [OperationContract]
+        void DeleteCLIENT_USERS(Predicate<CLIENT_USERS> predicate);
+
+        [OperationContract]
+        IEnumerable<LOGS> GetAllLOGS();
+        [OperationContract]
+        LOGS SelectLOGS(Predicate<LOGS> predicate);
+        [OperationContract]
+        void InsertLOGS(LOGS value);
         #endregion
     }
 }

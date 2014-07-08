@@ -45,12 +45,12 @@ namespace Plex.MobileHub.ServiceConsumer
         }
 
 
-        public void SelectAPPS()
+        public void GetAllAPPS()
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllAPPS()
+        public void SelectAPPS(Predicate<Data.Types.APPS> predicate)
         {
             throw new NotImplementedException();
         }
@@ -60,142 +60,142 @@ namespace Plex.MobileHub.ServiceConsumer
             throw new NotImplementedException();
         }
 
-        public void SelectAPP_QUERIES()
+        public void SelectAPP_QUERIES(Predicate<Data.Types.APP_QUERIES> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllAPP_QUERY_COLUMNS()
+        public IEnumerable<Data.Types.APP_QUERY_COLUMNS> GetAllAPP_QUERY_COLUMNS()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectAPP_QUERY_COLUMNS()
+        public Data.Types.APP_QUERY_COLUMNS SelectAPP_QUERY_COLUMNS(Predicate<Data.Types.APP_QUERY_COLUMNS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllCLIENT_APPS()
+        public IEnumerable<Data.Types.CLIENT_APPS> GetAllCLIENT_APPS()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectCLIENT_APPS()
+        public Data.Types.CLIENT_APPS SelectCLIENT_APPS(Predicate<Data.Types.CLIENT_APPS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllCLIENT_DB_COMPANIES()
+        public IEnumerable<Data.Types.CLIENT_DB_COMPANIES> GetAllCLIENT_DB_COMPANIES()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectCLIENT_DB_COMPANIES()
+        public Data.Types.CLIENT_DB_COMPANIES SelectCLIENT_DB_COMPANIES(Predicate<Data.Types.CLIENT_DB_COMPANIES> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertCLIENT_DB_COMPANIES()
+        public void InsertCLIENT_DB_COMPANIES(Data.Types.CLIENT_DB_COMPANIES value)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateCLIENT_DB_COMPANIES()
+        public void UpdateCLIENT_DB_COMPANIES(Data.Types.CLIENT_DB_COMPANIES value)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCLIENT_DB_COMPANIES()
+        public void DeleteCLIENT_DB_COMPANIES(Predicate<Data.Types.CLIENT_DB_COMPANIES> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllCLIENT_DB_COMPANY_USERS()
+        public IEnumerable<Data.Types.CLIENT_DB_COMPANY_USERS> GetAllCLIENT_DB_COMPANY_USERS()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectCLIENT_DB_COMPANY_USERS()
+        public Data.Types.CLIENT_DB_COMPANY_USERS SelectCLIENT_DB_COMPANY_USERS(Predicate<Data.Types.CLIENT_DB_COMPANY_USERS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertCLIENT_DB_COMPANY_USERS()
+        public void InsertCLIENT_DB_COMPANY_USERS(Data.Types.CLIENT_DB_COMPANY_USERS value)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateCLIENT_DB_COMPANY_USERS()
+        public void UpdateCLIENT_DB_COMPANY_USERS(Data.Types.CLIENT_DB_COMPANY_USERS value)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCLIENT_DB_COMPANY_USERS()
+        public void DeleteCLIENT_DB_COMPANY_USERS(Predicate<Data.Types.CLIENT_DB_COMPANY_USERS> value)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllCLIENT_DB_COMPANY_USER_APPS()
+        public IEnumerable<Data.Types.CLIENT_DB_COMPANY_USER_APPS> GetAllCLIENT_DB_COMPANY_USER_APPS()
         {
             throw new NotImplementedException();
         }
 
-        public void InsertCLIENT_DB_COMPANY_USER_APPS()
+        public Data.Types.CLIENT_DB_COMPANY_USER_APPS SelectCLIENT_DB_COMPANY_USER_APPS(Predicate<Data.Types.CLIENT_DB_COMPANY_USER_APPS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void SelectCLIENT_DB_COMPANY_USER_APPS()
+        public void InsertCLIENT_DB_COMPANY_USER_APPS(Data.Types.CLIENT_DB_COMPANY_USER_APPS value)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateCLIENT_DB_COMPANY_USER_APPS()
+        public void UpdateCLIENT_DB_COMPANY_USER_APPS(Data.Types.CLIENT_DB_COMPANY_USER_APPS value)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCLIENT_DB_COMPANY_USER_APPS()
+        public void DeleteCLIENT_DB_COMPANY_USER_APPS(Predicate<Data.Types.CLIENT_DB_COMPANY_USER_APPS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllCLIENT_USERS()
+        public IEnumerable<Data.Types.CLIENT_USERS> GetAllCLIENT_USERS()
         {
             throw new NotImplementedException();
         }
 
-        public void InsertCLIENT_USERS()
+        public Data.Types.CLIENT_USERS SelectCLIENT_USERS(Predicate<Data.Types.CLIENT_USERS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void SelectCLIENT_USERS()
+        public void InsertCLIENT_USERS(Data.Types.CLIENT_USERS value)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateCLIENT_USERS()
+        public void UpdateCLIENT_USERS(Data.Types.CLIENT_USERS value)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCLIENT_USERS()
+        public void DeleteCLIENT_USERS(Predicate<Data.Types.CLIENT_USERS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllLOGS()
+        public IEnumerable<Data.Types.LOGS> GetAllLOGS()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectLOGS()
+        public Data.Types.LOGS SelectLOGS(Predicate<Data.Types.LOGS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertLOGS()
+        public void InsertLOGS(Data.Types.LOGS value)
         {
             throw new NotImplementedException();
         }
