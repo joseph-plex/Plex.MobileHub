@@ -20,8 +20,7 @@ namespace Plex.MobileHub.Client
         {
             InitializeComponent();
             consumer = new ClientConsumer(String.Empty, new ClientCallback());
-            //Should be concrete class
-            host = new ServiceHost(typeof(IClientCommandService), new Uri ( "net.pipe://localhost" ));
+            host = new ServiceHost(new ClientCommandService(), new Uri ( "net.pipe://localhost" ));
             host.AddServiceEndpoint(typeof(IClientCommandService), new NetNamedPipeBinding(), "ClientCommandInterface");
         }
 
