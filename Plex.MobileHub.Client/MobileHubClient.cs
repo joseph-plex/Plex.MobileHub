@@ -32,12 +32,18 @@ namespace Plex.MobileHub.Client
 
         protected override void OnStart(string[] args)
         {
+            host.BeginOpen(OnOpen, host);
         }
         
         protected override void OnStop()
         {
             consumer.Dispose();
+            host.Close();
         }
-
+        void OnOpen(IAsyncResult ar)
+        {
+            ServiceHost service = (ServiceHost)ar.AsyncState;
+            service.EndOpen(ar);
+        }
     }
 }
