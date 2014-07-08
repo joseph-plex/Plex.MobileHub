@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
+
+using System.Xml.Serialization;
 using Plex.MobileHub.ServiceLibraries.APIServiceLibrary;
 using Plex.MobileHub.ServiceLibraries;
 using Plex.MobileHub.Data;

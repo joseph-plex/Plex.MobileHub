@@ -134,7 +134,7 @@ namespace Plex.MobileHub.Tests
             EndpointAddress clientEndpoint = new EndpointAddress(PipeService + @"/" + ClientPipeServiceName);
 
             InstanceContext context = new InstanceContext((IClientCallback)new TestClientCallback());
-            var ClientChannelFactory = new DuplexChannelFactory<IClientService>(context, new NetNamedPipeBinding(), clientEndpoint);
+            var ClientChannelFactory = new DuplexChannelFactory<IClientService>(context, new NetNamedPipeBinding(), clientEndpoint + "hi");
             var ApiChannelFactory = new ChannelFactory<IApiService>(new NetNamedPipeBinding(), ApiEndpoint);
             var ClientChannel = ClientChannelFactory.CreateChannel();
             var ApiChannel = ApiChannelFactory.CreateChannel();
@@ -150,8 +150,13 @@ namespace Plex.MobileHub.Tests
             var result = ApiChannel.QueryDatabase(methodResult.Response, "select * from dual");
             Assert.AreEqual<String>("X",Convert.ToString(result[0, 0]));
 
-            clientHost.BeginClose(OnClose, clientHost);
-            apiHost.BeginClose(OnClose, apiHost);
+            //clientHost.BeginClose(OnClose, clientHost);
+            //apiHost.BeginClose(OnClose, apiHost);
+
+            ClientChannelFactory.Close();
+            ApiChannelFactory.Close();
+            clientHost.Close();
+            apiHost.Close();
         }
 
         void OnOpen(IAsyncResult ar)

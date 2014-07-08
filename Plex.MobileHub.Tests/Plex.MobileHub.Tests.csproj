@@ -60,10 +60,6 @@
     <Compile Include="TestClientCallback.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plex.MobileHub.Client\Plex.MobileHub.Client.csproj">
-      <Project>{d077995e-c183-409a-8ea3-eb67af6368d8}</Project>
-      <Name>Plex.MobileHub.Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
       <Project>{108936c8-cb1e-4380-a465-e081cab924ef}</Project>
       <Name>Plex.MobileHub.Data</Name>
