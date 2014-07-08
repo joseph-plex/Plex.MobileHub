@@ -44,23 +44,22 @@ namespace Plex.MobileHub.ServiceConsumer
             serviceFactory.Close();
         }
 
-
-        public void GetAllAPPS()
+        public IEnumerable<Data.Types.APPS> GetAllAPPS()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectAPPS(Predicate<Data.Types.APPS> predicate)
+        public Data.Types.APPS SelectAPPS(Predicate<Data.Types.APPS> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllAPP_QUERIES()
+        public IEnumerable<Data.Types.APP_QUERIES> GetAllAPP_QUERIES()
         {
             throw new NotImplementedException();
         }
 
-        public void SelectAPP_QUERIES(Predicate<Data.Types.APP_QUERIES> predicate)
+        public Data.Types.APP_QUERIES SelectAPP_QUERIES(Predicate<Data.Types.APP_QUERIES> predicate)
         {
             throw new NotImplementedException();
         }

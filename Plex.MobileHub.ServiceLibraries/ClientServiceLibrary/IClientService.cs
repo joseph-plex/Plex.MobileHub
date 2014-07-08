@@ -21,16 +21,15 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
         
         #region Access to Pmh Database Data 
         [OperationContract]
-        void GetAllAPPS();
+        IEnumerable<APPS> GetAllAPPS();
+        [OperationContract]
+        APPS SelectAPPS(Predicate<APPS> predicate);
+
 
         [OperationContract]
-        void SelectAPPS(Predicate<APPS> predicate);
-
-
+        IEnumerable<APP_QUERIES> GetAllAPP_QUERIES();
         [OperationContract]
-        void GetAllAPP_QUERIES();
-        [OperationContract]
-        void SelectAPP_QUERIES(Predicate<APP_QUERIES> predicate);
+        APP_QUERIES SelectAPP_QUERIES(Predicate<APP_QUERIES> predicate);
 
 
         [OperationContract]
@@ -43,7 +42,6 @@ namespace Plex.MobileHub.ServiceLibraries.ClientServiceLibrary
         IEnumerable<CLIENT_APPS> GetAllCLIENT_APPS();
         [OperationContract]
         CLIENT_APPS SelectCLIENT_APPS(Predicate<CLIENT_APPS> predicate);
-
 
 
         [OperationContract]
