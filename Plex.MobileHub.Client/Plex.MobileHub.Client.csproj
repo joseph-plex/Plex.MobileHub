@@ -57,9 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Plex.MobileHub.Data\Plex.MobileHub.Data.csproj">
       <Project>{108936c8-cb1e-4380-a465-e081cab924ef}</Project>
       <Name>Plex.MobileHub.Data</Name>
