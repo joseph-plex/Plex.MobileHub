@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Plex.MobileHub.ServiceLibraries.ManagementServiceLibrary;
-
+using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Management" in code, svc and config file together.
@@ -17,6 +17,11 @@ namespace Plex.MobileHub
         }
 
         public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetApp(Predicate<APPS> predicate)
         {
             throw new NotImplementedException();
         }

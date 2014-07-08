@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using Plex.MobileHub.Data.Types;
 namespace Plex.MobileHub.ServiceLibraries.ManagementServiceLibrary
 {
     [ServiceContract]
@@ -11,5 +12,8 @@ namespace Plex.MobileHub.ServiceLibraries.ManagementServiceLibrary
     {
         [OperationContract]
         void DoWork();
+
+        [OperationContract]
+        void GetApp(Predicate<APPS> predicate);
     }
 }

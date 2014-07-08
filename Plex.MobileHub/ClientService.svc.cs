@@ -84,5 +84,161 @@ namespace Plex.MobileHub
         public void Dispose() {
             throw new NotImplementedException();
         }
+
+
+        public void SelectAPPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllAPPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllAPP_QUERIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectAPP_QUERIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllAPP_QUERY_COLUMNS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectAPP_QUERY_COLUMNS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllCLIENT_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectCLIENT_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllCLIENT_DB_COMPANIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectCLIENT_DB_COMPANIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertCLIENT_DB_COMPANIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCLIENT_DB_COMPANIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCLIENT_DB_COMPANIES()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllCLIENT_DB_COMPANY_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectCLIENT_DB_COMPANY_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertCLIENT_DB_COMPANY_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCLIENT_DB_COMPANY_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCLIENT_DB_COMPANY_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllCLIENT_DB_COMPANY_USER_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertCLIENT_DB_COMPANY_USER_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectCLIENT_DB_COMPANY_USER_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCLIENT_DB_COMPANY_USER_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCLIENT_DB_COMPANY_USER_APPS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllCLIENT_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertCLIENT_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectCLIENT_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCLIENT_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCLIENT_USERS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAllLOGS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectLOGS()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertLOGS()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

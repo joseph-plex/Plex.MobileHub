@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 namespace Plex.MobileHub.Client
 {
-    [ServiceBehavior(InstanceContextMode=InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ClientCommandService : IClientCommandService
     {
         public bool LoggedIn;

@@ -20,6 +20,5 @@ namespace Plex.MobileHub.Data
         T Retrieve(Predicate<T> predicate);
 
         IEnumerable<T> RetrieveAll();
-
     }
 }
