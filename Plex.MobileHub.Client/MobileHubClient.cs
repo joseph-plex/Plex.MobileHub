@@ -14,13 +14,14 @@ namespace Plex.MobileHub.Client
 {
     public partial class MobileHubClient : ServiceBase
     {
-        ClientConsumer consumer;
+        public ClientConsumer consumer { get; private set; }
         ServiceHost host;
+
         public MobileHubClient()
         {
             InitializeComponent();
             consumer = new ClientConsumer(String.Empty, new ClientCallback());
-            host = new ServiceHost(new ClientCommandService(), new Uri ( "net.pipe://localhost" ));
+            host = new ServiceHost(new ClientCommandService(this), new Uri ( "net.pipe://localhost" ));
             host.AddServiceEndpoint(typeof(IClientCommandService), new NetNamedPipeBinding(), "ClientCommandInterface");
         }
 

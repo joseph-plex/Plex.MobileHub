@@ -9,14 +9,25 @@ namespace Plex.MobileHub.Client
     [ServiceBehavior(InstanceContextMode=InstanceContextMode.Single)]
     public class ClientCommandService : IClientCommandService
     {
+        public bool LoggedIn;
+        public MobileHubClient Context { get; private set; }
+
+        public ClientCommandService(MobileHubClient context)
+        {
+            Context = context;
+            LoggedIn = false;
+        }
+
         public void LogIn(int id, string key)
         {
-            throw new NotImplementedException();
+            Context.consumer.LogIn(id, key);
+            LoggedIn = true;
         }
 
         public void LogOff()
         {
-            throw new NotImplementedException();
+            Context.consumer.LogOut();
+            LoggedIn = false;
         }
     }
 }
