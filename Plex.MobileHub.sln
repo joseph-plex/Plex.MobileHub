@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Tests", "Ple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "~Plex.MobileHub.Client", "~Plex.MobileHub.Client\~Plex.MobileHub.Client.csproj", "{D077995E-C183-409A-8EA3-EB67AF6368D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client", "Plex.MobileHub.Client\Plex.MobileHub.Client.csproj", "{2E0D6AD0-5359-49D4-A004-141F50168846}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		64bit|Any CPU = 64bit|Any CPU
@@ -359,6 +361,24 @@ Global
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x64.ActiveCfg = Release|x64
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x64.Build.0 = Release|x64
 		{D077995E-C183-409A-8EA3-EB67AF6368D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|Any CPU.Build.0 = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|Mixed Platforms.Build.0 = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|x64.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.64bit|x86.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|x64.ActiveCfg = Release|Any CPU
+		{2E0D6AD0-5359-49D4-A004-141F50168846}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
