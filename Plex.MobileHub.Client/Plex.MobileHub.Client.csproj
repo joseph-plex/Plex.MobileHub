@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientCallback.cs" />
+    <Compile Include="IClientCommandService.cs" />
     <Compile Include="MobileHubClient.cs">
       <SubType>Component</SubType>
     </Compile>
