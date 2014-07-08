@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client", "Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "~Plex.MobileHub.Client.Interface", "~Plex.MobileHub.Client.Interface\~Plex.MobileHub.Client.Interface.csproj", "{73678087-A5B1-49F8-86F7-0367759D1DF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.MobileHub.Client.Interface", "Plex.MobileHub.Client.Interface\Plex.MobileHub.Client.Interface.csproj", "{72B92B45-E604-4E8E-B5EC-6E89EF73B962}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		64bit|Any CPU = 64bit|Any CPU
@@ -381,6 +383,24 @@ Global
 		{73678087-A5B1-49F8-86F7-0367759D1DF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{73678087-A5B1-49F8-86F7-0367759D1DF3}.Release|x64.ActiveCfg = Release|Any CPU
 		{73678087-A5B1-49F8-86F7-0367759D1DF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|Any CPU.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|Any CPU.Build.0 = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|Mixed Platforms.Build.0 = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|x64.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.64bit|x86.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|x64.ActiveCfg = Release|Any CPU
+		{72B92B45-E604-4E8E-B5EC-6E89EF73B962}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
