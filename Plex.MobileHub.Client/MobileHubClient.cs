@@ -7,15 +7,18 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 using Plex.MobileHub.ServiceConsumer;
 
 namespace Plex.MobileHub.Client
 {
-    public partial class Service1 : ServiceBase
+    public partial class MobileHubClient : ServiceBase
     {
-        public Service1()
+        ClientConsumer consumer;
+        public MobileHubClient()
         {
             InitializeComponent();
+            consumer = new ClientConsumer(String.Empty, new ClientCallback());
         }
 
         protected override void OnStart(string[] args)
@@ -24,6 +27,8 @@ namespace Plex.MobileHub.Client
 
         protected override void OnStop()
         {
+            consumer.Dispose();
         }
+
     }
 }

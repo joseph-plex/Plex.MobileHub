@@ -11,7 +11,7 @@ namespace Plex.MobileHub.Client
     {
         static void Main()
         {
-            ServiceBase.Run(new ServiceBase[] { new Service1() });
+            ServiceBase.Run(new ServiceBase[] { new MobileHubClient() });
         }
     }
 }
