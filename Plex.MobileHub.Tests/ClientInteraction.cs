@@ -22,6 +22,7 @@ namespace Plex.MobileHub.Tests
 
         [TestMethod]
         [Timeout(2000)]
+        [Description("Test to ensure that the api service runs correctly")]
         public void ApiInitTest()
         {
             bool Success = false;
@@ -42,6 +43,7 @@ namespace Plex.MobileHub.Tests
 
         [TestMethod]
         [Timeout(2000)]
+        [Description("Test to ensure that the client service runs correctly")]
         public void ClientInitTest()
         {
             bool Success = false;
@@ -60,6 +62,7 @@ namespace Plex.MobileHub.Tests
 
         [TestMethod]
         [Timeout(2000)]
+        [Description("Test to ensure that the client and api service run correctly in concurrency")]
         public void ApiClientInitTest()
         {
             bool ApiSuccessSet, ClientSuccessSet = ApiSuccessSet = false;
@@ -93,6 +96,7 @@ namespace Plex.MobileHub.Tests
 
         [TestMethod]
         [Timeout(2000)]
+        [Description("A test to ensure that the client service an work together with the api service.")]
         public void ApiClientTest()
         {
             bool ApiSuccessSet, ClientSuccessSet = ApiSuccessSet = false;
