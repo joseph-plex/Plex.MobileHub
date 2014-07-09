@@ -14,13 +14,13 @@ namespace Plex.MobileHub.Client
 {
     public partial class MobileHubClient : ServiceBase
     {
-        public ClientConsumer consumer { get; private set; }
+        public ClientConsumer Consumer { get; private set; }
         ServiceHost host;
 
         public MobileHubClient()
         {
             InitializeComponent();
-            consumer = new ClientConsumer(String.Empty, new ClientCallback());
+            Consumer = new ClientConsumer(String.Empty, new ClientCallback());
             host = new ServiceHost(new ClientCommandService(this), new Uri ( "net.pipe://localhost" ));
             host.AddServiceEndpoint(typeof(IClientCommandService), new NetNamedPipeBinding(), "ClientCommandInterface");
         }
@@ -37,7 +37,7 @@ namespace Plex.MobileHub.Client
         
         protected override void OnStop()
         {
-            consumer.Dispose();
+            Consumer.Dispose();
             host.Close();
         }
         void OnOpen(IAsyncResult ar)

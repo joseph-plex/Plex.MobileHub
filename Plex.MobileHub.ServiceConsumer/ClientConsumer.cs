@@ -27,13 +27,6 @@ namespace Plex.MobileHub.ServiceConsumer
             serviceFactory = new DuplexChannelFactory<IClientService>(context, binding, address);
         }
 
-        public void callIUD()
-        {
-            Timer t = new Timer { AutoReset = false, Interval = 10000 };
-            t.Elapsed += (s, e) => ClientCallback.IUD();
-            t.Start();
-        }
-
         public void LogIn(int clientId, String clientKey)
         {
             IClientService service = serviceFactory.CreateChannel();
