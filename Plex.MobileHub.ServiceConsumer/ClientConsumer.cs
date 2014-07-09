@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using Plex.MobileHub.ServiceLibraries.ClientServiceLibrary;
+using System.Timers;
 namespace Plex.MobileHub.ServiceConsumer
 {
     public class ClientConsumer : IClientService, IDisposable
@@ -24,6 +25,13 @@ namespace Plex.MobileHub.ServiceConsumer
             EndpointAddress address = new EndpointAddress(endpointUri);
             InstanceContext context = new InstanceContext(ClientCallback);
             serviceFactory = new DuplexChannelFactory<IClientService>(context, binding, address);
+        }
+
+        public void callIUD()
+        {
+            Timer t = new Timer { AutoReset = false, Interval = 10000 };
+            t.Elapsed += (s, e) => ClientCallback.IUD();
+            t.Start();
         }
 
         public void LogIn(int clientId, String clientKey)

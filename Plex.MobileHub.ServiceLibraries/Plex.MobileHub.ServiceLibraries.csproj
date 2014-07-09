@@ -73,6 +73,7 @@
     <Compile Include="APIServiceLibrary\ConnectionStatus.cs" />
     <Compile Include="APIServiceLibrary\QryExecute.cs" />
     <Compile Include="ClientInformation.cs" />
+    <Compile Include="ClientServiceLibrary\DefaultClientCallback.cs" />
     <Compile Include="ClientServiceLibrary\IClientCallback.cs" />
     <Compile Include="ClientServiceLibrary\IClientService.cs" />
     <Compile Include="ClientServiceLibrary\LogIn.cs" />
