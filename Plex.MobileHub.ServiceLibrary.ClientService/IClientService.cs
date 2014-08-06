@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
-using Plex.MobileHub.Data.Types;
-using Plex
-namespace Plex.MobileHub.Client
+using System.Threading.Tasks;
+using Plex.MobileHub.ServiceLibrary.Types;
+using Plex.MobileHub.ServiceLibrary;
+namespace Plex.MobileHub.ServiceLibrary.ClientService
+
 {
-    [ServiceContract]
-    interface IClientCommandService
+    [ServiceContract(CallbackContract=(typeof(IClientCallback)))]
+    public interface IClientService : IDisposable
     {
-        [OperationContract]
-        void LogIn(int id, string key);
+        IClientCallback ClientCallback { get; }
 
-        [OperationContract]
-        void LogOff();
+        [OperationContract(IsOneWay = true)]
+        void LogIn(Int32 ClientId, String ClientKey);
 
+        [OperationContract(IsOneWay = true)]
+        void LogOut();
+        
+        #region Access to Pmh Database Data 
         [OperationContract]
         IEnumerable<APPS> GetAllAPPS();
         [OperationContract]
@@ -32,7 +36,7 @@ namespace Plex.MobileHub.Client
         [OperationContract]
         IEnumerable<APP_QUERY_COLUMNS> GetAllAPP_QUERY_COLUMNS();
         [OperationContract]
-        APP_QUERY_COLUMNS SelectAPP_QUERY_COLUMNS(Predicate<APP_QUERY_COLUMNS> predicate);
+        APP_QUERY_COLUMNS SelectAPP_QUERY_COLUMNS(Predicate<APP_QUERY_COLUMNS> predicate) ;
 
 
         [OperationContract]
@@ -94,6 +98,6 @@ namespace Plex.MobileHub.Client
         LOGS SelectLOGS(Predicate<LOGS> predicate);
         [OperationContract]
         void InsertLOGS(LOGS value);
-
+        #endregion
     }
 }

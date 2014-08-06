@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plex.MobileHub.Objects.ResultTypes
+namespace Plex.MobileHub.ServiceLibrary
 {
     public class DeviceSynchronizeMethodResult : MethodResult
     {
@@ -11,6 +11,6 @@ namespace Plex.MobileHub.Objects.ResultTypes
         public DateTime StartTimeStamp;
         public DateTime CompletionTimeStamp;
 
-        public List<RQryResult> Results = new List<RQryResult>();
+        public List<RegisteredQueryResult> Results = new List<RegisteredQueryResult>();
     }
 }

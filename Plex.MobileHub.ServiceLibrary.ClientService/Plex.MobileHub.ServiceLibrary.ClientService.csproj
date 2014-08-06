@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E0D6AD0-5359-49D4-A004-141F50168846}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{0257693A-C277-41AA-B3AB-19A907430E39}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plex.MobileHub.Client</RootNamespace>
-    <AssemblyName>Plex.MobileHub.Client</AssemblyName>
+    <RootNamespace>Plex.MobileHub.ServiceLibrary.ClientService</RootNamespace>
+    <AssemblyName>Plex.MobileHub.ServiceLibrary.ClientService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,49 +20,46 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\ora\product\12.1.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientCallback.cs" />
-    <Compile Include="ClientCommandService.cs" />
-    <Compile Include="IClientCommandService.cs" />
-    <Compile Include="MobileHubClient.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="MobileHubClient.Designer.cs">
-      <DependentUpon>MobileHubClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="IClientService.cs" />
+    <Compile Include="LogIn.cs" />
+    <Compile Include="LogOut.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MobileHubClient.resx">
-      <DependentUpon>MobileHubClient.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
+      <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
+      <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Types\Plex.MobileHub.ServiceLibrary.Types.csproj">
+      <Project>{8f8d9c65-ccf0-4b77-9d6f-c2013b795643}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary\Plex.MobileHub.ServiceLibrary.csproj">
+      <Project>{e6afe360-6fc1-4994-9def-195569d133ac}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -161,6 +161,7 @@
     <WCFMetadataStorage Include="Service References\PMH\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\PMH\clients.wsdl" />
     <None Include="Service References\PMH\configuration91.svcinfo" />
     <None Include="Properties\ServiceSettings.settings">

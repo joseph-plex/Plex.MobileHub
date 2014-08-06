@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DDE56963-3CD9-474F-8111-1BCA5C60F74B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Plex.MobileHub.Service</RootNamespace>
+    <AssemblyName>Plex.MobileHub.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApiService.svc" />
+    <Content Include="ClientService.svc" />
+    <Content Include="DevelService.svc" />
+    <Content Include="ManagementService.svc" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiService.svc.cs">
+      <DependentUpon>ApiService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ClientService.svc.cs">
+      <DependentUpon>ClientService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DevelService.svc.cs">
+      <DependentUpon>DevelService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementService.svc.cs">
+      <DependentUpon>ManagementService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
+      <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
+      <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ApiService\Plex.MobileHub.ServiceLibrary.ApiService.csproj">
+      <Project>{0c5808ac-ce58-4930-8073-3f339e65b775}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ClientService\Plex.MobileHub.ServiceLibrary.ClientService.csproj">
+      <Project>{0257693a-c277-41aa-b3ab-19a907430e39}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ClientService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.DevelService\Plex.MobileHub.ServiceLibrary.DevelService.csproj">
+      <Project>{40603759-f7eb-4742-ad3d-6d250b3e68ae}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.DevelService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ManagementService\Plex.MobileHub.ServiceLibrary.ManagementService.csproj">
+      <Project>{82ee7e1a-341f-47e8-b2ce-bde7c7ac5d64}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ManagementService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Types\Plex.MobileHub.ServiceLibrary.Types.csproj">
+      <Project>{8f8d9c65-ccf0-4b77-9d6f-c2013b795643}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary\Plex.MobileHub.ServiceLibrary.csproj">
+      <Project>{e6afe360-6fc1-4994-9def-195569d133ac}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19890</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:19890/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Plex.Data;
+namespace Plex.MobileHub.ServiceLibrary.Types
+{
+    public class APPS : RepositoryEntryBase, IRepositoryEntry
+    {
+        public int APP_ID { get; set; }
+        public string AUTH_KEY { get; set; }
+        public string TITLE { get; set; }
+        public string DESCRIPTION { get; set; }
+        public int IS_CLIENT_CUSTOM_APP { get; set; }
+
+
+        public APPS() : base() {
+            primaryKeys.Add("APP_ID");
+        }
+        public APPS(PlexQueryResultTuple plexTuple) :
+            this()
+        {
+            FromPlexQueryResultTuple(this, plexTuple);
+        }
+    }
+}

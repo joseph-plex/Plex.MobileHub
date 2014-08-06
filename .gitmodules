@@ -1,0 +1,3 @@
+[submodule "Plex.Data"]
+	path = Plex.Data
+	url = git@github.com:Joseph-plex/plex.data.git
