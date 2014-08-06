@@ -65,6 +65,7 @@
     <Content Include="ClientService.svc" />
     <Content Include="DevelService.svc" />
     <Content Include="ManagementService.svc" />
+    <Content Include="AccessService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,9 @@
       <DependentUpon>ManagementService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AccessService.svc.cs">
+      <DependentUpon>AccessService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -98,6 +102,10 @@
       <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
       <Name>Plex.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.AccessService\Plex.MobileHub.ServiceLibrary.AccessService.csproj">
+      <Project>{8f22e9d2-bbb9-4e63-986c-af7d176b5206}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.AccessService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ApiService\Plex.MobileHub.ServiceLibrary.ApiService.csproj">
       <Project>{0c5808ac-ce58-4930-8073-3f339e65b775}</Project>
       <Name>Plex.MobileHub.ServiceLibrary.ApiService</Name>
@@ -109,6 +117,10 @@
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.DevelService\Plex.MobileHub.ServiceLibrary.DevelService.csproj">
       <Project>{40603759-f7eb-4742-ad3d-6d250b3e68ae}</Project>
       <Name>Plex.MobileHub.ServiceLibrary.DevelService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Exceptions\Plex.MobileHub.ServiceLibrary.Exceptions.csproj">
+      <Project>{5b5f0840-f50e-46f3-b986-fd2694c5d979}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ManagementService\Plex.MobileHub.ServiceLibrary.ManagementService.csproj">
       <Project>{82ee7e1a-341f-47e8-b2ce-bde7c7ac5d64}</Project>
