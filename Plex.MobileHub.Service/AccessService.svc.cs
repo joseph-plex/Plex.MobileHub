@@ -12,7 +12,7 @@ namespace Plex.MobileHub.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class AccessService : IAccessService
     {
-        public void GetPrimayKeys(string typeName)
+        public IList<String> GetPrimayKeys(string typeName)
         {
             throw new NotImplementedException();
         }

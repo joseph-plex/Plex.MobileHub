@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Plex.Data;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using Plex.MobileHub.ServiceLibrary.AccessService;
 namespace Plex.MobileHub.Consumer
 {
@@ -23,14 +24,16 @@ namespace Plex.MobileHub.Consumer
                 return factory;
             }
         }
-
+        IList<string> IRepository<T>.PrimaryKeys
+        {
+            get { return factory.CreateChannel().GetPrimayKeys(typeof(T).FullName);}
+        }
         private ChannelFactory<IAccessService> factory;
         #region Public Methods
         public NetworkRepository()
         {
             //todo Put some stuff in here for default ctor
         }
-
         public NetworkRepository(string uri)
         {
             EndpointAddress address = new EndpointAddress(uri);
@@ -45,49 +48,54 @@ namespace Plex.MobileHub.Consumer
         }
         #endregion
         #region IRepository Implementation
-        public IList<string> PrimaryKeys
+        public IList<string> PrimaryKeys()
         {
+            return factory.CreateChannel().GetPrimayKeys(typeof(T).FullName);
         }
 
         public void Insert(T Entry)
         {
-            throw new NotImplementedException();
+            factory.CreateChannel().Insert(typeof(T).FullName, Entry);
         }
 
         public void Update(T Entry)
         {
-            throw new NotImplementedException();
+            factory.CreateChannel().Update(typeof(T).FullName, Entry);
         }
 
         public void Delete(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            var entries = RetrieveAll().Where(new Func<T,bool>(predicate)).Cast<Object>();
+            factory.CreateChannel().Delete(typeof(T).FullName, entries.ToArray());
         }
 
         public bool Exists(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            return RetrieveAll().Any(new Func<T, Boolean>(predicate));
         }
 
         public T Retrieve(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            return RetrieveAll().FirstOrDefault(new Func<T, Boolean>(predicate));
         }
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return RetrieveAll().Count();
         }
 
         public int Count(Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            return RetrieveAll().Count(new Func<T,Boolean>(predicate));
         }
 
         public IEnumerable<T> RetrieveAll()
         {
-            throw new NotImplementedException();
+            return factory.CreateChannel().RetrieveAll(typeof(T).FullName).Cast<T>();
         }
         #endregion
+
+
+  
     }
 }
