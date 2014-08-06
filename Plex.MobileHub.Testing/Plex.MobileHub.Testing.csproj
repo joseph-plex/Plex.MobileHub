@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,7 +51,69 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryColumnsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryConditionsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppTableColumnsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppTablesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppUserTypesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientAppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientDbCompaniesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientDbCompanyUserAppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientUsersTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataVerTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataVerQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DeviceUserDataTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DeviceUserDataQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevicesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\LogsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\PmhSettingsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\QuerySequenceRequestsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
+      <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
+      <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ApiService\Plex.MobileHub.ServiceLibrary.ApiService.csproj">
+      <Project>{0c5808ac-ce58-4930-8073-3f339e65b775}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ClientService\Plex.MobileHub.ServiceLibrary.ClientService.csproj">
+      <Project>{0257693a-c277-41aa-b3ab-19a907430e39}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ClientService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.DevelService\Plex.MobileHub.ServiceLibrary.DevelService.csproj">
+      <Project>{40603759-f7eb-4742-ad3d-6d250b3e68ae}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.DevelService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Exceptions\Plex.MobileHub.ServiceLibrary.Exceptions.csproj">
+      <Project>{5b5f0840-f50e-46f3-b986-fd2694c5d979}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.ManagementService\Plex.MobileHub.ServiceLibrary.ManagementService.csproj">
+      <Project>{82ee7e1a-341f-47e8-b2ce-bde7c7ac5d64}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.ManagementService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Types\Plex.MobileHub.ServiceLibrary.Types.csproj">
+      <Project>{8f8d9c65-ccf0-4b77-9d6f-c2013b795643}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary\Plex.MobileHub.ServiceLibrary.csproj">
+      <Project>{e6afe360-6fc1-4994-9def-195569d133ac}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Service\Plex.MobileHub.Service.csproj">
+      <Project>{dde56963-3cd9-474f-8111-1bca5c60f74b}</Project>
+      <Name>Plex.MobileHub.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

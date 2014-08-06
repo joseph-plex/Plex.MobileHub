@@ -23,7 +23,6 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
         {
             try
             {
-                
                 DEV_DATA tuple = new DEV_DATA();
                 var consumer = GetRepository<ConsumerInformation>().Retrieve(p => p.ConsumerId == connectionId);
                 
@@ -31,7 +30,6 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
                 tuple.CLIENT_ID = consumer.ClientId;
                 tuple.USER_ID = consumer.UserId;
                 tuple.APP_ID = consumer.AppId;
-
 
                 GetRepository<DEV_DATA>().Insert(tuple);
                 return new MethodResult().Success(tuple.DEVICE_DATABASE_ID);

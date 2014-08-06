@@ -11,7 +11,7 @@ namespace Plex.MobileHub.ServiceLibrary
 {
     public class OracleRepository : IDisposable
     {
-        private const string User = "C##EPA";
+        private const string User = "C##PMH";
         private const string Pass = "!!!plex!!!sa";
         private const string Source = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.0.1.96)(PORT = 1521)))(CONNECT_DATA = (SERVICE_NAME = PLE1LIVE)))";
         private const string ConnectionString = "User Id=" + User + ";" + "Password=" + Pass + ";" + "Data Source=" + Source + ";";
