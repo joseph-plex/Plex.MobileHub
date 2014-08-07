@@ -35,5 +35,6 @@ namespace Plex.MobileHub.ServiceLibrary
             T result = (T)GetType().InvokeMember(MemberName, BindingFlags.InvokeMethod | BindingFlags.Public, Type.DefaultBinder, this, parameters);
             return result;
         }
+      
     }
 }

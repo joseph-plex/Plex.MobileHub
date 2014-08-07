@@ -12,15 +12,6 @@ namespace Plex.MobileHub.ServiceLibrary.AccessService
 
     public interface IAccessService 
     {
-
-        //Get the PrimaryKeys of the Type
-        //IList<String> GetPrimaryKey(String TypeName);
-        //void Insert(String TypeName, Expression)
-        
-
-        //event EventHandler<RepositoryOperationEventArgs> InsertEvent;
-        //event EventHandler<RepositoryOperationEventArgs> UpdateEvent;
-        //event EventHandler<RepositoryOperationEventArgs> DeleteEvent;
         IList<String> GetPrimayKeys(String typeName);
         void Insert(String typeName, Object Entry);
         void Update(String typeName, Object Entry);

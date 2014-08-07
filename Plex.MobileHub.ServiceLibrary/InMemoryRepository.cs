@@ -97,6 +97,11 @@ namespace Plex.MobileHub.ServiceLibrary
             }
             return default(T);
         }
+
+        public IList<string> GetPrimaryKeys()
+        {
+            return PrimaryKeys;
+        }
     }
 
 }

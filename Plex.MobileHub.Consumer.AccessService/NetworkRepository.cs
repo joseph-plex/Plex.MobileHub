@@ -24,10 +24,7 @@ namespace Plex.MobileHub.Consumer
                 return factory;
             }
         }
-        IList<string> IRepository<T>.PrimaryKeys
-        {
-            get { return factory.CreateChannel().GetPrimayKeys(typeof(T).FullName);}
-        }
+  
         private ChannelFactory<IAccessService> factory;
         #region Public Methods
         public NetworkRepository()
@@ -48,6 +45,10 @@ namespace Plex.MobileHub.Consumer
         }
         #endregion
         #region IRepository Implementation
+        public IList<string> GetPrimaryKeys()
+        {
+            return factory.CreateChannel().GetPrimayKeys(typeof(T).FullName);
+        }
         public IList<string> PrimaryKeys()
         {
             return factory.CreateChannel().GetPrimayKeys(typeof(T).FullName);
@@ -95,7 +96,6 @@ namespace Plex.MobileHub.Consumer
         }
         #endregion
 
-
-  
+        
     }
 }

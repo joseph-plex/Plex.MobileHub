@@ -303,5 +303,10 @@ namespace Plex.MobileHub.ServiceLibrary
         }
         #endregion
 
+
+        public IList<string> GetPrimaryKeys()
+        {
+            return PrimaryKeys;
+        }
     }
 }
