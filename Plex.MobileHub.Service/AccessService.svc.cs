@@ -14,7 +14,8 @@ namespace Plex.MobileHub.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class AccessService : HubServiceBase, IAccessService
     {
-        public AccessService() : base()
+        public AccessService() 
+            : base()
         {
             Repositories = new RepositoryFactory().GetRepositories();
         }
@@ -30,17 +31,17 @@ namespace Plex.MobileHub.Service
 
         public void Update(string typeName, object entry)
         {
-            throw new NotImplementedException();
+            new Update { Repositories = Repositories }.Strategy(typeName, entry);
         }
 
         public void Delete(string typeName, object[] entry)
         {
-            throw new NotImplementedException();
+            new Delete { Repositories = Repositories }.Strategy(typeName, entry);
         }
 
-        public object[] RetrieveAll(string TypeName)
+        public IRepositoryEntry[] RetrieveAll(string TypeName)
         {
-            throw new NotImplementedException();
+            return new RetrieveAll { Repositories = Repositories }.Strategy(TypeName);
         }
     }
 }

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Plex.MobileHub.ServiceLibrary.AccessService\InsertTests.cs" />
     <Compile Include="Plex.MobileHub.ServiceLibrary.AccessService\DeleteTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.AccessService\UpdateTests.cs" />
     <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueriesTests.cs" />
     <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryColumnsTests.cs" />
     <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryConditionsTests.cs" />
