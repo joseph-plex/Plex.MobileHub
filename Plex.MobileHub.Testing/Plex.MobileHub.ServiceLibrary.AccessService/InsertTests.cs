@@ -11,7 +11,7 @@ namespace Plex.MobileHub.Testing.Plex.MobileHub.ServiceLibrary.AccessService
         [TestMethod]
         public void InsertTest1()
         {
-            var insert = new Insert { Repositories = new RepositoryFactory().GetRepositories() };
+            var insert = new Insert { Repositories = new RepoTestFactory().GetRepositories() };
 
             var oldCount = insert.GetRepository<CLIENTS>().Count();
             

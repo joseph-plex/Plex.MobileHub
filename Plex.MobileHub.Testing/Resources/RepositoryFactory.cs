@@ -10,11 +10,11 @@ using Plex.MobileHub.ServiceLibrary.Types;
 
 namespace Plex.MobileHub.Testing.Resources
 {
-    public class RepositoryFactory
+    public class RepoTestFactory
     {
         protected Dictionary<Type, Object> Repositories { get; set; }
 
-        public RepositoryFactory()
+        public RepoTestFactory()
         {
 
             Repositories = new Dictionary<Type, Object>();
@@ -35,7 +35,7 @@ namespace Plex.MobileHub.Testing.Resources
             Repositories.Add(typeof(CLIENT_USERS), new InMemoryRepository<CLIENT_USERS>());
 
 
-            Repositories.Add(typeof(CLIENTS), new InMemoryRepository<CLIENTS>());
+            Repositories.Add(typeof(CLIENTS), GetClientRepository());
             Repositories.Add(typeof(DEV_DATA), new InMemoryRepository<DEV_DATA>());
             Repositories.Add(typeof(DEV_DATA_VER), new InMemoryRepository<DEV_DATA_VER>());
             Repositories.Add(typeof(DEV_DATA_VER_QUERIES), new InMemoryRepository<DEV_DATA_VER_QUERIES>());
@@ -63,6 +63,24 @@ namespace Plex.MobileHub.Testing.Resources
         public Dictionary<Type, Object> GetRepositories()
         {
             return Repositories;
+        }
+
+        public InMemoryRepository<CLIENTS> GetClientRepository()
+        {
+
+            var repo = new InMemoryRepository<CLIENTS>();
+            CLIENTS c = null;
+
+            using(PlexRandomizer r = new PlexRandomizer())
+            {
+                c = new CLIENTS();
+                r.Fill(c);
+                c.CLIENT_ID = 1;
+                c.CLIENT_KEY = "abcefghijklmnopqrst";
+                c.DESCRIPTION = "plexxis";
+                repo.Insert(c);
+            }
+            return repo;
         }
     }
 }

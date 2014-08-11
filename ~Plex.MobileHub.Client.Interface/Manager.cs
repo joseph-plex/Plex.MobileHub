@@ -157,7 +157,7 @@ namespace Plex.MobileHub.Client.Interface
 
         public LogsServiceClient GetLogService()
         {
-            return new LogsServiceClient("WSHttpBindinNetNamedPipeBinding_LogsServiceg_LogsService");
+            return new LogsServiceClient("NetNamedPipeBinding_LogsService");
         }
     }
 }
