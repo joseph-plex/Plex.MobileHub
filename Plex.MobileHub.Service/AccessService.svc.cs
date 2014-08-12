@@ -7,7 +7,7 @@ using System.Text;
 using Plex.MobileHub.ServiceLibrary.AccessService;
 using Plex.MobileHub.ServiceLibrary;
 using Plex.Data;
-
+using Plex.MobileHub.ServiceLibrary.Types;
 namespace Plex.MobileHub.Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -24,22 +24,22 @@ namespace Plex.MobileHub.Service
             return new GetPrimaryKeys { Repositories = Repositories }.Strategy(typeName);
         }
 
-        public void Insert(string typeName, object entry)
+        public void Insert(string typeName, __TypeBase entry)
         {
             new Insert { Repositories = Repositories }.Strategy(typeName, entry);
         }
 
-        public void Update(string typeName, object entry)
+        public void Update(string typeName, __TypeBase entry)
         {
             new Update { Repositories = Repositories }.Strategy(typeName, entry);
         }
 
-        public void Delete(string typeName, object[] entry)
+        public void Delete(string typeName, __TypeBase[] entry)
         {
             new Delete { Repositories = Repositories }.Strategy(typeName, entry);
         }
 
-        public IRepositoryEntry[] RetrieveAll(string TypeName)
+        public __TypeBase[] RetrieveAll(string TypeName)
         {
             return new RetrieveAll { Repositories = Repositories }.Strategy(TypeName);
         }

@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Plex.Data;
+using System.Runtime.Serialization;
 namespace Plex.MobileHub.ServiceLibrary.Types
 {
-    public class APP_USER_TYPES : RepositoryEntryBase, IRepositoryEntry
+    [DataContract]
+    public class APP_USER_TYPES : __TypeBase
     {
+        [DataMember]
         public int USER_TYPE_ID { get; set; }//	NUMBER(10)	N			
+        [DataMember]
         public int APP_ID { get; set; }//	NUMBER(10)	N			
+        [DataMember]
         public string CODE { get; set; }//VARCHAR2(12)	N			
+        [DataMember]
         public string DESCRIPTION { get; set; }//	VARCHAR2(50)	Y	
 
 

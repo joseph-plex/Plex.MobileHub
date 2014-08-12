@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Runtime.Serialization;
 using Plex.Data;
 namespace Plex.MobileHub.ServiceLibrary.Types
 {
-    public class DEVICES : RepositoryEntryBase, IRepositoryEntry
+    [DataContract]
+    public class DEVICES : __TypeBase
     {
+        [DataMember]
         public int DEVICE_ID { get; set; }
+        [DataMember]
         public int APP_ID { get; set; }
 
         public DEVICES()

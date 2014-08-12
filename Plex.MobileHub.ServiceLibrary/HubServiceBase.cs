@@ -11,7 +11,8 @@ namespace Plex.MobileHub.ServiceLibrary
 {
     public abstract class HubServiceBase
     {
-        protected Dictionary<Type, Object> Repositories { get; set; }
+        protected Dictionary<Type, Object> Repositories { get { return repositories; } set { repositories = value; } }
+        Dictionary<Type, Object> repositories;
         public virtual IRepository<C> GetRepository<C>()
            where C : IRepositoryEntry, new()
         {
@@ -20,10 +21,10 @@ namespace Plex.MobileHub.ServiceLibrary
                 throw new NotSupportedException();
             return r[typeof(C)] as IRepository<C>;
         }
-
+        
         public HubServiceBase()
         {
-            Repositories = new Dictionary<Type, Object>();
+            repositories = new Dictionary<Type, Object>();
         }
     }
 }

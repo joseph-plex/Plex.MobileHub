@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Runtime.Serialization;
 using Plex.Data;
 namespace Plex.MobileHub.ServiceLibrary.Types
 {
-    public class PMH_SETTINGS : RepositoryEntryBase, IRepositoryEntry
+    [DataContract]
+    public class PMH_SETTINGS : __TypeBase
     {
+        [DataMember]
         public int PMH_ID { get; set; }//	NUMBER(10)	N		
+        [DataMember]
         public int MISC { get; set; }//	NUMBER(10)	N	
 
         public PMH_SETTINGS() : base() {

@@ -7,9 +7,10 @@ using Plex.Data;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using Plex.MobileHub.ServiceLibrary.AccessService;
+using Plex.MobileHub.ServiceLibrary.Types;
 namespace Plex.MobileHub.Consumer
 {
-    public class NetworkRepository<T> : IRepository<T> where T : IRepositoryEntry, new()
+    public class NetworkRepository<T> : IRepository<T> where T : __TypeBase, IRepositoryEntry, new()
     {
         public event EventHandler<RepositoryOperationEventArgs> InsertEvent;
 
@@ -66,7 +67,7 @@ namespace Plex.MobileHub.Consumer
 
         public void Delete(Predicate<T> predicate)
         {
-            var entries = RetrieveAll().Where(new Func<T,bool>(predicate)).Cast<Object>();
+            var entries = RetrieveAll().Where(new Func<T,bool>(predicate)).Cast<__TypeBase>();
             factory.CreateChannel().Delete(typeof(T).FullName, entries.ToArray());
         }
 

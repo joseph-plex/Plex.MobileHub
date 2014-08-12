@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 using Plex.Data;
 namespace Plex.MobileHub.ServiceLibrary.Types
 {
-    public class APPS : RepositoryEntryBase, IRepositoryEntry
+    [DataContract]
+    public class APPS : __TypeBase
     {
+        [DataMember]
         public int APP_ID { get; set; }
+        [DataMember]
         public string AUTH_KEY { get; set; }
+        [DataMember]
         public string TITLE { get; set; }
+        [DataMember]
         public string DESCRIPTION { get; set; }
+        [DataMember]
         public int IS_CLIENT_CUSTOM_APP { get; set; }
 
 

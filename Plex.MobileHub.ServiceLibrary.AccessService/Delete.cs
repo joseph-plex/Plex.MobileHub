@@ -57,29 +57,5 @@ namespace Plex.MobileHub.ServiceLibrary.AccessService
             });
             delete.Invoke(Repositories[type], new Object[] { new Predicate<IRepositoryEntry>(func) });
         }
-
-         public void AltStrategy(string typeName, object[] entry)
-        {
-            //Call a type Repository. 
-            var type = Repositories.Keys.First(p => p.FullName == typeName);
-            var RepoType = Repositories[type].GetType();
-            var castMethod = GetType().GetMethod("Cast");
-            var pred = GetType().GetMethod("CreatePredicate").MakeGenericMethod(type);
-
-            
-            var deleteMethods = RepoType.GetMethods().Where(p => p.GetParameters().Length == 1 && p.Name == "Delete");
-
-            if (deleteMethods.Count() != 1)
-                throw new NotSupportedException();
-
-            var delete = deleteMethods.First();
-
-            var exist = GetType().GetMethod("Exists").MakeGenericMethod(type);
-            Func<IRepositoryEntry, Boolean> func = (t) => (Boolean)exist.Invoke(null, new object[]{ 
-                castMethod.MakeGenericMethod(type).Invoke(null, new Object[] { t }),
-                Repositories[type]
-            });
-            delete.Invoke(Repositories[type], new Object[] { new Predicate<IRepositoryEntry>(func) });
-        }
     }
 }

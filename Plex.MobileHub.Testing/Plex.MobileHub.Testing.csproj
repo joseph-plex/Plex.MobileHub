@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -78,6 +79,7 @@
     <Compile Include="Plex.MobileHub.ServiceLibrary.Types\PmhSettingsTests.cs" />
     <Compile Include="Plex.MobileHub.ServiceLibrary.Types\QuerySequenceRequestsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AccessServiceTest.cs" />
     <Compile Include="Resources\RepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -85,6 +87,30 @@
     <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
       <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
       <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer.AccessService\Plex.MobileHub.Consumer.AccessService.csproj">
+      <Project>{0ce94d60-3948-4430-b45d-c00ced36ef14}</Project>
+      <Name>Plex.MobileHub.Consumer.AccessService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer.Api\Plex.MobileHub.Consumer.Api.csproj">
+      <Project>{ca2cb982-5b58-4f6f-b367-c42b52012d67}</Project>
+      <Name>Plex.MobileHub.Consumer.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer.Client\Plex.MobileHub.Consumer.Client.csproj">
+      <Project>{b4cd1292-c4d3-425e-a140-b129c0903be8}</Project>
+      <Name>Plex.MobileHub.Consumer.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer.Devel\Plex.MobileHub.Consumer.Devel.csproj">
+      <Project>{700250ca-076d-42ab-9b53-2d02796f337d}</Project>
+      <Name>Plex.MobileHub.Consumer.Devel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer.Management\Plex.MobileHub.Consumer.Management.csproj">
+      <Project>{f32c21f4-9248-40c0-a364-fec0f2e26171}</Project>
+      <Name>Plex.MobileHub.Consumer.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer\Plex.MobileHub.Consumer.csproj">
+      <Project>{6429eb99-2446-4124-a922-9caf8e562251}</Project>
+      <Name>Plex.MobileHub.Consumer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.AccessService\Plex.MobileHub.ServiceLibrary.AccessService.csproj">
       <Project>{8f22e9d2-bbb9-4e63-986c-af7d176b5206}</Project>

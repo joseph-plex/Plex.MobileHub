@@ -34,11 +34,14 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APPS.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="PMH_SETTINGS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QUERY_SEQUENCE_REQUESTS.cs" />
+    <Compile Include="__TypeBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">

@@ -9,12 +9,18 @@ using Plex.Data;
 using Plex.MobileHub.ServiceLibrary.Types;
 namespace Plex.MobileHub.ServiceLibrary.AccessService
 {
+    [ServiceContract]
     public interface IAccessService 
     {
+        [OperationContract]
         IList<String> GetPrimayKeys(String typeName);
-        void Insert(String typeName, Object Entry);
-        void Update(String typeName, Object Entry);
-        void Delete(String typeName, Object [] Entry);
-        IRepositoryEntry[] RetrieveAll(String TypeName);
+        [OperationContract]
+        void Insert(String typeName, __TypeBase Entry);
+        [OperationContract]
+        void Update(String typeName, __TypeBase Entry);
+        [OperationContract]
+        void Delete(String typeName, __TypeBase[] Entry);
+        [OperationContract]
+        __TypeBase[] RetrieveAll(String TypeName);
     }
 }

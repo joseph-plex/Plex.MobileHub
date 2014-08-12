@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 using Plex.Data;
 namespace Plex.MobileHub.ServiceLibrary.Types
 {
-    public class CLIENT_DB_COMPANY_USER_APPS : RepositoryEntryBase, IRepositoryEntry
+    [DataContract]
+    public class CLIENT_DB_COMPANY_USER_APPS : __TypeBase
     {
+        [DataMember]
         public int DB_COMPANY_USER_APP_ID { get; set; }//	NUMBER(10)	N			
+        [DataMember]
         public int DB_COMPANY_USER_ID { get; set; }//	NUMBER(10)	N			
+        [DataMember]
         public int APP_ID { get; set; }//	NUMBER(10)	N			
+        [DataMember]
         public int? APP_USER_TYPE_ID { get; set; }//	NUMBER(10)	Y	
 
         public CLIENT_DB_COMPANY_USER_APPS() : base() {
