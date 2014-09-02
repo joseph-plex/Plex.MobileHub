@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data;
 using Oracle.DataAccess.Client;
-using Plex.MobileHub.Data;
-using Plex.MobileHub.ServiceConsumer;
-using Plex.MobileHub.ServiceLibraries;
-using Plex.MobileHub.ServiceLibraries.ClientServiceLibrary;
+using Plex.Data;
+using Plex.MobileHub.ServiceLibrary;
+using Plex.MobileHub.ServiceLibrary.Types;
 
 namespace Plex.MobileHub.Client
 {

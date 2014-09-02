@@ -65,6 +65,24 @@
       <DependentUpon>MobileHubClient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
+      <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
+      <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.Consumer\Plex.MobileHub.Consumer.csproj">
+      <Project>{6429eb99-2446-4124-a922-9caf8e562251}</Project>
+      <Name>Plex.MobileHub.Consumer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary.Types\Plex.MobileHub.ServiceLibrary.Types.csproj">
+      <Project>{8f8d9c65-ccf0-4b77-9d6f-c2013b795643}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plex.MobileHub.ServiceLibrary\Plex.MobileHub.ServiceLibrary.csproj">
+      <Project>{e6afe360-6fc1-4994-9def-195569d133ac}</Project>
+      <Name>Plex.MobileHub.ServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
