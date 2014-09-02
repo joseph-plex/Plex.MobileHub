@@ -8,10 +8,21 @@ using Plex.MobileHub.ServiceLibrary.Types;
 namespace Plex.MobileHub.ServiceLibrary.ClientService
 
 {
-    public class LogOut : MethodStrategyBase<Object>
+    public class LogOut : MethodStrategyBase<Boolean>
     {
-        public void Strategy(Int32 clientId)
+        public Boolean Strategy(String token)
         {
+            if(String.IsNullOrWhiteSpace(token))
+                throw new Exception("Invalid Token");
+            //warning this assumes the client token is nullable and is unique. Needs to be implemented in the database
+            var client = GetRepository<CLIENTS>().Retrieve(p => p.CLIENT_TOKEN == token);
+
+            client.CLIENT_TOKEN = null;
+            client.CLIENT_PORT = null;
+            client.CLIENT_IP_ADDRESS = null;
+
+            GetRepository<CLIENTS>().Update(client);
+            return true;
         }
     }
 }

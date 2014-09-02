@@ -24,6 +24,9 @@ namespace Plex.MobileHub.ServiceLibrary.Types
         public string CLIENT_IP_ADDRESS { get; set; }
         [DataMember]
         public int? CLIENT_PORT { get; set; }
+        [DataMember]
+        //warning this needs to have a unique key in the database
+        public string CLIENT_TOKEN {get;set;}
 
         public CLIENTS() : base() {
             primaryKeys.Add("CLIENT_ID");
