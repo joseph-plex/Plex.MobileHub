@@ -64,5 +64,11 @@ namespace Plex.MobileHub.Client
         {
             throw new NotImplementedException();
         }
+
+
+        public void Heartbeat()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

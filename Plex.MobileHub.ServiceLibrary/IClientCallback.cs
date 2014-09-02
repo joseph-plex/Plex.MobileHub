@@ -20,7 +20,10 @@ namespace Plex.MobileHub.ServiceLibrary
         [OperationContract]
         RegisteredQueryResult ExecuteRegisteredQuery(String connetionString, String queryName, DateTime? time = null);
 
-        [OperationContract(IsOneWay=true)]
+        [OperationContract]
         void Synchronize();
+
+        [OperationContract]
+        void Heartbeat();
     }
 }
