@@ -11,6 +11,7 @@ using System.ServiceModel;
 
 namespace Plex.MobileHub.Client
 {
+    //todo fix this code.
     public partial class MobileHubClient : ServiceBase
     {
         //public ClientConsumer Consumer { get; private set; }
