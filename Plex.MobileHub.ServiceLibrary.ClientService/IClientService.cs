@@ -13,6 +13,7 @@ namespace Plex.MobileHub.ServiceLibrary.ClientService
     public interface IClientService 
     {
         String LogIn(Int32 ClientId, String ClientKey, String ipAddress, Int32 Port);
+        //warning would be wise to make this return something
         void LogOut(String token);
     }
 }

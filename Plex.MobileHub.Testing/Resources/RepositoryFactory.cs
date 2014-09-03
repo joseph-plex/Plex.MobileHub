@@ -49,7 +49,6 @@ namespace Plex.MobileHub.Testing.Resources
             Repositories.Add(typeof(PMH_SETTINGS), new InMemoryRepository<PMH_SETTINGS>());
             Repositories.Add(typeof(QUERY_SEQUENCE_REQUESTS), new InMemoryRepository<QUERY_SEQUENCE_REQUESTS>());
 
-            Repositories.Add(typeof(ClientInformation),new InMemoryRepository<ClientInformation>());
             Repositories.Add(typeof(ConsumerInformation), new InMemoryRepository<ConsumerInformation>());
         }
         public virtual IRepository<C> GetRepository<C>() where C : IRepositoryEntry, new()

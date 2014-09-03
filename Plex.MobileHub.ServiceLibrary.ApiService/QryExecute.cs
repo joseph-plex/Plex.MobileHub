@@ -18,7 +18,7 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
                     throw new Exception();
 
                 var consumer = GetRepository<ConsumerInformation>().Retrieve(p => p.ConsumerId == connectionId);
-                var clientInfo = GetRepository<ClientInformation>().Retrieve(p => consumer.ClientId == p.ClientId);
+                var clientInfo = GetRepository<ClientCallback>().Retrieve(p => consumer.ClientId == p.ClientId);
 
                 var query = GetRepository<APP_QUERIES>().Retrieve(p => p.NAME == queryName && p.APP_ID == consumer.AppId);
 
@@ -34,7 +34,7 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
                 {
                     try
                     {
-                        RegisteredQueryResult rqr = clientInfo.Callback.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName, time);
+                        RegisteredQueryResult rqr = clientInfo.ExecuteRegisteredQuery(database.DATABASE_CSTRING, queryName, time);
                         rqr.Success();
                         rqr.TableName = query.TABLE_NAME;
                         rqr.QueryName = query.NAME;

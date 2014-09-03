@@ -17,7 +17,7 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
                     throw new Exception();
 
                 var consumer = GetRepository<ConsumerInformation>().Retrieve(p => p.ConsumerId == connectionId);
-                var clientInfo = GetRepository<ClientInformation>().Retrieve(p => consumer.ClientId == p.ClientId);
+                var clientInfo = GetRepository<ClientCallback>().Retrieve(p => consumer.ClientId == p.ClientId);
 
                 var dbs = GetRepository<CLIENT_DB_COMPANIES>().RetrieveAll().Where(p => p.CLIENT_ID == consumer.ClientId && p.COMPANY_CODE == consumer.DatabaseCode);
 
@@ -27,7 +27,7 @@ namespace Plex.MobileHub.ServiceLibrary.ApiService
                 foreach(var database in dbs)
                 {
                     try {
-                        QryResult qr = clientInfo.Callback.Query(database.DATABASE_CSTRING, Query, arguments);
+                        QryResult qr = clientInfo.Query(database.DATABASE_CSTRING, Query, arguments);
                         qr.Success();
                         return qr;
                     }

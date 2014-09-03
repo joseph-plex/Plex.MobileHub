@@ -9,11 +9,11 @@ namespace Plex.MobileHub.ServiceLibrary
 {
     public class ConsumerInformation : RepositoryEntryBase, IRepositoryEntry
     {
-        public int ConsumerId { get; set; }
-        public int AppId { get; set; }
-        public int ClientId { get; set; }
+        public Int32 ConsumerId { get; set; }
+        public Int32 AppId { get; set; }
+        public Int32 ClientId { get; set; }
         public String DatabaseCode { get; set; }
-        public int UserId { get; set; }
+        public Int32 UserId { get; set; }
 
         public ConsumerInformation()
             : base()

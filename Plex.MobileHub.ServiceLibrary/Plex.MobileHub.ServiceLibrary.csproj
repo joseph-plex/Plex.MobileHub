@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientCallback.cs" />
-    <Compile Include="ClientInformation.cs" />
     <Compile Include="ConsumerInformation.cs" />
     <Compile Include="DeviceSynchronizeMethodResult.cs" />
     <Compile Include="HubServiceBase.cs" />

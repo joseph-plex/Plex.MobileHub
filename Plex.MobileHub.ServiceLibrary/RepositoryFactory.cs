@@ -48,7 +48,7 @@ namespace Plex.MobileHub.ServiceLibrary
             repositories.Add(typeof(PMH_SETTINGS), new OracleRepository<PMH_SETTINGS>());
             repositories.Add(typeof(QUERY_SEQUENCE_REQUESTS), new OracleRepository<QUERY_SEQUENCE_REQUESTS>());
 
-            repositories.Add(typeof(ClientInformation), Singleton<InMemoryRepository<ClientInformation>>.Instance);
+            repositories.Add(typeof(ClientCallback), Singleton<InMemoryRepository<ClientCallback>>.Instance);
             repositories.Add(typeof(ConsumerInformation), Singleton<InMemoryRepository<ConsumerInformation>>.Instance);
         }
 
