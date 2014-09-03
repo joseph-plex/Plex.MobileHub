@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 using Plex.MobileHub.ServiceLibrary.Types;
 using System.Security.Cryptography;
 using System.Net;
+using Plex.Data;
 
 namespace Plex.MobileHub.ServiceLibrary.ClientService
 {
     public class LogIn : MethodStrategyBase<Boolean>
     {
+        const string callbackAddressTemplate = "http://*a:*p/MobileHubClientCallback.svc";
+        
         //warning needs to be redone in entity framework.
-        public String Strategy(Int32 clientId, String clientKey, String ipAddress, Int32 Port)
+        public String Strategy(Int32 clientId, String clientKey, String ipAddress, Int32 port)
         {
             var token = Hash(clientId.ToString() + DateTime.Now);
 
@@ -20,15 +23,26 @@ namespace Plex.MobileHub.ServiceLibrary.ClientService
 
             if (result == default(CLIENTS))
                 throw new Exception("Client Id does not exist");
-
             if (clientKey != result.CLIENT_KEY)
                 throw new Exception("Invalid Client Key");
+            IPAddress.Parse(ipAddress);
+            //Valid port numbers only range from 1 - 65535;
+            if (port < 0 || port > 65535)
+                throw new Exception("Invalid Port Exception");
 
-            result.CLIENT_IP_ADDRESS = ipAddress;
-            result.CLIENT_TOKEN = token;
-            result.CLIENT_PORT = Port;
+            //no point entering it in the system it connection is impossible.
+            var ccb = new ClientCallback(UriConstruct(ipAddress, port));
+            ccb.Heartbeat(); 
 
+            result.CLIENT_IP_ADDRESS = ccb.IpAddress =  ipAddress;
+            result.CLIENT_TOKEN = ccb.Token = token;
+            result.CLIENT_PORT = ccb.Port = port;
+            ccb.ClientId = clientId;
+
+            GetRepository<ClientCallback>().Insert(ccb);
             GetRepository<CLIENTS>().Update(result);
+            
+            //Give the Client back its token.
             return token;
         }
 
@@ -42,6 +56,14 @@ namespace Plex.MobileHub.ServiceLibrary.ClientService
                     sBuilder.Append(data[i].ToString("x2"));
                 return sBuilder.ToString();
             }
+        }
+
+        public string UriConstruct(String IPAddress, Int32 Port)
+        {
+            var cba = callbackAddressTemplate;
+            cba = cba.Replace("*a", IPAddress);
+            cba = cba.Replace("*p", Port.ToString());
+            return cba;
         }
     }
 

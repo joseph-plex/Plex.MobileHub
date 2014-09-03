@@ -10,6 +10,8 @@ namespace Plex.MobileHub.ServiceLibrary.ClientService
 {
     public class LogOut : MethodStrategyBase<Boolean>
     {
+        /*warning if we ever use this code we CLIENTS.CLIENT_INSTANCE_ID will become obsolete.
+        //I've left it presently for backwards compatibility */
         public Boolean Strategy(String token)
         {
             if(String.IsNullOrWhiteSpace(token))

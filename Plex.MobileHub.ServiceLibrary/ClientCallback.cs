@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
-
+using Plex.Data;
 namespace Plex.MobileHub.ServiceLibrary
 {
     //todo implement additional constructors for Plex.MobileHub.ServiceLibrary.ClientCallback
-    public class ClientCallback : IClientCallback
+    public class ClientCallback : IClientCallback, IRepositoryEntry
     {
+
+        public String IpAddress {get;set;}
+        public Int32 ClientId {get;set;}
+        public String Token {get;set;}
+        public Int32 Port {get;set;}
+
         ChannelFactory<IClientCallback> factory;
         IClientCallback channel;
 
-        //warning no check for validity of IP address
+        //To make IRepository be happy.
+        public ClientCallback() { }
+        //warning no check for validity of URI 
         public ClientCallback(String uri)
         {
             BasicHttpBinding binding = new BasicHttpBinding()
@@ -28,35 +36,39 @@ namespace Plex.MobileHub.ServiceLibrary
             factory.Open();
             channel = factory.CreateChannel();
         }
-
-        void IClientCallback.IUD()
+        
+        public virtual IList<string> GetPrimaryKeys()
         {
-            throw new NotImplementedException();
+            return new List<String> { "ClientId" };
         }
 
-        QryResult IClientCallback.Query(string connectionString, string query, params object[] arguments)
+        public virtual void IUD()
         {
-            throw new NotImplementedException();
+            channel.IUD();
         }
 
-        RegisteredQueryResult IClientCallback.ExecuteRegisteredQuery(string connetionString, string queryName, DateTime? time)
+        public virtual QryResult Query(string connectionString, string query, params object[] arguments)
         {
-            throw new NotImplementedException();
+            return channel.Query(connectionString, query, arguments);
         }
 
-        void IClientCallback.Synchronize()
+        public virtual RegisteredQueryResult ExecuteRegisteredQuery(string connetionString, string queryName, DateTime? time)
         {
-            throw new NotImplementedException();
+            return channel.ExecuteRegisteredQuery(connetionString, queryName, time);
         }
 
-        void IDisposable.Dispose()
+        public virtual void Synchronize()
         {
-            throw new NotImplementedException();
+            channel.Synchronize();
+        }
+        public virtual void Heartbeat()
+        {
+            channel.Heartbeat();
         }
 
-
-        public void Heartbeat()
+        public void Dispose()
         {
+            //todo implement IDisposable Pattern.
             throw new NotImplementedException();
         }
     }
