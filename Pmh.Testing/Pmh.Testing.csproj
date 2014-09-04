@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{281E37D8-D127-4D8C-B81E-3E4DF801A43E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pmh.Testing</RootNamespace>
+    <AssemblyName>Pmh.Testing</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Plex.MobileHub.ServiceLibrary.ClientService\IntegrationTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryColumnsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppQueryConditionsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppTableColumnsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppTablesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppUserTypesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\AppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientAppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientDbCompaniesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientDbCompanyUserAppsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientUsersTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\ClientsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataVerTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevDataVerQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DeviceUserDataTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DeviceUserDataQueriesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\DevicesTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\LogsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\PmhSettingsTests.cs" />
+    <Compile Include="Plex.MobileHub.ServiceLibrary.Types\QuerySequenceRequestsTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\RepositoryFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Plex.MobileHub.ServiceLibrary.AccessService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plex.Data\Plex.Data\Plex.Data.csproj">
+      <Project>{d969d2e9-8816-4bbb-afee-28aca7fb23ac}</Project>
+      <Name>Plex.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Client\Pmh.Client.csproj">
+      <Project>{2e0d6ad0-5359-49d4-a004-141f50168846}</Project>
+      <Name>Pmh.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Consumer.Api\Pmh.Consumer.Api.csproj">
+      <Project>{ca2cb982-5b58-4f6f-b367-c42b52012d67}</Project>
+      <Name>Pmh.Consumer.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Consumer.Client\Pmh.Consumer.Client.csproj">
+      <Project>{b4cd1292-c4d3-425e-a140-b129c0903be8}</Project>
+      <Name>Pmh.Consumer.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Consumer.Devel\Pmh.Consumer.Devel.csproj">
+      <Project>{700250ca-076d-42ab-9b53-2d02796f337d}</Project>
+      <Name>Pmh.Consumer.Devel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Consumer.Management\Pmh.Consumer.Management.csproj">
+      <Project>{f32c21f4-9248-40c0-a364-fec0f2e26171}</Project>
+      <Name>Pmh.Consumer.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Consumer\Pmh.Consumer.csproj">
+      <Project>{6429eb99-2446-4124-a922-9caf8e562251}</Project>
+      <Name>Pmh.Consumer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Manager\Pmh.Manager.csproj">
+      <Project>{c042c1a6-558e-494d-be20-0077fce12e5a}</Project>
+      <Name>Pmh.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.ServiceLibrary.Exceptions\Pmh.ServiceLibrary.Exceptions.csproj">
+      <Project>{5b5f0840-f50e-46f3-b986-fd2694c5d979}</Project>
+      <Name>Pmh.ServiceLibrary.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.ServiceLibrary.Types\Pmh.ServiceLibrary.Types.csproj">
+      <Project>{8f8d9c65-ccf0-4b77-9d6f-c2013b795643}</Project>
+      <Name>Pmh.ServiceLibrary.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.ServiceLibrary\Pmh.ServiceLibrary.csproj">
+      <Project>{e6afe360-6fc1-4994-9def-195569d133ac}</Project>
+      <Name>Pmh.ServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pmh.Service\Pmh.Service.csproj">
+      <Project>{dde56963-3cd9-474f-8111-1bca5c60f74b}</Project>
+      <Name>Pmh.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

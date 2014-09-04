@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Pmh.Service.Behaviors.Client" CodeBehind="Behaviors.Client.svc.cs" %>
